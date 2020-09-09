@@ -1,0 +1,17 @@
+body {
+  --main-bg-color: #ffffff;
+  --black: #2b2d2f;
+  --green: #2cc068;
+  --green-gradient: linear-gradient(
+    180deg,
+    #e2f8eb 0%,
+    rgba(204, 235, 231, 0) 100%
+  );
+}
+
+// font vars
+$min_width: 320px;
+$max_width: 1200px;
+$min_font: 16px;
+$max_font: 17px;
+$mode: 1.4rem;

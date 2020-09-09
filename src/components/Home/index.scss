@@ -1,0 +1,107 @@
+@import "../../styles/vars";
+
+.header {
+  padding: 3rem 0px;
+}
+
+.hero {
+  background: var(--green-gradient);
+  .container {
+    padding-bottom: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    align-content: space-between;
+  }
+
+  h1 {
+    font-size: 3.5em;
+    line-height: 2.912 * $mode;
+  }
+
+  main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div {
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    svg {
+      flex: 1;
+    }
+  }
+}
+
+.why {
+  h1 {
+    font-size: 2em;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 500px;
+    align-self: center;
+  }
+
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .card {
+    display: flex;
+    margin-bottom: 5rem;
+    width: 40%;
+    min-width: 400px;
+    .icon {
+      margin-top: 3px;
+      height: 82px;
+      width: 82px;
+      background: #ffffff;
+      box-shadow: 11px 21px 30px rgba(120, 86, 86, 0.14);
+      border-radius: 40px;
+      margin-right: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .content {
+      flex: 1;
+      h3 {
+        margin: 1rem 0;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.interested {
+  margin-top: 4rem;
+  padding: 2rem;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    position: relative;
+    margin-left: 100px;
+    width: fit-content;
+  }
+  p::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -90px;
+    height: 68px;
+    width: 108px;
+    background-color: red;
+    background: url(../../assets/imgs/alert.png);
+    background-size: contain;
+  }
+}
