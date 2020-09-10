@@ -1,8 +1,12 @@
 title: Community
 label: community
 questions:
-  - label: Did You ever be part of a comunity
+  - label: Did You ever be part of a community
+    required: true
     choices:
+      - This however showed weasel
+      - Well uncritical so misled
+      - Goodness much until that fluid owl
       - This however showed weasel
       - Well uncritical so misled
       - Goodness much until that fluid owl
@@ -11,13 +15,17 @@ questions:
       - This however showed weasel
       - Well uncritical so misled
       - Goodness much until that fluid owl
+
   - label: Did You ever be part of a comunity
     choices:
       - This however showed weasel
       - Well uncritical so misled
       - Goodness much until that fluid owl
+
   - label: Did You ever be part of a comunity
+    multiple: true
     choices:
-      - This however showed weasel
-      - Well uncritical so misled
-      - Goodness much until that fluid owl
+      - react
+      - angular
+      - vuejs
+      - svelt
