@@ -1,6 +1,7 @@
 import React from "react"
-import { Header } from "./Header"
+import { Header } from "../Header"
 import Crea from "../../assets/Crea.svg"
+import { Link } from "gatsby"
 
 export const Hero = () => (
   <div className="hero">
@@ -13,7 +14,9 @@ export const Hero = () => (
             Take part in the survey and let the us know what the web developer’s
             job really looks like in Morocco
           </p>
-          <button className="primary"> Take Part In The Survey </button>
+          <Link className="primary" to="/start">
+            Take Part In The Survey
+          </Link>
         </div>
         <Crea />
       </main>

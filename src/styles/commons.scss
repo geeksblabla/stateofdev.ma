@@ -24,7 +24,16 @@ body {
   }
 }
 
-button {
+.header {
+  padding: 3rem 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-items: center;
+}
+
+a {
+  text-decoration: none;
   &.primary {
     padding: 1rem;
     background: var(--green);
