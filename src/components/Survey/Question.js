@@ -1,11 +1,17 @@
-import React from 'react'
+import React from "react"
 
-export default ({ question, index, register, categoryId }) => {
+export default ({ question, index, register, categoryId, selected }) => {
   const { label, choices } = question
+  // console.log("selected ", selected, index)
 
   return (
-    <div className="quiz-form__quiz">
-      <p className="quiz-form__question">{`${index + 1}. ${label}`}</p>
+    <div
+      className="quiz-form__quiz"
+      style={{ display: selected ? "block" : "none" }}
+    >
+      <p className="quiz-form__question">
+        {`${index + 1}. ${label}`} {question.required ? "*" : ""}
+      </p>
       {choices.map((c, i) => (
         <Choice
           text={c}
@@ -22,17 +28,20 @@ export default ({ question, index, register, categoryId }) => {
 
 const Choice = ({ text, id, index, name, register }) => {
   return (
-    <label className="quiz-form__ans" htmlFor={id}>
+    <label htmlFor={id}>
       <input
         type="radio"
         name={name}
-        ref={register}
+        ref={register({
+          required: true,
+        })}
         id={id}
         value={index}
-        required
-      />
-      <span className="design"></span>
-      <span className="text">{text}</span>
+      ></input>
+      <div className="quiz-form__ans">
+        <span className="design">{index}</span>
+        <span className="text">{text}</span>
+      </div>
     </label>
   )
 }

@@ -14,7 +14,7 @@ export const Hero = () => (
             Take part in the survey and let the us know what the web developer’s
             job really looks like in Morocco
           </p>
-          <Link className="primary" to="/start">
+          <Link className="primary" to="/beforeStart">
             Take Part In The Survey
           </Link>
         </div>

@@ -35,7 +35,7 @@ body {
 a {
   text-decoration: none;
   &.primary {
-    padding: 1rem;
+    padding: 1rem 2rem;
     background: var(--green);
     box-shadow: 0px 34px 30px rgba(48, 161, 20, 0.08);
     border-radius: 40px;
