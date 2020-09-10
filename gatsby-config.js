@@ -59,8 +59,20 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
+    {
+      resolve: "gatsby-plugin-firebase",
+      options: {
+        credentials: {
+          apiKey: "AIzaSyC76pMk1fuqlp88cUPAxWrg4-g3U9MaQ3Y",
+          authDomain: "survey-test-1.firebaseapp.com",
+          databaseURL: "https://survey-test-1.firebaseio.com",
+          projectId: "survey-test-1",
+          storageBucket: "survey-test-1.appspot.com",
+          messagingSenderId: "99106324234",
+          appId: "1:99106324234:web:6f13412b2a161afe6e44f3",
+        },
+      },
+    }, //   resolve: `gatsby-plugin-google-analytics`, // {
     //   options: {
     //     trackingId: "UA-127901499-3",
     //   },
