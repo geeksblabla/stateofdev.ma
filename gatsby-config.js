@@ -29,6 +29,22 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-yaml`,
     {
+      resolve: "gatsby-plugin-next-seo",
+      options: {
+        openGraph: {
+          type: "website",
+          locale: "en_IE",
+          url: "https://stateofdev.ma/",
+          site_name: "StateOfDevMa",
+        },
+        twitter: {
+          handle: "@geeksblabla",
+          site: "@geeksblabla",
+          cardType: "summary_large_image",
+        },
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/quiz`,
@@ -39,24 +55,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `GeeksBlabla Website`,
-        short_name: `GeeksBlabla`,
+        name: `State Of Dev in Morocco`,
+        short_name: `StateOfDev.ma`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#2cc068`,
+        theme_color: `#2cc068`,
         display: `minimal-ui`,
-        icons: [
-          {
-            src: "/android-chrome-192x192.png",
-            sizes: "192x192",
-            type: "image/png",
-          },
-          {
-            src: "/android-chrome-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-          },
-        ],
+        icon: `src/assets/logo.png`,
       },
     },
     {

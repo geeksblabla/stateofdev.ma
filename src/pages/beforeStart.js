@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { Link } from "gatsby"
 
 import firebase from "gatsby-plugin-firebase"
-import Survey from "../components/Survey"
-import { logIn, startSurvey } from "../components/Survey/service"
+import { logIn } from "../components/Survey/service"
 import { Layout, Header } from "../components"
 
 export default () => {
@@ -23,11 +22,11 @@ export default () => {
       <div className="survey">
         <div className="container">
           <Header>
-            <p>Before You Start</p>
-            <p> Play some music</p>
+            {/* <p>Before You Start</p> */}
+            {/* <p> Play some music</p> */}
           </Header>
           <div className="rules">
-            <h1> State of dev in morocco 2020</h1>
+            <h1> Before You Start </h1>
             <p>
               * we care about privacy that why we are using an anonymous
               authentication system to make sure we have 1 submission per user{" "}

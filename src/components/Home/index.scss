@@ -1,4 +1,5 @@
 @import "../../styles/vars";
+@import "../../styles/mixins.scss";
 
 .hero {
   background: var(--green-gradient);
@@ -15,12 +16,19 @@
     font-size: 3.5em;
     line-height: 2.912 * $mode;
   }
+  @include breakpoint(mobileonly) {
+    h1 {
+      font-size: 2.5em;
+      line-height: 1.912 * $mode;
+    }
+  }
 
   main {
     flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+
     div {
       max-width: 500px;
       display: flex;
@@ -29,6 +37,21 @@
     }
     svg {
       flex: 1;
+    }
+
+    @include breakpoint(mobileonly) {
+      flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
+      div {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        max-width: 100%;
+      }
+      svg {
+        max-width: 80%;
+      }
     }
   }
 }
@@ -72,12 +95,19 @@
         font-weight: bold;
       }
     }
+
+    @include breakpoint(mobileonly) {
+      min-width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
   }
 }
 
 .interested {
-  margin-top: 4rem;
-  padding: 2rem;
   font-size: 1.1em;
   font-weight: bold;
   text-align: center;
@@ -85,6 +115,7 @@
   align-items: center;
   justify-content: center;
   p {
+    margin: 2rem 0px;
     position: relative;
     margin-left: 100px;
     width: fit-content;
@@ -99,5 +130,21 @@
     background-color: red;
     background: url(../../assets/imgs/alert.png);
     background-size: contain;
+  }
+
+  @include breakpoint(mobileonly) {
+    margin-top: 8rem;
+    p {
+      margin-left: 0px;
+    }
+
+    p::before {
+      height: 88px;
+      width: 138px;
+      content: "";
+      position: absolute;
+      top: -80px;
+      left: calc(50% - 67px);
+    }
   }
 }

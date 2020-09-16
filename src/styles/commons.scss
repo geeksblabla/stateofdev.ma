@@ -18,9 +18,9 @@ body {
 .container {
   max-width: 1240px; /* For large screens */
   margin: auto; /* Center the container in the viewport */
-  @include breakpoint(mobileonly) {
-    padding-right: 24px;
-    padding-left: 24px;
+  padding: 1rem;
+  @media only screen and (min-width: 1240px) {
+    padding: 0rem;
   }
 }
 
@@ -30,6 +30,11 @@ body {
   justify-content: space-between;
   align-items: center;
   justify-items: center;
+
+  @include breakpoint(mobileonly) {
+    padding: 2rem 0px;
+    justify-content: space-around;
+  }
 }
 
 a {

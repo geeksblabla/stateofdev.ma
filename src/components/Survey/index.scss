@@ -1,3 +1,6 @@
+@import "../../styles/vars";
+@import "../../styles/mixins.scss";
+
 .survey {
   background: var(--green-gradient);
   .container {
@@ -14,16 +17,18 @@
 
   .rules {
     max-width: 600px;
-
     align-self: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    text-align: left;
     a.primary {
       margin: auto;
       display: block;
+    }
+    @include breakpoint(mobileonly) {
+      margin-bottom: 2rem;
     }
   }
 
@@ -44,6 +49,9 @@
   .quiz-form {
     min-width: 700px;
     align-self: center;
+    @include breakpoint(mobileonly) {
+      min-width: 100%;
+    }
   }
 }
 
@@ -115,40 +123,31 @@ input[type="radio"]:checked ~ .quiz-form__ans {
   }
 }
 
-.submit {
-  border: none;
-  border-radius: 100vh;
-  padding: 0.8rem 1.5rem;
-  background: #117eeb;
-  color: #fff;
-  font-family: inherit;
-  text-transform: uppercase;
-  font-size: 1rem;
-  font-weight: 300;
-  display: block;
-  margin: 1rem auto 4rem auto;
-  cursor: pointer;
-  transition: transform 200ms ease, box-shadow 200ms ease;
-}
+.thanks {
+  background: var(--green-gradient);
+  .container {
+    min-height: calc(100vh - 130px);
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
 
-.submit:focus {
-  outline: none;
-}
-
-.submit:hover {
-  transform: translateY(-2px) scale(1.015);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.35);
-}
-
-.submit:active {
-  transform: translateY(0) scale(1);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-}
-
-.correct {
-  color: #117eeb;
-}
-
-.wrong {
-  color: crimson;
+    h1 {
+      font-size: 3.5em;
+      line-height: 2.912 * $mode;
+    }
+    @include breakpoint(mobileonly) {
+      h1 {
+        font-size: 2.5em;
+        line-height: 1.912 * $mode;
+      }
+    }
+  }
 }
