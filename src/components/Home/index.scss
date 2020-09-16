@@ -17,6 +17,9 @@
     line-height: 2.912 * $mode;
   }
   @include breakpoint(mobileonly) {
+    .container {
+      padding-bottom: 5rem;
+    }
     h1 {
       font-size: 2.5em;
       line-height: 1.912 * $mode;
@@ -38,7 +41,6 @@
     svg {
       flex: 1;
     }
-
     @include breakpoint(mobileonly) {
       flex-direction: column-reverse;
       justify-content: center;
@@ -50,7 +52,8 @@
         max-width: 100%;
       }
       svg {
-        max-width: 80%;
+        height: auto;
+        max-width: 100%;
       }
     }
   }

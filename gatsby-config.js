@@ -84,6 +84,17 @@ module.exports = {
     // },
     `gatsby-plugin-sass`,
     {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Open Sans`,
+            variants: [`600`, `700`],
+          },
+        ],
+      },
+    },
+    {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
