@@ -10,21 +10,29 @@ questions:
       - This however showed weasel
       - Well uncritical so misled
       - Goodness much until that fluid owl
-  - label: Did You ever be part of a comunity
+  - label: Did You ever be part of a community
     choices:
       - This however showed weasel
       - Well uncritical so misled
       - Goodness much until that fluid owl
 
-  - label: Did You ever be part of a comunity
+  - label: Did You ever be part of a community
     choices:
       - This however showed weasel
       - Well uncritical so misled
       - Goodness much until that fluid owl
 
-  - label: Did You ever be part of a comunity
+  - label: Did You ever be part of a community
     multiple: true
     choices:
+      - react
+      - angular
+      - vuejs
+      - svelt
+      - react
+      - angular
+      - vuejs
+      - svelt
       - react
       - angular
       - vuejs

@@ -9,13 +9,12 @@ export default React.memo(({ category, next }) => {
   const [QIndex, setQIndex] = useState(0)
   const isLastQuestion = category.questions.length === QIndex + 1
   const isRequired = !!category.questions[QIndex].required
-  const isMultiple = !!category.questions[QIndex].multiple
 
   const nextQuestion = async () => {
     const values = getValues()
     const name = `${category.label}-q-${QIndex}`
     const value = getValues(name)
-    console.log({ name, value, values })
+    console.log(values)
 
     if (isRequired && value === "") return
 
@@ -46,6 +45,8 @@ export default React.memo(({ category, next }) => {
           key={`question-${i}`}
           register={register}
           categoryId={category.label}
+          required={q.required}
+          multiple={q.multiple}
         />
       ))}
       <div className="actions">
