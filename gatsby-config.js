@@ -7,7 +7,7 @@ module.exports = {
     title: config.siteTitle,
     twitterHandle: config.twitterHandle,
     description: config.siteDescription,
-    keywords: ["DevC_Casa", "Geeksblabla", "Podcast"],
+    keywords: ["Developer", "Morocco", "State"],
     canonicalUrl: config.siteUrl,
     image: config.siteLogo,
     banner: config.banner,
@@ -89,7 +89,7 @@ module.exports = {
         fonts: [
           {
             family: `Open Sans`,
-            variants: [`600`, `700`],
+            variants: [`400`, `600`, `700`],
           },
         ],
       },

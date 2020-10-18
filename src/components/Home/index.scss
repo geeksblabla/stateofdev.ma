@@ -4,7 +4,7 @@
 .hero {
   background: var(--green-gradient);
   .container {
-    padding-bottom: 10rem;
+    padding-bottom: 5rem;
     display: flex;
     flex-direction: column;
     justify-content: stretch;
@@ -31,6 +31,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    p {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      color: #2c322b;
+    }
 
     div {
       max-width: 500px;
@@ -40,6 +47,34 @@
     }
     svg {
       flex: 1;
+    }
+    .actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 2rem;
+      p {
+        margin-left: 1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: #3dbe71;
+        svg {
+          padding-right: 10px;
+        }
+      }
+
+      @include breakpoint(mobileonly) {
+        flex-direction: column;
+        justify-content: center;
+        p {
+          margin-left: 0rem;
+        }
+      }
+    }
+    .primary {
+      margin-top: 0;
     }
     @include breakpoint(mobileonly) {
       flex-direction: column-reverse;
