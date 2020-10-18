@@ -1,5 +1,6 @@
-title: Tech
-label: tech
+title: Work
+label: work
+position: 2
 questions:
   - label: Did You ever be part of a community
     required: true
@@ -23,7 +24,29 @@ questions:
   - label: Did You ever be part of a comunity
     multiple: true
     choices:
-      - react
-      - angular
-      - vuejs
-      - svelt
+      - JavaScript
+      - HTML/CSS
+      - SQL5
+      - Python
+      - Java
+      - Bash/Shell/PowerShell
+      - C#
+      - PHP
+      - TypeScript
+      - C++
+      - C
+      - Go
+      - Kotlin
+      - Ruby
+      - Assembly
+      - VBA
+      - Swift
+      - R
+      - Rust
+      - Objective-C
+      - Dart
+      - Scala
+      - Perl
+      - Haskell
+      - Julia
+      - Other

@@ -47,12 +47,17 @@
   }
 
   .quiz-form {
+    max-width: 700px;
     min-width: 700px;
     align-self: center;
+    padding-bottom: 1rem;
     @include breakpoint(mobileonly) {
       min-width: 100%;
     }
   }
+}
+.quiz-form__quiz {
+  display: grid;
 }
 
 .quiz-form__question {
@@ -81,8 +86,17 @@
 }
 
 .quiz-form_fit-content {
-  display: flex;
+  display: grid;
+  justify-items: stretch;
+  grid-template-columns: 1fr 1fr 1fr;
+  @include breakpoint(mobileonly) {
+    grid-template-columns: 1fr;
+  }
   flex-wrap: wrap;
+}
+.quiz-form_fit-content > label {
+  display: block;
+  // width: fit-content;
 }
 
 .quiz-form__ans_fit-content {

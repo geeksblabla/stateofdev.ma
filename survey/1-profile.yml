@@ -1,0 +1,52 @@
+title: Profile
+label: profile
+position: 1
+questions:
+  - label: Did You ever be part of a community
+    required: true
+    choices:
+      - This however showed weasel
+      - Well uncritical so misled
+      - Goodness much until that fluid owl
+
+  - label: Did You ever be part of a comunity
+    choices:
+      - This however showed weasel
+      - Well uncritical so misled
+      - Goodness much until that fluid owl
+
+  - label: Did You ever be part of a comunity
+    choices:
+      - This however showed weasel
+      - Well uncritical so misled
+      - Goodness much until that fluid owl
+
+  - label: Did You ever be part of a comunity
+    multiple: true
+    choices:
+      - JavaScript
+      - HTML/CSS
+      - SQL5
+      - Python
+      - Java
+      - Bash/Shell/PowerShell
+      - C#
+      - PHP
+      - TypeScript
+      - C++
+      - C
+      - Go
+      - Kotlin
+      - Ruby
+      - Assembly
+      - VBA
+      - Swift
+      - R
+      - Rust
+      - Objective-C
+      - Dart
+      - Scala
+      - Perl
+      - Haskell
+      - Julia
+      - Other

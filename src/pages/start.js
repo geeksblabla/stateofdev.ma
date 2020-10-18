@@ -6,14 +6,15 @@ import Survey from "../components/Survey"
 import { logIn, startSurvey } from "../components/Survey/service"
 import { Layout, Header } from "../components"
 
-const QuiZ = graphql`
+const SurveyData = graphql`
   {
-    allArYaml {
+    allSurveyYaml {
       edges {
         node {
           id
           title
           label
+          position
           questions {
             label
             choices
@@ -27,7 +28,10 @@ const QuiZ = graphql`
 `
 
 export default () => {
-  const data = useStaticQuery(QuiZ)
+  const survey = useStaticQuery(SurveyData)
+  const data = survey.allSurveyYaml.edges.sort(
+    (a, b) => a.node.position > b.position
+  )
   const [ready, setReady] = useState(false)
   useEffect(() => {
     if (!firebase) return
@@ -36,7 +40,6 @@ export default () => {
       if (user) {
         setReady(true)
         await startSurvey()
-        console.log("User:", user.uid)
       }
     })
   }, [firebase])
@@ -46,7 +49,7 @@ export default () => {
       <div className="survey">
         <div className="container">
           {ready ? (
-            <Survey data={data.allArYaml.edges} />
+            <Survey data={data} />
           ) : (
             <>
               <Header>

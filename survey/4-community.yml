@@ -1,5 +1,6 @@
 title: Community
 label: community
+position: 4
 questions:
   - label: Did You ever be part of a community
     required: true
