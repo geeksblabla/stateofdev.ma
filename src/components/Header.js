@@ -8,5 +8,6 @@ export const Header = ({ children }) => (
       <Logo />
     </Link>
     {children}
+    {children ? <Logo style={{ visibility: "hidden" }} /> : null}
   </div>
 )

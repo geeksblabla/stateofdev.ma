@@ -26,26 +26,32 @@ export default () => {
             {/* <p> Play some music</p> */}
           </Header>
           <div className="rules">
-            <h1> Before You Start </h1>
-            <p>
-              * we care about privacy that why we are using an anonymous
-              authentication system to make sure we have 1 submission per user{" "}
-            </p>
-            <p>
-              * Question with (*) is required and (multiple) are multiple
-              answers allowed and You can skip question using skip button if its
-              not required and the question scope not include you{" "}
-            </p>
-            <p>
-              * Try to be honest answering questions As this will reflect our
-              final result.
-            </p>
-            <p>
-              * Please do not refresh the page while submitting your answers{" "}
-            </p>
-            <p>You can play some music during the survey</p>
-            <p>....</p>
-            <p> </p>
+            <h1> Before You Start : </h1>
+            <ul>
+              <li>
+                We care about privacy that's why all your answers is completely
+                anonymous, we only use an anonymous session to prevent spam.
+              </li>
+              <li>
+                Questions with <strong>(*)</strong> are required, if it's not
+                the case, you can skip question using skip button.
+              </li>
+              <li>
+                Questions with <strong> (multiple) </strong> are multiple
+                answers allowed
+              </li>
+              <li>
+                The survey is divided into 4 part: Profile, Work, Technology and
+                Community
+              </li>
+              <li>
+                Try to be honest answering questions As this will reflect our
+                final result.
+              </li>
+              <li>
+                Please do not refresh the page while submitting your answers
+              </li>
+            </ul>
             <br />
             <Link className="primary" to="/start">
               Let’s do it

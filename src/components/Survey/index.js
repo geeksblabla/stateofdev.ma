@@ -27,7 +27,6 @@ const Survey = ({ data }) => {
         <p>
           Part {index + 1}: {category.title}
         </p>
-        <p> Play some music</p>
       </Header>
       <main>
         <Category category={category} next={next} key={category.id} />

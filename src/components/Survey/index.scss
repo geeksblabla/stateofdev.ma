@@ -16,7 +16,7 @@
   }
 
   .rules {
-    max-width: 600px;
+    max-width: 700px;
     align-self: center;
     display: flex;
     flex-direction: column;
@@ -27,8 +27,23 @@
       margin: auto;
       display: block;
     }
+    strong {
+      font-weight: bold;
+      font-style: italic;
+    }
     @include breakpoint(mobileonly) {
       margin-bottom: 2rem;
+    }
+    ul {
+      font-family: "Open Sans";
+      list-style-type: square;
+      li {
+        padding: 0.5rem 0px;
+      }
+
+      @include breakpoint(mobileonly) {
+        padding: 0px 2rem;
+      }
     }
   }
 
@@ -47,8 +62,8 @@
   }
 
   .quiz-form {
-    max-width: 700px;
-    min-width: 700px;
+    max-width: 900px;
+    min-width: 900px;
     align-self: center;
     padding-bottom: 1rem;
     @include breakpoint(mobileonly) {
