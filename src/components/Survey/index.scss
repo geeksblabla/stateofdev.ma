@@ -164,13 +164,13 @@ input[type="checkbox"] {
   transition: transform 200ms ease-in;
   color: #61a67c;
 }
-input[type="radio"]:hover ~ .quiz-form__ans,
-input[type="checkbox"]:hover ~ .quiz-form__ans {
-  background-color: #61a67c;
-  .text {
-    color: #fff;
-  }
-}
+// input[type="radio"]:hover ~ .quiz-form__ans,
+// input[type="checkbox"]:hover ~ .quiz-form__ans {
+//   background-color: #61a67c;
+//   .text {
+//     color: #fff;
+//   }
+// }
 
 input[type="radio"]:checked ~ .quiz-form__ans,
 input[type="checkbox"]:checked ~ .quiz-form__ans {
@@ -179,7 +179,6 @@ input[type="checkbox"]:checked ~ .quiz-form__ans {
     color: #fff;
   }
 }
-
 .thanks {
   background: var(--green-gradient);
   .container {
