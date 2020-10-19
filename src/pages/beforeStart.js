@@ -1,17 +1,28 @@
-import React, { useState, useEffect } from "react"
-import { Link } from "gatsby"
+import React, { useState, useEffect, useRef } from "react"
+import { navigate } from "gatsby"
+import ReCAPTCHA from "react-google-recaptcha"
 
 import firebase from "gatsby-plugin-firebase"
 import { logIn } from "../components/Survey/service"
 import { Layout, Header } from "../components"
 
+const RECAPTCHA_KEY = "6Lf63dgZAAAAAB-8Iw8zXdVMAtDTh0eeef-uQDjg"
+
 export default () => {
   const [ready, setReady] = useState(false)
+  const recaptchaRef = useRef()
+
+  const startSurvey = async () => {
+    await recaptchaRef.current.executeAsync()
+    const reCaptchaValue = recaptchaRef.current.getValue()
+    if (ready && reCaptchaValue) navigate("/start")
+  }
   useEffect(() => {
     if (!firebase) return
     logIn()
     return firebase.auth().onAuthStateChanged(async user => {
       if (user) {
+        console.log("test login")
         setReady(true)
       }
     })
@@ -53,11 +64,16 @@ export default () => {
               </li>
             </ul>
             <br />
-            <Link className="primary" to="/start">
+            <a className="primary" onClick={startSurvey}>
               Let’s do it
-            </Link>
+            </a>
           </div>
         </div>
+        <ReCAPTCHA
+          sitekey={RECAPTCHA_KEY}
+          size="invisible"
+          ref={recaptchaRef}
+        />
       </div>
     </Layout>
   )
