@@ -2,51 +2,126 @@ title: Profile
 label: profile
 position: 1
 questions:
-  - label: Did You ever be part of a community
+  - label: "Your gender:"
+    required: true
+    multiple: false
+    choices:
+      - Man
+      - Woman
+  - label: Age
     required: true
     choices:
-      - This however showed weasel
-      - Well uncritical so misled
-      - Goodness much until that fluid owl
-
-  - label: Did You ever be part of a comunity
+      - Younger than 15 years
+      - 15 to 19 years
+      - 20 to 24 years
+      - 25 to 29 years
+      - 30 to 34 years
+      - 35 to 39 years
+      - 40 years and older
+  - label: Location
+    required: true
     choices:
-      - This however showed weasel
-      - Well uncritical so misled
-      - Goodness much until that fluid owl
-
-  - label: Did You ever be part of a comunity
+      - Morocco
+      - Europe
+      - US
+      - Others
+  - label: You are a
+    required: true
     choices:
-      - This however showed weasel
-      - Well uncritical so misled
-      - Goodness much until that fluid owl
-
-  - label: Did You ever be part of a comunity
+      - Developer, back-end
+      - Developer, full-stack
+      - Developer, front-end
+      - Developer, desktop applications
+      - Developer, mobile
+      - DevOps specialist
+      - Database administrator
+      - Designer
+      - System administrator
+      - Developer, embedded applications or devices
+      - Data or business analyst
+      - Data scientist or machine learning specialist
+      - Developer, QA, or test
+      - Engineer, data
+      - Academic researcher
+      - Educator
+      - Developer, game or graphics
+      - Engineering manager
+      - Product manager
+      - Scientist
+      - Engineer, site reliability
+      - Senior executive/VP
+      - Marketing or sales professional
+  - label: Your diploma
+    required: true
+    choices:
+      - Self-thought
+      - Bac +2
+      - Bac +3
+      - Bac +5
+      - Bac +8
+  - label: How many years you’ve been  Coding Professionally
+    choices:
+      - Less than 1 year
+      - 1-3 years
+      - 3-5 years
+      - 5-10 years
+      - More than 10
+  - label: Is Coding a Hobby for you?
+    required: true
+    choices:
+      - Yes
+      - No
+  - label: Do you think school gives you the most important concepts to start your professional career?
+    required: true
+    choices:
+      - Not enough
+      - Enough to start
+      - Everything I needed
+  - label: Do you have any plans to work outside morocco in the next 2 years
+    required: true
+    choices:
+      - Yes
+      - No
+  - label: if you are working abroad, do you have any plans to go back?
+    choices:
+      - Yes
+      - NO
+  - label: If you think we have a problem with our education system, from your POV, the contributors in this situation
+    required: true
     multiple: true
     choices:
-      - JavaScript
-      - HTML/CSS
-      - SQL5
-      - Python
-      - Java
-      - Bash/Shell/PowerShell
-      - C#
-      - PHP
-      - TypeScript
-      - C++
-      - C
-      - Go
-      - Kotlin
-      - Ruby
-      - Assembly
-      - VBA
-      - Swift
-      - R
-      - Rust
-      - Objective-C
-      - Dart
-      - Scala
-      - Perl
-      - Haskell
-      - Julia
-      - Other
+      - Students
+      - Teachers
+      - Academic defined subjects (system)
+      - Companies engagement with academia
+  - label: Language You can read/write
+    required: true
+    multiple: true
+    choices:
+      - Arabic
+      - Amazigh
+      - French
+      - English
+      - Others
+  - label: Is English an obstacle to learning new technologies?
+    required: true
+    choices:
+      - Yes
+      - No
+  - label: Do you think we need more content in Darija?
+    required: true
+    choices:
+      - Spoken
+      - Written/Read
+      - Both
+  - label: "Your preference platform for learning resources is:"
+    required: true
+    multiple: true
+    choices:
+      - Youtube.
+      - Paid platforms.
+      - Books.
+      - Official Docs
+      - Blog posts
+      - Company resources
+      - other

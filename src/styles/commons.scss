@@ -30,9 +30,12 @@ body {
   justify-content: space-between;
   align-items: center;
   justify-items: center;
-
+  p {
+    font-weight: bold;
+  }
   @include breakpoint(mobileonly) {
     padding: 2rem 0px;
+    flex-direction: column;
     justify-content: space-around;
   }
 }

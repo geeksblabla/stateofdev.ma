@@ -10,16 +10,16 @@ export default ({
   multiple,
 }) => {
   const { label, choices } = question
-  // console.log("selected ", selected, index)
   const fitContent = choices.length > 10
 
   return (
     <div
-      className="quiz-form__quiz"
-      style={{ display: selected ? "block" : "none" }}
+      className={
+        selected ? " quiz-form__quiz selected " : "quiz-form__quiz unselected "
+      }
     >
       <p className="quiz-form__question">
-        {`${index + 1}. ${label}`} {question.required ? "*" : ""}
+        {`${index + 1}. ${label}`} {question.multiple ? "(m)" : ""}
       </p>
       <div className={fitContent ? "quiz-form_fit-content" : ""}>
         {choices.map((c, i) => (

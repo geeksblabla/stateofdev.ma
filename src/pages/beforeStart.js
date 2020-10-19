@@ -33,12 +33,12 @@ export default () => {
                 anonymous, we only use an anonymous session to prevent spam.
               </li>
               <li>
-                Questions with <strong>(*)</strong> are required, if it's not
-                the case, you can skip question using skip button.
+                All Question are required by default unless you have a skip
+                button
               </li>
               <li>
-                Questions with <strong> (multiple) </strong> are multiple
-                answers allowed
+                Questions with <strong> (m) </strong> are multiple answers
+                allowed
               </li>
               <li>
                 The survey is divided into 4 part: Profile, Work, Technology and

@@ -74,6 +74,22 @@
 .quiz-form__quiz {
   display: grid;
 }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.selected {
+  display: block;
+  animation: fadeIn 1s;
+}
+
+.unselected {
+  display: none;
+}
 
 .quiz-form__question {
   margin-bottom: 1.8rem;

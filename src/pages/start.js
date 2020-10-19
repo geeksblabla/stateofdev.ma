@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 
 import firebase from "gatsby-plugin-firebase"
 import Survey from "../components/Survey"
@@ -8,7 +8,7 @@ import { Layout, Header } from "../components"
 
 const SurveyData = graphql`
   {
-    allSurveyYaml {
+    allSurveyYaml(sort: { fields: position, order: ASC }) {
       edges {
         node {
           id
@@ -29,9 +29,7 @@ const SurveyData = graphql`
 
 export default () => {
   const survey = useStaticQuery(SurveyData)
-  const data = survey.allSurveyYaml.edges.sort(
-    (a, b) => a.node.position > b.position
-  )
+  const data = survey.allSurveyYaml.edges
   const [ready, setReady] = useState(false)
   useEffect(() => {
     if (!firebase) return
@@ -52,9 +50,7 @@ export default () => {
             <Survey data={data} />
           ) : (
             <>
-              <Header>
-                <p> Play some music</p>
-              </Header>
+              <Header />
               <main>loading</main>
             </>
           )}

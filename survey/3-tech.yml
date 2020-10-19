@@ -2,26 +2,8 @@ title: Tech
 label: tech
 position: 3
 questions:
-  - label: Did You ever be part of a community
+  - label: What are the Programming languages you like?
     required: true
-    choices:
-      - This however showed weasel
-      - Well uncritical so misled
-      - Goodness much until that fluid owl
-
-  - label: Did You ever be part of a comunity
-    choices:
-      - This however showed weasel
-      - Well uncritical so misled
-      - Goodness much until that fluid owl
-
-  - label: Did You ever be part of a comunity
-    choices:
-      - This however showed weasel
-      - Well uncritical so misled
-      - Goodness much until that fluid owl
-
-  - label: Did You ever be part of a comunity
     multiple: true
     choices:
       - JavaScript
@@ -50,3 +32,191 @@ questions:
       - Haskell
       - Julia
       - Other
+  - label: What are the Programming languages you want to learn next?
+    required: true
+    multiple: true
+    choices:
+      - JavaScript
+      - HTML/CSS
+      - SQL5
+      - Python
+      - Java
+      - Bash/Shell/PowerShell
+      - C#
+      - PHP
+      - TypeScript
+      - C++
+      - C
+      - Go
+      - Kotlin
+      - Ruby
+      - Assembly
+      - VBA
+      - Swift
+      - R
+      - Rust
+      - Objective-C
+      - Dart
+      - Scala
+      - Perl
+      - Haskell
+      - Julia
+      - Other
+  - label: What are the Programming languages you are using on a daily basis?
+    required: true
+    multiple: true
+    choices:
+      - JavaScript
+      - HTML/CSS
+      - SQL5
+      - Python
+      - Java
+      - Bash/Shell/PowerShell
+      - C#
+      - PHP
+      - TypeScript
+      - C++
+      - C
+      - Go
+      - Kotlin
+      - Ruby
+      - Assembly
+      - VBA
+      - Swift
+      - R
+      - Rust
+      - Objective-C
+      - Dart
+      - Scala
+      - Perl
+      - Haskell
+      - Julia
+      - Other
+  - label: What are the web frameworks you are using on a daily basis?
+    required: true
+    multiple: true
+    choices:
+      - jQuery
+      - React.js
+      - Angular
+      - ASP.NET
+      - Express
+      - ASP.NET Core
+      - Vue.js
+      - Spring Ecosystem
+      - Angular.js
+      - Django
+      - Flask
+      - Laravel
+      - Ruby on Rails
+      - Symfony
+      - Gatsby
+      - Drupal
+      - Next
+      - Other
+  - label: What are the web frameworks you want to learn next?
+    required: true
+    multiple: true
+    choices:
+      - jQuery
+      - React.js
+      - Angular
+      - ASP.NET
+      - Express
+      - ASP.NET Core
+      - Vue.js
+      - Spring Ecosystem
+      - Angular.js
+      - Django
+      - Flask
+      - Laravel
+      - Ruby on Rails
+      - Symfony
+      - Gatsby
+      - Drupal
+      - Next
+      - Other
+
+  - label: What are the platforms and tools you are using on a daily basis?
+    required: true
+    multiple: true
+    choices:
+      - Node.js
+      - .NET
+      - Pandas
+      - TensorFlow
+      - React Native
+      - Unity 3D
+      - Ansible
+      - Flutter
+      - Terraform
+      - Keras
+      - Cordova
+      - Xamarin
+      - Apache Spark
+      - Torch/PyTorch
+  - label: What are the platforms and tools you want to learn next?
+    required: true
+    multiple: true
+    choices:
+      - Node.js
+      - .NET
+      - Pandas
+      - TensorFlow
+      - React Native
+      - Unity 3D
+      - Ansible
+      - Flutter
+      - Terraform
+      - Keras
+      - Cordova
+      - Xamarin
+      - Apache Spark
+      - Torch/PyTorch
+  - label: "Your Primary Operating Systems is :"
+    required: true
+    multiple: true
+    choices:
+      - Windows
+      - MacOS
+      - Linux-based
+      - Windows + WSL2
+  - label: What are IDE and code editor you use  on a daily basis
+    required: true
+    multiple: true
+    choices:
+      - Jetbrains (Intellij, PhpStorm, Resharper ...)
+      - vscode
+      - Eclipse
+      - Netbeans
+      - Vim
+      - sublime
+      - atom
+      - other
+
+  - label: How frequently you learn a new language or framework
+    required: true
+    choices:
+      - Every few months
+      - Once a year
+      - Once every few years
+      - Once a decade
+  - label: "what do you do when you get stuck on a problem :"
+    required: true
+    multiple: true
+    choices:
+      - Google it
+      - Stackoverflow
+      - Do other work and come back later.
+      - Watch help/tutorial videos
+      - Call a coworker or friend
+  - label: "Production environment you or your team using is :"
+    required: true
+    multiple: true
+    choices:
+      - Full Cloud
+      - on-premise
+      - Hybrid Cloud
+      - shared hosting
+      - Managed PaaS (heroku, app platform ...)
+      - Not Sure

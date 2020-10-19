@@ -11,10 +11,8 @@ export default React.memo(({ category, next }) => {
   const isRequired = !!category.questions[QIndex].required
 
   const nextQuestion = async () => {
-    const values = getValues()
     const name = `${category.label}-q-${QIndex}`
     const value = getValues(name)
-    console.log(values)
 
     if (isRequired && value === "") return
 
@@ -56,7 +54,7 @@ export default React.memo(({ category, next }) => {
           </button>
         )}
         <button type="button" onClick={() => nextQuestion()}>
-          {loading ? "loading" : "submit"}
+          {loading ? "Loading..." : "Next"}
         </button>
       </div>
     </form>
