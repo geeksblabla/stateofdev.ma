@@ -7,7 +7,7 @@ questions:
     multiple: false
     choices:
       - Yes
-      - No
+      - NO
   - label: Did you ever participate in an open-source project?
     required: true
     multiple: true
@@ -46,7 +46,7 @@ questions:
     required: true
     choices:
       - Yes
-      - No
+      - NO
       - I don’t know Facebook Developer circles
   - label: How do you evaluate the Moroccan Tech Community?
     required: true

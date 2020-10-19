@@ -12,7 +12,7 @@ questions:
       - Looking for work
       - Student
 
-  - label: How often you work overtime or beyond the formal time expectation of your job
+  - label: How often you work overtime or beyond the formal time expectation of your job?
     choices:
       - Never
       - "Rarely: 1-2 days per year or less "
@@ -20,7 +20,7 @@ questions:
       - "Sometimes: 1-2 days per month but less than weekly"
       - "Often: 1-2 days per week or more"
 
-  - label: How Do you feel about your jobs
+  - label: How Do you feel about your job?
     choices:
       - Very dissatisfied
       - Slightly dissatisfied
@@ -28,10 +28,10 @@ questions:
       - Slightly satisfied
       - Very satisfied
 
-  - label: Do you work on a side project ?
+  - label: Do you work on a side project?
     required: true
     choices:
-      - No
+      - NO
       - For profit
       - For learning
 
@@ -42,7 +42,7 @@ questions:
       - Less than 1 year
       - More than 1 year
 
-  - label: "Your salary range is :"
+  - label: "Your salary range (DH) is :"
     choices:
       - "< 6 000"
       - "6 000 - 8 000"
@@ -62,7 +62,7 @@ questions:
       - Flex time or a flexible schedule
       - Opportunities for professional development
       - Remote work options
-      - How widely used or impactful my work output would be 2
+      - How widely used or impactful my work output would be
       - The industry that I’d be working in
       - Salary
 

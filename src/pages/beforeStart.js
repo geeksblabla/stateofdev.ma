@@ -40,27 +40,22 @@ export default () => {
             <h1> Before You Start : </h1>
             <ul>
               <li>
-                We care about privacy that's why all your answers is completely
-                anonymous, we only use an anonymous session to prevent spam.
+                We care about privacy; that's why all your answers are
+                completely anonymous. We rely on anonymous sessions to avoid
+                spam
               </li>
-              <li>
-                All Question are required by default unless you have a skip
-                button
-              </li>
-              <li>
-                Questions with <strong> (m) </strong> are multiple answers
-                allowed
-              </li>
+              <li>All Questions are required unless you have a skip button</li>
+              <li>Questions with (m) accepts multiple answers</li>
               <li>
                 The survey is divided into 4 part: Profile, Work, Technology and
                 Community
               </li>
               <li>
-                Try to be honest answering questions As this will reflect our
-                final result.
+                Please be honest. Our goal is to understand the Moroccan IT
+                market and share results with the community.
               </li>
               <li>
-                Please do not refresh the page while submitting your answers
+                Do not refresh the questions page before submitting your answers
               </li>
             </ul>
             <br />

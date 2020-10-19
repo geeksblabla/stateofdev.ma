@@ -70,7 +70,7 @@ questions:
     required: true
     choices:
       - Yes
-      - No
+      - NO
   - label: Do you think school gives you the most important concepts to start your professional career?
     required: true
     choices:
@@ -81,7 +81,7 @@ questions:
     required: true
     choices:
       - Yes
-      - No
+      - NO
   - label: if you are working abroad, do you have any plans to go back?
     choices:
       - Yes
@@ -107,7 +107,7 @@ questions:
     required: true
     choices:
       - Yes
-      - No
+      - NO
   - label: Do you think we need more content in Darija?
     required: true
     choices:
