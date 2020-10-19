@@ -23,3 +23,12 @@ export const setAnswers = data => {
     .doc(userId)
     .set({ ...data, lastSubmit }, { merge: true })
 }
+
+export const setRemarks = remarks => {
+  const userId = firebase.auth().currentUser.uid
+  return firebase
+    .firestore()
+    .collection("users")
+    .doc(userId)
+    .set({ remarks }, { merge: true })
+}

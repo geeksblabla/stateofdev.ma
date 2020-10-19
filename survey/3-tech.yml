@@ -175,7 +175,6 @@ questions:
       - Torch/PyTorch
   - label: "Your Primary Operating Systems is :"
     required: true
-    multiple: true
     choices:
       - Windows
       - MacOS

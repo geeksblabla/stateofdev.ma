@@ -18,7 +18,7 @@ body {
 .container {
   max-width: 1240px; /* For large screens */
   margin: auto; /* Center the container in the viewport */
-  padding: 1rem;
+  padding: 0px 1rem;
   @media only screen and (min-width: 1240px) {
     padding: 0rem;
   }
@@ -61,4 +61,10 @@ a {
   color: #fff;
   text-align: center;
   padding: 2rem 1rem;
+}
+
+.share-buttons {
+  button {
+    margin: 1rem;
+  }
 }
