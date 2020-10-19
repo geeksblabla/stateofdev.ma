@@ -8,12 +8,12 @@ module.exports = {
   siteLogo: "images/logo.png", // Used for SEO and manifest, path to your image you placed in the 'static' folder
   banner: "images/banner.png",
   siteDescription:
-    "State of Dev In Morocco | GeeksBlaBla is a community initiative, to discuss, highlight and share the latest IT topics in Moroccan Darija.", // Author for schemaORGJSONLD
-  organization: "DevC Casablanca",
-  author: "DevC Casablanca",
+    "Take part in the survey and let the us know what the developer’s job really looks like in Morocco 🇲🇦", // Author for schemaORGJSONLD
+  organization: "DevC Morocco",
+  author: "DevC Morocco",
   // siteFBAppID: '123456789', // Facebook App ID - Optional
   //userTwitter: "@ElaziziYoussouf", // Twitter Username
-  ogSiteName: "StateOfDev", // Facebook Site Name
+  ogSiteName: "StateOfDevMa", // Facebook Site Name
   ogLanguage: "en_US",
   googleAnalyticsID: "",
 
