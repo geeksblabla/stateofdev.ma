@@ -13,14 +13,16 @@ export default React.memo(({ category, next }) => {
   const nextQuestion = async () => {
     const name = `${category.label}-q-${QIndex}`
     const value = getValues(name)
+    console.log({ isRequired, value })
 
-    if (isRequired && value === "") return
+    if (isRequired && value.length === 0) return
 
     if (isLastQuestion) {
       await submitData()
     } else {
       setQIndex(QIndex => QIndex + 1)
     }
+    scrollToSection(".quiz-form")
   }
 
   const submitData = async () => {
@@ -60,3 +62,10 @@ export default React.memo(({ category, next }) => {
     </form>
   )
 })
+
+const scrollToSection = selector => {
+  if (document.body.clientWidth < 600)
+    document.querySelector(selector).scrollIntoView({
+      behavior: "smooth",
+    })
+}
