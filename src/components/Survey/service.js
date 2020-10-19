@@ -10,7 +10,7 @@ export const startSurvey = () => {
   const userId = firebase.auth().currentUser.uid
   return firebase
     .firestore()
-    .collection("users")
+    .collection("results")
     .doc(userId)
     .set({ startTime }, { merge: true })
 }
@@ -19,7 +19,7 @@ export const setAnswers = data => {
   const userId = firebase.auth().currentUser.uid
   return firebase
     .firestore()
-    .collection("users")
+    .collection("results")
     .doc(userId)
     .set({ ...data, lastSubmit }, { merge: true })
 }
@@ -28,7 +28,7 @@ export const setRemarks = remarks => {
   const userId = firebase.auth().currentUser.uid
   return firebase
     .firestore()
-    .collection("users")
+    .collection("results")
     .doc(userId)
     .set({ remarks }, { merge: true })
 }
