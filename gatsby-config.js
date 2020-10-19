@@ -85,11 +85,13 @@ module.exports = {
           appId: process.env.FIREBASE_APP_ID,
         },
       },
-    }, //   resolve: `gatsby-plugin-google-analytics`, // {
-    //   options: {
-    //     trackingId: "UA-127901499-3",
-    //   },
-    // },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-127901499-5",
+      },
+    },
     `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
