@@ -66,5 +66,33 @@ a {
 .share-buttons {
   button {
     margin: 1rem;
+    border-radius: 5px;
+  }
+  button:hover {
+    transform: scale(1.1);
+  }
+}
+
+.thanks {
+  .main {
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+    font-size: 40px;
+    line-height: 140%;
+    text-align: center;
+    color: #2c322b;
+
+    h1 {
+      font-weight: bold;
+      padding-bottom: 0rem;
+    }
+    p {
+      font-weight: normal;
+    }
+    @include breakpoint(mobileonly) {
+      font-size: 22px;
+      line-height: 140%;
+    }
   }
 }

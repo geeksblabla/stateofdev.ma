@@ -34,9 +34,10 @@
     p {
       font-family: Open Sans;
       font-style: normal;
-      font-weight: normal;
       font-size: 18px;
       color: #2c322b;
+      font-weight: normal;
+      line-height: 30px;
     }
 
     div {
@@ -131,6 +132,15 @@
       h3 {
         margin: 1rem 0;
         font-weight: bold;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 40px;
+      }
+      p {
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 28px;
       }
     }
 
@@ -157,16 +167,19 @@
     position: relative;
     margin-left: 100px;
     width: fit-content;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
   }
   p::before {
     content: "";
     position: absolute;
-    top: -20px;
-    left: -90px;
-    height: 68px;
-    width: 108px;
+    top: -10px;
+    left: -30px;
+    height: 32px;
+    width: 50px;
     background-color: red;
-    background: url(../../assets/imgs/alert.png);
+    background: url(../../assets/imgs/alert.png) no-repeat;
     background-size: contain;
   }
 
@@ -177,12 +190,12 @@
     }
 
     p::before {
-      height: 88px;
-      width: 138px;
+      height: 32px;
+      width: 50px;
       content: "";
       position: absolute;
-      top: -80px;
-      left: calc(50% - 67px);
+      top: -40px;
+      left: calc(50% - 20px);
     }
   }
 }
