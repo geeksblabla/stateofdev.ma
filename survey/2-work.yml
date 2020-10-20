@@ -35,10 +35,10 @@ questions:
       - For profit
       - For learning
 
-  - label: How much have you been unemployed after graduation?
+  - label: How long have you been unemployed after graduation?
     choices:
       - 0 months
-      - Few moths
+      - Few months
       - Less than 1 year
       - More than 1 year
 
@@ -66,7 +66,7 @@ questions:
       - The industry that I’d be working in
       - Salary
 
-  - label: Which type of company do you prefer?
+  - label: What type of company do you prefer?
     required: true
     choices:
       - Freelance
