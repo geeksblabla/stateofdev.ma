@@ -13,7 +13,6 @@ export default React.memo(({ category, next }) => {
   const nextQuestion = async () => {
     const name = `${category.label}-q-${QIndex}`
     const value = getValues(name)
-    console.log({ isRequired, value })
 
     if (isRequired && value.length === 0) return
 
@@ -51,7 +50,7 @@ export default React.memo(({ category, next }) => {
       ))}
       <div className="actions">
         {isRequired ? null : (
-          <button type="button" onClick={() => nextQuestion()}>
+          <button type="button" className="skip" onClick={() => nextQuestion()}>
             Skip
           </button>
         )}

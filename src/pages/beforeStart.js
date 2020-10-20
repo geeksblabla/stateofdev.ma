@@ -22,7 +22,6 @@ export default () => {
     logIn()
     return firebase.auth().onAuthStateChanged(async user => {
       if (user) {
-        console.log("test login")
         setReady(true)
       }
     })

@@ -58,6 +58,12 @@
       background: #31382f;
       border-radius: 8px;
       margin-left: 1rem;
+      border: none;
+    }
+    .skip {
+      background: transparent;
+      color: #31382f;
+      border: 1px dashed #31382f;
     }
   }
 

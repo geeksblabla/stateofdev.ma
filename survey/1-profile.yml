@@ -125,8 +125,10 @@ questions:
       - Blog posts
       - Company resources
       - other
-  - label : "During coding, you prefer :"
+  - label: "During coding, you prefer :"
+    required: true
+    choices:
       - Tea
       - Coffee
       - Water
-
+      - None
