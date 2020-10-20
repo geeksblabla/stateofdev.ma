@@ -6,8 +6,8 @@ questions:
     required: true
     multiple: false
     choices:
-      - Man
-      - Woman
+      - Male
+      - Female
   - label: What is your age?
     required: true
     choices:
@@ -114,6 +114,7 @@ questions:
       - Spoken
       - Written/Read
       - Both
+      - No
   - label: What are your preferred platforms for learning?
     required: true
     multiple: true
