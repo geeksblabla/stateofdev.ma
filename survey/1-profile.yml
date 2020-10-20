@@ -2,13 +2,13 @@ title: Profile
 label: profile
 position: 1
 questions:
-  - label: "Your gender:"
+  - label: What is your gender?
     required: true
     multiple: false
     choices:
       - Man
       - Woman
-  - label: Age
+  - label: What is your age?
     required: true
     choices:
       - Younger than 15 years
@@ -18,14 +18,14 @@ questions:
       - 30 to 34 years
       - 35 to 39 years
       - 40 years and older
-  - label: Location
+  - label: Where are you currently located?
     required: true
     choices:
       - Morocco
       - Europe
       - US
       - Others
-  - label: You are a
+  - label: What is your current role?
     required: true
     choices:
       - Developer, back-end
@@ -51,42 +51,42 @@ questions:
       - Engineer, site reliability
       - Senior executive/VP
       - Marketing or sales professional
-  - label: Your diploma
+  - label: What is your highest diploma?
     required: true
     choices:
-      - Self-thought
+      - Self-taught
       - Bac +2
       - Bac +3
       - Bac +5
       - Bac +8
-  - label: How many years you’ve been  Coding Professionally
+  - label: How many years have you been coding professionally?
     choices:
       - Less than 1 year
       - 1-3 years
       - 3-5 years
       - 5-10 years
       - More than 10
-  - label: Is Coding a Hobby for you?
+  - label: Is coding a hobby for you?
     required: true
     choices:
       - Yes
-      - NO
+      - No
   - label: Do you think school gives you the most important concepts to start your professional career?
     required: true
     choices:
       - Not enough
       - Enough to start
       - Everything I needed
-  - label: Do you have any plans to work outside morocco in the next 2 years
+  - label: Do you have any plans to work outside Morocco in the next 2 years?
     required: true
     choices:
       - Yes
-      - NO
-  - label: if you are working abroad, do you have any plans to go back?
+      - No
+  - label: If you are working abroad, do you have any plans to come back to Morocco?
     choices:
       - Yes
-      - NO
-  - label: If you think we have a problem with our education system, from your POV, the contributors in this situation
+      - No
+  - label: If you think we have a problem with our education system, from your POV, who are the main contributors?
     required: true
     multiple: true
     choices:
@@ -94,7 +94,7 @@ questions:
       - Teachers
       - Academic defined subjects (system)
       - Companies engagement with academia
-  - label: Language You can read/write
+  - label: What languages can you read/write?
     required: true
     multiple: true
     choices:
@@ -107,25 +107,25 @@ questions:
     required: true
     choices:
       - Yes
-      - NO
+      - No
   - label: Do you think we need more content in Darija?
     required: true
     choices:
       - Spoken
       - Written/Read
       - Both
-  - label: "Your preference platform for learning resources is:"
+  - label: What are your preferred platforms for learning?
     required: true
     multiple: true
     choices:
-      - Youtube.
-      - Paid platforms.
-      - Books.
-      - Official Docs
+      - YouTube
+      - Paid platforms
+      - Books
+      - Official documentation
       - Blog posts
       - Company resources
-      - other
-  - label: "During coding, you prefer :"
+      - Others
+  - label: What do you usually drink while coding?
     required: true
     choices:
       - Tea
