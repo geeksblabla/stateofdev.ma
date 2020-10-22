@@ -42,7 +42,7 @@ questions:
       - Live/online events
       - In-person events?
       - Li ja bismilah
-  - label: "Are you part of one of the Moroccan Facebook Developer circles groups :"
+  - label: "Are you part of one of the Moroccan Facebook Developer circles groups?"
     required: true
     choices:
       - Yes

@@ -53,7 +53,7 @@ questions:
       - "20 000 - 25 000"
       - "> 25 000"
 
-  - label: what characteristics would most influence your decision to choose one job offer over another?
+  - label: What characteristics would most influence your decision to choose one job offer over another?
     required: true
     multiple: true
     choices:
@@ -80,7 +80,7 @@ questions:
       - We were doing remote before
       - The company started remote after covid
       - No remote policy yet
-  - label: Which of the following sentence describes your productivity in COVID 19 Pandemic ?
+  - label: Which of the following sentence describes your productivity in COVID-19 Pandemic ?
     choices:
       - The current Pandemic impacted very negatively my productivity
       - The current Pandemic somehow impacted negatively my productivity
