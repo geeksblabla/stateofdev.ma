@@ -12,7 +12,7 @@ export const Hero = () => (
         <div>
           <h1> State Of Dev In Morocco 2020 </h1>
           <p>
-            Take part in the survey and let the us know what the developer’s job
+            Take part in the survey and let us know what the developer’s job
             really looks like in Morocco 🇲🇦
           </p>
           <div className="actions">
