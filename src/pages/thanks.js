@@ -12,7 +12,7 @@ export default function Thanks() {
             <img src="/images/tarbouch.png" />
             <h1> Tarbouch Off to you! </h1>
             <p>
-              Help us spread the world and share the survey with your friends.{" "}
+              Help us spread the word and share the survey with your friends.{" "}
               <br></br>
             </p>
             <Share shareUrl="https://stateofdev.ma/" />
