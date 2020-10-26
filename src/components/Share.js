@@ -11,7 +11,7 @@ import {
 } from "react-share"
 
 export default ({ shareUrl, title: t }) => {
-  const title = "I just complete  state of dev in Morocco survey "
+  const title = "I just completed 'State of Dev in Morocco' survey"
 
   return (
     <div className="share-buttons">
