@@ -1,8 +1,8 @@
 import React from "react"
 import { Header } from "../Header"
 import Crea from "../../assets/Crea.svg"
-import TimeIcon from "../../assets/time.svg"
-import { Link } from "gatsby"
+// import TimeIcon from "../../assets/time.svg"
+// import { Link } from "gatsby"
 
 export const Hero = () => (
   <div className="hero">
@@ -16,12 +16,17 @@ export const Hero = () => (
             really looks like in Morocco 🇲🇦
           </p>
           <div className="actions">
-            <Link className="primary" to="/beforeStart">
-              Take Part In The Survey
-            </Link>
-            <p>
+            <a
+              className="primary"
+              href="https://tinyletter.com/geeksBlabla/"
+              target="_blank"
+            >
+              Get Notified About The Survey
+              {/* Take Part In The Survey */}
+            </a>
+            {/* <p>
               <TimeIcon /> 5 min
-            </p>
+            </p> */}
           </div>
         </div>
         <Crea />
