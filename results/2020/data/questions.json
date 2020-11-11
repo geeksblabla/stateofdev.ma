@@ -1,0 +1,575 @@
+{
+  "profile-q-0": {
+    "label": "What is your gender?",
+    "required": true,
+    "multiple": false,
+    "choices": ["Male", "Female"]
+  },
+  "profile-q-1": {
+    "label": "What is your age?",
+    "required": true,
+    "multiple": null,
+    "choices": [
+      "Younger than 15 years",
+      "15 to 19 years",
+      "20 to 24 years",
+      "25 to 29 years",
+      "30 to 34 years",
+      "35 to 39 years",
+      "40 years and older"
+    ]
+  },
+  "profile-q-2": {
+    "label": "Where are you currently located?",
+    "required": true,
+    "multiple": null,
+    "choices": ["Morocco", "Europe", "US", "Others"]
+  },
+  "profile-q-3": {
+    "label": "What is your current role?",
+    "required": true,
+    "multiple": null,
+    "choices": [
+      "Developer, back-end",
+      "Developer, full-stack",
+      "Developer, front-end",
+      "Developer, desktop applications",
+      "Developer, mobile",
+      "DevOps specialist",
+      "Database administrator",
+      "Designer",
+      "System administrator",
+      "Developer, embedded applications or devices",
+      "Data or business analyst",
+      "Data scientist or machine learning specialist",
+      "Developer, QA, or test",
+      "Engineer, data",
+      "Academic researcher",
+      "Educator",
+      "Developer, game or graphics",
+      "Engineering manager",
+      "Product manager",
+      "Scientist",
+      "Engineer, site reliability",
+      "Senior executive/VP",
+      "Marketing or sales professional"
+    ]
+  },
+  "profile-q-4": {
+    "label": "What is your highest diploma?",
+    "required": true,
+    "multiple": null,
+    "choices": ["Self-taught", "Bac +2", "Bac +3", "Bac +5", "Bac +8"]
+  },
+  "profile-q-5": {
+    "label": "How many years have you been coding professionally?",
+    "required": null,
+    "multiple": null,
+    "choices": [
+      "Less than 1 year",
+      "1-3 years",
+      "3-5 years",
+      "5-10 years",
+      "More than 10"
+    ]
+  },
+  "profile-q-6": {
+    "label": "Is coding a hobby for you?",
+    "required": true,
+    "multiple": null,
+    "choices": ["Yes", "No"]
+  },
+  "profile-q-7": {
+    "label": "Do you think school gives you the most important concepts to start your professional career?",
+    "required": true,
+    "multiple": null,
+    "choices": ["Not enough", "Enough to start", "Everything I needed"]
+  },
+  "profile-q-8": {
+    "label": "Do you have any plans to work outside Morocco in the next 2 years?",
+    "required": true,
+    "multiple": null,
+    "choices": ["Yes", "No"]
+  },
+  "profile-q-9": {
+    "label": "If you are working abroad, do you have any plans to come back to Morocco?",
+    "required": null,
+    "multiple": null,
+    "choices": ["Yes", "No"]
+  },
+  "profile-q-10": {
+    "label": "If you think we have a problem with our education system, from your POV, who are the main contributors?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Students",
+      "Teachers",
+      "Academic defined subjects (system)",
+      "Companies engagement with academia"
+    ]
+  },
+  "profile-q-11": {
+    "label": "What languages can you read/write?",
+    "required": true,
+    "multiple": true,
+    "choices": ["Arabic", "Amazigh", "French", "English", "Others"]
+  },
+  "profile-q-12": {
+    "label": "Is English an obstacle to learning new technologies?",
+    "required": true,
+    "multiple": null,
+    "choices": ["Yes", "No"]
+  },
+  "profile-q-13": {
+    "label": "Do you think we need more content in Darija?",
+    "required": true,
+    "multiple": null,
+    "choices": ["Spoken", "Written/Read", "Both", "No"]
+  },
+  "profile-q-14": {
+    "label": "What are your preferred platforms for learning?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "YouTube",
+      "Paid platforms",
+      "Books",
+      "Official documentation",
+      "Blog posts",
+      "Company resources",
+      "Others"
+    ]
+  },
+  "profile-q-15": {
+    "label": "What do you usually drink while coding?",
+    "required": true,
+    "multiple": null,
+    "choices": ["Tea", "Coffee", "Water", "None"]
+  },
+  "tech-q-0": {
+    "label": "What are the Programming languages you like?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "JavaScript",
+      "HTML/CSS 😉",
+      "SQL5",
+      "Python",
+      "Java",
+      "Bash/Shell/PowerShell",
+      "C#",
+      "PHP",
+      "TypeScript",
+      "C++",
+      "C",
+      "Go",
+      "Kotlin",
+      "Ruby",
+      "Assembly",
+      "VBA",
+      "Swift",
+      "R",
+      "Rust",
+      "Objective-C",
+      "Dart",
+      "Scala",
+      "Perl",
+      "Haskell",
+      "Julia",
+      "Other"
+    ]
+  },
+  "tech-q-1": {
+    "label": "What are the Programming languages you want to learn next?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "JavaScript",
+      "HTML/CSS 😉",
+      "SQL5",
+      "Python",
+      "Java",
+      "Bash/Shell/PowerShell",
+      "C#",
+      "PHP",
+      "TypeScript",
+      "C++",
+      "C",
+      "Go",
+      "Kotlin",
+      "Ruby",
+      "Assembly",
+      "VBA",
+      "Swift",
+      "R",
+      "Rust",
+      "Objective-C",
+      "Dart",
+      "Scala",
+      "Perl",
+      "Haskell",
+      "Julia",
+      "Other"
+    ]
+  },
+  "tech-q-2": {
+    "label": "What are the Programming languages you are using on a daily basis?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "JavaScript",
+      "HTML/CSS  😉",
+      "SQL5",
+      "Python",
+      "Java",
+      "Bash/Shell/PowerShell",
+      "C#",
+      "PHP",
+      "TypeScript",
+      "C++",
+      "C",
+      "Go",
+      "Kotlin",
+      "Ruby",
+      "Assembly",
+      "VBA",
+      "Swift",
+      "R",
+      "Rust",
+      "Objective-C",
+      "Dart",
+      "Scala",
+      "Perl",
+      "Haskell",
+      "Julia",
+      "Other"
+    ]
+  },
+  "tech-q-3": {
+    "label": "What are the web frameworks you are using on a daily basis?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "jQuery",
+      "React.js",
+      "Angular",
+      "ASP.NET",
+      "Express",
+      "ASP.NET Core",
+      "Vue.js",
+      "Spring Ecosystem",
+      "Angular.js",
+      "Django",
+      "Flask",
+      "Laravel",
+      "Ruby on Rails",
+      "Symfony",
+      "Gatsby",
+      "Drupal",
+      "Next",
+      "Other"
+    ]
+  },
+  "tech-q-4": {
+    "label": "What are the web frameworks you want to learn next?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "jQuery",
+      "React.js",
+      "Angular",
+      "ASP.NET",
+      "Express",
+      "ASP.NET Core",
+      "Vue.js",
+      "Spring Ecosystem",
+      "Angular.js",
+      "Django",
+      "Flask",
+      "Laravel",
+      "Ruby on Rails",
+      "Symfony",
+      "Gatsby",
+      "Drupal",
+      "Next",
+      "Other"
+    ]
+  },
+  "tech-q-5": {
+    "label": "What are the platforms and tools you are using on a daily basis?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Node.js",
+      ".NET",
+      "Pandas",
+      "TensorFlow",
+      "React Native",
+      "Unity 3D",
+      "Ansible",
+      "Flutter",
+      "Terraform",
+      "Keras",
+      "Cordova",
+      "Xamarin",
+      "Apache Spark",
+      "Torch/PyTorch",
+      "Other"
+    ]
+  },
+  "tech-q-6": {
+    "label": "What are the platforms and tools you want to learn next?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Node.js",
+      ".NET",
+      "Pandas",
+      "TensorFlow",
+      "React Native",
+      "Unity 3D",
+      "Ansible",
+      "Flutter",
+      "Terraform",
+      "Keras",
+      "Cordova",
+      "Xamarin",
+      "Apache Spark",
+      "Torch/PyTorch",
+      "Other"
+    ]
+  },
+  "tech-q-7": {
+    "label": "Your Primary Operating Systems is :",
+    "required": true,
+    "multiple": null,
+    "choices": ["Windows", "MacOS", "Linux-based", "Windows + WSL2"]
+  },
+  "tech-q-8": {
+    "label": "What are IDE and code editor you use on a daily basis?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Jetbrains (Intellij, PhpStorm, Resharper ...)",
+      "VS Code",
+      "Eclipse",
+      "Netbeans",
+      "Vim",
+      "Sublime",
+      "Atom",
+      "Other"
+    ]
+  },
+  "tech-q-9": {
+    "label": "How frequently you learn a new language or framework?",
+    "required": true,
+    "multiple": null,
+    "choices": [
+      "Every few months",
+      "Once a year",
+      "Once every few years",
+      "Once a decade"
+    ]
+  },
+  "tech-q-10": {
+    "label": "What do you do when you get stuck on a problem?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Google it",
+      "Stackoverflow",
+      "Do other work and come back later.",
+      "Watch help/tutorial videos",
+      "Call a coworker or friend"
+    ]
+  },
+  "tech-q-11": {
+    "label": "Production environment you or your team are using is :",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Full Cloud",
+      "on-premise",
+      "Hybrid Cloud",
+      "shared hosting",
+      "Managed PaaS (heroku, app platform ...)",
+      "Not Sure"
+    ]
+  },
+  "work-q-0": {
+    "label": "You are:",
+    "required": true,
+    "multiple": false,
+    "choices": [
+      "Employed full-time",
+      "Freelancer, or self-employed",
+      "Employed part-time",
+      "Looking for work",
+      "Student"
+    ]
+  },
+  "work-q-1": {
+    "label": "How often you work overtime or beyond the formal time expectation of your job?",
+    "required": null,
+    "multiple": null,
+    "choices": [
+      "Never",
+      "Rarely: 1-2 days per year or less ",
+      "Occasionally: 1-2 days per quarter but less than monthly ",
+      "Sometimes: 1-2 days per month but less than weekly",
+      "Often: 1-2 days per week or more"
+    ]
+  },
+  "work-q-2": {
+    "label": "How Do you feel about your job?",
+    "required": null,
+    "multiple": null,
+    "choices": [
+      "Very dissatisfied",
+      "Slightly dissatisfied",
+      "Neither satisfied nor dissatisfied",
+      "Slightly satisfied",
+      "Very satisfied"
+    ]
+  },
+  "work-q-3": {
+    "label": "Do you work on a side project?",
+    "required": true,
+    "multiple": null,
+    "choices": ["NO", "For profit", "For learning"]
+  },
+  "work-q-4": {
+    "label": "How long have you been unemployed after graduation?",
+    "required": null,
+    "multiple": null,
+    "choices": [
+      "0 months",
+      "Few months",
+      "Less than 1 year",
+      "More than 1 year"
+    ]
+  },
+  "work-q-5": {
+    "label": "Your salary range (DH) is :",
+    "required": null,
+    "multiple": null,
+    "choices": [
+      "< 6 000",
+      "6 000 - 8 000",
+      "8 000 - 10 000",
+      "10 000 - 13 000",
+      "13 000 - 15 000",
+      "15 000 - 20 000",
+      "20 000 - 25 000",
+      "> 25 000"
+    ]
+  },
+  "work-q-6": {
+    "label": "What characteristics would most influence your decision to choose one job offer over another?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Languages, frameworks, and other technologies I’d be working with",
+      "Office environment or company culture",
+      "Flex time or a flexible schedule",
+      "Opportunities for professional development",
+      "Remote work options",
+      "How widely used or impactful my work output would be",
+      "The industry that I’d be working in",
+      "Salary"
+    ]
+  },
+  "work-q-7": {
+    "label": "What type of company do you prefer?",
+    "required": true,
+    "multiple": null,
+    "choices": [
+      "Freelance",
+      "Startup",
+      "Small company",
+      "Medium company",
+      "Multinational company"
+    ]
+  },
+  "work-q-8": {
+    "label": "What is the impact of COVID-19 Pandemic in remote work policy in your company ?",
+    "required": null,
+    "multiple": null,
+    "choices": [
+      "We were doing remote before",
+      "The company started remote after covid",
+      "No remote policy yet"
+    ]
+  },
+  "work-q-9": {
+    "label": "Which of the following sentence describes your productivity in COVID-19 Pandemic ?",
+    "required": null,
+    "multiple": null,
+    "choices": [
+      "The current Pandemic impacted very negatively my productivity",
+      "The current Pandemic somehow impacted negatively my productivity",
+      "The current Pandemic did not impact my productivity",
+      "The current Pandemic somehow boosted my productivity",
+      "The current Pandemic boosted very positively my productivity"
+    ]
+  },
+  "community-q-0": {
+    "label": "Are you part of any local developer’s community?",
+    "required": true,
+    "multiple": false,
+    "choices": ["Yes", "NO"]
+  },
+  "community-q-1": {
+    "label": "Did you ever participate in an open-source project?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Yes, few PRs in multiple projects",
+      "I am maintaining my own project",
+      "I have a repo with more than +1k stars",
+      "I maintain an organization project with +1k stars",
+      "I don’t have an account on Github (or alternatives)."
+    ]
+  },
+  "community-q-2": {
+    "label": "Did you have the chance to write blog posts?",
+    "required": true,
+    "multiple": null,
+    "choices": [
+      "Yes more than 10 blog posts",
+      "Yes  less than 10 blog posts",
+      "Thinking of it.",
+      "No, I am not interested."
+    ]
+  },
+  "community-q-3": {
+    "label": "How many IT events did you attend in 2019/2020?",
+    "required": true,
+    "multiple": null,
+    "choices": ["0", "1-3", "More than 3"]
+  },
+  "community-q-4": {
+    "label": "How many talks did you participate in as a speaker in 2019/2020?",
+    "required": true,
+    "multiple": null,
+    "choices": ["0", "1 - 3 talks", "More than 3"]
+  },
+  "community-q-5": {
+    "label": "Do you prefer ?",
+    "required": true,
+    "multiple": null,
+    "choices": ["Live/online events", "In-person events?", "Li ja bismilah"]
+  },
+  "community-q-6": {
+    "label": "Are you part of one of the Moroccan Facebook Developer circles groups?",
+    "required": true,
+    "multiple": null,
+    "choices": ["Yes", "NO", "I don’t know Facebook Developer circles"]
+  },
+  "community-q-7": {
+    "label": "How do you evaluate the Moroccan Tech Community?",
+    "required": true,
+    "multiple": null,
+    "choices": ["Bad", "Not Bad", "Good", "Excellent"]
+  }
+}

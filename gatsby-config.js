@@ -51,6 +51,19 @@ module.exports = {
         name: `survey`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/results/2020`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+      },
+    },
 
     {
       resolve: `gatsby-plugin-manifest`,

@@ -1,0 +1,53 @@
+@import "../../styles/vars";
+@import "../../styles/mixins.scss";
+
+.chart {
+  margin-bottom: 4rem;
+  table {
+    width: 100%;
+  }
+  td {
+    padding: 0.2rem 0px;
+    vertical-align: middle;
+    height: 100%;
+    @include breakpoint(mobileonly) {
+      padding-bottom: 0px;
+    }
+  }
+  tr {
+    vertical-align: middle;
+  }
+  .value {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    @include breakpoint(mobileonly) {
+      margin-top: -5px;
+      margin-bottom: 10px;
+    }
+
+    .bar {
+      // display: block;
+      background-color: var(--green);
+      height: 25px;
+      margin-right: 0.5rem;
+      border-radius: 3px;
+    }
+  }
+  .label {
+    text-align: right;
+    width: 20%;
+    padding-right: 0.5rem;
+    font-size: 17px;
+    @include breakpoint(mobileonly) {
+      font-size: 15px;
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding-bottom: 0px;
+      margin-bottom: 0px;
+    }
+  }
+}
