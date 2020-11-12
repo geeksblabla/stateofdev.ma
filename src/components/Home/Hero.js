@@ -12,8 +12,8 @@ export const Hero = () => (
         <div>
           <h1> State Of Dev In Morocco 2020 </h1>
           <p>
-            Take part in the survey and let us know what the developer’s job
-            really looks like in Morocco 🇲🇦
+            Thanks to everyone who participated in this survey 🙏🇲🇦
+            Results will be announced soon. 
           </p>
           <div className="actions">
             <a
