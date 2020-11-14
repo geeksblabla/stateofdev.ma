@@ -20,11 +20,11 @@ const Results = () => {
   const content = data.allMdx.edges.map(({ node }) => node.body)
   return (
     <Layout>
-      {content.map(c => (
-        <>
+      {content.map((c, i) => (
+        <div key={`item-${i}`}>
           <MDXRenderer>{c}</MDXRenderer>
           <hr />
-        </>
+        </div>
       ))}
     </Layout>
   )
