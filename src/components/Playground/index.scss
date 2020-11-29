@@ -1,0 +1,31 @@
+.playground {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+.result {
+  flex: 1;
+}
+
+.filter-form {
+  padding: 1rem;
+  width: 40%;
+  form {
+    display: flex;
+    flex-direction: column;
+    select {
+      width: 100%;
+      margin: 1rem 0rem;
+    }
+    .radio {
+      width: 100%;
+      align-items: center;
+      display: flex;
+      margin: 1rem 0rem;
+    }
+    .filters {
+      border: 1px dashed #0000004d;
+      padding: 1rem;
+    }
+  }
+}
