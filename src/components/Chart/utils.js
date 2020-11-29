@@ -17,14 +17,28 @@ const reducer = (accumulator, currentValue) => {
 
 const filter = (data, condition) => {
   if (typeof condition === "function") return data.filter(condition)
+  if (Array.isArray(condition)) {
+    return data.filter(v => {
+      for (let index = 0; index < condition.length; index++) {
+        const element = condition[index]
+        if (
+          element.value.length !== 0 &&
+          !element.value?.includes(v[element.question_id].toString())
+        )
+          return false
+      }
+      return true
+    })
+  }
+
   return data
 }
 
 // condition here is a function  (v) => v['profile-q-0'] === 1
-export const getQuestion = (id, condition) => {
+export const getQuestion = (id, condition, source = DATA.results) => {
   const question = Questions[id]
   const results = []
-  const d = filter(DATA.results, condition)
+  const d = filter(source, condition)
     .map(r => r[id])
     .reduce(reducer, {})
   Object.keys(d).map(function (key) {

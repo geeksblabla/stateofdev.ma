@@ -1,6 +1,6 @@
 import React from "react"
 
-export const BarChart = ({ results }) => {
+export const BarChart = ({ results, total }) => {
   const x = (
     90 /
     Math.max.apply(
@@ -16,13 +16,18 @@ export const BarChart = ({ results }) => {
       <tbody>
         {results.map((choice, i) => (
           <tr key={`item-${i}`}>
-            <td className="label">{choice.label || "No Response "}</td>
+            <td className="label">
+              <p> {choice.label || "No Response "} </p>
+              <p>
+                {`${choice.percent}%`}
+                <span>/{total} response</span>
+              </p>
+            </td>
             <td className="value">
               <div
                 className="bar"
                 style={{ width: `${choice.percent * x}%` }}
               />
-              <p> {`${choice.percent}%`} </p>
             </td>
           </tr>
         ))}
