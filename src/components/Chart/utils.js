@@ -35,17 +35,33 @@ const filter = (data, condition) => {
 }
 
 // condition here is a function  (v) => v['profile-q-0'] === 1
-export const getQuestion = (id, condition, source = DATA.results) => {
+export const getQuestion = ({
+  id,
+  condition,
+  source = DATA.results,
+  groupBy = null,
+}) => {
   const question = Questions[id]
   const results = []
-  const d = filter(source, condition)
-    .map(r => r[id])
-    .reduce(reducer, {})
+  const filteredData = filter(source, condition)
+  const d = filteredData.map(r => r[id]).reduce(reducer, {})
   Object.keys(d).map(function (key) {
     if (key !== undefined && key !== "total") {
-      results.push({ label: question.choices[key] || key, value: d[key] })
+      const grouped = groupBy
+        ? getQuestion({
+            id: groupBy,
+            condition: v => v[id] === key,
+            source: filteredData,
+          })
+        : null
+      results.push({
+        label: question.choices[key] || key,
+        value: d[key],
+        grouped,
+      })
     }
   })
+
   return { ...question, results, total: d.total }
 }
 

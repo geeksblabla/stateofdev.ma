@@ -11,8 +11,14 @@ export const Chart = ({
   title = true,
   condition,
   source = undefined,
+  groupBy = "profile-q-1",
 }) => {
-  const { label, results, total } = getQuestion(id, condition, source)
+  const { label, results, total } = getQuestion({
+    id,
+    condition,
+    source,
+    groupBy,
+  })
   const res = results
     .sort((b, a) =>
       sort ? (a.value > b.value ? 1 : b.value > a.value ? -1 : 0) : 0
