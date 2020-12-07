@@ -1,5 +1,5 @@
-import React, { useEffect } from "react"
-import { useForm, useFieldArray } from "react-hook-form"
+import React from "react"
+import { useFieldArray } from "react-hook-form"
 import "./index.scss"
 
 export default function FilterForm({
@@ -10,17 +10,14 @@ export default function FilterForm({
 }) {
   const qs = Object.entries(questions).map(q => ({ id: q[0], ...q[1] }))
 
-  const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
-    {
-      control, // control props comes from useForm (optional: if you are using FormContext)
-      name: "condition", // unique name for your Field Array
-      // keyName: "id", default to "id", you can change the key name
-    }
-  )
+  const { fields, append, remove } = useFieldArray({
+    control, // control props comes from useForm (optional: if you are using FormContext)
+    name: "condition", // unique name for your Field Array
+    // keyName: "id", default to "id", you can change the key name
+  })
   const onSubmit = data => console.log(JSON.stringify(data))
   return (
     <div className="filter-form">
-      <p> form here </p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label> Select Question : </label>
         <select name="question" ref={register}>
@@ -43,7 +40,7 @@ export default function FilterForm({
               remove={() => remove(index)}
             />
           ))}
-          Add Question filter
+          <label> Add Question filter </label>
           <select
             name="Question"
             onChange={e => append({ question_id: e.target.value })}
@@ -55,8 +52,14 @@ export default function FilterForm({
             ))}
           </select>
         </div>
-
-        <input type="submit" />
+        <label> Group by : </label>
+        <select name="groupBy" ref={register}>
+          {qs.map(q => (
+            <option key={q.id} value={q.id}>
+              {q.label}
+            </option>
+          ))}
+        </select>
       </form>
     </div>
   )

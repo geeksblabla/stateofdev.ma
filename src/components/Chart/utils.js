@@ -21,9 +21,14 @@ const filter = (data, condition) => {
     return data.filter(v => {
       for (let index = 0; index < condition.length; index++) {
         const element = condition[index]
+        const vs = Array.isArray(v[element.question_id])
+          ? v[element.question_id]
+          : [v[element.question_id]]
+        console.log(vs)
         if (
           element.value.length !== 0 &&
-          !element.value?.includes(v[element.question_id].toString())
+          !vs.every(v => element.value?.includes(v.toString()))
+          //!element.value?.includes(v[element.question_id].toString())
         )
           return false
       }
@@ -50,11 +55,15 @@ export const getQuestion = ({
       const grouped = groupBy
         ? getQuestion({
             id: groupBy,
-            condition: v => v[id] === key,
+            condition: v => {
+              if (Array.isArray(v[id])) return v[id].includes(parseInt(key, 10))
+              else return v[id] === parseInt(key, 10)
+            },
             source: filteredData,
           })
         : null
       results.push({
+        key: key,
         label: question.choices[key] || key,
         value: d[key],
         grouped,

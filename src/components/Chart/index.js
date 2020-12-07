@@ -11,7 +11,7 @@ export const Chart = ({
   title = true,
   condition,
   source = undefined,
-  groupBy = "profile-q-1",
+  groupBy = undefined,
 }) => {
   const { label, results, total } = getQuestion({
     id,

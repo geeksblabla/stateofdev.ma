@@ -29,7 +29,7 @@ When we started thinking about the State of Frontend 2020 report, I had one goal
   </TabItem>
 </Tabs>
 
-<Chart id="profile-q-2" groupBy="profile-q-1" />
+<Chart id="profile-q-2" groupBy="profile-q-0" />
 
 <Chart id="profile-q-3" />
 
@@ -40,6 +40,21 @@ When we started thinking about the State of Frontend 2020 report, I had one goal
 <Chart id="profile-q-6" />
 
 <Chart id="profile-q-7" />
+
+### Do you think school gives you the most important concepts to start your professional career?
+
+<Tabs>
+  <TabItem title="All">
+    <Chart id="profile-q-7" title={false} />
+  </TabItem>
+  <TabItem title="Students ">
+    <Chart
+      id="profile-q-7"
+      title={false}
+      condition={v => v["work-q-0"] === 4}
+    />
+  </TabItem>
+</Tabs>
 
 <Chart id="profile-q-8" />
 

@@ -35,8 +35,11 @@
       height: 18px;
       margin-right: 0.5rem;
       border-radius: 3px;
+      display: flex;
+      flex-direction: row;
     }
   }
+
   .label {
     // text-align: right;
     display: flex;
@@ -55,6 +58,29 @@
       }
     }
   }
+
+  .choices {
+    display: flex;
+    flex-direction: row;
+    padding-top: 2rem;
+
+    li {
+      .square {
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+        margin-right: 5px;
+      }
+      position: relative;
+      display: flex;
+
+      align-items: center;
+      padding: 10px;
+      font-size: 15px;
+      line-height: 17px;
+      color: #333333;
+    }
+  }
 }
 
 .pie-chart {
@@ -70,11 +96,6 @@
     justify-content: flex-start;
   }
 
-  ul {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
   li {
     .square {
       width: 24px;
@@ -89,5 +110,11 @@
     font-size: 15px;
     line-height: 17px;
     color: #333333;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 }

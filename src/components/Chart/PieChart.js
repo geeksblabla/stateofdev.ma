@@ -12,7 +12,7 @@ const colors = [
 ]
 
 function makeTooltipContent(entry, total) {
-  return `${entry.label} (${entry.value}/${total} responses)`
+  return `${entry.label} (${entry.value}/${total} res)`
 }
 
 const normalizeData = data =>

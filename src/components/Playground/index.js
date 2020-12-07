@@ -10,12 +10,13 @@ export default function Index() {
   const { register, handleSubmit, errors, control, watch } = useForm()
   const id = watch("question")
   const condition = watch("condition")
+  const groupBy = watch("groupBy")
 
   if (isLoading) return <p> loading playground </p>
   if (error) return <p> Error loading data </p>
   return (
     <Layout>
-      <main className="playground">
+      <main className=" container playground">
         {data?.questions && (
           <FilterForm
             questions={data.questions}
@@ -29,6 +30,7 @@ export default function Index() {
               id={id}
               condition={condition}
               source={data.results.results}
+              groupBy={groupBy}
             />
           )}
         </div>
