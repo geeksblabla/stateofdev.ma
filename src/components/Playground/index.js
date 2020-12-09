@@ -5,13 +5,12 @@ import { Layout } from "../Layout"
 import FilterForm from "./FilterForm"
 import "./index.scss"
 import { Chart } from "../Chart/index"
+export const isBrowser = () => typeof window !== "undefined"
 
 const getDefaultValues = () => {
-  const {
-    question = "profile-q-0",
-    groupBy = null,
-    condition: c,
-  } = queryString.parse(window.location.hash)
+  const { question = "profile-q-0", groupBy = null, condition: c } = isBrowser()
+    ? queryString.parse(window.location.hash)
+    : {}
   let condition = []
   try {
     condition = JSON.parse(c)
@@ -24,7 +23,6 @@ const getDefaultValues = () => {
 
 export default function Index() {
   const { isLoading, data, error } = useData()
-  console.log("from path ", getDefaultValues())
   const { register, handleSubmit, errors, control, watch } = useForm({
     defaultValues: getDefaultValues(),
   })
@@ -33,14 +31,13 @@ export default function Index() {
   const groupBy = watch("groupBy")
   React.useEffect(() => {
     const search = { question, condition: JSON.stringify(condition), groupBy }
-    console.log(search)
-    window.location.hash = queryString.stringify(search)
+    if (isBrowser()) window.location.hash = queryString.stringify(search)
   }, [question, condition, groupBy])
 
   if (isLoading)
     return (
       <div className="container">
-        <p> loading playground </p>
+        <p> loading playground .... </p>
       </div>
     )
   if (error) return <p> Error loading data </p>

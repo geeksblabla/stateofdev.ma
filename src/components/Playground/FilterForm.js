@@ -84,7 +84,7 @@ const Question = ({ question, field, register, index, remove }) => {
             type="checkbox"
             name={`condition[${index}].values`}
             ref={register()}
-            defaultChecked={field.values.includes(i.toString())}
+            defaultChecked={field?.values?.includes(i?.toString())}
             value={parseInt(i, 10)}
           />
           {c}

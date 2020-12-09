@@ -1,11 +1,11 @@
 ---
 title: Profile
-position: 1
+position: 2
 ---
 
 # 1.Profile
 
-First some demographic numbers so you will get a better picture of who answered the survey.
+should focus on general data ( gender, age.... )
 
 ## What is your gender ?
 
@@ -15,23 +15,9 @@ When we started thinking about the State of Frontend 2020 report, I had one goal
 
 When we started thinking about the State of Frontend 2020 report, I had one goal in mind: to find out what the everyday job of a frontend developer looks like. Considering that there are thousands of frontend devs around the world, that goal seemed pretty unrealistic. But hey man – once again, the frontend community surprised us all!
 
-<Tabs>
-  <TabItem title="Professional">
-    <Chart id="profile-q-1" sort={false} title={false} />
-  </TabItem>
-  <TabItem title="Student Only ">
-    <Chart
-      id="profile-q-1"
-      sort={false}
-      title={false}
-      condition={v => v["profile-q-2"] !== 0}
-    />
-  </TabItem>
-</Tabs>
+<Chart id="profile-q-1" />
 
-<Chart id="profile-q-2" groupBy="profile-q-0" />
-
-<Chart id="profile-q-3" />
+<Chart id="profile-q-2" />
 
 <Chart id="profile-q-4" pie />
 
@@ -39,34 +25,8 @@ When we started thinking about the State of Frontend 2020 report, I had one goal
 
 <Chart id="profile-q-6" />
 
-<Chart id="profile-q-7" />
-
-### Do you think school gives you the most important concepts to start your professional career?
-
-<Tabs>
-  <TabItem title="All">
-    <Chart id="profile-q-7" title={false} />
-  </TabItem>
-  <TabItem title="Students ">
-    <Chart
-      id="profile-q-7"
-      title={false}
-      condition={v => v["work-q-0"] === 4}
-    />
-  </TabItem>
-</Tabs>
-
 <Chart id="profile-q-8" />
 
 <Chart id="profile-q-9" condition={v => v["profile-q-2"] !== 0} />
 
-<Chart id="profile-q-10" />
-
-<Chart id="profile-q-11" />
-
-<Chart id="profile-q-12" />
-
-<Chart id="profile-q-13" />
-
-<Chart id="profile-q-14" />
 <Chart id="profile-q-15" />
