@@ -1,13 +1,23 @@
+@import "../../styles/vars";
+@import "../../styles/mixins.scss";
 .playground {
   display: flex;
   flex-direction: row;
   min-height: 100vh;
   position: relative;
+  @include breakpoint(mobileonly) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .result {
   flex: 1;
   padding-left: 2rem;
   padding-top: 1rem;
+  @include breakpoint(mobileonly) {
+    padding-left: 0rem;
+    width: 100%;
+  }
 }
 
 .filter-form {
@@ -21,6 +31,9 @@
   border-radius: 15px;
   padding: 1rem;
   width: 40%;
+  @include breakpoint(mobileonly) {
+    width: 90%;
+  }
   label {
     font-size: 16px;
     font-weight: bold;

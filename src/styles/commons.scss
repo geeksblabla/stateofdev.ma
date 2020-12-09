@@ -3,6 +3,9 @@
 @import "./mixins.scss";
 @import "./font.scss";
 
+html {
+  scroll-behavior: smooth;
+}
 body {
   background: var(--main-bg-color);
   color: var(--black);

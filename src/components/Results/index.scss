@@ -1,11 +1,21 @@
+@import "../../styles/vars";
+@import "../../styles/mixins.scss";
+
 .results {
   .main {
     display: flex;
     flex-direction: row;
+    @include breakpoint(mobileonly) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
   .content {
     // background-color: red;
     padding-left: 6rem;
+    @include breakpoint(mobileonly) {
+      padding-left: 0rem;
+    }
   }
   .table-of-content {
     position: sticky;
@@ -17,6 +27,9 @@
     background: #ffffff;
     box-shadow: -20px 24px 154px rgba(204, 209, 208, 0.49);
     border-radius: 15px;
+    @include breakpoint(mobileonly) {
+      display: none;
+    }
     h2 {
       font-family: Inter;
       font-style: normal;
@@ -34,6 +47,9 @@
       color: #333333;
       padding: 0.5rem 0rem;
       position: relative;
+      a {
+        color: inherit;
+      }
       &.active {
         color: var(--green);
       }

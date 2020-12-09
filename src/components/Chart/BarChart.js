@@ -34,7 +34,6 @@ function makeTooltipContent(data) {
 
 export const BarChart = ({ results, total }) => {
   const [hovered, setHovered] = React.useState(null)
-  console.log(hovered)
   const x = (
     90 /
     Math.max.apply(
@@ -104,8 +103,9 @@ const Bar = ({ choice, x, total, onMouseEnter, onMouseLeave }) => {
               background: choice?.grouped ? "transparent" : "var(--green)",
             }}
           >
-            {choice?.grouped?.results?.map(c => (
+            {choice?.grouped?.results?.map((c, i) => (
               <div
+                key={`res-${i}`}
                 style={{
                   width: `${(c.value * 100) / choice?.grouped?.total}%`,
                   background: colors[c.key],

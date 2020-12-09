@@ -3,9 +3,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Layout } from "./Layout"
 import { Hero } from "../Home/Hero"
-import TableOfContent from "./TableOfContent"
+import TableOfContent, { slugify } from "./TableOfContent"
 import "./index.scss"
-import { TabItem, Tabs } from "../Tab"
 
 const DATA = graphql`
   {
@@ -24,7 +23,10 @@ const DATA = graphql`
 
 const Results = () => {
   const data = useStaticQuery(DATA)
-  const content = data.allMdx.edges.map(({ node }) => node.body)
+  const content = data.allMdx.edges.map(({ node }) => ({
+    body: node.body,
+    title: node.frontmatter.title,
+  }))
   const titles = data.allMdx.edges.map(({ node }) => node.frontmatter.title)
   return (
     <Layout>
@@ -34,10 +36,10 @@ const Results = () => {
         <TableOfContent titles={titles} />
         <div className="content mdx-content">
           {content.map((c, i) => (
-            <div key={`item-${i}`}>
-              <MDXRenderer>{c}</MDXRenderer>
+            <section id={slugify(c.title)} key={`section-${i}`}>
+              <MDXRenderer>{c.body}</MDXRenderer>
               <hr />
-            </div>
+            </section>
           ))}
         </div>
       </div>
