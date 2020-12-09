@@ -24,12 +24,9 @@ const filter = (data, condition) => {
         const vs = Array.isArray(v[element.question_id])
           ? v[element.question_id]
           : [v[element.question_id]]
-        console.log(vs)
-        if (
-          element.value.length !== 0 &&
-          !vs.every(v => element.value?.includes(v.toString()))
-          //!element.value?.includes(v[element.question_id].toString())
-        )
+        const intersection =
+          vs.filter(x => element.value?.includes(x.toString())) || []
+        if (element.value.length !== 0 && intersection.length === 0)
           return false
       }
       return true
@@ -44,7 +41,7 @@ export const getQuestion = ({
   id,
   condition,
   source = DATA.results,
-  groupBy = null,
+  groupBy,
 }) => {
   const question = Questions[id]
   const results = []

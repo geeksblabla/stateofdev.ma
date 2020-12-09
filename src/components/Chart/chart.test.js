@@ -97,17 +97,17 @@ test("should return correct values data with condition with object  ", () => {
   expect(data.results[1].value).toBe(2)
 })
 test("should return correct values data with condition with object for multi choices questions ", () => {
-  const condition = [{ question_id: "profile-q-14", value: ["1"] }]
+  const condition = [{ question_id: "profile-q-14", value: ["1", "3"] }]
   const data = getQuestion({
     id: "profile-q-0",
     source: results,
     condition,
   })
   console.log(JSON.stringify(data, null, 2))
-  expect(data.total).toBe(3)
+  expect(data.total).toBe(4)
   expect(data.results[0].label).toBe(Questions["profile-q-0"].choices[0])
   expect(data.results[0].value).toBe(1)
-  expect(data.results[1].value).toBe(2)
+  expect(data.results[1].value).toBe(3)
 })
 
 test("should be grouped correctly ", () => {
