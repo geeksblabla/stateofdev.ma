@@ -17,7 +17,24 @@ const colors = [
   "#4543C5",
 ]
 
+function makeTooltipContent(data) {
+  if (!data) return null
+  return (
+    <>
+      <ul>
+        {data?.results?.map((c, i) => (
+          <li key={`label-${i}`}>
+            {c.label} : {c.value} : {`${getPercent(c.value, data?.total)}%`}
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}
+
 export const BarChart = ({ results, total }) => {
+  const [hovered, setHovered] = React.useState(null)
+  console.log(hovered)
   const x = (
     90 /
     Math.max.apply(
@@ -30,7 +47,7 @@ export const BarChart = ({ results, total }) => {
 
   return (
     <>
-      <table>
+      <table data-tip="" data-for="bar">
         <tbody>
           {results.map((choice, i) => (
             <Bar
@@ -39,6 +56,8 @@ export const BarChart = ({ results, total }) => {
               x={x}
               total={total}
               index={i}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
             />
           ))}
         </tbody>
@@ -57,27 +76,19 @@ export const BarChart = ({ results, total }) => {
           </li>
         ))}
       </div>
+      <ReactTooltip
+        id="bar"
+        aria-haspopup="true"
+        getContent={() => makeTooltipContent(results[hovered]?.grouped)}
+      />
     </>
   )
 }
 
-const Bar = ({ choice, x, total, index }) => {
-  const isGrouped = !!choice.grouped
-  console.log(choice?.grouped)
-
+const Bar = ({ choice, x, total, onMouseEnter, onMouseLeave }) => {
   return (
     <>
-      <ReactTooltip id={`tooltip-${index}`} aria-haspopup="true">
-        <ul>
-          {choice?.grouped?.results?.map(c => (
-            <li>
-              {c.label} : {c.value} :{" "}
-              {`${getPercent(c.value, choice?.grouped?.total)}%`}
-            </li>
-          ))}
-        </ul>
-      </ReactTooltip>
-      <tr data-tip data-for={isGrouped ? `tooltip-${index}` : ""}>
+      <tr onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
         <td className="label">
           <p> {choice.label || "No Response "} </p>
           <p>

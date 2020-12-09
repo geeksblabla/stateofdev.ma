@@ -12,7 +12,12 @@ export default function Index() {
   const condition = watch("condition")
   const groupBy = watch("groupBy")
 
-  if (isLoading) return <p> loading playground </p>
+  if (isLoading)
+    return (
+      <div className="container">
+        <p> loading playground </p>
+      </div>
+    )
   if (error) return <p> Error loading data </p>
   return (
     <Layout>

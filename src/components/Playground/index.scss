@@ -2,15 +2,16 @@
   display: flex;
   flex-direction: row;
   min-height: 100vh;
+  position: relative;
 }
 .result {
   flex: 1;
   padding-left: 2rem;
+  padding-top: 1rem;
 }
 
 .filter-form {
-  position: sticky;
-  top: 2rem;
+  margin-top: 2rem;
   padding: 2rem 2rem;
   padding-bottom: 6rem;
   height: fit-content;
@@ -36,6 +37,9 @@
       align-items: center;
       display: flex;
       margin: 1rem 0rem;
+      input {
+        margin-right: 0.5rem;
+      }
     }
     .filters {
       border: 1px dashed #0000004d;

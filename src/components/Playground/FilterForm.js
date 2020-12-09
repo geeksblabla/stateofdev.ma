@@ -19,7 +19,7 @@ export default function FilterForm({
   return (
     <div className="filter-form">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label> Select Question : </label>
+        <label>Question : </label>
         <select name="question" ref={register}>
           {qs.map(q => (
             <option key={q.id} value={q.id}>
@@ -40,7 +40,7 @@ export default function FilterForm({
               remove={() => remove(index)}
             />
           ))}
-          <label> Add Question filter </label>
+          <label> Add filter </label>
           <select
             name="Question"
             onChange={e => append({ question_id: e.target.value })}
@@ -52,8 +52,10 @@ export default function FilterForm({
             ))}
           </select>
         </div>
+        <br />
         <label> Group by : </label>
         <select name="groupBy" ref={register}>
+          <option value="">Group result by</option>
           {qs.map(q => (
             <option key={q.id} value={q.id}>
               {q.label}
@@ -68,8 +70,7 @@ export default function FilterForm({
 const Question = ({ question, field, register, index, remove }) => {
   return (
     <div className="filter">
-      <label> {question.label} </label>{" "}
-      <button onClick={remove}> remove filter</button>
+      <label> {question.label} </label> <button onClick={remove}> x </button>
       <input
         name={`condition[${index}].question_id`}
         ref={register()}
@@ -81,10 +82,10 @@ const Question = ({ question, field, register, index, remove }) => {
         <div className="radio" key={`option-${i}`}>
           <input
             type="checkbox"
-            name={`condition[${index}].value`}
+            name={`condition[${index}].values`}
             ref={register()}
-            defaultValue={field.value}
-            value={i}
+            defaultValue={field.values}
+            value={parseInt(i, 10)}
           />
           {c}
         </div>
