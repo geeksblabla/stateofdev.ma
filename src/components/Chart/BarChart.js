@@ -77,6 +77,10 @@ export const BarChart = ({ results, total }) => {
       </div>
       <ReactTooltip
         id="bar"
+        insecure
+        backgroundColor="#222"
+        arrowColor="#222"
+        color="#FFF"
         aria-haspopup="true"
         getContent={() => makeTooltipContent(results[hovered]?.grouped)}
       />

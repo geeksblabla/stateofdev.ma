@@ -62,6 +62,9 @@ function Pie({ results, total }) {
         />
         <ReactTooltip
           id="chart"
+          backgroundColor="#222"
+          arrowColor="#222"
+          color="#FFF"
           getContent={() =>
             typeof hovered === "number"
               ? makeTooltipContent(data[hovered], total)

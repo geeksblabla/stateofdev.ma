@@ -1,16 +1,41 @@
 import React from "react"
 import { useForm } from "react-hook-form"
+import queryString from "query-string"
 import { Layout } from "../Layout"
 import FilterForm from "./FilterForm"
 import "./index.scss"
 import { Chart } from "../Chart/index"
 
+const getDefaultValues = () => {
+  const {
+    question = "profile-q-0",
+    groupBy = null,
+    condition: c,
+  } = queryString.parse(window.location.hash)
+  let condition = []
+  try {
+    condition = JSON.parse(c)
+  } catch (error) {
+    condition = undefined
+  }
+
+  return { question, condition, groupBy }
+}
+
 export default function Index() {
   const { isLoading, data, error } = useData()
-  const { register, handleSubmit, errors, control, watch } = useForm()
-  const id = watch("question")
+  console.log("from path ", getDefaultValues())
+  const { register, handleSubmit, errors, control, watch } = useForm({
+    defaultValues: getDefaultValues(),
+  })
+  const question = watch("question")
   const condition = watch("condition")
   const groupBy = watch("groupBy")
+  React.useEffect(() => {
+    const search = { question, condition: JSON.stringify(condition), groupBy }
+    console.log(search)
+    window.location.hash = queryString.stringify(search)
+  }, [question, condition, groupBy])
 
   if (isLoading)
     return (
@@ -19,6 +44,7 @@ export default function Index() {
       </div>
     )
   if (error) return <p> Error loading data </p>
+
   return (
     <Layout>
       <main className=" container playground">
@@ -32,7 +58,7 @@ export default function Index() {
         <div className="result">
           {data?.results?.results && (
             <Chart
-              id={id}
+              id={question}
               condition={condition}
               source={data.results.results}
               groupBy={groupBy}
