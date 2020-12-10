@@ -5,7 +5,6 @@ html {
 }
 
 body {
-  font-family: Lato;
   @include fluid-type($min_width, $max_width, $min_font, $max_font);
   line-height: 1 * $mode;
   color: var(--text-color);

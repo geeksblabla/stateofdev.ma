@@ -112,9 +112,15 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts-v2`,
       options: {
-        fonts: [`Open Sans\:400,600,700`],
+        fonts: [
+          {
+            family: "Inter",
+            variable: true,
+            weights: ["400..700"],
+          },
+        ],
       },
     },
     {

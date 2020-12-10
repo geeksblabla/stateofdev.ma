@@ -2,9 +2,11 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Layout } from "./Layout"
+import { Download } from "./Download"
 import { Hero } from "../Home/Hero"
 import TableOfContent, { slugify } from "./TableOfContent"
 import "./index.scss"
+import { Footer } from "../Footer"
 
 const DATA = graphql`
   {
@@ -43,6 +45,10 @@ const Results = () => {
           ))}
         </div>
       </div>
+      <div className="container">
+        <Download />
+      </div>
+      <Footer />
     </Layout>
   )
 }

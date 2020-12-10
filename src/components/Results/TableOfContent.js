@@ -30,7 +30,9 @@ const TableOfContent = ({ titles }) => {
       observer.observe(section)
     })
 
-    return () => {}
+    return () => {
+      observer.disconnect()
+    }
   }, [])
   return (
     <div className="table-of-content">
