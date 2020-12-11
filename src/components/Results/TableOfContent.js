@@ -9,21 +9,23 @@ export function slugify(text) {
 
 const TableOfContent = ({ titles }) => {
   React.useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        const id = entry.target.getAttribute("id")
-        console.log("id", id)
-        if (entry.intersectionRatio > 0) {
-          document
-            .querySelector(`li a[href="#${id}"]`)
-            .parentElement.classList.add("active")
-        } else {
-          document
-            .querySelector(`li a[href="#${id}"]`)
-            .parentElement.classList.remove("active")
-        }
-      })
-    })
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          const id = entry.target.getAttribute("id")
+          if (entry.intersectionRatio > 0.1) {
+            document
+              .querySelector(`li a[href="#${id}"]`)
+              .parentElement.classList.add("active")
+          } else {
+            document
+              .querySelector(`li a[href="#${id}"]`)
+              .parentElement.classList.remove("active")
+          }
+        })
+      },
+      { threshold: [0.0, 0.1, 0.02, 0.9, 1.0] }
+    )
 
     // Track all sections that have an `id` applied
     document.querySelectorAll("section[id]").forEach(section => {

@@ -63,6 +63,9 @@ a {
     font-size: 14px;
     margin: 1rem;
     display: inline-block;
+    &:visited {
+      color: #fff;
+    }
   }
   &.outline {
     background-color: #fff;
@@ -77,9 +80,9 @@ a {
     font-size: 14px;
     margin: 1rem;
     display: inline-block;
-  }
-  &:visited {
-    color: inherit;
+    &:visited {
+      color: inherit;
+    }
   }
 }
 
