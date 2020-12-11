@@ -25,7 +25,7 @@ const filter = (data, condition) => {
           ? v[element.question_id]
           : [v[element.question_id]]
         const intersection =
-          vs.filter(x => element.values?.includes(x.toString())) || []
+          vs.filter(x => element.values?.includes(x?.toString())) || []
         if (element.values.length !== 0 && intersection.length === 0)
           return false
       }
