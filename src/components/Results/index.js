@@ -40,7 +40,6 @@ const Results = () => {
           {content.map((c, i) => (
             <section id={slugify(c.title)} key={`section-${i}`}>
               <MDXRenderer>{c.body}</MDXRenderer>
-              <hr />
             </section>
           ))}
         </div>
