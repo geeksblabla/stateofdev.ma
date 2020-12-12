@@ -96,7 +96,7 @@ const Bar = ({ choice, x, total, onMouseEnter, onMouseLeave }) => {
           <p> {choice.label || "No Response "} </p>
           <p>
             {`${choice.percent}%`}
-            <span>/{total} resp</span>
+            <span>{choice.value}/{total} responses</span>
           </p>
         </td>
         <td className="value">
