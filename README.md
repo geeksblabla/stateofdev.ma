@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.geeksblablas.com">
@@ -63,6 +63,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://twitter.com/enlamp"><img src="https://avatars2.githubusercontent.com/u/4036528?v=4?s=100" width="100px;" alt=""/><br /><sub><b>djalal</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=djalal" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Aymane11"><img src="https://avatars2.githubusercontent.com/u/24499930?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aymane Boumaaza</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=Aymane11" title="Code">💻</a></td>
     <td align="center"><a href="https://blog.zhaytam.com/"><img src="https://avatars3.githubusercontent.com/u/34218324?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Haytam Zanid</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=zHaytam" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/boredabdel"><img src="https://avatars1.githubusercontent.com/u/1208914?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Abdel SGHIOUAR</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=boredabdel" title="Code">💻</a></td>
   </tr>
 </table>
 
