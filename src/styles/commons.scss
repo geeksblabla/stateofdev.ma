@@ -80,8 +80,9 @@ a {
     font-size: 14px;
     margin: 1rem;
     display: inline-block;
+    color: var(--black);
     &:visited {
-      color: inherit;
+      color: var(--black);
     }
   }
 }
