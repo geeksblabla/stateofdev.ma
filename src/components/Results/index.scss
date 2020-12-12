@@ -18,6 +18,7 @@
     }
   }
   .table-of-content {
+    margin-top: 2rem;
     position: sticky;
     top: 2rem;
     padding: 2rem 2rem;
@@ -99,7 +100,8 @@
     font-weight: bold;
   }
   section {
-    padding-top: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     border-bottom: 1px solid #eeeeee;
   }
 }
