@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.geeksblablas.com">
@@ -58,13 +58,18 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://elazizi.com/"><img src="https://avatars0.githubusercontent.com/u/11137944?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Youssouf EL AZIZI</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=yjose" title="Code">💻</a></td>
-    <td align="center"><a href="http://aboullaite.me/"><img src="https://avatars0.githubusercontent.com/u/2836850?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mohammed Aboullaite</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=aboullaite" title="Code">💻</a></td>
-    <td align="center"><a href="https://twitter.com/enlamp"><img src="https://avatars2.githubusercontent.com/u/4036528?v=4?s=100" width="100px;" alt=""/><br /><sub><b>djalal</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=djalal" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/Aymane11"><img src="https://avatars2.githubusercontent.com/u/24499930?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aymane Boumaaza</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=Aymane11" title="Code">💻</a></td>
-    <td align="center"><a href="https://blog.zhaytam.com/"><img src="https://avatars3.githubusercontent.com/u/34218324?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Haytam Zanid</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=zHaytam" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/boredabdel"><img src="https://avatars1.githubusercontent.com/u/1208914?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Abdel SGHIOUAR</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=boredabdel" title="Code">💻</a></td>
-    <td align="center"><a href="http://stackoverflow.com/users/4689497/"><img src="https://avatars0.githubusercontent.com/u/5012992?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Youness IABITEN</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=Yiabiten" title="Code">💻</a></td>
+    <td align="center"><a href="https://elazizi.com/"><img src="https://avatars0.githubusercontent.com/u/11137944?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Youssouf EL AZIZI</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=yjose" title="Code">💻</a> <a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=yjose" title="Documentation">📖</a> <a href="#content-yjose" title="Content">🖋</a> <a href="#ideas-yjose" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="http://aboullaite.me/"><img src="https://avatars0.githubusercontent.com/u/2836850?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Mohammed Aboullaite</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=aboullaite" title="Code">💻</a> <a href="#content-aboullaite" title="Content">🖋</a> <a href="#ideas-aboullaite" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/ismailElazizi"><img src="https://avatars1.githubusercontent.com/u/22155037?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Ismail El Azizi</b></sub></a><br /><a href="#design-ismailElazizi" title="Design">🎨</a> <a href="#content-ismailElazizi" title="Content">🖋</a> <a href="#ideas-ismailElazizi" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://twitter.com/enlamp"><img src="https://avatars2.githubusercontent.com/u/4036528?v=4?s=120" width="120px;" alt=""/><br /><sub><b>djalal</b></sub></a><br /><a href="#content-djalal" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/iMeriem"><img src="https://avatars1.githubusercontent.com/u/11720929?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Meriem Zaid</b></sub></a><br /><a href="#content-iMeriem" title="Content">🖋</a> <a href="#ideas-iMeriem" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/Aymane11"><img src="https://avatars2.githubusercontent.com/u/24499930?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Aymane Boumaaza</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=Aymane11" title="Code">💻</a></td>
+    <td align="center"><a href="https://blog.zhaytam.com/"><img src="https://avatars3.githubusercontent.com/u/34218324?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Haytam Zanid</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=zHaytam" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/boredabdel"><img src="https://avatars1.githubusercontent.com/u/1208914?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Abdel SGHIOUAR</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=boredabdel" title="Code">💻</a></td>
+    <td align="center"><a href="http://stackoverflow.com/users/4689497/"><img src="https://avatars0.githubusercontent.com/u/5012992?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Youness IABITEN</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=Yiabiten" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ezzarghili"><img src="https://avatars2.githubusercontent.com/u/8616968?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Mohamed Ez-zarghili</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=ezzarghili" title="Code">💻</a></td>
   </tr>
 </table>
 

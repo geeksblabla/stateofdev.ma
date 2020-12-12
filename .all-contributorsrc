@@ -6,7 +6,7 @@
   "files": [
     "README.md"
   ],
-  "imageSize": 100,
+  "imageSize": 120,
   "commit": true,
   "commitConvention": "none",
   "contributors": [
@@ -16,7 +16,10 @@
       "avatar_url": "https://avatars0.githubusercontent.com/u/11137944?v=4",
       "profile": "https://elazizi.com/",
       "contributions": [
-        "code"
+        "code",
+        "doc",
+        "content",
+        "ideas"
       ]
     },
     {
@@ -25,7 +28,20 @@
       "avatar_url": "https://avatars0.githubusercontent.com/u/2836850?v=4",
       "profile": "http://aboullaite.me/",
       "contributions": [
-        "code"
+        "code",
+        "content",
+        "ideas"
+      ]
+    },
+    {
+      "login": "ismailElazizi",
+      "name": "Ismail El Azizi",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/22155037?v=4",
+      "profile": "https://github.com/ismailElazizi",
+      "contributions": [
+        "design",
+        "content",
+        "ideas"
       ]
     },
     {
@@ -34,7 +50,17 @@
       "avatar_url": "https://avatars2.githubusercontent.com/u/4036528?v=4",
       "profile": "https://twitter.com/enlamp",
       "contributions": [
-        "code"
+        "content"
+      ]
+    },
+    {
+      "login": "iMeriem",
+      "name": "Meriem Zaid",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/11720929?v=4",
+      "profile": "https://github.com/iMeriem",
+      "contributions": [
+        "content",
+        "ideas"
       ]
     },
     {
@@ -69,6 +95,15 @@
       "name": "Youness IABITEN",
       "avatar_url": "https://avatars0.githubusercontent.com/u/5012992?v=4",
       "profile": "http://stackoverflow.com/users/4689497/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ezzarghili",
+      "name": "Mohamed Ez-zarghili",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/8616968?v=4",
+      "profile": "https://github.com/ezzarghili",
       "contributions": [
         "code"
       ]
