@@ -46,7 +46,41 @@ More than 80% of all respondents reported that they found a job after just a cou
 
 ### Your salary range (DH) is
 
-<Chart id="work-q-5" sort={false} title={false} />
+Given the fact that around 30% of respondents are either Students or unemployed, it explains why we see the lowest salary came in the first place. Keep in mind that this survey covers all over Morocco, salaries vary depending on cities.
+
+<Tabs>
+  <TabItem title="All">
+    <Chart id="work-q-5" sort={false} title={false} />
+  </TabItem>
+  <TabItem title="Bac+5 ">
+    <Chart
+      id="work-q-5"
+      title={false}
+      sort={false}
+      groupBy="profile-q-5"
+      condition={[
+        {
+          question_id: "profile-q-4",
+          values: ["3"],
+        },
+      ]}
+    />
+  </TabItem>
+  <TabItem title="Bac +2">
+    <Chart
+      id="work-q-5"
+      title={false}
+      sort={false}
+      groupBy="profile-q-5"
+      condition={[
+        {
+          question_id: "profile-q-4",
+          values: ["1"],
+        },
+      ]}
+    />
+  </TabItem>
+</Tabs>
 
 ### What characteristics would most influence your decision to choose one job offer over another?
 
