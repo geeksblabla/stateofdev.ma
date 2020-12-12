@@ -1,0 +1,24 @@
+{
+  "projectName": "stateofdev.ma",
+  "projectOwner": "DevC-Casa",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "yjose",
+      "name": "Youssouf EL AZIZI",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/11137944?v=4",
+      "profile": "https://elazizi.com/",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
