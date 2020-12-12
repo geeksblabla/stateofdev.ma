@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.geeksblablas.com">
@@ -60,6 +60,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://elazizi.com/"><img src="https://avatars0.githubusercontent.com/u/11137944?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Youssouf EL AZIZI</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=yjose" title="Code">💻</a></td>
     <td align="center"><a href="http://aboullaite.me/"><img src="https://avatars0.githubusercontent.com/u/2836850?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mohammed Aboullaite</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=aboullaite" title="Code">💻</a></td>
+    <td align="center"><a href="https://twitter.com/enlamp"><img src="https://avatars2.githubusercontent.com/u/4036528?v=4?s=100" width="100px;" alt=""/><br /><sub><b>djalal</b></sub></a><br /><a href="https://github.com/DevC-Casa/stateofdev.ma/commits?author=djalal" title="Code">💻</a></td>
   </tr>
 </table>
 
