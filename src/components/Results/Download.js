@@ -16,7 +16,7 @@ export const Download = () => {
             }}
             download
             target="_blank"
-            href="https://raw.githubusercontent.com/DevC-Casa/stateofdev.ma/results_prview/results/2020/state-of-dev-ma-2020.zip"
+            href="https://github.com/DevC-Casa/stateofdev.ma/blob/results_prview/results/2020/state-od-dev-ma-2020.zip?raw=true"
           >
             <svg
               style={{ marginRight: 10 }}

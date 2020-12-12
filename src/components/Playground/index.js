@@ -38,6 +38,7 @@ export default function Index() {
   if (isLoading)
     return (
       <div className="container">
+        <Header />
         <p> loading playground .... </p>
       </div>
     )
@@ -49,7 +50,7 @@ export default function Index() {
         <Header />
       </div>
 
-      <main className=" container playground">
+      <main className="container playground">
         {data?.questions && (
           <FilterForm
             questions={data.questions}
@@ -64,6 +65,7 @@ export default function Index() {
               condition={condition}
               source={data.results.results}
               groupBy={groupBy}
+              sort={false}
             />
           )}
         </div>
