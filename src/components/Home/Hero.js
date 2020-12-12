@@ -19,7 +19,7 @@ export const Hero = () => (
           </p>
           <div className="actions">
             <a className="primary" href="#overview">
-              Read Report
+              Read the report
               {/* Take Part In The Survey */}
             </a>
             {/* <p>
