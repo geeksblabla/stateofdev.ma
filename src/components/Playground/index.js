@@ -35,6 +35,8 @@ export default function Index() {
     if (isBrowser()) window.location.hash = queryString.stringify(search)
   }, [question, condition, groupBy])
 
+  // console.log(condition, groupBy)
+
   if (isLoading)
     return (
       <div className="container">

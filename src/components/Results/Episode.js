@@ -1,30 +1,19 @@
 import React from "react"
 import { Link } from "gatsby"
 
-export const Download = () => {
+export const Episode = () => {
   return (
-    <div className="download">
-      <div className="d-main">
-        <h2> Play with survey results using online playground </h2>
-        <div className="actions">
-          <Link to="/playground" className="primary">
-            Open Results Playground
-          </Link>
-          <a
-            className="outline"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-            download
-            target="_blank"
-            href="https://github.com/DevC-Casa/stateofdev.ma/blob/results_prview/results/2020/state-od-dev-ma-2020.zip?raw=true"
-          >
-            <DownloadIcon />
-            Download Survey Results
-          </a>
-        </div>
+    <div className="episode">
+      <p> Watch what community said about results </p>
+      <div class="video-container">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/RDhE0RUbkJI"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
   )

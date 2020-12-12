@@ -40,14 +40,17 @@
       line-height: 30px;
     }
 
-    div {
+    .intro {
       max-width: 500px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-    svg {
+    .crea {
+      display: flex;
       flex: 1;
+      align-items: flex-end;
+      justify-content: flex-end;
     }
     .actions {
       display: flex;

@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Layout } from "./Layout"
 import { Download } from "./Download"
+import { Episode } from "./Episode"
 import { Hero } from "../Home/Hero"
 import TableOfContent, { slugify } from "./TableOfContent"
 import "./index.scss"
@@ -46,6 +47,9 @@ const Results = () => {
       </div>
       <div className="container">
         <Download />
+      </div>
+      <div className="container">
+        <Episode />
       </div>
       <Footer />
     </Layout>

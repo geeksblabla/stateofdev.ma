@@ -1,0 +1,124 @@
+{
+  "projectName": "stateofdev.ma",
+  "projectOwner": "DevC-Casa",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 120,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "yjose",
+      "name": "Youssouf EL AZIZI",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/11137944?v=4",
+      "profile": "https://elazizi.com/",
+      "contributions": [
+        "code",
+        "doc",
+        "content",
+        "ideas"
+      ]
+    },
+    {
+      "login": "aboullaite",
+      "name": "Mohammed Aboullaite",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/2836850?v=4",
+      "profile": "http://aboullaite.me/",
+      "contributions": [
+        "code",
+        "content",
+        "ideas"
+      ]
+    },
+    {
+      "login": "ismailElazizi",
+      "name": "Ismail El Azizi",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/22155037?v=4",
+      "profile": "https://github.com/ismailElazizi",
+      "contributions": [
+        "design",
+        "content",
+        "ideas"
+      ]
+    },
+    {
+      "login": "djalal",
+      "name": "djalal",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4036528?v=4",
+      "profile": "https://twitter.com/enlamp",
+      "contributions": [
+       "content",
+        "ideas"
+      ]
+    },
+    {
+      "login": "iMeriem",
+      "name": "Meriem Zaid",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/11720929?v=4",
+      "profile": "https://github.com/iMeriem",
+      "contributions": [
+        "content",
+        "ideas"
+      ]
+    },
+    {
+      "login": "ezzarghili",
+      "name": "Mohamed Ez-zarghili",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/8616968?v=4",
+      "profile": "https://github.com/ezzarghili",
+      "contributions": [
+        "content",
+        "ideas"
+      ]
+    },
+    {
+      "login": "Aymane11",
+      "name": "Aymane Boumaaza",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/24499930?v=4",
+      "profile": "https://github.com/Aymane11",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "zHaytam",
+      "name": "Haytam Zanid",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/34218324?v=4",
+      "profile": "https://blog.zhaytam.com/",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "boredabdel",
+      "name": "Abdel SGHIOUAR",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1208914?v=4",
+      "profile": "https://github.com/boredabdel",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "Yiabiten",
+      "name": "Youness IABITEN",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/5012992?v=4",
+      "profile": "http://stackoverflow.com/users/4689497/",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "Ismailtlem",
+      "name": "Ismail Tlemçani",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/34961373?v=4",
+      "profile": "https://github.com/Ismailtlem",
+      "contributions": [
+        "content"
+      ]
+    }
+  ],
+  "contributorsPerLine": 6
+}
