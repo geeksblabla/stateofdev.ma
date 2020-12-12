@@ -64,6 +64,16 @@
       ]
     },
     {
+      "login": "ezzarghili",
+      "name": "Mohamed Ez-zarghili",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/8616968?v=4",
+      "profile": "https://github.com/ezzarghili",
+      "contributions": [
+        "content",
+        "ideas"
+      ]
+    },
+    {
       "login": "Aymane11",
       "name": "Aymane Boumaaza",
       "avatar_url": "https://avatars2.githubusercontent.com/u/24499930?v=4",
@@ -100,14 +110,14 @@
       ]
     },
     {
-      "login": "ezzarghili",
-      "name": "Mohamed Ez-zarghili",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/8616968?v=4",
-      "profile": "https://github.com/ezzarghili",
+      "login": "Ismailtlem",
+      "name": "Ismail Tlemçani",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/34961373?v=4",
+      "profile": "https://github.com/Ismailtlem",
       "contributions": [
         "code"
       ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 6
 }
