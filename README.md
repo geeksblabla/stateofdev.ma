@@ -15,7 +15,7 @@
 
 StateOfDev.ma is a survey centered around software developers in Morocco by DevC Morocco Community.
 
-we wanted to know how we can help and support each other, and overall, be able to better respond to developers’ evolving needs.
+We wanted to know how we can help and support each other, and overall be able to better respond to developers evolving needs.
 
 The website is built using [Gatsbyjs](http://gatsbyjs.org)
 
