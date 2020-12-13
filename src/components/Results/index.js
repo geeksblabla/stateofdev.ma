@@ -54,7 +54,6 @@ const Results = () => {
       <Actions />
 
       <Episode />
-      <Footer />
     </Layout>
   )
 }
