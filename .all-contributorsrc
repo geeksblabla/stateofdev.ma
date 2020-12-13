@@ -50,7 +50,7 @@
       "avatar_url": "https://avatars2.githubusercontent.com/u/4036528?v=4",
       "profile": "https://twitter.com/enlamp",
       "contributions": [
-       "content",
+        "content",
         "ideas"
       ]
     },
@@ -115,6 +115,15 @@
       "name": "Ismail Tlemçani",
       "avatar_url": "https://avatars1.githubusercontent.com/u/34961373?v=4",
       "profile": "https://github.com/Ismailtlem",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "AbderrahimSoubaiElidrissi",
+      "name": "Abderrahim SOUBAI",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/11523791?v=4",
+      "profile": "https://soubai.me/",
       "contributions": [
         "content"
       ]

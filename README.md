@@ -1,7 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.geeksblablas.com">
@@ -70,9 +68,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/Aymane11"><img src="https://avatars2.githubusercontent.com/u/24499930?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Aymane Boumaaza</b></sub></a><br /><a href="#content-Aymane11" title="Content">🖋</a></td>
     <td align="center"><a href="https://blog.zhaytam.com/"><img src="https://avatars3.githubusercontent.com/u/34218324?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Haytam Zanid</b></sub></a><br /><a href="#content-zHaytam" title="Content">🖋</a></td>
-    <td align="center"><a href="https://github.com/boredabdel"><img src="https://avatars1.githubusercontent.com/u/1208914?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Abdel SGHIOUAR</b></sub></a><br /><a href="#content-boredabdel" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/boredabdel"><img src="https://avatars1.githubusercontent.com/u/1208914?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Abdelfettah SGHIOUAR</b></sub></a><br /><a href="#content-boredabdel" title="Content">🖋</a></td>
     <td align="center"><a href="http://stackoverflow.com/users/4689497/"><img src="https://avatars0.githubusercontent.com/u/5012992?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Youness IABITEN</b></sub></a><br /><a href="#content-Yiabiten" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/Ismailtlem"><img src="https://avatars1.githubusercontent.com/u/34961373?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Ismail Tlemçani</b></sub></a><br /><a href="#content-Ismailtlem" title="Content">🖋</a></td>
+    <td align="center"><a href="https://soubai.me/"><img src="https://avatars0.githubusercontent.com/u/11523791?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Abderrahim SOUBAI</b></sub></a><br /><a href="#content-AbderrahimSoubaiElidrissi" title="Content">🖋</a></td>
   </tr>
 </table>
 
@@ -82,3 +81,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## Credit
+
+This project is inspired by :
+
+- [Stack Overflow Survey ](https://insights.stackoverflow.com/survey/2020)
+- [State of Front-end Survey](https://tsh.io/state-of-frontend/)
