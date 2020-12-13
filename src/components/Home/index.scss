@@ -80,6 +80,7 @@
     .primary,
     .outline {
       margin-top: 0;
+      margin-left: 0;
     }
     @include breakpoint(mobileonly) {
       flex-direction: column-reverse;

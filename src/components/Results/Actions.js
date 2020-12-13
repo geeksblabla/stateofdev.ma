@@ -12,7 +12,7 @@ export const Actions = () => {
           <Playground />
           <p> Play with survey results using online playground </p>
           <Link to="/playground" className="outline">
-            Open Results Playground
+            Open results playground
           </Link>
         </div>
 
@@ -25,7 +25,7 @@ export const Actions = () => {
             target="_blank"
             href="https://github.com/DevC-Casa/stateofdev.ma/blob/results_prview/results/2020/state-od-dev-ma-2020.zip?raw=true"
           >
-            Download Survey Results
+            Download raw results
           </a>
         </div>
 
