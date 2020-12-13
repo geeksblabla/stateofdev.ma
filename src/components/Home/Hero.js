@@ -2,7 +2,7 @@ import React from "react"
 import { Header } from "../Header"
 import Crea from "../../assets/Crea.svg"
 // import TimeIcon from "../../assets/time.svg"
-// import { Link } from "gatsby"
+import { Link } from "gatsby"
 
 export const Hero = () => (
   <div className="hero">
@@ -18,10 +18,12 @@ export const Hero = () => (
             using, and what they want to learn next.
           </p>
           <div className="actions">
-            <a className="primary" href="#overview">
+            <Link className="primary" to="/#overview">
               Read the report
-              {/* Take Part In The Survey */}
-            </a>
+            </Link>
+            <Link to="/#video-episode" className="outline">
+              Watch GeeksBlabla episode
+            </Link>
             {/* <p>
               <TimeIcon /> 5 min
             </p> */}

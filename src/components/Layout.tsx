@@ -7,13 +7,13 @@ export const Layout = ({ children }) => (
   <>
     <GatsbySeo
       title="State of Dev In Morocco"
-      description="Take part in the survey and let the us know what the developer’s job really looks like in Morocco 🇲🇦"
+      description="In November 2020, 2287 developers from Morocco 🇲🇦 told us about their jobs satisfaction, salaries, and community contribution, how they learn and level up, which tools they’re using, and what they want to learn next."
       canonical="https://stateofdev.ma"
       openGraph={{
         url: "https://stateofdev.ma",
         title: "State of Dev In Morocco",
         description:
-          "Take part in the survey and let the us know what the developer’s job really looks like in Morocco 🇲🇦",
+          "In November 2020, 2287 developers from Morocco 🇲🇦 told us about their jobs satisfaction, salaries, and community contribution, how they learn and level up, which tools they’re using, and what they want to learn next.",
         images: [{ url: "https://www.stateofdev.ma/images/cover.png" }],
         site_name: "StateOfDevMa",
       }}

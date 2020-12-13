@@ -3,6 +3,7 @@ import "./index.scss"
 import { BarChart } from "./BarChart"
 import { getPercent, getQuestion } from "./utils"
 import Pie from "./PieChart"
+import { Actions } from "./Actions"
 
 export const Chart = ({
   id,
@@ -28,13 +29,14 @@ export const Chart = ({
     })
 
   return (
-    <div className="chart">
+    <div className="chart" id={id}>
       <h4>{title ? (typeof title === "string" ? title : label) : null}</h4>
       {pie ? (
         <Pie results={res} total={total} />
       ) : (
         <BarChart results={res} total={total} />
       )}
+      <Actions id={id} />
     </div>
   )
 }

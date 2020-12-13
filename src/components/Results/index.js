@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Layout } from "./Layout"
-import { Download } from "./Download"
+import { Actions } from "./Actions"
 import { Episode } from "./Episode"
 import { Hero } from "../Home/Hero"
 import TableOfContent, { slugify } from "./TableOfContent"
@@ -11,13 +11,18 @@ import { Footer } from "../Footer"
 
 const DATA = graphql`
   {
-    allMdx(sort: { fields: frontmatter___position, order: ASC }) {
+    allMdx(
+      sort: { fields: frontmatter___position, order: ASC }
+      filter: { fileAbsolutePath: { regex: "/2020/" } }
+    ) {
       edges {
         node {
+          body
+          id
           frontmatter {
+            position
             title
           }
-          body
         }
       }
     }
@@ -45,12 +50,10 @@ const Results = () => {
           ))}
         </div>
       </div>
-      <div className="container">
-        <Download />
-      </div>
-      <div className="container">
-        <Episode />
-      </div>
+
+      <Actions />
+
+      <Episode />
       <Footer />
     </Layout>
   )

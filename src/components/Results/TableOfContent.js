@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 
 export function slugify(text) {
   return text
@@ -13,13 +14,14 @@ const TableOfContent = ({ titles }) => {
       entries => {
         entries.forEach(entry => {
           const id = entry.target.getAttribute("id")
+          if (!document.querySelector(`li a[href="/#${id}"]`)) return
           if (entry.intersectionRatio > 0.1) {
             document
-              .querySelector(`li a[href="#${id}"]`)
+              .querySelector(`li a[href="/#${id}"]`)
               .parentElement.classList.add("active")
           } else {
             document
-              .querySelector(`li a[href="#${id}"]`)
+              .querySelector(`li a[href="/#${id}"]`)
               .parentElement.classList.remove("active")
           }
         })
@@ -43,9 +45,9 @@ const TableOfContent = ({ titles }) => {
         <ul>
           {titles.map((title, index) => (
             <li key={`item-${index}`}>
-              <a href={`#${slugify(title)}`}>
+              <Link to={`#${slugify(title)}`}>
                 0{index + 1}: {title}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

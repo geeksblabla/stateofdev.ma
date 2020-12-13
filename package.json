@@ -44,7 +44,8 @@
     "react-recaptcha": "^2.3.10",
     "react-share": "^4.3.1",
     "react-tabs": "^3.1.1",
-    "react-tooltip": "^4.2.10"
+    "react-tooltip": "^4.2.10",
+    "reactjs-popup": "^2.0.4"
   },
   "devDependencies": {
     "all-contributors-cli": "^6.19.0",

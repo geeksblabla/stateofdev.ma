@@ -101,7 +101,6 @@
   section {
     padding-top: 2rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid #eeeeee;
   }
   a {
     color: var(--green);
@@ -112,47 +111,56 @@
   }
 }
 
-.download {
-  padding: 3rem 0.5rem;
-  background: #ffffff;
-  box-shadow: -20px 24px 154px rgba(204, 209, 208, 0.49);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.actions-list {
   margin-top: 8rem;
   margin-bottom: 5rem;
-  border-radius: 15px;
   text-align: center;
-  h1 {
-    font-weight: bold;
-    font-size: 28px;
-  }
-  .d-main {
-    max-width: 600px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .actions {
+
+  .container {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
   }
 
+  .action-item {
+    margin-top: 2rem;
+    width: 25%;
+    min-width: 300px;
+    padding: 3rem 2rem;
+    background: #ffffff;
+    box-shadow: 0px 14px 60px rgba(204, 209, 208, 0.28);
+    border-radius: 15px;
+    @include breakpoint(mobileonly) {
+      min-width: 300px;
+    }
+    p {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 140%;
+      text-align: center;
+      color: #333333;
+    }
+  }
   a:hover {
     transform: scale(1.03);
   }
 }
 
 .episode {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  background-color: #1e1e1e;
   align-items: center;
   padding-bottom: 2rem;
+  padding-top: 2rem;
+  h2 {
+    color: #ffffff;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+    max-width: 500px;
+    margin: 2rem auto;
+  }
 
   .video-container {
     overflow: hidden;

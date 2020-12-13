@@ -77,7 +77,8 @@
         }
       }
     }
-    .primary {
+    .primary,
+    .outline {
       margin-top: 0;
     }
     @include breakpoint(mobileonly) {

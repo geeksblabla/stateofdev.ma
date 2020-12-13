@@ -2,7 +2,7 @@
 @import "../../styles/mixins.scss";
 
 .chart {
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   color: #333333;
   table {
     width: 100%;
@@ -45,6 +45,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-end;
     width: 100%;
     font-size: 17px;
     p {
@@ -56,6 +57,10 @@
         line-height: 15px;
         color: #666666;
       }
+    }
+    .percent {
+      text-align: right;
+      min-width: 145px;
     }
   }
 
@@ -117,4 +122,59 @@
     flex-direction: column;
     flex-wrap: wrap;
   }
+}
+
+.chart-actions {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #747776a4;
+  .item {
+    cursor: pointer;
+    color: #747776a4;
+    display: flex;
+    margin-left: 1.5rem;
+    &:visited {
+      color: #747776a4;
+    }
+    &:hover {
+      color: var(--green);
+    }
+    svg {
+      margin-right: 4px;
+    }
+  }
+}
+.popup-content {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  width: 50%;
+  padding: 5px;
+  border: 1px solid #d7d7d74b;
+}
+.popup-arrow {
+  color: rgb(255, 255, 255);
+}
+[role="tooltip"].popup-content {
+  width: fit-content;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+  border-radius: 5px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup="tooltip"].popup-overlay {
+  background: transparent;
+}
+
+.popup-arrow {
+  color: #fff;
+  stroke-width: 2px;
+  stroke: #d7d7d74b;
+  stroke-dasharray: 30px;
+  stroke-dashoffset: -54px;
 }

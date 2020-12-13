@@ -13673,6 +13673,11 @@ react@^17.0.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
+reactjs-popup@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/reactjs-popup/-/reactjs-popup-2.0.4.tgz#53f585a2b19fb730b127a166ffffa2672e144fa1"
+  integrity sha512-G5jTXL2JkClKAYAdqedf+K9QvbNsFWvdbrXW1/vWiyanuCU/d7DtQzQux+uKOz2HeNVRsFQHvs7abs0Z7VLAhg==
+
 read-chunk@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/read-chunk/-/read-chunk-3.2.0.tgz#2984afe78ca9bfbbdb74b19387bf9e86289c16ca"
