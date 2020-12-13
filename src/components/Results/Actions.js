@@ -23,7 +23,7 @@ export const Actions = () => {
             className="outline"
             download
             target="_blank"
-            href="https://github.com/DevC-Casa/stateofdev.ma/blob/results_prview/results/2020/state-od-dev-ma-2020.zip?raw=true"
+            href="https://github.com/DevC-Casa/stateofdev.ma/blob/master/results/2020/state-od-dev-ma-2020.zip?raw=true"
           >
             Download raw results
           </a>
