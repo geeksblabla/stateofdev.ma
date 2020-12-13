@@ -3,10 +3,13 @@
 @import "./mixins.scss";
 @import "./font.scss";
 
+html {
+  scroll-behavior: smooth;
+}
 body {
   background: var(--main-bg-color);
   color: var(--black);
-  font-family: "Open Sans";
+  font-family: Inter;
   font-style: normal;
   background-repeat: no-repeat;
   background-position-y: 6rem;
@@ -42,6 +45,8 @@ body {
 
 a {
   text-decoration: none;
+  cursor: pointer;
+
   &.primary {
     padding: 1rem 2rem;
     background: var(--green);
@@ -53,6 +58,32 @@ a {
     margin-top: 2rem;
     width: fit-content;
     font-weight: bold;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 1rem;
+    display: inline-block;
+    &:visited {
+      color: #fff;
+    }
+  }
+  &.outline {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 40px;
+    border: 1px solid var(--green);
+    cursor: pointer;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 1rem;
+    display: inline-block;
+    color: var(--green);
+    &:visited {
+      color: var(--green);
+    }
   }
 }
 
@@ -65,8 +96,8 @@ a {
 
 .share-buttons {
   button {
-    margin: 1rem;
-    border-radius: 5px;
+    margin: 0.3rem 0.6rem;
+    border-radius: 10px;
   }
   button:hover {
     transform: scale(1.1);

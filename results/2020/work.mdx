@@ -1,0 +1,107 @@
+---
+title: Work
+position: 4
+---
+
+# 4.Work
+
+Around 60% of Moroccan developers are employed, either full-time, part-time, or as freelancers. About 28% of all participants say they're students.
+Surprisingly, more than 70% of respondents reported that the Pandemic did not have a negative impact on them. On the contrary, more than 56% claim they have been more productive during the lockdown!
+
+### Current role
+
+More than 80% of all respondents qualify themselves as developers, and more than 43% of them are full-stack developers. While new emerging roles start gaining popularity in the market, should we expect a shift in the upcoming years?
+
+<Chart id="profile-q-3" title={false} />
+
+### Employment status
+
+Almost 13% of respondents are looking for a job opportunity. Keep in mind that this survey's data was collected during the Pandemic (Covid-19), which impacted many jobs.
+
+<Chart id="work-q-0" title={false} />
+
+### Working overtime
+
+Almost 79% of participants claim that they work at least occasionally overtime. Why is that? Is it by passion, dedication to results or under estimated scheduling?
+
+<Chart id="work-q-1" title={false} />
+
+### Job satisfaction
+
+Around 80% of respondents reported they're somehow happy with their current job. This is consistent with Stackoverflow's own data on developers, feeling happy with their jobs.
+
+<Chart id="work-q-2" title={false} />
+
+### Side projects
+
+Almost 60% of respondents work on side projects to improve their skills, strengthen their knowledge, and invest in themselves.
+
+<Chart id="work-q-3" title={false} />
+
+### Unemployment after graduation
+
+More than 80% of all respondents reported that they found a job after just a couple of months of their graduation.
+
+<Chart id="work-q-4" title={false} />
+
+### Salaries
+
+Given the fact that around 30% of respondents are either students or unemployed, it explains why the lowest salary came in the first place. Keep in mind that this survey covers all Morocco, salaries vary across cities.
+
+<Tabs>
+  <TabItem title="All">
+    <Chart id="work-q-5" sort={false} title={false} groupBy="profile-q-5" />
+  </TabItem>
+  <TabItem title="Bac+5 ">
+    <Chart
+      id="work-q-5"
+      title={false}
+      sort={false}
+      groupBy="profile-q-5"
+      condition={[
+        {
+          question_id: "profile-q-4",
+          values: ["3"],
+        },
+      ]}
+    />
+  </TabItem>
+  <TabItem title="Bac +2">
+    <Chart
+      id="work-q-5"
+      title={false}
+      sort={false}
+      groupBy="profile-q-5"
+      condition={[
+        {
+          question_id: "profile-q-4",
+          values: ["1"],
+        },
+      ]}
+    />
+  </TabItem>
+</Tabs>
+
+### Choosing a job offer
+
+Salary, technical stack and culture are the top three motivators for Moroccan developers to consider a job offer. Data shows industry and work impact have the least weight in career decisions.
+
+<Chart id="work-q-6" title={false} />
+
+### Preferred company types
+
+More than 34% of respondents prefer to work in a multinational company.
+
+<Chart id="work-q-7" title={false} />
+
+### Impact of the COVID-19 pandemic on companies
+
+Moroccan IT companies promptly adopted a remote policy during the pandemic, with more than 83% of developers working remotely.
+
+<Chart id="work-q-8" title={false} />
+
+### Productivity during the COVID-19 pandemic
+
+More than 70% of respondents confirmed that the pandemic did not impact their productivity. Almost 25% of them even saw their producitivity boosted.
+
+<Chart id="work-q-9" title={false} />

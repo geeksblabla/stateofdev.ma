@@ -32,7 +32,7 @@
     justify-content: center;
     align-items: center;
     p {
-      font-family: Open Sans;
+      font-family: Inter;
       font-style: normal;
       font-size: 18px;
       color: #2c322b;
@@ -40,14 +40,17 @@
       line-height: 30px;
     }
 
-    div {
+    .intro {
       max-width: 500px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-    svg {
+    .crea {
+      display: flex;
       flex: 1;
+      align-items: flex-end;
+      justify-content: flex-end;
     }
     .actions {
       display: flex;
@@ -74,7 +77,8 @@
         }
       }
     }
-    .primary {
+    .primary,
+    .outline {
       margin-top: 0;
     }
     @include breakpoint(mobileonly) {

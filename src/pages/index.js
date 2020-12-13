@@ -1,12 +1,11 @@
 import React from "react"
-import { Hero, Why, Layout, Interested } from "../components"
+import Results from "../components/Results/index"
+import { Layout } from "../components"
 
-export default function Home() {
+export default () => {
   return (
     <Layout>
-      <Hero />
-      <Why />
-      <Interested />
+      <Results />
     </Layout>
   )
 }

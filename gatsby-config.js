@@ -51,6 +51,26 @@ module.exports = {
         name: `survey`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/results/2020`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `articles`,
+        path: `${__dirname}/results/articles`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+      },
+    },
 
     {
       resolve: `gatsby-plugin-manifest`,
@@ -64,14 +84,14 @@ module.exports = {
         icon: `src/assets/logo.png`,
       },
     },
-    {
-      resolve: `gatsby-plugin-recaptcha`,
-      options: {
-        async: false,
-        defer: false,
-        args: `?onload=onloadCallback&render=explicit`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-recaptcha`,
+    //   options: {
+    //     async: false,
+    //     defer: false,
+    //     args: `?onload=onloadCallback&render=explicit`,
+    //   },
+    // },
     // {
     //   resolve: "gatsby-plugin-firebase",
     //   options: {
@@ -92,14 +112,20 @@ module.exports = {
         trackingId: "UA-127901499-5",
       },
     },
-    `gatsby-plugin-sass`,
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        implementation: require("sass"),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts-v2`,
       options: {
         fonts: [
           {
-            family: `Open Sans`,
-            variants: [`400`, `600`, `700`],
+            family: "Inter",
+            variable: true,
+            weights: ["400..700"],
           },
         ],
       },

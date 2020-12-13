@@ -8,7 +8,7 @@ module.exports = {
   siteLogo: "images/logo.png", // Used for SEO and manifest, path to your image you placed in the 'static' folder
   banner: "images/banner.png",
   siteDescription:
-    "Take part in the survey and let the us know what the developer’s job really looks like in Morocco 🇲🇦", // Author for schemaORGJSONLD
+    "In November 2020, 2287 developers from Morocco 🇲🇦 told us about their jobs satisfaction, salaries, and community contribution, how they learn and level up, which tools they’re using, and what they want to learn next.", // Author for schemaORGJSONLD
   organization: "DevC Morocco",
   author: "DevC Morocco",
   // siteFBAppID: '123456789', // Facebook App ID - Optional
