@@ -6,7 +6,7 @@ export const Episode = () => {
     <div className="episode" id="video-episode">
       <div className="container">
         <h2> Watch community members reacting to the survey results</h2>
-        <div class="video-container">
+        <div className="video-container">
           <iframe
             width="560"
             height="315"
