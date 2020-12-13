@@ -41,7 +41,7 @@ export default function Index() {
     return (
       <div className="container">
         <Header />
-        <p> loading playground .... </p>
+        <p style={{ textAlign: "center" }}> Loading playground data .... </p>
       </div>
     )
   if (error) return <p> Error loading data </p>

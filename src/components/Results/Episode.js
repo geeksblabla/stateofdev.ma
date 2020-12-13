@@ -1,6 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
-
 export const Episode = () => {
   return (
     <div className="episode" id="video-episode">
@@ -11,7 +9,7 @@ export const Episode = () => {
             width="560"
             height="315"
             src="https://www.youtube.com/embed/RDhE0RUbkJI"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
           ></iframe>

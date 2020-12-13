@@ -84,14 +84,14 @@ module.exports = {
         icon: `src/assets/logo.png`,
       },
     },
-    {
-      resolve: `gatsby-plugin-recaptcha`,
-      options: {
-        async: false,
-        defer: false,
-        args: `?onload=onloadCallback&render=explicit`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-recaptcha`,
+    //   options: {
+    //     async: false,
+    //     defer: false,
+    //     args: `?onload=onloadCallback&render=explicit`,
+    //   },
+    // },
     // {
     //   resolve: "gatsby-plugin-firebase",
     //   options: {
