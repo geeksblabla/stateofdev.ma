@@ -2,7 +2,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
-  <a href="https://www.geeksblablas.com">
+  <a href="https://www.geeksblabla.com">
   <img width="477" alt="logo" src="https://user-images.githubusercontent.com/11137944/101990595-01f5f280-3ca8-11eb-8873-95a6234fb096.png">
   </a>
 </p>
