@@ -30,6 +30,7 @@ export default function Index() {
   const question = watch("question")
   const condition = watch("condition")
   const groupBy = watch("groupBy")
+  console.log(condition)
   React.useEffect(() => {
     const search = { question, condition: JSON.stringify(condition), groupBy }
     if (isBrowser()) window.location.hash = queryString.stringify(search)

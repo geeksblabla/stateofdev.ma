@@ -55,9 +55,7 @@ const Choice = ({
       <input
         type={multiple ? "checkbox" : "radio"}
         name={name}
-        ref={register({
-          required: required,
-        })}
+        {...register(name, { required })}
         id={id}
         value={index}
       />
