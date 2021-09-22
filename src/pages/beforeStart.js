@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useRef } from "react"
 import { navigate } from "gatsby"
 import ReCAPTCHA from "react-google-recaptcha"
 
-import firebase from "gatsby-plugin-firebase"
-import { logIn } from "../components/Survey/service"
+import { useAuth } from "../components/Survey/service"
 import { Layout, Header } from "../components"
 
 const RECAPTCHA_KEY = "6Lf63dgZAAAAAB-8Iw8zXdVMAtDTh0eeef-uQDjg"
@@ -17,15 +16,10 @@ export default () => {
     const reCaptchaValue = recaptchaRef.current.getValue()
     if (ready && reCaptchaValue) navigate("/start")
   }
-  useEffect(() => {
-    if (!firebase) return
-    logIn()
-    return firebase.auth().onAuthStateChanged(async user => {
-      if (user) {
-        setReady(true)
-      }
-    })
-  }, [firebase])
+  // authenticate as anonymous user
+  useAuth(() => {
+    setReady(true)
+  })
 
   return (
     <Layout>

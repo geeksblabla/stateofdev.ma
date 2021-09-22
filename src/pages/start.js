@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
-import firebase from "gatsby-plugin-firebase"
 import Survey from "../components/Survey"
-import { logIn, startSurvey } from "../components/Survey/service"
+import { startSurvey, useAuth } from "../components/Survey/service"
 import { Layout, Header } from "../components"
 
 const SurveyData = graphql`
@@ -31,16 +30,10 @@ export default () => {
   const survey = useStaticQuery(SurveyData)
   const data = survey.allSurveyYaml.edges
   const [ready, setReady] = useState(false)
-  useEffect(() => {
-    if (!firebase) return
-    logIn()
-    return firebase.auth().onAuthStateChanged(async user => {
-      if (user) {
-        setReady(true)
-        await startSurvey()
-      }
-    })
-  }, [firebase])
+  useAuth(() => {
+    setReady(true)
+    startSurvey()
+  })
 
   return (
     <Layout>

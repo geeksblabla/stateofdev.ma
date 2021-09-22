@@ -28,6 +28,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-yaml`,
+    `gatsby-plugin-firebase-app`,
     {
       resolve: "gatsby-plugin-next-seo",
       options: {
@@ -93,7 +94,7 @@ module.exports = {
     //   },
     // },
     // {
-    //   resolve: "gatsby-plugin-firebase",
+    //   ,
     //   options: {
     //     credentials: {
     //       apiKey: process.env.FIREBASE_API_KEY,
