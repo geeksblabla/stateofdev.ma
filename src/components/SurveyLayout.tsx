@@ -5,7 +5,7 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3"
 import { Layout } from "./Layout"
 
 export const SurveyLayout = ({ children }) => (
-  <GoogleReCaptchaProvider reCaptchaKey={process.env.RECAPTCHA_KEY}>
+  <GoogleReCaptchaProvider reCaptchaKey={process.env.GATSBY_RECAPTCHA_KEY}>
     <Layout>
       {children}
       <Footer />
