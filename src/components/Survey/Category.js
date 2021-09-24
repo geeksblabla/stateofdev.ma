@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { useCallback, useState } from "react"
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { useForm } from "react-hook-form"
 import Question from "./Question"
 import { setAnswers } from "./service"
@@ -6,6 +7,7 @@ import { setAnswers } from "./service"
 export default React.memo(({ category, next }) => {
   const [loading, setLoading] = useState(false)
   const { register, getValues } = useForm()
+  const { executeRecaptcha } = useGoogleReCaptcha()
   const [QIndex, setQIndex] = useState(0)
   const isLastQuestion = category.questions.length === QIndex + 1
   const isRequired = !!category.questions[QIndex].required
@@ -24,16 +26,34 @@ export default React.memo(({ category, next }) => {
     scrollToSection(".quiz-form")
   }
 
-  const submitData = async () => {
-    const data = getValues()
-    setLoading(true)
-    try {
-      await setAnswers(data)
-      next()
-    } catch (error) {
-      console.log(error)
+  const submitData = useCallback(async () => {
+    if (!executeRecaptcha) {
+      console.log("Execute recaptcha not yet available")
+    } else {
+      const token = await executeRecaptcha("start")
+      if (token) {
+        const data = getValues()
+        setLoading(true)
+        try {
+          await setAnswers(token, data)
+          next()
+        } catch (error) {
+          console.log(error)
+        }
+      }
     }
-  }
+  }, [executeRecaptcha])
+
+  // const submitData = async () => {
+  //   const data = getValues()
+  //   setLoading(true)
+  //   try {
+  //     await setAnswers(data)
+  //     next()
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
   return (
     <form className="quiz-form">
       {category.questions.map((q, i) => (

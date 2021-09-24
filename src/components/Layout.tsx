@@ -2,6 +2,7 @@ import React from "react"
 import { GatsbySeo } from "gatsby-plugin-next-seo"
 import { Footer } from "./Footer"
 import "../styles/commons.scss"
+import { ReCAPTCHA } from "react-google-recaptcha"
 
 export const Layout = ({ children }) => (
   <>
@@ -18,6 +19,12 @@ export const Layout = ({ children }) => (
         site_name: "StateOfDevMa",
       }}
     />
-    {children} <Footer />
+    {children}
+    <ReCAPTCHA
+      sitekey={process.env.RECAPTCHA_KEY}
+      size="invisible"
+      // ref={recaptchaRef}
+    />
+    <Footer />
   </>
 )
