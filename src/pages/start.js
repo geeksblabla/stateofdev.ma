@@ -64,8 +64,10 @@ export const Start = () => {
   )
 }
 
-export default () => (
+const StartPage = () => (
   <SurveyLayout>
     <Start />
   </SurveyLayout>
 )
+
+export default StartPage

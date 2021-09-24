@@ -1,13 +1,8 @@
 import firebase from "gatsby-plugin-firebase-app"
-import { useEffect, useLayoutEffect } from "react"
+import { useLayoutEffect } from "react"
 
 export const logIn = async () => {
   await firebase?.auth().signInAnonymously()
-}
-
-export const submitResponse = async data => {
-  const token = await firebase.auth().currentUser.getIdToken()
-  // send token in header
 }
 
 export const saveAnswers = async (recaptcha_token, data) => {
