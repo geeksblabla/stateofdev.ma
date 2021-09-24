@@ -23,7 +23,7 @@ export const saveAnswer = (userId: string, data: any) => {
 }
 
 export const getUser = (token: string) => {
-  return admin.auth().verifyIdToken(token)
+  return getFirebase().auth().verifyIdToken(token)
 }
 
 //https://developers.google.com/recaptcha/docs/verify
