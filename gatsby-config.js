@@ -1,6 +1,10 @@
 const config = require("./config/website")
 const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     siteUrl: config.siteUrl + pathPrefix,
@@ -28,7 +32,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-yaml`,
-    `gatsby-plugin-firebase-app`,
     {
       resolve: "gatsby-plugin-next-seo",
       options: {
@@ -72,7 +75,17 @@ module.exports = {
         extensions: [`.mdx`, `.md`],
       },
     },
-
+    {
+      resolve: "gatsby-plugin-firebase",
+      options: {
+        credentials: {
+          apiKey: process.env.FIREBASE_API_KEY,
+          authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+          projectId: process.env.FIREBASE_PROJECT_ID,
+          appId: process.env.FIREBASE_APP_ID,
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

@@ -1,4 +1,4 @@
-import firebase from "gatsby-plugin-firebase-app"
+import firebase from "gatsby-plugin-firebase"
 import { useLayoutEffect } from "react"
 
 export const logIn = async () => {
@@ -8,7 +8,7 @@ export const logIn = async () => {
 export const saveAnswers = async (recaptcha_token, data) => {
   const userToken = await firebase.auth().currentUser.getIdToken()
   console.log({ userToken, recaptcha_token })
-  const response = await fetch(".netlify/functions/submit", {
+  const response = await fetch("/.netlify/functions/submit", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
