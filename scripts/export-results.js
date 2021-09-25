@@ -21,7 +21,7 @@ const getFirebase = () => {
 
 function getFileName() {
   const now = new Date()
-  return `./scripts/data/${now.getFullYear()}-${
+  return `./scripts/${now.getFullYear()}-${
     now.getMonth() + 1
   }-${now.getDate()}----${now.getUTCHours()}H-${now.getMinutes()}min.json`
 }

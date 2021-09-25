@@ -97,4 +97,4 @@ yarn-error.log
 
 # Database exports
 
-scripts/data
+scripts/*.json
