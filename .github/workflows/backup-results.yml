@@ -31,4 +31,4 @@ jobs:
       - name: Upload results
         uses: actions/upload-artifact@v2
         with:
-          path: ./scripts/data/
+          path: scripts/data/
