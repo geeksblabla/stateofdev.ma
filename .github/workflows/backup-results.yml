@@ -29,6 +29,6 @@ jobs:
         run: yarn export-results
 
       - name: Upload results
-      - uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2
         with:
           path: ./scripts/data/*.json
