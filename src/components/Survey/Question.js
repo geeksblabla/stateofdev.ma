@@ -27,7 +27,7 @@ export default ({
             text={c}
             id={`${categoryId}-q-${index}-${i}`}
             name={`${categoryId}-q-${index}`}
-            index={i + 1}
+            index={i}
             register={register}
             key={`${categoryId}-q-${index}-${i}`}
             required={required}
@@ -66,7 +66,7 @@ const Choice = ({
             : "quiz-form__ans"
         }
       >
-        <span className="design">{index}</span>
+        <span className="design">{index + 1}</span>
         <span className="text">{text}</span>
       </div>
     </label>

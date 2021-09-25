@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "stateofdev.ma",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "stateofdev.ma website code source ",
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
@@ -12,7 +12,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "jest ",
-    "netlify": "netlify"
+    "netlify": "netlify",
+    "export-result": "node ./scripts/export-results.js"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
@@ -64,9 +65,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/DevC-Casa/stateofdev.ma"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/DevC-Casa/stateofdev.ma/issues"
   }
 }

@@ -38,7 +38,7 @@ export const Start = () => {
       console.log("Execute recaptcha not yet available")
     } else {
       const token = await executeRecaptcha("start")
-      console.log({ token })
+      // console.log({ token })
       if (token) startSurvey(token)
     }
   }, [executeRecaptcha])

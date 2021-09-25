@@ -7,7 +7,7 @@ export const logIn = async () => {
 
 export const saveAnswers = async (recaptcha_token, data) => {
   const userToken = await firebase.auth().currentUser.getIdToken()
-  console.log({ userToken, recaptcha_token })
+  // console.log({ userToken, recaptcha_token })
   const response = await fetch("/.netlify/functions/submit", {
     method: "POST",
     headers: {
@@ -24,6 +24,7 @@ export const startSurvey = async recaptcha_token => {
   const startTime = Date.now()
   saveAnswers(recaptcha_token, { startTime })
 }
+// TODO we should await here too
 export const setAnswers = (recaptcha_token, data) => {
   const lastSubmit = Date.now()
   saveAnswers(recaptcha_token, { lastSubmit, ...data })
