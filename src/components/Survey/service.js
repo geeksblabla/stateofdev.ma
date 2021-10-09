@@ -25,9 +25,9 @@ export const startSurvey = async recaptcha_token => {
   saveAnswers(recaptcha_token, { startTime })
 }
 // TODO we should await here too
-export const setAnswers = (recaptcha_token, data) => {
+export const setAnswers = async (recaptcha_token, data) => {
   const lastSubmit = Date.now()
-  saveAnswers(recaptcha_token, { lastSubmit, ...data })
+  await saveAnswers(recaptcha_token, { lastSubmit, ...data })
 }
 
 export const useAuth = (clk, deps = []) => {

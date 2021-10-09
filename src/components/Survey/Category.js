@@ -25,6 +25,9 @@ export default React.memo(({ category, next }) => {
     }
     scrollToSection(".quiz-form")
   }
+  const backToPreviousQ = () => {
+    if (QIndex > 0) setQIndex(QIndex => QIndex - 1)
+  }
 
   const submitData = useCallback(async () => {
     if (!executeRecaptcha) {
@@ -44,16 +47,6 @@ export default React.memo(({ category, next }) => {
     }
   }, [executeRecaptcha])
 
-  // const submitData = async () => {
-  //   const data = getValues()
-  //   setLoading(true)
-  //   try {
-  //     await setAnswers(data)
-  //     next()
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
   return (
     <form className="quiz-form">
       {category.questions.map((q, i) => (
@@ -69,14 +62,31 @@ export default React.memo(({ category, next }) => {
         />
       ))}
       <div className="actions">
-        {isRequired ? null : (
-          <button type="button" className="skip" onClick={() => nextQuestion()}>
-            Skip
+        <div>
+          {QIndex > 0 && (
+            <button
+              type="button"
+              className="back"
+              onClick={() => backToPreviousQ()}
+            >
+              Back
+            </button>
+          )}
+        </div>
+        <div>
+          {isRequired ? null : (
+            <button
+              type="button"
+              className="skip"
+              onClick={() => nextQuestion()}
+            >
+              Skip
+            </button>
+          )}
+          <button type="button" onClick={() => nextQuestion()}>
+            {loading ? "Loading..." : "Next"}
           </button>
-        )}
-        <button type="button" onClick={() => nextQuestion()}>
-          {loading ? "Loading..." : "Next"}
-        </button>
+        </div>
       </div>
     </form>
   )
