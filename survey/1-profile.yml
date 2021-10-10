@@ -59,6 +59,13 @@ questions:
       - Bac +3
       - Bac +5
       - Bac +8
+ - label: Where did you study coding?
+    required: true
+    choices:
+      - Self-taught
+      - University / Public school
+      - Private school
+      - Other
   - label: How many years have you been coding professionally?
     choices:
       - Less than 1 year
