@@ -26,7 +26,7 @@ const BeforeStart = () => {
           <ul>
             <li>
               We care about privacy; that's why all your answers are completely
-              anonymous. We rely on anonymous sessions to avoid spam
+              anonymous. We only rely on anonymous sessions to avoid spam
             </li>
             <li>All Questions are required unless you have a skip button</li>
             <li>Questions with (m) accepts multiple answers</li>

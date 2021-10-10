@@ -1,7 +1,7 @@
 const admin = require("firebase-admin")
 const fs = require("fs")
 require("dotenv").config({
-  path: `.env.development`,
+  path: `.env.${process.env.NODE_ENV}`,
 })
 
 const getFirebase = () => {

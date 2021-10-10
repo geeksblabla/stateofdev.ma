@@ -11,7 +11,7 @@ export const handler: Handler = async event => {
   let data = {}
   if (event.httpMethod !== "POST")
     return {
-      statusCode: 501,
+      statusCode: 405,
       body: JSON.stringify({
         code: "method_unknown",
         message: "This endpoint only responds to POST",
@@ -23,7 +23,7 @@ export const handler: Handler = async event => {
     data = JSON.parse(event.body)
   } catch (error) {
     return {
-      statusCode: 501,
+      statusCode: 400,
       body: JSON.stringify({
         code: "invalid_request",
         message: "Invalid body data",
@@ -61,7 +61,7 @@ export const handler: Handler = async event => {
       statusCode: 401,
       body: JSON.stringify({
         code: "unauthorized",
-        message: "error recaptcha ",
+        message: "error recaptcha",
         error,
       }),
     }
@@ -74,10 +74,10 @@ export const handler: Handler = async event => {
   } catch (error) {
     console.log(error)
     return {
-      statusCode: 401,
+      statusCode: 500,
       body: JSON.stringify({
-        code: "unauthorized",
-        message: "invalid token",
+        code: "server-error",
+        message: "Server error",
         origin: error,
       }),
     }

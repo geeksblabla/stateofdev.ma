@@ -16,7 +16,7 @@ const getFirebase = () => {
   return admin
 }
 
-const getResults = () => getFirebase().firestore().collection("/results")
+const getResults = () => getFirebase().firestore().collection("results")
 
 export const saveAnswer = (userId: string, data: any) => {
   return getResults().doc(userId).set(data, { merge: true })

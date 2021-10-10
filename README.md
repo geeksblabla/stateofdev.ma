@@ -17,7 +17,7 @@ StateOfDev.ma is a survey centered around software developers in Morocco by DevC
 
 We wanted to know how we can help and support each other, and overall be able to better respond to developers evolving needs.
 
-The website is built using [Gatsbyjs](http://gatsbyjs.org) and Netlify
+The website is built using [Gatsbyjs](http://gatsbyjs.org) and [Netlify](https://docs.netlify.com/cli/get-started/)
 
 ## 🚀 Quick start
 
@@ -51,7 +51,7 @@ The website is built using [Gatsbyjs](http://gatsbyjs.org) and Netlify
 
   ```
 
-- Navigate into your new site’s directory and start it up.
+- Navigate into your new website's directory and start it up.
 
   ```sh
     cd stateofdev.ma/
@@ -61,7 +61,7 @@ The website is built using [Gatsbyjs](http://gatsbyjs.org) and Netlify
 
 3.  **Open the source code and start editing!**
 
-    Your site is now running at `http://localhost:8888`
+    Your website is now running at `http://localhost:8888`
 
 ## 🧐 Want to contribute ?
 
