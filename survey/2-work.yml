@@ -2,17 +2,18 @@ title: Work
 label: work
 position: 2
 questions:
-  - label: "You are:"
+  - label: "What is your current role:"
     required: true
     multiple: false
     choices:
+      - Founder or entrepreneur
       - Employed full-time
       - Freelancer, or self-employed
       - Employed part-time
       - Looking for work
       - Student
 
-  - label: How often you work overtime or beyond the formal time expectation of your job?
+  - label: How often do you work overtime or beyond the formal time expectation of your job?
     choices:
       - Never
       - "Rarely: 1-2 days per year or less "
@@ -20,7 +21,7 @@ questions:
       - "Sometimes: 1-2 days per month but less than weekly"
       - "Often: 1-2 days per week or more"
 
-  - label: How Do you feel about your job?
+  - label: How do you feel about your job?
     choices:
       - Very dissatisfied
       - Slightly dissatisfied
@@ -31,18 +32,18 @@ questions:
   - label: Do you work on a side project?
     required: true
     choices:
-      - NO
+      - No
       - For profit
       - For learning
 
   - label: How long have you been unemployed after graduation?
     choices:
-      - 0 months
+      - None, I worked straight after my graduation 😎
       - Few months
       - Less than 1 year
       - More than 1 year
 
-  - label: "Your salary range (DH) is :"
+  - label: "Your salary range (in MAD) is:"
     choices:
       - "< 6 000"
       - "6 000 - 8 000"
@@ -80,6 +81,7 @@ questions:
       - We were doing remote before
       - The company started remote after covid
       - No remote policy yet
+
   - label: Which of the following sentence describes your productivity in COVID-19 Pandemic ?
     choices:
       - The current Pandemic impacted very negatively my productivity
