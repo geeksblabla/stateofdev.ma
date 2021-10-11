@@ -38,7 +38,7 @@ questions:
 
   - label: How long have you been unemployed after graduation?
     choices:
-      - 0 month
+      - None, I worked straight after my graduation 😎
       - Few months
       - Less than 1 year
       - More than 1 year
