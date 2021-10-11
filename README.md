@@ -1,5 +1,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.geeksblablas.com">
@@ -15,7 +17,7 @@ StateOfDev.ma is a survey centered around software developers in Morocco by DevC
 
 We wanted to know how we can help and support each other, and overall be able to better respond to developers evolving needs.
 
-The website is built using [Gatsbyjs](http://gatsbyjs.org)
+The website is built using [Gatsbyjs](http://gatsbyjs.org) and [Netlify](https://docs.netlify.com/cli/get-started/)
 
 ## 🚀 Quick start
 
@@ -25,21 +27,41 @@ The website is built using [Gatsbyjs](http://gatsbyjs.org)
     git clone git@github.com:your-username/stateofdev.ma.git
     ```
 
-1.  **Start developing.**
+2.  **Configure Project and Start developing.**
 
-    Navigate into your new site’s directory and start it up.
+- Create a firebase application, activate anonymous authentication and enable Firestore database.
+- Create a [recaptcha v3 application](https://www.google.com/recaptcha/about/)
+- Copy your keys to `env.development`:
 
-    ```sh
+  ```env
+  # firebase client auth
+  GATSBY_FIREBASE_API_KEY=
+  GATSBY_FIREBASE_AUTH_DOMAIN=
+  GATSBY_FIREBASE_PROJECT_ID=
+  GATSBY_FIREBASE_APP_ID=
+
+  # firebase admin
+  FIREBASE_CLIENT_EMAIL=
+  FIREBASE_PRIVATE_KEY=
+
+
+  # recaptcha keys
+  GATSBY_RECAPTCHA_KEY=
+  RECAPTCHA_SECRET_KEY=
+
+  ```
+
+- Navigate into your new website's directory and start it up.
+
+  ```sh
     cd stateofdev.ma/
     yarn install
-    yarn start
-    ```
+    yarn netlify dev
+  ```
 
-1.  **Open the source code and start editing!**
+3.  **Open the source code and start editing!**
 
-    Your site is now running at `http://localhost:8000`
-
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+    Your website is now running at `http://localhost:8888`
 
 ## 🧐 Want to contribute ?
 
