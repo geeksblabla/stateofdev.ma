@@ -11,13 +11,11 @@ questions:
   - label: What is your age?
     required: true
     choices:
-      - Younger than 15 years
-      - 15 to 19 years
-      - 20 to 24 years
-      - 25 to 29 years
-      - 30 to 34 years
-      - 35 to 39 years
-      - 40 years and older
+      - Younger than 18 years
+      - 18 to 24 years
+      - 25 to 34 years
+      - 35 to 44 years
+      - 45 or older
   - label: Where are you currently located?
     required: true
     choices:
