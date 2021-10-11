@@ -20,7 +20,7 @@ export default function FilterForm({
     <div className="filter-form">
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>Question</label>
-        <select name="question" ref={register}>
+        <select name="question" {...register("question")}>
           {qs.map(q => (
             <option key={q.id} value={q.id}>
               {q.label}
@@ -29,7 +29,7 @@ export default function FilterForm({
         </select>
 
         <label> Group by </label>
-        <select name="groupBy" ref={register}>
+        <select name="groupBy" {...register("groupBy")}>
           <option value="">None</option>
           {qs.map(q => (
             <option key={q.id} value={q.id}>
@@ -52,7 +52,7 @@ export default function FilterForm({
           ))}
           <select
             name="Question"
-            onChange={e => append({ question_id: e.target.value })}
+            onChange={e => append({ question_id: e.target.value, values: [] })}
           >
             <option value="" style={{ color: "var(--green)" }}>
               + Add filter question
@@ -81,22 +81,22 @@ const Question = ({ question, field, register, index, remove }) => {
       </div>
 
       {question.choices.map((c, i) => (
-        <label class="check-container">
+        <label className="check-container">
           {c}
           <input
             type="checkbox"
             name={`condition[${index}].values`}
-            ref={register()}
+            {...register(`condition[${index}].values`)}
             defaultChecked={field?.values?.includes(i?.toString())}
             value={parseInt(i, 10)}
           />
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
         </label>
       ))}
 
       <input
         name={`condition[${index}].question_id`}
-        ref={register()}
+        {...register(`condition[${index}].question_id`)}
         value={field.question_id}
         style={{ visibility: "hidden", height: 0 }}
         readOnly

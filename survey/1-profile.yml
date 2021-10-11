@@ -11,19 +11,29 @@ questions:
   - label: What is your age?
     required: true
     choices:
-      - Younger than 15 years
-      - 15 to 19 years
-      - 20 to 24 years
-      - 25 to 29 years
-      - 30 to 34 years
-      - 35 to 39 years
-      - 40 years and older
+      - Younger than 18 years
+      - 18 to 24 years
+      - 25 to 34 years
+      - 35 to 44 years
+      - 45 or older
   - label: Where are you currently located?
     required: true
     choices:
-      - Morocco
+      - "Rabat-Salé-Kénitra"
+      - "Casablanca-Settat"
+      - "Marrakech-Safi"
+      - "Tanger-Tétouan-Al Hoceïma"
+      - "L'Oriental"
+      - "Fès-Meknès"
+      - "Béni Mellal-Khénifra"
+      - "Drâa-Tafilalet"
+      - "Souss-Massa"
+      - "Guelmim-Oued Noun"
+      - "Laâyoune-Sakia El Hamra"
+      - "Dakhla-Oued Ed Dahab"
       - Europe
-      - US
+      - US & Canada 
+      - Middle East
       - Others
   - label: What is your current role?
     required: true
@@ -55,10 +65,9 @@ questions:
     required: true
     choices:
       - Self-taught
-      - Bac +2
-      - Bac +3
-      - Bac +5
-      - Bac +8
+      - Bac +2/+3, Bachelor’s degree (B.A., B.S., B.Eng., etc.)
+      - Bac +5, Master’s degree (M.A., M.S., M.Eng., MBA, etc.)
+      - Bac +8, Other doctoral degree (Ph.D., Ed.D., etc.)
  - label: Where did you study coding?
     required: true
     choices:
