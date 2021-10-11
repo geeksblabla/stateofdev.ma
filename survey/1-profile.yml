@@ -21,9 +21,21 @@ questions:
   - label: Where are you currently located?
     required: true
     choices:
-      - Morocco
+      - "Rabat-Salé-Kénitra"
+      - "Casablanca-Settat"
+      - "Marrakech-Safi"
+      - "Tanger-Tétouan-Al Hoceïma"
+      - "L'Oriental"
+      - "Fès-Meknès"
+      - "Béni Mellal-Khénifra"
+      - "Drâa-Tafilalet"
+      - "Souss-Massa"
+      - "Guelmim-Oued Noun"
+      - "Laâyoune-Sakia El Hamra"
+      - "Dakhla-Oued Ed Dahab"
       - Europe
-      - US
+      - US & Canada 
+      - Middle East
       - Others
   - label: What is your current role?
     required: true
