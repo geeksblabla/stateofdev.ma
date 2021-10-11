@@ -25,6 +25,21 @@ questions:
       - Europe
       - US
       - Others
+  - label: If Morocco which region ?
+    required: false
+    multiple: false
+    choices:
+      - "Tanger-Tétouan-Al Hoceïma"
+      - "Fès-Meknès"
+      - "Rabat-Salé-Kénitra"
+      - "Béni Mellal-Khénifra"
+      - "Casablanca-Settat"
+      - "Marrakech-Safi"
+      - "Drâa-Tafilalet"
+      - "Souss-Massa"
+      - "Guelmim-Oued Noun"
+      - "Laâyoune-Sakia El Hamra"
+      - "Dakhla-Oued Ed Dahab"
   - label: What is your current role?
     required: true
     choices:
