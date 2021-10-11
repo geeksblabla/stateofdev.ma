@@ -21,20 +21,21 @@ questions:
   - label: Where are you currently located?
     required: true
     choices:
-      - Morocco Tanger
-      - Morocco Oriental
-      - Morocco Fes-Meknes
-      - Morocco Rabat-Salé-Kénitra
-      - Morocco Beni-Mellal-Khénifra
-      - Morocco Casablanca-Settat
-      - Morocco Marrakech-Safi
-      - Morocco Drâa-Tafilalet
-      - Morocco Souss-Massa
-      - Morocco Guelmim-Oued Noun
-      - Morocco Laayoune-Sakia El Hamra
-      - Morocco Dakhla-Oued Eddahab
+      - "Rabat-Salé-Kénitra"
+      - "Casablanca-Settat"
+      - "Marrakech-Safi"
+      - "Tanger-Tétouan-Al Hoceïma"
+      - "L'Oriental"
+      - "Fès-Meknès"
+      - "Béni Mellal-Khénifra"
+      - "Drâa-Tafilalet"
+      - "Souss-Massa"
+      - "Guelmim-Oued Noun"
+      - "Laâyoune-Sakia El Hamra"
+      - "Dakhla-Oued Ed Dahab"
       - Europe
-      - US
+      - US & Canada 
+      - Middle East
       - Others
   - label: What is your current role?
     required: true
