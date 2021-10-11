@@ -43,7 +43,7 @@ questions:
       - Less than 1 year
       - More than 1 year
 
-  - label: "Your salary range (in DHS) is:"
+  - label: "Your salary range (in MAD) is:"
     choices:
       - "< 6 000"
       - "6 000 - 8 000"
