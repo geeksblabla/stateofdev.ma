@@ -68,6 +68,13 @@ questions:
       - Bac +2/+3, Bachelor’s degree (B.A., B.S., B.Eng., etc.)
       - Bac +5, Master’s degree (M.A., M.S., M.Eng., MBA, etc.)
       - Bac +8, Other doctoral degree (Ph.D., Ed.D., etc.)
+ - label: Where did you study coding?
+    required: true
+    choices:
+      - Self-taught
+      - University / Public school
+      - Private school
+      - Other
   - label: How many years have you been coding professionally?
     choices:
       - Less than 1 year
