@@ -136,11 +136,14 @@ questions:
     multiple: true
     choices:
       - YouTube
-      - Paid platforms
+      - Paying platforms
       - Books
       - Official documentation
       - Blog posts
       - Company resources
+      - Conferences (virtual/in-person)
+      - Podcasts
+      - Online Communities (StackOverflow/Reddit/Twitter)
       - Others
   - label: What do you usually drink while coding?
     required: true
