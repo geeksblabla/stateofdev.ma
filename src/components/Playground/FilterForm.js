@@ -52,7 +52,7 @@ export default function FilterForm({
           ))}
           <select
             name="Question"
-            onChange={e => append({ question_id: e.target.value, values: [] })}
+            onChange={e => e.target.value && append({ question_id: e.target.value, values: [] })}
           >
             <option value="" style={{ color: "var(--green)" }}>
               + Add filter question
