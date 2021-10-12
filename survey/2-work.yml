@@ -75,6 +75,14 @@ questions:
       - Small company
       - Medium company
       - Multinational company
+   - label: What agile software development methodology do you use in your team, if any?
+     required: true
+     choices:
+      - Scrum
+      - Kanban
+      - XP
+      - Other
+      - None      
 
   - label: What is the impact of COVID-19 Pandemic in remote work policy in your company ?
     choices:
