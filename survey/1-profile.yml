@@ -35,7 +35,7 @@ questions:
       - US & Canada
       - Middle East
       - Others
-  - label: What is your current role?
+  - label: What is your current profile?
     required: true
     choices:
       - Developer, back-end
