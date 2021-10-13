@@ -18,6 +18,7 @@ questions:
       - I am maintaining my own project
       - I have a repo with more than +1k stars
       - I maintain an organization project with +1k stars
+
       
   - label: "Did you get the chance to write blog posts?"
     required: true
@@ -38,7 +39,8 @@ questions:
       - Youtube
       - TikTok
       - Telegram
-      - Snapchat
+      - Discord
+      - Slack
       - None
       
   - label: "How many IT events did you attend in 2020/2021?"
@@ -61,13 +63,13 @@ questions:
       - Live/online events
       - In-person events?
       - Li ja bismillah
-      
+
   - label: "Are you part of one of the Moroccan Facebook Developer circles groups?"
     required: true
     choices:
       - Yes
       - No
-      - I don’t know about Facebook Developer circles
+      - I don’t know what Facebook Developer circles are
 
   - label: "How do you evaluate the Moroccan Tech Community?"
     required: true

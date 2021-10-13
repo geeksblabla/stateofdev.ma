@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.geeksblablas.com">
@@ -15,7 +15,7 @@ StateOfDev.ma is a survey centered around software developers in Morocco by DevC
 
 We wanted to know how we can help and support each other, and overall be able to better respond to developers evolving needs.
 
-The website is built using [Gatsbyjs](http://gatsbyjs.org)
+The website is built using [Gatsbyjs](http://gatsbyjs.org) and [Netlify](https://docs.netlify.com/cli/get-started/)
 
 ## 🚀 Quick start
 
@@ -25,21 +25,41 @@ The website is built using [Gatsbyjs](http://gatsbyjs.org)
     git clone git@github.com:your-username/stateofdev.ma.git
     ```
 
-1.  **Start developing.**
+2.  **Configure Project and Start developing.**
 
-    Navigate into your new site’s directory and start it up.
+- Create a firebase application, activate anonymous authentication and enable Firestore database.
+- Create a [recaptcha v3 application](https://www.google.com/recaptcha/about/)
+- Copy your keys to `env.development`:
 
-    ```sh
+  ```env
+  # firebase client auth
+  GATSBY_FIREBASE_API_KEY=
+  GATSBY_FIREBASE_AUTH_DOMAIN=
+  GATSBY_FIREBASE_PROJECT_ID=
+  GATSBY_FIREBASE_APP_ID=
+
+  # firebase admin
+  FIREBASE_CLIENT_EMAIL=
+  FIREBASE_PRIVATE_KEY=
+
+
+  # recaptcha keys
+  GATSBY_RECAPTCHA_KEY=
+  RECAPTCHA_SECRET_KEY=
+
+  ```
+
+- Navigate into your new website's directory and start it up.
+
+  ```sh
     cd stateofdev.ma/
     yarn install
-    yarn start
-    ```
+    yarn netlify dev
+  ```
 
-1.  **Open the source code and start editing!**
+3.  **Open the source code and start editing!**
 
-    Your site is now running at `http://localhost:8000`
-
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+    Your website is now running at `http://localhost:8888`
 
 ## 🧐 Want to contribute ?
 
@@ -72,10 +92,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://stackoverflow.com/users/4689497/"><img src="https://avatars0.githubusercontent.com/u/5012992?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Youness IABITEN</b></sub></a><br /><a href="#content-Yiabiten" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/Ismailtlem"><img src="https://avatars1.githubusercontent.com/u/34961373?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Ismail Tlemçani</b></sub></a><br /><a href="#content-Ismailtlem" title="Content">🖋</a></td>
     <td align="center"><a href="https://soubai.me/"><img src="https://avatars0.githubusercontent.com/u/11523791?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Abderrahim SOUBAI</b></sub></a><br /><a href="#content-AbderrahimSoubaiElidrissi" title="Content">🖋</a></td>
-    </td>
- </tr>
- <tr>
-    <td align="center"><a href="https://www.linkedin.com/in/sohayb-elamraoui/"><img src="https://avatars1.githubusercontent.com/u/32344494?s=120?v=4" width="120px;" alt=""/><br /><sub><b>Elamraoui-Sohayb</b></sub></a><br /><a href="#content-Elamraoui-Sohayb" title="Content">🖋</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/moutout"><img src="https://avatars.githubusercontent.com/u/3751894?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Mustapha</b></sub></a><br /><a href="#content-moutout" title="Content">🖋</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/sohayb-elamraoui/"><img src="https://avatars.githubusercontent.com/u/32344494?v=4?s=120" width="120px;" alt=""/><br /><sub><b>el amraoui Sohayb</b></sub></a><br /><a href="#content-Elamraoui-Sohayb" title="Content">🖋</a></td>
   </tr>
 </table>
 
