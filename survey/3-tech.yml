@@ -95,50 +95,72 @@ questions:
       - Julia
       - Other
 
-  - label: "What are the web frameworks you are using on a daily basis?"
+- label: "What are the front-end frameworks you are using on a daily basis?"
     required: true
     multiple: true
     choices:
       - jQuery
       - React.js
       - Angular
-      - ASP.NET
-      - Express
-      - ASP.NET Core
       - Vue.js
-      - Spring Ecosystem
       - Angular.js
-      - Django
-      - Flask
-      - Laravel
-      - Ruby on Rails
-      - Symfony
       - Gatsby
-      - Drupal
       - Next
       - Other
-
-  - label: "What are the web frameworks you want to learn next?"
+      
+- label: "What are the front-end frameworks you want to learn next?"
     required: true
     multiple: true
     choices:
       - jQuery
       - React.js
       - Angular
+      - Vue.js
+      - Angular.js
+      - Gatsby
+      - Next
+      - Other
+      
+ - label: "What are the Backend frameworks you are using on a daily basis?"
+    required: true
+    multiple: true
+    choices:
       - ASP.NET
+      - NodeJS
+      - Deno
       - Express
       - ASP.NET Core
-      - Vue.js
       - Spring Ecosystem
-      - Angular.js
+      - Micronaut
+      - Quarkus
+      - Jakarta EE / Java EE
       - Django
       - Flask
       - Laravel
       - Ruby on Rails
       - Symfony
-      - Gatsby
       - Drupal
-      - Next
+      - Other
+
+  - label: "What are the backend frameworks you want to learn next?"
+    required: true
+    multiple: true
+    choices:
+      - ASP.NET
+      - Express
+      - NodeJS
+      - Deno
+      - ASP.NET Core
+      - Spring Ecosystem
+      - Micronaut
+      - Quarkus
+      - Jakarta EE / Java EE
+      - Django
+      - Flask
+      - Laravel
+      - Ruby on Rails
+      - Symfony
+      - Drupal
       - Other
       
   - label: "What are the platforms and tools you are using on a daily basis?"
