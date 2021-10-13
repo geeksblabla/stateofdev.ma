@@ -2,17 +2,18 @@ title: Work
 label: work
 position: 2
 questions:
-  - label: "You are:"
+  - label: "What is your current role:"
     required: true
     multiple: false
     choices:
+      - Founder or entrepreneur
       - Employed full-time
       - Freelancer, or self-employed
       - Employed part-time
       - Looking for work
       - Student
 
-  - label: How often you work overtime or beyond the formal time expectation of your job?
+  - label: How often do you work overtime or beyond the formal time expectation of your job?
     choices:
       - Never
       - "Rarely: 1-2 days per year or less "
@@ -20,29 +21,29 @@ questions:
       - "Sometimes: 1-2 days per month but less than weekly"
       - "Often: 1-2 days per week or more"
 
-  - label: How Do you feel about your job?
+  - label: How do you feel about your job?
     choices:
-      - Very dissatisfied
-      - Slightly dissatisfied
-      - Neither satisfied nor dissatisfied
+      - Very Unsatisfied
+      - Slightly Unsatisfied
+      - Neither satisfied nor Unsatisfied
       - Slightly satisfied
       - Very satisfied
 
   - label: Do you work on a side project?
     required: true
     choices:
-      - NO
-      - For profit
-      - For learning
+      - No
+      - Yes For profit
+      - Yes For learning
 
   - label: How long have you been unemployed after graduation?
     choices:
-      - 0 months
+      - None, I worked straight after my graduation 😎
       - Few months
       - Less than 1 year
       - More than 1 year
 
-  - label: "Your salary range (DH) is :"
+  - label: "Your NET salary range (in MAD) is:"
     choices:
       - "< 6 000"
       - "6 000 - 8 000"
@@ -53,13 +54,13 @@ questions:
       - "20 000 - 25 000"
       - "> 25 000"
 
-  - label: What characteristics would most influence your decision to choose one job offer over another?
+  - label: What characteristics would mostly influence your decision to choose one job offer over another?
     required: true
     multiple: true
     choices:
-      - Languages, frameworks, and other technologies I’d be working with
+      - Languages, frameworks, and other technologies I’d be working on
       - Office environment or company culture
-      - Flex time or a flexible schedule
+      - flexible time or schedule
       - Opportunities for professional development
       - Remote work options
       - How widely used or impactful my work output would be
@@ -75,15 +76,25 @@ questions:
       - Medium company
       - Multinational company
 
+  - label: What agile software development methodology do you use in your team, if any?
+    required: true
+    choices:
+      - Scrum
+      - Kanban
+      - XP
+      - Other
+      - None
+
   - label: What is the impact of COVID-19 Pandemic in remote work policy in your company ?
     choices:
       - We were doing remote before
       - The company started remote after covid
       - No remote policy yet
+
   - label: Which of the following sentence describes your productivity in COVID-19 Pandemic ?
     choices:
-      - The current Pandemic impacted very negatively my productivity
+      - The current Pandemic very negatively impacted my productivity
       - The current Pandemic somehow impacted negatively my productivity
       - The current Pandemic did not impact my productivity
       - The current Pandemic somehow boosted my productivity
-      - The current Pandemic boosted very positively my productivity
+      - The current Pandemic very positively boosted my productivity

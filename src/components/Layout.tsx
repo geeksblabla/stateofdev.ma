@@ -2,7 +2,6 @@ import React from "react"
 import { GatsbySeo } from "gatsby-plugin-next-seo"
 import { Footer } from "./Footer"
 import "../styles/commons.scss"
-
 export const Layout = ({ children }) => (
   <>
     <GatsbySeo
@@ -18,6 +17,7 @@ export const Layout = ({ children }) => (
         site_name: "StateOfDevMa",
       }}
     />
-    {children} <Footer />
+    {children}
+    <Footer />
   </>
 )

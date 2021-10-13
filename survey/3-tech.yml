@@ -32,6 +32,7 @@ questions:
       - Haskell
       - Julia
       - Other
+
   - label: "What are the Programming languages you want to learn next?"
     required: true
     multiple: true
@@ -62,6 +63,7 @@ questions:
       - Haskell
       - Julia
       - Other
+
   - label: "What are the Programming languages you are using on a daily basis?"
     required: true
     multiple: true
@@ -92,6 +94,7 @@ questions:
       - Haskell
       - Julia
       - Other
+
   - label: "What are the web frameworks you are using on a daily basis?"
     required: true
     multiple: true
@@ -114,6 +117,7 @@ questions:
       - Drupal
       - Next
       - Other
+
   - label: "What are the web frameworks you want to learn next?"
     required: true
     multiple: true
@@ -136,7 +140,7 @@ questions:
       - Drupal
       - Next
       - Other
-
+      
   - label: "What are the platforms and tools you are using on a daily basis?"
     required: true
     multiple: true
@@ -180,6 +184,7 @@ questions:
       - Apache Spark
       - Torch/PyTorch
       - Other
+
   - label: "Your primary Operating System is:"
     required: true
     choices:
@@ -187,6 +192,7 @@ questions:
       - MacOS
       - Linux-based
       - Windows + WSL2
+
   - label: "What is you current IDE or code editor for daily work?"
     required: true
     multiple: true
@@ -200,7 +206,7 @@ questions:
       - Atom
       - Other
 
-  - label: "How frequently do you learn a new language or framework?"
+  - label: "How frequently do you learn a new programing language or framework?"
     required: true
     choices:
       - Every few months
@@ -218,7 +224,7 @@ questions:
       - Watch help/tutorial videos
       - Call a coworker or friend
 
-  - label: "Production environment you or your team are using is:"
+  - label: "The production environment you or your team are using is:"
     required: true
     multiple: true
     choices:
