@@ -23,9 +23,9 @@ questions:
 
   - label: How do you feel about your job?
     choices:
-      - Very dissatisfied
-      - Slightly dissatisfied
-      - Neither satisfied nor dissatisfied
+      - Very Unsatisfied
+      - Slightly Unsatisfied
+      - Neither satisfied nor Unsatisfied
       - Slightly satisfied
       - Very satisfied
 
@@ -33,8 +33,8 @@ questions:
     required: true
     choices:
       - No
-      - For profit
-      - For learning
+      - Yes For profit
+      - Yes For learning
 
   - label: How long have you been unemployed after graduation?
     choices:
@@ -43,7 +43,7 @@ questions:
       - Less than 1 year
       - More than 1 year
 
-  - label: "Your salary range (in MAD) is:"
+  - label: "Your NET salary range (in MAD) is:"
     choices:
       - "< 6 000"
       - "6 000 - 8 000"
@@ -54,13 +54,13 @@ questions:
       - "20 000 - 25 000"
       - "> 25 000"
 
-  - label: What characteristics would most influence your decision to choose one job offer over another?
+  - label: What characteristics would mostly influence your decision to choose one job offer over another?
     required: true
     multiple: true
     choices:
-      - Languages, frameworks, and other technologies I’d be working with
+      - Languages, frameworks, and other technologies I’d be working on
       - Office environment or company culture
-      - Flex time or a flexible schedule
+      - flexible time or schedule
       - Opportunities for professional development
       - Remote work options
       - How widely used or impactful my work output would be
@@ -75,9 +75,10 @@ questions:
       - Small company
       - Medium company
       - Multinational company
+
   - label: What agile software development methodology do you use in your team, if any?
-     required: true
-     choices:
+    required: true
+    choices:
       - Scrum
       - Kanban
       - XP
@@ -92,8 +93,8 @@ questions:
 
   - label: Which of the following sentence describes your productivity in COVID-19 Pandemic ?
     choices:
-      - The current Pandemic impacted very negatively my productivity
+      - The current Pandemic very negatively impacted my productivity
       - The current Pandemic somehow impacted negatively my productivity
       - The current Pandemic did not impact my productivity
       - The current Pandemic somehow boosted my productivity
-      - The current Pandemic boosted very positively my productivity
+      - The current Pandemic very positively boosted my productivity
