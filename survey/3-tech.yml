@@ -234,3 +234,16 @@ questions:
       - Shared hosting
       - Managed PaaS (heroku, app platform ...)
       - Not sure
+  - label: "What cloud platform are you using:"
+    required: true
+    multiple: true
+    choices:
+      - GCP
+      - AWS
+      - Azure
+      - Oracle Cloud
+      - IBM Cloud
+      - DigitalOcean
+      - Other Moroccan Cloud providers
+      - Other cloud providers
+      - None
