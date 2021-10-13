@@ -77,8 +77,8 @@ questions:
       - Multinational company
 
   - label: What agile software development methodology do you use in your team, if any?
-     required: true
-     choices:
+    required: true
+    choices:
       - Scrum
       - Kanban
       - XP

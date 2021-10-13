@@ -82,13 +82,13 @@ questions:
 
   - label: How many years have you been coding professionally?
     choices:
-      - "I don't have any professional coding experience" 
+      - "I don't have any professional coding experience"
       - Less than 1 year
       - 1-2 years
       - 3-5 years
       - 6-10 years
       - 11-16 years
-      - 16+ years 
+      - 16+ years
 
   - label: Is coding a hobby for you?
     required: true
