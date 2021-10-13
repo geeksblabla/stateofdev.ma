@@ -1,7 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.geeksblablas.com">
@@ -94,10 +92,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://stackoverflow.com/users/4689497/"><img src="https://avatars0.githubusercontent.com/u/5012992?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Youness IABITEN</b></sub></a><br /><a href="#content-Yiabiten" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/Ismailtlem"><img src="https://avatars1.githubusercontent.com/u/34961373?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Ismail Tlemçani</b></sub></a><br /><a href="#content-Ismailtlem" title="Content">🖋</a></td>
     <td align="center"><a href="https://soubai.me/"><img src="https://avatars0.githubusercontent.com/u/11523791?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Abderrahim SOUBAI</b></sub></a><br /><a href="#content-AbderrahimSoubaiElidrissi" title="Content">🖋</a></td>
-    </td>
- </tr>
- <tr>
-    <td align="center"><a href="https://www.linkedin.com/in/sohayb-elamraoui/"><img src="https://avatars1.githubusercontent.com/u/32344494?s=120?v=4" width="120px;" alt=""/><br /><sub><b>Elamraoui-Sohayb</b></sub></a><br /><a href="#content-Elamraoui-Sohayb" title="Content">🖋</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/moutout"><img src="https://avatars.githubusercontent.com/u/3751894?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Mustapha</b></sub></a><br /><a href="#content-moutout" title="Content">🖋</a></td>
   </tr>
 </table>
 
