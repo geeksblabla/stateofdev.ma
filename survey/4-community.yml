@@ -2,60 +2,76 @@ title: Community
 label: community
 position: 4
 questions:
-  - label: Are you part of any local developer’s community?
+  - label: "Are you part of any local developer’s community?"
     required: true
     multiple: false
     choices:
       - Yes
-      - NO
+      - No
 
-  - label: Did you ever contributed to an open-source project?
+  - label: "Did you ever participate in an open-source project?"
     required: true
     multiple: true
     choices:
-      - Yes, few PRs in multiple projects
+      - I don’t have an account on Github (or alternatives).
+      - Yes, only few PRs in various projects
       - I am maintaining my own project
       - I have a repo with more than +1k stars
       - I maintain an organization project with +1k stars
-      - I don’t have an account on Github (or alternatives).
 
-  - label: have you authored a blog posts?
+      
+  - label: "Did you get the chance to write blog posts?"
     required: true
     choices:
-      - Yes more than 10 blog posts
-      - Yes  less than 10 blog posts
-      - Thinking of it.
       - No, I am not interested.
+      - Still thinking about it.
+      - Yes, less than 10 blog posts
+      - Yes, more than 10 blog posts
 
-  - label: "How many IT events did you attend in 2019/2020?"
+  - label: "When it comes to IT, what is your primary social network?"
+    required: true
+    multiple: false
+    choices:
+      - Facebook
+      - Instagram
+      - WhatsApp
+      - Twitter
+      - Youtube
+      - TikTok
+      - Telegram
+      - Discord
+      - Slack
+      - None
+      
+  - label: "How many IT events did you attend in 2020/2021?"
     required: true
     choices:
       - "0"
       - "1-3"
       - "More than 3"
 
-  - label: "How many talks did you participate in as a speaker in 2019/2020?"
+  - label: "How many talks did you participate in as a speaker in 2020/2021?"
     required: true
     choices:
       - "0"
       - "1 - 3 talks"
       - "More than 3"
 
-  - label: Do you prefer ?
+  - label: "Do you prefer?"
     required: true
     choices:
       - Live/online events
       - In-person events?
-      - Li ja bismilah
+      - Li ja bismillah
 
   - label: "Are you part of one of the Moroccan Facebook Developer circles groups?"
     required: true
     choices:
       - Yes
-      - NO
+      - No
       - I don’t know what Facebook Developer circles are
 
-  - label: How do you evaluate the Moroccan Tech Community?
+  - label: "How do you evaluate the Moroccan Tech Community?"
     required: true
     choices:
       - Bad
