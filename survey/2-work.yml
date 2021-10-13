@@ -72,8 +72,8 @@ questions:
     choices:
       - Freelance
       - Startup
-      - Small company
-      - Medium company
+      - Small company (10 to 30 employees)
+      - Medium company (30 to 100 employees)
       - Multinational company
   - label: What agile software development methodology do you use in your team, if any?
      required: true
