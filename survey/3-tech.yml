@@ -2,7 +2,7 @@ title: Tech
 label: tech
 position: 3
 questions:
-  - label: What are the Programming languages you like?
+  - label: What Programming languages you like?
     required: true
     multiple: true
     choices:
@@ -32,7 +32,8 @@ questions:
       - Haskell
       - Julia
       - Other
-  - label: What are the Programming languages you want to learn next?
+
+  - label: What Programming languages you want to learn next?
     required: true
     multiple: true
     choices:
@@ -62,7 +63,8 @@ questions:
       - Haskell
       - Julia
       - Other
-  - label: What are the Programming languages you are using on a daily basis?
+
+  - label: What Programming languages you are using on a daily basis?
     required: true
     multiple: true
     choices:
@@ -92,29 +94,8 @@ questions:
       - Haskell
       - Julia
       - Other
-  - label: What are the web frameworks you are using on a daily basis?
-    required: true
-    multiple: true
-    choices:
-      - jQuery
-      - React.js
-      - Angular
-      - ASP.NET
-      - Express
-      - ASP.NET Core
-      - Vue.js
-      - Spring Ecosystem
-      - Angular.js
-      - Django
-      - Flask
-      - Laravel
-      - Ruby on Rails
-      - Symfony
-      - Gatsby
-      - Drupal
-      - Next
-      - Other
-  - label: What are the web frameworks you want to learn next?
+
+  - label: What web frameworks you are using on a daily basis?
     required: true
     multiple: true
     choices:
@@ -137,7 +118,30 @@ questions:
       - Next
       - Other
 
-  - label: What are the platforms and tools you are using on a daily basis?
+  - label: What web frameworks you want to learn next?
+    required: true
+    multiple: true
+    choices:
+      - jQuery
+      - React.js
+      - Angular
+      - ASP.NET
+      - Express
+      - ASP.NET Core
+      - Vue.js
+      - Spring Ecosystem
+      - Angular.js
+      - Django
+      - Flask
+      - Laravel
+      - Ruby on Rails
+      - Symfony
+      - Gatsby
+      - Drupal
+      - Next
+      - Other
+
+  - label: What Platforms and tools you are using on a daily basis?
     required: true
     multiple: true
     choices:
@@ -156,7 +160,8 @@ questions:
       - Apache Spark
       - Torch/PyTorch
       - Other
-  - label: What are the platforms and tools you want to learn next?
+
+  - label: What Platforms and tools you want to learn next?
     required: true
     multiple: true
     choices:
@@ -175,14 +180,16 @@ questions:
       - Apache Spark
       - Torch/PyTorch
       - Other
-  - label: "Your Primary Operating Systems is :"
+
+- label: "Your Primary Operating Systems is :"
     required: true
     choices:
       - Windows
       - MacOS
       - Linux-based
       - Windows + WSL2
-  - label: What are IDE and code editor you use on a daily basis?
+
+  - label: What IDE and/or code editor you use on a daily basis?
     required: true
     multiple: true
     choices:
@@ -195,23 +202,25 @@ questions:
       - Atom
       - Other
 
-  - label: How frequently you learn a new language or framework?
+  - label: How frequently do you learn a new Programming language or framework?
     required: true
     choices:
       - Every few months
       - Once a year
       - Once every few years
       - Once a decade
+
   - label: "What do you do when you get stuck on a problem?"
     required: true
     multiple: true
     choices:
       - Google it
-      - Stackoverflow
-      - Do other work and come back later.
+      - Stackoverflow it
+      - Do other work and come back later
       - Watch help/tutorial videos
       - Call a coworker or friend
-  - label: "Production environment you or your team are using is :"
+
+  - label: "The Production environment you or your team are using is :"
     required: true
     multiple: true
     choices:

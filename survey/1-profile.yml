@@ -16,6 +16,7 @@ questions:
       - 25 to 34 years
       - 35 to 44 years
       - 45 or older
+
   - label: Where are you currently located?
     required: true
     choices:
@@ -35,6 +36,7 @@ questions:
       - US & Canada
       - Middle East
       - Others
+
   - label: What is your current role?
     required: true
     choices:
@@ -61,6 +63,7 @@ questions:
       - Engineer, site reliability
       - Senior executive/VP
       - Marketing or sales professional
+
   - label: What is your highest diploma?
     required: true
     choices:
@@ -68,6 +71,7 @@ questions:
       - Bac +2/+3, Bachelor’s degree (B.A., B.S., B.Eng., etc.)
       - Bac +5, Master’s degree (M.A., M.S., M.Eng., MBA, etc.)
       - Bac +8, Other doctoral degree (Ph.D., Ed.D., etc.)
+
   - label: Where did you study coding?
     required: true
     choices:
@@ -75,6 +79,7 @@ questions:
       - University / Public school
       - Private school
       - Other
+
   - label: How many years have you been coding professionally?
     choices:
       - "I don't have any professional coding experience" 
@@ -84,34 +89,40 @@ questions:
       - 6-10 years
       - 11-16 years
       - 16+ years 
+
   - label: Is coding a hobby for you?
     required: true
     choices:
       - Yes
       - No
+
   - label: Do you think school gives you the most important concepts to start your professional career?
     required: true
     choices:
       - Not enough
       - Enough to start
       - Everything I needed
+
   - label: Do you have any plans to work outside Morocco in the next 2 years?
     required: true
     choices:
       - Yes
       - No
+
   - label: If you are working abroad, do you have any plans to come back to Morocco?
     choices:
       - Yes
       - No
+
   - label: If you think we have a problem with our education system, from your POV, who are the main contributors?
     required: true
     multiple: true
     choices:
-      - Students
-      - Teachers
+      - Students level
+      - Teachers proficiency
       - Academic defined subjects (system)
-      - Companies engagement with academia
+      - private sector/Academia collaboration
+
   - label: What languages can you read/write?
     required: true
     multiple: true
@@ -121,11 +132,13 @@ questions:
       - French
       - English
       - Others
+
   - label: Is English an obstacle to learning new technologies?
     required: true
     choices:
       - Yes
       - No
+
   - label: Do you think we need more content in Darija?
     required: true
     choices:
@@ -133,12 +146,13 @@ questions:
       - Written/Read
       - Both
       - No
+
   - label: What are your preferred platforms for learning?
     required: true
     multiple: true
     choices:
       - YouTube
-      - Paying platforms
+      - Paid platforms
       - Books
       - Official documentation
       - Blog posts
@@ -147,6 +161,7 @@ questions:
       - Podcasts
       - Online Communities (StackOverflow/Reddit/Twitter)
       - Others
+
   - label: What do you usually drink while coding?
     required: true
     choices:
