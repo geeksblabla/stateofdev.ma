@@ -127,7 +127,26 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "moutout",
+      "name": "Mustapha",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3751894?v=4",
+      "profile": "https://github.com/moutout",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "Elamraoui-Sohayb",
+      "name": "el amraoui Sohayb",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32344494?v=4",
+      "profile": "https://www.linkedin.com/in/sohayb-elamraoui/",
+      "contributions": [
+        "content"
+      ]
     }
   ],
-  "contributorsPerLine": 6
+  "contributorsPerLine": 6,
+  "skipCi": true
 }
