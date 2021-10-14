@@ -2,7 +2,7 @@ import React from "react"
 import Results from "../components/Results/index"
 import { Layout } from "../components"
 
-const Home = () => {
+const Results2020 = () => {
   return (
     <Layout>
       <Results />
@@ -10,4 +10,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Results2020

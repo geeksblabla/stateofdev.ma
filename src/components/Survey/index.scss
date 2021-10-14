@@ -49,7 +49,8 @@
 
   .actions {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    flex-direction: row;
     button {
       padding: 1rem 2rem;
       font-size: 1em;
@@ -64,6 +65,22 @@
       background: transparent;
       color: #31382f;
       border: 1px dashed #31382f;
+    }
+    .back {
+      position: relative;
+      color: #757774;
+      background: transparent;
+      align-self: center;
+      margin-left: 0px;
+      &::before {
+        content: "";
+        height: 24px;
+        width: 24px;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAALtJREFUSEvllFEKAjEMRN96EEVPoifXgyiKeg1BBgyU4tok23653915nWkyE4O/abA+/w3YAi/g/ivmbEQb4AisgANwnYNkACYuB48P4NILsAZOgEtc0IiDsHgEUIo/gT0wG0sZl8dBLa5HPXsXtAVYJO6JSACN4w5QNKHbewA6swjSisiiTkflBZgT2wF3XBHAN0hzXKOAGtK9Kuo3UdnJxa1XF5U6Q+vau8ihsnOLRrsoJWw/ZaYoBHwDRoEsGSBilW0AAAAASUVORK5CYII=");
+        position: absolute;
+        left: 10px;
+        top: 13px;
+      }
     }
   }
 

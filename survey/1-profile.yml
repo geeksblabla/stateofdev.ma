@@ -11,36 +11,33 @@ questions:
   - label: What is your age?
     required: true
     choices:
-      - Younger than 15 years
-      - 15 to 19 years
-      - 20 to 24 years
-      - 25 to 29 years
-      - 30 to 34 years
-      - 35 to 39 years
-      - 40 years and older
+      - Younger than 18 years
+      - 18 to 24 years
+      - 25 to 34 years
+      - 35 to 44 years
+      - 45 or older
+
   - label: Where are you currently located?
     required: true
     choices:
-      - Morocco
-      - Europe
-      - US
-      - Others
-  - label: If Morocco which region ?
-    required: false
-    multiple: false
-    choices:
-      - "Tanger-Tétouan-Al Hoceïma"
-      - "Fès-Meknès"
       - "Rabat-Salé-Kénitra"
-      - "Béni Mellal-Khénifra"
       - "Casablanca-Settat"
       - "Marrakech-Safi"
+      - "Tanger-Tétouan-Al Hoceïma"
+      - "L'Oriental"
+      - "Fès-Meknès"
+      - "Béni Mellal-Khénifra"
       - "Drâa-Tafilalet"
       - "Souss-Massa"
       - "Guelmim-Oued Noun"
       - "Laâyoune-Sakia El Hamra"
       - "Dakhla-Oued Ed Dahab"
-  - label: What is your current role?
+      - Europe
+      - US & Canada
+      - Middle East
+      - Others
+
+  - label: What is your occupation?
     required: true
     choices:
       - Developer, back-end
@@ -66,49 +63,66 @@ questions:
       - Engineer, site reliability
       - Senior executive/VP
       - Marketing or sales professional
+
   - label: What is your highest diploma?
     required: true
     choices:
       - Self-taught
-      - Bac +2
-      - Bac +3
-      - Bac +5
-      - Bac +8
+      - Bac +2/+3, Bachelor’s degree (B.A., B.S., B.Eng., etc.)
+      - Bac +5, Master’s degree (M.A., M.S., M.Eng., MBA, etc.)
+      - Bac +8, Other doctoral degree (Ph.D., Ed.D., etc.)
+
+  - label: Where did you study coding?
+    required: true
+    choices:
+      - Self-taught
+      - University / Public school
+      - Private school
+      - Other
+
   - label: How many years have you been coding professionally?
     choices:
+      - "I don't have any professional coding experience"
       - Less than 1 year
-      - 1-3 years
+      - 1-2 years
       - 3-5 years
-      - 5-10 years
-      - More than 10
+      - 6-10 years
+      - 11-16 years
+      - 16+ years
+
   - label: Is coding a hobby for you?
     required: true
     choices:
       - Yes
       - No
+
   - label: Do you think school gives you the most important concepts to start your professional career?
     required: true
     choices:
       - Not enough
       - Enough to start
       - Everything I needed
+
   - label: Do you have any plans to work outside Morocco in the next 2 years?
     required: true
     choices:
       - Yes
       - No
+
   - label: If you are working abroad, do you have any plans to come back to Morocco?
     choices:
       - Yes
       - No
+
   - label: If you think we have a problem with our education system, from your POV, who are the main contributors?
     required: true
     multiple: true
     choices:
-      - Students
-      - Teachers
+      - Students level
+      - Teachers proficiency
       - Academic defined subjects (system)
-      - Companies engagement with academia
+      - private sector/Academia collaboration
+
   - label: What languages can you read/write?
     required: true
     multiple: true
@@ -118,11 +132,13 @@ questions:
       - French
       - English
       - Others
+
   - label: Is English an obstacle to learning new technologies?
     required: true
     choices:
       - Yes
       - No
+
   - label: Do you think we need more content in Darija?
     required: true
     choices:
@@ -130,6 +146,7 @@ questions:
       - Written/Read
       - Both
       - No
+
   - label: What are your preferred platforms for learning?
     required: true
     multiple: true
@@ -140,11 +157,16 @@ questions:
       - Official documentation
       - Blog posts
       - Company resources
+      - Conferences (virtual/in-person)
+      - Podcasts
+      - Online Communities (StackOverflow/Reddit/Twitter)
       - Others
+
   - label: What do you usually drink while coding?
     required: true
     choices:
       - Tea
       - Coffee
       - Water
+      - Energy drinks
       - None
