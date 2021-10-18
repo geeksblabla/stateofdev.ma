@@ -105,7 +105,14 @@ questions:
       - Vue.js
       - Angular.js
       - Gatsby
-      - Next
+      - Ember.js
+      - Backbone.js
+      - Preact
+      - Svelte
+      - Foundation
+      - Alpine.js
+      - Remix
+      - Solid.js
       - Other
       
 - label: "What are the front-end frameworks you want to learn next?"
@@ -118,7 +125,13 @@ questions:
       - Vue.js
       - Angular.js
       - Gatsby
-      - Next
+      - Backbone.js
+      - Preact
+      - Svelte
+      - Foundation
+      - Alpine.js
+      - Remix
+      - Solid.js
       - Other
       
  - label: "What are the Backend frameworks you are using on a daily basis?"
@@ -140,6 +153,19 @@ questions:
       - Ruby on Rails
       - Symfony
       - Drupal
+      - FastAPI
+      - Nest.js
+      - Hapi.js
+      - Meteor.js
+      - Koa.js
+      - Sails.js
+      - Abc
+      - Oak
+      - Servest
+      - Drash
+      - Serverless framework (Node.js)
+      - Serverless technology (Vercel,Netlify...)
+      - Headless CMS (Strapi,KeystoneJS,Ghost ...)
       - Other
 
   - label: "What are the backend frameworks you want to learn next?"
@@ -161,6 +187,19 @@ questions:
       - Ruby on Rails
       - Symfony
       - Drupal
+      - FastAPI
+      - Nest.js
+      - Hapi.js
+      - Meteor.js
+      - Koa.js
+      - Sails.js
+      - Abc
+      - Oak
+      - Servest
+      - Drash
+      - Serverless framework (Node.js)
+      - Serverless technology (Vercel,Netlify...)
+      - Headless CMS (Strapi,KeystoneJS,Ghost ...)
       - Other
       
   - label: "What are the platforms and tools you are using on a daily basis?"
@@ -169,6 +208,7 @@ questions:
     choices:
       - Node.js
       - .NET
+      - Java
       - Pandas
       - TensorFlow
       - Docker
@@ -191,6 +231,7 @@ questions:
     choices:
       - Node.js
       - .NET
+      - Java
       - Pandas
       - TensorFlow
       - Docker
@@ -226,6 +267,7 @@ questions:
       - Vim
       - Sublime
       - Atom
+      - Notepad++
       - Other
 
   - label: "How frequently do you learn a new programing language or framework?"
