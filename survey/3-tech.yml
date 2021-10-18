@@ -234,3 +234,19 @@ questions:
       - Shared hosting
       - Managed PaaS (heroku, app platform ...)
       - Not sure
+      
+   - label: "The production database you or your team are using is:"
+    multiple: true
+    choices:
+      - Oracle Database
+      - Mysql
+      - PostgreSQL
+      - SQL Server
+      - CosmosDB
+      - MongoDB
+      - Redis
+      - DynamoDB
+      - Neo4j
+      - Apache Cassandra
+      - BigTable
+      - Other
