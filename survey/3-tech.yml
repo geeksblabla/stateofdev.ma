@@ -236,7 +236,6 @@ questions:
       - Not sure
       
    - label: "The production database you or your team are using is:"
-    required: true
     multiple: true
     choices:
       - Oracle Database
@@ -250,3 +249,4 @@ questions:
       - Neo4j
       - Apache Cassandra
       - BigTable
+      - Other
