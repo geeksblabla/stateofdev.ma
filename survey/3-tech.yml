@@ -2,7 +2,7 @@ title: Tech
 label: tech
 position: 3
 questions:
-  - label: What Programming languages you like?
+  - label: "What are the Programming languages you like?"
     required: true
     multiple: true
     choices:
@@ -33,7 +33,7 @@ questions:
       - Julia
       - Other
 
-  - label: What Programming languages you want to learn next?
+  - label: "What are the Programming languages you want to learn next?"
     required: true
     multiple: true
     choices:
@@ -64,7 +64,7 @@ questions:
       - Julia
       - Other
 
-  - label: What Programming languages you are using on a daily basis?
+  - label: "What are the Programming languages you are using on a daily basis?"
     required: true
     multiple: true
     choices:
@@ -95,7 +95,7 @@ questions:
       - Julia
       - Other
 
-  - label: What web frameworks you are using on a daily basis?
+  - label: "What are the web frameworks you are using on a daily basis?"
     required: true
     multiple: true
     choices:
@@ -118,7 +118,7 @@ questions:
       - Next
       - Other
 
-  - label: What web frameworks you want to learn next?
+  - label: "What are the web frameworks you want to learn next?"
     required: true
     multiple: true
     choices:
@@ -140,8 +140,8 @@ questions:
       - Drupal
       - Next
       - Other
-
-  - label: What Platforms and tools you are using on a daily basis?
+      
+  - label: "What are the platforms and tools you are using on a daily basis?"
     required: true
     multiple: true
     choices:
@@ -149,6 +149,8 @@ questions:
       - .NET
       - Pandas
       - TensorFlow
+      - Docker
+      - Kubernetes
       - React Native
       - Unity 3D
       - Ansible
@@ -161,7 +163,7 @@ questions:
       - Torch/PyTorch
       - Other
 
-  - label: What Platforms and tools you want to learn next?
+  - label: "What are the platforms and tools you want to learn next?"
     required: true
     multiple: true
     choices:
@@ -169,6 +171,8 @@ questions:
       - .NET
       - Pandas
       - TensorFlow
+      - Docker
+      - Kubernetes
       - React Native
       - Unity 3D
       - Ansible
@@ -181,7 +185,7 @@ questions:
       - Torch/PyTorch
       - Other
 
-  - label: "Your Primary Operating Systems is :"
+  - label: "Your primary Operating System is:"
     required: true
     choices:
       - Windows
@@ -189,11 +193,11 @@ questions:
       - Linux-based
       - Windows + WSL2
 
-  - label: What IDE and/or code editor you use on a daily basis?
+  - label: "What is you current IDE or code editor for daily work?"
     required: true
     multiple: true
     choices:
-      - Jetbrains (Intellij, PhpStorm, Resharper ...)
+      - Jetbrains (IntelliJ, PhpStorm, Resharper ...)
       - VS Code
       - Eclipse
       - Netbeans
@@ -202,7 +206,7 @@ questions:
       - Atom
       - Other
 
-  - label: How frequently do you learn a new Programming language or framework?
+  - label: "How frequently do you learn a new programing language or framework?"
     required: true
     choices:
       - Every few months
@@ -215,18 +219,18 @@ questions:
     multiple: true
     choices:
       - Google it
-      - Stackoverflow it
+      - Dig in StackOverflow
       - Do other work and come back later
       - Watch help/tutorial videos
       - Call a coworker or friend
 
-  - label: "The Production environment you or your team are using is :"
+  - label: "The production environment you or your team are using is:"
     required: true
     multiple: true
     choices:
-      - Full Cloud
-      - on-premise
+      - Public cloud (AWS/Azure/GCP/Oracle/IBM/etc.)
+      - On-premise datacenter
       - Hybrid Cloud
-      - shared hosting
+      - Shared hosting
       - Managed PaaS (heroku, app platform ...)
-      - Not Sure
+      - Not sure
