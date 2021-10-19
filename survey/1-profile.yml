@@ -103,18 +103,21 @@ questions:
       - Enough to start
       - Everything I needed
 
-  - label: Do you have any plans to work outside Morocco in the next 2 years?
+  - label: Do you have any plans to work outside Morocco?
     required: true
     choices:
-      - Yes
+      - Yes, in the next 12 months 
+      - Yes, in the next 24 months 
+      - Still hesitating 
       - No
 
   - label: If you are working abroad, do you have any plans to come back to Morocco?
     choices:
       - Yes
+      - Still hesitating
       - No
 
-  - label: If you think we have a problem with our education system, from your POV, who are the main contributors?
+  - label: If you think we have a problem with our education system, from your point of view, who are the main contributors?
     required: true
     multiple: true
     choices:
