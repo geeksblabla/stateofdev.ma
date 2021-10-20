@@ -234,6 +234,19 @@ questions:
       - Shared hosting
       - Managed PaaS (heroku, app platform, Salesforce, AWS Beanstalk ...)
       - Not sure
+
+  - label: "What cloud platform are you using:"
+    multiple: true
+    choices:
+      - GCP
+      - AWS
+      - Azure
+      - Oracle Cloud
+      - IBM Cloud
+      - DigitalOcean
+      - Other Moroccan Cloud providers
+      - Other cloud providers
+      - None
       
    - label: "The production database you or your team are using is:"
     multiple: true
