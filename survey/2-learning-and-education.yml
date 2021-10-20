@@ -26,6 +26,13 @@ questions:
       - Academic defined subjects (system)
       - private sector/Academia collaboration
 
+  - label: Do you think we should switch to English instead of French as the primary language in universities?
+    required: true
+    choices:
+      - Yes
+      - No
+      - Not Sure
+
   - label: What languages can you read/write?
     required: true
     multiple: true
