@@ -2,7 +2,7 @@ title: Work
 label: work
 position: 2
 questions:
-  - label: "What is your current role:"
+  - label: "What is your employment status?"
     required: true
     multiple: false
     choices:

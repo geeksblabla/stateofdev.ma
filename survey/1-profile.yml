@@ -37,7 +37,7 @@ questions:
       - Middle East
       - Others
 
-  - label: What is your current role?
+  - label: What is your occupation?
     required: true
     choices:
       - Developer, back-end
@@ -171,4 +171,5 @@ questions:
       - Tea
       - Coffee
       - Water
+      - Energy drinks
       - None
