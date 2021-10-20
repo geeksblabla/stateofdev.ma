@@ -1,6 +1,6 @@
 title: Tech
 label: tech
-position: 3
+position: 4
 questions:
   - label: "What are the Programming languages you like?"
     required: true
@@ -95,7 +95,7 @@ questions:
       - Julia
       - Other
 
-- label: "What are the front-end frameworks you are using on a daily basis?"
+  - label: "What are the front-end frameworks you are using on a daily basis?"
     required: true
     multiple: true
     choices:
@@ -114,8 +114,8 @@ questions:
       - Remix
       - Solid.js
       - Other
-      
-- label: "What are the front-end frameworks you want to learn next?"
+
+  - label: "What are the front-end frameworks you want to learn next?"
     required: true
     multiple: true
     choices:
@@ -133,8 +133,8 @@ questions:
       - Remix
       - Solid.js
       - Other
-      
- - label: "What are the Backend frameworks you are using on a daily basis?"
+
+  - label: "What are the Backend frameworks you are using on a daily basis?"
     required: true
     multiple: true
     choices:
@@ -201,7 +201,7 @@ questions:
       - Serverless technology (Vercel,Netlify...)
       - Headless CMS (Strapi,KeystoneJS,Ghost ...)
       - Other
-      
+
   - label: "What are the platforms and tools you are using on a daily basis?"
     required: true
     multiple: true
@@ -311,8 +311,8 @@ questions:
       - Other Moroccan Cloud providers
       - Other cloud providers
       - None
-      
-   - label: "The production database you or your team are using is:"
+
+  - label: "The production database you or your team are using is:"
     multiple: true
     choices:
       - Oracle Database
@@ -327,3 +327,4 @@ questions:
       - Apache Cassandra
       - BigTable
       - Other
+      - Not sure

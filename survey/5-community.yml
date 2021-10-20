@@ -1,6 +1,6 @@
 title: Community
 label: community
-position: 4
+position: 5
 questions:
   - label: "Are you part of any local developer’s community?"
     required: true
@@ -19,7 +19,6 @@ questions:
       - I have a repo with more than +1k stars
       - I maintain an organization project with +1k stars
 
-      
   - label: "Did you get the chance to write blog posts?"
     required: true
     choices:
@@ -42,7 +41,7 @@ questions:
       - Discord
       - Slack
       - None
-      
+
   - label: "How many IT events did you attend in 2020/2021?"
     required: true
     choices:

@@ -1,0 +1,66 @@
+title: Learning & Education
+label: education
+position: 2
+questions:
+  - label: Where did you study coding?
+    required: true
+    choices:
+      - Self-taught
+      - University / Public school
+      - Private school
+      - Other
+
+  - label: Do you think school gives you the most important concepts to start your professional career?
+    required: true
+    choices:
+      - Not enough
+      - Enough to start
+      - Everything I needed
+
+  - label: If you think we have a problem with our education system, from your point of view, who are the main contributors?
+    required: true
+    multiple: true
+    choices:
+      - Students level
+      - Teachers proficiency
+      - Academic defined subjects (system)
+      - private sector/Academia collaboration
+
+  - label: What languages can you read/write?
+    required: true
+    multiple: true
+    choices:
+      - Arabic
+      - Amazigh
+      - French
+      - English
+      - Others
+
+  - label: Is English an obstacle to learning new technologies?
+    required: true
+    choices:
+      - Yes
+      - No
+
+  - label: Do you think we need more content in Darija?
+    required: true
+    choices:
+      - Spoken
+      - Written/Read
+      - Both
+      - No
+
+  - label: What are your preferred platforms for learning?
+    required: true
+    multiple: true
+    choices:
+      - YouTube
+      - Paid platforms
+      - Books
+      - Official documentation
+      - Blog posts
+      - Company resources
+      - Conferences (virtual/in-person)
+      - Podcasts
+      - Online Communities (StackOverflow/Reddit/Twitter)
+      - Others

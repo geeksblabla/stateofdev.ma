@@ -1,6 +1,6 @@
 title: Work
 label: work
-position: 2
+position: 3
 questions:
   - label: "What is your employment status?"
     required: true
