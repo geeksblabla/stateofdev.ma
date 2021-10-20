@@ -95,50 +95,111 @@ questions:
       - Julia
       - Other
 
-  - label: "What are the web frameworks you are using on a daily basis?"
+- label: "What are the front-end frameworks you are using on a daily basis?"
     required: true
     multiple: true
     choices:
       - jQuery
       - React.js
       - Angular
+      - Vue.js
+      - Angular.js
+      - Gatsby
+      - Ember.js
+      - Backbone.js
+      - Preact
+      - Svelte
+      - Foundation
+      - Alpine.js
+      - Remix
+      - Solid.js
+      - Other
+      
+- label: "What are the front-end frameworks you want to learn next?"
+    required: true
+    multiple: true
+    choices:
+      - jQuery
+      - React.js
+      - Angular
+      - Vue.js
+      - Angular.js
+      - Gatsby
+      - Backbone.js
+      - Preact
+      - Svelte
+      - Foundation
+      - Alpine.js
+      - Remix
+      - Solid.js
+      - Other
+      
+ - label: "What are the Backend frameworks you are using on a daily basis?"
+    required: true
+    multiple: true
+    choices:
       - ASP.NET
+      - NodeJS
+      - Deno
       - Express
       - ASP.NET Core
-      - Vue.js
       - Spring Ecosystem
-      - Angular.js
+      - Micronaut
+      - Quarkus
+      - Jakarta EE / Java EE
       - Django
       - Flask
       - Laravel
       - Ruby on Rails
       - Symfony
-      - Gatsby
       - Drupal
-      - Next
+      - FastAPI
+      - Nest.js
+      - Hapi.js
+      - Meteor.js
+      - Koa.js
+      - Sails.js
+      - Abc
+      - Oak
+      - Servest
+      - Drash
+      - Serverless framework (Node.js)
+      - Serverless technology (Vercel,Netlify...)
+      - Headless CMS (Strapi,KeystoneJS,Ghost ...)
       - Other
 
-  - label: "What are the web frameworks you want to learn next?"
+  - label: "What are the backend frameworks you want to learn next?"
     required: true
     multiple: true
     choices:
-      - jQuery
-      - React.js
-      - Angular
       - ASP.NET
       - Express
+      - NodeJS
+      - Deno
       - ASP.NET Core
-      - Vue.js
       - Spring Ecosystem
-      - Angular.js
+      - Micronaut
+      - Quarkus
+      - Jakarta EE / Java EE
       - Django
       - Flask
       - Laravel
       - Ruby on Rails
       - Symfony
-      - Gatsby
       - Drupal
-      - Next
+      - FastAPI
+      - Nest.js
+      - Hapi.js
+      - Meteor.js
+      - Koa.js
+      - Sails.js
+      - Abc
+      - Oak
+      - Servest
+      - Drash
+      - Serverless framework (Node.js)
+      - Serverless technology (Vercel,Netlify...)
+      - Headless CMS (Strapi,KeystoneJS,Ghost ...)
       - Other
       
   - label: "What are the platforms and tools you are using on a daily basis?"
@@ -147,6 +208,7 @@ questions:
     choices:
       - Node.js
       - .NET
+      - Java
       - Pandas
       - TensorFlow
       - Docker
@@ -169,6 +231,7 @@ questions:
     choices:
       - Node.js
       - .NET
+      - Java
       - Pandas
       - TensorFlow
       - Docker
@@ -204,6 +267,7 @@ questions:
       - Vim
       - Sublime
       - Atom
+      - Notepad++
       - Other
 
   - label: "How frequently do you learn a new programing language or framework?"
