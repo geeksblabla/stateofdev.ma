@@ -31,8 +31,8 @@ const BeforeStart = () => {
             <li>All Questions are required unless you have a skip button</li>
             <li>Questions with (m) accepts multiple answers</li>
             <li>
-              The survey is divided into 4 part: Profile, Work, Technology and
-              Community
+              The survey is divided into 5 part: Profile, Learning & Education,
+              Work, Technology and Community
             </li>
             <li>
               Please be honest. Our goal is to understand the Moroccan IT market

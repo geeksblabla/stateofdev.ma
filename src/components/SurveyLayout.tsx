@@ -6,9 +6,6 @@ import { Layout } from "./Layout"
 
 export const SurveyLayout = ({ children }) => (
   <GoogleReCaptchaProvider reCaptchaKey={process.env.GATSBY_RECAPTCHA_KEY}>
-    <Layout>
-      {children}
-      <Footer />
-    </Layout>
+    <Layout>{children}</Layout>
   </GoogleReCaptchaProvider>
 )
