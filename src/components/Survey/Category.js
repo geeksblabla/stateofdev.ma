@@ -15,8 +15,9 @@ export default React.memo(({ category, next }) => {
   const nextQuestion = async () => {
     const name = `${category.label}-q-${QIndex}`
     const value = getValues(name)
-
-    if (isRequired && value.length === 0) return
+    console.log(value, getValues())
+    // value === null   default value for simple questions and false for multiple ones
+    if (isRequired && value === null && value === false) return
 
     if (isLastQuestion) {
       await submitData()

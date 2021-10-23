@@ -74,6 +74,7 @@ questions:
       - Bac +8, Other doctoral degree (Ph.D., Ed.D., etc.)
 
   - label: How many years have you been coding professionally?
+    required: true
     choices:
       - "I don't have any professional coding experience"
       - Less than 1 year
