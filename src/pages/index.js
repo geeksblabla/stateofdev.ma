@@ -1,13 +1,5 @@
 import React from "react"
-import Results from "../components/Results/index"
-import { Layout } from "../components"
+import Home from "../components/Home"
 
-const Home = () => {
-  return (
-    <Layout>
-      <Results />
-    </Layout>
-  )
-}
-
-export default Home
+const Index = () => <Home />
+export default Index
