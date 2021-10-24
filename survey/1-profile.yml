@@ -64,6 +64,9 @@ questions:
       - Engineer, site reliability
       - Senior executive/VP
       - Marketing or sales professional
+      - Network engineer
+      - Security specialist
+      - IT specialist 
 
   - label: What is your highest diploma?
     required: true
