@@ -66,7 +66,7 @@ questions:
       - Marketing or sales professional
       - Network engineer
       - Security specialist
-      - IT specialist 
+      - IT specialist
 
   - label: What is your highest diploma?
     required: true
@@ -116,3 +116,4 @@ questions:
       - Water
       - Energy drinks
       - None
+      - Other

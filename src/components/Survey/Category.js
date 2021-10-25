@@ -17,7 +17,7 @@ export default React.memo(({ category, next }) => {
     const value = getValues(name)
     console.log(value, getValues())
     // value === null   default value for simple questions and false for multiple ones
-    if (isRequired && value === null && value === false) return
+    if (isRequired && (value === null || value === false)) return
 
     if (isLastQuestion) {
       await submitData()

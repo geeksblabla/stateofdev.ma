@@ -39,8 +39,9 @@ questions:
   - label: How long have you been unemployed after graduation?
     choices:
       - None, I worked straight after my graduation 😎
-      - Few months
-      - Less than 1 year
+      - Up to 3 months
+      - Up to 6 months
+      - Up to 1 year
       - More than 1 year
 
   - label: "If you are working full-time contract in Morocco(CDI), Your NET salary range per month in MAD is:"
@@ -61,7 +62,7 @@ questions:
 
   - label: "If you are working as a freelancer in Morocco(CDI), Your salary range per day in MAD(TJM) is:"
     choices:
-      - - "< 1 000"
+      - "< 1 000"
       - "1 000 - 1 500"
       - "1 500 - 2 000"
       - "2 000 - 2 500"
@@ -70,7 +71,7 @@ questions:
       - "4 000 - 5 000"
       - "> 5 000"
 
-  - label: "If you are working full-time contract outside Morocco, Your salary range per year in USD is:"
+  - label: "If you are working full-time contract outside Morocco, Your gross salary range per year in USD is:"
     choices:
       - "< 20 000"
       - "20 000 - 25 000"
@@ -84,21 +85,16 @@ questions:
       - "150 000 - 200 000"
       - "> 200 000"
 
-  - label: "Your salary range (NET per month in MAD) is:"
+  - label: "If you are working as a freelancer outside Morocco, Your daily gross wage in USD is:"
     choices:
-      - "< 4 000"
-      - "4 000 - 6 000"
-      - "6 000 - 8 000"
-      - "8 000 - 10 000"
-      - "10 000 - 12 000"
-      - "12 000 - 14 000"
-      - "14 000 - 16 000"
-      - "16 000 - 18 000"
-      - "18 000 - 20 000"
-      - "20 000 - 22 000"
-      - "22 000 - 25 000"
-      - "25 000 - 30 000"
-      - "> 30 000"
+      - "< 200"
+      - "200 -  500"
+      - "500 - 1 000"
+      - "1 000 - 2 000"
+      - "2 000 - 3 000"
+      - "3 000 - 5 000"
+      - "5 000 - 10 000"
+      - "> 10 000"
 
   - label: What characteristics would mostly influence your decision to choose one job offer over another?
     required: true
@@ -116,15 +112,13 @@ questions:
   - label: What type of company do you prefer?
     required: true
     choices:
-      - Freelance
-      - Startup
+      - Self-employed
       - Company <1 and >10
       - Company with <10 and >30 employees
       - Company with <30 and >100 employees
       - Company > 100
 
   - label: What agile software development methodology do you use in your team, if any?
-    required: true
     choices:
       - Scrum
       - Kanban
@@ -132,16 +126,15 @@ questions:
       - Other
       - None
 
-  - label: What is the impact of COVID-19 Pandemic in remote work policy in your company ?
+  - label: As more companies looking into opening their offices, What options your company is providing to you?
     choices:
-      - We were doing remote before
-      - The company started remote after covid
-      - No remote policy yet
+      - Back to office
+      - Full remote
+      - Hybrid
 
-  - label: Which of the following sentence describes your productivity in COVID-19 Pandemic ?
+  - label: After COVID-19, What is your preferred mode of working?
+    required: true
     choices:
-      - The current Pandemic very negatively impacted my productivity
-      - The current Pandemic somehow impacted negatively my productivity
-      - The current Pandemic did not impact my productivity
-      - The current Pandemic somehow boosted my productivity
-      - The current Pandemic very positively boosted my productivity
+      - In the office
+      - Full remote
+      - Part-time remote
