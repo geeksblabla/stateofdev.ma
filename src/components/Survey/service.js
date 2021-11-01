@@ -1,5 +1,6 @@
 import firebase from "gatsby-plugin-firebase"
 import { useLayoutEffect } from "react"
+import * as Sentry from "@sentry/gatsby"
 
 export const logIn = async () => {
   await firebase?.auth().signInAnonymously()
@@ -8,6 +9,7 @@ export const logIn = async () => {
 export const saveAnswers = async (recaptcha_token, data) => {
   const userToken = await firebase.auth().currentUser.getIdToken()
   // console.log({ userToken, recaptcha_token })
+
   const response = await fetch("/.netlify/functions/submit", {
     method: "POST",
     headers: {
@@ -17,12 +19,19 @@ export const saveAnswers = async (recaptcha_token, data) => {
     },
     body: JSON.stringify(data),
   })
-  return response
+
+  if (!response.ok) {
+    const error = await response.json()
+    Sentry.captureMessage(error.message || error)
+    throw new Error(error)
+  }
+
+  return await response.json()
 }
 
 export const startSurvey = async recaptcha_token => {
   const startTime = Date.now()
-  saveAnswers(recaptcha_token, { startTime })
+  await saveAnswers(recaptcha_token, { startTime })
 }
 // TODO we should await here too
 export const setAnswers = async (recaptcha_token, data) => {
