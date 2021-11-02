@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import Question from "./Question"
 import { setAnswers } from "./service"
 
-export default React.memo(({ category, next }) => {
+export default React.memo(({ category, next, setProgress }) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const { register, getValues } = useForm()
@@ -26,13 +26,18 @@ export default React.memo(({ category, next }) => {
 
     if (isLastQuestion) {
       await submitData()
+      setProgress(1)
     } else {
       setQIndex(QIndex => QIndex + 1)
+      setProgress(1)
     }
     scrollToSection(".quiz-form")
   }
   const backToPreviousQ = () => {
-    if (QIndex > 0) setQIndex(QIndex => QIndex - 1)
+    if (QIndex > 0) {
+      setQIndex(QIndex => QIndex - 1)
+      setProgress(-1)
+    }
   }
 
   const submitData = useCallback(async () => {
