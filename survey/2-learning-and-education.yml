@@ -11,7 +11,7 @@ questions:
       - Vocational School (bootcamps, technical skills  ...) 
       - Other
 
-  - label: Do you think school gives you the most important concepts to start your professional career?
+  - label: Do you think school gives you enough knowledge to start your professional career?
     required: true
     choices:
       - Not enough
@@ -25,7 +25,7 @@ questions:
       - Students level
       - Teachers proficiency
       - Academic defined subjects (system)
-      - private sector/Academia collaboration
+      - Lack of private sector/academia collaboration
 
   - label: What languages can you read/write?
     required: true

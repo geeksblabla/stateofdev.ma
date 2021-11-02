@@ -12,8 +12,8 @@ export const Hero = () => (
         <div className="intro">
           <h1> State Of Dev In Morocco 2021 </h1>
           <p>
-            Take part in the survey and let the us know what the web developer’s
-            job really looks like in Morocco
+          Participate and let the us know what working in tech
+            really looks like in Morocco
           </p>
           <div className="actions">
             <Link className="primary" to="/beforeStart">

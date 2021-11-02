@@ -6,11 +6,12 @@ questions:
     required: true
     multiple: false
     choices:
-      - Founder or entrepreneur
+      - Founder/entrepreneur
       - Employed full-time
-      - Freelancer, or self-employed
+      - Freelancer/self-employed
       - Employed part-time
       - Looking for work
+      - Internship
       - Student
 
   - label: How often do you work overtime or beyond the formal time expectation of your job?
@@ -88,7 +89,7 @@ questions:
   - label: "If you are working as a freelancer outside Morocco, Your daily gross wage in USD is:"
     choices:
       - "< 200"
-      - "200 -  500"
+      - "200 - 500"
       - "500 - 1 000"
       - "1 000 - 2 000"
       - "2 000 - 3 000"
@@ -102,11 +103,12 @@ questions:
     choices:
       - Languages, frameworks, and other technologies I’d be working on
       - Office environment or company culture
-      - flexible time or schedule
+      - Flexible time or schedule
       - Opportunities for professional development
       - Remote work options
       - How widely used or impactful my work output would be
       - The industry that I’d be working in
+      - Company paid training and certifications
       - Salary
 
   - label: What type of company do you prefer?
@@ -124,9 +126,8 @@ questions:
       - Kanban
       - XP
       - Other
-      - None
 
-  - label: As more companies looking into opening their offices, What options your company is providing to you?
+  - label: As more companies looking into opening their offices, What options are provided by your employer?
     choices:
       - Back to office
       - Full remote
