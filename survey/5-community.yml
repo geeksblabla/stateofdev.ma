@@ -17,18 +17,18 @@ questions:
     multiple: true
     choices:
       - I don’t have an account on Github (or alternatives).
-      - Yes, only few PRs in various projects
-      - I am maintaining my own project
-      - I have a repo with more than +1k stars
-      - I maintain an organization project with +1k stars
+      - Yes, only few PRs in various projects.
+      - I am maintaining my own project.
+      - I have a repo with more than +1k stars.
+      - I maintain an organization project with +1k stars.
 
   - label: "Did you get the chance to write blog posts?"
     required: true
     choices:
       - No, I am not interested.
       - Still thinking about it.
-      - Yes, less than 10 blog posts
-      - Yes, more than 10 blog posts
+      - Yes, less than 10 blog posts.
+      - Yes, more than 10 blog posts.
 
   - label: "When it comes to IT, what is your primary social network?"
     required: true
