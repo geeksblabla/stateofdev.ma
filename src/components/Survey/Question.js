@@ -19,7 +19,8 @@ export default ({
       }
     >
       <p className="quiz-form__question">
-        {`${index + 1}. ${label}`} {question.multiple ? "(m)" : ""}
+        {`${index + 1}. ${label}`} {question.multiple ? "(m)" : ""}{" "}
+        {question.required ? "" : "(if you are not, click Skip button)"}
       </p>
       <div className={fitContent ? "quiz-form_fit-content" : ""}>
         {choices.map((c, i) => (
