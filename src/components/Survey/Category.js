@@ -6,6 +6,7 @@ import { setAnswers } from "./service"
 
 export default React.memo(({ category, next }) => {
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
   const { register, getValues } = useForm()
   const { executeRecaptcha } = useGoogleReCaptcha()
   const [QIndex, setQIndex] = useState(0)
@@ -13,11 +14,15 @@ export default React.memo(({ category, next }) => {
   const isRequired = !!category.questions[QIndex].required
 
   const nextQuestion = async () => {
+    setError(false)
     const name = `${category.label}-q-${QIndex}`
     const value = getValues(name)
     console.log(value, getValues())
     // value === null   default value for simple questions and false for multiple ones
-    if (isRequired && (value === null || value === false)) return
+    if (isRequired && (value === null || value === false)) {
+      setError(true)
+      return
+    }
 
     if (isLastQuestion) {
       await submitData()
@@ -74,7 +79,7 @@ export default React.memo(({ category, next }) => {
             </button>
           )}
         </div>
-        <div>
+        <div className="submit_actions">
           {isRequired ? null : (
             <button
               type="button"
@@ -84,8 +89,17 @@ export default React.memo(({ category, next }) => {
               Skip
             </button>
           )}
-          <button type="button" onClick={() => nextQuestion()}>
+          <button
+            type="button"
+            className="tooltips"
+            onClick={() => nextQuestion()}
+          >
             {loading ? "Loading..." : "Next"}
+            {error && (
+              <span className="error">
+                Question required, Make sure to select an option first
+              </span>
+            )}
           </button>
         </div>
       </div>
