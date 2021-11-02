@@ -41,27 +41,27 @@ questions:
   - label: What is your occupation?
     required: true
     choices:
-      - Developer, back-end
-      - Developer, full-stack
-      - Developer, front-end
-      - Developer, desktop applications
-      - Developer, mobile
+      - Back-end developer
+      - Full-stack developer
+      - Front-end developer
+      - Desktop applications developer
+      - Mobile developer
       - DevOps specialist
       - Database administrator
       - Designer
       - System administrator
-      - Developer, embedded applications or devices
+      - Embedded applications or devices developer
       - Data or business analyst
       - Data scientist or machine learning specialist
-      - Developer, QA, or test
-      - Engineer, data
+      - Developer QA, or test
+      - Data Engineer
       - Academic researcher
       - Educator
-      - Developer, game or graphics
+      - Game or graphics developer
       - Engineering manager
       - Product manager
       - Scientist
-      - Engineer, site reliability
+      - Site reliability engineer
       - Senior executive/VP
       - Marketing or sales professional
       - Network engineer
