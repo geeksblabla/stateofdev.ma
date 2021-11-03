@@ -8,7 +8,7 @@ questions:
     choices:
       - JavaScript
       - HTML/CSS 😉
-      - SQL5
+      - SQL
       - Python
       - Java
       - Bash/Shell/PowerShell
@@ -39,7 +39,7 @@ questions:
     choices:
       - JavaScript
       - HTML/CSS 😉
-      - SQL5
+      - SQL
       - Python
       - Java
       - Bash/Shell/PowerShell
@@ -107,6 +107,7 @@ questions:
       - Ember.js
       - Backbone.js
       - Preact
+      - Next.js
       - Svelte
       - Foundation
       - Alpine.js
@@ -126,6 +127,7 @@ questions:
       - Ember.js
       - Backbone.js
       - Preact
+      - Next.js
       - Svelte
       - Foundation
       - Alpine.js
@@ -136,7 +138,7 @@ questions:
   - label: "What are the backend frameworks you are using on a daily basis?"
     multiple: true
     choices:
-      - ASP.NET
+      - .NET
       - Spring Ecosystem
       - Micronaut
       - Quarkus
@@ -150,7 +152,6 @@ questions:
       - FastAPI
       - Express.js
       - Nest.js
-      - Next.js
       - Sails.js
       - Serverless framework
       - Serverless technology (Vercel,Netlify...)
@@ -160,7 +161,7 @@ questions:
   - label: "What are the backend frameworks you want to learn next?"
     multiple: true
     choices:
-      - ASP.NET
+      - .NET
       - Spring Ecosystem
       - Micronaut
       - Quarkus
@@ -174,7 +175,6 @@ questions:
       - FastAPI
       - Express.js
       - Nest.js
-      - Next.js
       - Sails.js
       - Serverless framework
       - Serverless technology (Vercel,Netlify...)

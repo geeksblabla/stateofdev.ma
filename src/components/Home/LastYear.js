@@ -3,7 +3,7 @@ import React from "react"
 
 export const LastYear = () => (
   <div className="container last-year">
-    <h1> State of Dev In Morocco 2020 </h1>
+    <h1> State Of Dev In Morocco 2020 </h1>
     <main>
       <p>
         In November 2020, <strong> 2287 developers from Morocco 🇲🇦 </strong>

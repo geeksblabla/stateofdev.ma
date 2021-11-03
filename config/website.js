@@ -1,14 +1,14 @@
 module.exports = {
   pathPrefix: "/", // Prefix for all links. If you deploy your site to example.com/portfolio your pathPrefix should be "portfolio"
 
-  siteTitle: "State of Dev In Morocco 2021", // Navigation and Site Title
-  siteTitleAlt: "State of Dev In Morocco 2021", // Alternative Site title for SEO
+  siteTitle: "State Of Dev In Morocco 2021", // Navigation and Site Title
+  siteTitleAlt: "State Of Dev In Morocco 2021", // Alternative Site title for SEO
   siteUrl: "https://stateofdev.ma", // Domain of your site. No trailing slash!
   siteLanguage: "en", // Language Tag on <html> element
   siteLogo: "images/logo.png", // Used for SEO and manifest, path to your image you placed in the 'static' folder
   banner: "images/banner.png",
   siteDescription:
-    "Participate and let the us know what working in tech really looks like in Morocco 🇲🇦", // Author for schemaORGJSONLD
+    "Participate and let  us know what working in tech really looks like in Morocco 🇲🇦", // Author for schemaORGJSONLD
   organization: "GeeksBlaBla",
   author: "GeeksBlaBla",
   // siteFBAppID: '123456789', // Facebook App ID - Optional

@@ -4,11 +4,12 @@ position: 2
 questions:
   - label: Where did you study coding?
     required: true
+    multiple: true
     choices:
       - Self-taught
       - University / Public school
       - Private school
-      - Vocational School (bootcamps, technical skills  ...) 
+      - Vocational School (bootcamps, technical skills  ...)
       - Other
 
   - label: Do you think school gives you enough knowledge to start your professional career?

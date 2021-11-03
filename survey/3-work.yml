@@ -61,7 +61,7 @@ questions:
       - "25 000 - 30 000"
       - "> 30 000"
 
-  - label: "If you are working as a freelancer in Morocco(CDI), Your salary range per day in MAD(TJM) is:"
+  - label: "If you are working as a freelancer in Morocco, Your salary range per day in MAD(TJM) is:"
     choices:
       - "< 1 000"
       - "1 000 - 1 500"
@@ -126,6 +126,7 @@ questions:
       - Kanban
       - XP
       - Other
+      - None
 
   - label: As more companies looking into opening their offices, What options are provided by your employer?
     choices:
