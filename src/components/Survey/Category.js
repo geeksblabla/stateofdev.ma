@@ -17,7 +17,6 @@ export default React.memo(({ category, next, setProgress }) => {
     setError(false)
     const name = `${category.label}-q-${QIndex}`
     const value = getValues(name)
-    console.log(value, getValues())
     // value === null   default value for simple questions and false for multiple ones
     if (isRequired && (value === null || value === false)) {
       setError(true)
@@ -42,7 +41,7 @@ export default React.memo(({ category, next, setProgress }) => {
 
   const submitData = useCallback(async () => {
     if (!executeRecaptcha) {
-      console.log("Execute recaptcha not yet available")
+      // console.log("Execute recaptcha not yet available")
     } else {
       const token = await executeRecaptcha("start")
       if (token) {

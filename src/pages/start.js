@@ -36,7 +36,7 @@ export const Start = () => {
 
   const initSurvey = useCallback(async () => {
     if (!executeRecaptcha) {
-      console.log("Execute recaptcha not yet available")
+      // console.log("Execute recaptcha not yet available")
     } else {
       try {
         const token = await executeRecaptcha("start")
