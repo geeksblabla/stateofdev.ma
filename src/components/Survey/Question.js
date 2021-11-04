@@ -36,7 +36,7 @@ export default ({
             paddingLeft: "10px",
           }}
         >
-          {question.required ? "" : "- Click Skip button if it's not the case "}
+          {question.required ? "" : "- Click skip button if not applicable"}
         </span>
       </p>
       <div className={fitContent ? "quiz-form_fit-content" : ""}>
