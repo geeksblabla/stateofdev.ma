@@ -2,30 +2,33 @@ title: Community
 label: community
 position: 5
 questions:
-  - label: "Are you part of any local developer’s community?"
+  - label: "How far are you involved in any local developer’s community?"
     required: true
     multiple: false
     choices:
-      - Yes
-      - No
+      - No, I am not interested
+      - I know some, but not involved
+      - I am following some communities
+      - I am an active member
+      - I am an organizer
 
   - label: "Did you ever participate in an open-source project?"
     required: true
     multiple: true
     choices:
       - I don’t have an account on Github (or alternatives).
-      - Yes, only few PRs in various projects
-      - I am maintaining my own project
-      - I have a repo with more than +1k stars
-      - I maintain an organization project with +1k stars
+      - Yes, only few PRs in various projects.
+      - I am maintaining my own project.
+      - I have a repo with more than +1k stars.
+      - I maintain an organization project with +1k stars.
 
   - label: "Did you get the chance to write blog posts?"
     required: true
     choices:
       - No, I am not interested.
       - Still thinking about it.
-      - Yes, less than 10 blog posts
-      - Yes, more than 10 blog posts
+      - Yes, less than 10 blog posts.
+      - Yes, more than 10 blog posts.
 
   - label: "When it comes to IT, what is your primary social network?"
     required: true
@@ -36,10 +39,10 @@ questions:
       - WhatsApp
       - Twitter
       - Youtube
-      - TikTok
       - Telegram
       - Discord
       - Slack
+      - Gitter
       - None
 
   - label: "How many IT events did you attend in 2020/2021?"
@@ -62,13 +65,6 @@ questions:
       - Live/online events
       - In-person events?
       - Li ja bismillah
-
-  - label: "Are you part of one of the Moroccan Facebook Developer circles groups?"
-    required: true
-    choices:
-      - Yes
-      - No
-      - I don’t know what Facebook Developer circles are
 
   - label: "How do you evaluate the Moroccan Tech Community?"
     required: true

@@ -109,8 +109,6 @@ a {
     max-width: 1000px;
     margin: auto;
     text-align: center;
-    font-size: 40px;
-    line-height: 140%;
     text-align: center;
     color: #2c322b;
 
@@ -120,10 +118,7 @@ a {
     }
     p {
       font-weight: normal;
-    }
-    @include breakpoint(mobileonly) {
-      font-size: 22px;
-      line-height: 140%;
+      padding-bottom: 2rem;
     }
   }
 }

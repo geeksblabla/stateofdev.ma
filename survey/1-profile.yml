@@ -34,39 +34,39 @@ questions:
       - "Laâyoune-Sakia El Hamra"
       - "Dakhla-Oued Ed Dahab"
       - Europe
-      - US & Canada
-      - Middle East
+      - "US & Canada"
+      - "Middle East"
       - Others
 
   - label: What is your occupation?
     required: true
     choices:
-      - Developer, back-end
-      - Developer, full-stack
-      - Developer, front-end
-      - Developer, desktop applications
-      - Developer, mobile
+      - Back-end developer
+      - Full-stack developer
+      - Front-end developer
+      - Desktop applications developer
+      - Mobile developer
+      - Embedded applications/devices developer
+      - QA/test Develper
+      - Game/graphics Developer
       - DevOps specialist
       - Database administrator
       - Designer
       - System administrator
-      - Developer, embedded applications or devices
-      - Data or business analyst
+      - Data/business analyst
       - Data scientist or machine learning specialist
-      - Developer, QA, or test
-      - Engineer, data
+      - Data rngineer
       - Academic researcher
       - Educator
-      - Developer, game or graphics
       - Engineering manager
       - Product manager
       - Scientist
-      - Engineer, site reliability
+      - Site reliability engineer
       - Senior executive/VP
-      - Marketing or sales professional
+      - Marketing/sales professional
       - Network engineer
       - Security specialist
-      - IT specialist 
+      - IT specialist
 
   - label: What is your highest diploma?
     required: true
@@ -77,9 +77,10 @@ questions:
       - Bac +8, Other doctoral degree (Ph.D., Ed.D., etc.)
 
   - label: How many years have you been coding professionally?
+    required: true
     choices:
       - "I don't have any professional coding experience"
-      - Less than 1 year
+      - Less than a year
       - 1-2 years
       - 3-4 years
       - 5-6 years
@@ -99,6 +100,7 @@ questions:
       - Yes, in the next 12 months
       - Yes, in the next 24 months
       - Still hesitating
+      - Currently working outside Morocco
       - No
 
   - label: If you are working abroad, do you have any plans to come back to Morocco?
@@ -115,3 +117,4 @@ questions:
       - Water
       - Energy drinks
       - None
+      - Other

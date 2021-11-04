@@ -5,14 +5,14 @@ import "../styles/commons.scss"
 export const Layout = ({ children }) => (
   <>
     <GatsbySeo
-      title="State of Dev In Morocco"
-      description="In November 2020, 2287 developers from Morocco 🇲🇦 told us about their jobs satisfaction, salaries, and community contribution, how they learn and level up, which tools they’re using, and what they want to learn next."
+      title="State Of Dev In Morocco"
+      description="Participate and let  us know what working in tech really looks like in Morocco 🇲🇦"
       canonical="https://stateofdev.ma"
       openGraph={{
         url: "https://stateofdev.ma",
-        title: "State of Dev In Morocco",
+        title: "State Of Dev In Morocco",
         description:
-          "In November 2020, 2287 developers from Morocco 🇲🇦 told us about their jobs satisfaction, salaries, and community contribution, how they learn and level up, which tools they’re using, and what they want to learn next.",
+          "Participate and let  us know what working in tech really looks like in Morocco 🇲🇦",
         images: [{ url: "https://www.stateofdev.ma/images/cover.png" }],
         site_name: "StateOfDevMa",
       }}

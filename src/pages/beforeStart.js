@@ -29,7 +29,6 @@ const BeforeStart = () => {
               anonymous. We only rely on anonymous sessions to avoid spam
             </li>
             <li>All Questions are required unless you have a skip button</li>
-            <li>Questions with (m) accepts multiple answers</li>
             <li>
               The survey is divided into 5 part: Profile, Learning & Education,
               Work, Technology and Community

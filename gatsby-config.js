@@ -123,6 +123,13 @@ module.exports = {
       },
     },
     {
+      resolve: "@sentry/gatsby",
+      options: {
+        dsn: process.env.GATSBY_SENTRY_DSN,
+        sampleRate: 0.7,
+      },
+    },
+    {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {

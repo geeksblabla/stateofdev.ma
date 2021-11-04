@@ -3,11 +3,7 @@ import Results from "../components/Results/index"
 import { Layout } from "../components"
 
 const Results2020 = () => {
-  return (
-    <Layout>
-      <Results />
-    </Layout>
-  )
+  return <Results />
 }
 
 export default Results2020

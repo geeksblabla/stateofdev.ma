@@ -5,6 +5,7 @@ import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import Survey from "../components/Survey"
 import { startSurvey, useAuth } from "../components/Survey/service"
 import { Header, SurveyLayout } from "../components"
+import { toast } from "react-toastify"
 
 const SurveyData = graphql`
   {
@@ -35,11 +36,26 @@ export const Start = () => {
 
   const initSurvey = useCallback(async () => {
     if (!executeRecaptcha) {
-      console.log("Execute recaptcha not yet available")
+      // console.log("Execute recaptcha not yet available")
     } else {
-      const token = await executeRecaptcha("start")
-      // console.log({ token })
-      if (token) startSurvey(token)
+      try {
+        const token = await executeRecaptcha("start")
+        // console.log({ token })
+        if (token) await startSurvey(token)
+      } catch (error) {
+        toast.error(
+          "Error starting the survey, Please refresh the page and start again ",
+          {
+            position: "top-right",
+            autoClose: false,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }
+        )
+      }
     }
   }, [executeRecaptcha])
 

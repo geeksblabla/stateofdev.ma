@@ -100,6 +100,60 @@
   }
 }
 
+.last-year {
+  h1 {
+    font-size: 2em;
+    margin: auto;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    align-self: center;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 2rem;
+    p {
+      max-width: 600px;
+      text-align: center;
+      margin: auto;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 28px;
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 2rem;
+    p {
+      margin-left: 1rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      color: #3dbe71;
+      svg {
+        padding-right: 10px;
+      }
+    }
+
+    @include breakpoint(mobileonly) {
+      flex-direction: column;
+      justify-content: center;
+      p {
+        margin-left: 0rem;
+      }
+    }
+  }
+}
+
 .why {
   h1 {
     font-size: 2em;
@@ -170,7 +224,6 @@
   p {
     margin: 2rem 0px;
     position: relative;
-    margin-left: 100px;
     width: fit-content;
     font-style: normal;
     font-weight: 600;

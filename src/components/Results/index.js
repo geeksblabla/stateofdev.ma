@@ -4,10 +4,9 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Layout } from "./Layout"
 import { Actions } from "./Actions"
 import { Episode } from "./Episode"
-import { Hero } from "../Home/Hero"
+import { Hero } from "./Hero"
 import TableOfContent, { slugify } from "./TableOfContent"
 import "./index.scss"
-import { Footer } from "../Footer"
 
 const DATA = graphql`
   {

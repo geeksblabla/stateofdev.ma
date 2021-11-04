@@ -2,13 +2,13 @@ title: Tech
 label: tech
 position: 4
 questions:
-  - label: "What are the Programming languages you like?"
+  - label: "What are the programming languages you like the most?"
     required: true
     multiple: true
     choices:
       - JavaScript
       - HTML/CSS 😉
-      - SQL5
+      - SQL
       - Python
       - Java
       - Bash/Shell/PowerShell
@@ -33,13 +33,13 @@ questions:
       - Julia
       - Other
 
-  - label: "What are the Programming languages you want to learn next?"
+  - label: "What are the programming languages you want to learn next?"
     required: true
     multiple: true
     choices:
       - JavaScript
       - HTML/CSS 😉
-      - SQL5
+      - SQL
       - Python
       - Java
       - Bash/Shell/PowerShell
@@ -64,7 +64,7 @@ questions:
       - Julia
       - Other
 
-  - label: "What are the Programming languages you are using on a daily basis?"
+  - label: "What are the programming languages you are using on a daily basis?"
     required: true
     multiple: true
     choices:
@@ -95,8 +95,7 @@ questions:
       - Julia
       - Other
 
-  - label: "What are the front-end frameworks you are using on a daily basis?"
-    required: true
+  - label: "What are the front-end frameworks/libraries you are using on a daily basis?"
     multiple: true
     choices:
       - jQuery
@@ -108,6 +107,7 @@ questions:
       - Ember.js
       - Backbone.js
       - Preact
+      - Next.js
       - Svelte
       - Foundation
       - Alpine.js
@@ -115,8 +115,7 @@ questions:
       - Solid.js
       - Other
 
-  - label: "What are the front-end frameworks you want to learn next?"
-    required: true
+  - label: "What are the front-end frameworks/libraries you want to learn next?"
     multiple: true
     choices:
       - jQuery
@@ -125,8 +124,10 @@ questions:
       - Vue.js
       - Angular.js
       - Gatsby
+      - Ember.js
       - Backbone.js
       - Preact
+      - Next.js
       - Svelte
       - Foundation
       - Alpine.js
@@ -134,15 +135,10 @@ questions:
       - Solid.js
       - Other
 
-  - label: "What are the Backend frameworks you are using on a daily basis?"
-    required: true
+  - label: "What are the backend frameworks you are using on a daily basis?"
     multiple: true
     choices:
-      - ASP.NET
-      - NodeJS
-      - Deno
-      - Express
-      - ASP.NET Core
+      - .NET
       - Spring Ecosystem
       - Micronaut
       - Quarkus
@@ -150,33 +146,22 @@ questions:
       - Django
       - Flask
       - Laravel
-      - Ruby on Rails
       - Symfony
-      - Drupal
+      - Ruby on Rails
+      - Sinatra
       - FastAPI
+      - Express.js
       - Nest.js
-      - Hapi.js
-      - Meteor.js
-      - Koa.js
       - Sails.js
-      - Abc
-      - Oak
-      - Servest
-      - Drash
-      - Serverless framework (Node.js)
+      - Serverless framework
       - Serverless technology (Vercel,Netlify...)
       - Headless CMS (Strapi,KeystoneJS,Ghost ...)
       - Other
 
   - label: "What are the backend frameworks you want to learn next?"
-    required: true
     multiple: true
     choices:
-      - ASP.NET
-      - Express
-      - NodeJS
-      - Deno
-      - ASP.NET Core
+      - .NET
       - Spring Ecosystem
       - Micronaut
       - Quarkus
@@ -184,20 +169,14 @@ questions:
       - Django
       - Flask
       - Laravel
-      - Ruby on Rails
       - Symfony
-      - Drupal
+      - Ruby on Rails
+      - Sinatra
       - FastAPI
+      - Express.js
       - Nest.js
-      - Hapi.js
-      - Meteor.js
-      - Koa.js
       - Sails.js
-      - Abc
-      - Oak
-      - Servest
-      - Drash
-      - Serverless framework (Node.js)
+      - Serverless framework
       - Serverless technology (Vercel,Netlify...)
       - Headless CMS (Strapi,KeystoneJS,Ghost ...)
       - Other
@@ -208,14 +187,16 @@ questions:
     choices:
       - Node.js
       - .NET
-      - Java
+      - JVM
+      - PHP
+      - GraalVM
       - Pandas
       - TensorFlow
       - Docker
       - Kubernetes
       - React Native
       - Unity 3D
-      - Ansible
+      - Configuration Management(Ansible, Puppet...)
       - Flutter
       - Terraform
       - Keras
@@ -231,14 +212,16 @@ questions:
     choices:
       - Node.js
       - .NET
-      - Java
+      - JVM
+      - PHP
+      - GraalVM
       - Pandas
       - TensorFlow
       - Docker
       - Kubernetes
       - React Native
       - Unity 3D
-      - Ansible
+      - Configuration Management(Ansible, Puppet...)
       - Flutter
       - Terraform
       - Keras
@@ -268,6 +251,7 @@ questions:
       - Sublime
       - Atom
       - Notepad++
+      - Cloud based IDE
       - Other
 
   - label: "How frequently do you learn a new programing language or framework?"
@@ -289,17 +273,15 @@ questions:
       - Call a coworker or friend
 
   - label: "The production environment you or your team are using is:"
-    required: true
     multiple: true
     choices:
       - Public cloud (AWS/Azure/GCP/Oracle/IBM/etc.)
-      - On-premise data center
+      - On-premise
       - Hybrid Cloud
       - Shared hosting
       - Managed PaaS (heroku, app platform, Salesforce, AWS Beanstalk ...)
-      - Not sure
 
-  - label: "What cloud platform are you using:"
+  - label: "What cloud platform are you using?"
     multiple: true
     choices:
       - GCP
@@ -316,7 +298,7 @@ questions:
     multiple: true
     choices:
       - Oracle Database
-      - Mysql
+      - Mysql/MariaDB
       - PostgreSQL
       - SQL Server
       - CosmosDB
@@ -327,4 +309,3 @@ questions:
       - Apache Cassandra
       - BigTable
       - Other
-      - Not sure
