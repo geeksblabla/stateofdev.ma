@@ -56,7 +56,7 @@ export const handler: Handler = async event => {
   try {
     const res: RecaptchaResponse = await verifyRecaptcha(recaptcha_token)
     if (!Boolean(res?.success)) {
-      reportError("recaptcha token invalid")
+      reportError(`recaptcha token invalid ${JSON.stringify(res)}`)
       return {
         statusCode: 401,
         body: JSON.stringify({

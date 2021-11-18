@@ -113,7 +113,7 @@ export default React.memo(({ category, next, setProgress }) => {
 
 const scrollToSection = selector => {
   if (document.body.clientWidth < 600)
-    document.querySelector(selector).scrollIntoView({
+    document.querySelector(selector)?.scrollIntoView?.({
       behavior: "smooth",
     })
 }
