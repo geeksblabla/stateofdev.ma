@@ -9,6 +9,7 @@ export default function FilterForm({
   control,
 }) {
   const qs = Object.entries(questions).map(q => ({ id: q[0], ...q[1] }))
+  const years = [2020, 2021]
 
   const { fields, append, remove } = useFieldArray({
     control, // control props comes from useForm (optional: if you are using FormContext)
@@ -19,6 +20,14 @@ export default function FilterForm({
   return (
     <div className="filter-form">
       <form onSubmit={handleSubmit(onSubmit)}>
+        <label>Year</label>
+        <select name="question" {...register("year")}>
+          {years.map((y, index) => (
+            <option key={index} value={y}>
+              {y}
+            </option>
+          ))}
+        </select>
         <label>Question</label>
         <select name="question" {...register("question")}>
           {qs.map(q => (
@@ -52,7 +61,10 @@ export default function FilterForm({
           ))}
           <select
             name="Question"
-            onChange={e => e.target.value && append({ question_id: e.target.value, values: [] })}
+            onChange={e =>
+              e.target.value &&
+              append({ question_id: e.target.value, values: [] })
+            }
           >
             <option value="" style={{ color: "var(--green)" }}>
               + Add filter question
