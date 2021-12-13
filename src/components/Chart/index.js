@@ -13,12 +13,14 @@ export const Chart = ({
   condition,
   source = undefined,
   groupBy = undefined,
+  year = 2020,
 }) => {
   const { label, results, total } = getQuestion({
     id,
     condition,
     source,
     groupBy,
+    year,
   })
   const res = results
     .sort((b, a) =>
