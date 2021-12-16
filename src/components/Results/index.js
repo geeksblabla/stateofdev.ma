@@ -15,7 +15,7 @@ const Results = ({ year = 2020, data }) => {
   const titles = data.allMdx.edges.map(({ node }) => node.frontmatter.title)
   return (
     <Layout year={year}>
-      <Hero />
+      <Hero year={year} />
       <div className="container main">
         <TableOfContent titles={titles} />
         <div className="content mdx-content">
@@ -27,7 +27,7 @@ const Results = ({ year = 2020, data }) => {
         </div>
       </div>
       <Actions />
-      <Episode />
+      <Episode year={year} />
     </Layout>
   )
 }
