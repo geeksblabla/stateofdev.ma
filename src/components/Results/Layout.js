@@ -14,7 +14,7 @@ export const Layout = ({ children, year = 2020 }) => (
   <MDXProvider
     components={{
       ...components,
-      Chart: props => <Chart {...props} year={year} />,
+      Chart: props => <Chart year={year} {...props} />,
     }}
   >
     <div className="results">{children} </div>
