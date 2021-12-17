@@ -4,10 +4,12 @@ import Crea from "../../assets/Crea.svg"
 // import TimeIcon from "../../assets/time.svg"
 import { Link } from "gatsby"
 
+// TODO: add a markdown file in results which reflect hero section content
+
 const data = {
   2020: {
     title: `State Of Dev In Morocco 2020`,
-    description: `In November 2020, <strong> 2287 developers from Morocco 🇲🇦 </strong>
+    description: `In November 2020,  2287 developers from Morocco 🇲🇦
   told us about their jobs satisfaction, salaries, and community
   contribution, how they learn and level up, which tools they’re
   using, and what they want to learn next.`,
@@ -15,7 +17,7 @@ const data = {
 
   2021: {
     title: `State Of Dev In Morocco 2021`,
-    description: `In November 2021, <strong> 1098 developers from Morocco 🇲🇦 </strong>
+    description: `In November 2021, 1098 developers from Morocco 🇲🇦
   told us about their jobs satisfaction, salaries, and community
   contribution, how they learn and level up, which tools they’re
   using, and what they want to learn next.`,
