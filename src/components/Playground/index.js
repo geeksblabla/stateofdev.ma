@@ -12,6 +12,7 @@ const getDefaultValues = () => {
   const {
     question = "profile-q-0",
     groupBy = null,
+    year = 2021,
     condition: c,
   } = isBrowser() ? queryString.parse(window.location.hash) : {}
   let condition = []
@@ -21,7 +22,7 @@ const getDefaultValues = () => {
     condition = undefined
   }
 
-  return { question, condition, groupBy }
+  return { question, condition, groupBy, year }
 }
 
 export default function Index() {
@@ -34,9 +35,14 @@ export default function Index() {
   const condition = watch("condition")
   const groupBy = watch("groupBy")
   React.useEffect(() => {
-    const search = { question, condition: JSON.stringify(condition), groupBy }
+    const search = {
+      year,
+      question,
+      condition: JSON.stringify(condition),
+      groupBy,
+    }
     if (isBrowser()) window.location.hash = queryString.stringify(search)
-  }, [question, condition, groupBy])
+  }, [question, condition, groupBy, year])
 
   // console.log(condition, groupBy)
 
@@ -71,6 +77,7 @@ export default function Index() {
               source={data.results.results}
               groupBy={groupBy}
               sort={false}
+              year={parseInt(year)}
             />
           )}
         </div>

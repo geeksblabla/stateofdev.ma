@@ -9,7 +9,7 @@ export default function FilterForm({
   control,
 }) {
   const qs = Object.entries(questions).map(q => ({ id: q[0], ...q[1] }))
-  const years = [2020, 2021]
+  const years = [2021, 2020]
 
   const { fields, append, remove } = useFieldArray({
     control, // control props comes from useForm (optional: if you are using FormContext)
