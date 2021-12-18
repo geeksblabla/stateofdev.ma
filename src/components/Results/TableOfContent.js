@@ -15,7 +15,6 @@ const TableOfContent = ({ titles }) => {
         entries.forEach(entry => {
           const id = entry.target.getAttribute("id")
           const selector = `li a[href="#${id}"]`
-          console.log(selector, document.querySelector(selector))
           if (!document.querySelector(selector)) return
           if (entry.intersectionRatio > 0.1) {
             document
@@ -33,7 +32,6 @@ const TableOfContent = ({ titles }) => {
 
     // Track all sections that have an `id` applied
     document.querySelectorAll("section[id]").forEach(section => {
-      console.log(section)
       observer.observe(section)
     })
 

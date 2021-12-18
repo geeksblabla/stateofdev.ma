@@ -68,6 +68,7 @@ export const getQuestion = ({
               else return v[id] === parseInt(key, 10)
             },
             source: filteredData,
+            year,
           })
         : null
       results.push({
