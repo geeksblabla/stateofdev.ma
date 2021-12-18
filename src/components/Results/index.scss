@@ -109,6 +109,12 @@
       opacity: 0.7;
     }
   }
+
+  ul {
+    list-style-type: circle;
+    list-style-position: outside;
+    padding-left: 20px;
+  }
 }
 
 .actions-list {
