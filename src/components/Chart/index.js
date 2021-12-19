@@ -44,7 +44,7 @@ export const UIChart = ({
   )
 }
 
-function ErrorFallback({ error, resetErrorBoundary }) {
+function ErrorFallback({ error }) {
   return (
     <div role="alert">
       <p>Something went wrong:</p>
