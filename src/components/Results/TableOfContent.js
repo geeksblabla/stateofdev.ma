@@ -14,14 +14,15 @@ const TableOfContent = ({ titles }) => {
       entries => {
         entries.forEach(entry => {
           const id = entry.target.getAttribute("id")
-          if (!document.querySelector(`li a[href="/#${id}"]`)) return
+          const selector = `li a[href="#${id}"]`
+          if (!document.querySelector(selector)) return
           if (entry.intersectionRatio > 0.1) {
             document
-              .querySelector(`li a[href="/#${id}"]`)
+              .querySelector(selector)
               .parentElement.classList.add("active")
           } else {
             document
-              .querySelector(`li a[href="/#${id}"]`)
+              .querySelector(selector)
               .parentElement.classList.remove("active")
           }
         })
@@ -45,9 +46,9 @@ const TableOfContent = ({ titles }) => {
         <ul>
           {titles.map((title, index) => (
             <li key={`item-${index}`}>
-              <Link to={`#${slugify(title)}`}>
+              <a href={`#${slugify(title)}`}>
                 0{index + 1}: {title}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>

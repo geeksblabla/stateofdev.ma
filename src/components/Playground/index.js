@@ -9,9 +9,12 @@ import { Chart } from "../Chart/index"
 export const isBrowser = () => typeof window !== "undefined"
 
 const getDefaultValues = () => {
-  const { question = "profile-q-0", groupBy = null, condition: c } = isBrowser()
-    ? queryString.parse(window.location.hash)
-    : {}
+  const {
+    question = "profile-q-0",
+    groupBy = null,
+    year = 2021,
+    condition: c,
+  } = isBrowser() ? queryString.parse(window.location.hash) : {}
   let condition = []
   try {
     condition = JSON.parse(c)
@@ -19,21 +22,27 @@ const getDefaultValues = () => {
     condition = undefined
   }
 
-  return { question, condition, groupBy }
+  return { question, condition, groupBy, year }
 }
 
 export default function Index() {
-  const { isLoading, data, error } = useData()
   const { register, handleSubmit, errors, control, watch } = useForm({
     defaultValues: getDefaultValues(),
   })
+  const year = watch("year")
+  const { isLoading, data, error } = useData(year)
   const question = watch("question")
   const condition = watch("condition")
   const groupBy = watch("groupBy")
   React.useEffect(() => {
-    const search = { question, condition: JSON.stringify(condition), groupBy }
+    const search = {
+      year,
+      question,
+      condition: JSON.stringify(condition),
+      groupBy,
+    }
     if (isBrowser()) window.location.hash = queryString.stringify(search)
-  }, [question, condition, groupBy])
+  }, [question, condition, groupBy, year])
 
   // console.log(condition, groupBy)
 
@@ -68,6 +77,7 @@ export default function Index() {
               source={data.results.results}
               groupBy={groupBy}
               sort={false}
+              year={parseInt(year)}
             />
           )}
         </div>
@@ -76,13 +86,21 @@ export default function Index() {
   )
 }
 
-const useData = () => {
-  const { isLoading: isl, data: questions, error: QErrors } = useFetch(
-    "https://raw.githubusercontent.com/DevC-Casa/stateofdev.ma/results_prview/results/2020/data/questions.json"
+const useData = (year = 2021) => {
+  const {
+    isLoading: isl,
+    data: questions,
+    error: QErrors,
+  } = useFetch(
+    `https://raw.githubusercontent.com/DevC-Casa/stateofdev.ma/2021-results/results/${year}/data/questions.json`
   )
 
-  const { isLoading, data: results, error } = useFetch(
-    "https://raw.githubusercontent.com/DevC-Casa/stateofdev.ma/results_prview/results/2020/data/results.json"
+  const {
+    isLoading,
+    data: results,
+    error,
+  } = useFetch(
+    `https://raw.githubusercontent.com/DevC-Casa/stateofdev.ma/2021-results/results/${year}/data/results.json`
   )
 
   return {
@@ -109,6 +127,6 @@ const useFetch = (url, options) => {
       }
     }
     fetchData()
-  }, [])
+  }, [url])
   return { data, error, isLoading }
 }

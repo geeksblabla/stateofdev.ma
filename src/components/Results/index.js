@@ -1,5 +1,4 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Layout } from "./Layout"
 import { Actions } from "./Actions"
@@ -8,37 +7,15 @@ import { Hero } from "./Hero"
 import TableOfContent, { slugify } from "./TableOfContent"
 import "./index.scss"
 
-const DATA = graphql`
-  {
-    allMdx(
-      sort: { fields: frontmatter___position, order: ASC }
-      filter: { fileAbsolutePath: { regex: "/2020/" } }
-    ) {
-      edges {
-        node {
-          body
-          id
-          frontmatter {
-            position
-            title
-          }
-        }
-      }
-    }
-  }
-`
-
-const Results = () => {
-  const data = useStaticQuery(DATA)
+const Results = ({ year = 2020, data }) => {
   const content = data.allMdx.edges.map(({ node }) => ({
     body: node.body,
     title: node.frontmatter.title,
   }))
   const titles = data.allMdx.edges.map(({ node }) => node.frontmatter.title)
   return (
-    <Layout>
-      <Hero />
-
+    <Layout year={year}>
+      <Hero year={year} />
       <div className="container main">
         <TableOfContent titles={titles} />
         <div className="content mdx-content">
@@ -49,10 +26,8 @@ const Results = () => {
           ))}
         </div>
       </div>
-
       <Actions />
-
-      <Episode />
+      <Episode year={year} />
     </Layout>
   )
 }

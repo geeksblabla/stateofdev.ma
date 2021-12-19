@@ -42,10 +42,20 @@ const exportResults = async () => {
   const data = { results: [] }
   const results = await getResults().get()
   results.forEach(element => {
-    const tmp = { userId: element.id, ...element.data() }
+    const tmp = { userId: element.id, ...normalize_element(element.data()) }
     data.results.push(tmp)
   })
   writeToFile(getFileName(), data)
+}
+
+const normalize_element = element => {
+  const tmp = element
+  for (const [key, value] of Object.entries(element)) {
+    if (typeof value === "string" && key !== "userId")
+      tmp[key] = parseInt(value)
+    if (Array.isArray(value)) tmp[key] = value.map(v => parseInt(v))
+  }
+  return tmp
 }
 
 exportResults()

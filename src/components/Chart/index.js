@@ -1,11 +1,12 @@
 import React from "react"
+import { ErrorBoundary } from "react-error-boundary"
 import "./index.scss"
 import { BarChart } from "./BarChart"
 import { getPercent, getQuestion } from "./utils"
 import Pie from "./PieChart"
 import { Actions } from "./Actions"
 
-export const Chart = ({
+export const UIChart = ({
   id,
   sort = true,
   pie = false,
@@ -13,12 +14,14 @@ export const Chart = ({
   condition,
   source = undefined,
   groupBy = undefined,
+  year = 2020,
 }) => {
   const { label, results, total } = getQuestion({
     id,
     condition,
     source,
     groupBy,
+    year,
   })
   const res = results
     .sort((b, a) =>
@@ -38,5 +41,22 @@ export const Chart = ({
       )}
       <Actions id={id} />
     </div>
+  )
+}
+
+function ErrorFallback({ error }) {
+  return (
+    <div role="alert">
+      <p>Something went wrong:</p>
+      <pre>{error.message}</pre>
+    </div>
+  )
+}
+
+export const Chart = props => {
+  return (
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <UIChart {...props} />
+    </ErrorBoundary>
   )
 }

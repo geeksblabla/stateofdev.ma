@@ -80,6 +80,9 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 29px;
+  strong {
+    font-weight: bold;
+  }
   h1 {
     font-style: normal;
     font-weight: bold;
@@ -108,6 +111,12 @@
       color: var(--green);
       opacity: 0.7;
     }
+  }
+
+  ul {
+    list-style-type: circle;
+    list-style-position: outside;
+    padding-left: 20px;
   }
 }
 
