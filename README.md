@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.geeksblablas.com">
@@ -96,6 +96,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/moutout"><img src="https://avatars.githubusercontent.com/u/3751894?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Mustapha</b></sub></a><br /><a href="#content-moutout" title="Content">🖋</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/sohayb-elamraoui/"><img src="https://avatars.githubusercontent.com/u/32344494?v=4?s=120" width="120px;" alt=""/><br /><sub><b>el amraoui Sohayb</b></sub></a><br /><a href="#content-Elamraoui-Sohayb" title="Content">🖋</a></td>
+    <td align="center"><a href="http://yezz.me"><img src="https://avatars.githubusercontent.com/u/52716203?v=4?s=120" width="120px;" alt=""/><br /><sub><b>Yasser Tahiri</b></sub></a><br /><a href="#content-yezz123" title="Content">🖋</a></td>
   </tr>
 </table>
 
