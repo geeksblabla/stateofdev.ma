@@ -26,7 +26,7 @@ const Results = ({ year = 2020, data }) => {
           ))}
         </div>
       </div>
-      <Actions />
+      <Actions year={year} />
       <Episode year={year} />
     </Layout>
   )

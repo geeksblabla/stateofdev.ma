@@ -4,14 +4,14 @@ import Playground from "../../assets/Playground.svg"
 import Download from "../../assets/Download.svg"
 import Article from "../../assets/Article.svg"
 
-export const Actions = () => {
+export const Actions = ({ year = 2021 }) => {
   return (
     <div className="actions-list">
       <div className="container">
         <div className="action-item">
           <Playground />
           <p> Play with survey results using online playground </p>
-          <Link to="/playground" className="outline">
+          <Link to={`/playground/#year=${year}`} className="outline">
             Open results playground
           </Link>
         </div>
@@ -23,7 +23,7 @@ export const Actions = () => {
             className="outline"
             download
             target="_blank"
-            href="https://github.com/DevC-Casa/stateofdev.ma/blob/master/results/2020/state-od-dev-ma-2020.zip?raw=true"
+            href={`https://github.com/DevC-Casa/stateofdev.ma/blob/master/results/${year}/state-of-dev-ma-${year}.zip?raw=true`}
           >
             Download raw results
           </a>
