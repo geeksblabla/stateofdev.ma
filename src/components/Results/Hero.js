@@ -43,10 +43,10 @@ export const Hero = ({ year = 2020 }) => {
             <h1> {content.title} </h1>
             <p>{content.description}</p>
             <div className="actions">
-              <Link className="primary" to="/#overview">
+              <Link className="primary" to="#overview">
                 Read the report
               </Link>
-              <Link to="/#video-episode" className="outline">
+              <Link to="#video-episode" className="outline">
                 Watch GeeksBlabla episode
               </Link>
               {/* <p>
