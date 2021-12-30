@@ -30,7 +30,14 @@ export const Hero = ({ year = 2020 }) => {
   return (
     <div className="hero">
       <div className="container ">
-        <Header />
+        <Header>
+          <div>
+            <Link to="/2020" style={{ paddingRight: 20 }}>
+              2020
+            </Link>
+            <Link to="/2021">2021</Link>
+          </div>
+        </Header>
         <main>
           <div className="intro">
             <h1> {content.title} </h1>
