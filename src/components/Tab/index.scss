@@ -11,7 +11,7 @@
   &__tab {
     display: inline-block;
 
-    bottom: -1px;
+    bottom: -8px;
     position: relative;
     list-style: none;
     font-family: Inter;
@@ -24,7 +24,7 @@
     cursor: pointer;
 
     &--selected {
-      border-bottom: 1px solid var(--green);
+      border-bottom: 2px solid var(--green);
       color: var(--green);
     }
 

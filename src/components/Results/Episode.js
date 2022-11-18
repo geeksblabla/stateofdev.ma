@@ -5,20 +5,25 @@ const links = {
 }
 export const Episode = ({ year = 2020 }) => {
   return (
-    <div className="episode" id="video-episode">
-      <div className="container">
-        <h2> Watch community members reacting to the survey results</h2>
-        <div className="video-container">
-          <iframe
-            width="560"
-            height="315"
-            src={links[year]}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+    <section
+      className="bg-emerald-500 px-2 py-12 justify-center align-middle items-center"
+      id="video-episode"
+    >
+      <div className="relative w-full max-w-[1000px] m-auto">
+        <h2 className="text-center text-2xl font-medium text-white py-8">
+          Watch community members reacting to the survey results
+        </h2>
+        <div className="w-full ">
+          <div className="aspect-w-16 aspect-h-9">
+            <iframe
+              src={links[year]}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

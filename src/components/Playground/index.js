@@ -57,10 +57,6 @@ export default function Index() {
 
   return (
     <Layout>
-      <div className="container">
-        <Header />
-      </div>
-
       <main className="container playground">
         {data?.questions && (
           <FilterForm
