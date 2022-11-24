@@ -15,17 +15,15 @@ export const FAQ = () => (
           <input className="peer hidden" type="checkbox" id="accordion-1" />
           <div className="before:absolute before:-left-6 before:block before:text-xl before:text-emerald-400 before:content-['–'] peer-checked:before:content-['+'] relative ml-4 cursor-pointer select-none items-center py-4 pr-2">
             <h3 className="text-sm lg:text-base font-bold">
-              What is stateofdev.ma ?
+              Who runs this survey?
             </h3>
           </div>
           <div className="peer-checked:hidden pr-2">
             <div className="pb-5">
               <p className="text-sm">
-                Lorem ipsum, <b>dolor sit amet</b> consectetur adipisicing elit.
-                Adipisci eligendi, recusandae voluptatum distinctio facilis
-                necessitatibus aperiam ut? Dolor mollitia modi aliquam, non sint
-                at reprehenderit commodi dignissimos quo unde asperiores
-                officiis quos laboriosam similique nihil.
+                StateOfDev.ma is one of Geeksblabla community projects. We are a
+                group of Moroccan developers who are passionate about technology
+                and open source.
               </p>
             </div>
           </div>
@@ -41,17 +39,16 @@ export const FAQ = () => (
           />
           <div className="before:absolute before:-left-6 before:block before:text-xl before:text-emerald-400 before:content-['–'] peer-checked:before:content-['+'] relative ml-4 cursor-pointer select-none items-center py-4 pr-2">
             <h3 className="text-sm lg:text-base font-bold">
-              How is behind this initiative?
+              How will this data be used?
             </h3>
           </div>
           <div className="peer-checked:hidden pr-2">
             <div className="pb-5">
               <p className="text-sm">
-                Lorem ipsum, <b>dolor sit amet</b> consectetur adipisicing elit.
-                Adipisci eligendi, recusandae voluptatum distinctio facilis
-                necessitatibus aperiam ut? Dolor mollitia modi aliquam, non sint
-                at reprehenderit commodi dignissimos quo unde asperiores
-                officiis quos laboriosam similique nihil.
+                All data collected will be released publicly. It will then
+                become a resources for developers to check the last trends in
+                Morocco as well as companies to check the current state of the
+                Moroccan developer community.
               </p>
             </div>
           </div>
@@ -67,17 +64,15 @@ export const FAQ = () => (
           />
           <div className="before:absolute before:-left-6 before:block before:text-xl before:text-emerald-400 before:content-['–'] peer-checked:before:content-['+'] relative ml-4 cursor-pointer select-none items-center py-4 pr-2">
             <h3 className="text-sm lg:text-base font-bold">
-              How can I contribute to this initiative?
+              When will the results be released?
             </h3>
           </div>
           <div className="peer-checked:hidden pr-2">
             <div className="pb-5">
               <p className="text-sm">
-                Lorem ipsum, <b>dolor sit amet</b> consectetur adipisicing elit.
-                Adipisci eligendi, recusandae voluptatum distinctio facilis
-                necessitatibus aperiam ut? Dolor mollitia modi aliquam, non sint
-                at reprehenderit commodi dignissimos quo unde asperiores
-                officiis quos laboriosam similique nihil.
+                We will release the results after 2 week after the survey ends.
+                We will also host a special Geeksblabla episode to discuss the
+                results. Meanwhile you read last years reports.
               </p>
             </div>
           </div>
@@ -93,17 +88,17 @@ export const FAQ = () => (
           />
           <div className="before:absolute before:-left-6 before:block before:text-xl before:text-emerald-400 before:content-['–'] peer-checked:before:content-['+'] relative ml-4 cursor-pointer select-none items-center py-4 pr-2">
             <h3 className="text-sm lg:text-base font-bold">
-              When will the results be published?
+              How can i contribute ?
             </h3>
           </div>
           <div className="peer-checked:hidden pr-2">
             <div className="pb-5">
               <p className="text-sm">
-                Lorem ipsum, <b>dolor sit amet</b> consectetur adipisicing elit.
-                Adipisci eligendi, recusandae voluptatum distinctio facilis
-                necessitatibus aperiam ut? Dolor mollitia modi aliquam, non sint
-                at reprehenderit commodi dignissimos quo unde asperiores
-                officiis quos laboriosam similique nihil.
+                The project is open source and hosted on Github. You can
+                contribute by opening issues or pull requests. You can also help
+                us by sharing the survey with your friends or write about the
+                results on social media to help us understand the Moroccan
+                developer community better.
               </p>
             </div>
           </div>
