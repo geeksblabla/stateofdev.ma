@@ -30,10 +30,10 @@ export const Footer = () => {
               <li>
                 <a
                   className="hover:text-emerald-600 hover:underline"
-                  href="https://blablaconf.com"
+                  href="https://stateofdev.ma"
                   target="_blank"
                 >
-                  blablaconf.com
+                  stateofdev.ma
                 </a>
               </li>
               <li>

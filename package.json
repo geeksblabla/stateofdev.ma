@@ -53,7 +53,8 @@
     "react-toastify": "^8.0.3",
     "react-tooltip": "^4.2.21",
     "react-top-loading-bar": "^2.0.1",
-    "reactjs-popup": "^2.0.5"
+    "reactjs-popup": "^2.0.5",
+    "zustand": "^4.1.4"
   },
   "devDependencies": {
     "@netlify/functions": "^0.7.2",

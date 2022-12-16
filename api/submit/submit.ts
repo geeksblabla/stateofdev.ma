@@ -1,11 +1,7 @@
 import type { Handler } from "@netlify/functions"
-import { getUser, saveAnswer, verifyRecaptcha } from "./db"
+import { getUser, saveAnswer } from "./db"
 import { initSentry, reportError } from "./helpers"
 
-type RecaptchaResponse = {
-  success?: boolean
-  "error-codes"?: string[]
-}
 // init sentry to report error
 initSentry()
 
@@ -39,41 +35,13 @@ export const handler: Handler = async event => {
 
   //  check authentication
   const token = event.headers?.authorization?.replace("Bearer ", "")
-  const recaptcha_token = event.headers?.["x-recaptcha-token"]
-  if (!Boolean(token) || !Boolean(recaptcha_token)) {
+  if (!Boolean(token)) {
     reportError("unauthorized request token or recaptcha not valid ")
     return {
       statusCode: 401,
       body: JSON.stringify({
         code: "unauthorized",
         message: "unauthorized request",
-      }),
-    }
-  }
-
-  // recaptcha verification
-  // in case the recaptch verification return false we return an error
-  try {
-    const res: RecaptchaResponse = await verifyRecaptcha(recaptcha_token)
-    if (!Boolean(res?.success)) {
-      reportError(`recaptcha token invalid ${JSON.stringify(res)}`)
-      return {
-        statusCode: 401,
-        body: JSON.stringify({
-          code: "unauthorized",
-          message: "recaptcha token invalid",
-          error: res?.["error-codes"],
-        }),
-      }
-    }
-  } catch (error) {
-    reportError(error)
-    return {
-      statusCode: 401,
-      body: JSON.stringify({
-        code: "unauthorized",
-        message: "error recaptcha",
-        error,
       }),
     }
   }

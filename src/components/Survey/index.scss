@@ -1,145 +1,60 @@
 @import "../../styles/vars";
 @import "../../styles/mixins.scss";
 
-.survey {
-  background: var(--green-gradient);
-  .container {
-    min-height: calc(100vh - 100px);
-    display: flex;
-    flex-direction: column;
+.actions {
+  button.tooltips {
+    position: relative;
+    display: inline;
   }
-  main {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  button.tooltips span {
+    top: -55px;
+    left: 50%;
+    font-size: 13px;
+    font-weight: normal;
+    margin-left: -155px;
+    position: absolute;
+    width: 200px;
+    color: white;
+    background: #30382f;
+    text-align: center;
+    visibility: visible;
+    border-radius: 6px;
+    box-shadow: 0px 0px 0px #800000;
+    border: 1px solid rgb(202, 202, 202);
+    padding: 6px 2px;
+    opacity: 0;
+    animation-name: fadeOut;
+    animation-duration: 3s;
   }
-
-  .rules {
-    max-width: 700px;
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: left;
-    a.primary {
-      margin: auto;
-      display: block;
-    }
-    strong {
-      font-weight: bold;
-      font-style: italic;
-    }
-    @include breakpoint(mobileonly) {
-      margin-bottom: 2rem;
-    }
-    ul {
-      font-family: Inter;
-      list-style-type: square;
-      li {
-        padding: 0.5rem 0px;
-      }
-
-      @include breakpoint(mobileonly) {
-        padding: 0px 2rem;
-      }
-    }
+  button.tooltips span:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 20%;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid #30382f;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
   }
-
-  .actions {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    button {
-      padding: 1rem 2rem;
-      font-size: 1em;
-      font-weight: bold;
-      color: #fff;
-      background: #31382f;
-      border-radius: 8px;
-      margin-left: 1rem;
-      border: none;
-    }
-    .skip {
-      background: transparent;
-      color: #31382f;
-      border: 1px dashed #31382f;
-    }
-    .submit_actions {
-      position: relative;
-    }
-
-    button.tooltips {
-      position: relative;
-      display: inline;
-    }
-    button.tooltips span {
-      top: -55px;
-      left: 50%;
-      font-size: 13px;
-      font-weight: normal;
-      margin-left: -155px;
-      position: absolute;
-      width: 200px;
-      color: white;
-      background: #30382f;
-      text-align: center;
-      visibility: visible;
-      border-radius: 6px;
-      box-shadow: 0px 0px 0px #800000;
-      border: 1px solid rgb(202, 202, 202);
-      padding: 6px 2px;
-      opacity: 0;
-      animation-name: fadeOut;
-      animation-duration: 3s;
-    }
-    button.tooltips span:after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      right: 20%;
-      margin-left: -8px;
-      width: 0;
-      height: 0;
-      border-top: 8px solid #30382f;
-      border-right: 8px solid transparent;
-      border-left: 8px solid transparent;
-    }
-    a:hover.tooltips span {
-      visibility: visible;
-      opacity: 0.8;
-      bottom: 30px;
-      left: 50%;
-      margin-left: -76px;
-      z-index: 999;
-    }
-    .back {
-      position: relative;
-      color: #757774;
-      background: transparent;
-      align-self: center;
-      margin-left: 0px;
-      &::before {
-        content: "";
-        height: 24px;
-        width: 24px;
-        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAALtJREFUSEvllFEKAjEMRN96EEVPoifXgyiKeg1BBgyU4tok23653915nWkyE4O/abA+/w3YAi/g/ivmbEQb4AisgANwnYNkACYuB48P4NILsAZOgEtc0IiDsHgEUIo/gT0wG0sZl8dBLa5HPXsXtAVYJO6JSACN4w5QNKHbewA6swjSisiiTkflBZgT2wF3XBHAN0hzXKOAGtK9Kuo3UdnJxa1XF5U6Q+vau8ihsnOLRrsoJWw/ZaYoBHwDRoEsGSBilW0AAAAASUVORK5CYII=");
-        position: absolute;
-        left: 10px;
-        top: 13px;
-      }
-    }
+  a:hover.tooltips span {
+    visibility: visible;
+    opacity: 0.8;
+    bottom: 30px;
+    left: 50%;
+    margin-left: -76px;
+    z-index: 999;
   }
+}
 
-  .quiz-form {
-    max-width: 900px;
-    min-width: 900px;
-    align-self: center;
-    padding-bottom: 1rem;
-    @include breakpoint(mobileonly) {
-      min-width: 100%;
-    }
+.quiz-form {
+  max-width: 900px;
+  min-width: 900px;
+  align-self: center;
+  padding-bottom: 1rem;
+  @include breakpoint(mobileonly) {
+    min-width: 100%;
   }
 }
 .quiz-form__quiz {
@@ -210,6 +125,7 @@
   display: grid;
   justify-items: stretch;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0rem 1rem;
   @include breakpoint(mobileonly) {
     grid-template-columns: 1fr;
   }

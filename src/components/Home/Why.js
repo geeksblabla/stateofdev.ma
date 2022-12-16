@@ -7,7 +7,7 @@ import Knowledge from "../../assets/Knowledge.svg"
 
 export const Why = () => (
   <div className="relative w-screen">
-    <div className="mx-auto mt-10 w-full max-w-screen-xl px-4 relative z-[99]">
+    <div className="mx-auto my-20 w-full max-w-screen-xl px-4 relative z-[99]">
       <div className="w-12 border-b-2 border-pink-500 lg:border-b-4"></div>
       <h2 className=" text-center mt-6 mb-10 text-3xl font-semibold tracking-wide text-gray-800 sm:text-4xl">
         Why Should You Take Part In The Survey?

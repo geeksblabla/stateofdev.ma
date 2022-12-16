@@ -4,7 +4,7 @@ import { Footer } from "./Footer"
 import "../styles/commons.scss"
 import { Header } from "./Header"
 
-export const Layout = ({ children, year }) => (
+export const Layout = ({ children, year = undefined }) => (
   <>
     {year === undefined ? (
       <GatsbySeo

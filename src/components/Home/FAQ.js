@@ -72,7 +72,7 @@ export const FAQ = () => (
               <p className="text-sm">
                 We will release the results after 2 week after the survey ends.
                 We will also host a special Geeksblabla episode to discuss the
-                results. Meanwhile you read last years reports.
+                results. Meanwhile you can read last years reports.
               </p>
             </div>
           </div>

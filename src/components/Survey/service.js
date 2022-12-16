@@ -6,7 +6,7 @@ export const logIn = async () => {
   await firebase?.auth().signInAnonymously()
 }
 
-export const saveAnswers = async (recaptcha_token, data) => {
+export const saveAnswers = async data => {
   const userToken = await firebase.auth().currentUser.getIdToken()
   // console.log({ userToken, recaptcha_token })
 
@@ -14,7 +14,6 @@ export const saveAnswers = async (recaptcha_token, data) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-recaptcha-token": recaptcha_token,
       Authorization: `Bearer ${userToken}`,
     },
     body: JSON.stringify(data),
@@ -29,14 +28,13 @@ export const saveAnswers = async (recaptcha_token, data) => {
   return await response.json()
 }
 
-export const startSurvey = async recaptcha_token => {
+export const startSurvey = async () => {
   const startTime = Date.now()
-  await saveAnswers(recaptcha_token, { startTime })
+  await saveAnswers({ startTime })
 }
-// TODO we should await here too
-export const setAnswers = async (recaptcha_token, data) => {
+export const setAnswers = async data => {
   const lastSubmit = Date.now()
-  await saveAnswers(recaptcha_token, { lastSubmit, ...data })
+  await saveAnswers({ lastSubmit, ...data })
 }
 
 export const useAuth = (clk, deps = []) => {
