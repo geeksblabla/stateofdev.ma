@@ -58,13 +58,13 @@ export const Hero = () => {
                 <a
                   href="/"
                   aria-label=""
-                  className="underline-offset-2 inline-flex items-center font-semibold text-emerald-600 underline transition-colors duration-200 hover:underline"
+                  className="underline-offset-2 inline-flex items-center font-semibold text-emerald-600 underline transition-colors duration-200 hover:underline pt-8 md:pt-0"
                 >
                   Read last year report
                 </a>
               </div>
               <div className="mt-12 flex flex-col space-y-3 divide-gray-300 text-sm text-gray-700 sm:flex-row sm:space-y-0 sm:divide-x">
-                <div className="flex max-w-xs space-x-2 px-4">
+                <div className="flex max-w-xs space-x-2 px-4 justify-center items-center">
                   <TimeIcon className="h-7" />
                   <p> The survey should take you 8 minutes </p>
                 </div>
@@ -82,31 +82,3 @@ export const Hero = () => {
     </>
   )
 }
-
-// export const Hero = () => (
-//   <div className="hero">
-//     <div className="container ">
-//       <Header />
-//       <main>
-//         <div className="intro">
-//           <h1> State Of Dev In Morocco 2021 </h1>
-//           <p>
-//             Participate and let us know what working in tech really looks like
-//             in Morocco 🇲🇦
-//           </p>
-//           <div className="actions">
-//             <Link className="primary" to="/beforeStart">
-//               Take part in the survey
-//             </Link>
-//             <p>
-//               <TimeIcon /> 8 min
-//             </p>
-//           </div>
-//         </div>
-//         <div className="crea">
-//           <Crea />
-//         </div>
-//       </main>
-//     </div>
-//   </div>
-// )

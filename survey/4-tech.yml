@@ -309,3 +309,9 @@ questions:
       - Apache Cassandra
       - BigTable
       - Other
+  - label: "How often do you use AI tools for Dev (Github Copilot, ChatGPT ...) "
+    required: true
+    choices:
+      - Daily
+      - Tried them but not interested
+      - Never

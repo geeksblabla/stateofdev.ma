@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import React from "react"
 import Logo from "../assets/logo.svg"
 import Github from "../assets/github.svg"
-import Chart from "../assets/chart.svg"
+import Chart from "../assets/Chart.svg"
 
 export const Header = () => {
   return (
@@ -108,17 +108,3 @@ const ReportIcon = () => (
     <path fill="currentColor" d="M10 22h12v2H10zm0-6h12v2H10z" />
   </svg>
 )
-
-// import React from "react"
-// import Logo from "../assets/logo.svg"
-// import { Link } from "gatsby"
-
-// export const Header = ({ children }) => (
-//   <div className="header">
-//     <Link to="/">
-//       <Logo />
-//     </Link>
-//     {children}
-//     {/* {children ? <Logo style={{ visibility: "hidden" }} /> : null} */}
-//   </div>
-// )

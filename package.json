@@ -82,8 +82,5 @@
   },
   "bugs": {
     "url": "https://github.com/DevC-Casa/stateofdev.ma/issues"
-  },
-  "engines": {
-    "node": "16.16"
   }
 }
