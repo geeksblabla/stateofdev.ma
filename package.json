@@ -65,7 +65,7 @@
     "autoprefixer": "^10.4.13",
     "babel-jest": "^27.4.5",
     "babel-preset-gatsby": "^2.4.0",
-    "gatsby-plugin-postcss": "^6.0.0",
+    "gatsby-plugin-postcss": "^5.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.4.5",
     "postcss": "^8.4.19",
@@ -82,5 +82,8 @@
   },
   "bugs": {
     "url": "https://github.com/DevC-Casa/stateofdev.ma/issues"
+  },
+  "engines": {
+    "node": "16.16"
   }
 }
