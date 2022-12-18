@@ -23,7 +23,6 @@ export const query = graphql`
 `
 
 const Results2020 = ({ data }) => {
-  console.log(data)
   return <Results data={data} year={2020} />
 }
 
