@@ -30,7 +30,7 @@ export const Hero = () => {
               </div>
               <div className="mt-10 flex flex-col items-center md:flex-row">
                 <Link to="/beforeStart">
-                  <a className="relative mb-3  inline-flex h-12 w-full items-center justify-center rounded-lg bg-emerald-700 px-6 font-medium tracking-wide text-white shadow-md transition duration-200 md:mr-4 md:mb-0 md:w-auto focus:outline-none hover:bg-emerald-800">
+                  <div className="relative mb-3  inline-flex h-12 w-full items-center justify-center rounded-lg bg-emerald-700 px-6 font-medium tracking-wide text-white shadow-md transition duration-200 md:mr-4 md:mb-0 md:w-auto focus:outline-none hover:bg-emerald-800">
                     <div className="absolute left-0 -bottom-10 inline-flex h-10 w-10 -rotate-12 -scale-x-100 text-emerald-700">
                       <svg
                         viewBox="0 0 82 35"
@@ -52,15 +52,15 @@ export const Hero = () => {
                       </svg>
                     </div>
                     Take part in the survey{" "}
-                  </a>
+                  </div>
                 </Link>
-                <a
-                  href="/"
+                <Link
+                  href="/2021"
                   aria-label=""
                   className="underline-offset-2 inline-flex items-center font-semibold text-emerald-600 underline transition-colors duration-200 hover:underline pt-8 md:pt-0 bg-transparent"
                 >
                   Read last year report
-                </a>
+                </Link>
               </div>
               <div className="mt-12 flex flex-col space-y-3 divide-gray-300 text-sm text-gray-700 sm:flex-row sm:space-y-0 sm:divide-x">
                 <div className="flex max-w-xs space-x-2 px-4 justify-center items-center">
