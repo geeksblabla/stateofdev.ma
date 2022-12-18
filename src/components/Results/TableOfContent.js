@@ -17,13 +17,13 @@ const TableOfContent = ({ titles }) => {
           const selector = `li a[href="#${id}"]`
           if (!document.querySelector(selector)) return
           if (entry.intersectionRatio > 0.1) {
-            document
-              .querySelector(selector)
-              .parentElement.classList.add("active")
+            const el = document.querySelector(selector)
+            el.classList.add("text-emerald-700")
+            el.classList.add("underline")
           } else {
-            document
-              .querySelector(selector)
-              .parentElement.classList.remove("active")
+            const el = document.querySelector(selector)
+            el.classList.remove("text-emerald-700")
+            el.classList.remove("underline")
           }
         })
       },
@@ -40,20 +40,25 @@ const TableOfContent = ({ titles }) => {
     }
   }, [])
   return (
-    <div className="table-of-content">
-      <div>
-        <h2> Table of contents</h2>
-        <ul>
-          {titles.map((title, index) => (
-            <li key={`item-${index}`}>
-              <a href={`#${slugify(title)}`}>
-                0{index + 1}: {title}
-              </a>
-            </li>
-          ))}
-        </ul>
+    <>
+      <div className="hidden md:block pl-8 lg:block mt-3 sticky top-20 p-2 pb-12 h-fit min-w-[350px] rounded-md border border-solid border-gray-300/50  ">
+        <div>
+          <h2 className="text-xl font-bold py-4 "> Table of contents</h2>
+          <ul>
+            {titles.map((title, index) => (
+              <li className="text-lg my-3" key={`item-${index}`}>
+                <a
+                  href={`#${slugify(title)}`}
+                  className="underline-offset-4 inline-flex items-center font-medium hover:text-emerald-600  transition-colors duration-200 hover:underline"
+                >
+                  0{index + 1} - {title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

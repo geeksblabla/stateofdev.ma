@@ -1,11 +1,11 @@
 import React from "react"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import { Layout } from "./Layout"
+import { Layout } from "../Layout"
 import { Actions } from "./Actions"
 import { Episode } from "./Episode"
 import { Hero } from "./Hero"
-import TableOfContent, { slugify } from "./TableOfContent"
+import TableOfContent from "./TableOfContent"
 import "./index.scss"
+import { MDXContent } from "./MdxContent"
 
 const Results = ({ year = 2020, data }) => {
   const content = data.allMdx.edges.map(({ node }) => ({
@@ -16,15 +16,9 @@ const Results = ({ year = 2020, data }) => {
   return (
     <Layout year={year}>
       <Hero year={year} />
-      <div className="container main">
+      <div className="lg:mx-auto  flex flex-row max-w-screen-xl  mx-4">
         <TableOfContent titles={titles} />
-        <div className="content mdx-content">
-          {content.map((c, i) => (
-            <section id={slugify(c.title)} key={`section-${i}`}>
-              <MDXRenderer>{c.body}</MDXRenderer>
-            </section>
-          ))}
-        </div>
+        <MDXContent year={year} content={content} />
       </div>
       <Actions year={year} />
       <Episode year={year} />

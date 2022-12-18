@@ -3,9 +3,7 @@ import LoadingBar from "react-top-loading-bar"
 import { navigate } from "gatsby"
 import Category from "./Category"
 import "./index.scss"
-import { Header } from "../Header"
-
-//
+import { Steps } from "./Steps"
 
 const Survey = ({ data }) => {
   const [index, setIndex] = useState(0)
@@ -36,13 +34,9 @@ const Survey = ({ data }) => {
 
   return (
     <>
-      <Header>
-        <p>
-          Part {index + 1}: {category.title}
-        </p>
-      </Header>
+      <Steps selectedIndex={index} />
       <LoadingBar color="#3dbe71" progress={progress} height={10} />
-      <main>
+      <main className="flex flex-1 justify-center items-center">
         <Category
           category={category}
           next={next}

@@ -117,6 +117,7 @@ module.exports = {
         implementation: require("sass"),
       },
     },
+    "gatsby-plugin-postcss",
     {
       resolve: `gatsby-plugin-google-fonts-v2`,
       options: {

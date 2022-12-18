@@ -1,8 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
-import Logo from "../assets/logo.svg"
-import Github from "../assets/github.svg"
-import Chart from "../assets/Chart.svg"
+import Logo from "../../assets/logo.svg"
 
 export const Header = () => {
   return (
@@ -40,26 +38,13 @@ export const Header = () => {
         <ul className="flex flex-col items-center space-y-2 md:ml-auto md:flex-row md:space-y-0">
           <li className="md:mr-6 inline-flex">
             <Link to="/2020">
-              <ReportLink year={2020} />
+              <RIcon year={2020} />
             </Link>
           </li>
           <li className="md:mr-6">
             <Link to="/2021">
-              <ReportLink year={2021} />
+              <RIcon year={2021} />
             </Link>
-          </li>
-          <li className="md:mr-6">
-            <Link to="/playground">
-              <PlaygroundLink />
-            </Link>
-          </li>
-          <li className="md:mr-6">
-            <a
-              href="https://github.com/devc-casa/stateofdev.ma"
-              target="_blank"
-            >
-              <GithubLink />
-            </a>
           </li>
         </ul>
       </nav>
@@ -67,44 +52,27 @@ export const Header = () => {
   )
 }
 
-const ReportLink = ({ year }) => (
-  <LinkWIcon label={year} icon={<ReportIcon />} />
-)
-
-const PlaygroundLink = () => (
-  <LinkWIcon
-    label="Playground"
-    icon={<Chart height="24" width="24" className="" />}
-  />
-)
-
-const GithubLink = () => (
-  <LinkWIcon label="Github" icon={<Github height="22" width="22" />} />
-)
-
-const LinkWIcon = ({ label, icon }) => (
-  <div className="flex cursor-pointer items-center text-emerald-900 hover:text-emerald-600 pt-2 ">
+const RIcon = ({ year }) => (
+  <div className="flex cursor-pointer items-center text-emerald-900 hover:text-emerald-600  ">
     <div className="-mr-2 flex-shrink-0 ">
-      <div className="h-8 w-8 mt-2">{icon}</div>
+      <div className="h-8 w-8 mt-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          role="img"
+          width="24"
+          height="24"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 32 32"
+        >
+          <path
+            fill="currentColor"
+            d="m25.7 9.3l-7-7c-.2-.2-.4-.3-.7-.3H8c-1.1 0-2 .9-2 2v24c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V10c0-.3-.1-.5-.3-.7zM18 4.4l5.6 5.6H18V4.4zM24 28H8V4h8v6c0 1.1.9 2 2 2h6v16z"
+          />
+          <path fill="currentColor" d="M10 22h12v2H10zm0-6h12v2H10z" />
+        </svg>
+      </div>
     </div>
-    <div className="shadow-xs  underline underline-offset-4">{label}</div>
+    <div className="shadow-xs  underline underline-offset-4">{year}</div>
   </div>
-)
-
-const ReportIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-    role="img"
-    width="24"
-    height="24"
-    preserveAspectRatio="xMidYMid meet"
-    viewBox="0 0 32 32"
-  >
-    <path
-      fill="currentColor"
-      d="m25.7 9.3l-7-7c-.2-.2-.4-.3-.7-.3H8c-1.1 0-2 .9-2 2v24c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V10c0-.3-.1-.5-.3-.7zM18 4.4l5.6 5.6H18V4.4zM24 28H8V4h8v6c0 1.1.9 2 2 2h6v16z"
-    />
-    <path fill="currentColor" d="M10 22h12v2H10zm0-6h12v2H10z" />
-  </svg>
 )

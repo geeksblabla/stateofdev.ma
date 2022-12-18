@@ -1,5 +1,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.geeksblablas.com">
@@ -27,39 +29,42 @@ The website is built using [Gatsbyjs](http://gatsbyjs.org) and [Netlify](https:/
 
 2.  **Configure Project and Start developing.**
 
-- Create a firebase application, activate anonymous authentication and enable Firestore database.
+- Go to [](https://console.firebase.google.com/) and Create a firebase application, activate anonymous authentication and enable Firestore database on production mode to set data to private by default as we are going to user firebase admin sdk to write data to firestore database.
+
+- Go to Project settings > service accounts > generate new private key and add missed vars to your .env file.
+
 - Create a [recaptcha v3 application](https://www.google.com/recaptcha/about/)
 - Copy your keys to `env.development`:
 
-  ```env
-  # firebase client auth
-  GATSBY_FIREBASE_API_KEY=
-  GATSBY_FIREBASE_AUTH_DOMAIN=
-  GATSBY_FIREBASE_PROJECT_ID=
-  GATSBY_FIREBASE_APP_ID=
+```env
+# firebase client auth
+GATSBY_FIREBASE_API_KEY=
+GATSBY_FIREBASE_AUTH_DOMAIN=
+GATSBY_FIREBASE_PROJECT_ID=
+GATSBY_FIREBASE_APP_ID=
 
-  # firebase admin
-  FIREBASE_CLIENT_EMAIL=
-  FIREBASE_PRIVATE_KEY=
+# firebase admin
+FIREBASE_CLIENT_EMAIL=
+FIREBASE_PRIVATE_KEY=
 
 
-  # recaptcha keys
-  GATSBY_RECAPTCHA_KEY=
-  RECAPTCHA_SECRET_KEY=
+# recaptcha keys
+GATSBY_RECAPTCHA_KEY=
+RECAPTCHA_SECRET_KEY=
 
-  ```
+```
 
 - Navigate into your new website's directory and start it up.
 
-  ```sh
-    cd stateofdev.ma/
-    yarn install
-    yarn netlify dev
-  ```
+```sh
+cd stateofdev.ma/
+yarn install
+yarn netlify dev
+```
 
 3.  **Open the source code and start editing!**
 
-    Your website is now running at `http://localhost:8888`
+Your website is now running at `http://localhost:8888`
 
 ## 🧐 Want to contribute ?
 

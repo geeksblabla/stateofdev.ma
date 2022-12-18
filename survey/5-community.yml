@@ -43,6 +43,7 @@ questions:
       - Discord
       - Slack
       - Gitter
+      - Reddit
       - None
 
   - label: "How many IT events did you attend in 2020/2021?"
