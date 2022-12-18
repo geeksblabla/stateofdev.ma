@@ -22,12 +22,12 @@ const Rules = () => {
 
         <ul class="mb-8 flex flex-wrap gap-4">
           {rules.map((rule, index) => (
-            <li class="flex space-x-2" key={`rule${index}`}>
+            <li class="flex space-x-2 " key={`rule${index}`}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="shrink-0 h-6 w-6 text-green-300"
+                class="shrink-0 h-6 w-6 text-emerald-700"
               >
                 <path
                   fill-rule="evenodd"
@@ -42,7 +42,7 @@ const Rules = () => {
         <div className=" flex flex-row-reverse">
           <Link
             to="/start"
-            class="focus:outline-4 rounded-xl bg-emerald-400 px-4 py-3 font-medium text-white shadow-md outline-white transition hover:bg-emerald-500"
+            class="focus:outline-4 rounded-xl bg-emerald-700 px-4 py-3 font-medium text-white shadow-md outline-white transition hover:bg-emerald-500"
           >
             Let’s do it
           </Link>

@@ -41,7 +41,7 @@ const TableOfContent = ({ titles }) => {
   }, [])
   return (
     <>
-      <div className=" sm:hidden pl-8 lg:block mt-3 sticky top-20 p-2 pb-12 h-fit min-w-[350px] rounded-md border border-solid border-gray-300/50  ">
+      <div className="hidden md:block pl-8 lg:block mt-3 sticky top-20 p-2 pb-12 h-fit min-w-[350px] rounded-md border border-solid border-gray-300/50  ">
         <div>
           <h2 className="text-xl font-bold py-4 "> Table of contents</h2>
           <ul>
