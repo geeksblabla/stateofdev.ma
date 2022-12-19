@@ -2,9 +2,8 @@ name: Backup results
 
 # on: push
 on:
-  workflow_dispatch
-  # schedule:
-  #   - cron: "0 1 * * *"
+   schedule:
+     - cron: "0 1 * * *"
 
 jobs:
   backup_results:
