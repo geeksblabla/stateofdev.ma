@@ -31,6 +31,7 @@ questions:
       - Perl
       - Haskell
       - Julia
+      - Elixir
       - Other
 
   - label: "What are the programming languages you want to learn next?"
@@ -62,6 +63,7 @@ questions:
       - Perl
       - Haskell
       - Julia
+      - Elixir
       - Other
 
   - label: "What are the programming languages you are using on a daily basis?"
@@ -93,6 +95,7 @@ questions:
       - Perl
       - Haskell
       - Julia
+      - Elixir
       - Other
 
   - label: "What are the front-end frameworks/libraries you are using on a daily basis?"
@@ -149,6 +152,7 @@ questions:
       - Symfony
       - Ruby on Rails
       - Sinatra
+      - Phoenix
       - FastAPI
       - Express.js
       - Nest.js
@@ -172,6 +176,7 @@ questions:
       - Symfony
       - Ruby on Rails
       - Sinatra
+      - Phoenix
       - FastAPI
       - Express.js
       - Nest.js
