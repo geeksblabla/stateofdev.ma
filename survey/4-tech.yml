@@ -267,6 +267,7 @@ questions:
     multiple: true
     choices:
       - Google it
+      - ChatGPT
       - Dig in StackOverflow
       - Do other work and come back later
       - Watch help/tutorial videos
