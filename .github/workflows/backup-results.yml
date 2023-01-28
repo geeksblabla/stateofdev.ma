@@ -1,9 +1,9 @@
 name: Backup results
 
 # on: push
-on:
-   schedule:
-     - cron: "0 1 * * *"
+#on:
+#   schedule:
+#     - cron: "0 1 * * *"
 
 jobs:
   backup_results:
