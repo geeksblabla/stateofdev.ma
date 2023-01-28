@@ -49,6 +49,11 @@ export const Header = () => {
             </Link>
           </li>
           <li className="md:mr-6">
+            <Link to="/2022">
+              <ReportLink year={2022} />
+            </Link>
+          </li>
+          <li className="md:mr-6">
             <Link to="/playground">
               <PlaygroundLink />
             </Link>
