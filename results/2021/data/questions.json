@@ -331,10 +331,10 @@
     "required": true,
     "choices": [
       "Self-employed",
-      "Company <1 and >10",
-      "Company with <10 and >30 employees",
-      "Company with <30 and >100 employees",
-      "Company > 100"
+      "Company with >1 and <10 employees",
+      "Company with >10 and <30 employees",
+      "Company with >30 and <100 employees",
+      "Company with >100 employees"
     ]
   },
   "work-q-11": {
