@@ -2,6 +2,7 @@ import React from "react"
 const links = {
   2020: `https://www.youtube.com/embed/RDhE0RUbkJI`,
   2021: `https://www.youtube.com/embed/bEkwDuGGD34`,
+  2022: `https://www.youtube.com/embed/bRi8IT5coHs`,
 }
 export const Episode = ({ year = 2020 }) => {
   return (

@@ -27,17 +27,3 @@ const Results2022 = ({ data }) => {
 }
 
 export default Results2022
-
-// import React from "react"
-// import Home from "../components/Home"
-// import { Layout } from "../components/Layout"
-
-// const IndexPage = () => {
-//   return (
-//     <Layout>
-//       <Home />
-//     </Layout>
-//   )
-// }
-
-// export default IndexPage
