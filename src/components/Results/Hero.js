@@ -101,7 +101,7 @@ export const Hero = ({ year }) => (
             aria-label=""
             className="underline-offset-2 inline-flex items-center font-semibold text-emerald-600 underline transition-colors duration-200 hover:underline"
           >
-            Watch Geekblala Episode
+            Watch GeeksBlaBla Episode
           </a>
         </div>
       </div>
