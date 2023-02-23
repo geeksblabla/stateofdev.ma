@@ -12,7 +12,7 @@ const getDefaultValues = () => {
   const {
     question = "profile-q-0",
     groupBy = null,
-    year = 2021,
+    year = 2022,
     condition: c,
   } = isBrowser() ? queryString.parse(window.location.hash) : {}
   let condition = []
@@ -82,7 +82,7 @@ export default function Index() {
   )
 }
 
-const useData = (year = 2021) => {
+const useData = (year = 2022) => {
   const {
     isLoading: isl,
     data: questions,
