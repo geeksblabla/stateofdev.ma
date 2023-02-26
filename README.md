@@ -72,7 +72,9 @@ If you want to contribute check out the [help wanted](https://github.com/devC-Ca
 
 ## Licensing
 
-The code in this project is licensed under MIT license.
+The code in this project is licensed under [MIT license](https://mit-license.org/).
+
+The Data in `./results` is licensed under [ODC-ODbL License](https://opendatacommons.org/licenses/odbl/).
 
 ## Contributors ✨
 
