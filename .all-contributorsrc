@@ -154,12 +154,21 @@
       "contributions": [
         "content"
       ]
-    }
+    },
     {
       "login": "Iduoad",
       "name": "Mohammed Daoudi",
       "avatar_url": "https://avatars.githubusercontent.com/u/25715906?v=4",
       "profile": "https://www.iduoad.com",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "bilalix",
+      "name": "Bilal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2496324?v=4",
+      "profile": "https://github.com/bilalix",
       "contributions": [
         "content"
       ]
