@@ -67,6 +67,8 @@ questions:
       - Network engineer
       - Security specialist
       - IT specialist
+      - Cloud infrastructure engineer
+      - Blockchain developer
 
   - label: What is your highest diploma?
     required: true
