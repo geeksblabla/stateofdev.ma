@@ -8,6 +8,7 @@ questions:
     choices:
       - Male
       - Female
+      - Non binary
 
   - label: What is your age?
     required: true
