@@ -11,7 +11,7 @@
 </h2>
 <hr />
 
-StateOfDev.ma is a survey centered around software developers in Morocco by DevC Morocco Community.
+StateOfDev.ma is a survey centered around software developers in Morocco by GeeksBlaBla Morocco Community.
 
 We wanted to know how we can help and support each other, and overall be able to better respond to developers evolving needs.
 
@@ -66,7 +66,7 @@ Your website is now running at `http://localhost:8888`
 
 ## 🧐 Want to contribute ?
 
-If you want to contribute check out the [help wanted](https://github.com/devC-Casa/stateofdev.ma/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22+sort%3Aupdated-desc) issues for things that need fixing, or suggest some new features by opening new issues.
+If you want to contribute check out the [help wanted](https://github.com/geeksblabla/stateofdev.ma/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22+sort%3Aupdated-desc) issues for things that need fixing, or suggest some new features by opening new issues.
 
 ## Licensing
 

@@ -17,7 +17,7 @@ module.exports = {
     banner: config.banner,
     author: {
       name: config.author,
-      minibio: `DevC Casablanca`,
+      minibio: `GeeksBlaBla`,
     },
     organization: {
       name: config.organization,
