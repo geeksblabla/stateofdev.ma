@@ -1,0 +1,15 @@
+compose.yaml
+node_modules
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+.dockerignore
+Dockerfile
+.git
+.gitignore
+.vscode
+*.md
+*.log
+__tests__
+__mocks__
+coverage

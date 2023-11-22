@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  web:
+    image: stateofdevma_ma
+    build: .
+    env_file: .env.development
+    restart: unless-stopped
+    entrypoint: yarn netlify dev
+    ports:
+      - "8888:8888"
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
+

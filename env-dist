@@ -1,0 +1,17 @@
+# Copy this env-dist file to .env.development
+
+# firebase client auth
+GATSBY_FIREBASE_API_KEY=
+GATSBY_FIREBASE_AUTH_DOMAIN=
+GATSBY_FIREBASE_PROJECT_ID=
+GATSBY_FIREBASE_APP_ID=
+
+# firebase admin
+FIREBASE_CLIENT_EMAIL=
+FIREBASE_PRIVATE_KEY=
+
+
+# recaptcha keys
+GATSBY_RECAPTCHA_KEY=
+RECAPTCHA_SECRET_KEY=
+
