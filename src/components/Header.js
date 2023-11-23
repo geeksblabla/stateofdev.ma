@@ -60,7 +60,7 @@ export const Header = () => {
           </li>
           <li className="md:mr-6">
             <a
-              href="https://github.com/devc-casa/stateofdev.ma"
+              href="https://github.com/geeksblabla/stateofdev.ma"
               target="_blank"
             >
               <GithubLink />

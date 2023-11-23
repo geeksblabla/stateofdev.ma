@@ -88,7 +88,7 @@ const useData = (year = 2022) => {
     data: questions,
     error: QErrors,
   } = useFetch(
-    `https://raw.githubusercontent.com/DevC-Casa/stateofdev.ma/master/results/${year}/data/questions.json`
+    `https://raw.githubusercontent.com/geeksblabla/stateofdev.ma/master/results/${year}/data/questions.json`
   )
 
   const {
@@ -96,7 +96,7 @@ const useData = (year = 2022) => {
     data: results,
     error,
   } = useFetch(
-    `https://raw.githubusercontent.com/DevC-Casa/stateofdev.ma/master/results/${year}/data/results.json`
+    `https://raw.githubusercontent.com/geeksblabla/stateofdev.ma/master/results/${year}/data/results.json`
   )
 
   return {

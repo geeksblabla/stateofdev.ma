@@ -39,7 +39,7 @@ export const Footer = () => {
               <li>
                 <a
                   className="hover:text-emerald-600 hover:underline"
-                  href="https://github.com/DevC-Casa/awesome-morocco"
+                  href="https://github.com/geeksblabla/awesome-morocco"
                   target="_blank"
                 >
                   awesome-morocco.dev
@@ -118,7 +118,7 @@ export const Footer = () => {
               <li>
                 <a
                   className="hover:text-emerald-600 hover:underline"
-                  href="https://github.com/devc-casa"
+                  href="https://github.com/geeksblabla"
                   target="_blank"
                 >
                   Github

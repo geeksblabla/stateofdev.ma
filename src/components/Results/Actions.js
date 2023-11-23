@@ -23,7 +23,7 @@ export const Actions = ({ year = 2021 }) => {
             className="outline"
             download
             target="_blank"
-            href={`https://github.com/DevC-Casa/stateofdev.ma/blob/master/results/${year}/state-of-dev-ma-${year}.zip?raw=true`}
+            href={`https://github.com/geeksblabla/stateofdev.ma/blob/master/results/${year}/state-of-dev-ma-${year}.zip?raw=true`}
           >
             Download raw results
           </a>
@@ -36,7 +36,7 @@ export const Actions = ({ year = 2021 }) => {
             className="outline"
             download
             target="_blank"
-            href="https://github.com/DevC-Casa/stateofdev.ma/"
+            href="https://github.com/geeksblabla/stateofdev.ma"
           >
             Write an article
           </a>
