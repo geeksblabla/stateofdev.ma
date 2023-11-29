@@ -2,7 +2,6 @@ import React from "react"
 import { Fragment, useRef, useState } from "react"
 
 import { Dialog, Transition } from "@headlessui/react"
-import Crea from "../../assets/Crea.svg"
 import TimeIcon from "../../assets/time.svg"
 import { Link } from "gatsby"
 
@@ -58,7 +57,7 @@ export const Hero = () => {
                   </div>
                 </Link>
                 <Link
-                  href="/2022"
+                  to="/2022"
                   aria-label=""
                   className="underline-offset-2  items-center font-semibold text-emerald-600 underline transition-colors duration-200 hover:underline pt-8 md:pt-0 bg-transparent sm:inline-flex hidden"
                 >
