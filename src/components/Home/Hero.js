@@ -1,4 +1,7 @@
 import React from "react"
+import { Fragment, useRef, useState } from "react"
+
+import { Dialog, Transition } from "@headlessui/react"
 import Crea from "../../assets/Crea.svg"
 import TimeIcon from "../../assets/time.svg"
 import { Link } from "gatsby"
@@ -20,7 +23,7 @@ export const Hero = () => {
                   In{" "}
                   <span className="my-1 inline-block border-b-8 border-emerald-600 font-bold text-emerald-600 ">
                     {" "}
-                    Morocco 2022{" "}
+                    Morocco 2023{" "}
                   </span>
                 </h2>
                 <p className=" lg: mt-1 text-sm tracking-normal text-gray-800 lg:mt-1 lg:text-xl">
@@ -70,14 +73,91 @@ export const Hero = () => {
                 <div className="flex max-w-xs space-x-2 px-4"></div>
               </div>
             </div>
-            <div className="relative hidden lg:ml-32 lg:block lg:w-1/2">
-              <div className="w-fit rounded-[6rem] mx-auto overflow-hidden rounded-tl-none rounded-br-none ">
-                <Crea />
-              </div>
-            </div>
+            <YoutubeVideo />
           </div>
         </div>
       </div>
+    </>
+  )
+}
+
+export const YoutubeVideo = () => {
+  const [open, setOpen] = useState(false)
+
+  const cancelButtonRef = useRef(null)
+
+  return (
+    <>
+      <div className="relative shadow-xl shadow-emerald-200/50  lg:w-1/2">
+        <img
+          className="h-56 w-full rounded-lg object-cover shadow-lg sm:h-96"
+          src="/images/video-cover.jpeg"
+          alt=""
+        />
+        <button
+          onClick={() => setOpen(true)}
+          href="/"
+          aria-label="Play Video"
+          className="group absolute inset-0 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-30 transition-colors duration-300 hover:bg-opacity-10"
+        >
+          <div className="flex h-16 w-16 transform items-center justify-center rounded-full bg-gray-100 shadow-2xl transition duration-300 group-hover:scale-110">
+            <svg
+              className="w-10 text-gray-900"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M16.53,11.152l-8-5C8.221,5.958,7.833,5.949,7.515,6.125C7.197,6.302,7,6.636,7,7v10 c0,0.364,0.197,0.698,0.515,0.875C7.667,17.958,7.833,18,8,18c0.184,0,0.368-0.051,0.53-0.152l8-5C16.822,12.665,17,12.345,17,12 S16.822,11.335,16.53,11.152z"></path>
+            </svg>
+          </div>
+        </button>
+      </div>
+
+      <Transition.Root show={open} as={Fragment}>
+        <Dialog
+          as="div"
+          className="relative z-999"
+          initialFocus={cancelButtonRef}
+          onClose={setOpen}
+        >
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0 ">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enterTo="opacity-100 translate-y-0 sm:scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              >
+                <Dialog.Panel className="relative transform h-full w-full rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full lg:w-[60vw] justify-center items-center  max-w-[1000px]">
+                  <div class="aspect-w-16 aspect-h-9">
+                    <iframe
+                      src="https://www.youtube.com/embed/88cQ6vkJhfQ?si=iLS9H1jRlBO9mLWk"
+                      title="YouTube video player"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen
+                    ></iframe>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition.Root>
     </>
   )
 }

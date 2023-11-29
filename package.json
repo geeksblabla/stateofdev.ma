@@ -16,6 +16,7 @@
     "export-result": "NODE_ENV=development node ./scripts/export-results.js"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@sentry/gatsby": "^6.13.3",
@@ -28,7 +29,6 @@
     "gatsby-plugin-google-analytics": "^3.14.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-google-fonts-v2": "^1.0.0",
-    "gatsby-plugin-manifest": "^3.14.0",
     "gatsby-plugin-mdx": "^2.14.0",
     "gatsby-plugin-next-seo": "^1.8.0",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
