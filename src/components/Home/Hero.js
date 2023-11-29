@@ -15,8 +15,8 @@ export const Hero = () => {
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white "></div>
         </div>
         <div className="mx-auto h-full px-4 py-20 lg:py-10 sm:max-w-xl md:max-w-full md:px-24 md:py-36 lg:max-w-screen-xl lg:px-8 relative">
-          <div className="flex flex-col items-center justify-between lg:flex-row">
-            <div className="">
+          <div className="flex flex-col-reverse items-center justify-between lg:flex-row ">
+            <div className="my-16">
               <div className="lg:max-w-xl lg:pr-5 ">
                 <h2 className="mb-6 max-w-lg text-5xl font-light leading-snug tracking-tight text-emerald-600 sm:text-6xl ">
                   State Of Dev <br />
@@ -31,7 +31,7 @@ export const Hero = () => {
                   like in Morocco 🇲🇦
                 </p>
               </div>
-              <div className="mt-10 flex flex-col items-center md:flex-row">
+              <div className="mt-10 flex flex-col items-center md:items-stretch md:flex-row ">
                 <Link to="/beforeStart">
                   <div className="relative mb-3  inline-flex h-12 w-full items-center justify-center rounded-lg bg-emerald-700 px-6 font-medium tracking-wide text-white shadow-md transition duration-200 md:mr-4 md:mb-0 md:w-auto focus:outline-none hover:bg-emerald-800">
                     <div className="absolute left-0 -bottom-10 inline-flex h-10 w-10 -rotate-12 -scale-x-100 text-emerald-700">
@@ -58,15 +58,15 @@ export const Hero = () => {
                   </div>
                 </Link>
                 <Link
-                  href="/2021"
+                  href="/2022"
                   aria-label=""
-                  className="underline-offset-2 inline-flex items-center font-semibold text-emerald-600 underline transition-colors duration-200 hover:underline pt-8 md:pt-0 bg-transparent"
+                  className="underline-offset-2  items-center font-semibold text-emerald-600 underline transition-colors duration-200 hover:underline pt-8 md:pt-0 bg-transparent sm:inline-flex hidden"
                 >
                   Read last year report
                 </Link>
               </div>
-              <div className="mt-12 flex flex-col space-y-3 divide-gray-300 text-sm text-gray-700 sm:flex-row sm:space-y-0 sm:divide-x">
-                <div className="flex max-w-xs space-x-2 px-4 justify-center items-center">
+              <div className="sm:mt-12 mt-5  flex-col space-y-3 divide-gray-300 text-sm text-gray-700 sm:flex-row sm:space-y-0 sm:divide-x sm:inline-flex hidden">
+                <div className="flex max-w-xs space-x-2 justify-center items-center">
                   <TimeIcon className="h-7" />
                   <p> The survey should take you 8 minutes </p>
                 </div>
@@ -96,11 +96,10 @@ export const YoutubeVideo = () => {
         />
         <button
           onClick={() => setOpen(true)}
-          href="/"
           aria-label="Play Video"
           className="group absolute inset-0 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-30 transition-colors duration-300 hover:bg-opacity-10"
         >
-          <div className="flex h-16 w-16 transform items-center justify-center rounded-full bg-gray-100 shadow-2xl transition duration-300 group-hover:scale-110">
+          <div className="flex h-16 w-16 transform items-center justify-center rounded-full bg-gray-100/80 shadow-2xl transition duration-300 group-hover:scale-110">
             <svg
               className="w-10 text-gray-900"
               fill="currentColor"
@@ -115,7 +114,7 @@ export const YoutubeVideo = () => {
       <Transition.Root show={open} as={Fragment}>
         <Dialog
           as="div"
-          className="relative z-999"
+          className="relative "
           initialFocus={cancelButtonRef}
           onClose={setOpen}
         >
@@ -128,11 +127,11 @@ export const YoutubeVideo = () => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" />
+            <div className="fixed inset-0 z-999 bg-gray-900 bg-opacity-75 transition-opacity" />
           </Transition.Child>
 
           <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0 ">
+            <div className="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0 ">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -142,14 +141,15 @@ export const YoutubeVideo = () => {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative transform h-full w-full rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full lg:w-[60vw] justify-center items-center  max-w-[1000px]">
+                <Dialog.Panel className="relative transform h-full w-full rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full lg:w-[80vw] justify-center items-center  max-w-[1200px]">
                   <div class="aspect-w-16 aspect-h-9">
                     <iframe
-                      src="https://www.youtube.com/embed/88cQ6vkJhfQ?si=iLS9H1jRlBO9mLWk"
+                      src="https://www.youtube.com/embed/88cQ6vkJhfQ?autoplay=1"
                       title="YouTube video player"
                       frameborder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowfullscreen
+                      auto
                     ></iframe>
                   </div>
                 </Dialog.Panel>
