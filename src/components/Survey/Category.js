@@ -104,10 +104,10 @@ const scrollToSection = selector => {
 const BackButton = ({ onClick }) => (
   <div
     onClick={onClick}
-    class="group flex w-full cursor-pointer items-center justify-center rounded-md bg-transparent  pr-6 py-2 text-gray-500 hover:text-gray-700 transition"
+    className="group flex w-full cursor-pointer items-center justify-center rounded-md bg-transparent  pr-6 py-2 text-gray-500 hover:text-gray-700 transition"
   >
     <svg
-      class="flex-0 ml-4 h-7 w-7 transition-all group-hover:-translate-x-1 rotate-180"
+      className="flex-0 ml-4 h-7 w-7 transition-all group-hover:-translate-x-1 rotate-180"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -120,7 +120,7 @@ const BackButton = ({ onClick }) => (
         d="M14 5l7 7m0 0l-7 7m7-7H3"
       />
     </svg>
-    <span class="group flex w-full items-center justify-center rounded py-1 text-center font-bold">
+    <span className="group flex w-full items-center justify-center rounded py-1 text-center font-bold">
       Back
     </span>
   </div>

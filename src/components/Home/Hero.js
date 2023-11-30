@@ -141,7 +141,7 @@ export const YoutubeVideo = () => {
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
                 <Dialog.Panel className="relative transform h-full w-full rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full lg:w-[80vw] justify-center items-center  max-w-[1200px]">
-                  <div class="aspect-w-16 aspect-h-9">
+                  <div className="aspect-w-16 aspect-h-9">
                     <iframe
                       src="https://www.youtube.com/embed/88cQ6vkJhfQ?autoplay=1"
                       title="YouTube video player"

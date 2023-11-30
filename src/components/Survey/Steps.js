@@ -15,10 +15,10 @@ const Section = ({ label, selectedIndex, index }) => {
           </span>
         </>
       ) : (
-        <span class="md:h-8 md:w-8 h-6 w-6 items-center justify-center rounded-full bg-emerald-600 text-white shadow inline-flex">
+        <span className="md:h-8 md:w-8 h-6 w-6 items-center justify-center rounded-full bg-emerald-600 text-white shadow inline-flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="md:h-6 md:w-6 h-4 w-4"
+            className="md:h-6 md:w-6 h-4 w-4"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -34,7 +34,7 @@ const Section = ({ label, selectedIndex, index }) => {
       )}
 
       <span
-        class={`${
+        className={`${
           index === selectedIndex ? "inline " : "hidden md:inline "
         }   font-semibold ${color} `}
       >
@@ -49,7 +49,7 @@ const Section = ({ label, selectedIndex, index }) => {
               }  h-0 md:w-10 w-8 border-t-2 border-dashed border-gray-400 md:inline`}
             ></span>
           ) : (
-            <span class="hidden h-0.5 md:w-10 w-8 bg-emerald-600 md:inline"></span>
+            <span className="hidden h-0.5 md:w-10 w-8 bg-emerald-600 md:inline"></span>
           )}
         </>
       )}
@@ -61,11 +61,12 @@ export const Steps = ({ selectedIndex = 0 }) => {
   return (
     <div
       id="steps"
-      class=" mx-auto md:mt-4 mt-0 md:mb-20 mb-10 flex w-full flex-wrap items-center justify-center space-x-4 md:px-10  px-0 py-2 pt-6"
+      className=" mx-auto md:mt-4 mt-0 md:mb-20 mb-10 flex w-full flex-wrap items-center justify-center space-x-4 md:px-10  px-0 py-2 pt-6"
     >
       {sections.map((section, index) => {
         return (
           <Section
+            key={`section-${index}`}
             label={section}
             index={index}
             selectedIndex={selectedIndex}
