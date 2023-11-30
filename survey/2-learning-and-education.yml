@@ -4,7 +4,6 @@ position: 2
 questions:
   - label: Where did you study coding?
     required: true
-    multiple: true
     choices:
       - Self-taught (no diploma or other field's diploma).
       - University / Public school
