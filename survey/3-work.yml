@@ -7,14 +7,14 @@ questions:
     multiple: false
     choices:
       - Founder/entrepreneur
-      - Employed full-time
+      - Full-time employee
       - Freelancer/self-employed
-      - Employed part-time
+      - Part-time employee
       - Looking for work
       - Internship
       - Student
 
-  - label: How often do you work overtime or beyond the formal time expectation of your job?
+  - label: How often do you work overtime or beyond the normal time expectation of your job?
     choices:
       - Never
       - "Rarely: 1-2 days per year or less "
@@ -30,7 +30,7 @@ questions:
       - Slightly satisfied
       - Very satisfied
 
-  - label: Do you work on a side project?
+  - label: Do you work on a side projects?
     required: true
     choices:
       - No
@@ -45,7 +45,7 @@ questions:
       - Up to 1 year
       - More than 1 year
 
-  - label: "If you are working full-time contract in Morocco(CDI), Your NET salary range per month in MAD is:"
+  - label: "If you are a full time employee in Morocco(CDI), Your NET salary range per month in MAD is:"
     choices:
       - "< 4 000"
       - "4 000 - 6 000"
@@ -86,7 +86,7 @@ questions:
       - "150 000 - 200 000"
       - "> 200 000"
 
-  - label: "If you are working as a freelancer outside Morocco, Your daily gross wage in USD is:"
+  - label: "If you are working as a freelancer/contractor outside Morocco, Your daily gross wage in USD is:"
     choices:
       - "< 200"
       - "200 - 500"
@@ -128,13 +128,13 @@ questions:
       - Other
       - None
 
-  - label: As more companies looking into opening their offices, What options are provided by your employer?
+  - label: As most companies return to their offices, what options are provided by your employer?
     choices:
       - Back to office
       - Full remote
       - Hybrid
 
-  - label: After COVID-19, What is your preferred mode of working?
+  - label: What is your preferred mode of working?
     required: true
     choices:
       - In the office

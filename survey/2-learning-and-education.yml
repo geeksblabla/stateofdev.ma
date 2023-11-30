@@ -6,10 +6,11 @@ questions:
     required: true
     multiple: true
     choices:
-      - Self-taught
+      - Self-taught (no diploma or other field's diploma).
       - University / Public school
       - Private school
       - Vocational School (bootcamps, technical skills  ...)
+      - Coding schools (1337, YouCode, etc.)
       - Other
 
   - label: Do you think school gives you enough knowledge to start your professional career?
@@ -65,4 +66,5 @@ questions:
       - Conferences (virtual/in-person)
       - Podcasts
       - Online Communities (StackOverflow/Reddit/Twitter)
+      - AI Assistant (ChatGPT, etc)
       - Others

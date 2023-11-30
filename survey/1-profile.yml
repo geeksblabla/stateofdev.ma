@@ -47,7 +47,7 @@ questions:
       - Desktop applications developer
       - Mobile developer
       - Embedded applications/devices developer
-      - QA/test Develper
+      - QA/test Developer
       - Game/graphics Developer
       - DevOps specialist
       - Database administrator
@@ -67,6 +67,8 @@ questions:
       - Network engineer
       - Security specialist
       - IT specialist
+      - Prompt engineer
+      - ERP Consultant
 
   - label: What is your highest diploma?
     required: true

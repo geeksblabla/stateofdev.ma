@@ -113,6 +113,9 @@ questions:
       - Alpine.js
       - Remix
       - Solid.js
+      - AstroJs
+      - Qwik
+      - Htmx
       - Other
 
   - label: "What are the front-end frameworks/libraries you want to learn next?"
@@ -133,7 +136,20 @@ questions:
       - Alpine.js
       - Remix
       - Solid.js
+      - Astro Js
+      - Qwik
+      - Htmx
       - Other
+
+  - label: "What approach do you use for styling your web apps?"
+    multiple: true
+    choices:
+      - CSS
+      - CSS Frameworks (Bootstrap, Material UI ...)
+      - CSS in JS (Styled Components, Emotion ...)
+      - CSS Preprocessor (Sass, Less ...)
+      - CSS Modules
+      - Tailwind CSS
 
   - label: "What are the backend frameworks you are using on a daily basis?"
     multiple: true
@@ -204,6 +220,8 @@ questions:
       - Xamarin
       - Apache Spark
       - Torch/PyTorch
+      - Bun Js
+      - Deno Js
       - Other
 
   - label: "What are the platforms and tools you want to learn next?"
@@ -229,6 +247,8 @@ questions:
       - Xamarin
       - Apache Spark
       - Torch/PyTorch
+      - Bun Js
+      - Deno Js
       - Other
 
   - label: "Your primary Operating System is:"
@@ -254,7 +274,7 @@ questions:
       - Cloud based IDE
       - Other
 
-  - label: "How frequently do you learn a new programing language or framework?"
+  - label: "How frequently do you learn a new programming language or framework?"
     required: true
     choices:
       - Every few months
@@ -267,6 +287,7 @@ questions:
     multiple: true
     choices:
       - Google it
+      - Ask ChatGPT or other AI assistants
       - Dig in StackOverflow
       - Do other work and come back later
       - Watch help/tutorial videos
@@ -313,5 +334,20 @@ questions:
     required: true
     choices:
       - Daily
+      - Occasionally
       - Tried them but not interested
       - Never
+
+  - label: "If you are using AI tools for Dev, How much improvement do you see in your productivity?"
+    required: true
+    choices:
+      - Not noticeable
+      - 2X - 3X
+      - 4X - 5X
+      - +5X
+
+  - label: "Do you think AI tools for Dev will replace developers in the future?"
+    required: true
+    choices:
+      - Yes
+      - No
