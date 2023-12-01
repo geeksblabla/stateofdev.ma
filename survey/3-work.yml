@@ -128,7 +128,7 @@ questions:
       - Other
       - None
 
-  - label: As most companies return to their offices, what options are provided by your employer?
+  - label: As many companies are returning to their offices, what options does your employer provide?
     choices:
       - Back to office
       - Full remote
