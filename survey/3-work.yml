@@ -30,7 +30,7 @@ questions:
       - Slightly satisfied
       - Very satisfied
 
-  - label: Do you work on a side projects?
+  - label: Do you work on side projects?
     required: true
     choices:
       - No
@@ -134,9 +134,9 @@ questions:
       - Full remote
       - Hybrid
 
-  - label: What is your preferred mode of working?
+  - label: What is your preferred mode of work?
     required: true
     choices:
-      - In the office
+      - From the office
       - Full remote
       - Part-time remote/Hybrid

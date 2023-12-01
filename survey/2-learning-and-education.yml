@@ -19,15 +19,6 @@ questions:
       - Enough to start
       - Everything I needed
 
-  - label: If you think we have a problem with our education system, from your point of view, who are the main contributors?
-    required: true
-    multiple: true
-    choices:
-      - Students level
-      - Teachers proficiency
-      - Academic defined subjects (system)
-      - Lack of private sector/academia collaboration
-
   - label: What languages can you read/write?
     required: true
     multiple: true

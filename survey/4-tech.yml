@@ -339,7 +339,7 @@ questions:
       - Tried them but not interested
       - Never
 
-  - label: "If you are using AI tools for Dev, How much improvement do you see in your productivity?"
+  - label: "If you are using AI based coding assistants for Dev, How much improvement do you see in your productivity?"
     required: true
     choices:
       - Not noticeable
