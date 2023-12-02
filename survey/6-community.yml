@@ -1,6 +1,6 @@
 title: Community
 label: community
-position: 5
+position: 6
 questions:
   - label: "How far are you involved in any local developer’s community?"
     required: true

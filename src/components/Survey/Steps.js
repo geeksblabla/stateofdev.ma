@@ -1,6 +1,13 @@
 import React from "react"
 
-const sections = ["Profile", "Education", "Work", "Technology", "Community"]
+const sections = [
+  "Profile",
+  "Education",
+  "Work",
+  "AI",
+  "Technology",
+  "Community",
+]
 
 const Section = ({ label, selectedIndex, index }) => {
   const color = index > selectedIndex ? "text-gray-400" : "text-emerald-600"

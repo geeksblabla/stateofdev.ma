@@ -1,0 +1,25 @@
+title: AI
+label: ai
+position: 4
+questions:
+  - label: "How often do you use AI tools for Dev (Github Copilot, ChatGPT ...) "
+    required: true
+    choices:
+      - Daily
+      - Occasionally
+      - Tried them but not interested
+      - Never
+
+  - label: "If you are using AI based coding assistants for Dev, How much improvement do you see in your productivity?"
+    required: true
+    choices:
+      - Not noticeable
+      - 2X - 3X
+      - 4X - 5X
+      - +5X
+
+  - label: "Do you think AI tools for Dev will replace developers in the future?"
+    required: true
+    choices:
+      - Yes
+      - No

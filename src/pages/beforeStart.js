@@ -7,7 +7,7 @@ import { Link } from "gatsby"
 const rules = [
   "We care about privacy; that's why all your answers are completely anonymous. We only rely on anonymous sessions to avoid spam",
   "All Questions are required unless you have a skip button",
-  "The survey is divided into 5 part: Profile, Learning & Education,Work, Technology and Community",
+  "The survey is divided into 6 part: Profile, Learning & Education,AI, Work, Technology and Community",
   "Please be honest. Our goal is to understand the Moroccan IT market and share results with the community.",
   "Do not refresh the questions page before submitting your answers",
 ]
