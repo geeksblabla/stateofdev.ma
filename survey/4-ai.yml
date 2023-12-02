@@ -17,7 +17,7 @@ questions:
       - 4X - 5X
       - +5X
 
-  - label: "Do you think AI tools for Dev will replace developers in the future?"
+  - label: "Do you think AI will replace developers in the future?"
     required: true
     choices:
       - Not very much ( less than 10% )
@@ -64,5 +64,7 @@ questions:
       - Haystack
       - Humanloop
       - Unstructured
+      - PyTorch
+      - TensorFlow
       - Other
 
