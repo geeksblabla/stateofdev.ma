@@ -11,7 +11,6 @@ questions:
       - Never
 
   - label: "If you are using AI based coding assistants for Dev, How much improvement do you see in your productivity?"
-    required: true
     choices:
       - Not noticeable
       - 2X - 3X
@@ -21,5 +20,49 @@ questions:
   - label: "Do you think AI tools for Dev will replace developers in the future?"
     required: true
     choices:
-      - Yes
-      - No
+      - Not very much ( less than 10% )
+      - Somewhat ( 10% - 30% )
+      - To some extent ( 30% - 50% )
+      - The majority ( 50% - 80% )
+      - Completely  ( more than 80% )
+      - Not sure
+
+  - label: "Are you planning to learn AI to build apps?"
+    required: true
+    choices:
+      - No, I am not interested
+      - Already started learning the basics.
+      - I can build simple apps with AI using third-party APIs.
+      - I can build complex apps and play with models.
+      - I am already an expert
+
+  - label: "How much is your company investing in AI?"
+    required: true
+    choices:
+      - We haven't started adopting AI
+      - We're getting the basics in place
+      - We have some ad-hoc use cases in production
+      - We have several use cases in production
+
+  - label: "What are the tools, apps, frameworks, and models you are using?"
+    required: true
+    multiple: true
+    choices:
+      - ChatGPT
+      - PaLM (Google)
+      - Claude (Anthropic)
+      - DALL-E (OpenAI)
+      - LangChain
+      - GitHub Copilot
+      - Notion AI
+      - Coby.ai
+      - Grammarly
+      - AWS Bedrock
+      - Together.ai
+      - Weights & Biases
+      - LlamaIndex
+      - Haystack
+      - Humanloop
+      - Unstructured
+      - Other
+
