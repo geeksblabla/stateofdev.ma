@@ -13,11 +13,11 @@ export const Hero = () => {
           <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white "></div>
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white "></div>
         </div>
-        <div className="mx-auto h-full px-4 py-20 lg:py-10 sm:max-w-xl md:max-w-full md:px-24 md:py-36 lg:max-w-screen-xl lg:px-8 relative">
-          <div className="flex flex-col-reverse items-center justify-between lg:flex-row ">
+        <div className="mx-auto h-full px-4 py-6 lg:py-12 sm:max-w-xl md:max-w-full md:px-24 md:py-36 lg:max-w-screen-xl lg:px-8 relative">
+          <div className="flex flex-col items-center justify-between lg:flex-row ">
             <div className="my-16">
               <div className="lg:max-w-xl lg:pr-5 ">
-                <h2 className="mb-6 max-w-lg text-5xl font-light leading-snug tracking-tight text-emerald-600 sm:text-6xl ">
+                <h2 className="mb-6 max-w-lg text-4xl text-center font-light leading-snug tracking-tight text-emerald-600 sm:text-6xl sm:text-left ">
                   State Of Dev <br />
                   In{" "}
                   <span className="my-1 inline-block border-b-8 border-emerald-600 font-bold text-emerald-600 ">
@@ -25,7 +25,7 @@ export const Hero = () => {
                     Morocco 2023{" "}
                   </span>
                 </h2>
-                <p className=" lg: mt-1 text-sm tracking-normal text-gray-800 lg:mt-1 lg:text-xl">
+                <p className=" lg: mt-1 text-sm text-center tracking-normal text-gray-800 lg:mt-1 lg:text-xl lg:text-left">
                   Participate and let us know what working in tech really looks
                   like in Morocco 🇲🇦
                 </p>
