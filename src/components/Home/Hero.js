@@ -67,7 +67,7 @@ export const Hero = () => {
               <div className="sm:mt-12 mt-5  flex-col space-y-3 divide-gray-300 text-sm text-gray-700 sm:flex-row sm:space-y-0 sm:divide-x sm:inline-flex hidden">
                 <div className="flex max-w-xs space-x-2 justify-center items-center">
                   <TimeIcon className="h-7" />
-                  <p> The survey should take you 8 minutes </p>
+                  <p> The survey should take you 10 minutes </p>
                 </div>
                 <div className="flex max-w-xs space-x-2 px-4"></div>
               </div>
