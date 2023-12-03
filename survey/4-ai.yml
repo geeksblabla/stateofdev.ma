@@ -12,10 +12,11 @@ questions:
 
   - label: "If you are using AI based coding assistants for Dev, How much improvement do you see in your productivity?"
     choices:
-      - Not noticeable
-      - 2X - 3X
-      - 4X - 5X
-      - +5X
+      - Did not improve my productivity
+      - Somewhat improved my productivity (5% to 10%)
+      - Helped me to become more productive (10% to 30%)
+      - I am now very productive (30% to 50%)
+      - I am a 10x engineer now (+50%)
 
   - label: "Do you think AI will replace developers in the future?"
     required: true
@@ -44,27 +45,43 @@ questions:
       - We have some ad-hoc use cases in production
       - We have several use cases in production
 
-  - label: "What are the tools, apps, frameworks, and models you are using?"
+  - label: "Which AI tools and apps do you use?"
     required: true
     multiple: true
     choices:
       - ChatGPT
-      - PaLM (Google)
+      - Bard (Google)
       - Claude (Anthropic)
       - DALL-E (OpenAI)
-      - LangChain
       - GitHub Copilot
+      - QuillBot
       - Notion AI
+      - Midijourney
       - Coby.ai
       - Grammarly
+      - Other
+
+  - label: "Which AI frameworks and models do you use?"
+    required: true
+    multiple: true
+    choices:
+      - LangChain
+      - Hugging Face
       - AWS Bedrock
       - Together.ai
       - Weights & Biases
-      - LlamaIndex
+      - Llama
       - Haystack
       - Humanloop
       - Unstructured
       - PyTorch
       - TensorFlow
+      - OpenAI (GPT)
+      - Keras
+      - Microsoft Cognitive Toolkit
+      - Caffe
+      - Mistral
+      - PyBrain
+      - IBM Watson
+      - Scikit-Learn
       - Other
-
