@@ -100,10 +100,10 @@ export const Footer = () => {
               <li>
                 <a
                   className="hover:text-emerald-600 hover:underline"
-                  href="https://twitter.com/geeksblabla"
+                  href="https://x.com/geeksblabla"
                   target="_blank"
                 >
-                  Twitter
+                  X("Previously Twitter")
                 </a>
               </li>
               <li>
