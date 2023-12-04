@@ -61,9 +61,9 @@ export default ({
 const Choice = ({ text, id, index, name, register, required, multiple }) => {
   return (
     <>
-      <div class="relative w-full overflow-hidden flex  items-center  bg-gray-50 py-3 px-4 pl-14 mb-4  font-medium text-gray-800 ">
+      <div className="relative w-full overflow-hidden flex  items-center  bg-gray-50 py-3 px-4 pl-14 mb-4  font-medium text-gray-800 ">
         <input
-          class="peer hidden"
+          className="peer hidden"
           type={multiple ? "checkbox" : "radio"}
           name={name}
           {...register(name, { required })}
@@ -71,15 +71,15 @@ const Choice = ({ text, id, index, name, register, required, multiple }) => {
           value={index}
         />
         <label
-          class="absolute left-0 top-0 h-full w-full cursor-pointer rounded-lg  peer-checked:border-emerald-600 peer-checked:bg-emerald-100  border-solid border-2 border-gray-200"
+          className="absolute left-0 top-0 h-full w-full cursor-pointer rounded-lg  peer-checked:border-emerald-600 peer-checked:bg-emerald-100  border-solid border-2 border-gray-200"
           htmlFor={id}
         ></label>
         <div
-          class={`absolute pointer-events-none left-4 h-5 w-5 ${
+          className={`absolute pointer-events-none left-4 h-5 w-5 ${
             multiple ? "rounded" : "rounded-full"
           } border-solid border-2 border-gray-300 bg-gray-200 ring-emerald-600 ring-offset-2 peer-checked:border-transparent peer-checked:bg-emerald-600 peer-checked:ring-2`}
         ></div>
-        <span class="pointer-events-none z-10">{text}</span>
+        <span className="pointer-events-none z-10">{text}</span>
       </div>
     </>
   )

@@ -101,18 +101,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `State Of Dev in Morocco`,
-        short_name: `StateOfDev.ma`,
-        start_url: `/`,
-        background_color: `#2cc068`,
-        theme_color: `#2cc068`,
-        display: `minimal-ui`,
-        icon: `src/assets/logo.png`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: "UA-127901499-5",

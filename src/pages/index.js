@@ -1,43 +1,43 @@
-import React from "react"
-import Results from "../components/Results/index"
-import { graphql } from "gatsby"
-
-export const query = graphql`
-  {
-    allMdx(
-      sort: { fields: frontmatter___position, order: ASC }
-      filter: { fileAbsolutePath: { regex: "/2022/" } }
-    ) {
-      edges {
-        node {
-          body
-          id
-          frontmatter {
-            position
-            title
-          }
-        }
-      }
-    }
-  }
-`
-
-const Results2022 = ({ data }) => {
-  return <Results data={data} year={2022} />
-}
-
-export default Results2022
-
 // import React from "react"
-// import Home from "../components/Home"
-// import { Layout } from "../components/Layout"
+// import Results from "../components/Results/index"
+// import { graphql } from "gatsby"
 
-// const IndexPage = () => {
-//   return (
-//     <Layout>
-//       <Home />
-//     </Layout>
-//   )
+// export const query = graphql`
+//   {
+//     allMdx(
+//       sort: { fields: frontmatter___position, order: ASC }
+//       filter: { fileAbsolutePath: { regex: "/2022/" } }
+//     ) {
+//       edges {
+//         node {
+//           body
+//           id
+//           frontmatter {
+//             position
+//             title
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
+
+// const Results2022 = ({ data }) => {
+//   return <Results data={data} year={2022} />
 // }
 
-// export default IndexPage
+// export default Results2022
+
+import React from "react"
+import Home from "../components/Home"
+import { Layout } from "../components/Layout"
+
+const IndexPage = () => {
+  return (
+    <Layout>
+      <Home />
+    </Layout>
+  )
+}
+
+export default IndexPage

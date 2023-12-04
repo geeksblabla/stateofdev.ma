@@ -1,6 +1,6 @@
 title: Tech
 label: tech
-position: 4
+position: 5
 questions:
   - label: "What are the programming languages you like the most?"
     required: true
@@ -113,6 +113,9 @@ questions:
       - Alpine.js
       - Remix
       - Solid.js
+      - AstroJs
+      - Qwik
+      - Htmx
       - Other
 
   - label: "What are the front-end frameworks/libraries you want to learn next?"
@@ -133,6 +136,20 @@ questions:
       - Alpine.js
       - Remix
       - Solid.js
+      - Astro Js
+      - Qwik
+      - Htmx
+      - Other
+
+  - label: "What approach do you use for styling your web apps?"
+    multiple: true
+    choices:
+      - CSS
+      - CSS Frameworks (Bootstrap, Material UI ...)
+      - CSS in JS (Styled Components, Emotion ...)
+      - CSS Preprocessor (Sass, Less ...)
+      - CSS Modules
+      - Tailwind CSS
       - Other
 
   - label: "What are the backend frameworks you are using on a daily basis?"
@@ -199,11 +216,11 @@ questions:
       - Configuration Management(Ansible, Puppet...)
       - Flutter
       - Terraform
-      - Keras
       - Cordova
       - Xamarin
       - Apache Spark
-      - Torch/PyTorch
+      - Bun Js
+      - Deno Js
       - Other
 
   - label: "What are the platforms and tools you want to learn next?"
@@ -224,11 +241,11 @@ questions:
       - Configuration Management(Ansible, Puppet...)
       - Flutter
       - Terraform
-      - Keras
       - Cordova
       - Xamarin
       - Apache Spark
-      - Torch/PyTorch
+      - Bun Js
+      - Deno Js
       - Other
 
   - label: "Your primary Operating System is:"
@@ -254,7 +271,7 @@ questions:
       - Cloud based IDE
       - Other
 
-  - label: "How frequently do you learn a new programing language or framework?"
+  - label: "How frequently do you learn a new programming language or framework?"
     required: true
     choices:
       - Every few months
@@ -267,6 +284,7 @@ questions:
     multiple: true
     choices:
       - Google it
+      - Ask ChatGPT or other AI assistants
       - Dig in StackOverflow
       - Do other work and come back later
       - Watch help/tutorial videos
@@ -309,9 +327,3 @@ questions:
       - Apache Cassandra
       - BigTable
       - Other
-  - label: "How often do you use AI tools for Dev (Github Copilot, ChatGPT ...) "
-    required: true
-    choices:
-      - Daily
-      - Tried them but not interested
-      - Never

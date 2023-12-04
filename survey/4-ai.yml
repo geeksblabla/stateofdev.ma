@@ -1,0 +1,87 @@
+title: AI
+label: ai
+position: 4
+questions:
+  - label: "How often do you use AI tools for Dev (Github Copilot, ChatGPT ...) "
+    required: true
+    choices:
+      - Daily
+      - Occasionally
+      - Tried them but not interested
+      - Never
+
+  - label: "If you are using AI based coding assistants for Dev, How much improvement do you see in your productivity?"
+    choices:
+      - Did not improve my productivity
+      - Somewhat improved my productivity (5% to 10%)
+      - Helped me to become more productive (10% to 30%)
+      - I am now very productive (30% to 50%)
+      - I am a 10x engineer now (+50%)
+
+  - label: "Do you think AI will replace developers in the future?"
+    required: true
+    choices:
+      - Not very much ( less than 10% )
+      - Somewhat ( 10% - 30% )
+      - To some extent ( 30% - 50% )
+      - The majority ( 50% - 80% )
+      - Completely  ( more than 80% )
+      - Not sure
+
+  - label: "Are you planning to learn AI to build apps?"
+    required: true
+    choices:
+      - No, I am not interested
+      - Already started learning the basics.
+      - I can build simple apps with AI using third-party APIs.
+      - I can build complex apps and play with models.
+      - I am already an expert
+
+  - label: "How much is your company investing in AI?"
+    required: true
+    choices:
+      - We haven't started adopting AI
+      - We're getting the basics in place
+      - We have some ad-hoc use cases in production
+      - We have several use cases in production
+
+  - label: "Which AI tools and apps do you use?"
+    required: true
+    multiple: true
+    choices:
+      - ChatGPT
+      - Bard (Google)
+      - Claude (Anthropic)
+      - DALL-E (OpenAI)
+      - GitHub Copilot
+      - QuillBot
+      - Notion AI
+      - Midijourney
+      - Coby.ai
+      - Grammarly
+      - Other
+
+  - label: "Which AI frameworks and models do you use?"
+    required: true
+    multiple: true
+    choices:
+      - LangChain
+      - Hugging Face
+      - AWS Bedrock
+      - Together.ai
+      - Weights & Biases
+      - Llama
+      - Haystack
+      - Humanloop
+      - Unstructured
+      - PyTorch
+      - TensorFlow
+      - OpenAI (GPT)
+      - Keras
+      - Microsoft Cognitive Toolkit
+      - Caffe
+      - Mistral
+      - PyBrain
+      - IBM Watson
+      - Scikit-Learn
+      - Other

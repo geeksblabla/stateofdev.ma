@@ -3,35 +3,29 @@ import React from "react"
 
 const reports = [
   {
-    title: `2020 Report`,
-    link: `/2020`,
-    description: `In November 2020,  2287 developers from Morocco
-  told us about their jobs satisfaction, salaries, and community
-  contribution, how they learn and level up, which tools they’re
-  using, and what they want to learn next.`,
+    title: `2022 Report`,
+    link: `/2022`,
+    description: `In December 2022, 1617 developers from Morocco told us about their job satisfaction, salaries, and community contributions. They shared information on how they learn and level up, the tools they're using, and what they want to learn next.`,
   },
 
   {
     title: `2021 Report`,
     link: `/2021`,
-    description: `In November 2021, 1098 developers from Morocco
-  told us about their jobs satisfaction, salaries, and community
-  contribution, how they learn and level up, which tools they’re
-  using, and what they want to learn next.`,
+    description: `In November 2021, 1,098 developers from Morocco told us about their job satisfaction, salaries, and community contributions. They shared insights on how they learn and level up, the tools they're using, and what they want to learn next.`,
+  },
+  {
+    title: `2020 Report`,
+    link: `/2020`,
+    description: `In November 2020, 2,287 developers from Morocco told us about their job satisfaction, salaries, and community contributions. They shared information on how they learn and level up, the tools they're using, and what they want to learn next.`,
   },
 ]
 
 export const PastReports = () => (
   <section className="bg-emerald-500">
-    <div className="mx-auto grid max-w-lg gap-x-8 gap-y-12 px-4 py-32 md:max-w-screen-xl md:grid-cols-2 md:px-8 lg:grid-cols-3">
-      <div>
-        <h2 className="text-4xl font-medium text-white">
-          Read <br />
-          Last Years <br />
-          Reports
-        </h2>
-      </div>
-
+    <div className="mx-auto max-w-lg  px-4 py-16 md:max-w-screen-xl md:px-8 lg:grid-cols-3">
+      <h2 className="text-4xl font-medium text-white">Last Years Reports:</h2>
+    </div>
+    <div className="mx-auto grid max-w-lg gap-x-8 gap-y-12 px-4 pb-32 md:max-w-screen-xl md:grid-cols-2 md:px-8 lg:grid-cols-3">
       {reports.map((report, index) => (
         <ReportCard {...report} key={`report-${index}`} />
       ))}

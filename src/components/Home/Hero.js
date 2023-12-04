@@ -1,5 +1,7 @@
 import React from "react"
-import Crea from "../../assets/Crea.svg"
+import { Fragment, useRef, useState } from "react"
+
+import { Dialog, Transition } from "@headlessui/react"
 import TimeIcon from "../../assets/time.svg"
 import { Link } from "gatsby"
 
@@ -11,24 +13,24 @@ export const Hero = () => {
           <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white "></div>
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white "></div>
         </div>
-        <div className="mx-auto h-full px-4 py-20 lg:py-10 sm:max-w-xl md:max-w-full md:px-24 md:py-36 lg:max-w-screen-xl lg:px-8 relative">
-          <div className="flex flex-col items-center justify-between lg:flex-row">
-            <div className="">
+        <div className="mx-auto h-full px-4 py-6 lg:py-12 sm:max-w-xl md:max-w-full md:px-24 md:py-36 lg:max-w-screen-xl lg:px-8 relative">
+          <div className="flex flex-col items-center justify-between lg:flex-row ">
+            <div className="my-16">
               <div className="lg:max-w-xl lg:pr-5 ">
-                <h2 className="mb-6 max-w-lg text-5xl font-light leading-snug tracking-tight text-emerald-600 sm:text-6xl ">
+                <h2 className="mb-6 max-w-lg text-4xl text-center font-light leading-snug tracking-tight text-emerald-600 sm:text-6xl sm:text-left ">
                   State Of Dev <br />
                   In{" "}
                   <span className="my-1 inline-block border-b-8 border-emerald-600 font-bold text-emerald-600 ">
                     {" "}
-                    Morocco 2022{" "}
+                    Morocco 2023{" "}
                   </span>
                 </h2>
-                <p className=" lg: mt-1 text-sm tracking-normal text-gray-800 lg:mt-1 lg:text-xl">
+                <p className=" lg: mt-1 text-sm text-center tracking-normal text-gray-800 lg:mt-1 lg:text-xl lg:text-left">
                   Participate and let us know what working in tech really looks
                   like in Morocco 🇲🇦
                 </p>
               </div>
-              <div className="mt-10 flex flex-col items-center md:flex-row">
+              <div className="mt-10 flex flex-col items-center md:items-stretch md:flex-row ">
                 <Link to="/beforeStart">
                   <div className="relative mb-3  inline-flex h-12 w-full items-center justify-center rounded-lg bg-emerald-700 px-6 font-medium tracking-wide text-white shadow-md transition duration-200 md:mr-4 md:mb-0 md:w-auto focus:outline-none hover:bg-emerald-800">
                     <div className="absolute left-0 -bottom-10 inline-flex h-10 w-10 -rotate-12 -scale-x-100 text-emerald-700">
@@ -55,29 +57,106 @@ export const Hero = () => {
                   </div>
                 </Link>
                 <Link
-                  href="/2021"
+                  to="/2022"
                   aria-label=""
-                  className="underline-offset-2 inline-flex items-center font-semibold text-emerald-600 underline transition-colors duration-200 hover:underline pt-8 md:pt-0 bg-transparent"
+                  className="underline-offset-2  items-center font-semibold text-emerald-600 underline transition-colors duration-200 hover:underline pt-8 md:pt-0 bg-transparent sm:inline-flex hidden"
                 >
                   Read last year report
                 </Link>
               </div>
-              <div className="mt-12 flex flex-col space-y-3 divide-gray-300 text-sm text-gray-700 sm:flex-row sm:space-y-0 sm:divide-x">
-                <div className="flex max-w-xs space-x-2 px-4 justify-center items-center">
+              <div className="sm:mt-12 mt-5  flex-col space-y-3 divide-gray-300 text-sm text-gray-700 sm:flex-row sm:space-y-0 sm:divide-x sm:inline-flex hidden">
+                <div className="flex max-w-xs space-x-2 justify-center items-center">
                   <TimeIcon className="h-7" />
-                  <p> The survey should take you 8 minutes </p>
+                  <p> The survey should take you 10 minutes </p>
                 </div>
                 <div className="flex max-w-xs space-x-2 px-4"></div>
               </div>
             </div>
-            <div className="relative hidden lg:ml-32 lg:block lg:w-1/2">
-              <div className="w-fit rounded-[6rem] mx-auto overflow-hidden rounded-tl-none rounded-br-none ">
-                <Crea />
-              </div>
-            </div>
+            <YoutubeVideo />
           </div>
         </div>
       </div>
+    </>
+  )
+}
+
+export const YoutubeVideo = () => {
+  const [open, setOpen] = useState(false)
+
+  const cancelButtonRef = useRef(null)
+
+  return (
+    <>
+      <div className="relative shadow-xl shadow-emerald-200/50  lg:w-1/2">
+        <img
+          className="h-56 w-full rounded-lg object-cover shadow-lg sm:h-96"
+          src="/images/video-cover.jpeg"
+          alt=""
+        />
+        <button
+          onClick={() => setOpen(true)}
+          aria-label="Play Video"
+          className="group absolute inset-0 flex h-full w-full items-center justify-center bg-gray-900 bg-opacity-30 transition-colors duration-300 hover:bg-opacity-10"
+        >
+          <div className="flex h-16 w-16 transform items-center justify-center rounded-full bg-gray-100/80 shadow-2xl transition duration-300 group-hover:scale-110">
+            <svg
+              className="w-10 text-gray-900"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M16.53,11.152l-8-5C8.221,5.958,7.833,5.949,7.515,6.125C7.197,6.302,7,6.636,7,7v10 c0,0.364,0.197,0.698,0.515,0.875C7.667,17.958,7.833,18,8,18c0.184,0,0.368-0.051,0.53-0.152l8-5C16.822,12.665,17,12.345,17,12 S16.822,11.335,16.53,11.152z"></path>
+            </svg>
+          </div>
+        </button>
+      </div>
+
+      <Transition.Root show={open} as={Fragment}>
+        <Dialog
+          as="div"
+          className="relative "
+          initialFocus={cancelButtonRef}
+          onClose={setOpen}
+        >
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 z-999 bg-gray-900 bg-opacity-75 transition-opacity" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0 ">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enterTo="opacity-100 translate-y-0 sm:scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              >
+                <Dialog.Panel className="relative transform h-full w-full rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full lg:w-[80vw] justify-center items-center  max-w-[1200px]">
+                  <div className="aspect-w-16 aspect-h-9">
+                    <iframe
+                      src="https://www.youtube.com/embed/88cQ6vkJhfQ?autoplay=1"
+                      title="YouTube video player"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen
+                      auto
+                    ></iframe>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition.Root>
     </>
   )
 }

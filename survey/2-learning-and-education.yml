@@ -4,12 +4,12 @@ position: 2
 questions:
   - label: Where did you study coding?
     required: true
-    multiple: true
     choices:
-      - Self-taught
+      - Self-taught (no diploma or other field's diploma).
       - University / Public school
       - Private school
       - Vocational School (bootcamps, technical skills  ...)
+      - Coding schools (1337, YouCode, etc.)
       - Other
 
   - label: Do you think school gives you enough knowledge to start your professional career?
@@ -18,15 +18,6 @@ questions:
       - Not enough
       - Enough to start
       - Everything I needed
-
-  - label: If you think we have a problem with our education system, from your point of view, who are the main contributors?
-    required: true
-    multiple: true
-    choices:
-      - Students level
-      - Teachers proficiency
-      - Academic defined subjects (system)
-      - Lack of private sector/academia collaboration
 
   - label: What languages can you read/write?
     required: true
@@ -65,4 +56,5 @@ questions:
       - Conferences (virtual/in-person)
       - Podcasts
       - Online Communities (StackOverflow/Reddit/Twitter)
+      - AI Assistant (ChatGPT, etc)
       - Others

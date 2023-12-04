@@ -1,6 +1,6 @@
 title: Community
 label: community
-position: 5
+position: 6
 questions:
   - label: "How far are you involved in any local developer’s community?"
     required: true
@@ -44,9 +44,10 @@ questions:
       - Slack
       - Gitter
       - Reddit
+      - LinkedIn
       - None
 
-  - label: "How many IT events did you attend in the last 12 months?"
+  - label: "How many IT events did you attend in person in the past 12 months?"
     required: true
     choices:
       - "0"
