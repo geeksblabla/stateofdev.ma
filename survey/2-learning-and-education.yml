@@ -13,7 +13,7 @@ questions:
       - Other
 
   - label: Do you think school gives you enough knowledge to start your professional career?
-    required: true
+    required: false
     choices:
       - Not enough
       - Enough to start
