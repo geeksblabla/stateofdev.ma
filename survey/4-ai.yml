@@ -38,7 +38,6 @@ questions:
       - I am already an expert
 
   - label: "How much is your company investing in AI?"
-    required: true
     choices:
       - We haven't started adopting AI
       - We're getting the basics in place
@@ -46,7 +45,6 @@ questions:
       - We have several use cases in production
 
   - label: "Which AI tools and apps do you use?"
-    required: true
     multiple: true
     choices:
       - ChatGPT
@@ -62,7 +60,6 @@ questions:
       - Other
 
   - label: "Which AI frameworks and models do you use?"
-    required: true
     multiple: true
     choices:
       - LangChain
