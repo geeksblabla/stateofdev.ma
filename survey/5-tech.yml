@@ -108,6 +108,7 @@ questions:
       - Backbone.js
       - Preact
       - Next.js
+      - Nuxt.js
       - Svelte
       - Foundation
       - Alpine.js
@@ -131,6 +132,7 @@ questions:
       - Backbone.js
       - Preact
       - Next.js
+      - Nuxt.js
       - Svelte
       - Foundation
       - Alpine.js
