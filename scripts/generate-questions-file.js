@@ -12,11 +12,12 @@ const generate = async () => {
       fs.readFileSync("./survey/2-learning-and-education.yml", "utf8")
     )
     const work = await yaml.load(fs.readFileSync("./survey/3-work.yml", "utf8"))
-    const tech = await yaml.load(fs.readFileSync("./survey/4-tech.yml", "utf8"))
+    const ai = await yaml.load(fs.readFileSync("./survey/4-ai.yml", "utf8"))
+    const tech = await yaml.load(fs.readFileSync("./survey/5-tech.yml", "utf8"))
     const community = yaml.load(
-      fs.readFileSync("./survey/5-community.yml", "utf8")
+      fs.readFileSync("./survey/6-community.yml", "utf8")
     )
-    const data = [profile, learning, work, tech, community]
+    const data = [profile, learning, work, tech, ai, community]
 
     data.forEach(({ label, questions }) => {
       questions.forEach((element, index) => {
