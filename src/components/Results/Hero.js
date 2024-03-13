@@ -31,6 +31,13 @@ const data = {
   contribution, how they learn and level up, which tools they’re
   using, and what they want to learn next.`,
   },
+  2023: {
+    year: 2023,
+    description: `In December 2023, 1617 developers from Morocco 🇲🇦
+  told us about their jobs satisfaction, salaries, and community
+  contribution, how they learn and level up, which tools they’re
+  using, and what they want to learn next.`,
+  },
 }
 
 export const Hero = ({ year }) => (
