@@ -33,9 +33,9 @@ const data = {
   },
   2023: {
     year: 2023,
-    description: `In December 2023, 1617 developers from Morocco 🇲🇦
+    description: `In December 2023, 1764 developers from Morocco 🇲🇦
   told us about their jobs satisfaction, salaries, and community
-  contribution, how they learn and level up, which tools they’re
+  contribution, what they think about AI, which tools they’re
   using, and what they want to learn next.`,
   },
 }

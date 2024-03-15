@@ -21,10 +21,10 @@ export const Footer = () => {
               <li>
                 <a
                   className="hover:text-emerald-600 hover:underline"
-                  href="https://geeksblabla.com"
+                  href="https://geeksblabla.io"
                   target="_blank"
                 >
-                  geeksblabla.com
+                  geeksblabla.io
                 </a>
               </li>
               <li>
@@ -57,7 +57,7 @@ export const Footer = () => {
               <li>
                 <a
                   className="hover:text-emerald-600 hover:underline"
-                  href="https://links.geeksblabla.com"
+                  href="https://links.geeksblabla.io"
                   target="_blank"
                 >
                   More
@@ -82,7 +82,7 @@ export const Footer = () => {
               <li>
                 <a
                   className="hover:text-emerald-600 hover:underline"
-                  href="https://www.linkedin.com/company/geeksblabla/"
+                  href="https://www.linkedin.com/company/geeksblabla-community/"
                   target="_blank"
                 >
                   Linkedin
