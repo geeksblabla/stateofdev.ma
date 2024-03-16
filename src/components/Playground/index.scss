@@ -13,8 +13,10 @@
 .result {
   flex: 1;
   padding-left: 2rem;
+  padding-top: 3rem;
   @include breakpoint(mobileonly) {
     padding-left: 0rem;
+    padding-top: 2rem;
     width: 100%;
   }
 }
