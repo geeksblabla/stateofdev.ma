@@ -5,29 +5,29 @@ position: 2
 
 # 2.Profile
 
-The objective of this first section is to get insights about the profile and the skills of the people working in Software Engineering in Morocco. The majority of the people that answered the survey are men with an increase of women participation by 3% from last year. Also, the majority of the respondents are junior developers with less than 3 years of experience and most of them are living in Morocco with plans to work abroad in the next 2 years.
+The objective of this first section is to get insights into the profile and the skills of the people working in Software Engineering in Morocco. The majority of the people that answered the survey are men. Also, the majority of the respondents are junior developers with less than 3 years of experience and most of them are living in Morocco with plans to work abroad in the next 2 years.
 
 ### Gender
 
-As can be seen, the results are very similar to last year's with an increase of 3% of female participation which result that 85% of the people that filled this survey are men.
+As can be seen, the results are very similar to last year's, where the majority of the respondents are men.
 
 <Chart id="profile-q-0" pie title={false} />
 
 ### Age
 
-Respondents between 18 and 24, representing fresh graduates and junior developers are still the majority. The second category of respondents is still people between 25 and 34. and more than 45 people were older than 35 yo.
+The majority of respondents are aged 18-24, mainly fresh graduates, junior developers, and last-year students. The second largest group includes individuals aged 25-34, with around 70 respondents being 35 years old or older.
 
 <Chart id="profile-q-1" title={false} />
 
 ### Location
 
-Half of the people that filled the survey are located in Casablanca-Settat or Rabat-Salé-Kénitra. Only 9% of respondents live abroad in Europe, the US, or other countries.
+Half of the people who filled out the survey are located in Casablanca-Settat or Rabat-Salé-Kénitra. Only 10% of respondents live abroad in Europe, the US, or other countries.
 
 <Chart id="profile-q-2" title={false} />
 
 ### Roles
 
-More than 40% of all respondents qualify themselves full-stack developers.
+Almost half of all respondents qualify themselves full-stack developers.
 
 <Chart id="profile-q-3" title={false} />
 
@@ -39,27 +39,52 @@ The results are very similar to last year's results, The majority of the respond
 
 ### Years coding professionally
 
-Similar to the past year, There are more people that have been coding for 1 to 2 years, followed by people who have been coding for less than a year.
+Like last year, more people have been coding for 1 to 2 years, followed by those with less than a year of coding experience.
 
 <Chart id="profile-q-5" title={false} />
 
 ### Coding as a hobby
 
-Coding is a hobby for the majority of the developers that participate in the survey.
+Coding is a hobby for the majority of the developers who participate in the survey.
 
 <Chart id="profile-q-6" title={false} />
 
 ### Plans to work abroad
 
-41% of the people that answered this question have plans to work outside Morocco in the next 2 years (17% in the next year). Almost a third of the participants are still hesitating.
+40% of the people who answered this question have plans to work outside Morocco in the next two years (16% in the next year). a decrease from last year's by 6% from last year's results and 8% from 2021.
 
-<Chart id="profile-q-7" title={false} />
+<Tabs>
+  <TabItem title="2023">
+    <Chart
+      id="profile-q-7"
+      year={2023}
+      condition={v => v["profile-q-7"] !== 3}
+      title={false}
+    />
+  </TabItem>
+  <TabItem title="2022">
+    <Chart
+      id="profile-q-7"
+      year={2022}
+      condition={v => v["profile-q-7"] !== 3}
+      title={false}
+    />
+  </TabItem>
+  <TabItem title="2021">
+    <Chart
+      id="profile-q-7"
+      condition={v => v["profile-q-7"] !== 3}
+      year={2021}
+      title={false}
+    />
+  </TabItem>
+</Tabs>
 
 ### Plans to come back to Morocco
 
-47.4% of the people that are working abroad have plans to come back to Morocco, and 8.2% are still hesitating
+Only 27% of people working abroad are not willing to come back to Morocco; other respondents either have plans or are still hesitating to return.
 
-<Chart id="profile-q-8" condition={v => v["profile-q-7"] === 4} title={false} />
+<Chart id="profile-q-8" condition={v => v["profile-q-7"] === 3} title={false} />
 
 ### Favorite drink
 

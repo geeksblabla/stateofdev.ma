@@ -6,7 +6,7 @@ export const query = graphql`
   {
     allMdx(
       sort: { fields: frontmatter___position, order: ASC }
-      filter: { fileAbsolutePath: { regex: "/2022/" } }
+      filter: { fileAbsolutePath: { regex: "/2023/" } }
     ) {
       edges {
         node {
@@ -22,11 +22,11 @@ export const query = graphql`
   }
 `
 
-const Results2022 = ({ data }) => {
-  return <Results data={data} year={2022} />
+const Results2023 = ({ data }) => {
+  return <Results data={data} year={2023} />
 }
 
-export default Results2022
+export default Results2023
 
 // import React from "react"
 // import Home from "../components/Home"
