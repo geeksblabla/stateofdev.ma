@@ -60,6 +60,20 @@ yarn install
 yarn netlify dev
 ```
 
+### Quickstart (🐳 Docker)
+
+NB: requires [Docker](https://docs.docker.com/engine/install/) v24+.
+
+After configuring the app from step 2., build and wait for container to be ready:
+```
+docker compose up -d --wait
+```
+
+Then watch source files and enable hot-reload 
+```
+docker compose watch
+```
+
 3.  **Open the source code and start editing!**
 
 Your website is now running at `http://localhost:8888`
@@ -120,5 +134,5 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 This project is inspired by :
 
-- [Stack Overflow Survey ](https://insights.stackoverflow.com/survey/2020)
+- [Stack Overflow Survey ](https://insights.stackoverflow.com/survey/)
 - [State of Front-end Survey](https://tsh.io/state-of-frontend/)
