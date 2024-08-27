@@ -1,0 +1,50 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cva, type VariantProps } from "class-variance-authority";
+
+const a = cva(
+  "flex items-center gap-2 max-w-fit rounded transition-all shadow-xl shadow-black/60 hover:shadow-none",
+  {
+    variants: {
+      intent: {
+        primary: [
+          "bg-theme-text",
+          "text-theme-base",
+          "border-transparent",
+          "hover:bg-theme-text/90",
+          "focus:outline-none",
+          "focus-visible:ring-2",
+          "ring-theme-text",
+          "ring-offset-4",
+          "ring-offset-theme-base",
+        ],
+        accent: [
+          "bg-theme-accent",
+          "border-transparent",
+          "hover:bg-theme-accent/90",
+          "focus:outline-none",
+          "focus-visible:ring-2",
+          "ring-theme-accent",
+          "ring-offset-4",
+          "ring-offset-theme-base",
+        ],
+      },
+      size: {
+        small: ["text-sm", "py-1", "px-2"],
+        medium: ["text-base", "py-2", "px-4"],
+        large: ["text-lg", "py-3", "px-5"],
+      },
+    },
+  }
+);
+
+export interface Props extends HTMLAttributes<"a">, VariantProps<typeof a> {
+  href: string;
+}
+
+const { href, intent = "primary", size = "medium", ...rest } = Astro.props;
+---
+
+<a href={href} class:list={a({ intent, size })} {...rest}>
+  <slot />
+</a>

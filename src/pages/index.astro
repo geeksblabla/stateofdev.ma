@@ -1,0 +1,19 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+
+// Import a single file
+import Repport from '../components/Repport.astro';
+
+
+// // Import multiple files with Astro.glob
+// const posts = await Astro.glob('../pages/post/*.md');
+
+---
+
+<BaseLayout>
+  <div class="grid gap-12">
+    <h1>Homepage</h1>
+    <Repport year="2020" />
+  </div>
+</BaseLayout>

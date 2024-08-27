@@ -1,0 +1,34 @@
+---
+import Button from "@/components/Button.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <div class="grid gap-12">
+    <h1>Homepage</h1>
+    <form id="logout-form">
+      <Button>Logout</Button>
+    </form>
+  </div>
+
+  <script>
+    import { isInputError } from "astro:actions";
+    import { actions } from "astro:actions";
+
+    const logout = document.querySelector("#logout-form") as HTMLFormElement;
+
+    logout.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const { error, data } = await actions.logoutAccount.safe();
+      if (error) {
+        console.log(error);
+        if (isInputError(error)) {
+          console.log(error.fields);
+        }
+        return;
+      }
+
+      window.location.reload();
+    });
+  </script>
+</BaseLayout>
