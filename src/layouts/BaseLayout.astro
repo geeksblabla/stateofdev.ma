@@ -1,0 +1,49 @@
+---
+import { Icon } from "astro-icon/components";
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const {
+  title = "Firebase Auth",
+  description = "Astro tutorial for Firebase Auth",
+} = Astro.props;
+
+const { userEmail } = Astro.locals;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="msapplication-TileColor" content="#F46633" />
+    <meta name="theme-color" content="#202020" />
+    <meta name="color-scheme" content="dark" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+
+  <body
+    class="bg-gradient-to-b from-black to-theme-base text-theme-text text-base relative min-h-screen grid-rows-auto-1fr grid place-items-center"
+  >
+    <header>
+      <div
+        class="py-8 text-theme-accent font-bold text-3xl grid place-items-center"
+        aria-label="Firebase and Astro"
+      >
+        <Icon name="firebase" width={300} height={70} />
+        <Icon name="plus" class="-mb-7 -mt-2 size-8 -z-10" />
+        <Icon name="astro" width={400} height={110} />
+      </div>
+      {userEmail && <p>Welcome back, {userEmail}</p>}
+    </header>
+    <main class="container grid place-items-center">
+      <slot />
+    </main>
+  </body>
+</html>

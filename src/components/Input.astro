@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"input"> {
+  name: string;
+  label: string;
+}
+
+const { label, name, ...rest } = Astro.props;
+
+const randomId = Math.random();
+---
+
+<div class="relative grid gap-1">
+  <label for={`input-${randomId}`} class="text-sm uppercase">{label}</label>
+  <input
+    required
+    id={`input-${randomId}`}
+    {...rest}
+    name={name}
+    class="p-2 bg-theme-text text-theme-base rounded focus:outline-none focus-visible:ring-2 ring-offset-4 ring-offset-theme-base ring-theme-accent"
+  />
+</div>
