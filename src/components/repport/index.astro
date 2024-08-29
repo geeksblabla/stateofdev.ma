@@ -1,0 +1,22 @@
+---
+
+export const prerender = true;
+
+import Chart from '../Chart.astro';
+
+export interface Props   {
+  year: "2020" | "2021" | "2022" | "2023" ;
+}
+const { year = "2023" } = Astro.props;
+const allDocs = await Astro.glob(`../results/**/*.mdx`);
+const docs = allDocs.filter((file) => file.file.includes(`${year}/sections`)).sort((a, b) => a.frontmatter.position - b.frontmatter.position);
+
+---
+
+<div class="relative grid gap-1">
+  {
+      docs.map((doc) => {
+      return <div>{<doc.Content components={{Chart: Chart, TabItem: Chart, Tabs: Chart}} />}</div>;
+    })
+  }
+</div>
