@@ -103,7 +103,7 @@ type GroupedResult = {
   grouped: FinalResult | null;
 };
 
-type FinalResult = Question & {
+export type FinalResult = Question & {
   results: GroupedResult[];
   total: number;
 };
@@ -114,10 +114,10 @@ export const getQuestion = ({
   groupBy,
   dataSource,
   year = "2020",
-}: GetQuestionParams): FinalResult => {
+}: GetQuestionParams): FinalResult | null => {
   const data = dataSource ? dataSource : getSurveyData(year);
   const question = data.questions[id];
-  if (!question) throw new Error(`Question ${id} not found`);
+  if (!question) return null;
   const resultsData = data.results;
   // Filter the data based on the condition
   const filteredResults = filterResultByCondition(resultsData, condition);
@@ -151,7 +151,7 @@ export const getQuestion = ({
     total: resultsWithChoicesCounts.total,
     results: resultsWithGrouping,
     ...question,
-  };
+  } as FinalResult;
 };
 
 export const getPercent = (value: number, total: number): string => {
