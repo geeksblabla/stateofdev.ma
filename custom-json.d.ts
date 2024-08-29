@@ -15,7 +15,9 @@ type QuestionMap = {
 };
 
 type Results = {
-  results: { [key: string]: number | number[] | string | string[] | null }[];
+  results: {
+    [key: string]: number | number[] | string | string[] | null | undefined;
+  }[];
 };
 
 // 2020
