@@ -2,15 +2,21 @@
 
 export const prerender = true;
 
-import Chart from '../Chart.astro';
-import {BarChart} from './Chart/bar-chart';
+import Chart from './chart.astro';
+import Tabs from './tabs.astro';
+import TabItem from './tab-item.astro';
+
+import type { Year } from './data';
 
 export interface Props   {
-  year: "2020" | "2021" | "2022" | "2023" ;
+  year: Year
 }
-const { year = "2023" } = Astro.props;
+const { year = "2020" } = Astro.props;
 const allDocs = await Astro.glob(`../../results/**/*.mdx`);
 const docs = allDocs.filter((file) => file.file.includes(`${year}/sections`)).sort((a, b) => a.frontmatter.position - b.frontmatter.position);
+
+const headings = docs.map((doc) => doc.getHeadings());
+// console.log(headings);
 
 ---
 
@@ -20,7 +26,7 @@ const docs = allDocs.filter((file) => file.file.includes(`${year}/sections`)).so
   prose-headings:underline">
   {
       docs.map((doc) => {
-      return <div>{<doc.Content components={{Chart: BarChart, TabItem: Chart, Tabs: Chart}} />}</div>;
+      return <div>{<doc.Content components={{Chart, TabItem, Tabs}} />}</div>;
     })
   }
 </div>
