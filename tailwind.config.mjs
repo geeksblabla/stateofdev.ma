@@ -13,6 +13,15 @@ export default {
       "4xl": "clamp(2.7994rem, 1.9433rem + 4.2804vw, 5.2606rem)",
     },
     extend: {
+      keyframes: {
+        growBar: {
+          "0%": { transform: "scaleX(0)", transformOrigin: "left" },
+          "100%": { transform: "scaleX(1)", transformOrigin: "left" },
+        },
+      },
+      animation: {
+        "grow-bar": "growBar 1s ease-in-out forwards",
+      },
       container: {
         center: true,
         padding: "1.4rem",
