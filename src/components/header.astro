@@ -1,0 +1,63 @@
+---
+import Logo from "../assets/logo.svg?raw";
+import Github from "../assets/github.svg?raw";
+import Chart from "../assets/Chart.svg?raw";
+import HeaderLink from './header-link.astro';
+
+const navItems = [
+  { year: 2020, href: "/2020" },
+  { year: 2021, href: "/2021" },
+  { year: 2022, href: "/2022" },
+  { label: "Playground", href: "/playground", icon: Chart },
+  { label: "Github", href: "https://github.com/geeksblabla/stateofdev.ma", icon: Github, external: true },
+];
+---
+
+<header class=" z-[99] relative flex bg-transparent max-w-screen-xl flex-col overflow-hidden px-4 py-4 text-emerald-900 md:mx-auto md:flex-row md:items-center">
+  <a href="/">
+    <div class="flex cursor-pointer items-center whitespace-nowrap text-2xl font-black">
+        <Fragment set:html={Logo} />
+    </div>
+  </a>
+
+  <input type="checkbox" class="peer hidden" id="navbar-open" />
+  <label
+    class="absolute top-5 right-7 cursor-pointer md:hidden"
+    html-for="navbar-open"
+  >
+    <span class="sr-only">Toggle Navigation</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M4 6h16M4 12h16M4 18h16"
+      />
+    </svg>
+  </label>
+  <nav
+    aria-label="Header Navigation"
+    class="peer-checked:mt-8 peer-checked:max-h-56 flex max-h-0 w-full flex-col items-center justify-between overflow-hidden transition-all md:ml-24 md:max-h-full md:flex-row md:items-start"
+  >
+    <ul class="flex flex-col items-center space-y-2 md:ml-auto md:flex-row md:space-y-0">
+        {navItems.map((item) => (
+            <li class="md:mr-6">
+              <HeaderLink
+                label={item.year?.toString() || item.label || ""}
+                icon={item.icon}
+                href={item.href}
+                external={item.external}
+              />
+            </li>
+          ))}
+    </ul>
+  </nav>
+</header>
+
+

@@ -5,8 +5,10 @@ export const prerender = true;
 import Chart from './chart.astro';
 import Tabs from './tabs.astro';
 import TabItem from './tab-item.astro';
+import Toc from './toc.astro';
 
 import type { Year } from './data';
+import Hero from './hero.astro';
 
 export interface Props   {
   year: Year
@@ -15,18 +17,26 @@ const { year = "2020" } = Astro.props;
 const allDocs = await Astro.glob(`../../results/**/*.mdx`);
 const docs = allDocs.filter((file) => file.file.includes(`${year}/sections`)).sort((a, b) => a.frontmatter.position - b.frontmatter.position);
 
-const headings = docs.map((doc) => doc.getHeadings());
-// console.log(headings);
+const headings = docs.map((doc) => doc.getHeadings()).flat().filter((heading) => heading.depth === 1);
+console.log(headings);
 
 ---
 
-<div class="prose
-  prose-h1:font-bold prose-h1:text-xl
-  prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl
-  prose-headings:underline">
-  {
-      docs.map((doc) => {
-      return <div>{<doc.Content components={{Chart, TabItem, Tabs}} />}</div>;
-    })
-  }
+<Hero year={year} />
+<div class="lg:mx-auto  flex flex-row max-w-screen-xl  mx-4">
+  <aside class="w-1/4 md:block hidden">
+    <Toc items={headings} />
+  </aside>
+  <article class="w-3/4 md:w-full">
+      <div class="prose lg:pl-16 pt-16   max-w-none prose-img:rounded-xl  prose-a:text-emerald-600
+        prose-h1:font-bold prose-h1:text-xl
+       prose-p:text-justify
+        prose-headings:underline">
+        {
+            docs.map((doc) => {
+            return <div>{<doc.Content components={{Chart, TabItem, Tabs}} />}</div>;
+          })
+        }
+      </div>
+  </article>
 </div>

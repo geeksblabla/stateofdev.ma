@@ -10,9 +10,9 @@ import react from "@astrojs/react";
 export default defineConfig({
   integrations: [tailwind(), icon(), mdx(), react()],
   experimental: {
-    actions: true
+    actions: true,
   },
   trailingSlash: "never",
   output: "server",
-  adapter: cloudflare()
+  adapter: cloudflare(),
 });
