@@ -10,6 +10,11 @@ export interface Props   {
 const { id = "", year = "2020" } = Astro.props;
 
 const results = getQuestion({ id, year });
+
+
 ---
 
-<BarChart  results={results} />
+{
+  results ? <BarChart  results={results} /> : <div class="text-sm text-red-500"> > No results for {id} in {year}</div>
+}
+

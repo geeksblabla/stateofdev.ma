@@ -13,12 +13,16 @@ import Hero from './hero.astro';
 export interface Props   {
   year: Year
 }
-const { year = "2020" } = Astro.props;
+const { year = "2023" } = Astro.props;
 const allDocs = await Astro.glob(`../../results/**/*.mdx`);
 const docs = allDocs.filter((file) => file.file.includes(`${year}/sections`)).sort((a, b) => a.frontmatter.position - b.frontmatter.position);
 
 const headings = docs.map((doc) => doc.getHeadings()).flat().filter((heading) => heading.depth === 1);
-console.log(headings);
+const customComponents = {
+  Chart,
+  TabItem,
+  Tabs
+}
 
 ---
 
@@ -30,11 +34,11 @@ console.log(headings);
   <article class="w-3/4 md:w-full">
       <div class="prose lg:pl-16 pt-16   max-w-none prose-img:rounded-xl  prose-a:text-emerald-600
         prose-h1:font-bold prose-h1:text-xl
-       prose-p:text-justify
-        prose-headings:underline">
+        prose-p:text-justify
+        prose-headings:underline outline-offset-2">
         {
             docs.map((doc) => {
-            return <div>{<doc.Content components={{Chart, TabItem, Tabs}} />}</div>;
+            return <div class="pt-16 md:pt-32">{<doc.Content components={customComponents} />}</div>;
           })
         }
       </div>
