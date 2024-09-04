@@ -76,13 +76,11 @@
         rgba(204, 235, 231, 0) 100%
       );
   }
+
+  body {
+    @apply flex min-h-[100svh] flex-col font-mono
+  }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
+
+

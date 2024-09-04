@@ -13,6 +13,9 @@ export default {
       "4xl": "clamp(2.7994rem, 1.9433rem + 4.2804vw, 5.2606rem)",
     },
     extend: {
+      fontFamily: {
+        mono: ["IBM Plex Mono", "monospace"],
+      },
       keyframes: {
         growBar: {
           "0%": { transform: "scaleX(0)", transformOrigin: "left" },
