@@ -10,7 +10,7 @@ export interface Props   {
 const data = {
   2020: {
     year: 2020,
-    description: `In November 2020,  2287 developers from Morocco 🇲🇦
+    description: `In November 2020, <strong> 2287 developers </strong>  from Morocco 🇲🇦
   told us about their jobs satisfaction, salaries, and community
   contribution, how they learn and level up, which tools they're
   using, and what they want to learn next.`,
@@ -19,7 +19,7 @@ const data = {
 
   2021: {
     year: 2021,
-    description: `In November 2021, 1098 developers from Morocco 🇲🇦
+    description: `In November 2021, <strong>1098 developers </strong> from Morocco 🇲🇦
   told us about their jobs satisfaction, salaries, and community
   contribution, how they learn and level up, which tools they're
   using, and what they want to learn next.`,
@@ -27,7 +27,7 @@ const data = {
   },
   2022: {
     year: 2022,
-    description: `In December 2022, 1617 developers from Morocco 🇲🇦
+    description: `In December 2022, <strong>1617 developers </strong> from Morocco 🇲🇦
   told us about their jobs satisfaction, salaries, and community
   contribution, how they learn and level up, which tools they're
   using, and what they want to learn next.`,
@@ -35,7 +35,7 @@ const data = {
   },
   2023: {
     year: 2023,
-    description: `In December 2023, 1764 developers from Morocco 🇲🇦
+    description: `In December 2023, <strong>1764 developers </strong> from Morocco 🇲🇦
   told us about their jobs satisfaction, salaries, and community
   contribution, what they think about AI, which tools they're
   using, and what they want to learn next.`,
@@ -46,7 +46,7 @@ const data = {
 const { year } = Astro.props;
 ---
 
-<div class="relative py-12 sm:py-16 lg:pt-20 lg:pb-40  ">
+<div class="py-12 sm:py-16 lg:pt-20 lg:pb-24   ">
     <div class="absolute inset-x-0 top-0 lg:-top-14 bottom-0 lg:-bottom-14 overflow-hidden bg-emerald-50">
         <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white "></div>
         <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white "></div>
@@ -78,7 +78,7 @@ const { year } = Astro.props;
             </span>
           </h1>
           <p class="mx-auto mt-10  text-base leading-7 text-gray-600">
-            {data[year].description}
+            <Fragment set:html={data[year].description} />
           </p>
         </div>
       </div>

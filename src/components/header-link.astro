@@ -12,7 +12,7 @@ const { label, icon, href, external = false } = Astro.props;
 <a href={href} class="flex cursor-pointer items-center text-emerald-900 hover:text-emerald-600 pt-2" target={external ? "_blank" : undefined}>
   <div class="-mr-2 flex-shrink-0">
     <div class="h-8 w-8 mt-2">
-      {icon ? <Fragment set:html={icon} /> : <svg
+      {icon ? <Fragment set:html={icon}/> : <svg
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
       role="img"
