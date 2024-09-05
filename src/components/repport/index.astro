@@ -32,8 +32,9 @@ const customComponents = {
   <article class="flex-1 pt-8">
       <div class="prose lg:pl-16    max-w-none prose-img:rounded-xl  prose-a:text-emerald-600
         prose-h1:font-bold prose-h1:text-xl
+         mx-auto prose-pre:border-[1px] prose-pre:border-skin-line prose-pre:border-solid
         prose-p:text-justify
-        prose-headings:underline outline-offset-2">
+        prose-headings:underline outline-offset-2 prose-headings:outline-dashed">
         {
             docs.map((doc) => {
             return <div class="pb-16 md:pb-32">{<doc.Content components={customComponents} />}</div>;

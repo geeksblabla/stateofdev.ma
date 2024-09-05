@@ -1,33 +1,22 @@
 ---
-interface Props {
+export interface Props {
   label: string;
-  icon?: string;
   href: string;
   external?: boolean;
+  isActive?: boolean;
 }
 
-const { label, icon, href, external = false } = Astro.props;
+const { label, href, external = false, isActive = false } = Astro.props;
 ---
 
-<a href={href} class="flex cursor-pointer items-center text-emerald-900 hover:text-emerald-600 pt-2" target={external ? "_blank" : undefined}>
-  <div class="-mr-2 flex-shrink-0">
-    <div class="h-8 w-8 mt-2">
-      {icon ? <Fragment set:html={icon}/> : <svg
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      role="img"
-      width="24"
-      height="24"
-      preserveAspectRatio="xMidYMid meet"
-      viewBox="0 0 32 32"
-    >
-      <path
-        fill="currentColor"
-        d="m25.7 9.3l-7-7c-.2-.2-.4-.3-.7-.3H8c-1.1 0-2 .9-2 2v24c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V10c0-.3-.1-.5-.3-.7zM18 4.4l5.6 5.6H18V4.4zM24 28H8V4h8v6c0 1.1.9 2 2 2h6v16z"
-      />
-      <path fill="currentColor" d="M10 22h12v2H10zm0-6h12v2H10z" />
-    </svg>}
-    </div>
-  </div>
-  <div class="shadow-xs underline underline-offset-4">{label}</div>
+<a
+  href={href}
+  class={`block cursor-pointer items-center pt-2 border-b-2 border-dashed pb-0 transition-colors duration-200 ${
+    isActive
+      ? 'text-emerald-600 border-emerald-600'
+      : 'text-black hover:text-emerald-600 border-current'
+  }`}
+  target={external ? "_blank" : undefined}
+>
+  {label}
 </a>

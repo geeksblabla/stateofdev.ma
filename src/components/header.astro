@@ -9,8 +9,12 @@ const navItems = [
   { year: 2021, href: "/2021" },
   { year: 2022, href: "/2022" },
   { label: "Playground", href: "/playground", icon: Chart },
+  { label: "FAQ", href: "/faq" },
   { label: "Github", href: "https://github.com/geeksblabla/stateofdev.ma", icon: Github, external: true },
 ];
+
+// Get the current path
+const currentPath = Astro.url.pathname;
 ---
 
 <header class="z-[99] relative flex bg-transparent max-w-screen-xl w-full flex-col overflow-hidden px-4 py-4 text-emerald-900 md:mx-auto md:flex-row md:items-center justify-between">
@@ -50,9 +54,9 @@ const navItems = [
             <li class="md:mr-6">
               <HeaderLink
                 label={item.year?.toString() || item.label || ""}
-                icon={item.icon}
                 href={item.href}
                 external={item.external}
+                isActive={currentPath === item.href}
               />
             </li>
           ))}
