@@ -80,6 +80,10 @@
   body {
     @apply flex min-h-[100svh] flex-col font-mono
   }
+  a {
+    @apply outline-2 outline-offset-1 outline-gray-300/50
+    focus-visible:no-underline focus-visible:outline-dashed;
+  }
 }
 
 
