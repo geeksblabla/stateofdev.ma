@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@astro-utils/context':
+        specifier: ^1.1.15
+        version: 1.1.15
       '@astrojs/check':
         specifier: ^0.7.0
         version: 0.7.0(typescript@5.5.4)
@@ -97,6 +100,9 @@ packages:
 
   '@antfu/utils@0.7.10':
     resolution: {integrity: sha512-+562v9k4aI80m1+VuMHehNJWLOFjBnXn3tdOitzD0il5b7smkSBal4+a3oKiQTbrwMmN/TBUMDvbdoWDehgOww==}
+
+  '@astro-utils/context@1.1.15':
+    resolution: {integrity: sha512-dyhwdqVBykAj+nWn3Od5TRRnpLADA2vOIagbQXovq0ZgULe/+Eh4xKhoe1tcNVoXdegLunOO18LWPzB0K2LqNw==}
 
   '@astrojs/check@0.7.0':
     resolution: {integrity: sha512-UTqwOeKNu9IYZmJXEeWnQuTdSd/pX58Hl4TUARsMlT97SVDL//kLBE4T/ctxRz6J573N87oE5ddtW/uOOnQTug==}
@@ -3999,6 +4005,8 @@ snapshots:
       tinyexec: 0.3.0
 
   '@antfu/utils@0.7.10': {}
+
+  '@astro-utils/context@1.1.15': {}
 
   '@astrojs/check@0.7.0(typescript@5.5.4)':
     dependencies:
