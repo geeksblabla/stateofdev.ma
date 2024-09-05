@@ -27,18 +27,16 @@ const customComponents = {
 ---
 
 <Hero year={year} />
-<div class="lg:mx-auto  flex flex-row max-w-screen-xl  mx-4">
-  <aside class="w-1/4 md:block hidden">
-    <Toc items={headings} />
-  </aside>
-  <article class="w-3/4 md:w-full">
-      <div class="prose lg:pl-16 pt-16   max-w-none prose-img:rounded-xl  prose-a:text-emerald-600
+<div class="lg:mx-auto  flex flex-row max-w-screen-xl  mx-4 ">
+  <Toc items={headings} />
+  <article class="flex-1 pt-8">
+      <div class="prose lg:pl-16    max-w-none prose-img:rounded-xl  prose-a:text-emerald-600
         prose-h1:font-bold prose-h1:text-xl
         prose-p:text-justify
         prose-headings:underline outline-offset-2">
         {
             docs.map((doc) => {
-            return <div class="pt-16 md:pt-32">{<doc.Content components={customComponents} />}</div>;
+            return <div class="pb-16 md:pb-32">{<doc.Content components={customComponents} />}</div>;
           })
         }
       </div>
