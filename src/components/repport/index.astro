@@ -2,13 +2,14 @@
 
 export const prerender = true;
 
-import Chart from './chart.astro';
+import Context from '@astro-utils/context/Context.astro';
 import Tabs from './tabs.astro';
 import TabItem from './tab-item.astro';
 import Toc from './toc.astro';
 
 import type { Year } from './data';
 import Hero from './hero.astro';
+import Chart from './chart.astro';
 
 export interface Props   {
   year: Year
@@ -25,21 +26,23 @@ const customComponents = {
 }
 
 ---
-
-<Hero year={year} />
-<div class="lg:mx-auto  flex flex-row max-w-screen-xl  mx-4 ">
-  <Toc items={headings} />
-  <article class="flex-1 pt-8">
-      <div class="prose lg:pl-16    max-w-none prose-img:rounded-xl  prose-a:text-emerald-600
-        prose-h1:font-bold prose-h1:text-xl
-         mx-auto prose-pre:border-[1px] prose-pre:border-skin-line prose-pre:border-solid
-        prose-p:text-justify
-        prose-headings:underline outline-offset-2 prose-headings:outline-dashed">
-        {
-            docs.map((doc) => {
-            return <div class="pb-16 md:pb-32">{<doc.Content components={customComponents} />}</div>;
-          })
-        }
-      </div>
-  </article>
-</div>
+  <div>
+    <Hero year={year} />
+  </div>
+  <div class="lg:mx-auto  flex flex-row max-w-screen-xl  md:pt-10 pt-0">
+    <Toc items={headings} />
+    <Context year={year} test="test">
+      <article class="flex-1 pt-8 w-full md:px-4 px-2">
+          <div class="prose lg:pl-16  max-w-none prose-img:rounded-xl  prose-a:text-emerald-600
+            prose-h1:font-bold prose-h1:text-xl
+            prose-p:text-justify
+            prose-headings:underline underline-offset-2">
+            {
+                docs.map((doc) => {
+                return <div class="pb-16 md:pb-32">{<doc.Content components={customComponents} />}</div>;
+              })
+            }
+          </div>
+      </article>
+    </Context>
+  </div>

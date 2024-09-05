@@ -46,7 +46,7 @@ const data = {
 const { year } = Astro.props;
 ---
 
-<div class="py-12 sm:py-16 lg:pt-20 lg:pb-24   ">
+<div class="relative py-12 sm:py-16 lg:pt-20 lg:pb-24   ">
     <div class="absolute inset-x-0 top-0 lg:-top-14 bottom-0 lg:-bottom-14 overflow-hidden bg-emerald-50">
         <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white "></div>
         <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white "></div>
@@ -82,6 +82,7 @@ const { year } = Astro.props;
           </p>
         </div>
       </div>
+      <div class="mx-4 md:mx-auto">
     <div class="relative w-full max-w-[1000px] m-auto aspect-video aspect-w-16 aspect-h-9  rounded-lg mt-10 shadow-lg duration-300 hover:translate-y-3">
             <iframe
                 src={data[year].episode_url}
@@ -91,5 +92,6 @@ const { year } = Astro.props;
                 allowfullscreen
             ></iframe>
     </div>
+</div>
 
     </div>
