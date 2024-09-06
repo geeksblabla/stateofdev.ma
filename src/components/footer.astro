@@ -1,5 +1,6 @@
 ---
 import Logo from "../assets/logo.svg";
+import { website } from "@/website";
 ---
 
 <footer class="mt-24">
@@ -72,7 +73,7 @@ import Logo from "../assets/logo.svg";
             <li>
               <a
                 class="hover:text-emerald-600 hover:underline"
-                href="https://www.youtube.com/c/GeeksBlaBla01"
+                href={website.youtube}
                 target="_blank"
               >
                 Youtube
@@ -81,7 +82,7 @@ import Logo from "../assets/logo.svg";
             <li>
               <a
                 class="hover:text-emerald-600 hover:underline"
-                href="https://www.linkedin.com/company/geeksblabla-community/"
+                href={website.linkedin}
                 target="_blank"
               >
                 Linkedin
@@ -90,7 +91,7 @@ import Logo from "../assets/logo.svg";
             <li>
               <a
                 class="hover:text-emerald-600 hover:underline"
-                href="https://www.facebook.com/geeksblabla"
+                href={website.facebook}
                 target="_blank"
               >
                 Facebook
@@ -99,7 +100,7 @@ import Logo from "../assets/logo.svg";
             <li>
               <a
                 class="hover:text-emerald-600 hover:underline"
-                href="https://x.com/geeksblabla"
+                href={website.twitter}
                 target="_blank"
               >
                 X("Previously Twitter")
@@ -108,7 +109,7 @@ import Logo from "../assets/logo.svg";
             <li>
               <a
                 class="hover:text-emerald-600 hover:underline"
-                href="https://instagram.com/geeksblabla"
+                href={website.instagram}
                 target="_blank"
               >
                 Instagram
@@ -117,7 +118,7 @@ import Logo from "../assets/logo.svg";
             <li>
               <a
                 class="hover:text-emerald-600 hover:underline"
-                href="https://github.com/geeksblabla"
+                href={website.github}
                 target="_blank"
               >
                 Github
