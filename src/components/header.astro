@@ -3,6 +3,7 @@ import Logo from "../assets/logo.svg?raw";
 import Github from "../assets/github.svg?raw";
 import Chart from "../assets/Chart.svg?raw";
 import HeaderLink from './header-link.astro';
+import { website } from "@/website";
 
 const navItems = [
   { year: 2020, href: "/2020" },
@@ -11,7 +12,7 @@ const navItems = [
   { year: 2023, href: "/2023" },
   { label: "Playground", href: "/playground", icon: Chart },
   { label: "FAQ", href: "/faq" },
-  { label: "Github", href: "https://github.com/geeksblabla/stateofdev.ma", icon: Github, external: true },
+  { label: "Github", href: website.repoGithub, icon: Github, external: true },
 ];
 
 // Get the current path

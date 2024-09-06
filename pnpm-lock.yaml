@@ -29,6 +29,9 @@ importers:
       '@astrojs/tailwind':
         specifier: ^5.1.0
         version: 5.1.0(astro@4.14.5(@types/node@22.5.0)(rollup@4.21.1)(typescript@5.5.4))(tailwindcss@3.4.10)
+      '@astrolib/seo':
+        specifier: 1.0.0-beta.5
+        version: 1.0.0-beta.5(astro@4.14.5(@types/node@22.5.0)(rollup@4.21.1)(typescript@5.5.4))
       '@lion/ui':
         specifier: ^0.7.6
         version: 0.7.6
@@ -176,6 +179,11 @@ packages:
 
   '@astrojs/yaml2ts@0.2.1':
     resolution: {integrity: sha512-CBaNwDQJz20E5WxzQh4thLVfhB3JEEGz72wRA+oJp6fQR37QLAqXZJU0mHC+yqMOQ6oj0GfRPJrz6hjf+zm6zA==}
+
+  '@astrolib/seo@1.0.0-beta.5':
+    resolution: {integrity: sha512-poBnSB9TzkmOyf+PoMR642zVLSoVVZbUIKnYDHXHrKi/upkaegNiaBdVRsyqaQC93SIxxyagQrIbLRtnSJT4Xg==}
+    peerDependencies:
+      astro: ^1.2.1 || ^2.0.0 || ^3.0.0-beta.0 || ^3.0.0 || ^4.0.0
 
   '@babel/code-frame@7.24.7':
     resolution: {integrity: sha512-BcYH1CVJBO9tvyIZ2jVeXgSIMvGZ2FDRvDdOIVQyuklNKSsx+eppDEBq/g47Ayw+RqNFE+URvOShmf+f/qwAlA==}
@@ -4206,6 +4214,10 @@ snapshots:
   '@astrojs/yaml2ts@0.2.1':
     dependencies:
       yaml: 2.5.0
+
+  '@astrolib/seo@1.0.0-beta.5(astro@4.14.5(@types/node@22.5.0)(rollup@4.21.1)(typescript@5.5.4))':
+    dependencies:
+      astro: 4.14.5(@types/node@22.5.0)(rollup@4.21.1)(typescript@5.5.4)
 
   '@babel/code-frame@7.24.7':
     dependencies:
