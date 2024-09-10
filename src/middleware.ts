@@ -1,9 +1,9 @@
 import { defineMiddleware } from "astro:middleware";
-import { projectAuth } from "./firebase/config";
+// import { projectAuth } from "./firebase/config";
 
 export const onRequest = defineMiddleware((context, next) => {
-  const currentUser = projectAuth.currentUser;
-  const { pathname } = context.url;
+  // const currentUser = projectAuth.currentUser;
+  // const { pathname } = context.url;
 
   // if (
   //   !currentUser &&
