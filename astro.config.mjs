@@ -9,9 +9,6 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), icon(), mdx(), react()],
-  experimental: {
-    actions: true,
-  },
   trailingSlash: "never",
   output: "server",
   adapter: cloudflare(),
