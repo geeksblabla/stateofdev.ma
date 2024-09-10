@@ -1,0 +1,12 @@
+---
+
+import { SurveyPlayground } from '@/components/playground'
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Survey Data Playground">
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-2xl font-bold mb-8 text-center text-gray-800">Survey Data Playground</h1>
+    <SurveyPlayground client:load />
+  </main>
+</BaseLayout>

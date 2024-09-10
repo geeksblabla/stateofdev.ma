@@ -2,14 +2,18 @@ import { getPercent, type FinalResult } from "./utils";
 
 type BarChartProps = {
   results: FinalResult | null;
+  sortByTotal?: boolean;
 };
 
-export const BarChart = ({ results }: BarChartProps) => {
+export const BarChart = ({ results, sortByTotal = true }: BarChartProps) => {
   if (!results) return null;
 
+  const displayResults = sortByTotal
+    ? [...results.results].sort((a, b) => b.total - a.total)
+    : results.results;
   return (
     <div className="w-full max-w-5xl mx-auto">
-      {results.results.map((result, index) => (
+      {displayResults.map((result, index) => (
         <div key={result.choiceIndex} className="mb-4">
           <div className="flex items-center justify-between mb-1">
             <span className="text-sm font-medium text-gray-700">

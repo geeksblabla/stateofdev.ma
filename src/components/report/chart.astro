@@ -1,0 +1,27 @@
+---
+import { getQuestion, type  QuestionCondition } from './utils';
+import {BarChart} from './bar-chart'
+import type { Year } from './data';
+import getContext from '@astro-utils/context';
+
+
+
+export interface Props   {
+  id: string;
+  year?: Year,
+  condition?: QuestionCondition,
+  groupBy?: string
+}
+const { id = "", year : yearProp, condition, groupBy } = Astro.props;
+
+const {year: yearContext} = getContext(Astro);
+const year = yearProp || yearContext || "null"
+const results = getQuestion({ id, year, condition, groupBy });
+
+
+---
+
+{
+  results ? <BarChart  results={results} /> : <div class="text-sm text-red-500"> > No results for {id} in {year}</div>
+}
+

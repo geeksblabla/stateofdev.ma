@@ -6,11 +6,14 @@ import '../../app/globals.css';
 // Import other necessary components or styles
 
 interface Props {
-  title: string;
-  year: number;
+  title?: string;
+  year?: number;
+  description?: string;
 }
 
-const { title, year } = Astro.props;
+const { title:titleProp, year, description: descriptionProp } = Astro.props;
+const title = titleProp || "State Of Dev In Morocco 🇲🇦";
+const description = descriptionProp || "Participate and let us know what working in tech really looks like in Morocco 🇲🇦";
 ---
 
 <!doctype html>
@@ -23,8 +26,8 @@ const { title, year } = Astro.props;
     <>
     {year === undefined ? (
       <AstroSeo
-        title="State Of Dev In Morocco 🇲🇦"
-        description="Participate and let us know what working in tech really looks like in Morocco 🇲🇦"
+        title={title}
+        description={description}
         canonical="https://stateofdev.ma"
         openGraph={{
           url: "https://stateofdev.ma",
