@@ -26,7 +26,9 @@ const calculateChoicesCounts = (
   data: Results["results"],
   id: string
 ): OptionsCounts => {
-  const answers = data.map((r) => r[id]).filter((v) => v !== undefined); // in case some answers are missing
+  const answers = data
+    .map((r) => r[id])
+    .filter((v) => v !== undefined && v !== null); // in case some answers are missing
   const counts = answers.reduce((acc, curr) => {
     if (curr === undefined || curr === null) return acc;
     if (Array.isArray(curr)) {
@@ -53,13 +55,13 @@ const calculateChoicesCounts = (
 /**
  *  the condition can be a function or an array of objects with question_id and values we want to filter by
  */
-type Condition =
+export type QuestionCondition =
   | ((v: any) => boolean)
   | Array<{ question_id: string; values: string[] }>;
 
 const filterResultByCondition = (
   data: Results["results"],
-  condition?: Condition
+  condition?: QuestionCondition
 ): Results["results"] => {
   if (!condition) return data;
   if (typeof condition === "function") return data.filter(condition);
@@ -86,7 +88,7 @@ const filterResultByCondition = (
 
 type GetQuestionParams = {
   id: string;
-  condition?: Condition;
+  condition?: QuestionCondition;
   groupBy?: string;
   dataSource?: {
     questions: QuestionMap;
