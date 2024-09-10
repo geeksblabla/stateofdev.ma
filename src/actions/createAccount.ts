@@ -1,5 +1,7 @@
 import { projectAuth } from "@/firebase/config";
-import { defineAction, z } from "astro:actions";
+import { defineAction } from "astro:actions";
+import { z } from "astro:schema";
+
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export const createAccount = defineAction({

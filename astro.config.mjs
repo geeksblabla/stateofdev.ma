@@ -10,6 +10,6 @@ import react from "@astrojs/react";
 export default defineConfig({
   integrations: [tailwind(), icon(), mdx(), react()],
   trailingSlash: "never",
-  output: "server",
+  output: "hybrid",
   adapter: cloudflare(),
 });
