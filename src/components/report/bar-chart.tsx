@@ -1,3 +1,4 @@
+import { ShareButtons } from "./share-buttons";
 import { getPercent, type FinalResult } from "./utils";
 
 // Add this array of colors
@@ -18,6 +19,7 @@ type BarChartProps = {
   results: FinalResult | null;
   sortByTotal?: boolean;
   title?: boolean;
+  playgroundButton?: boolean;
 };
 
 type BarProps = {
@@ -134,6 +136,7 @@ export const BarChart = ({
   results,
   sortByTotal = true,
   title = false,
+  playgroundButton = false,
 }: BarChartProps) => {
   if (!results) return null;
 
@@ -148,6 +151,9 @@ export const BarChart = ({
       result.grouped.results.forEach((group) => legendLabels.add(group.label));
     }
   });
+
+  const shareUrl = window.location.href;
+  const shareTitle = `Check out this report: ${results.label}`;
 
   return (
     <div>
@@ -172,13 +178,25 @@ export const BarChart = ({
             </div>
           ))}
         </div>
-        <div className="flex justify-end mt-4 space-x-4">
-          <button className="text-blue-600 hover:underline">
-            Share result
-          </button>
-          <button className="text-blue-600 hover:underline">
-            Open in playground
-          </button>
+        <div className="flex justify-end items-center mt-6">
+          {playgroundButton && (
+            <button className="text-gray-500 hover:text-gray-700 transition-colors flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 mr-1"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              Open in playground
+            </button>
+          )}
+          <ShareButtons url={shareUrl} title={shareTitle} />
         </div>
       </div>
     </div>
