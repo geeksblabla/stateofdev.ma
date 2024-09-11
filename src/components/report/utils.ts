@@ -105,6 +105,7 @@ type GroupedResult = {
 };
 
 export type FinalResult = Question & {
+  id: string;
   results: GroupedResult[];
   total: number;
 };
@@ -152,6 +153,7 @@ export const getQuestion = ({
     total: resultsWithChoicesCounts.total,
     results: resultsWithGrouping,
     ...question,
+    id,
   } as FinalResult;
 };
 

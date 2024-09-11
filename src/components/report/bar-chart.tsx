@@ -152,7 +152,7 @@ export const BarChart = ({
     }
   });
 
-  const shareUrl = window.location.href;
+  const shareUrl = `/playground?questionId=${results.id}`;
   const shareTitle = `Check out this report: ${results.label}`;
 
   return (
@@ -180,7 +180,10 @@ export const BarChart = ({
         </div>
         <div className="flex justify-end items-center mt-6">
           {playgroundButton && (
-            <button className="text-gray-500 hover:text-gray-700 transition-colors flex items-center">
+            <a
+              href={`/playground?questionId=${results.id}`}
+              className="text-gray-400 text-sm visited:text-gray-400 hover:text-gray-700 decoration-none transition-colors flex items-center pl-2"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 mr-1"
@@ -193,8 +196,8 @@ export const BarChart = ({
                   clipRule="evenodd"
                 />
               </svg>
-              Open in playground
-            </button>
+              <span className="pr-2">Open in playground</span>
+            </a>
           )}
           <ShareButtons url={shareUrl} title={shareTitle} />
         </div>

@@ -22,6 +22,6 @@ const results = getQuestion({ id, year, condition, groupBy });
 ---
 
 {
-  results ? <BarChart  results={results} /> : <div class="text-sm text-red-500"> > No results for {id} in {year}</div>
+  results ? <BarChart  results={results} playgroundButton /> : <div class="text-sm text-red-500"> > No results for {id} in {year}</div>
 }
 
