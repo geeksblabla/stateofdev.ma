@@ -40,7 +40,7 @@ export const SurveyPlayground: React.FC = () => {
         </div>
         <div className="w-full md:w-1/2">
           {result ? (
-            <BarChart results={result} />
+            <BarChart results={result} title={true} />
           ) : (
             <div className="h-full flex items-center justify-center text-gray-500 bg-white shadow-md rounded-lg p-6">
               Select a question to generate a chart
