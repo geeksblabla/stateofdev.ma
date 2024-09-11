@@ -34,13 +34,20 @@ export const SurveyPlayground: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="flex flex-col md:flex-row gap-8">
-        <div className="w-full md:w-1/2">
+      <div className="relative flex flex-col md:flex-row gap-8">
+        <div className="w-full md:w-1/2 ">
           <PlaygroundForm questions={questions} onChange={handleFormChange} />
         </div>
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-1/2 ">
           {result ? (
-            <BarChart results={result} title={true} playgroundButton={false} />
+            <div className="sticky top-6">
+              <BarChart
+                results={result}
+                sortByTotal={false}
+                title={true}
+                playgroundButton={false}
+              />
+            </div>
           ) : (
             <div className="h-full flex items-center justify-center text-gray-500 bg-white shadow-md rounded-lg p-6">
               Select a question to generate a chart
