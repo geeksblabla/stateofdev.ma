@@ -1,7 +1,7 @@
 import React from "react";
-import { Controller, useFieldArray, type Control } from "react-hook-form";
+import { Controller, useFieldArray } from "react-hook-form";
 
-import { type QuestionMap } from "../report/data";
+import { type QuestionMap } from "../chart/data";
 
 export const FilterOptions: React.FC<{
   questions: QuestionMap;

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 
-import { type Year, type QuestionMap } from "../report/data";
+import { type Year, type QuestionMap } from "../chart/data";
 import { FilterOptions } from "./filters-options";
 
 export type PlaygroundFormData = {
