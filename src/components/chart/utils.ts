@@ -157,6 +157,6 @@ export const getQuestion = ({
   } as FinalResult;
 };
 
-export const getPercent = (value: number, total: number): string => {
+export const getPercent = (value: number, total: number) => {
   return ((value * 100) / total).toFixed(1);
 };
