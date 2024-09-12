@@ -18,8 +18,6 @@ const colors = [
 type PieChartProps = {
   results: FinalResult | null;
   sortByTotal?: boolean;
-  title?: boolean;
-  playgroundButton?: boolean;
 };
 const PieSlice = ({
   result,
@@ -71,12 +69,7 @@ const PieSlice = ({
   );
 };
 
-export const PieChart = ({
-  results,
-  sortByTotal = true,
-  title = false,
-  playgroundButton = false,
-}: PieChartProps) => {
+export const PieChart = ({ results, sortByTotal = true }: PieChartProps) => {
   if (!results) return null;
 
   const displayResults = sortByTotal
@@ -86,43 +79,39 @@ export const PieChart = ({
   let startAngle = 0;
 
   return (
-    <div className="w-full max-w-3xl mx-auto">
-      {title && <p className="text-lg py-4 font-bold mb-4">{results.label}</p>}
-      <div className="flex flex-col md:flex-row items-center justify-center">
-        <svg viewBox="0 0 100 100" className="w-64 h-64">
-          {displayResults.map((result, index) => {
-            const sliceAngle = (result.total / results.total) * 360;
-            const endAngle = startAngle + sliceAngle;
-            const slice = (
-              <PieSlice
-                key={result.choiceIndex}
-                result={result}
-                total={results.total}
-                startAngle={startAngle}
-                endAngle={endAngle}
-                color={colors[index % colors.length]}
-              />
-            );
-            startAngle = endAngle;
-            return slice;
-          })}
-        </svg>
-        <div className="mt-6 md:mt-0 md:ml-8">
-          {displayResults.map((result, index) => (
-            <div key={result.choiceIndex} className="flex items-center mb-2">
-              <div
-                className="w-4 h-4 mr-2"
-                style={{ backgroundColor: colors[index % colors.length] }}
-              ></div>
-              <span className="text-sm">
-                {result.label}: {result.total} (
-                {getPercent(result.total, results.total)}%)
-              </span>
-            </div>
-          ))}
-        </div>
+    <div className="flex flex-col md:flex-row items-center justify-center">
+      <svg viewBox="0 0 100 100" className="w-64 h-64">
+        {displayResults.map((result, index) => {
+          const sliceAngle = (result.total / results.total) * 360;
+          const endAngle = startAngle + sliceAngle;
+          const slice = (
+            <PieSlice
+              key={result.choiceIndex}
+              result={result}
+              total={results.total}
+              startAngle={startAngle}
+              endAngle={endAngle}
+              color={colors[index % colors.length]}
+            />
+          );
+          startAngle = endAngle;
+          return slice;
+        })}
+      </svg>
+      <div className="mt-6 md:mt-0 md:ml-8">
+        {displayResults.map((result, index) => (
+          <div key={result.choiceIndex} className="flex items-center mb-2">
+            <div
+              className="w-4 h-4 mr-2"
+              style={{ backgroundColor: colors[index % colors.length] }}
+            ></div>
+            <span className="text-sm">
+              {result.label}: {result.total} (
+              {getPercent(result.total, results.total)}%)
+            </span>
+          </div>
+        ))}
       </div>
-      <ChartActions playgroundButton={playgroundButton} results={results} />
     </div>
   );
 };
