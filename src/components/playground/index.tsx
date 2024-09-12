@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { BarChart } from "../report/bar-chart";
+import { BarChart } from "../chart/bar-chart";
 import {
   getQuestion,
   type FinalResult,
   type QuestionCondition,
-} from "../report/utils";
-import { getSurveyData, type Year, type QuestionMap } from "../report/data";
-import { PlaygroundForm, type PlaygroundFormData } from "./survey-form";
+} from "../chart/utils";
+import { getSurveyData, type Year, type QuestionMap } from "../chart/data";
+import { PlaygroundForm, type PlaygroundFormData } from "./playground-form";
 
 export const SurveyPlayground: React.FC = () => {
   const [result, setResult] = useState<FinalResult | null>(null);

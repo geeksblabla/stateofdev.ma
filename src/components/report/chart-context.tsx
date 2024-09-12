@@ -1,7 +1,13 @@
+/**
+ * this is a context that we use to pass the year to the bar chart based on the page the chart is used on
+ * This only work with static generation for report page and do not work with the playground
+ * We do that because in our report files in `results/year/sections/` we only calling the chart with questionId and the year is implicit based on the folder name
+ */
+
 import React, { createContext, useContext, type ReactNode } from "react";
-import { BarChart as BarChartComponent } from "./bar-chart";
-import { getQuestion } from "./utils";
-import type { Year } from "./data";
+import { BarChart as BarChartComponent } from "../chart/bar-chart";
+import { getQuestion } from "../chart/utils";
+import type { Year } from "../chart/data";
 
 interface ChartContextProps {
   year: Year;

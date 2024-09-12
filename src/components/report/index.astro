@@ -6,10 +6,12 @@ import Context from '@astro-utils/context/Context.astro';
 import Tabs from './tabs.astro';
 import TabItem from './tab-item.astro';
 import Toc from './toc.astro';
-
-import type { Year } from './data';
 import Hero from './hero.astro';
-import Chart from './chart.astro';
+
+
+import type { Year } from '@/components/chart/data';
+
+import Chart from '@/components/chart/chart.astro';
 
 export interface Props   {
   year: Year
