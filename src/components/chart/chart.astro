@@ -1,9 +1,9 @@
 ---
 import { getQuestion, type  QuestionCondition } from './utils'
-import {BarChart} from './bar-chart'
+
 import type { Year } from './data'
 import getContext from '@astro-utils/context';
-import { PieChart } from './pie-chart';
+import { Chart as RChart } from './chart';
 
 
 
@@ -25,11 +25,7 @@ const results = getQuestion({ id, year, condition, groupBy });
 
 {
   results ? (
-    pie ? (
-      <PieChart results={results} playgroundButton />
-    ) : (
-      <BarChart results={results} playgroundButton />
-    )
+  <RChart results={results} playgroundButton pie={pie} />
   ) : (
     <div class="text-sm text-red-500"> > No results for {id} in {year}</div>
   )

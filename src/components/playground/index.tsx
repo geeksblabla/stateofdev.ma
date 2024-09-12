@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BarChart } from "../chart/bar-chart";
+import { Chart } from "../chart/chart";
 import {
   getQuestion,
   type FinalResult,
@@ -41,7 +41,7 @@ export const SurveyPlayground: React.FC = () => {
         <div className="w-full md:w-1/2 ">
           {result ? (
             <div className="sticky top-6">
-              <BarChart
+              <Chart
                 results={result}
                 sortByTotal={false}
                 title={true}

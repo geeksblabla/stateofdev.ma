@@ -18,8 +18,6 @@ const colors = [
 type BarChartProps = {
   results: FinalResult | null;
   sortByTotal?: boolean;
-  title?: boolean;
-  playgroundButton?: boolean;
 };
 
 type BarProps = {
@@ -139,12 +137,7 @@ const Bar = ({ result, index, total }: BarProps) => {
   );
 };
 
-export const BarChart = ({
-  results,
-  sortByTotal = true,
-  title = false,
-  playgroundButton = false,
-}: BarChartProps) => {
+export const BarChart = ({ results, sortByTotal = true }: BarChartProps) => {
   if (!results) return null;
 
   const displayResults = sortByTotal
@@ -160,31 +153,27 @@ export const BarChart = ({
   });
 
   return (
-    <div>
-      {title && <p className="text-lg py-4 font-bold mb-4">{results.label}</p>}
-      <div className="w-full max-w-5xl mx-auto">
-        {displayResults.map((result, index) => (
-          <Bar
-            key={result.choiceIndex}
-            result={result}
-            index={index}
-            total={results.total}
-          />
+    <div className="w-full max-w-5xl mx-auto">
+      {displayResults.map((result, index) => (
+        <Bar
+          key={result.choiceIndex}
+          result={result}
+          index={index}
+          total={results.total}
+        />
+      ))}
+      {/*  legend for grouped questions */}
+      <div className="mt-6 flex flex-wrap justify-center">
+        {Array.from(legendLabels).map((label, index) => (
+          <div key={label} className="flex items-center mr-4 mb-2">
+            <div
+              className={`w-4 h-4 ${
+                colors[index % colors.length]
+              } mr-2 opacity-60`}
+            ></div>
+            <span className="text-sm">{label}</span>
+          </div>
         ))}
-        {/*  legend for grouped questions */}
-        <div className="mt-6 flex flex-wrap justify-center">
-          {Array.from(legendLabels).map((label, index) => (
-            <div key={label} className="flex items-center mr-4 mb-2">
-              <div
-                className={`w-4 h-4 ${
-                  colors[index % colors.length]
-                } mr-2 opacity-60`}
-              ></div>
-              <span className="text-sm">{label}</span>
-            </div>
-          ))}
-        </div>
-        <ChartActions playgroundButton={playgroundButton} results={results} />
       </div>
     </div>
   );
