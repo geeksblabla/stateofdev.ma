@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "test": "vitest",
-    "test:ci": "vitest --coverage.enabled true"
+    "test:ci": "vitest --coverage.enabled true",
+    "lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\""
   },
   "dependencies": {
     "@astro-utils/context": "^1.1.15",
@@ -40,7 +41,13 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
+    "@typescript-eslint/parser": "^5.62.0",
     "@vitest/coverage-v8": "^2.1.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-astro": "^0.34.0",
+    "eslint-plugin-jsx-a11y": "^6.10.0",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1",
     "vitest": "^2.1.1"
   }
 }

@@ -3,7 +3,7 @@ import { Chart } from "../chart/chart";
 import {
   getQuestion,
   type FinalResult,
-  type QuestionCondition,
+  type QuestionCondition
 } from "../chart/utils";
 import { getSurveyData, type Year, type QuestionMap } from "../chart/data";
 import { PlaygroundForm, type PlaygroundFormData } from "./playground-form";
@@ -24,7 +24,7 @@ export const SurveyPlayground: React.FC = () => {
         id: formData.questionId,
         year: formData.year,
         condition: condition.length > 0 ? condition : undefined,
-        groupBy: formData.groupBy || undefined,
+        groupBy: formData.groupBy || undefined
       });
       setResult(result);
     } else {

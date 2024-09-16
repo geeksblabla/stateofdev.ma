@@ -6,31 +6,31 @@ const questions = {
     label: "question 0",
     choices: ["choice 0", "choice 1"],
     required: true,
-    multiple: false,
+    multiple: false
   },
   "profile-q-1": {
     label: "question 1",
     choices: ["choice 0", "choice 1", "choice 2"],
     required: true,
-    multiple: true,
+    multiple: true
   },
   "profile-q-2": {
     label: "question 1",
     choices: ["choice 0", "choice 1", "choice 2"],
     required: true,
-    multiple: false,
+    multiple: false
   },
   "profile-q-3": {
     label: "question 2",
     choices: ["choice 0", "choice 1", "choice 2", "choice 3"],
     required: true,
-    multiple: true,
+    multiple: true
   },
   "profile-q-4": {
     label: "question 4",
     choices: ["choice 0", "choice 1", "choice 2", "choice 3", "choice 4"],
     required: true,
-    multiple: false,
+    multiple: false
   },
   "profile-q-5": {
     label: "question 5",
@@ -40,11 +40,11 @@ const questions = {
       "choice 2",
       "choice 3",
       "choice 4",
-      "choice 5",
+      "choice 5"
     ],
     required: true,
-    multiple: true,
-  },
+    multiple: true
+  }
 };
 
 const results = [
@@ -55,7 +55,7 @@ const results = [
     "profile-q-2": 1,
     "profile-q-3": [0, 1],
     "profile-q-4": 0,
-    "profile-q-5": [0, 1, 2, 3],
+    "profile-q-5": [0, 1, 2, 3]
   },
   {
     userId: "user-1",
@@ -64,7 +64,7 @@ const results = [
     "profile-q-2": 1,
     "profile-q-3": [1, 2, 3],
     "profile-q-4": 2,
-    "profile-q-5": [2, 3, 4],
+    "profile-q-5": [2, 3, 4]
   },
   {
     userId: "user-2",
@@ -73,7 +73,7 @@ const results = [
     "profile-q-2": 2,
     "profile-q-3": [0, 3],
     "profile-q-4": 1,
-    "profile-q-5": [0, 1, 4, 5],
+    "profile-q-5": [0, 1, 4, 5]
   },
   {
     userId: "user-3",
@@ -82,7 +82,7 @@ const results = [
     "profile-q-2": 0,
     "profile-q-3": [2],
     "profile-q-4": 3,
-    "profile-q-5": [1, 3, 5],
+    "profile-q-5": [1, 3, 5]
   },
   {
     // no answer for q-2
@@ -91,13 +91,13 @@ const results = [
     "profile-q-1": [0],
     "profile-q-3": [2],
     "profile-q-4": 3,
-    "profile-q-5": [1, 3, 5],
-  },
+    "profile-q-5": [1, 3, 5]
+  }
 ];
 
 const dataSource = {
   questions,
-  results,
+  results
 };
 
 describe("getQuestion Simple calculations", () => {
@@ -110,7 +110,7 @@ describe("getQuestion Simple calculations", () => {
     const emptyDataSource = { ...dataSource, results: [] };
     const result = getQuestion({
       id: "profile-q-0",
-      dataSource: emptyDataSource,
+      dataSource: emptyDataSource
     });
     expect(result).not.toBeNull();
     expect(result?.total).toBe(0);
@@ -167,7 +167,7 @@ describe("getQuestion Filters", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
-      condition: (v) => v["profile-q-4"] === 3,
+      condition: (v) => v["profile-q-4"] === 3
     });
     if (!result) return;
     const totalAllChoices = result.results.reduce(
@@ -183,7 +183,7 @@ describe("getQuestion Filters", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
-      condition: (v) => v["profile-q-5"].includes(3),
+      condition: (v) => v["profile-q-5"].includes(3)
     });
     expect(result?.total).toBe(4);
   });
@@ -192,7 +192,7 @@ describe("getQuestion Filters", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
-      condition: [{ question_id: "profile-q-4", values: ["3"] }],
+      condition: [{ question_id: "profile-q-4", values: ["3"] }]
     });
     expect(result?.total).toBe(2);
   });
@@ -200,7 +200,7 @@ describe("getQuestion Filters", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
-      condition: [{ question_id: "profile-q-4", values: ["3", "1"] }],
+      condition: [{ question_id: "profile-q-4", values: ["3", "1"] }]
     });
     expect(result?.total).toBe(3);
   });
@@ -211,8 +211,8 @@ describe("getQuestion Filters", () => {
       dataSource,
       condition: [
         { question_id: "profile-q-4", values: ["3"] },
-        { question_id: "profile-q-5", values: ["1", "3"] },
-      ],
+        { question_id: "profile-q-5", values: ["1", "3"] }
+      ]
     });
     expect(result?.total).toBe(2);
     expect(result?.results[0].total).toBe(0);
@@ -225,8 +225,8 @@ describe("getQuestion Filters", () => {
       dataSource,
       condition: [
         { question_id: "profile-q-4", values: ["0", "1"] },
-        { question_id: "profile-q-5", values: ["0", "1"] },
-      ],
+        { question_id: "profile-q-5", values: ["0", "1"] }
+      ]
     });
     expect(result?.total).toBe(2);
     expect(result?.results[0].total).toBe(2);
@@ -237,7 +237,7 @@ describe("getQuestion Filters", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
-      condition: [{ question_id: "profile-q-4", values: ["999"] }],
+      condition: [{ question_id: "profile-q-4", values: ["999"] }]
     });
     expect(result?.total).toBe(0);
     expect(result?.results.every((r) => r.total === 0)).toBeTruthy();
@@ -247,7 +247,7 @@ describe("getQuestion Filters", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
-      condition: [{ question_id: "profile-q-4", values: [] }],
+      condition: [{ question_id: "profile-q-4", values: [] }]
     });
     expect(result?.total).toBe(5);
   });
@@ -257,7 +257,7 @@ describe("getQuestion Filters", () => {
       id: "profile-q-0",
       dataSource,
       condition: (v) =>
-        v["profile-q-4"] % 2 === 0 && v["profile-q-5"].includes(1),
+        v["profile-q-4"] % 2 === 0 && v["profile-q-5"].includes(1)
     });
     expect(result?.total).toBe(1);
     expect(result?.results[0].total).toBe(1);
@@ -268,7 +268,7 @@ describe("getQuestion Filters", () => {
     const result = getQuestion({
       id: "profile-q-1",
       dataSource,
-      condition: [{ question_id: "profile-q-0", values: ["1"] }],
+      condition: [{ question_id: "profile-q-0", values: ["1"] }]
     });
     if (!result) return;
     expect(result.total).toBe(3);
@@ -281,7 +281,7 @@ describe("getQuestion Filters", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
-      condition: [{ question_id: "profile-q-2", values: ["0", "1", "2"] }],
+      condition: [{ question_id: "profile-q-2", values: ["0", "1", "2"] }]
     });
     expect(result?.total).toBe(4); // user-4 should be excluded due to missing answer
   });
@@ -292,7 +292,7 @@ describe("getQuestion Grouping", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
-      groupBy: "profile-q-4",
+      groupBy: "profile-q-4"
     });
     if (!result) return;
     expect(result.results).toHaveLength(2);
@@ -304,7 +304,7 @@ describe("getQuestion Grouping", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
-      groupBy: "profile-q-4",
+      groupBy: "profile-q-4"
     });
     if (!result) return;
     expect(result.results).toHaveLength(2);
@@ -319,7 +319,7 @@ describe("getQuestion Grouping", () => {
     const result = getQuestion({
       id: "profile-q-1",
       dataSource,
-      groupBy: "profile-q-0",
+      groupBy: "profile-q-0"
     });
     if (!result) return;
     expect(result.results).toHaveLength(3);
@@ -333,7 +333,7 @@ describe("getQuestion Grouping", () => {
     const result = getQuestion({
       id: "profile-q-2",
       dataSource,
-      groupBy: "profile-q-0",
+      groupBy: "profile-q-0"
     });
     if (!result) return;
     expect(result.results).toHaveLength(3);
@@ -350,7 +350,7 @@ describe("getQuestion Grouping", () => {
       id: "profile-q-0",
       dataSource,
       groupBy: "profile-q-4",
-      condition: (v) => v["profile-q-5"].includes(3),
+      condition: (v) => v["profile-q-5"].includes(3)
     });
     if (!result) return;
     expect(result.results).toHaveLength(
@@ -371,7 +371,7 @@ describe("getQuestion Grouping", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
-      groupBy: "profile-q-5",
+      groupBy: "profile-q-5"
     });
     if (!result) return;
     expect(result.results).toHaveLength(2);
@@ -383,7 +383,7 @@ describe("getQuestion Grouping", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
-      groupBy: "profile-q-1",
+      groupBy: "profile-q-1"
     });
     if (!result) return;
     expect(result.results).toHaveLength(2);
@@ -399,7 +399,7 @@ describe("getQuestion Grouping", () => {
     const result = getQuestion({
       id: "profile-q-4",
       dataSource,
-      groupBy: "profile-q-0",
+      groupBy: "profile-q-0"
     });
     if (!result) return;
     expect(result.results).toHaveLength(5);
@@ -414,7 +414,7 @@ describe("getQuestion Grouping", () => {
       id: "profile-q-0",
       dataSource,
       groupBy: "profile-q-4",
-      condition: () => false,
+      condition: () => false
     });
     if (!result) return;
     expect(result.results).toHaveLength(2);
@@ -433,7 +433,7 @@ describe("getQuestion Grouping", () => {
       id: "profile-q-0",
       dataSource,
       groupBy: "profile-q-4",
-      condition: [{ question_id: "profile-q-5", values: ["3"] }],
+      condition: [{ question_id: "profile-q-5", values: ["3"] }]
     });
     if (!result) return;
     expect(result.results).toHaveLength(2);

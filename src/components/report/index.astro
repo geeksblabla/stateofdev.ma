@@ -1,50 +1,59 @@
 ---
-
 export const prerender = true;
 
-import Context from '@astro-utils/context/Context.astro';
-import Tabs from './tabs.astro';
-import TabItem from './tab-item.astro';
-import Toc from './toc.astro';
-import Hero from './hero.astro';
+import Context from "@astro-utils/context/Context.astro";
+import Tabs from "./tabs.astro";
+import TabItem from "./tab-item.astro";
+import Toc from "./toc.astro";
+import Hero from "./hero.astro";
 
+import type { Year } from "@/components/chart/data";
 
-import type { Year } from '@/components/chart/data';
+import Chart from "@/components/chart/chart.astro";
 
-import Chart from '@/components/chart/chart.astro';
-
-export interface Props   {
-  year: Year
+export interface Props {
+  year: Year;
 }
 const { year = "2023" } = Astro.props;
 const allDocs = await Astro.glob(`../../results/**/*.mdx`);
-const docs = allDocs.filter((file) => file.file.includes(`${year}/sections`)).sort((a, b) => a.frontmatter.position - b.frontmatter.position);
+const docs = allDocs
+  .filter((file) => file.file.includes(`${year}/sections`))
+  .sort((a, b) => a.frontmatter.position - b.frontmatter.position);
 
-const headings = docs.map((doc) => doc.getHeadings()).flat().filter((heading) => heading.depth === 1);
+const headings = docs
+  .map((doc) => doc.getHeadings())
+  .flat()
+  .filter((heading) => heading.depth === 1);
 const customComponents = {
   Chart,
   TabItem,
   Tabs
-}
-
+};
 ---
-  <div>
-    <Hero year={year} />
-  </div>
-  <div class="lg:mx-auto  flex flex-row max-w-screen-xl  md:pt-10 pt-0">
-    <Toc items={headings} />
-    <Context year={year} test="test">
-      <article class="flex-1 pt-8 w-full md:px-4 px-2">
-          <div class="prose lg:pl-16  max-w-none prose-img:rounded-xl  prose-a:text-emerald-600
+
+<div>
+  <Hero year={year} />
+</div>
+<div class="lg:mx-auto flex flex-row max-w-screen-xl md:pt-10 pt-0">
+  <Toc items={headings} />
+  <Context year={year} test="test">
+    <article class="flex-1 pt-8 w-full md:px-4 px-2">
+      <div
+        class="prose lg:pl-16 max-w-none prose-img:rounded-xl prose-a:text-emerald-600
             prose-h1:font-bold prose-h1:text-xl
             prose-p:text-justify
-            prose-headings:underline underline-offset-2">
-            {
-                docs.map((doc) => {
-                return <div class="pb-16 md:pb-32">{<doc.Content components={customComponents} />}</div>;
-              })
-            }
-          </div>
-      </article>
-    </Context>
-  </div>
+            prose-headings:underline underline-offset-2"
+      >
+        {
+          docs.map((doc) => {
+            return (
+              <div class="pb-16 md:pb-32">
+                {<doc.Content components={customComponents} />}
+              </div>
+            );
+          })
+        }
+      </div>
+    </article>
+  </Context>
+</div>

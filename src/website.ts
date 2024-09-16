@@ -28,5 +28,5 @@ export const website = {
   facebook: "https://www.facebook.com/geeksblabla",
   instagram: "https://www.instagram.com/geeksblabla",
   youtube: "https://www.youtube.com/channel/UCW2WV7NKU0WPyuv4YoNSqBA",
-  repoGithub: "https://github.com/geeksblabla/stateofdev.ma",
+  repoGithub: "https://github.com/geeksblabla/stateofdev.ma"
 };

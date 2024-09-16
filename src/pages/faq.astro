@@ -1,48 +1,68 @@
 ---
-import Layout from "../layouts/layout.astro";
+import Layout from "@/layouts/layout.astro";
 
 const faqs = [
   {
     question: "What is State of Dev Morocco?",
-    answer: "State of Dev Morocco is an annual survey that aims to capture the trends, preferences, and challenges faced by developers in Morocco."
+    answer:
+      "State of Dev Morocco is an annual survey that aims to capture the trends, preferences, and challenges faced by developers in Morocco."
   },
   {
     question: "How can I participate in the survey?",
-    answer: "The survey is typically open for a specific period each year. Check our homepage or follow us on social media for announcements about the next survey."
-  },
+    answer:
+      "The survey is typically open for a specific period each year. Check our homepage or follow us on social media for announcements about the next survey."
+  }
   // Add more FAQ items as needed
 ];
 ---
 
 <Layout title="FAQ - State of Dev Morocco">
   <main class="max-w-4xl mx-auto px-4 py-8">
-    <h1 class="text-xl font-bold mb-8 text-center">Frequently Asked Questions</h1>
+    <h1 class="text-xl font-bold mb-8 text-center">
+      Frequently Asked Questions
+    </h1>
     <p class="text-center">
-        Here are some frequently asked questions about the State of Dev Morocco survey. If you have any other questions, please contact us.
+      Here are some frequently asked questions about the State of Dev Morocco
+      survey. If you have any other questions, please contact us.
     </p>
     <div class="space-y-4 mt-8">
-      {faqs.map((faq, index) => (
-        <div class="relative overflow-hidden border border-gray-300 rounded-lg">
-          <input
-            type="checkbox"
-            class="peer absolute top-0 inset-x-0 w-full h-12 opacity-0 z-10 cursor-pointer"
-            id={`faq-${index}`}
-          />
-          <div class="bg-white h-12 w-full pl-5 flex items-center">
-            <h2 class="text-base font-semibold text-gray-700">{faq.question}</h2>
-          </div>
-          <div class="absolute top-3 right-3 text-gray-500 transition-transform duration-500 rotate-0 peer-checked:rotate-180">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
-          <div class="bg-white overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40">
-            <div class="p-5 border-t border-gray-300">
-              <p class="text-gray-700">{faq.answer}</p>
+      {
+        faqs.map((faq, index) => (
+          <div class="relative overflow-hidden border border-gray-300 rounded-lg">
+            <input
+              type="checkbox"
+              class="peer absolute top-0 inset-x-0 w-full h-12 opacity-0 z-10 cursor-pointer"
+              id={`faq-${index}`}
+            />
+            <div class="bg-white h-12 w-full pl-5 flex items-center">
+              <h2 class="text-base font-semibold text-gray-700">
+                {faq.question}
+              </h2>
+            </div>
+            <div class="absolute top-3 right-3 text-gray-500 transition-transform duration-500 rotate-0 peer-checked:rotate-180">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </div>
+            <div class="bg-white overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40">
+              <div class="p-5 border-t border-gray-300">
+                <p class="text-gray-700">{faq.answer}</p>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </main>
 </Layout>

@@ -12,7 +12,7 @@ const colors = [
   "#6366F1",
   "#14B8A6",
   "#F97316",
-  "#6B7280",
+  "#6B7280"
 ];
 
 type PieChartProps = {
@@ -24,7 +24,7 @@ const PieSlice = ({
   total,
   startAngle,
   endAngle,
-  color,
+  color
 }: {
   result: FinalResult["results"][number];
   total: number;

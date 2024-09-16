@@ -1,33 +1,37 @@
 ---
-import { getQuestion, type  QuestionCondition } from './utils'
+import { getQuestion, type QuestionCondition } from "./utils";
 
-import type { Year } from './data'
-import getContext from '@astro-utils/context';
-import { Chart as RChart } from './chart';
+import type { Year } from "./data";
+import getContext from "@astro-utils/context";
+import { Chart as RChart } from "./chart";
 
-
-
-export interface Props   {
+export interface Props {
   id: string;
-  year?: Year,
-  condition?: QuestionCondition,
-  groupBy?: string,
-  pie?: boolean
+  year?: Year;
+  condition?: QuestionCondition;
+  groupBy?: string;
+  pie?: boolean;
 }
-const { id = "", year : yearProp, condition, groupBy, pie=false } = Astro.props;
+const {
+  id = "",
+  year: yearProp,
+  condition,
+  groupBy,
+  pie = false
+} = Astro.props;
 
-const {year: yearContext} = getContext(Astro);
-const year = yearProp || yearContext || "null"
+const { year: yearContext } = getContext(Astro);
+const year = yearProp || yearContext || "null";
 const results = getQuestion({ id, year, condition, groupBy });
-
-
 ---
 
 {
   results ? (
-  <RChart results={results} playgroundButton pie={pie} />
+    <RChart results={results} playgroundButton pie={pie} />
   ) : (
-    <div class="text-sm text-red-500"> > No results for {id} in {year}</div>
+    <div class="text-sm text-red-500">
+      {" "}
+      No results for {id} in {year}
+    </div>
   )
 }
-

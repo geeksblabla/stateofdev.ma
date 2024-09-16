@@ -12,7 +12,7 @@ const colors = [
   "bg-indigo-500",
   "bg-teal-500",
   "bg-orange-500",
-  "bg-gray-500",
+  "bg-gray-500"
 ];
 
 type BarChartProps = {
@@ -38,7 +38,7 @@ const Tooltip = ({ result }: { result: FinalResult["results"][number] }) => {
         {result.grouped.results.length > 6 ? (
           <div className="flex flex-wrap">
             {Array.from({
-              length: Math.ceil(result.grouped.results.length / 6),
+              length: Math.ceil(result.grouped.results.length / 6)
             }).map((_, tableIndex) => (
               <table key={tableIndex} className="w-1/2 pr-2">
                 <tbody className="divide-y divide-gray-200">
@@ -111,7 +111,7 @@ const Bar = ({ result, index, total }: BarProps) => {
             className="bg-green-500 opacity-60 h-full animate-grow-bar rounded-[3px] relative" // Add relative positioning
             style={{
               width: `${getPercent(result.total, total)}%`,
-              animationDelay: `${index * 0.1}s`,
+              animationDelay: `${index * 0.1}s`
             }}
           />
         ) : (
@@ -124,7 +124,7 @@ const Bar = ({ result, index, total }: BarProps) => {
                 }`}
                 style={{
                   width: `${getPercent(group.total, total)}%`,
-                  animationDelay: `${index * 0.1}s`,
+                  animationDelay: `${index * 0.1}s`
                 }}
               />
             ))}
