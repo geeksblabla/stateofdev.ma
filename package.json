@@ -8,7 +8,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "vitest"
+    "test": "vitest",
+    "test:ci": "vitest --coverage.enabled true"
   },
   "dependencies": {
     "@astro-utils/context": "^1.1.15",
@@ -39,6 +40,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
-    "vitest": "^2.0.5"
+    "@vitest/coverage-v8": "^2.1.1",
+    "vitest": "^2.1.1"
   }
 }
