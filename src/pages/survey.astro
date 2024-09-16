@@ -1,0 +1,51 @@
+---
+
+export const prerender = false;
+import BaseLayout from "@/layouts/layout.astro";
+import { app } from "@/firebase/server";
+import { getAuth } from "firebase-admin/auth";
+
+
+const auth = getAuth(app);
+
+/* Check current session */
+if (!Astro.cookies.has("__session")) {
+  return Astro.redirect("/before-start");
+}
+const sessionCookie = Astro.cookies.get("__session")?.value;
+const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+const user = await auth.getUser(decodedCookie.uid);
+
+if (!user) {
+  return Astro.redirect("/signin");
+}
+---
+
+<BaseLayout>
+  <div class="grid gap-12">
+    <h1>Survey page here {JSON.stringify(user)} </h1>
+
+  </div>
+  <button  class="w-full">remove session</button>
+</BaseLayout>
+
+
+
+<script>
+  import { actions } from "astro:actions";
+
+  const startButton = document.querySelector("button") as HTMLButtonElement;
+
+  startButton.addEventListener("click", async () => {
+    try {
+      await actions.removeSession();
+
+    } catch (error) {
+      console.error("Error during anonymous login:", error);
+    }
+  });
+</script>
+
+
+
+

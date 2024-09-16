@@ -1,0 +1,49 @@
+---
+import Button from "@/components/button.astro";
+import BaseLayout from "@/layouts/layout.astro";
+---
+
+<BaseLayout>
+  <div class="max-w-2xl mx-auto py-8 px-4">
+    <div class="bg-white shadow-md rounded-lg p-6">
+      <h2 class="text-xl font-semibold mb-4">Survey Rules</h2>
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li>Answer all questions honestly and to the best of your ability.</li>
+        <li>Complete the survey in one sitting; it should take about 15 minutes.</li>
+        <li>Ensure you have a stable internet connection.</li>
+        <li>Your responses are confidential and will be used for research purposes only.</li>
+        <li>You may exit the survey at any time, but your progress won't be saved.</li>
+      </ul>
+      <Button intent="accent" class="w-full">Start Survey</Button>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import { actions } from "astro:actions";
+  import { signInAnonymously } from "firebase/auth";
+  import { auth } from "@/firebase/client";
+
+  const startButton = document.querySelector("button") as HTMLButtonElement;
+
+  startButton.addEventListener("click", async () => {
+    try {
+      const userCredential = await signInAnonymously(auth);
+      const token = await userCredential.user.getIdToken();
+      console.log(token);
+
+      const { error } = await actions.initSession({idToken: token})
+
+      if (error) {
+        console.error("Error initializing session:", error);
+        return;
+      }
+
+      // Redirect to the survey page or reload as needed
+      window.location.href = "/survey";
+    } catch (error) {
+      console.error("Error during anonymous login:", error);
+    }
+  });
+</script>
+

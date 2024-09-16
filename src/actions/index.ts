@@ -1,9 +1,6 @@
-import { createAccount } from "./createAccount";
-import { loginAccount } from "./loginAccount";
-import { logoutAccount } from "./logoutAccount";
-
+import { initSession } from "./init-session";
+import { removeSession } from "./remove-session";
 export const server = {
-  createAccount,
-  loginAccount,
-  logoutAccount
+  initSession,
+  removeSession,
 };
