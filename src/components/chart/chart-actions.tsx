@@ -8,7 +8,7 @@ type ShareButtonsProps = {
 
 export const ChartActions = ({
   playgroundButton = true,
-  results,
+  results
 }: ShareButtonsProps) => {
   const shareUrl = `/playground?questionId=${results.id}`;
   const shareTitle = `Check out this report: ${results.label}`;

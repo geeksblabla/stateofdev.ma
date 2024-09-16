@@ -24,20 +24,20 @@ export type SurveyDataType = {
 const surveyData: SurveyDataType = {
   "2020": {
     questions: Questions_2020 as unknown as QuestionMap,
-    results: DATA_2020.results as unknown as Results["results"],
+    results: DATA_2020.results as unknown as Results["results"]
   },
   "2021": {
     questions: Questions_2021 as unknown as QuestionMap,
-    results: DATA_2021.results as unknown as Results["results"],
+    results: DATA_2021.results as unknown as Results["results"]
   },
   "2022": {
     questions: Questions_2022 as unknown as QuestionMap,
-    results: DATA_2022.results as unknown as Results["results"],
+    results: DATA_2022.results as unknown as Results["results"]
   },
   "2023": {
     questions: Questions_2023 as unknown as QuestionMap,
-    results: DATA_2023.results as unknown as Results["results"],
-  },
+    results: DATA_2023.results as unknown as Results["results"]
+  }
 };
 
 export const getSurveyData = (year: Year) => {

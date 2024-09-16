@@ -12,29 +12,32 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-
-<nav class="hidden md:block px-6 lg:block mt-3 sticky top-10 p-2 pb-12 h-fit min-w-[350px] rounded-md border border-solid border-gray-300/50">
+<nav
+  class="hidden md:block px-6 lg:block mt-3 sticky top-10 p-2 pb-12 h-fit min-w-[350px] rounded-md border border-solid border-gray-300/50"
+>
   <div>
     <ul>
-      {items.map((item, index) => (
-        <li class="text-lg my-3">
-          <a
-            href={`#${item.slug}`}
-            class="underline-offset-4 text-base inline-flex items-center font-medium hover:text-emerald-600 transition-colors duration-200 hover:underline"
-            data-toc-item
-          >
-            {String(index + 1).padStart(2, '0')} - {item.text}
-          </a>
-        </li>
-      ))}
+      {
+        items.map((item, index) => (
+          <li class="text-lg my-3">
+            <a
+              href={`#${item.slug}`}
+              class="underline-offset-4 text-base inline-flex items-center font-medium hover:text-emerald-600 transition-colors duration-200 hover:underline"
+              data-toc-item
+            >
+              {String(index + 1).padStart(2, "0")} - {item.text}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </nav>
 
 <script>
   function updateActiveItem() {
-    const tocItems = document.querySelectorAll('[data-toc-item]');
-    const headings = Array.from(document.querySelectorAll('h1, h2'));
+    const tocItems = document.querySelectorAll("[data-toc-item]");
+    const headings = Array.from(document.querySelectorAll("h1, h2"));
 
     let activeItem = null;
 
@@ -46,13 +49,16 @@ const { items } = Astro.props;
     });
 
     tocItems.forEach((item) => {
-      item.classList.remove('text-emerald-600', 'font-bold');
+      item.classList.remove("text-emerald-600", "font-bold");
     });
     if (activeItem) {
-      (activeItem as HTMLElement).classList.add('text-emerald-600', 'font-bold');
+      (activeItem as HTMLElement).classList.add(
+        "text-emerald-600",
+        "font-bold"
+      );
     }
   }
 
-  window.addEventListener('scroll', updateActiveItem);
-  window.addEventListener('load', updateActiveItem);
+  window.addEventListener("scroll", updateActiveItem);
+  window.addEventListener("load", updateActiveItem);
 </script>

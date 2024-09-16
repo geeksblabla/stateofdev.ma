@@ -5,5 +5,5 @@ import { logoutAccount } from "./logoutAccount";
 export const server = {
   createAccount,
   loginAccount,
-  logoutAccount,
+  logoutAccount
 };

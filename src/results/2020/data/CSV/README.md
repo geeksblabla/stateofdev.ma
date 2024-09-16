@@ -1,17 +1,19 @@
 # Overview
 
 This notebook :notebook: applies some basic preproccessing on the raw survey results, mainly:
+
 - Transforming the "JSON" files into "CSV" which is more friendly and common for data analysis tasks.
-- Decoding the questions and answers values to natural language categories, in order to use for future work. 
-
+- Decoding the questions and answers values to natural language categories, in order to use for future work.
 
 ---
-**A public version of the Dataset is hoted on Kaggel :blue_book: :bar_chart: :chart_with_upwards_trend: 
+
+**A public version of the Dataset is hoted on Kaggel :blue_book: :bar_chart: :chart_with_upwards_trend:
 [View on Kaggle](https://www.kaggle.com/amr009/state-of-dev-mrocco-2020)**
----
 
+---
 
 ## Input: :rewind:
+
 ### Raw answers in JSON:
 
 <table border="1" class="dataframe">
@@ -131,6 +133,7 @@ This notebook :notebook: applies some basic preproccessing on the raw survey res
 </table>
 
 ## Output: :fast_forward:
+
 ### Preprocessed answers in CSV:
 
 <table border="1" class="dataframe">
@@ -191,6 +194,7 @@ This notebook :notebook: applies some basic preproccessing on the raw survey res
 </table>
 
 ### Preprocessed questions in CSV:
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">

@@ -2,7 +2,7 @@
 import Logo from "../assets/logo.svg?raw";
 import Github from "../assets/github.svg?raw";
 import Chart from "../assets/Chart.svg?raw";
-import HeaderLink from './header-link.astro';
+import HeaderLink from "./header-link.astro";
 import { website } from "@/website";
 
 const navItems = [
@@ -12,17 +12,21 @@ const navItems = [
   { year: 2023, href: "/2023" },
   { label: "Playground", href: "/playground", icon: Chart },
   { label: "FAQ", href: "/faq" },
-  { label: "Github", href: website.repoGithub, icon: Github, external: true },
+  { label: "Github", href: website.repoGithub, icon: Github, external: true }
 ];
 
 // Get the current path
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="z-[99] relative flex bg-transparent max-w-screen-xl w-full flex-col overflow-hidden px-4 py-4 text-emerald-900 md:mx-auto md:flex-row md:items-center justify-between">
+<header
+  class="z-[99] relative flex bg-transparent max-w-screen-xl w-full flex-col overflow-hidden px-4 py-4 text-emerald-900 md:mx-auto md:flex-row md:items-center justify-between"
+>
   <a href="/">
-    <div class="flex cursor-pointer items-center whitespace-nowrap text-2xl font-black">
-        <Fragment set:html={Logo} />
+    <div
+      class="flex cursor-pointer items-center whitespace-nowrap text-2xl font-black"
+    >
+      <Fragment set:html={Logo} />
     </div>
   </a>
 
@@ -43,27 +47,28 @@ const currentPath = Astro.url.pathname;
       <path
         stroke-linecap="round"
         stroke-linejoin="round"
-        d="M4 6h16M4 12h16M4 18h16"
-      />
+        d="M4 6h16M4 12h16M4 18h16"></path>
     </svg>
   </label>
   <nav
     aria-label="Header Navigation"
     class="peer-checked:mt-8 peer-checked:max-h-56 flex max-h-0 w-full flex-col items-center justify-between overflow-hidden transition-all md:ml-24 md:max-h-full md:flex-row md:items-start"
   >
-    <ul class="flex flex-col items-center space-y-2 md:ml-auto md:flex-row md:space-y-0">
-        {navItems.map((item) => (
-            <li class="md:mr-6">
-              <HeaderLink
-                label={item.year?.toString() || item.label || ""}
-                href={item.href}
-                external={item.external}
-                isActive={currentPath === item.href}
-              />
-            </li>
-          ))}
+    <ul
+      class="flex flex-col items-center space-y-2 md:ml-auto md:flex-row md:space-y-0"
+    >
+      {
+        navItems.map((item) => (
+          <li class="md:mr-6">
+            <HeaderLink
+              label={item.year?.toString() || item.label || ""}
+              href={item.href}
+              external={item.external}
+              isActive={currentPath === item.href}
+            />
+          </li>
+        ))
+      }
     </ul>
   </nav>
 </header>
-
-

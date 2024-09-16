@@ -9,7 +9,7 @@ export const FilterOptions: React.FC<{
 }> = ({ questions, control }) => {
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "filters",
+    name: "filters"
   });
 
   return (

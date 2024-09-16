@@ -29,26 +29,29 @@ const calculateChoicesCounts = (
   const answers = data
     .map((r) => r[id])
     .filter((v) => v !== undefined && v !== null); // in case some answers are missing
-  const counts = answers.reduce((acc, curr) => {
-    if (curr === undefined || curr === null) return acc;
-    if (Array.isArray(curr)) {
-      curr.forEach((element) => {
-        acc[element] = (acc[element] || 0) + 1;
-      });
-    } else {
-      acc[curr] = (acc[curr] || 0) + 1;
-    }
-    return acc;
-  }, {} as Record<string, number>);
+  const counts = answers.reduce(
+    (acc, curr) => {
+      if (curr === undefined || curr === null) return acc;
+      if (Array.isArray(curr)) {
+        curr.forEach((element) => {
+          acc[element] = (acc[element] || 0) + 1;
+        });
+      } else {
+        acc[curr] = (acc[curr] || 0) + 1;
+      }
+      return acc;
+    },
+    {} as Record<string, number>
+  );
 
   const total = answers.length;
   const results = Object.keys(counts).map((key) => ({
     choiceIndex: key,
-    total: counts[key],
+    total: counts[key]
   }));
   return {
     total,
-    results,
+    results
   };
 };
 
@@ -115,7 +118,7 @@ export const getQuestion = ({
   condition,
   groupBy,
   dataSource,
-  year = "2020",
+  year = "2020"
 }: GetQuestionParams): FinalResult | null => {
   const data = dataSource ? dataSource : getSurveyData(year);
   const question = data.questions[id];
@@ -145,15 +148,15 @@ export const getQuestion = ({
               else return v[id] === index;
             },
             dataSource: { ...data, results: filteredResults },
-            year,
-          }),
+            year
+          })
   }));
 
   return {
     total: resultsWithChoicesCounts.total,
     results: resultsWithGrouping,
     ...question,
-    id,
+    id
   } as FinalResult;
 };
 

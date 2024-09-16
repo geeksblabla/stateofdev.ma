@@ -17,7 +17,7 @@ export const Chart: React.FC<ChartProps> = ({
   sortByTotal = true,
   title = false,
   playgroundButton = false,
-  pie = false,
+  pie = false
 }) => {
   if (!results) return null;
 

@@ -20,8 +20,8 @@ export const PlaygroundForm: React.FC<{
       year: "2020",
       questionId: "",
       filters: [{ questionId: "", values: [] }],
-      groupBy: "",
-    },
+      groupBy: ""
+    }
   });
 
   const formData = watch();
