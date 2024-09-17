@@ -13,6 +13,9 @@ if (!Astro.cookies.has("__session")) {
   return Astro.redirect("/before-start");
 }
 const sessionCookie = Astro.cookies.get("__session")?.value;
+if (!sessionCookie) {
+  return Astro.redirect("/before-start");
+}
 const decodedCookie = await auth.verifySessionCookie(sessionCookie);
 const user = await auth.getUser(decodedCookie.uid);
 
