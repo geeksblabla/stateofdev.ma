@@ -2,6 +2,7 @@ import { app } from "@/firebase/server";
 import { defineAction } from "astro:actions";
 import { getAuth } from "firebase-admin/auth";
 import { z } from "astro:schema";
+import { initUserSubmission } from "@/firebase/database";
 
 export const initSession = defineAction({
   accept: "json",
@@ -15,10 +16,17 @@ export const initSession = defineAction({
         error: "No idToken provided"
       };
     }
-    /* Verify id token */
+    /* Verify id token and save user to database */
     try {
       const decodedToken = await auth.verifyIdToken(idToken);
-      console.log("Decoded token:", decodedToken);
+      const user = await auth.getUser(decodedToken.uid);
+      if (!user) {
+        return {
+          error: "User not found"
+        };
+      }
+      await initUserSubmission(user);
+      console.log("user session created");
     } catch (error) {
       console.error("Error verifying id token:", error);
       return {
@@ -33,10 +41,10 @@ export const initSession = defineAction({
         expiresIn: fiveDays
       });
 
+      // set session cookie
       cookies.set("__session", sessionCookie, {
         path: "/"
       });
-
       return {
         success: true
       };
