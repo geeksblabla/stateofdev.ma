@@ -4,11 +4,11 @@ export const removeSession = defineAction({
   accept: "json",
   handler: async (_input, { cookies }) => {
     cookies.delete("__session", {
-      path: "/",
+      path: "/"
     });
 
     return {
-      success: true,
+      success: true
     };
-  },
+  }
 });

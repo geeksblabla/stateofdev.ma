@@ -7,7 +7,6 @@ export const prerender = false;
 export const GET: APIRoute = async ({ request, cookies, redirect }) => {
   const auth = getAuth(app);
 
-
   /* Get token from request headers */
   const idToken = request.headers.get("Authorization")?.split("Bearer ")[1];
   if (!idToken) {

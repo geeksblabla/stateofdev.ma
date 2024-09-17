@@ -9,10 +9,17 @@ import BaseLayout from "@/layouts/layout.astro";
       <h2 class="text-xl font-semibold mb-4">Survey Rules</h2>
       <ul class="list-disc pl-6 mb-6 space-y-2">
         <li>Answer all questions honestly and to the best of your ability.</li>
-        <li>Complete the survey in one sitting; it should take about 15 minutes.</li>
+        <li>
+          Complete the survey in one sitting; it should take about 15 minutes.
+        </li>
         <li>Ensure you have a stable internet connection.</li>
-        <li>Your responses are confidential and will be used for research purposes only.</li>
-        <li>You may exit the survey at any time, but your progress won't be saved.</li>
+        <li>
+          Your responses are confidential and will be used for research purposes
+          only.
+        </li>
+        <li>
+          You may exit the survey at any time, but your progress won't be saved.
+        </li>
       </ul>
       <Button intent="accent" class="w-full">Start Survey</Button>
     </div>
@@ -32,7 +39,7 @@ import BaseLayout from "@/layouts/layout.astro";
       const token = await userCredential.user.getIdToken();
       console.log(token);
 
-      const { error } = await actions.initSession({idToken: token})
+      const { error } = await actions.initSession({ idToken: token });
 
       if (error) {
         console.error("Error initializing session:", error);
@@ -46,4 +53,3 @@ import BaseLayout from "@/layouts/layout.astro";
     }
   });
 </script>
-
