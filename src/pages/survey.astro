@@ -1,10 +1,8 @@
 ---
-
 export const prerender = false;
 import BaseLayout from "@/layouts/layout.astro";
 import { app } from "@/firebase/server";
 import { getAuth } from "firebase-admin/auth";
-
 
 const auth = getAuth(app);
 
@@ -26,13 +24,10 @@ if (!user) {
 
 <BaseLayout>
   <div class="grid gap-12">
-    <h1>Survey page here {JSON.stringify(user)} </h1>
-
+    <h1>Survey page here {JSON.stringify(user)}</h1>
   </div>
-  <button  class="w-full">remove session</button>
+  <button class="w-full">remove session</button>
 </BaseLayout>
-
-
 
 <script>
   import { actions } from "astro:actions";
@@ -42,13 +37,8 @@ if (!user) {
   startButton.addEventListener("click", async () => {
     try {
       await actions.removeSession();
-
     } catch (error) {
       console.error("Error during anonymous login:", error);
     }
   });
 </script>
-
-
-
-

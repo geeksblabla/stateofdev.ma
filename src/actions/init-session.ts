@@ -6,13 +6,13 @@ import { z } from "astro:schema";
 export const initSession = defineAction({
   accept: "json",
   input: z.object({
-    idToken: z.string(),
+    idToken: z.string()
   }),
   handler: async ({ idToken }, { cookies }) => {
     const auth = getAuth(app);
     if (!idToken) {
       return {
-        error: "No idToken provided",
+        error: "No idToken provided"
       };
     }
     /* Verify id token */
@@ -22,7 +22,7 @@ export const initSession = defineAction({
     } catch (error) {
       console.error("Error verifying id token:", error);
       return {
-        error: "Invalid id token",
+        error: "Invalid id token"
       };
     }
 
@@ -30,20 +30,20 @@ export const initSession = defineAction({
       // Create and set session cookie
       const fiveDays = 60 * 60 * 24 * 5 * 1000;
       const sessionCookie = await auth.createSessionCookie(idToken, {
-        expiresIn: fiveDays,
+        expiresIn: fiveDays
       });
 
       cookies.set("__session", sessionCookie, {
-        path: "/",
+        path: "/"
       });
 
       return {
-        success: true,
+        success: true
       };
     } catch (error) {
       console.error("Error signing in:", error);
       return {
-        error: "Error signing in",
+        error: "Error signing in"
       };
     }
   }
