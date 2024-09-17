@@ -2,7 +2,7 @@ import React from "react";
 import { BarChart } from "./bar-chart";
 import { PieChart } from "./pie-chart";
 import { type FinalResult } from "./utils";
-import { ChartActions } from "./chart-actions";
+import { ChartActions, PlaygroundButton } from "./chart-actions";
 
 type ChartProps = {
   results: FinalResult | null;
@@ -24,10 +24,15 @@ export const Chart: React.FC<ChartProps> = ({
   const ChartComponent = pie ? PieChart : BarChart;
 
   return (
-    <div>
+    <div className="bg-white  shadow-md p-4 rounded-md">
       {title && <p className="text-lg py-4 font-bold mb-4">{results.label}</p>}
+      {playgroundButton && (
+        <div className="flex justify-end pb-2">
+          <PlaygroundButton results={results} />
+        </div>
+      )}
       <ChartComponent results={results} sortByTotal={sortByTotal} />
-      <ChartActions playgroundButton={playgroundButton} results={results} />
+      <ChartActions results={results} />
     </div>
   );
 };

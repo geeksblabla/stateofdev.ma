@@ -6,35 +6,40 @@ type ShareButtonsProps = {
   results: FinalResult;
 };
 
-export const ChartActions = ({
-  playgroundButton = true,
-  results
-}: ShareButtonsProps) => {
+export const ChartActions = ({ results }: ShareButtonsProps) => {
   const shareUrl = `/playground?questionId=${results.id}`;
   const shareTitle = `Check out this report: ${results.label}`;
   return (
-    <div className="flex justify-end items-center mt-6">
-      {playgroundButton && (
-        <a
-          href={`/playground?questionId=${results.id}`}
-          className="text-gray-400 text-sm visited:text-gray-400 hover:text-gray-700 decoration-none transition-colors flex items-center pl-2"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 mr-1"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z"
-              clipRule="evenodd"
-            />
-          </svg>
-          <span className="pr-2">Open in playground</span>
-        </a>
-      )}
+    <div className="flex justify-end items-center">
       <ShareButtons url={shareUrl} title={shareTitle} />
     </div>
+  );
+};
+
+export const PlaygroundButton = ({ results }: { results: FinalResult }) => {
+  return (
+    <a
+      href={`/playground?questionId=${results.id}`}
+      className="text-gray-400 text-sm  hover:text-gray-700 decoration-none transition-colors flex items-center pl-2 relative group"
+    >
+      <svg
+        width="24px"
+        height="24px"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="relative"
+      >
+        <path
+          d="M4 5L10 5M10 5C10 6.10457 10.8954 7 12 7C13.1046 7 14 6.10457 14 5M10 5C10 3.89543 10.8954 3 12 3C13.1046 3 14 3.89543 14 5M14 5L20 5M4 12H16M16 12C16 13.1046 16.8954 14 18 14C19.1046 14 20 13.1046 20 12C20 10.8954 19.1046 10 18 10C16.8954 10 16 10.8954 16 12ZM8 19H20M8 19C8 17.8954 7.10457 17 6 17C4.89543 17 4 17.8954 4 19C4 20.1046 4.89543 21 6 21C7.10457 21 8 20.1046 8 19Z"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        />
+      </svg>
+      <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+        Open in playground
+      </span>
+    </a>
   );
 };

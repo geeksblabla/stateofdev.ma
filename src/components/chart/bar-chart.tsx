@@ -94,17 +94,20 @@ const Bar = ({ result, index, total }: BarProps) => {
   const displayResults = result.grouped ? result.grouped.results : [result];
 
   return (
-    <div className="mb-4 relative group">
+    <div className="mb-3 relative group">
       <div className=" text-black relative w-full bg-gray-200/50 h-7 rounded-[3px]">
         <div className="flex z-10 absolute px-2 h-full w-full items-center justify-between mb-1">
-          <span className="text-sm font-medium ">{result.label}</span>
-          <span className="text-sm text-gray-900">
-            {getPercent(result.total, total)}% -{" "}
-            <span className="text-sm text-gray-600">
-              {" "}
-              {result.total}/{total}{" "}
-            </span>
+          <span className="text-sm font-medium whitespace-nowrap overflow-hidden text-ellipsis">
+            {result.label}
           </span>
+          <div className="flex flex-row">
+            <span className="text-sm text-gray-900 min-w-[40px] text-right">
+              {getPercent(result.total, total)}% -{" "}
+            </span>
+            <span className="text-sm text-gray-600 min-w-[32px] text-right ">
+              {result.total}
+            </span>
+          </div>
         </div>
         {!result.grouped ? (
           <div
@@ -162,6 +165,9 @@ export const BarChart = ({ results, sortByTotal = true }: BarChartProps) => {
           total={results.total}
         />
       ))}
+      <div className="flex items-end  justify-end">
+        <span className="text-sm text-gray-600">Total: {results.total}</span>
+      </div>
       {/*  legend for grouped questions */}
       <div className="mt-6 flex flex-wrap justify-center">
         {Array.from(legendLabels).map((label, index) => (
