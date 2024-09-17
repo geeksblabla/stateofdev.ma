@@ -39,9 +39,6 @@ export const ShareButtons = ({ url, title }: ShareButtonsProps) => {
 
   return (
     <div className="flex flex-row items-center space-x-4">
-      <div className="flex items-center">
-        <p className="text-gray-500 text-sm">Share:</p>
-      </div>
       <div className="flex space-x-4">
         <button
           onClick={() => shareOnSocialMedia("twitter")}
