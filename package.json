@@ -21,6 +21,7 @@
     "@astrojs/cloudflare": "^11.0.4",
     "@astrojs/db": "^0.14.1",
     "@astrojs/mdx": "^3.1.5",
+    "@astrojs/netlify": "^5.5.3",
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.1.0",
     "@astrolib/seo": "1.0.0-beta.5",
