@@ -6,12 +6,14 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
+    "check": "rimraf dist && astro check",
     "preview": "astro preview",
     "astro": "astro",
     "test": "vitest",
     "test:ci": "vitest --coverage.enabled true",
     "lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\"",
-    "lint:ci": "eslint \"src/**/*.{js,ts,jsx,tsx,astro}\""
+    "lint:ci": "eslint \"src/**/*.{js,ts,jsx,tsx,astro}\"",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astro-utils/context": "^1.1.15",
@@ -49,8 +51,17 @@
     "eslint-plugin-astro": "^0.34.0",
     "eslint-plugin-jsx-a11y": "^6.10.0",
     "eslint-plugin-unicorn": "^55.0.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
+    "rimraf": "^6.0.1",
     "vitest": "^2.1.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,md,mdx,astro}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }
