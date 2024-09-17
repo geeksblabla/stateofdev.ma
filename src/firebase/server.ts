@@ -13,19 +13,19 @@ const serviceAccount = {
   auth_uri: import.meta.env.FIREBASE_AUTH_URI,
   token_uri: import.meta.env.FIREBASE_TOKEN_URI,
   auth_provider_x509_cert_url: import.meta.env.FIREBASE_AUTH_CERT_URL,
-  client_x509_cert_url: import.meta.env.FIREBASE_CLIENT_CERT_URL,
+  client_x509_cert_url: import.meta.env.FIREBASE_CLIENT_CERT_URL
 };
 
 const initApp = () => {
-    if (import.meta.env.PROD) {
-      console.info('PROD env detected. Using default service account.')
-      // Use default config in firebase functions. Should be already injected in the server by Firebase.
-      return initializeApp()
-    }
-    console.info('Loading service account from env.')
-    return initializeApp({
-      credential: cert(serviceAccount as ServiceAccount)
-    })
+  if (import.meta.env.PROD) {
+    console.info("PROD env detected. Using default service account.");
+    // Use default config in firebase functions. Should be already injected in the server by Firebase.
+    return initializeApp();
   }
+  console.info("Loading service account from env.");
+  return initializeApp({
+    credential: cert(serviceAccount as ServiceAccount)
+  });
+};
 
 export const app = activeApps.length === 0 ? initApp() : activeApps[0];
