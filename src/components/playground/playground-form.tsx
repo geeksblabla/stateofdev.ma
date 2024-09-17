@@ -25,7 +25,6 @@ export const PlaygroundForm: React.FC<{
   });
 
   const formData = watch();
-
   useEffect(() => {
     onChange(formData);
   }, [formData, onChange]);
@@ -35,7 +34,10 @@ export const PlaygroundForm: React.FC<{
       <div className="space-y-6">
         {/* Year selection */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label
+            htmlFor="year-select"
+            className="block text-sm font-medium text-gray-700 mb-2"
+          >
             Year
           </label>
           <Controller
@@ -43,6 +45,7 @@ export const PlaygroundForm: React.FC<{
             control={control}
             render={({ field }) => (
               <select
+                id="year-select"
                 {...field}
                 className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500"
               >
@@ -58,7 +61,10 @@ export const PlaygroundForm: React.FC<{
 
         {/* Question selection */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label
+            htmlFor="question-select"
+            className="block text-sm font-medium text-gray-700 mb-2"
+          >
             Question
           </label>
           <Controller
@@ -66,6 +72,7 @@ export const PlaygroundForm: React.FC<{
             control={control}
             render={({ field }) => (
               <select
+                id="question-select"
                 {...field}
                 className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500"
               >
@@ -85,7 +92,10 @@ export const PlaygroundForm: React.FC<{
 
         {/* Group By */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label
+            htmlFor="group-by-select"
+            className="block text-sm font-medium text-gray-700 mb-2"
+          >
             Group By
           </label>
           <Controller
@@ -93,6 +103,7 @@ export const PlaygroundForm: React.FC<{
             control={control}
             render={({ field }) => (
               <select
+                id="group-by-select"
                 {...field}
                 className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500"
               >
