@@ -20,7 +20,10 @@ import BaseLayout from "@/layouts/layout.astro";
           You may exit the survey at any time, but your progress won't be saved.
         </li>
       </ul>
-      <button class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out">Start Survey</button>
+      <button
+        class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+        >Start Survey</button
+      >
     </div>
   </div>
 </BaseLayout>
@@ -46,7 +49,7 @@ import BaseLayout from "@/layouts/layout.astro";
       }
 
       // Redirect to the survey page or reload as needed
-      window.location.href = "/survey";
+      // window.location.href = "/survey";
     } catch (error) {
       console.error("Error during anonymous login:", error);
     }
