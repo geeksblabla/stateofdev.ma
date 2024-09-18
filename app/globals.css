@@ -78,7 +78,7 @@
   }
 
   body {
-    @apply flex min-h-[100svh] flex-col font-mono tracking-tighter;
+    @apply flex min-h-[100svh] flex-col font-mono tracking-tight;
   }
   a {
     @apply outline-2 outline-offset-1 outline-gray-300/50

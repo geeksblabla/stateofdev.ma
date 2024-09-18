@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
+import yaml from "@rollup/plugin-yaml";
 import icon from "astro-icon";
 import mdx from "@astrojs/mdx";
 
@@ -12,5 +13,8 @@ export default defineConfig({
   integrations: [tailwind(), icon(), mdx(), react()],
   trailingSlash: "never",
   output: "hybrid",
-  adapter: netlify()
+  adapter: netlify(),
+  vite: {
+    plugins: [yaml()]
+  }
 });

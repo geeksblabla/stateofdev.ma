@@ -24,8 +24,10 @@ export const Chart: React.FC<ChartProps> = ({
   const ChartComponent = pie ? PieChart : BarChart;
 
   return (
-    <div className="bg-white  shadow-md p-4 rounded-md">
-      {title && <p className="text-lg py-4 font-bold mb-4">{results.label}</p>}
+    <div className="bg-white border border-gray-200 shadow-sm p-4 rounded-md">
+      {title && (
+        <p className="text-md py-4 font-semibold mb-4">{results.label}</p>
+      )}
       {playgroundButton && (
         <div className="flex justify-end pb-2">
           <PlaygroundButton results={results} />

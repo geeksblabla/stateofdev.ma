@@ -3,6 +3,7 @@ export const prerender = false;
 import BaseLayout from "@/layouts/layout.astro";
 import { app } from "@/firebase/server";
 import { getAuth } from "firebase-admin/auth";
+import SurveyForm from "@/components/survey/index.astro";
 
 const auth = getAuth(app);
 
@@ -23,6 +24,7 @@ if (!user) {
 ---
 
 <BaseLayout>
+  <SurveyForm />
   <div class="max-w-2xl mx-auto p-6">
     <h1 class="text-3xl font-bold mb-6">Survey</h1>
     <div>

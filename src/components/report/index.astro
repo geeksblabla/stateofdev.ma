@@ -15,7 +15,7 @@ export interface Props {
   year: Year;
 }
 const { year = "2023" } = Astro.props;
-const allDocs = await Astro.glob(`../../results/**/*.mdx`);
+const allDocs = await Astro.glob(`../../../results/**/*.mdx`);
 const docs = allDocs
   .filter((file) => file.file.includes(`${year}/sections`))
   .sort((a, b) => a.frontmatter.position - b.frontmatter.position);

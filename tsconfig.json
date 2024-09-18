@@ -3,7 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@/survey/*": ["/survey/*"],
+      "@/results/*": ["/results/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
