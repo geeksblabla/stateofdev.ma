@@ -1,0 +1,60 @@
+title: Learning & Education
+label: education
+position: 2
+questions:
+  - label: Where did you study coding?
+    required: true
+    choices:
+      - Self-taught (no diploma or other field's diploma).
+      - University / Public school
+      - Private school
+      - Vocational School (bootcamps, technical skills  ...)
+      - Coding schools (1337, YouCode, etc.)
+      - Other
+
+  - label: Do you think school gives you enough knowledge to start your professional career?
+    required: false
+    choices:
+      - Not enough
+      - Enough to start
+      - Everything I needed
+
+  - label: What languages can you read/write?
+    required: true
+    multiple: true
+    choices:
+      - Arabic
+      - Amazigh
+      - French
+      - English
+      - Others
+
+  - label: Is English an obstacle to learning new technologies?
+    required: true
+    choices:
+      - Yes
+      - No
+
+  - label: Do you think we need more content in Darija?
+    required: true
+    choices:
+      - Spoken
+      - Written/Read
+      - Both
+      - No
+
+  - label: What are your preferred platforms for learning?
+    required: true
+    multiple: true
+    choices:
+      - YouTube
+      - Paid platforms
+      - Books
+      - Official documentation
+      - Blog posts
+      - Company resources
+      - Conferences (virtual/in-person)
+      - Podcasts
+      - Online Communities (StackOverflow/Reddit/Twitter)
+      - AI Assistant (ChatGPT, etc)
+      - Others

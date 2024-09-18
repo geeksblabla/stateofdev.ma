@@ -28,6 +28,7 @@
     "@astrolib/seo": "1.0.0-beta.5",
     "@lion/ui": "^0.7.6",
     "@radix-ui/react-tabs": "^1.1.0",
+    "@types/js-yaml": "^4.0.9",
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
     "astro": "^4.15.4",
@@ -36,16 +37,19 @@
     "clsx": "^2.1.1",
     "firebase": "^10.12.2",
     "firebase-admin": "^12.5.0",
+    "js-yaml": "^4.1.0",
     "lucide-react": "^0.436.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0",
+    "react-top-loading-bar": "^2.3.1",
     "tailwind-merge": "^2.5.2",
     "tailwindcss": "^3.4.4",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@rollup/plugin-yaml": "^4.1.2",
     "@tailwindcss/typography": "^0.5.15",
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
@@ -66,8 +70,11 @@
     "vitest": "^2.1.1"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,mdx,astro}": [
+    "*.{js,jsx,ts,tsx,astro}": [
       "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{md,mdx}": [
       "prettier --write"
     ]
   }
