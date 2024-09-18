@@ -1,5 +1,4 @@
 import { getPercent, type FinalResult } from "./utils";
-import { ChartActions } from "./chart-actions";
 
 // Reuse the colors array from bar-chart.tsx
 const colors = [

@@ -1,4 +1,3 @@
-import { ChartActions } from "./chart-actions";
 import { getPercent, type FinalResult } from "./utils";
 
 // Add this array of colors
@@ -101,10 +100,10 @@ const Bar = ({ result, index, total }: BarProps) => {
             {result.label}
           </span>
           <div className="flex flex-row">
-            <span className="text-sm text-gray-900 min-w-[40px] text-right">
+            <span className="text-sm text-gray-600 min-w-[40px] text-right">
               {getPercent(result.total, total)}% -{" "}
             </span>
-            <span className="text-sm text-gray-600 min-w-[32px] text-right ">
+            <span className="text-sm text-gray-600 min-w-[36px] text-right ">
               {result.total}
             </span>
           </div>
