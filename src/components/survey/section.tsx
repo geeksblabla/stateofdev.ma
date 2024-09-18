@@ -92,7 +92,7 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
   }, [error]);
 
   return (
-    <div className="md:w-[700px] w-full px-4 md:px-0 ">
+    <div id={section.label} className="md:w-[700px] w-full px-4 md:px-0 ">
       <div className="mb-10 md:min-h-[300px] min-h-screen transition-all duration-1000">
         {section.questions.map((q, i) => (
           <Question
@@ -120,13 +120,17 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
             </button>
           )}
           <button
+            data-testid="next-button"
             type="button"
             className="px-4 py-2 bg-emerald-500 text-white rounded transition hover:bg-emerald-600"
             onClick={() => nextQuestion()}
           >
             {loading ? "Loading..." : "Next"}
             {error && (
-              <div className="absolute right-0 bottom-full mb-2 p-2 bg-red-100 border border-red-400 rounded-md shadow-md max-h-[100px] w-[250px]">
+              <div
+                data-testid="error-message"
+                className="absolute right-0 bottom-full mb-2 p-2 bg-red-100 border border-red-400 rounded-md shadow-md max-h-[100px] w-[250px]"
+              >
                 <span className="text-red-600 text-sm font-medium">
                   <svg
                     className="inline-block w-4 h-4 mr-1 align-text-bottom"

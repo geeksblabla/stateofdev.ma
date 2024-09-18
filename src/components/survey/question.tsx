@@ -27,7 +27,10 @@ export default ({
       `}
     >
       <p className="mb-4 text-base font-medium">
-        <label className="block mb-2 ">
+        <label
+          className="block mb-2 "
+          aria-labelledby={`${sectionId}-q-${index}`}
+        >
           {`${index + 1}. ${label}`} <br />
         </label>
 
