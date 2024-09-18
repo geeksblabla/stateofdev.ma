@@ -1,0 +1,142 @@
+title: Work
+label: work
+position: 3
+questions:
+  - label: "What is your employment status?"
+    required: true
+    multiple: false
+    choices:
+      - Founder/entrepreneur
+      - Full-time employee
+      - Freelancer/self-employed
+      - Part-time employee
+      - Looking for work
+      - Internship
+      - Student
+
+  - label: How often do you work overtime or beyond the normal time expectation of your job?
+    choices:
+      - Never
+      - "Rarely: 1-2 days per year or less "
+      - "Occasionally: 1-2 days per quarter but less than monthly "
+      - "Sometimes: 1-2 days per month but less than weekly"
+      - "Often: 1-2 days per week or more"
+
+  - label: How do you feel about your job?
+    choices:
+      - Very Unsatisfied
+      - Slightly Unsatisfied
+      - Neither satisfied nor Unsatisfied
+      - Slightly satisfied
+      - Very satisfied
+
+  - label: Do you work on side projects?
+    required: true
+    choices:
+      - No
+      - Yes For profit
+      - Yes For learning
+
+  - label: How long have you been unemployed after graduation?
+    choices:
+      - None, I worked straight after my graduation 😎
+      - Up to 3 months
+      - Up to 6 months
+      - Up to 1 year
+      - More than 1 year
+
+  - label: "If you are a full time employee in Morocco(CDI), Your NET salary range per month in MAD is:"
+    choices:
+      - "< 4 000"
+      - "4 000 - 6 000"
+      - "6 000 - 8 000"
+      - "8 000 - 10 000"
+      - "10 000 - 12 000"
+      - "12 000 - 14 000"
+      - "14 000 - 16 000"
+      - "16 000 - 18 000"
+      - "18 000 - 20 000"
+      - "20 000 - 22 000"
+      - "22 000 - 25 000"
+      - "25 000 - 30 000"
+      - "> 30 000"
+
+  - label: "If you are working as a freelancer in Morocco, Your salary range per day in MAD(TJM) is:"
+    choices:
+      - "< 1 000"
+      - "1 000 - 1 500"
+      - "1 500 - 2 000"
+      - "2 000 - 2 500"
+      - "2 500 - 3 000"
+      - "3 000 - 4 000"
+      - "4 000 - 5 000"
+      - "> 5 000"
+
+  - label: "If you are working full-time contract outside Morocco, Your gross salary range per year in USD is:"
+    choices:
+      - "< 20 000"
+      - "20 000 - 25 000"
+      - "30 500 - 40 000"
+      - "40 000 - 50 000"
+      - "50 000 - 60 000"
+      - "60 000 - 80 000"
+      - "80 000 - 100 000"
+      - "100 000 - 120 000"
+      - "120 000 - 150 000"
+      - "150 000 - 200 000"
+      - "> 200 000"
+
+  - label: "If you are working as a freelancer/contractor outside Morocco, Your daily gross wage in USD is:"
+    choices:
+      - "< 200"
+      - "200 - 500"
+      - "500 - 1 000"
+      - "1 000 - 2 000"
+      - "2 000 - 3 000"
+      - "3 000 - 5 000"
+      - "5 000 - 10 000"
+      - "> 10 000"
+
+  - label: What characteristics would mostly influence your decision to choose one job offer over another?
+    required: true
+    multiple: true
+    choices:
+      - Languages, frameworks, and other technologies I’d be working on
+      - Office environment or company culture
+      - Flexible time or schedule
+      - Opportunities for professional development
+      - Remote work options
+      - How widely used or impactful my work output would be
+      - The industry that I’d be working in
+      - Company paid training and certifications
+      - Salary
+
+  - label: What type of company do you prefer?
+    required: true
+    choices:
+      - Self-employed
+      - Company under 10 employees
+      - Company between 11 and 30 employees
+      - Company between 31 and 100 employees
+      - Company above 100 employees
+
+  - label: What agile software development methodology do you use in your team, if any?
+    choices:
+      - Scrum
+      - Kanban
+      - XP
+      - Other
+      - None
+
+  - label: As many companies are returning to their offices, what options does your employer provide?
+    choices:
+      - Back to office
+      - Full remote
+      - Hybrid
+
+  - label: What is your preferred mode of work?
+    required: true
+    choices:
+      - From the office
+      - Full remote
+      - Part-time remote/Hybrid
