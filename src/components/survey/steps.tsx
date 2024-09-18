@@ -33,11 +33,11 @@ const Step = ({ label, selectedIndex, index }: StepProps) => {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            stroke-width="2"
+            strokeWidth="2"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M5 13l4 4L19 7"
             />
           </svg>
@@ -72,7 +72,7 @@ export const Steps = ({ selectedIndex = 0 }) => {
   return (
     <div
       id="steps"
-      className=" mx-auto md:mt-4 mt-0 md:mb-20 mb-10 flex w-full flex-wrap items-center justify-center space-x-4 md:px-10  px-0 py-2 pt-6"
+      className="mx-auto mt-4 md:mb-20 mb-10 flex w-full flex-wrap items-center justify-center space-x-4 md:px-10  px-0 py-2 pt-6"
     >
       {sections.map((section, index) => {
         return (

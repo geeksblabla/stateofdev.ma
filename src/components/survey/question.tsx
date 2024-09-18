@@ -21,33 +21,26 @@ export default ({
   return (
     <div
       className={`
-        grid
+        grid w-full
         ${selected ? "block animate-fadeIn" : "hidden"}
         mb-6 last:mb-0
       `}
     >
-      <p className="quiz-form__question">
-        {`${index + 1}. ${label}`} <br />
-        <span
-          style={{
-            fontWeight: "normal",
-            fontSize: "14px",
-            paddingLeft: "10px"
-          }}
-        >
+      <p className="mb-4 text-base font-medium">
+        <label className="block mb-2 ">
+          {`${index + 1}. ${label}`} <br />
+        </label>
+
+        <span className="font-normal text-sm pl-2.5">
           {question.multiple ? "- You can choose multiple answers " : ""}
         </span>
-        <span
-          style={{
-            fontWeight: "normal",
-            fontSize: "14px",
-            paddingLeft: "10px"
-          }}
-        >
+        <span className="font-normal text-sm pl-2.5">
           {question.required ? "" : "- Click skip button if not applicable"}
         </span>
       </p>
-      <div className={fitContent ? "quiz-form_fit-content" : ""}>
+      <div
+        className={fitContent ? "grid md:grid-cols-2 gap-4 grid-cols-1" : ""}
+      >
         {choices.map((c, i) => (
           <Choice
             text={c}
@@ -58,7 +51,6 @@ export default ({
             key={`${sectionId}-q-${index}-${i}`}
             required={question.required ?? false}
             multiple={question.multiple ?? false}
-            fitContent={fitContent}
           />
         ))}
       </div>
@@ -74,7 +66,6 @@ type ChoiceProps = {
   register: UseFormRegister<FieldValues>;
   required: boolean;
   multiple: boolean;
-  fitContent: boolean;
 };
 
 const Choice = ({
@@ -84,31 +75,29 @@ const Choice = ({
   name,
   register,
   required,
-  multiple,
-  fitContent
+  multiple
 }: ChoiceProps) => {
   return (
-    <>
-      <div className="relative w-full overflow-hidden flex  items-center  bg-gray-50 py-3 px-4 pl-14 mb-4  font-medium text-gray-800 ">
-        <input
-          className="peer hidden"
-          type={multiple ? "checkbox" : "radio"}
-          // name={name}
-          {...register(name, { required })}
-          id={id}
-          value={index}
-        />
-        <label
-          className="absolute left-0 top-0 h-full w-full cursor-pointer rounded-lg  peer-checked:border-emerald-600 peer-checked:bg-emerald-100  border-solid border-2 border-gray-200"
-          htmlFor={id}
-        ></label>
-        <div
-          className={`absolute pointer-events-none left-4 h-5 w-5 ${
-            multiple ? "rounded" : "rounded-full"
-          } border-solid border-2 border-gray-300 bg-gray-200 ring-emerald-600 ring-offset-2 peer-checked:border-transparent peer-checked:bg-emerald-600 peer-checked:ring-2`}
-        ></div>
-        <span className="pointer-events-none z-10">{text}</span>
-      </div>
-    </>
+    <div className="relative w-full overflow-hidden flex items-center bg-white  rounded-lg p-3 pl-14 mb-2 cursor-pointer">
+      <input
+        className="peer hidden"
+        type={multiple ? "checkbox" : "radio"}
+        {...register(name, { required })}
+        id={id}
+        value={index}
+      />
+      <label
+        className="absolute inset-0 cursor-pointer rounded-lg peer-checked:border-emerald-600 peer-checked:bg-emerald-100 border-2 border-gray-400"
+        htmlFor={id}
+      ></label>
+      <div
+        className={`absolute pointer-events-none left-4 h-5 w-5 ${
+          multiple ? "rounded" : "rounded-full"
+        } border-2 border-gray-400 bg-gray-200 ring-emerald-600 ring-offset-2 peer-checked:border-transparent peer-checked:bg-emerald-600 peer-checked:ring-2`}
+      ></div>
+      <span className="pointer-events-none z-10 text-black transition-colors duration-200">
+        {text}
+      </span>
+    </div>
   );
 };
