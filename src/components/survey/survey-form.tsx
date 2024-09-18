@@ -36,7 +36,7 @@ export const SurveyForm = ({ questions }: Props) => {
   };
 
   return (
-    <>
+    <div className="min-h-screen pt-10">
       <Steps selectedIndex={index} />
       <LoadingBar color="#3dbe71" progress={progress} height={10} />
       <main className="flex flex-1 justify-center items-center">
@@ -47,6 +47,6 @@ export const SurveyForm = ({ questions }: Props) => {
           setProgress={setProgress}
         />
       </main>
-    </>
+    </div>
   );
 };

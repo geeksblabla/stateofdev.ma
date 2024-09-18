@@ -25,7 +25,7 @@ if (!user) {
 
 <BaseLayout>
   <SurveyForm />
-  <div class="max-w-2xl mx-auto p-6">
+  <!-- <div class="max-w-2xl mx-auto p-6">
     <h1 class="text-3xl font-bold mb-6">Survey</h1>
     <div>
       <label for="question2" class="block mb-2 font-medium"
@@ -70,49 +70,5 @@ if (!user) {
       >
     </div>
     <div id="errorMessage" class="text-red-500 mt-4 hidden"></div>
-  </div>
+  </div> -->
 </BaseLayout>
-
-<script>
-  import { actions } from "astro:actions";
-
-  const logoutButton = document.getElementById(
-    "logoutButton"
-  ) as HTMLButtonElement;
-
-  const submitAnswersButton = document.getElementById(
-    "submitAnswersButton"
-  ) as HTMLButtonElement;
-
-  const errorMessageElement = document.getElementById("errorMessage");
-
-  logoutButton.addEventListener("click", async () => {
-    try {
-      await actions.removeSession();
-    } catch (error) {
-      console.error("Error during logout:", error);
-    }
-  });
-
-  submitAnswersButton.addEventListener("click", async () => {
-    const { error } = await actions.submitAnswers({
-      answers: {
-        question1: 1,
-        question2: 2,
-        question3: [3, 1, 3],
-        question4: null
-      }
-    });
-    if (error) {
-      console.error("Error during submit answers:", error);
-      if (errorMessageElement) {
-        errorMessageElement.textContent = `Error: ${error}`;
-        errorMessageElement.classList.remove("hidden");
-      }
-    } else {
-      if (errorMessageElement) {
-        errorMessageElement.classList.add("hidden");
-      }
-    }
-  });
-</script>
