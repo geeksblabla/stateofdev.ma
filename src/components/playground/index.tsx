@@ -12,25 +12,24 @@ export const SurveyPlayground: React.FC = () => {
   const [result, setResult] = useState<FinalResult | null>(null);
   const [questions, setQuestions] = useState<QuestionMap>({});
 
-  const handleFormChange = (formData: PlaygroundFormData) => {
+  const handleFormChange = React.useCallback((formData: PlaygroundFormData) => {
     const { questions } = getSurveyData(formData.year as Year);
     setQuestions(questions);
-
-    if (formData.questionId) {
+    if (formData.question_id) {
       const condition: QuestionCondition = formData.filters
-        .filter((f) => f.questionId && f.values.length > 0)
-        .map((f) => ({ question_id: f.questionId, values: f.values }));
+        .filter((f) => f.question_id && f.values.length > 0)
+        .map((f) => ({ question_id: f.question_id, values: f.values }));
       const result = getQuestion({
-        id: formData.questionId,
+        id: formData.question_id,
         year: formData.year,
         condition: condition.length > 0 ? condition : undefined,
-        groupBy: formData.groupBy || undefined
+        groupBy: formData.group_by || undefined
       });
       setResult(result);
     } else {
       setResult(null);
     }
-  };
+  }, []);
 
   return (
     <div className="max-w-7xl mx-auto">
