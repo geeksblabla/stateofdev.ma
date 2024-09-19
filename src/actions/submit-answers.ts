@@ -1,8 +1,8 @@
-import { app } from "@/firebase/server";
+import { app } from "@/lib/firebase/server";
 import { defineAction } from "astro:actions";
 import { getAuth } from "firebase-admin/auth";
 import { z } from "astro:schema";
-import { saveAnswers } from "@/firebase/database";
+import { saveAnswers } from "@/lib/firebase/database";
 
 export const submitAnswers = defineAction({
   accept: "json",
