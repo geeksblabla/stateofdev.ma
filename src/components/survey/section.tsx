@@ -9,6 +9,12 @@ type SectionProps = {
   setProgress: (n: number) => void;
 };
 
+export const ERRORS = {
+  none: "",
+  required: "Please select an option.",
+  submission: "Error submitting your answers, please try again."
+} as const;
+
 // we user this because react hook form does not support using number for select input
 const convertAnswersToNumber = (
   answers: Record<string, string | string[] | null>
@@ -30,20 +36,20 @@ const convertAnswersToNumber = (
 
 export default React.memo(({ section, next, setProgress }: SectionProps) => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<string>(ERRORS.none);
   const { register, getValues } = useForm();
   const [QIndex, setQIndex] = useState(0);
   const isLastQuestion = section.questions.length === QIndex + 1;
   const isRequired = !!section.questions[QIndex].required;
 
   const nextQuestion = async () => {
-    setError(false);
+    setError(ERRORS.none);
     const name = `${section.label}-q-${QIndex}`;
     const value = getValues(name);
 
     // value === null   default value for simple questions and false for multiple ones
     if (isRequired && (value === null || value === false)) {
-      setError(true);
+      setError(ERRORS.required);
       return;
     }
 
@@ -65,14 +71,12 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
 
   const submitData = useCallback(async () => {
     const answers = convertAnswersToNumber(getValues());
-    console.log("answers", answers);
     setLoading(true);
     const { error } = await submitAnswers({
       answers
     });
-    console.log("error", error);
     if (error) {
-      setError(true);
+      setError(ERRORS.submission);
       setLoading(false);
     } else {
       next();
@@ -84,7 +88,7 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
   useEffect(() => {
     if (error) {
       const timer = setTimeout(() => {
-        setError(false);
+        setError(ERRORS.none);
       }, 2000);
 
       return () => clearTimeout(timer);
@@ -115,6 +119,7 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
               type="button"
               className="focus:outline-4 rounded-xl bg-white px-6 md:px-8 py-3 font-medium text-emerald-600 underline border-emerald-600 transition mr-2"
               onClick={() => nextQuestion()}
+              data-testid="skip-button"
             >
               Skip
             </button>
@@ -143,7 +148,7 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
                       clipRule="evenodd"
                     />
                   </svg>
-                  Please select an option.
+                  {error}
                 </span>
               </div>
             )}
@@ -164,6 +169,7 @@ const scrollToSection = (selector: string) => {
 const BackButton = ({ onClick }: { onClick: () => void }) => (
   <div
     onClick={onClick}
+    data-testid="back-button"
     className="group flex w-full cursor-pointer items-center justify-center rounded-md bg-transparent  pr-6 py-2 text-gray-400 hover:text-gray-700 transition"
   >
     <svg

@@ -1,0 +1,97 @@
+---
+export const prerender = false;
+import BaseLayout from "@/layouts/layout.astro";
+import { app } from "@/firebase/server";
+import { getAuth } from "firebase-admin/auth";
+
+const auth = getAuth(app);
+
+/* Check current session */
+if (!Astro.cookies.has("__session")) {
+  return Astro.redirect("/before-start");
+}
+const sessionCookie = Astro.cookies.get("__session")?.value;
+if (!sessionCookie) {
+  return Astro.redirect("/before-start");
+}
+const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+const user = await auth.getUser(decodedCookie.uid);
+
+if (!user) {
+  return Astro.redirect("/before-start");
+}
+---
+
+<BaseLayout>
+  <div class="max-w-2xl mx-auto p-6 text-center">
+    <h1 class="text-3xl font-bold mb-6">Thank You for Participating!</h1>
+    <p class="mb-8">
+      We appreciate your time and input in our survey. Your responses will help
+      us improve our services.
+    </p>
+
+    <div class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Share the Survey</h2>
+      <p class="mb-4">
+        Help us reach more people by sharing this survey with your network:
+      </p>
+
+      <div class="flex justify-center space-x-4">
+        <a
+          href="https://twitter.com/intent/tweet?text=I%20just%20completed%20an%20important%20survey.%20You%20should%20try%20it%20too!%20[Your%20Survey%20Link]"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-blue-400 text-white px-4 py-2 rounded-full hover:bg-blue-500 transition duration-300"
+        >
+          Share on Twitter
+        </a>
+        <a
+          href="https://www.linkedin.com/sharing/share-offsite/?url=[Your%20Survey%20Link]"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-blue-700 text-white px-4 py-2 rounded-full hover:bg-blue-800 transition duration-300"
+        >
+          Share on LinkedIn
+        </a>
+        <a
+          href="https://www.facebook.com/sharer/sharer.php?u=[Your%20Survey%20Link]"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300"
+        >
+          Share on Facebook
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-semibold mb-4">Suggested Posts</h2>
+      <p class="mb-4">Feel free to use or modify these posts when sharing:</p>
+
+      <div class="space-y-4 text-left">
+        <div class="bg-gray-100 p-4 rounded-lg">
+          <p>
+            "I just participated in an insightful survey about [survey topic].
+            If you're interested in [relevant field/topic], you should check it
+            out too! [Your Survey Link] #Survey #[RelevantHashtag]"
+          </p>
+        </div>
+        <div class="bg-gray-100 p-4 rounded-lg">
+          <p>
+            "Want to contribute to important research on [survey topic]? I just
+            completed this survey and found it really engaging. Take part here:
+            [Your Survey Link] #ResearchParticipation #[RelevantHashtag]"
+          </p>
+        </div>
+        <div class="bg-gray-100 p-4 rounded-lg">
+          <p>
+            "Calling all [target audience]! Your opinion matters. I just took
+            part in a survey about [survey topic] and it only takes a few
+            minutes. Join in: [Your Survey Link] #YourOpinionMatters
+            #[RelevantHashtag]"
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
