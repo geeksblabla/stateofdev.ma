@@ -4,14 +4,6 @@ import { SurveyForm } from "./survey-form";
 import * as utils from "./utils";
 import { ERRORS } from "./section";
 
-beforeEach(() => {
-  vi.clearAllMocks();
-});
-
-afterEach(() => {
-  vi.clearAllMocks();
-});
-
 // Mock the submitAnswers function
 const submitAnswersSpy = vi
   .spyOn(utils, "submitAnswers")
@@ -77,6 +69,13 @@ const mockQuestions: SurveyQuestionsYamlFile[] = [
 describe("SurveyForm", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    vi.runOnlyPendingTimers();
+    vi.useRealTimers();
   });
 
   it("renders the first section of questions correctly", () => {
@@ -96,6 +95,21 @@ describe("SurveyForm", () => {
 
     await waitFor(() => {
       expect(screen.getByTestId("error-message")).toBeInTheDocument();
+    });
+  });
+
+  it("error message should disappear after 2000ms", async () => {
+    render(<SurveyForm questions={mockQuestions} />);
+
+    expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
+    fireEvent.click(screen.getByTestId("next-button"));
+
+    await waitFor(() => {
+      expect(screen.getByTestId("error-message")).toBeInTheDocument();
+    });
+    vi.advanceTimersByTime(2000);
+    await waitFor(() => {
+      expect(screen.queryByTestId("error-message")).not.toBeInTheDocument();
     });
   });
 
@@ -187,6 +201,36 @@ describe("SurveyForm", () => {
         "profile-q-0": 1, // last selected option
         "profile-q-1": [0], // this question accept multiple answers
         "profile-q-2": 2
+      }
+    });
+  });
+
+  it("on skip question, the selected answer should be null", async () => {
+    render(<SurveyForm questions={mockQuestions} />);
+    fireEvent.click(screen.getByTestId("profile-q-0-0"));
+    fireEvent.click(screen.getByTestId("next-button"));
+    fireEvent.click(screen.getByTestId("profile-q-1-1"));
+    fireEvent.click(screen.getByTestId("next-button"));
+    fireEvent.click(screen.getByTestId("skip-button"));
+    expect(submitAnswersSpy).toHaveBeenCalledWith({
+      answers: {
+        "profile-q-0": 0,
+        "profile-q-1": [1],
+        "profile-q-2": null
+      }
+    });
+  });
+  it("on skip question with multiple: true, the selected answer should be empty array", async () => {
+    render(<SurveyForm questions={mockQuestions} />);
+    fireEvent.click(screen.getByTestId("profile-q-0-0"));
+    fireEvent.click(screen.getByTestId("next-button"));
+    fireEvent.click(screen.getByTestId("next-button"));
+    fireEvent.click(screen.getByTestId("skip-button"));
+    expect(submitAnswersSpy).toHaveBeenCalledWith({
+      answers: {
+        "profile-q-0": 0,
+        "profile-q-1": [],
+        "profile-q-2": null
       }
     });
   });
