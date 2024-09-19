@@ -27,7 +27,7 @@ const results = getQuestion({ id, year, condition, groupBy });
 
 {
   results ? (
-    <RChart results={results} playgroundButton pie={pie} />
+    <RChart results={results} pie={pie} />
   ) : (
     <div class="text-sm text-red-500">
       {" "}

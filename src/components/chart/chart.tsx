@@ -8,7 +8,7 @@ type ChartProps = {
   results: FinalResult | null;
   sortByTotal?: boolean;
   title?: boolean;
-  playgroundButton?: boolean;
+  isPlayground?: boolean;
   pie?: boolean;
 };
 
@@ -16,7 +16,7 @@ export const Chart: React.FC<ChartProps> = ({
   results,
   sortByTotal = true,
   title = false,
-  playgroundButton = false,
+  isPlayground = false,
   pie = false
 }) => {
   if (!results) return null;
@@ -28,13 +28,13 @@ export const Chart: React.FC<ChartProps> = ({
       {title && (
         <p className="text-md py-4 font-semibold mb-4">{results.label}</p>
       )}
-      {playgroundButton && (
+      {!isPlayground && (
         <div className="flex justify-end pb-2">
           <PlaygroundButton results={results} />
         </div>
       )}
       <ChartComponent results={results} sortByTotal={sortByTotal} />
-      <ChartActions results={results} />
+      {!isPlayground && <ChartActions results={results} />}
     </div>
   );
 };

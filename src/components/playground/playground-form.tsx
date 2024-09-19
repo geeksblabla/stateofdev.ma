@@ -63,7 +63,7 @@ export const PlaygroundForm = React.memo(
     }, [formData]);
 
     return (
-      <form className="bg-white shadow-md rounded-lg p-6">
+      <form className="border border-gray-200 shadow-sm p-4 rounded-md">
         <div className="space-y-6">
           {/* Year selection */}
           <div>
