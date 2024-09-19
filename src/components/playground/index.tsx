@@ -7,6 +7,7 @@ import {
 } from "../chart/utils";
 import { getSurveyData, type Year, type QuestionMap } from "../chart/data";
 import { PlaygroundForm, type PlaygroundFormData } from "./playground-form";
+import { ShareButtons } from "../chart/share-buttons";
 
 export const SurveyPlayground: React.FC = () => {
   const [result, setResult] = useState<FinalResult | null>(null);
@@ -44,8 +45,11 @@ export const SurveyPlayground: React.FC = () => {
                 results={result}
                 sortByTotal={false}
                 title={true}
-                playgroundButton={false}
+                isPlayground={true}
               />
+              <div className="flex justify-end items-center pt-4 pr-2">
+                <ShareActions />
+              </div>
             </div>
           ) : (
             <div className="h-full flex items-center justify-center text-gray-500 bg-white shadow-md rounded-lg p-6">
@@ -56,4 +60,10 @@ export const SurveyPlayground: React.FC = () => {
       </div>
     </div>
   );
+};
+
+const ShareActions = () => {
+  const shareUrl = window.location.href;
+  const shareTitle = `Check out this report`;
+  return <ShareButtons url={shareUrl} title={shareTitle} />;
 };
