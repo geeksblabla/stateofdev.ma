@@ -99,11 +99,11 @@ const Bar = ({ result, index, total }: BarProps) => {
           <span className="text-sm font-medium whitespace-nowrap overflow-hidden text-ellipsis">
             {result.label}
           </span>
-          <div className="flex flex-row">
-            <span className="text-sm text-gray-600 min-w-[40px] text-right">
+          <div className="flex flex-row min-w-fit">
+            <span className="text-sm text-gray-600  text-right">
               {getPercent(result.total, total)}% -{" "}
             </span>
-            <span className="text-sm text-gray-600 min-w-[36px] text-right ">
+            <span className="text-sm text-gray-600 min-w-[33px] text-right ">
               {result.total}
             </span>
           </div>
