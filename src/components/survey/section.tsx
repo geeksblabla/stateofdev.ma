@@ -17,8 +17,9 @@ export const ERRORS = {
 
 // we user this because react hook form does not support using number for select input
 const convertAnswersToNumber = (
-  answers: Record<string, string | string[] | null>
+  answers: Record<string, string | string[] | null | boolean>
 ) => {
+  console.log(answers);
   const convertedAnswers: Record<string, number | number[] | null> = {};
 
   for (const [key, value] of Object.entries(answers)) {
@@ -26,6 +27,9 @@ const convertAnswersToNumber = (
       convertedAnswers[key] = null;
     } else if (Array.isArray(value)) {
       convertedAnswers[key] = value.map(Number);
+    } else if (typeof value === "boolean") {
+      // this is a special case for multiple choice questions that are not required, if the user skip the question react hook form set the value to false
+      convertedAnswers[key] = [];
     } else {
       convertedAnswers[key] = Number(value);
     }
