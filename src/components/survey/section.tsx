@@ -19,7 +19,6 @@ export const ERRORS = {
 const convertAnswersToNumber = (
   answers: Record<string, string | string[] | null | boolean>
 ) => {
-  console.log(answers);
   const convertedAnswers: Record<string, number | number[] | null> = {};
 
   for (const [key, value] of Object.entries(answers)) {
@@ -131,7 +130,7 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
           <button
             data-testid="next-button"
             type="button"
-            className="px-4 py-2 bg-emerald-500 text-white rounded transition hover:bg-emerald-600"
+            className="px-4 py-2 min-w-[120px] bg-emerald-500 text-white rounded transition hover:bg-emerald-600"
             onClick={() => nextQuestion()}
           >
             {loading ? "Loading..." : "Next"}

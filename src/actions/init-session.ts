@@ -1,21 +1,40 @@
-import { app } from "@/firebase/server";
+import { app } from "@/lib/firebase/server";
 import { defineAction } from "astro:actions";
 import { getAuth } from "firebase-admin/auth";
 import { z } from "astro:schema";
-import { initUserSubmission } from "@/firebase/database";
+import { initUserSubmission } from "@/lib/firebase/database";
+import { isCaptchaValid } from "@/lib/captcha";
 
 export const initSession = defineAction({
   accept: "json",
   input: z.object({
-    idToken: z.string()
+    idToken: z.string(),
+    captchaToken: z.string().optional()
   }),
-  handler: async ({ idToken }, { cookies }) => {
+  handler: async ({ idToken, captchaToken }, { cookies }) => {
     const auth = getAuth(app);
+    /* Validate inputs */
+    if (!captchaToken && import.meta.env.CAPTCHA_ENABLED === "true") {
+      return {
+        error: "Captcha token is required"
+      };
+    }
     if (!idToken) {
       return {
         error: "No idToken provided"
       };
     }
+
+    /* Validate captcha */
+    if (captchaToken && import.meta.env.CAPTCHA_ENABLED === "true") {
+      const isValid = await isCaptchaValid(captchaToken);
+      if (!isValid) {
+        return {
+          error: "Invalid captcha"
+        };
+      }
+    }
+
     /* Verify id token and save user to database */
     try {
       const decodedToken = await auth.verifyIdToken(idToken);
