@@ -25,12 +25,10 @@ export default ({
         ${selected ? "block animate-fadeIn" : "hidden"}
         mb-6 last:mb-0
       `}
+      data-testid={`${sectionId}-q-${index}`}
     >
       <p className="mb-4 text-base font-medium">
-        <label
-          className="block mb-2 "
-          aria-labelledby={`${sectionId}-q-${index}`}
-        >
+        <label className="block mb-2 ">
           {`${index + 1}. ${label}`} <br />
         </label>
 
@@ -88,6 +86,7 @@ const Choice = ({
         {...register(name, { required })}
         id={id}
         value={index}
+        data-testid={id}
       />
       <label
         className="absolute inset-0 cursor-pointer rounded-lg peer-checked:border-emerald-600 peer-checked:bg-emerald-100 border-2 border-gray-400"

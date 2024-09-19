@@ -1,7 +1,8 @@
-import { useEffect, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import LoadingBar from "react-top-loading-bar";
 import { Steps } from "./steps";
 import Section from "./section";
+import { goToThanksPage } from "./utils";
 
 type Props = {
   questions: SurveyQuestionsYamlFile[];
@@ -9,7 +10,6 @@ type Props = {
 
 export const SurveyForm = ({ questions }: Props) => {
   const [index, setIndex] = useState(0);
-  const [finished, setFinished] = useState(false);
   const [progress, setPr] = useState(0);
 
   const section = questions[index];
@@ -24,15 +24,13 @@ export const SurveyForm = ({ questions }: Props) => {
     const step = 100 / totalQuestions;
     setPr(progress + step * n);
   };
-  // todo:  no need to use useEffect
-  useEffect(() => {
-    if (finished) console.log("finished");
-  }, [finished]);
 
   const next = () => {
     if (index + 1 < questions.length) {
       setIndex((prv) => prv + 1);
-    } else setFinished(true);
+    } else {
+      goToThanksPage();
+    }
   };
 
   return (
