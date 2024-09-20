@@ -1,66 +1,51 @@
 ---
+import FaqItem from "@/components/faq-item.astro";
 import Layout from "@/layouts/layout.astro";
 
 const faqs = [
   {
-    question: "What is State of Dev Morocco?",
+    question: "Who runs this survey?",
     answer:
-      "State of Dev Morocco is an annual survey that aims to capture the trends, preferences, and challenges faced by developers in Morocco."
+      "StateOfDev.ma is one of Geeksblabla community projects. We are a group of Moroccan developers who are passionate about technology and open source."
   },
   {
-    question: "How can I participate in the survey?",
+    question: "How will this data be used?",
     answer:
-      "The survey is typically open for a specific period each year. Check our homepage or follow us on social media for announcements about the next survey."
+      "All data collected will be released publicly. It will then become a resources for developers to check the last trends in Morocco as well as companies to check the current state of the Moroccan developer community."
+  },
+  {
+    question: "When will the results be released?",
+    answer:
+      "We will release the results after 2 weeks of the survey ending. We will also host a special Geeksblabla episode to discuss the results. You can watch it on our <a href='https://www.youtube.com/c/GeeksBlaBla01' target='_blank' rel='noopener noreferrer' class='text-emerald-500 hover:text-emerald-600'>YouTube channel</a>. Meanwhile, you can read last year's reports."
+  },
+  {
+    question: "How can i contribute ?",
+    answer:
+      "The project is open source and hosted on Github. You can contribute by opening issues or pull requests. You can also help us by sharing the survey with your friends or write about the results on social media to help us understand the Moroccan developer community better."
   }
-  // Add more FAQ items as needed
 ];
 ---
 
 <Layout title="FAQ - State of Dev Morocco">
-  <main class="max-w-4xl mx-auto px-4 py-8">
+  <main class="max-w-4xl mx-auto px-4 py-8 pt-16">
     <h1 class="text-xl font-bold mb-8 text-center">
       Frequently Asked Questions
     </h1>
-    <p class="text-center">
+    <p class="text-center max-w-2xl mx-auto">
       Here are some frequently asked questions about the State of Dev Morocco
-      survey. If you have any other questions, please contact us.
+      survey. If you have any other questions, please <a
+        href="https://github.com/geeksblabla/stateofdev.ma"
+        target="_blank"
+        class="text-emerald-500 hover:text-emerald-600"
+        rel="noopener noreferrer">open an issue</a
+      >.
     </p>
-    <div class="space-y-4 mt-8">
+    <div class="space-y-4 pt-8">
       {
         faqs.map((faq, index) => (
-          <div class="relative overflow-hidden border border-gray-300 rounded-lg">
-            <input
-              type="checkbox"
-              class="peer absolute top-0 inset-x-0 w-full h-12 opacity-0 z-10 cursor-pointer"
-              id={`faq-${index}`}
-            />
-            <div class="bg-white h-12 w-full pl-5 flex items-center">
-              <h2 class="text-base font-semibold text-gray-700">
-                {faq.question}
-              </h2>
-            </div>
-            <div class="absolute top-3 right-3 text-gray-500 transition-transform duration-500 rotate-0 peer-checked:rotate-180">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
-            <div class="bg-white overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40">
-              <div class="p-5 border-t border-gray-300">
-                <p class="text-gray-700">{faq.answer}</p>
-              </div>
-            </div>
-          </div>
+          <FaqItem label={faq.question} checked={index === 0}>
+            <Fragment set:html={faq.answer} />
+          </FaqItem>
         ))
       }
     </div>

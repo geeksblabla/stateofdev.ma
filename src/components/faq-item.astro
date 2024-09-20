@@ -1,0 +1,46 @@
+---
+interface Props {
+  checked: boolean;
+  label: string;
+}
+const { checked, label }: Props = Astro.props;
+---
+
+<div class="relative overflow-hidden border border-gray-300 rounded-lg">
+  <input
+    type="checkbox"
+    class="peer absolute top-0 inset-x-0 w-full h-12 opacity-0 z-10 cursor-pointer"
+    checked={checked}
+  />
+  <div class="bg-white h-12 w-full pl-5 flex items-center">
+    <h2 class="text-base font-semibold text-gray-700">
+      {label}
+    </h2>
+  </div>
+  <div
+    class="absolute top-3 right-3 text-gray-500 transition-transform duration-500 rotate-0 peer-checked:rotate-180"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </div>
+  <div
+    class="bg-white overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40"
+  >
+    <div class="p-5 border-t border-gray-300">
+      <p class="text-gray-700">
+        <slot />
+      </p>
+    </div>
+  </div>
+</div>

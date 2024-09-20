@@ -3,6 +3,7 @@ import { BarChart } from "./bar-chart";
 import { PieChart } from "./pie-chart";
 import { type FinalResult } from "./utils";
 import { ChartActions, PlaygroundButton } from "./chart-actions";
+import type { Year } from "./data";
 
 type ChartProps = {
   results: FinalResult | null;
@@ -10,6 +11,7 @@ type ChartProps = {
   title?: boolean;
   isPlayground?: boolean;
   pie?: boolean;
+  year?: Year;
 };
 
 export const Chart: React.FC<ChartProps> = ({
@@ -17,7 +19,8 @@ export const Chart: React.FC<ChartProps> = ({
   sortByTotal = true,
   title = false,
   isPlayground = false,
-  pie = false
+  pie = false,
+  year
 }) => {
   if (!results) return null;
 
@@ -30,7 +33,7 @@ export const Chart: React.FC<ChartProps> = ({
       )}
       {!isPlayground && (
         <div className="flex justify-end pb-2">
-          <PlaygroundButton results={results} />
+          <PlaygroundButton results={results} year={year} />
         </div>
       )}
       <ChartComponent results={results} sortByTotal={sortByTotal} />
