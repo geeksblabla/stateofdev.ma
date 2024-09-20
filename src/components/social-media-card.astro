@@ -1,15 +1,18 @@
 ---
 interface Props {
-  content: string;
-  user?: {
-    name: string;
-    handle: string;
+  post: {
+    content: string;
+    user: {
+      name: string;
+      handle: string;
+    };
+    rtl: boolean;
   };
 }
-const { content, user = { name: "Your Name", handle: "@yourhandle" } }: Props =
-  Astro.props;
+const { post }: Props = Astro.props;
+console.log(post);
 
-const contentEncoded = encodeURIComponent(content);
+const contentEncoded = encodeURIComponent(post.content);
 
 const shareLinks = {
   twitter: `https://twitter.com/intent/tweet?text=${contentEncoded}&url=https://stateofdev.ma`,
@@ -34,14 +37,12 @@ const shareLinks = {
         clip-rule="evenodd"></path>
     </svg>
     <div>
-      <p class="font-bold">{user.name}</p>
-      <p class="text-sm text-gray-500">{user.handle}</p>
+      <p class="font-bold">{post.user?.name ?? "Anonymous"}</p>
+      <p class="text-sm text-gray-500">{post.user?.handle ?? "Anonymous"}</p>
     </div>
   </div>
   <div class="flex flex-col flex-1">
-    <p class="mb-4">
-      {content}
-    </p>
+    <p class={`mb-4 ${post.rtl ? "text-right" : ""}`}>{post.content}</p>
     <a href="https://stateofdev.ma" class="text-emerald-500 hover:underline"
       >stateofdev.ma</a
     >
@@ -99,7 +100,7 @@ const shareLinks = {
       class="text-gray-400 hover:text-emerald-500 relative"
       title="Copy Content"
       data-id="copyButton"
-      data-content={content}
+      data-content={post.content}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
