@@ -1,5 +1,9 @@
 ---
 export const prerender = false;
+import SocialMediaCard from "@/components/social-media-card.astro";
+import { Image } from "astro:assets";
+import tarbouch from "@/assets/tarbouch.png"; // Image is 1600x900
+
 import BaseLayout from "@/layouts/layout.astro";
 import { app } from "@/lib/firebase/server";
 import { getAuth } from "firebase-admin/auth";
@@ -20,76 +24,50 @@ const user = await auth.getUser(decodedCookie.uid);
 if (!user) {
   return Astro.redirect("/before-start");
 }
+
+const posts = [
+  "I just participated in an eye-opening survey about the state of development in Morocco! 🇲🇦💻 Your insights are crucial. Take 5 minutes to share your experience ",
+  "Calling all developers in Morocco! 🚀 Help shape the future of our tech industry. I just completed a survey on the state of development, and your voice matters too. Join in ",
+  "Want to contribute to the growth of Morocco's tech scene? 🌟 I just took part in an important survey about development in our country. It's quick, easy, and impactful. Have your say",
+  "Attention Moroccan tech enthusiasts! 🖥️🇲🇦 Be part of a nationwide tech survey. Your experiences and opinions will help drive our industry forward. I've done my part, now it's your turn",
+  "شاركت فهاد الاستطلاع المهم على وضعية البرمجة فالمغرب!  رأيك مهم بزاف. خود 5 دقايق وشارك تجربتك",
+  "نداء لجميع المبرمجين فالمغرب! ساعدونا نشكلو مستقبل الصناعة التكنولوجية ديالنا. أنا درت الاستطلاع، وصوتك مهم حتى نتا. شارك معانا",
+  "باغي تساهم فنمو المجال التقني فالمغرب؟ أنا شاركت فواحد الاستطلاع مهم على البرمجة فبلادنا. ماغاديش ياخد منك بزاف ديال الوقت، وغادي يكون عندو تأثير كبير. قول رأيك",
+  "انتباه للمهتمين بالتكنولوجيا فالمغرب! كونو جزء من استطلاع وطني للتقنية. التجارب والآراء ديالكم غادي يساعدو فتطوير الصناعة ديالنا. أنا درت اللي عليا، دابا دوركم",
+  "Je viens de participer à une enquête révélatrice sur l'état du développement au Maroc ! 🇲🇦💻 Vos idées sont cruciales. Prenez 5 minutes pour partager votre expérience",
+  "Appel à tous les développeurs au Maroc ! 🚀 Aidez à façonner l'avenir de notre industrie technologique. Je viens de répondre à une enquête sur l'état du développement, et votre voix compte aussi. Rejoignez-nous",
+  "Vous voulez contribuer à la croissance de la scène tech marocaine ? 🌟 Je viens de participer à une importante enquête sur le développement dans notre pays. C'est rapide, facile et impactant. Donnez votre avis",
+  "Attention aux passionnés de technologie au Maroc ! 🖥️🇲🇦 Faites partie d'une enquête technologique nationale. Vos expériences et opinions aideront à faire avancer notre industrie. J'ai fait ma part, c'est maintenant à votre tour"
+];
 ---
 
 <BaseLayout>
-  <div class="max-w-2xl mx-auto p-6 text-center">
-    <h1 class="text-3xl font-bold mb-6">Thank You for Participating!</h1>
-    <p class="mb-8">
-      We appreciate your time and input in our survey. Your responses will help
-      us improve our services.
+  <div class="max-w-screen-xl w-full mx-auto p-6 text-center">
+    <Image
+      src={tarbouch}
+      class="lg:w-[300px] my-10 sm:w-[200px] mx-auto"
+      alt="tarbouch"
+    />
+    <p class="mb-8 text-xl font-semibold">
+      الله يعطيك الصحة <br /> كنشكروك حيت كملتي الاستطلاع{" "}
     </p>
 
     <div class="mb-8">
-      <h2 class="text-2xl font-semibold mb-4">Share the Survey</h2>
-      <p class="mb-4">
-        Help us reach more people by sharing this survey with your network:
-      </p>
-
-      <div class="flex justify-center space-x-4">
-        <a
-          href="https://twitter.com/intent/tweet?text=I%20just%20completed%20an%20important%20survey.%20You%20should%20try%20it%20too!%20[Your%20Survey%20Link]"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="bg-blue-400 text-white px-4 py-2 rounded-full hover:bg-blue-500 transition duration-300"
-        >
-          Share on Twitter
-        </a>
-        <a
-          href="https://www.linkedin.com/sharing/share-offsite/?url=[Your%20Survey%20Link]"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="bg-blue-700 text-white px-4 py-2 rounded-full hover:bg-blue-800 transition duration-300"
-        >
-          Share on LinkedIn
-        </a>
-        <a
-          href="https://www.facebook.com/sharer/sharer.php?u=[Your%20Survey%20Link]"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300"
-        >
-          Share on Facebook
-        </a>
-      </div>
-    </div>
-
-    <div>
-      <h2 class="text-2xl font-semibold mb-4">Suggested Posts</h2>
-      <p class="mb-4">Feel free to use or modify these posts when sharing:</p>
-
-      <div class="space-y-4 text-left">
-        <div class="bg-gray-100 p-4 rounded-lg">
+      <div>
+        <div class="mb-4 max-w-lg mx-auto font-semibold">
+          <p class="mb-4">
+            الخدمة صعيبة درتيها دبا بقات السهلة، باش الاستطلاع يكون مفيد خاص
+            يشارك فيه اكبر عدد ديال الناس دكشي علاش خصك تعونا وتبارتجي الاستطلاع
+            مع صحابك.
+          </p>
           <p>
-            "I just participated in an insightful survey about [survey topic].
-            If you're interested in [relevant field/topic], you should check it
-            out too! [Your Survey Link] #Survey #[RelevantHashtag]"
+            وجدنا ليك شي بركة ديال البوستات باش متعدب(ي)ش في الكتابة، ختار(ي)
+            وحدة منهم وبارتاجي
           </p>
         </div>
-        <div class="bg-gray-100 p-4 rounded-lg">
-          <p>
-            "Want to contribute to important research on [survey topic]? I just
-            completed this survey and found it really engaging. Take part here:
-            [Your Survey Link] #ResearchParticipation #[RelevantHashtag]"
-          </p>
-        </div>
-        <div class="bg-gray-100 p-4 rounded-lg">
-          <p>
-            "Calling all [target audience]! Your opinion matters. I just took
-            part in a survey about [survey topic] and it only takes a few
-            minutes. Join in: [Your Survey Link] #YourOpinionMatters
-            #[RelevantHashtag]"
-          </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+          {posts.map((post) => <SocialMediaCard content={post} />)}
         </div>
       </div>
     </div>
