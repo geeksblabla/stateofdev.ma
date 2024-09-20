@@ -26,6 +26,11 @@ interface ImportMetaEnv {
   readonly PUBLIC_FIREBASE_STORAGE_BUCKET: string;
   readonly PUBLIC_FIREBASE_MESSAGING_SENDER_ID: string;
   readonly PUBLIC_FIREBASE_APP_ID: string;
+
+  // captcha
+  readonly RECAPTCHA_ENABLED: boolean;
+  readonly RECAPTCHA_SITE_KEY: string;
+  readonly RECAPTCHA_SECRET_KEY: string;
 }
 
 interface ImportMeta {
