@@ -5,6 +5,8 @@ import { type Year, type QuestionMap } from "../chart/data";
 import { FilterOptions } from "./filters-options";
 import queryString from "query-string";
 
+const isBrowser = typeof window !== "undefined";
+
 type Filter = {
   question_id: string;
   values: string[];
@@ -23,7 +25,14 @@ const getDefaultValues = (): PlaygroundFormData => {
     group_by = "",
     year = "2023",
     filters: c
-  } = queryString.parse(window.location.hash) as unknown as PlaygroundFormData;
+  } = isBrowser
+    ? (queryString.parse(window.location.hash) as unknown as PlaygroundFormData)
+    : {
+        question_id: "profile-q-0",
+        group_by: "",
+        year: "2023",
+        filters: [{ question_id: "", values: [] }]
+      };
   let filters: Filter[] = [];
   try {
     filters = JSON.parse(c as unknown as string);
@@ -41,7 +50,6 @@ type PlaygroundFormProps = {
 
 export const PlaygroundForm = React.memo(
   ({ questions, onChange }: PlaygroundFormProps) => {
-    console.log(questions);
     console.log(getDefaultValues());
     const { control, watch } = useForm<PlaygroundFormData>({
       defaultValues: getDefaultValues()
@@ -53,17 +61,23 @@ export const PlaygroundForm = React.memo(
     }, [formData, onChange]);
 
     useEffect(() => {
-      const search = {
-        year: formData.year,
-        question_id: formData.question_id,
-        filters: JSON.stringify(formData.filters),
-        group_by: formData.group_by
-      };
-      window.location.hash = queryString.stringify(search);
+      if (isBrowser) {
+        const filters = formData.filters.filter((f) => f.values.length > 0);
+        const search = {
+          year: formData.year,
+          question_id: formData.question_id,
+          filters: filters.length > 0 ? JSON.stringify(filters) : "",
+          group_by: formData.group_by
+        };
+        window.location.hash = queryString.stringify(search, {
+          skipEmptyString: true,
+          skipNull: true
+        });
+      }
     }, [formData]);
 
     return (
-      <form className="border border-gray-200 shadow-sm p-4 rounded-md">
+      <div className="border border-gray-200 shadow-sm p-4 rounded-md">
         <div className="space-y-6">
           {/* Year selection */}
           <div>
@@ -151,7 +165,7 @@ export const PlaygroundForm = React.memo(
             />
           </div>
         </div>
-      </form>
+      </div>
     );
   }
 );

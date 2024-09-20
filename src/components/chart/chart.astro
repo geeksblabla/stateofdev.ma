@@ -21,13 +21,13 @@ const {
 } = Astro.props;
 
 const { year: yearContext } = getContext(Astro);
-const year = yearProp || yearContext || "null";
+const year = (yearProp || yearContext || "null") as Year;
 const results = getQuestion({ id, year, condition, groupBy });
 ---
 
 {
   results ? (
-    <RChart results={results} pie={pie} />
+    <RChart results={results} pie={pie} year={year} />
   ) : (
     <div class="text-sm text-red-500">
       {" "}

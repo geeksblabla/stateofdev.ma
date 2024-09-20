@@ -1,13 +1,16 @@
+import type { Year } from "./data";
 import { ShareButtons } from "./share-buttons";
 import type { FinalResult } from "./utils";
+import queryString from "query-string";
 
 type ShareButtonsProps = {
-  playgroundButton?: boolean;
   results: FinalResult;
 };
 
 export const ChartActions = ({ results }: ShareButtonsProps) => {
-  const shareUrl = `/playground?questionId=${results.id}`;
+  const shareUrl = `/#${new URLSearchParams({
+    question_id: results.id
+  }).toString()}`;
   const shareTitle = `Check out this report: ${results.label}`;
   return (
     <div className="flex justify-end items-center">
@@ -16,10 +19,22 @@ export const ChartActions = ({ results }: ShareButtonsProps) => {
   );
 };
 
-export const PlaygroundButton = ({ results }: { results: FinalResult }) => {
+export const PlaygroundButton = ({
+  results,
+  year
+}: {
+  results: FinalResult;
+  year?: Year;
+}) => {
   return (
     <a
-      href={`/playground?questionId=${results.id}`}
+      href={`/playground#${queryString.stringify(
+        {
+          question_id: results.id,
+          year: year ? year : ""
+        },
+        { skipEmptyString: true }
+      )}`}
       className="text-gray-400 text-sm  hover:text-gray-700 decoration-none transition-colors flex items-center pl-2 relative group"
     >
       <svg
