@@ -1,2 +1,135 @@
-links: https://atomiks.github.io/tippyjs/v6/all-props/
-https://tailwindflex.com/@noob_dev/nested-list
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
+
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+<p align="center">
+  <a href="https://stateofdev.ma">
+  <img width="477" alt="logo" src="https://user-images.githubusercontent.com/11137944/101990595-01f5f280-3ca8-11eb-8873-95a6234fb096.png">
+  </a>
+</p>
+<h2 align="center">
+  State Of Dev in Morocco Website
+</h2>
+<hr />
+
+StateOfDev.ma is a survey centered around software developers in Morocco by GeeksBlaBla Morocco Community.
+
+We wanted to know how we can help and support each other, and overall be able to better respond to developers evolving needs.
+
+The website is built using [AstroJs](https://astro.build/)
+
+## 🚀 Quick start
+
+1.  **Fork and clone the project**
+
+```sh
+git clone git@github.com:your-username/stateofdev.ma.git
+```
+
+2.  **Configure Project and Start developing.**
+
+- Go to [Firebase Console](https://console.firebase.google.com/) and Create a firebase application, activate anonymous authentication and enable Firestore database on production mode to set data to private by default as we are going to user firebase admin sdk to write data to firestore database.
+
+- Go to Project settings > service accounts > generate new private key and add missed vars to your .env file.
+
+- Go to [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/) and create a new site and get your keys.(optional)
+
+- Copy your keys to `.env.local`:
+
+```env
+# Client-side Firebase configuration
+PUBLIC_FIREBASE_API_KEY=
+PUBLIC_FIREBASE_AUTH_DOMAIN=
+PUBLIC_FIREBASE_STORAGE_BUCKET=
+PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+PUBLIC_FIREBASE_APP_ID=
+
+# Server-side Firebase configuration
+FIREBASE_PRIVATE_KEY_ID=
+FIREBASE_PRIVATE_KEY=
+FIREBASE_PROJECT_ID=
+FIREBASE_CLIENT_EMAIL=
+FIREBASE_CLIENT_ID=
+FIREBASE_AUTH_URI=
+FIREBASE_TOKEN_URI=
+FIREBASE_AUTH_CERT_URL=
+FIREBASE_CLIENT_CERT_URL=
+
+# captcha keys (optional) make sure to set it to false in dev mode
+CAPTCHA_ENABLED=false
+CAPTCHA_SITE_KEY=
+CAPTCHA_SECRET_KEY=
+
+```
+
+- Navigate into your new website's directory and start it up.
+
+```sh
+cd stateofdev.ma/
+pnpm install
+pnpm dev
+```
+
+3.  **Open the source code and start editing!**
+
+Your website is now running at `http://localhost:4321`
+
+## 🧐 Want to contribute ?
+
+If you want to contribute check out the [help wanted](https://github.com/geeksblabla/stateofdev.ma/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22+sort%3Aupdated-desc) issues for things that need fixing, or suggest some new features by opening new issues.
+
+## Licensing
+
+The code in this project is licensed under [MIT license](https://mit-license.org/).
+
+The Data in `./results` is licensed under [ODC-ODbL License](https://opendatacommons.org/licenses/odbl/).
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="16.66%"><a href="https://elazizi.com/"><img src="https://avatars0.githubusercontent.com/u/11137944?v=4?s=120" width="120px;" alt="Youssouf EL AZIZI"/><br /><sub><b>Youssouf EL AZIZI</b></sub></a><br /><a href="https://github.com/geeksblabla/stateofdev.ma/commits?author=yjose" title="Code">💻</a> <a href="https://github.com/geeksblabla/stateofdev.ma/commits?author=yjose" title="Documentation">📖</a> <a href="#content-yjose" title="Content">🖋</a> <a href="#ideas-yjose" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="http://aboullaite.me/"><img src="https://avatars0.githubusercontent.com/u/2836850?v=4?s=120" width="120px;" alt="Mohammed Aboullaite"/><br /><sub><b>Mohammed Aboullaite</b></sub></a><br /><a href="https://github.com/geeksblabla/stateofdev.ma/commits?author=aboullaite" title="Code">💻</a> <a href="#content-aboullaite" title="Content">🖋</a> <a href="#ideas-aboullaite" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="https://github.com/ismailElazizi"><img src="https://avatars1.githubusercontent.com/u/22155037?v=4?s=120" width="120px;" alt="Ismail El Azizi"/><br /><sub><b>Ismail El Azizi</b></sub></a><br /><a href="#design-ismailElazizi" title="Design">🎨</a> <a href="#content-ismailElazizi" title="Content">🖋</a> <a href="#ideas-ismailElazizi" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="https://twitter.com/enlamp"><img src="https://avatars2.githubusercontent.com/u/4036528?v=4?s=120" width="120px;" alt="djalal"/><br /><sub><b>djalal</b></sub></a><br /><a href="#content-djalal" title="Content">🖋</a> <a href="#ideas-djalal" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="https://github.com/iMeriem"><img src="https://avatars1.githubusercontent.com/u/11720929?v=4?s=120" width="120px;" alt="Meriem Zaid"/><br /><sub><b>Meriem Zaid</b></sub></a><br /><a href="#content-iMeriem" title="Content">🖋</a> <a href="#ideas-iMeriem" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="https://github.com/ezzarghili"><img src="https://avatars2.githubusercontent.com/u/8616968?v=4?s=120" width="120px;" alt="Mohamed Ez-zarghili"/><br /><sub><b>Mohamed Ez-zarghili</b></sub></a><br /><a href="#content-ezzarghili" title="Content">🖋</a> <a href="#ideas-ezzarghili" title="Ideas, Planning, & Feedback">🤔</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="16.66%"><a href="https://github.com/Aymane11"><img src="https://avatars2.githubusercontent.com/u/24499930?v=4?s=120" width="120px;" alt="Aymane Boumaaza"/><br /><sub><b>Aymane Boumaaza</b></sub></a><br /><a href="#content-Aymane11" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="https://blog.zhaytam.com/"><img src="https://avatars3.githubusercontent.com/u/34218324?v=4?s=120" width="120px;" alt="Haytam Zanid"/><br /><sub><b>Haytam Zanid</b></sub></a><br /><a href="#content-zHaytam" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="https://github.com/boredabdel"><img src="https://avatars1.githubusercontent.com/u/1208914?v=4?s=120" width="120px;" alt="Abdelfettah SGHIOUAR"/><br /><sub><b>Abdelfettah SGHIOUAR</b></sub></a><br /><a href="#content-boredabdel" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="http://stackoverflow.com/users/4689497/"><img src="https://avatars0.githubusercontent.com/u/5012992?v=4?s=120" width="120px;" alt="Youness IABITEN"/><br /><sub><b>Youness IABITEN</b></sub></a><br /><a href="#content-Yiabiten" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="https://github.com/Ismailtlem"><img src="https://avatars1.githubusercontent.com/u/34961373?v=4?s=120" width="120px;" alt="Ismail Tlemçani"/><br /><sub><b>Ismail Tlemçani</b></sub></a><br /><a href="#content-Ismailtlem" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="https://soubai.me/"><img src="https://avatars0.githubusercontent.com/u/11523791?v=4?s=120" width="120px;" alt="Abderrahim SOUBAI"/><br /><sub><b>Abderrahim SOUBAI</b></sub></a><br /><a href="#content-AbderrahimSoubaiElidrissi" title="Content">🖋</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="16.66%"><a href="https://github.com/moutout"><img src="https://avatars.githubusercontent.com/u/3751894?v=4?s=120" width="120px;" alt="Mustapha"/><br /><sub><b>Mustapha</b></sub></a><br /><a href="#content-moutout" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="https://www.linkedin.com/in/sohayb-elamraoui/"><img src="https://avatars.githubusercontent.com/u/32344494?v=4?s=120" width="120px;" alt="el amraoui Sohayb"/><br /><sub><b>el amraoui Sohayb</b></sub></a><br /><a href="#content-Elamraoui-Sohayb" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="http://yezz.me"><img src="https://avatars.githubusercontent.com/u/52716203?v=4?s=120" width="120px;" alt="Yasser Tahiri"/><br /><sub><b>Yasser Tahiri</b></sub></a><br /><a href="#content-yezz123" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="https://www.iduoad.com"><img src="https://avatars.githubusercontent.com/u/25715906?v=4?s=120" width="120px;" alt="Mohammed Daoudi"/><br /><sub><b>Mohammed Daoudi</b></sub></a><br /><a href="#content-Iduoad" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="16.66%"><a href="https://github.com/bilalix"><img src="https://avatars.githubusercontent.com/u/2496324?v=4?s=120" width="120px;" alt="Bilal"/><br /><sub><b>Bilal</b></sub></a><br /><a href="#content-bilalix" title="Content">🖋</a> <a href="https://github.com/geeksblabla/stateofdev.ma/commits?author=bilalix" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## Credit
+
+This project is inspired by :
+
+- [Stack Overflow Survey ](https://insights.stackoverflow.com/survey/2020)
+- [State of Front-end Survey](https://tsh.io/state-of-frontend/)
