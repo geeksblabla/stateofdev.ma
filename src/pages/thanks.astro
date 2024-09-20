@@ -73,3 +73,38 @@ const posts = [
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  function copyContent(button: Element) {
+    const content = button.getAttribute("data-content");
+    if (!content) {
+      console.error("Content not found in dataset");
+      return;
+    }
+    navigator.clipboard
+      .writeText(content)
+      .then(() => {
+        const tooltip = button.querySelector(".tooltip");
+        if (tooltip) {
+          tooltip.classList.remove("hidden");
+          setTimeout(() => {
+            tooltip.classList.add("hidden");
+          }, 2000);
+        }
+      })
+      .catch((err) => {
+        console.error("Failed to copy: ", err);
+      });
+  }
+
+  const copyButtons = document.querySelectorAll('[data-id="copyButton"]');
+
+  if (copyButtons) {
+    copyButtons.forEach((copyButton) => {
+      copyButton.addEventListener("click", function () {
+        console.log("clicked");
+        copyContent(copyButton);
+      });
+    });
+  }
+</script>

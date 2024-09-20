@@ -98,7 +98,7 @@ const shareLinks = {
     <button
       class="text-gray-400 hover:text-emerald-500 relative"
       title="Copy Content"
-      id="copyButton"
+      data-id="copyButton"
       data-content={content}
     >
       <svg
@@ -122,31 +122,3 @@ const shareLinks = {
     </button>
   </div>
 </div>
-
-<script>
-  function copyContent(button: HTMLElement) {
-    const content = button.dataset.content;
-    if (!content) {
-      console.error("Content not found in dataset");
-      return;
-    }
-    navigator.clipboard
-      .writeText(content)
-      .then(() => {
-        const tooltip = button.querySelector(".tooltip");
-        if (tooltip) {
-          tooltip.classList.remove("hidden");
-          setTimeout(() => {
-            tooltip.classList.add("hidden");
-          }, 2000);
-        }
-      })
-      .catch((err) => {
-        console.error("Failed to copy: ", err);
-      });
-  }
-
-  document.getElementById("copyButton")?.addEventListener("click", function () {
-    copyContent(this);
-  });
-</script>
