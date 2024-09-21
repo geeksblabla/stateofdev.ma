@@ -221,6 +221,9 @@ questions:
       - Apache Spark
       - Bun Js
       - Deno Js
+      - No-code Platforms (e.g., Appgyver, Glide)
+      - Low-code Platforms (e.g., PowerApps, Zoho Creator)
+      - Website Builders (e.g., Webflow, Wix)
       - Other
 
   - label: "What are the platforms and tools you want to learn next?"
@@ -246,6 +249,9 @@ questions:
       - Apache Spark
       - Bun Js
       - Deno Js
+      - No-code Platforms (e.g., Appgyver, Glide)
+      - Low-code Platforms (e.g., PowerApps, Zoho Creator)
+      - Website Builders (e.g., Webflow, Wix)
       - Other
 
   - label: "Your primary Operating System is:"
@@ -326,4 +332,37 @@ questions:
       - Neo4j
       - Apache Cassandra
       - BigTable
+      - Other
+
+  - label: "Do you use no-code/low-code platforms?"
+    required: true
+    multiple: false
+    choices:
+      - Yes, I regularly use no-code/low-code platforms
+      - Yes, I occasionally use no-code/low-code platforms
+      - No, but I am interested in learning
+      - No, I do not use them and am not interested
+
+  - label: "What no-code/low-code tools are you using?"
+    multiple: true
+    choices:
+      - OutSystems
+      - Mendix
+      - Bubble
+      - Adalo
+      - Glide
+      - WordPress
+      - Webflow
+      - PowerApps
+      - Zapier
+      - Integromat (Make)
+      - Others
+
+  - label: "What do you consider the benefits of no-code/low-code platforms?"
+    multiple: true
+    choices:
+      - Faster development time
+      - Reduced cost
+      - Easier prototyping
+      - Increased accessibility for non-developers
       - Other
