@@ -12,32 +12,56 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<nav
-  class="hidden md:block pr-6 lg:block pb-12 w-[300px] max-h-screen overflow-y-auto overflow-x-visible sticky top-0"
->
-  <div class="overflow-x-visible relative pl-[1.5px]">
-    <div
-      id="active-indicator"
-      class="z-10 absolute left-[1px] w-0.5 rounded-full h-5 bg-emerald-500 transition-all duration-200 ease-in-out"
-    >
+<div>
+  <nav
+    class="md:block lg:block pb-12 w-full md:w-[300px] max-h-screen overflow-y-auto overflow-x-visible md:sticky md:top-0"
+  >
+    <div class="overflow-x-visible relative pl-[1.5px]">
+      <ul
+        id="toc-list"
+        class="px-6 py-6 z-20 border-l border-solid border-gray-300 hidden md:block"
+      >
+        {
+          items.map((item) => (
+            <li class={`text-sm ${item.depth > 1 ? "ml-4" : ""} relative`}>
+              <a
+                href={`#${item.slug}`}
+                class={`underline-offset-4 ${item.depth > 1 ? "text-xs" : "text-sm"} inline-flex items-center hover:text-emerald-600 transition-colors duration-300 hover:underline py-1 `}
+                data-toc-item
+              >
+                {item.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <div
+        id="active-indicator"
+        class="z-10 absolute left-[1px] w-full bg-emerald-500/10 transition-all duration-200 ease-in-out border-l-2 border-solid border-emerald-500 hidden md:block"
+      >
+      </div>
     </div>
-    <ul class="px-6 border-l border-solid border-gray-300">
-      {
-        items.map((item) => (
-          <li class={`text-sm ${item.depth > 1 ? "ml-4" : ""} relative`}>
-            <a
-              href={`#${item.slug}`}
-              class={`underline-offset-4 ${item.depth > 1 ? "text-xs" : "text-sm"} inline-flex items-center hover:text-emerald-600 transition-colors duration-200 hover:underline py-1`}
-              data-toc-item
-            >
-              {item.text}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-</nav>
+  </nav>
+  <button
+    id="toc-toggle"
+    class="fixed bottom-4 right-4 bg-gray-400 text-white p-3 rounded-full shadow-lg md:hidden z-50"
+    aria-label="Toggle Table of Contents"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 10h16M4 14h16M4 18h8"></path>
+    </svg>
+  </button>
+</div>
 
 <script>
   function updateActiveItem() {
@@ -95,6 +119,58 @@ const { items } = Astro.props;
     }
   }
 
+  function toggleToc() {
+    const tocList = document.getElementById("toc-list");
+    const tocToggle = document.getElementById("toc-toggle");
+
+    if (tocList && tocToggle) {
+      tocList.classList.toggle("hidden");
+      tocList.classList.toggle("fixed");
+      tocList.classList.toggle("inset-0");
+      tocList.classList.toggle("bg-white");
+      tocList.classList.toggle("z-50");
+      tocList.classList.toggle("overflow-y-auto");
+
+      if (!tocList.classList.contains("hidden")) {
+        tocToggle.innerHTML =
+          '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>';
+      } else {
+        tocToggle.innerHTML =
+          '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h8" /></path></svg>';
+      }
+    }
+  }
+
+  function hideTocOnMobile() {
+    const tocList = document.getElementById("toc-list");
+    const tocToggle = document.getElementById("toc-toggle");
+
+    if (tocList && tocToggle && window.innerWidth < 768) {
+      tocList.classList.add("hidden");
+      tocList.classList.remove(
+        "fixed",
+        "inset-0",
+        "bg-white",
+        "z-50",
+        "overflow-y-auto"
+      );
+      tocToggle.innerHTML =
+        '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h8" /></path></svg>';
+    }
+  }
+
   window.addEventListener("scroll", updateActiveItem);
   window.addEventListener("load", updateActiveItem);
+
+  const tocToggle = document.getElementById("toc-toggle");
+  if (tocToggle) {
+    tocToggle.addEventListener("click", toggleToc);
+  }
+
+  const tocLinks = document.querySelectorAll("[data-toc-item]");
+  tocLinks.forEach((link) => {
+    link.addEventListener("click", hideTocOnMobile);
+  });
+
+  window.addEventListener("resize", hideTocOnMobile);
 </script>
