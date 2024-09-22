@@ -13,19 +13,24 @@ const { items } = Astro.props;
 ---
 
 <nav
-  class="hidden md:block px-6 lg:block mt-3 sticky top-10 p-2 pb-12 h-fit min-w-[350px] rounded-md border border-solid border-gray-300/50"
+  class="hidden md:block pr-6 lg:block pb-12 w-[300px] max-h-screen overflow-y-auto overflow-x-visible sticky top-0"
 >
-  <div>
-    <ul>
+  <div class="overflow-x-visible relative pl-[1.5px]">
+    <div
+      id="active-indicator"
+      class="z-10 absolute left-[1px] w-0.5 rounded-full h-5 bg-emerald-500 transition-all duration-200 ease-in-out"
+    >
+    </div>
+    <ul class="px-6 border-l border-solid border-gray-300">
       {
-        items.map((item, index) => (
-          <li class="text-lg my-3">
+        items.map((item) => (
+          <li class={`text-sm ${item.depth > 1 ? "ml-4" : ""} relative`}>
             <a
               href={`#${item.slug}`}
-              class="underline-offset-4 text-base inline-flex items-center font-medium hover:text-emerald-600 transition-colors duration-200 hover:underline"
+              class={`underline-offset-4 ${item.depth > 1 ? "text-xs" : "text-sm"} inline-flex items-center hover:text-emerald-600 transition-colors duration-200 hover:underline py-1`}
               data-toc-item
             >
-              {String(index + 1).padStart(2, "0")} - {item.text}
+              {item.text}
             </a>
           </li>
         ))
@@ -38,6 +43,7 @@ const { items } = Astro.props;
   function updateActiveItem() {
     const tocItems = document.querySelectorAll("[data-toc-item]");
     const headings = Array.from(document.querySelectorAll("h1, h2"));
+    const activeIndicator = document.getElementById("active-indicator");
 
     let activeItem = null;
 
@@ -51,11 +57,20 @@ const { items } = Astro.props;
     tocItems.forEach((item) => {
       item.classList.remove("text-emerald-600", "font-bold");
     });
-    if (activeItem) {
+
+    if (activeItem && activeIndicator) {
       (activeItem as HTMLElement).classList.add(
         "text-emerald-600",
         "font-bold"
       );
+      const itemRect = (activeItem as HTMLElement).getBoundingClientRect();
+      const navRect = (activeItem as HTMLElement)
+        ?.closest("nav")
+        ?.getBoundingClientRect();
+      const navElement = (activeItem as HTMLElement)?.closest("nav");
+      const navScrollTop = navElement ? navElement.scrollTop : 0;
+      activeIndicator.style.top = `${itemRect.top - (navRect?.top || 0) + navScrollTop}px`;
+      activeIndicator.style.height = `${itemRect.height}px`;
     }
   }
 

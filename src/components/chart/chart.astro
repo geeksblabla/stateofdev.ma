@@ -23,11 +23,12 @@ const {
 const { year: yearContext } = getContext(Astro);
 const year = (yearProp || yearContext || "null") as Year;
 const results = getQuestion({ id, year, condition, groupBy });
+const isFiltered = !!condition;
 ---
 
 {
   results ? (
-    <RChart results={results} pie={pie} year={year} />
+    <RChart results={results} pie={pie} year={year} isFiltered={isFiltered} />
   ) : (
     <div class="text-sm text-red-500">
       {" "}

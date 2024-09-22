@@ -5,21 +5,24 @@ import queryString from "query-string";
 
 type ShareButtonsProps = {
   results: FinalResult;
+  year?: Year;
 };
 
-export const ChartActions = ({ results }: ShareButtonsProps) => {
+export const ChartActions = ({ results, year }: ShareButtonsProps) => {
   const shareUrl = `/#${new URLSearchParams({
     question_id: results.id
   }).toString()}`;
   const shareTitle = `Check out this report: ${results.label}`;
   return (
-    <div className="flex justify-end items-center">
+    <div className="flex justify-end items-center pt-2 mt-3 border-t border-gray-200">
       <ShareButtons url={shareUrl} title={shareTitle} />
+      <span className="ml-3 mr-2 h-4 w-px bg-gray-400"></span>
+      <PlaygroundButton results={results} year={year} />
     </div>
   );
 };
 
-export const PlaygroundButton = ({
+const PlaygroundButton = ({
   results,
   year
 }: {
@@ -35,7 +38,7 @@ export const PlaygroundButton = ({
         },
         { skipEmptyString: true }
       )}`}
-      className="text-gray-400 text-sm  hover:text-gray-700 decoration-none transition-colors flex items-center pl-2 relative group"
+      className="!text-gray-400  text-sm  hover:!text-gray-800 decoration-none transition-colors flex items-center pl-2 relative group"
     >
       <svg
         width="24px"
@@ -52,7 +55,7 @@ export const PlaygroundButton = ({
           strokeLinecap="round"
         />
       </svg>
-      <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+      <span className="absolute hidden md:block bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
         Open in playground
       </span>
     </a>

@@ -17,6 +17,7 @@ const colors = [
 type BarChartProps = {
   results: FinalResult | null;
   sortByTotal?: boolean;
+  isFiltered?: boolean;
 };
 
 type BarProps = {
@@ -110,7 +111,7 @@ const Bar = ({ result, index, total }: BarProps) => {
         </div>
         {!result.grouped ? (
           <div
-            className="bg-green-500 opacity-60 h-full animate-grow-bar rounded-[3px] relative" // Add relative positioning
+            className="bg-green-500 opacity-60 h-full rounded-[3px] relative" // Add relative positioning
             style={{
               width: `${getPercent(result.total, total)}%`,
               animationDelay: `${index * 0.1}s`
@@ -139,7 +140,11 @@ const Bar = ({ result, index, total }: BarProps) => {
   );
 };
 
-export const BarChart = ({ results, sortByTotal = true }: BarChartProps) => {
+export const BarChart = ({
+  results,
+  sortByTotal = true,
+  isFiltered = false
+}: BarChartProps) => {
   if (!results) return null;
 
   const displayResults = sortByTotal
@@ -164,22 +169,27 @@ export const BarChart = ({ results, sortByTotal = true }: BarChartProps) => {
           total={results.total}
         />
       ))}
-      <div className="flex items-end  justify-end">
+      <div className="flex justify-between pb-1">
+        <span className="text-xs text-gray-400">
+          {isFiltered && "NOTE: Filters applied"}
+        </span>
         <span className="text-sm text-gray-600">Total: {results.total}</span>
       </div>
       {/*  legend for grouped questions */}
-      <div className="mt-6 flex flex-wrap justify-center">
-        {Array.from(legendLabels).map((label, index) => (
-          <div key={label} className="flex items-center mr-4 mb-2">
-            <div
-              className={`w-4 h-4 ${
-                colors[index % colors.length]
-              } mr-2 opacity-60`}
-            ></div>
-            <span className="text-sm">{label}</span>
-          </div>
-        ))}
-      </div>
+      {legendLabels.size > 0 && (
+        <div className="mt-6 flex flex-wrap justify-center">
+          {Array.from(legendLabels).map((label, index) => (
+            <div key={label} className="flex items-center mr-4 mb-2">
+              <div
+                className={`w-4 h-4 ${
+                  colors[index % colors.length]
+                } mr-2 opacity-60`}
+              ></div>
+              <span className="text-sm">{label}</span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

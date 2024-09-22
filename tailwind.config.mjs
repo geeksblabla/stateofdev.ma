@@ -27,7 +27,7 @@ export default {
         }
       },
       animation: {
-        "grow-bar": "growBar 1s ease-in-out forwards",
+        "grow-bar": "growBar 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards",
         fadeIn: "fadeIn 1s"
       },
       container: {
