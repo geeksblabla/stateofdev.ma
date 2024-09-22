@@ -17,7 +17,6 @@ const colors = [
 type BarChartProps = {
   results: FinalResult | null;
   sortByTotal?: boolean;
-  isFiltered?: boolean;
 };
 
 type BarProps = {
@@ -140,11 +139,7 @@ const Bar = ({ result, index, total }: BarProps) => {
   );
 };
 
-export const BarChart = ({
-  results,
-  sortByTotal = true,
-  isFiltered = false
-}: BarChartProps) => {
+export const BarChart = ({ results, sortByTotal = true }: BarChartProps) => {
   if (!results) return null;
 
   const displayResults = sortByTotal
@@ -171,7 +166,7 @@ export const BarChart = ({
       ))}
       <div className="flex justify-between pb-1">
         <span className="text-xs text-gray-400">
-          {isFiltered && "NOTE: Filters applied"}
+          {results.isFiltered && "NOTE: Filters applied"}
         </span>
         <span className="text-sm text-gray-600">Total: {results.total}</span>
       </div>

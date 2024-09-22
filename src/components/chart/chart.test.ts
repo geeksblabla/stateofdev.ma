@@ -285,6 +285,32 @@ describe("getQuestion Filters", () => {
     });
     expect(result?.total).toBe(4); // user-4 should be excluded due to missing answer
   });
+
+  test("sets isFiltered correctly", () => {
+    const resultNoFilter = getQuestion({ id: "profile-q-0", dataSource });
+    expect(resultNoFilter?.isFiltered).toBe(false);
+
+    const resultWithFunctionFilter = getQuestion({
+      id: "profile-q-0",
+      dataSource,
+      condition: (v) => v["profile-q-4"] === 3
+    });
+    expect(resultWithFunctionFilter?.isFiltered).toBe(true);
+
+    const resultWithEmptyArrayFilter = getQuestion({
+      id: "profile-q-0",
+      dataSource,
+      condition: [{ question_id: "profile-q-4", values: [] }]
+    });
+    expect(resultWithEmptyArrayFilter?.isFiltered).toBe(false);
+
+    const resultWithNonEmptyArrayFilter = getQuestion({
+      id: "profile-q-0",
+      dataSource,
+      condition: [{ question_id: "profile-q-4", values: ["3"] }]
+    });
+    expect(resultWithNonEmptyArrayFilter?.isFiltered).toBe(true);
+  });
 });
 
 describe("getQuestion Grouping", () => {

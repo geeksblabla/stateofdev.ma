@@ -68,9 +68,30 @@ const { items } = Astro.props;
         ?.closest("nav")
         ?.getBoundingClientRect();
       const navElement = (activeItem as HTMLElement)?.closest("nav");
-      const navScrollTop = navElement ? navElement.scrollTop : 0;
-      activeIndicator.style.top = `${itemRect.top - (navRect?.top || 0) + navScrollTop}px`;
-      activeIndicator.style.height = `${itemRect.height}px`;
+
+      if (navElement && navRect) {
+        const navScrollTop = navElement.scrollTop;
+        activeIndicator.style.top = `${itemRect.top - navRect.top + navScrollTop}px`;
+        activeIndicator.style.height = `${itemRect.height}px`;
+
+        // Ensure the active item is visible in the nav with smooth scrolling
+        const itemTop = itemRect.top - navRect.top;
+        const itemBottom = itemTop + itemRect.height;
+        const navHeight = navElement.clientHeight;
+        const DELTA_SCROLL = 400;
+
+        if (itemTop < 0) {
+          navElement.scrollTo({
+            top: navElement.scrollTop + itemTop - DELTA_SCROLL,
+            behavior: "smooth"
+          });
+        } else if (itemBottom > navHeight) {
+          navElement.scrollTo({
+            top: navElement.scrollTop + (itemBottom - navHeight) + DELTA_SCROLL,
+            behavior: "smooth"
+          });
+        }
+      }
     }
   }
 

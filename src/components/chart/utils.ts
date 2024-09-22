@@ -108,6 +108,7 @@ type GroupedResult = {
 };
 
 export type FinalResult = Question & {
+  isFiltered: boolean;
   id: string;
   results: GroupedResult[];
   total: number;
@@ -152,11 +153,17 @@ export const getQuestion = ({
           })
   }));
 
+  const isFiltered =
+    typeof condition === "function"
+      ? true
+      : condition?.find((c) => c.values.length > 0) !== undefined;
+
   return {
     total: resultsWithChoicesCounts.total,
     results: resultsWithGrouping,
     ...question,
-    id
+    id,
+    isFiltered
   } as FinalResult;
 };
 
