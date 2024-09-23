@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import finImage from "@/assets/fin.jpeg";
+---
+
+<div
+  id="exitModal"
+  class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50"
+>
+  <div class="bg-white rounded-lg shadow-lg max-w-md w-full text-center">
+    <span
+      id="closeModal"
+      class="absolute top-2 right-2 text-gray-500 cursor-pointer">&times;</span
+    >
+    <Image src={finImage} alt="Fin Image" class="mx-auto rounded-t-md" />
+    <button
+      id="stayButton"
+      class="bg-emerald-500 text-white font-bold px-4 py-4 w-full rounded-b-md text-base"
+    >
+      😂 مغادي فين، انا نكمل
+    </button>
+  </div>
+</div>
+
+<script>
+  const surveyForm = document.getElementById("survey-form") as HTMLDivElement;
+
+  if (surveyForm) {
+    surveyForm.addEventListener("mouseleave", function (e: MouseEvent) {
+      // Show the custom modal
+      const modal = document.getElementById("exitModal") as HTMLDivElement;
+      modal.classList.remove("hidden");
+
+      // Close the modal when the user clicks on the close button or stay button
+      const closeModal = document.getElementById(
+        "closeModal"
+      ) as HTMLSpanElement;
+      const stayButton = document.getElementById(
+        "stayButton"
+      ) as HTMLButtonElement;
+      closeModal.onclick = stayButton.onclick = function () {
+        modal.classList.add("hidden");
+      };
+
+      // Close the modal when the user clicks anywhere outside of the modal
+      window.onclick = function (event: MouseEvent) {
+        if (event.target == modal) {
+          modal.classList.add("hidden");
+        }
+      };
+    });
+  }
+</script>

@@ -6,12 +6,17 @@ import {
   type QuestionCondition
 } from "../chart/utils";
 import { getSurveyData, type Year, type QuestionMap } from "../chart/data";
-import { PlaygroundForm, type PlaygroundFormData } from "./playground-form";
+import {
+  PlaygroundForm,
+  type ChartType,
+  type PlaygroundFormData
+} from "./playground-form";
 import { ShareButtons } from "../chart/share-buttons";
 
 export const SurveyPlayground: React.FC = () => {
   const [result, setResult] = useState<FinalResult | null>(null);
   const [questions, setQuestions] = useState<QuestionMap>({});
+  const [chartType, setChartType] = useState<ChartType>("bar");
 
   const handleFormChange = React.useCallback((formData: PlaygroundFormData) => {
     const { questions } = getSurveyData(formData.year as Year);
@@ -27,6 +32,7 @@ export const SurveyPlayground: React.FC = () => {
         groupBy: formData.group_by || undefined
       });
       setResult(result);
+      setChartType(formData.chart_type as ChartType);
     } else {
       setResult(null);
     }
@@ -46,6 +52,7 @@ export const SurveyPlayground: React.FC = () => {
                 sortByTotal={false}
                 title={true}
                 isPlayground={true}
+                pie={chartType === "pie"}
               />
               <div className="flex justify-end items-center pt-4 pr-2">
                 <ShareActions />
