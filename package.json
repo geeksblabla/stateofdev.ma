@@ -14,7 +14,9 @@
     "test:ci": "vitest --coverage.enabled true",
     "lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\"",
     "lint:ci": "eslint \"src/**/*.{js,ts,jsx,tsx,astro}\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "export-results": " tsx --env-file=.env.local ./scripts/export-results.ts",
+    "export-results:ci": " tsx  ./scripts/export-results.ts"
   },
   "dependencies": {
     "@astro-utils/context": "^1.1.15",
@@ -68,6 +70,7 @@
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "rimraf": "^6.0.1",
+    "tsx": "^4.19.1",
     "vitest": "^2.1.1"
   },
   "lint-staged": {
