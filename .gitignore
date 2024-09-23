@@ -25,3 +25,4 @@ pnpm-debug.log*
 coverage/
 .env*
 .netlify/
+scripts/*.json

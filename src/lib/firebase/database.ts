@@ -10,6 +10,17 @@ type Answers = {
   [key: string]: number | number[] | null;
 };
 
+type ExportedResult = {
+  results: (Answers & { userId: string })[];
+};
+
+export const exportResults = async () => {
+  const results = await getResults().get();
+  return {
+    results: results.docs.map((doc) => ({ ...doc.data(), userId: doc.id }))
+  } as ExportedResult;
+};
+
 export const saveAnswers = (userId: string, data: Answers) => {
   return getResults().doc(userId).set(data, { merge: true });
 };
