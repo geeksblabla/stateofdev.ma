@@ -6,6 +6,7 @@ import aiQuestion from "@/survey/4-ai.yml";
 import techQuestion from "@/survey/5-tech.yml";
 import communityQuestion from "@/survey/6-community.yml";
 import { SurveyForm } from "./survey-form";
+import ExitPopup from "./exit-popup.astro";
 
 const questions = [
   profileQuestions,
@@ -17,4 +18,8 @@ const questions = [
 ];
 ---
 
-<SurveyForm questions={questions} client:only="react" />
+<div id="survey-form" class="min-h-screen">
+  <SurveyForm questions={questions} client:only="react" />
+</div>
+
+<ExitPopup />
