@@ -1,22 +1,51 @@
-import type { FieldValues, UseFormRegister } from "react-hook-form";
+import { useCallback, useState, type SyntheticEvent } from "react";
+import type {
+  FieldValues,
+  UseFormGetValues,
+  UseFormRegister
+} from "react-hook-form";
 
 type QuestionProps = {
   question: SurveyQuestion;
   index: number;
   register: UseFormRegister<FieldValues>;
+  getValues: UseFormGetValues<FieldValues>;
   sectionId: string;
   selected: boolean;
 };
 
-export default ({
+export const Question = ({
   question,
   index,
   register,
   sectionId,
-  selected
+  selected,
+  getValues
 }: QuestionProps) => {
   const { label, choices } = question;
   const fitContent = choices.length > 10;
+  const [showOtherInput, setShowOtherInput] = useState(false);
+
+  // this is a simple solution to check if the user has selected "others" or "other" and based on that show the textarea
+  const handleChoiceChange = useCallback(
+    (_e: SyntheticEvent) => {
+      const othersIndex = choices.findIndex(
+        (c) => c.toLowerCase() === "others" || c.toLowerCase() === "other"
+      );
+      if (othersIndex === -1) return;
+
+      const values = getValues(`${sectionId}-q-${index}`) as string | string[];
+      const valuesArray = (Array.isArray(values) ? values : [values]).map((v) =>
+        parseInt(v)
+      );
+      if (valuesArray.includes(othersIndex)) {
+        setShowOtherInput(true);
+      } else {
+        setShowOtherInput(false);
+      }
+    },
+    [setShowOtherInput, getValues, sectionId, index, choices]
+  );
 
   return (
     <div
@@ -50,10 +79,19 @@ export default ({
             index={i}
             register={register}
             key={`${sectionId}-q-${index}-${i}`}
-            required={question.required ?? false}
+            required={question.required ?? true}
             multiple={question.multiple ?? false}
+            onChange={handleChoiceChange}
           />
         ))}
+        {showOtherInput && (
+          <textarea
+            {...register(`${sectionId}-q-${index}-others`)}
+            className="mt-4 w-full p-2 border border-gray-300 rounded-md ring-1 ring-emerald-600 focus:ring-2 focus:ring-emerald-600"
+            placeholder="Please specify... use comma to separate each item"
+            rows={3}
+          />
+        )}
       </div>
     </div>
   );
@@ -67,6 +105,7 @@ type ChoiceProps = {
   register: UseFormRegister<FieldValues>;
   required: boolean;
   multiple: boolean;
+  onChange: (e: SyntheticEvent) => void;
 };
 
 const Choice = ({
@@ -76,14 +115,15 @@ const Choice = ({
   name,
   register,
   required,
-  multiple
+  multiple,
+  onChange
 }: ChoiceProps) => {
   return (
     <div className="relative w-full overflow-hidden flex items-center bg-white  rounded-lg p-3 pl-14 mb-2 cursor-pointer">
       <input
         className="peer hidden"
         type={multiple ? "checkbox" : "radio"}
-        {...register(name, { required })}
+        {...register(name, { required, onChange })}
         id={id}
         value={index}
         data-testid={id}
