@@ -16,13 +16,17 @@ export const ERRORS = {
 } as const;
 
 // we user this because react hook form does not support using number for select input
-const convertAnswersToNumber = (
+const normalizeAnswers = (
   answers: Record<string, string | string[] | null | boolean>
 ) => {
-  const convertedAnswers: Record<string, number | number[] | null> = {};
+  const convertedAnswers: Record<string, number | number[] | null | string> =
+    {};
 
   for (const [key, value] of Object.entries(answers)) {
-    if (value === null) {
+    if (key.endsWith("others")) {
+      // text area value we should'nt convert to number
+      convertedAnswers[key] = value as string;
+    } else if (value === null) {
       convertedAnswers[key] = null;
     } else if (Array.isArray(value)) {
       convertedAnswers[key] = value.map(Number);
@@ -49,7 +53,6 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
     setError(ERRORS.none);
     const name = `${section.label}-q-${QIndex}`;
     const value = getValues(name);
-    console.log(getValues());
     // value === null   default value for simple questions and false for multiple ones
     if (isRequired && (value === null || value === false)) {
       setError(ERRORS.required);
@@ -73,7 +76,7 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
   };
 
   const submitData = useCallback(async () => {
-    const answers = convertAnswersToNumber(getValues());
+    const answers = normalizeAnswers(getValues());
     setLoading(true);
     const { error } = await submitAnswers({
       answers

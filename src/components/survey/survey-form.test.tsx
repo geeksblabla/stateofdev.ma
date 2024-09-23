@@ -1,8 +1,18 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { SurveyForm } from "./survey-form";
 import * as utils from "./utils";
 import { ERRORS } from "./section";
+
+function setup(jsx: React.ReactNode) {
+  return {
+    user: userEvent.setup(),
+    // Import `render` from the framework library of your choice.
+    // See https://testing-library.com/docs/dom-testing-library/install#wrappers
+    ...render(jsx)
+  };
+}
 
 // Mock the submitAnswers function
 const submitAnswersSpy = vi
@@ -33,13 +43,13 @@ const mockQuestions: SurveyQuestionsYamlFile[] = [
       },
       {
         label: "Question 1.2",
-        choices: ["Yes", "No", "Maybe"],
+        choices: ["Yes", "No", "Maybe", "Others"],
         multiple: true,
         required: false
       },
       {
         label: "Question 1.3",
-        choices: ["Never", "Sometimes", "Often", "Always"],
+        choices: ["Never", "Sometimes", "Often", "Always", "Other"],
         multiple: false,
         required: false
       }
@@ -88,10 +98,10 @@ describe("SurveyForm", () => {
   });
 
   it("should show error message when required question is not answered", async () => {
-    render(<SurveyForm questions={mockQuestions} />);
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
 
     expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
-    fireEvent.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("next-button"));
 
     await waitFor(() => {
       expect(screen.getByTestId("error-message")).toBeInTheDocument();
@@ -99,10 +109,10 @@ describe("SurveyForm", () => {
   });
 
   it("error message should disappear after 2000ms", async () => {
-    render(<SurveyForm questions={mockQuestions} />);
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
 
     expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
-    fireEvent.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("next-button"));
 
     await waitFor(() => {
       expect(screen.getByTestId("error-message")).toBeInTheDocument();
@@ -114,44 +124,44 @@ describe("SurveyForm", () => {
   });
 
   it("should navigate to the next question without error", async () => {
-    render(<SurveyForm questions={mockQuestions} />);
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
     expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
     expect(screen.getByTestId("profile-q-1")).toHaveClass("hidden");
-    fireEvent.click(screen.getByTestId("profile-q-0-0")); // id for the first input of the first question
-    fireEvent.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-0-0")); // id for the first input of the first question
+    await user.click(screen.getByTestId("next-button"));
     expect(screen.getByTestId("profile-q-1")).toHaveClass("block");
     expect(screen.getByTestId("profile-q-0")).toHaveClass("hidden");
   });
 
   it("show skip button when the question is not required and skip button is working as expected", async () => {
-    render(<SurveyForm questions={mockQuestions} />);
-    fireEvent.click(screen.getByTestId("profile-q-0-0"));
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
+    await user.click(screen.getByTestId("profile-q-0-0"));
     expect(screen.queryByTestId("skip-button")).not.toBeInTheDocument();
-    fireEvent.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("next-button"));
     expect(screen.getByTestId("skip-button")).toBeInTheDocument();
-    fireEvent.click(screen.getByTestId("skip-button"));
+    await user.click(screen.getByTestId("skip-button"));
     expect(screen.getByTestId("profile-q-1")).toHaveClass("hidden");
     expect(screen.getByTestId("profile-q-2")).toHaveClass("block");
   });
   it("back button should appear starting from the second question and work as expected", async () => {
-    render(<SurveyForm questions={mockQuestions} />);
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
     expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
-    fireEvent.click(screen.getByTestId("profile-q-0-0"));
-    fireEvent.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-0-0"));
+    await user.click(screen.getByTestId("next-button"));
     expect(screen.getByTestId("back-button")).toBeInTheDocument();
-    fireEvent.click(screen.getByTestId("back-button"));
+    await user.click(screen.getByTestId("back-button"));
     expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
     expect(screen.getByTestId("profile-q-1")).toHaveClass("hidden");
   });
 
   it("In the last question, it should call submitAnswers with correct answers", async () => {
-    render(<SurveyForm questions={mockQuestions} />);
-    fireEvent.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
-    fireEvent.click(screen.getByTestId("next-button"));
-    fireEvent.click(screen.getByTestId("profile-q-1-0"));
-    fireEvent.click(screen.getByTestId("next-button"));
-    fireEvent.click(screen.getByTestId("profile-q-2-2"));
-    fireEvent.click(screen.getByTestId("next-button"));
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
+    await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-1-0"));
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-2-2"));
+    await user.click(screen.getByTestId("next-button"));
     expect(submitAnswersSpy).toHaveBeenCalledWith({
       answers: {
         "profile-q-0": 0,
@@ -167,16 +177,75 @@ describe("SurveyForm", () => {
     });
   });
 
+  // test for other input
+
+  it("should show the text area when the user selects the 'other' option for a single choice question", async () => {
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
+
+    await user.click(screen.getByTestId("profile-q-0-0"));
+    await user.click(screen.getByTestId("next-button"));
+    // Select the 'other' option for the 2nd question
+    await user.click(screen.getByTestId("profile-q-1-3"));
+    // Check if the text area is displayed
+    await waitFor(() => {
+      expect(screen.getByTestId("profile-q-1-others")).toBeInTheDocument();
+    });
+  });
+
+  it("should show the text area when the user selects the 'other' option for a multiple choice question", async () => {
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
+
+    await user.click(screen.getByTestId("profile-q-0-0"));
+    await user.click(screen.getByTestId("next-button"));
+    // Select the 'other' option for the 2nd question
+    await user.click(screen.getByTestId("profile-q-1-3"));
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-2-4"));
+
+    await waitFor(() => {
+      expect(screen.getByTestId("profile-q-2-others")).toBeInTheDocument();
+    });
+    // click multiple choice again
+    user.click(screen.getByTestId("profile-q-2-4"));
+    await waitFor(() => {
+      expect(screen.getByTestId("profile-q-2-others")).toBeInTheDocument();
+    });
+  });
+
+  it("should include the text area input in the end results", async () => {
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
+    await user.click(screen.getByTestId("profile-q-0-0"));
+    await user.click(screen.getByTestId("next-button"));
+    // Select the 'other' option for the 2nd question
+    await user.click(screen.getByTestId("profile-q-1-3"));
+
+    // Enter text in the text area
+    await user.type(screen.getByTestId("profile-q-1-others"), "custom option");
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-2-3"));
+    await user.click(screen.getByTestId("next-button"));
+
+    // Check if submitAnswers is called with the correct answers including the text area input
+    expect(submitAnswersSpy).toHaveBeenCalledWith({
+      answers: {
+        "profile-q-0": 0,
+        "profile-q-1": [3],
+        "profile-q-1-others": "custom option",
+        "profile-q-2": 3
+      }
+    });
+  });
+
   it("Allow multiple answers for questions with multiple: true", async () => {
-    render(<SurveyForm questions={mockQuestions} />);
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
     expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
-    fireEvent.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
-    fireEvent.click(screen.getByTestId("next-button"));
-    fireEvent.click(screen.getByTestId("profile-q-1-0"));
-    fireEvent.click(screen.getByTestId("profile-q-1-1"));
-    fireEvent.click(screen.getByTestId("next-button"));
-    fireEvent.click(screen.getByTestId("profile-q-2-2"));
-    fireEvent.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-1-0"));
+    await user.click(screen.getByTestId("profile-q-1-1"));
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-2-2"));
+    await user.click(screen.getByTestId("next-button"));
     expect(submitAnswersSpy).toHaveBeenCalledWith({
       answers: {
         "profile-q-0": 0,
@@ -186,16 +255,36 @@ describe("SurveyForm", () => {
     });
   });
 
-  it("only allow one answer for questions with multiple: false", async () => {
-    render(<SurveyForm questions={mockQuestions} />);
+  it("Toggling selection of an option for questions should work as expected with multiple: true", async () => {
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
     expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
-    fireEvent.click(screen.getByTestId("profile-q-0-0"));
-    fireEvent.click(screen.getByTestId("profile-q-0-1"));
-    fireEvent.click(screen.getByTestId("next-button"));
-    fireEvent.click(screen.getByTestId("profile-q-1-0"));
-    fireEvent.click(screen.getByTestId("next-button"));
-    fireEvent.click(screen.getByTestId("profile-q-2-2"));
-    fireEvent.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-1-0"));
+    await user.click(screen.getByTestId("profile-q-1-1")); // click the first option
+    await user.click(screen.getByTestId("profile-q-1-1")); // toggle the first option
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-2-2"));
+    await user.click(screen.getByTestId("next-button"));
+    expect(submitAnswersSpy).toHaveBeenCalledWith({
+      answers: {
+        "profile-q-0": 0,
+        "profile-q-1": [0], // this question accept multiple answers
+        "profile-q-2": 2
+      }
+    });
+  });
+
+  it("only allow one answer for questions with multiple: false", async () => {
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
+    expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
+    await user.click(screen.getByTestId("profile-q-0-0"));
+    await user.click(screen.getByTestId("profile-q-0-1"));
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-1-0"));
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-2-2"));
+    await user.click(screen.getByTestId("next-button"));
     expect(submitAnswersSpy).toHaveBeenCalledWith({
       answers: {
         "profile-q-0": 1, // last selected option
@@ -206,12 +295,12 @@ describe("SurveyForm", () => {
   });
 
   it("on skip question, the selected answer should be null", async () => {
-    render(<SurveyForm questions={mockQuestions} />);
-    fireEvent.click(screen.getByTestId("profile-q-0-0"));
-    fireEvent.click(screen.getByTestId("next-button"));
-    fireEvent.click(screen.getByTestId("profile-q-1-1"));
-    fireEvent.click(screen.getByTestId("next-button"));
-    fireEvent.click(screen.getByTestId("skip-button"));
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
+    await user.click(screen.getByTestId("profile-q-0-0"));
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-1-1"));
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("skip-button"));
     expect(submitAnswersSpy).toHaveBeenCalledWith({
       answers: {
         "profile-q-0": 0,
@@ -221,11 +310,11 @@ describe("SurveyForm", () => {
     });
   });
   it("on skip question with multiple: true, the selected answer should be empty array", async () => {
-    render(<SurveyForm questions={mockQuestions} />);
-    fireEvent.click(screen.getByTestId("profile-q-0-0"));
-    fireEvent.click(screen.getByTestId("next-button"));
-    fireEvent.click(screen.getByTestId("next-button"));
-    fireEvent.click(screen.getByTestId("skip-button"));
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
+    await user.click(screen.getByTestId("profile-q-0-0"));
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("skip-button"));
     expect(submitAnswersSpy).toHaveBeenCalledWith({
       answers: {
         "profile-q-0": 0,
@@ -236,13 +325,13 @@ describe("SurveyForm", () => {
   });
 
   it("Should redirect to thanks page when all questions are answered", async () => {
-    render(<SurveyForm questions={mockQuestions} />);
-    fireEvent.click(screen.getByTestId("profile-q-0-0"));
-    fireEvent.click(screen.getByTestId("next-button"));
-    fireEvent.click(screen.getByTestId("profile-q-1-0"));
-    fireEvent.click(screen.getByTestId("next-button"));
-    fireEvent.click(screen.getByTestId("profile-q-2-2"));
-    fireEvent.click(screen.getByTestId("next-button"));
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
+    await user.click(screen.getByTestId("profile-q-0-0"));
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-1-0"));
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-2-2"));
+    await user.click(screen.getByTestId("next-button"));
 
     expect(submitAnswersSpy).toHaveBeenCalledWith({
       answers: {
@@ -255,18 +344,18 @@ describe("SurveyForm", () => {
       expect(screen.getByTestId("education-q-0")).toHaveClass("block");
       expect(screen.getByTestId("education-q-1")).toHaveClass("hidden");
     });
-    fireEvent.click(screen.getByTestId("education-q-0-0"));
-    fireEvent.click(screen.getByTestId("education-q-0-1"));
-    fireEvent.click(screen.getByTestId("next-button"));
-    fireEvent.click(screen.getByTestId("education-q-1-0"));
-    fireEvent.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("education-q-0-0"));
+    await user.click(screen.getByTestId("education-q-0-1"));
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("education-q-1-0"));
+    await user.click(screen.getByTestId("next-button"));
     await waitFor(() => {
       expect(goToThanksPageSpy).toHaveBeenCalled();
     });
   });
 
   it("Show error message when submitAnswers fails", async () => {
-    render(<SurveyForm questions={mockQuestions} />);
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
     // Mock submitAnswers to return an error
     submitAnswersSpy.mockResolvedValue({
       data: undefined,
@@ -279,12 +368,12 @@ describe("SurveyForm", () => {
       }
     });
 
-    fireEvent.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
-    fireEvent.click(screen.getByTestId("next-button"));
-    fireEvent.click(screen.getByTestId("profile-q-1-0"));
-    fireEvent.click(screen.getByTestId("next-button"));
-    fireEvent.click(screen.getByTestId("profile-q-2-2"));
-    fireEvent.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-1-0"));
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-2-2"));
+    await user.click(screen.getByTestId("next-button"));
 
     expect(screen.getByTestId("profile-q-2")).toHaveClass("block");
     // Check if the error message contains the correct text

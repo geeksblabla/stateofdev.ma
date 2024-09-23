@@ -87,9 +87,10 @@ export const Question = ({
         {showOtherInput && (
           <textarea
             {...register(`${sectionId}-q-${index}-others`)}
-            className="mt-4 w-full p-2 border border-gray-300 rounded-md ring-1 ring-emerald-600 focus:ring-2 focus:ring-emerald-600"
+            className="mt-4 w-full p-2 border border-gray-300 rounded-md ring-1 ring-emerald-600 focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
             placeholder="Please specify... use comma to separate each item"
             rows={3}
+            data-testid={`${sectionId}-q-${index}-others`}
           />
         )}
       </div>
