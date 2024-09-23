@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import Question from "./question";
+import { Question } from "./question";
 import { submitAnswers } from "./utils";
 
 type SectionProps = {
@@ -49,7 +49,7 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
     setError(ERRORS.none);
     const name = `${section.label}-q-${QIndex}`;
     const value = getValues(name);
-
+    console.log(getValues());
     // value === null   default value for simple questions and false for multiple ones
     if (isRequired && (value === null || value === false)) {
       setError(ERRORS.required);
@@ -109,10 +109,11 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
             key={`question-${i}`}
             register={register}
             sectionId={section.label}
+            getValues={getValues}
           />
         ))}
       </div>
-      <div className="flex flex-row justify-between mt-3 sticky bottom-0 bg-white py-4 border-t-2 border-gray-100 z-20">
+      <div className="flex flex-row justify-between mt-3 sticky bottom-0 bg-white py-4 border-t-2 border-gray-100 z-20 transition-all duration-1000">
         <div>
           {QIndex > 0 && <BackButton onClick={() => backToPreviousQ()} />}
         </div>
@@ -134,33 +135,38 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
             onClick={() => nextQuestion()}
           >
             {loading ? "Loading..." : "Next"}
-            {error && (
-              <div
-                data-testid="error-message"
-                className="absolute right-0 bottom-full mb-2 p-2 bg-red-100 border border-red-400 rounded-md shadow-md max-h-[100px] w-[250px]"
-              >
-                <span className="text-red-600 text-sm font-medium">
-                  <svg
-                    className="inline-block w-4 h-4 mr-1 align-text-bottom"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  {error}
-                </span>
-              </div>
-            )}
+            <ErrorMessage error={error} />
           </button>
         </div>
       </div>
     </div>
   );
 });
+
+const ErrorMessage = ({ error }: { error: string }) => {
+  if (!error) return null;
+  return (
+    <div
+      data-testid="error-message"
+      className="absolute right-0 bottom-full mb-2 p-2 bg-red-100 border border-red-400 rounded-md shadow-md max-h-[100px] w-[250px]"
+    >
+      <span className="text-red-600 text-sm font-medium">
+        <svg
+          className="inline-block w-4 h-4 mr-1 align-text-bottom"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fillRule="evenodd"
+            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+            clipRule="evenodd"
+          />
+        </svg>
+        {error}
+      </span>
+    </div>
+  );
+};
 
 const scrollToSection = (selector: string) => {
   if (document.body.clientWidth < 600)

@@ -1,19 +1,11 @@
-const sections = [
-  "Profile",
-  "Education",
-  "Work",
-  "AI",
-  "Technology",
-  "Community"
-];
-
 type StepProps = {
   label: string;
   selectedIndex: number;
   index: number;
+  totalSections: number;
 };
 
-const Step = ({ label, selectedIndex, index }: StepProps) => {
+const Step = ({ label, selectedIndex, index, totalSections }: StepProps) => {
   const color = index > selectedIndex ? "text-gray-400" : "text-emerald-600";
   return (
     <>
@@ -47,11 +39,11 @@ const Step = ({ label, selectedIndex, index }: StepProps) => {
       <span
         className={`${
           index === selectedIndex ? "inline " : "hidden md:inline "
-        }   font-semibold ${color} `}
+        }   font-semibold ${color} capitalize  `}
       >
         {label}
       </span>
-      {index < sections.length - 1 && (
+      {index < totalSections - 1 && (
         <>
           {index + 1 > selectedIndex ? (
             <span
@@ -68,7 +60,12 @@ const Step = ({ label, selectedIndex, index }: StepProps) => {
   );
 };
 
-export const Steps = ({ selectedIndex = 0 }) => {
+type StepsProps = {
+  selectedIndex: number;
+  sections: string[];
+};
+
+export const Steps = ({ selectedIndex = 0, sections }: StepsProps) => {
   return (
     <div
       id="steps"
@@ -81,6 +78,7 @@ export const Steps = ({ selectedIndex = 0 }) => {
             label={section}
             index={index}
             selectedIndex={selectedIndex}
+            totalSections={sections.length}
           />
         );
       })}
