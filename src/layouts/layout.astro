@@ -3,7 +3,7 @@ import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
 import { AstroSeo } from "@astrolib/seo";
 import "../../app/globals.css";
-// Import other necessary components or styles
+import GoogleAnalytics from "@/components/google-analytics.astro";
 
 interface Props {
   title?: string;
@@ -116,5 +116,6 @@ const description =
       <slot />
     </main>
     <Footer />
+    <GoogleAnalytics id="UA-127901499-5" />
   </body>
 </html>
