@@ -72,8 +72,8 @@ const ChartIcon = () => (
 export const Why = () => (
   <div className="relative w-screen z-0">
     <div className="mx-auto py-20 w-full max-w-screen-xl px-4 relative z-[99]">
-      <div className="w-20 mx-auto border-b-4 border-emerald-500"></div>
-      <h2 className="text-center mt-6 mb-10 text-xl font-medium text-gray-800 sm:text-2xl">
+      <div className="w-20 mb-10 mx-auto border-b-4 border-emerald-700"></div>
+      <h2 className="text-xl font-bold mb-8 text-center">
         Why Join Our Awesome Survey?
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -98,19 +98,17 @@ export const Why = () => (
   </div>
 );
 
-const Card = ({
-  title,
-  icon,
-  children
-}: {
+type CardProps = {
   title: string;
   icon: React.ReactNode;
   children: React.ReactNode;
-}) => (
+};
+
+const Card = ({ title, icon, children }: CardProps) => (
   <div className="bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-lg hover:-translate-y-1">
     <div className="flex items-center mb-4">
-      <div className="text-emerald-500 mr-4">{icon}</div>
-      <h3 className="text-xl font-medium text-gray-800">{title}</h3>
+      <div className="text-emerald-700 mr-4">{icon}</div>
+      <h3 className="text-lg font-medium text-gray-800">{title}</h3>
     </div>
     <p className="text-gray-600">{children}</p>
   </div>
