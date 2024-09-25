@@ -3,83 +3,95 @@ const reports = [
     title: "2023",
     link: "/2023",
     takeaways: [
-      "Average salary increased by 15%",
-      "React remains the most popular framework",
-      "70% of developers contribute to open source"
+      "Over 91% of participants use AI tools professionally",
+      "JavaScript remains most popular, Rust most wanted",
+      "80% prefer remote work, full-time or part-time"
     ],
-    totalSubmissions: 84731
+    totalSubmissions: 1764
   },
   {
     title: "2022",
     link: "/2022",
     takeaways: [
-      "Remote work adoption reached 60%",
-      "TypeScript usage grew by 25%",
-      "AI/ML skills in high demand"
+      "Remote work adoption reached 80%, with 56% in hybrid mode",
+      "JavaScript remains most popular, GoLang most wanted",
+      "80%+ have contributed to open-source projects",
+      "VSCode is the preferred IDE for 80% of developers"
     ],
-    totalSubmissions: 73268
+    totalSubmissions: 1617
   },
   {
     title: "2021",
     link: "/2021",
     takeaways: [
-      "JavaScript is the most used language",
-      "44% of developers are self-taught",
-      "Cloud technologies saw a 30% increase in adoption"
+      "JavaScript remains the most used language",
+      "50% of developers consider themselves self-taught",
+      "80% of respondents are somewhat happy with their current job"
     ],
-    totalSubmissions: 65844
+    totalSubmissions: 1098
   },
   {
     title: "2020",
     link: "/2020",
     takeaways: [
-      "COVID-19 accelerated digital transformation",
-      "Cybersecurity became a top priority",
-      "Bootcamp graduates increased by 20%"
+      "80% of respondents found a job within months of graduation",
+      "57% use Windows as their primary OS",
+      "60% work on side projects to improve skills",
+      "93% think the Moroccan tech community is quite good"
     ],
-    totalSubmissions: 59876
+    totalSubmissions: 2287
   }
 ];
 
 export const PastReports = () => (
   <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-20">
     <div className="container mx-auto px-4">
-      <h2 className="text-xl font-bold text-gray-800 mb-12 text-center">
+      <h2 className="text-xl font-bold mb-8 text-center">
         Last year's reports
       </h2>
+
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
         {reports.map((report, index) => (
           <ReportCard {...report} key={`report-${index}`} />
         ))}
       </div>
+
+      <DataPlaygroundSection />
     </div>
   </section>
 );
+
+type ReportCardProps = {
+  title: string;
+  link: string;
+  takeaways: string[];
+  totalSubmissions: number;
+};
 
 export const ReportCard = ({
   title,
   link,
   takeaways,
   totalSubmissions
-}: {
-  title: string;
-  link: string;
-  takeaways: string[];
-  totalSubmissions: number;
-}) => (
-  <a href={link} className="block group">
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
-      <div className="p-6">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
-        </div>
+}: ReportCardProps) => (
+  <a href={link} className="block group relative">
+    <div className="bg-white rounded-xl shadow-lg  transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
+      <div className="absolute top-4 -left-2 bg-emerald-700 text-white py-1 px-4 rounded-r-lg shadow-md">
+        <span className="font-bold">{title}</span>
+      </div>
 
-        <h3 className="text-base font-medium mb-2 text-gray-800">Takeaways:</h3>
-        <ul className="space-y-2 mb-6">
+      <div className="p-6 pt-12">
+        <h3 className="text-base font-medium  py-4 text-gray-800">
+          Total Submissions: {totalSubmissions.toLocaleString()}
+        </h3>
+        <h3 className="text-base font-medium mb-2  text-gray-800">
+          Key Takeaways:
+        </h3>
+        <ul className="space-y-3 mb-6">
           {takeaways.map((takeaway, index) => (
             <li key={index} className="flex items-start">
               <svg
-                className="w-5 h-5 text-gray-500 mr-2 mt-0.5 flex-shrink-0"
+                className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -89,16 +101,16 @@ export const ReportCard = ({
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-gray-600">{takeaway}</span>
+              <span className="text-gray-600 text-sm">{takeaway}</span>
             </li>
           ))}
         </ul>
       </div>
-      <div className="bg-gray-50 px-6 py-4">
-        <span className="text-emerald-600 font-medium group-hover:underline inline-flex items-center">
+      <div className="bg-gray-50 px-6 py-4 flex justify-between items-center rounded-b-md">
+        <span className="text-emerald-700 font-medium group-hover:underline inline-flex items-center">
           Read full report
           <svg
-            className="w-4 h-4 ml-1"
+            className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -114,4 +126,36 @@ export const ReportCard = ({
       </div>
     </div>
   </a>
+);
+
+const DataPlaygroundSection = () => (
+  <div className="mt-16 text-center">
+    <h2 className="text-xl font-bold mb-8 text-center">
+      Or explore the data yourself!
+    </h2>
+    <p className="text-gray-600 mb-6">
+      Want to dive deeper into the survey results? Try our interactive data
+      playground!
+    </p>
+    <a
+      href="/playground"
+      className="inline-flex items-center px-6 py-3 bg-emerald-700 text-white font-semibold rounded-lg shadow-md hover:bg-emerald-600 transition-colors duration-300"
+    >
+      Launch Data Playground
+      <svg
+        className="w-5 h-5 ml-2"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M13 7l5 5m0 0l-5 5m5-5H6"
+        />
+      </svg>
+    </a>
+  </div>
 );

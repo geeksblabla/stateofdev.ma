@@ -2,13 +2,14 @@
 import BaseLayout from "@/layouts/layout.astro";
 
 const rules = [
-  "We care about privacy; that's why all your answers are completely anonymous. We only rely on anonymous sessions to avoid spam",
-  "Please be honest. Our goal is to understand the Moroccan IT market and share results with the community.",
-  "The Survey should take around 8 minutes to complete",
-  "The survey is divided into 6 parts: Profile, Learning & Education, AI, Work, Technology, and Community,(we submit your answers at the end of each part)",
-  "All Questions are required unless you have a skip button",
-  "There are two types of questions: Multiple Choice (select one or more options) and Single Select (choose only one option)",
-  "Do not refresh the questions page before submitting your answers"
+  "We care about privacy; that's why all your answers are **completely anonymous**. We only rely on anonymous sessions to avoid spam",
+  "**Please be honest**. Our goal is to understand the Moroccan IT market and share results with the community.",
+  "The Survey should take around **8 minutes** to complete",
+  "The survey is divided into **6 parts**: Profile, Learning & Education, AI, Work, Technology, and Community,(we submit your answers at the end of each part)",
+  "All Questions are **required** unless you have a **skip button**",
+  "For questions that accept others as an option, please add them in the **text field**",
+  "There are two types of questions: **Multiple Choice** (select one or more options) and **Single Select** (choose only one option)",
+  "**Do not refresh** the questions page before submitting your answers as it will reset your session answers"
 ];
 ---
 
@@ -26,7 +27,10 @@ const rules = [
               <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-gray-400 bg-gray-100 text-sm font-medium text-gray-600 mr-4 mt-0.5">
                 {index + 1}
               </span>
-              <span class="text-gray-700">{rule}</span>
+              <span
+                class="text-gray-700"
+                set:html={rule.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")}
+              />
             </li>
           ))
         }
@@ -41,7 +45,7 @@ const rules = [
       </div>
       <button
         id="start-survey-btn"
-        class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+        class="w-full bg-green-700 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
       >
         Start
       </button>
