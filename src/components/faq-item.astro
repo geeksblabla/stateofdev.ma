@@ -13,7 +13,7 @@ const { checked, label }: Props = Astro.props;
     checked={checked}
   />
   <div class="bg-white h-12 w-full pl-5 flex items-center">
-    <h2 class="text-base font-semibold text-gray-700">
+    <h2 class="font-semibold text-gray-700">
       {label}
     </h2>
   </div>
@@ -35,10 +35,10 @@ const { checked, label }: Props = Astro.props;
     </svg>
   </div>
   <div
-    class="bg-white overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40"
+    class="bg-white overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-fit"
   >
-    <div class="p-5 border-t border-gray-300">
-      <p class="text-gray-700">
+    <div class="p-4 border-t border-gray-300">
+      <p class="text-gray-700 mb-3">
         <slot />
       </p>
     </div>
