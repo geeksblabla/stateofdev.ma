@@ -2,12 +2,6 @@
 /// <reference path="../.astro/actions.d.ts" />
 /// <reference types="astro/client" />
 
-declare namespace App {
-  interface Locals {
-    userUid: string | null;
-  }
-}
-
 interface ImportMetaEnv {
   // Server-side variables
   readonly FIREBASE_PRIVATE_KEY_ID: string;

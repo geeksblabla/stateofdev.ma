@@ -1,6 +1,6 @@
 ---
 export const prerender = false;
-import BaseLayout from "@/layouts/layout.astro";
+import BaseLayout from "@/components/layout.astro";
 import { app } from "@/lib/firebase/server";
 import { getAuth } from "firebase-admin/auth";
 import SurveyForm from "@/components/survey/index.astro";
@@ -25,50 +25,4 @@ if (!user) {
 
 <BaseLayout>
   <SurveyForm />
-  <!-- <div class="max-w-2xl mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-6">Survey</h1>
-    <div>
-      <label for="question2" class="block mb-2 font-medium"
-        >What features do you use most? (Select all that apply)</label
-      >
-      <div class="space-y-2">
-        <label class="flex items-center">
-          <input type="checkbox" name="features" value="1" class="mr-2" />
-          Feature 1
-        </label>
-        <label class="flex items-center">
-          <input type="checkbox" name="features" value="2" class="mr-2" />
-          Feature 2
-        </label>
-        <label class="flex items-center">
-          <input type="checkbox" name="features" value="3" class="mr-2" />
-          Feature 3
-        </label>
-      </div>
-    </div>
-    <div>
-      <label for="question3" class="block mb-2 font-medium"
-        >Any additional comments?</label
-      >
-      <textarea
-        id="question3"
-        name="comments"
-        rows="4"
-        class="w-full p-2 border rounded"></textarea>
-    </div>
-    <div class="flex justify-between mt-6">
-      <button
-        type="button"
-        id="logoutButton"
-        class="px-4 py-2 bg-gray-200 rounded">Remove session</button
-      >
-      <button
-        id="submitAnswersButton"
-        type="submit"
-        class="px-4 py-2 bg-blue-500 text-white rounded"
-        >Submit Test Answers</button
-      >
-    </div>
-    <div id="errorMessage" class="text-red-500 mt-4 hidden"></div>
-  </div> -->
 </BaseLayout>
