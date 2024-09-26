@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
+import Select from "react-select";
 
 import { type Year, type QuestionMap } from "../chart/data";
 import { FilterOptions } from "./filters-options";
@@ -62,10 +63,18 @@ type PlaygroundFormProps = {
 
 export const PlaygroundForm = React.memo(
   ({ questions, onChange }: PlaygroundFormProps) => {
-    console.log(getDefaultValues());
     const { control, watch } = useForm<PlaygroundFormData>({
       defaultValues: getDefaultValues()
     });
+
+    const questionOptions = React.useMemo(
+      () =>
+        Object.entries(questions).map(([id, question]) => ({
+          value: id,
+          label: question.label
+        })),
+      [questions]
+    );
 
     const formData = watch();
     useEffect(() => {
@@ -157,24 +166,26 @@ export const PlaygroundForm = React.memo(
               name="question_id"
               control={control}
               render={({ field }) => (
-                <select
-                  id="question-select"
+                <Select
                   {...field}
-                  className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500"
-                >
-                  <option value="">Select a question</option>
-                  {Object.entries(questions).map(([id, question]) => (
-                    <option key={id} value={id}>
-                      {question.label}
-                    </option>
-                  ))}
-                </select>
+                  value={questionOptions.find(
+                    (q) => q.value === formData.question_id
+                  )}
+                  onChange={(val) => field.onChange(val?.value)}
+                  inputId="question-select"
+                  options={questionOptions}
+                  placeholder="Select a question"
+                />
               )}
             />
           </div>
 
           {/* Filters */}
-          <FilterOptions questions={questions} control={control} />
+          <FilterOptions
+            questions={questions}
+            options={questionOptions}
+            control={control}
+          />
 
           {/* Group By */}
           <div>
@@ -188,18 +199,17 @@ export const PlaygroundForm = React.memo(
               name="group_by"
               control={control}
               render={({ field }) => (
-                <select
-                  id="group-by-select"
+                <Select
+                  isClearable
                   {...field}
-                  className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500"
-                >
-                  <option value="">No grouping</option>
-                  {Object.entries(questions).map(([id, question]) => (
-                    <option key={id} value={id}>
-                      {question.label}
-                    </option>
-                  ))}
-                </select>
+                  value={questionOptions.find(
+                    (q) => q.value === formData.group_by
+                  )}
+                  onChange={(val) => field.onChange(val?.value)}
+                  inputId="group-by-select"
+                  options={questionOptions}
+                  placeholder="Select a question to group by"
+                />
               )}
             />
           </div>
