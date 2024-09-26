@@ -30,7 +30,9 @@ export const Question = ({
   const handleChoiceChange = useCallback(
     (_e: SyntheticEvent) => {
       const othersIndex = choices.findIndex(
-        (c) => c.toLowerCase() === "others" || c.toLowerCase() === "other"
+        (c) =>
+          c.toLowerCase().includes("others") ||
+          c.toLowerCase().includes("other")
       );
       if (othersIndex === -1) return;
 
