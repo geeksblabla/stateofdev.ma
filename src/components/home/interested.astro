@@ -1,3 +1,7 @@
+---
+import { website } from "@/website";
+---
+
 <section class="bg-emerald-100/25 py-16 my-8">
   <div class="max-w-screen-xl mx-auto px-4">
     <h2 class="text-xl font-bold mb-8 text-center">
@@ -9,7 +13,7 @@
     </p>
     <div class="flex justify-center space-x-4">
       <a
-        href="https://twitter.com/geeksblabla"
+        href={website.twitter}
         target="_blank"
         rel="noopener noreferrer"
         class="text-gray-800 hover:text-emerald-600 transition-colors"
@@ -26,7 +30,7 @@
         </svg>
       </a>
       <a
-        href="https://www.facebook.com/geeksblabla"
+        href={website.facebook}
         target="_blank"
         rel="noopener noreferrer"
         class="text-gray-800 hover:text-emerald-600 transition-colors"
@@ -43,7 +47,7 @@
         </svg>
       </a>
       <a
-        href="https://www.youtube.com/c/GeeksBlaBla01"
+        href={website.youtube}
         target="_blank"
         rel="noopener noreferrer"
         class="text-gray-800 hover:text-emerald-600 transition-colors"
@@ -60,7 +64,7 @@
         </svg>
       </a>
       <a
-        href="https://www.instagram.com/geeksblabla"
+        href={website.instagram}
         target="_blank"
         rel="noopener noreferrer"
         class="text-gray-800 hover:text-emerald-600 transition-colors"
@@ -77,7 +81,7 @@
         </svg>
       </a>
       <a
-        href="https://www.linkedin.com/company/geeksblabla"
+        href={website.linkedin}
         target="_blank"
         rel="noopener noreferrer"
         class="text-gray-800 hover:text-emerald-600 transition-colors"
