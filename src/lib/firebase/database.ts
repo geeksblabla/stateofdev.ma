@@ -7,7 +7,7 @@ const db = getFirestore(app);
 const getResults = () => db.collection("results");
 
 type Answers = {
-  [key: string]: number | number[] | null;
+  [key: string]: number | string | number[] | null;
 };
 
 type ExportedResult = {
@@ -22,7 +22,12 @@ export const exportResults = async () => {
 };
 
 export const saveAnswers = (userId: string, data: Answers) => {
-  return getResults().doc(userId).set(data, { merge: true });
+  const updatedData = {
+    ...data,
+    lastUpdated: new Date().toISOString()
+  };
+
+  return getResults().doc(userId).set(updatedData, { merge: true });
 };
 
 export const initUserSubmission = (user: UserRecord) => {

@@ -1,6 +1,6 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { SurveyForm } from "./survey-form";
 import * as utils from "./utils";
 import { ERRORS } from "./section";
@@ -27,6 +27,8 @@ const submitAnswersSpy = vi
 const goToThanksPageSpy = vi
   .spyOn(utils, "goToThanksPage")
   .mockImplementation(() => {});
+
+const longText = Array(300).fill("a").join("");
 
 // Mock questions based on the SurveyQuestionsYamlFile type
 const mockQuestions: SurveyQuestionsYamlFile[] = [
@@ -76,18 +78,12 @@ const mockQuestions: SurveyQuestionsYamlFile[] = [
   }
 ];
 
+beforeEach(() => {
+  vi.clearAllMocks();
+  cleanup();
+});
+
 describe("SurveyForm", () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-    vi.useFakeTimers({ shouldAdvanceTime: true });
-  });
-
-  afterEach(() => {
-    vi.clearAllMocks();
-    vi.runOnlyPendingTimers();
-    vi.useRealTimers();
-  });
-
   it("renders the first section of questions correctly", () => {
     render(<SurveyForm questions={mockQuestions} />);
     expect(screen.getByText(/Question 1.1/i)).toBeInTheDocument();
@@ -109,6 +105,7 @@ describe("SurveyForm", () => {
   });
 
   it("error message should disappear after 2000ms", async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
     const { user } = setup(<SurveyForm questions={mockQuestions} />);
 
     expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
@@ -121,6 +118,7 @@ describe("SurveyForm", () => {
     await waitFor(() => {
       expect(screen.queryByTestId("error-message")).not.toBeInTheDocument();
     });
+    vi.useRealTimers();
   });
 
   it("should navigate to the next question without error", async () => {
@@ -231,6 +229,29 @@ describe("SurveyForm", () => {
         "profile-q-0": 0,
         "profile-q-1": [3],
         "profile-q-1-others": "custom option",
+        "profile-q-2": 3
+      }
+    });
+  });
+
+  it("should limit the text area input to 200 characters", async () => {
+    const { user } = setup(<SurveyForm questions={mockQuestions} />);
+    await user.click(screen.getByTestId("profile-q-0-0"));
+    await user.click(screen.getByTestId("next-button"));
+    // Select the 'other' option for the 2nd question
+    await user.click(screen.getByTestId("profile-q-1-3"));
+    // Enter text in the text area
+    await user.type(screen.getByTestId("profile-q-1-others"), longText);
+    await user.click(screen.getByTestId("next-button"));
+    await user.click(screen.getByTestId("profile-q-2-3"));
+    await user.click(screen.getByTestId("next-button"));
+
+    // Check if submitAnswers is called with the correct answers including the text area input
+    expect(submitAnswersSpy).toHaveBeenCalledWith({
+      answers: {
+        "profile-q-0": 0,
+        "profile-q-1": [3],
+        "profile-q-1-others": longText.slice(0, 200),
         "profile-q-2": 3
       }
     });

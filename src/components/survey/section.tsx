@@ -24,8 +24,8 @@ const normalizeAnswers = (
 
   for (const [key, value] of Object.entries(answers)) {
     if (key.endsWith("others")) {
-      // text area value we should'nt convert to number
-      convertedAnswers[key] = value as string;
+      // text area value we should'nt convert to number and we should limit the length to 200 characters to prevent spamming
+      convertedAnswers[key] = (value as string).slice(0, 200);
     } else if (value === null) {
       convertedAnswers[key] = null;
     } else if (Array.isArray(value)) {

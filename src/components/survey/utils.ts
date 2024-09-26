@@ -1,6 +1,8 @@
 import { actions } from "astro:actions";
 
-export const submitAnswers = (data: any) => {
+export const submitAnswers = (
+  data: Parameters<typeof actions.submitAnswers>[0]
+) => {
   return actions.submitAnswers(data);
 };
 

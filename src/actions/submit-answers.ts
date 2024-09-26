@@ -9,7 +9,7 @@ export const submitAnswers = defineAction({
   input: z.object({
     answers: z.record(
       z.string(),
-      z.union([z.number(), z.array(z.number()), z.null()])
+      z.union([z.number(), z.string().max(200), z.array(z.number()), z.null()])
     )
   }),
   handler: async ({ answers }, { cookies }) => {

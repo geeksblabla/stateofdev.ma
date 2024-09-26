@@ -86,10 +86,16 @@ export const Question = ({
         ))}
         {showOtherInput && (
           <textarea
-            {...register(`${sectionId}-q-${index}-others`)}
+            {...register(`${sectionId}-q-${index}-others`, {
+              maxLength: {
+                value: 200,
+                message: "Input must not exceed 200 characters"
+              }
+            })}
             className="mt-4 w-full p-2 border border-gray-300 rounded-md ring-1 ring-emerald-600 focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
-            placeholder="Please specify... use comma to separate each item"
+            placeholder="Please specify... use comma to separate each item (max 200 characters)"
             rows={3}
+            maxLength={200}
             data-testid={`${sectionId}-q-${index}-others`}
           />
         )}
