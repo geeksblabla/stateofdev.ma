@@ -34,7 +34,7 @@ questions:
       - Other
 
   - label: "What are the programming languages you want to learn next?"
-    required: true
+    required: false
     multiple: true
     choices:
       - JavaScript
@@ -119,6 +119,7 @@ questions:
       - Other
 
   - label: "What are the front-end frameworks/libraries you want to learn next?"
+    required: false
     multiple: true
     choices:
       - jQuery
