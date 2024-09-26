@@ -1,16 +1,18 @@
 import React from "react";
 import { Controller, useFieldArray, type Control } from "react-hook-form";
 
-import { type QuestionMap } from "../chart/data";
 import type { PlaygroundFormData } from "./playground-form";
+import Select from "react-select";
+import type { QuestionMap } from "../chart/data";
 
 type FilterOptionsProps = {
+  options: { label: string; value: string }[];
   questions: QuestionMap;
   control: Control<PlaygroundFormData>;
 };
 
 export const FilterOptions = React.memo(
-  ({ questions, control }: FilterOptionsProps) => {
+  ({ questions, options, control }: FilterOptionsProps) => {
     // not sure why but we need this to make sure filters in the url works as expected
     if (Object.keys(questions).length === 0) {
       return null;
@@ -34,20 +36,18 @@ export const FilterOptions = React.memo(
                 render={({ field: { value, onChange } }) => (
                   <>
                     <div className="flex items-center space-x-2">
-                      <select
-                        value={value.question_id}
-                        onChange={(e) => {
-                          onChange({ question_id: e.target.value, values: [] });
-                        }}
-                        className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500"
-                      >
-                        <option value="">Select a question</option>
-                        {Object.entries(questions).map(([id, question]) => (
-                          <option key={id} value={id}>
-                            {question.label}
-                          </option>
-                        ))}
-                      </select>
+                      <Select
+                        value={options.find(
+                          (q) => q.value === value.question_id
+                        )}
+                        onChange={(val) =>
+                          onChange({ question_id: val?.value, values: [] })
+                        }
+                        inputId="question-select"
+                        options={options}
+                        placeholder="Select a question"
+                        className="w-full "
+                      />
                       <button
                         type="button"
                         onClick={() => remove(index)}
