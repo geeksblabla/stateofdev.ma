@@ -17,6 +17,7 @@ questions:
       - Helped me to become more productive (10% to 30%)
       - I am now very productive (30% to 50%)
       - I am a 10x engineer now (+50%)
+      - It decreased my productivity
 
   - label: "Do you think AI will replace developers in the future?"
     required: true
@@ -52,11 +53,14 @@ questions:
       - Claude (Anthropic)
       - DALL-E (OpenAI)
       - GitHub Copilot
+      - Cursor
+      - Super maven
       - QuillBot
       - Notion AI
       - Midijourney
       - Coby.ai
       - Grammarly
+      - NotebookLM
       - Other
 
   - label: "Which AI frameworks and models do you use?"
