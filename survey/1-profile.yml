@@ -77,6 +77,7 @@ questions:
       - Bac +2/+3, Bachelor’s degree (B.A., B.S., B.Eng., etc.)
       - Bac +5, Master’s degree (M.A., M.S., M.Eng., MBA, etc.)
       - Bac +8, Other doctoral degree (Ph.D., Ed.D., etc.)
+      - Other
 
   - label: How many years have you been coding professionally?
     required: true

@@ -268,9 +268,12 @@ questions:
     choices:
       - Jetbrains (IntelliJ, PhpStorm, Resharper ...)
       - VS Code
+      - Cursor
       - Eclipse
       - Netbeans
       - Vim
+      - Nvim
+      - Emacs
       - Sublime
       - Atom
       - Notepad++
@@ -290,7 +293,7 @@ questions:
     multiple: true
     choices:
       - Google it
-      - Ask ChatGPT or other AI assistants
+      - Ask AI assistants (ChatGPT, Cursor, etc.)
       - Dig in StackOverflow
       - Do other work and come back later
       - Watch help/tutorial videos
@@ -332,4 +335,23 @@ questions:
       - Neo4j
       - Apache Cassandra
       - BigTable
+      - SQLite
+      - Other
+
+  - label: "Do you write tests for your code?(Don't be afraid to be honest)"
+    required: true
+    choices:
+      - Yes, I write tests for my code.
+      - No, I don't write tests for my code.
+      - Sometimes, I write tests for my code.
+      - I am not sure
+
+  - label: "What type of tests do you write?"
+    required: true
+    multiple: true
+    choices:
+      - Unit tests
+      - Integration tests
+      - End-to-end tests
+      - Acceptance tests
       - Other
