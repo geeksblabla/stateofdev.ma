@@ -24,30 +24,35 @@ import finImage from "@/assets/fin.jpeg";
 
 <script>
   const surveyForm = document.getElementById("survey-form") as HTMLDivElement;
+  let popupShownCount = 0;
+  const maxPopupShows = 2;
 
   if (surveyForm) {
     surveyForm.addEventListener("mouseleave", function (e: MouseEvent) {
-      // Show the custom modal
-      const modal = document.getElementById("exitModal") as HTMLDivElement;
-      modal.classList.remove("hidden");
+      if (popupShownCount < maxPopupShows) {
+        // Show the custom modal
+        const modal = document.getElementById("exitModal") as HTMLDivElement;
+        modal.classList.remove("hidden");
+        popupShownCount++;
 
-      // Close the modal when the user clicks on the close button or stay button
-      const closeModal = document.getElementById(
-        "closeModal"
-      ) as HTMLSpanElement;
-      const stayButton = document.getElementById(
-        "stayButton"
-      ) as HTMLButtonElement;
-      closeModal.onclick = stayButton.onclick = function () {
-        modal.classList.add("hidden");
-      };
-
-      // Close the modal when the user clicks anywhere outside of the modal
-      window.onclick = function (event: MouseEvent) {
-        if (event.target == modal) {
+        // Close the modal when the user clicks on the close button or stay button
+        const closeModal = document.getElementById(
+          "closeModal"
+        ) as HTMLSpanElement;
+        const stayButton = document.getElementById(
+          "stayButton"
+        ) as HTMLButtonElement;
+        closeModal.onclick = stayButton.onclick = function () {
           modal.classList.add("hidden");
-        }
-      };
+        };
+
+        // Close the modal when the user clicks anywhere outside of the modal
+        window.onclick = function (event: MouseEvent) {
+          if (event.target == modal) {
+            modal.classList.add("hidden");
+          }
+        };
+      }
     });
   }
 </script>
