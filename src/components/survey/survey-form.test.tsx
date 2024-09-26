@@ -51,7 +51,7 @@ const mockQuestions: SurveyQuestionsYamlFile[] = [
       },
       {
         label: "Question 1.3",
-        choices: ["Never", "Sometimes", "Often", "Always", "Other"],
+        choices: ["Never", "Sometimes", "Often", "Always", "Other stuff"],
         multiple: false,
         required: false
       }
