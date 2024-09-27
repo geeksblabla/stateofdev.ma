@@ -49,9 +49,10 @@ questions:
     multiple: true
     choices:
       - ChatGPT
-      - Bard (Google)
+      - Gemini (Google)
       - Claude (Anthropic)
       - DALL-E (OpenAI)
+      - Meta AI (Llama)
       - GitHub Copilot
       - Cursor
       - Super maven
