@@ -27,8 +27,9 @@ export const ShareButtons = ({ url, title }: ShareButtonsProps) => {
         <a
           href={shareLinks.twitter}
           target="_blank"
+          rel="noopener noreferrer"
           className="!text-gray-400 hover:!text-gray-800 transition-colors relative group"
-          title="Share on Twitter"
+          aria-label="Share on Twitter"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -47,8 +48,9 @@ export const ShareButtons = ({ url, title }: ShareButtonsProps) => {
         <a
           href={shareLinks.linkedin}
           target="_blank"
+          rel="noopener noreferrer"
           className="!text-gray-400 hover:!text-gray-800 transition-colors relative group"
-          title="Share on LinkedIn"
+          aria-label="Share on LinkedIn"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -66,8 +68,9 @@ export const ShareButtons = ({ url, title }: ShareButtonsProps) => {
         <a
           href={shareLinks.facebook}
           target="_blank"
+          rel="noopener noreferrer"
           className="!text-gray-400 hover:!text-gray-800 transition-colors relative group"
-          title="Share on Facebook"
+          aria-label="Share on Facebook"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +88,7 @@ export const ShareButtons = ({ url, title }: ShareButtonsProps) => {
         <button
           onClick={copyToClipboard}
           className="!text-gray-400 hover:!text-gray-800 transition-colors relative"
-          title="Copy link"
+          aria-label="Copy link"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

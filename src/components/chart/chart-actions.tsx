@@ -39,6 +39,7 @@ const PlaygroundButton = ({
         { skipEmptyString: true }
       )}`}
       className="!text-gray-400  text-sm  hover:!text-gray-800 decoration-none transition-colors flex items-center pl-2 relative group"
+      aria-label="Open in playground"
     >
       <svg
         width="24px"
