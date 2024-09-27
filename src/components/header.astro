@@ -32,7 +32,11 @@ const currentPath = Astro.url.pathname;
 
     <div class="md:hidden">
       <input type="checkbox" id="navbar-open" class="hidden peer" />
-      <label for="navbar-open" class="cursor-pointer">
+      <label
+        for="navbar-open"
+        class="cursor-pointer"
+        aria-label="Toggle Navigation"
+      >
         <span class="sr-only">Toggle Navigation</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"

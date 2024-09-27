@@ -6,13 +6,21 @@ import finImage from "@/assets/fin.jpeg";
 <div
   id="exitModal"
   class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50"
+  role="dialog"
+  aria-labelledby="modalTitle"
+  aria-modal="true"
 >
   <div class="bg-white rounded-lg shadow-lg max-w-md w-full text-center">
     <span
       id="closeModal"
-      class="absolute top-2 right-2 text-gray-500 cursor-pointer">&times;</span
+      class="absolute top-2 right-2 text-gray-500 cursor-pointer"
+      aria-label="Close modal">&times;</span
     >
-    <Image src={finImage} alt="Fin Image" class="mx-auto rounded-t-md" />
+    <Image
+      src={finImage}
+      alt="Funny meme encouraging survey completion"
+      class="mx-auto rounded-t-md"
+    />
     <button
       id="stayButton"
       class="bg-emerald-500 text-white font-bold px-4 py-4 w-full rounded-b-md text-base"
