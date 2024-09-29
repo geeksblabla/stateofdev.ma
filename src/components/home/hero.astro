@@ -1,6 +1,7 @@
 ---
 import Crea2 from "../../assets/undraw_visual_data.svg";
 import Crea4 from "../../assets/data_image.svg";
+import { YouTube } from "@astro-community/astro-embed-youtube";
 ---
 
 <div class="relative py-12 sm:py-16 lg:pt-20 lg:pb-24">
@@ -92,12 +93,11 @@ import Crea4 from "../../assets/data_image.svg";
     <div
       class="relative w-full max-w-[1000px] m-auto aspect-video aspect-w-16 aspect-h-9 rounded-lg mt-10 shadow-lg duration-300 hover:translate-y-3"
     >
-      <iframe
-        src="https://www.youtube.com/embed/88cQ6vkJhfQ"
-        class="w-full aspect-video aspect-w-16 aspect-h-9 rounded-lg"
-        frame-border="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
+      <YouTube
+        id="https://www.youtube.com/embed/88cQ6vkJhfQ"
+        posterQuality="max"
+        class="w-full max-w-[1000px] aspect-video aspect-w-16 aspect-h-9 rounded-lg"
+      />
     </div>
   </div>
 </div>

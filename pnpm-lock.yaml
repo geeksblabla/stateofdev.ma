@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@astro-community/astro-embed-youtube':
+        specifier: ^0.5.3
+        version: 0.5.3(astro@4.15.4(@types/node@22.5.0)(rollup@4.21.1)(typescript@5.5.4))
       '@astro-utils/context':
         specifier: ^1.1.15
         version: 1.1.15
@@ -187,6 +190,11 @@ packages:
 
   '@antfu/utils@0.7.10':
     resolution: {integrity: sha512-+562v9k4aI80m1+VuMHehNJWLOFjBnXn3tdOitzD0il5b7smkSBal4+a3oKiQTbrwMmN/TBUMDvbdoWDehgOww==}
+
+  '@astro-community/astro-embed-youtube@0.5.3':
+    resolution: {integrity: sha512-O06Y6XwhDM5e72Hl/n3qgl7jDSrJpqTSTurFZZ7RQypJQzfyhlWgc99f0REdAtZSnLkq7069HfuMX4CzcaOdkg==}
+    peerDependencies:
+      astro: ^2.0.0 || ^3.0.0-beta || ^4.0.0-beta
 
   '@astro-utils/context@1.1.15':
     resolution: {integrity: sha512-dyhwdqVBykAj+nWn3Od5TRRnpLADA2vOIagbQXovq0ZgULe/+Eh4xKhoe1tcNVoXdegLunOO18LWPzB0K2LqNw==}
@@ -4081,6 +4089,9 @@ packages:
   lit@3.2.0:
     resolution: {integrity: sha512-s6tI33Lf6VpDu7u4YqsSX78D28bYQulM+VAzsGch4fx2H0eLZnJsUBsPWmGYSGoKDNbjtRv02rio1o+UdPVwvw==}
 
+  lite-youtube-embed@0.3.3:
+    resolution: {integrity: sha512-gFfVVnj6NRjxVfJKo3qoLtpi0v5mn3AcR4eKD45wrxQuxzveFJUb+7Cr6uV6n+DjO8X3p0UzPPquhGt0H/y+NA==}
+
   load-yaml-file@0.2.0:
     resolution: {integrity: sha512-OfCBkGEw4nN6JLtgRidPX6QxjBQGQf72q3si2uvqyFEMbycSFFHwAZeXx6cJgFM9wmLrf9zBwCP3Ivqa+LLZPw==}
     engines: {node: '>=6'}
@@ -6108,6 +6119,11 @@ snapshots:
       tinyexec: 0.3.0
 
   '@antfu/utils@0.7.10': {}
+
+  '@astro-community/astro-embed-youtube@0.5.3(astro@4.15.4(@types/node@22.5.0)(rollup@4.21.1)(typescript@5.5.4))':
+    dependencies:
+      astro: 4.15.4(@types/node@22.5.0)(rollup@4.21.1)(typescript@5.5.4)
+      lite-youtube-embed: 0.3.3
 
   '@astro-utils/context@1.1.15': {}
 
@@ -10635,6 +10651,8 @@ snapshots:
       '@lit/reactive-element': 2.0.4
       lit-element: 4.1.0
       lit-html: 3.2.0
+
+  lite-youtube-embed@0.3.3: {}
 
   load-yaml-file@0.2.0:
     dependencies:

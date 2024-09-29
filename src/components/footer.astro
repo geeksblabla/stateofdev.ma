@@ -1,5 +1,5 @@
 ---
-import Logo from "../assets/logo.svg";
+import Logo from "../assets/logo.svg?raw";
 import { website } from "@/website";
 ---
 
@@ -9,11 +9,7 @@ import { website } from "@/website";
   >
     <div class="max-w-sm">
       <div class="mb-6 flex h-10 items-center space-x-2">
-        <img
-          src={Logo.src}
-          alt="Geeksblabla Logo"
-          aria-label="Geeksblabla Logo"
-        />
+        <Fragment set:html={Logo} />
       </div>
       <div class="text-gray-500">
         Participate and let us know what working in tech really looks like in
