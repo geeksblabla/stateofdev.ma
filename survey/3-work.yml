@@ -23,7 +23,7 @@ questions:
       - "Sometimes: 1-2 days per month but less than weekly"
       - "Often: 1-2 days per week or more"
       - "Very often: 3-5 days per week"
-      - "Always: Every day"
+      - "Daily"
 
   - label: How do you feel about your job?
     choices:
