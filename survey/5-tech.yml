@@ -336,7 +336,7 @@ questions:
       - Neo4j
       - Apache Cassandra
       - BigTable
-      - SQLite
+      - SQLite/LibSQL
       - Other
 
   - label: "What type of tests do you write?"
