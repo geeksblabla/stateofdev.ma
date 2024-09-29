@@ -1,6 +1,7 @@
 ---
 import Crea2 from "../../assets/undraw_visual_data.svg";
 import Crea4 from "../../assets/data_image.svg";
+import { YouTube } from "@astro-community/astro-embed-youtube";
 import type { Year } from "../chart/data";
 export interface Props {
   year: Year;
@@ -91,15 +92,13 @@ const { year } = Astro.props;
   </div>
   <div class="mx-4 md:mx-auto">
     <div
-      class="relative w-full max-w-[1000px] m-auto aspect-video aspect-w-16 aspect-h-9 rounded-lg mt-10 shadow-lg duration-300 hover:translate-y-3"
+      class="relative w-full max-w-[1000px] m-auto aspect-video aspect-w-16 aspect-h-9 rounded-lg mt-10 shadow-lg duration-300 hover:translate-y-3 bg-red-200"
     >
-      <iframe
-        title="State Of Dev In Morocco GeeksBlabla Episode"
-        src={data[year].episode_url}
-        class="w-full aspect-video aspect-w-16 aspect-h-9 rounded-lg"
-        frame-border="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
+      <YouTube
+        id={data[year].episode_url}
+        posterQuality="max"
+        class="w-full max-w-[1000px] aspect-video aspect-w-16 aspect-h-9 rounded-lg"
+      />
     </div>
   </div>
 </div>
