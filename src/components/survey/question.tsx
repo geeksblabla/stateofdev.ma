@@ -29,22 +29,23 @@ export const Question = ({
   // this is a simple solution to check if the user has selected "others" or "other" and based on that show the textarea
   const handleChoiceChange = useCallback(
     (_e: SyntheticEvent) => {
-      const othersIndex = choices.findIndex(
-        (c) =>
-          c.toLowerCase().includes("others") ||
-          c.toLowerCase().includes("other")
-      );
-      if (othersIndex === -1) return;
+      // this is mainly to handle the case where multiple choice have "others" or "other" as one of the choices
+      const othersIndices = choices
+        .map((c, i) => ({ text: c, index: i }))
+        .filter(({ text }) => text.toLowerCase().includes("other"))
+        .map(({ index }) => index);
+
+      if (othersIndices.length === 0) return;
 
       const values = getValues(`${sectionId}-q-${index}`) as string | string[];
       const valuesArray = (Array.isArray(values) ? values : [values]).map((v) =>
         parseInt(v)
       );
-      if (valuesArray.includes(othersIndex)) {
-        setShowOtherInput(true);
-      } else {
-        setShowOtherInput(false);
-      }
+
+      const hasOtherSelected = othersIndices.some((index) =>
+        valuesArray.includes(index)
+      );
+      setShowOtherInput(hasOtherSelected);
     },
     [setShowOtherInput, getValues, sectionId, index, choices]
   );
