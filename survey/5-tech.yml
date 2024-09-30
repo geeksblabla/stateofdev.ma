@@ -337,7 +337,7 @@ questions:
       - Apache Cassandra
       - BigTable
       - SQLite/LibSQL
-      - Victor DBs
+      - Vector DBs
       - Other
 
   - label: "What type of tests do you write?"
