@@ -58,7 +58,7 @@ questions:
       - Super maven
       - QuillBot
       - Notion AI
-      - Midijourney
+      - Midjourney
       - Coby.ai
       - Grammarly
       - NotebookLM
@@ -87,3 +87,53 @@ questions:
       - IBM Watson
       - Scikit-Learn
       - Other
+
+  - label: "Which vector databases have you used or are familiar with?"
+    multiple: true
+    choices:
+      - Pinecone
+      - Weaviate
+      - Milvus
+      - Qdrant
+      - Chroma
+      - Faiss
+      - Vespa
+      - Elasticsearch with vector search
+      - Redis with vector search
+      - PostgreSQL with pgvector
+      - Other
+      - None
+
+  - label: "Which parts of the AI stack are you most familiar with?"
+    multiple: true
+    choices:
+      - Data preparation and cleaning
+      - Model training and fine-tuning
+      - Model deployment and serving
+      - Vector databases
+      - Prompt engineering
+      - AI-powered application development
+      - MLOps
+      - AI ethics and governance
+      - Other
+
+  - label: "In which areas are you applying or planning to apply AI?"
+    multiple: true
+    choices:
+      - E-banking and fintech
+      - Digital health and telemedicine
+      - E-commerce and retail
+      - Education and e-learning
+      - Customer service and chatbots
+      - Content creation and marketing
+      - Cybersecurity
+      - Supply chain and logistics
+      - Smart cities and IoT
+      - Autonomous vehicles
+      - Manufacturing and Industry 4.0
+      - Environmental monitoring and sustainability
+      - Legal tech and compliance
+      - Human resources and talent management
+      - Other
+
+      
