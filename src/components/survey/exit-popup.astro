@@ -31,12 +31,12 @@ import finImage from "@/assets/fin.jpeg";
 </div>
 
 <script>
-  const surveyForm = document.getElementById("survey-form") as HTMLDivElement;
+  const body = document.body;
   let popupShownCount = 0;
   const maxPopupShows = 2;
 
-  if (surveyForm) {
-    surveyForm.addEventListener("mouseleave", function (e: MouseEvent) {
+  if (body) {
+    body.addEventListener("mouseleave", function (e: MouseEvent) {
       if (popupShownCount < maxPopupShows) {
         // Show the custom modal
         const modal = document.getElementById("exitModal") as HTMLDivElement;
