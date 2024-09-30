@@ -75,6 +75,103 @@ pnpm dev
 
 Your website is now running at `http://localhost:4321`
 
+## How the survey works
+
+The survey form submission process is designed to be secure, anonymous, and user-friendly. Here's an overview of how it works:
+
+1. **Session Initialization (Before Start Page)**
+
+   - When the user clicks the `Take part in the survey` button from the home page, they are redirected to the `/before-start` page where they find important information about the survey.
+   - A CAPTCHA is displayed to prevent spam submissions(using Cloudflare Turnstile).
+   - When the user clicks "Start":
+     - An anonymous Firebase authentication session is created.
+     - The session token and CAPTCHA token are sent to the server (actions/initialize-session.ts).
+     - The server (actions/initialize-session.ts) validates the Firebase session and the CAPTCHA, initializes the session, and sets a session cookie.
+     - Upon successful initialization, the user is redirected to the `/survey` page.
+
+2. **Survey Page**
+
+   - The page checks for an active session before displaying the survey form.
+   - If no valid session is found, the user is redirected back to the `/before-start` page.
+   - With a valid session, the SurveyForm component is rendered.
+
+3. **Survey Form Component**
+
+   - Questions are loaded from YAML files and presented to the user in sections.
+   - Based on the question type, the form changes (radio, checkbox, etc.) and shows a text area if the user selects an option that contains "other".
+   - At the end of each section, answers are validated and sent to the server (actions/submit-answers.ts).
+
+   ```js
+   // example of the data sent to the server
+   const answers = {
+     "profile-q-0": 1,
+     "profile-q-1": 2,
+     "profile-q-2": [3, 2], // multiple choice question
+     "profile-q-3": 6, // single choice question
+     "profile-q-3-other": "text", // other text
+     "profile-q-4": null // null if the question is not answered (skip button)
+   };
+   ```
+
+   For every question, we send the index of choices selected by the user. It should be a number if the question is single choice, and an array of numbers if the question is multiple choice. We also send "other" text if the user selects an option that contains "other" and adds custom text to the text area.
+
+   - The server (actions/submit-answers.ts) verifies the session, processes the answers, and saves them to the Firestore database with the user ID as the document ID. This way, we can avoid duplicate submissions, and in case of a repeat submission, we will only update the existing document.
+
+4. **Completion and Thanks Page**
+
+   - After completing all sections, the user is redirected to the "Thanks" page.
+   - A thank you message is displayed along with social sharing options.
+
+## How the results works
+
+Every day at 12:00 AM UTC we run a github action that export data from firestore and the file should look like this:
+
+```json
+{
+  "results": [
+    {
+      "profile-q-0": 1,
+      "profile-q-1": 2,
+      "profile-q-2": [3, 2],
+      "profile-q-3": 6,
+      "profile-q-3-other": "text",
+      "lastSignInTime": "Tue, 17 Sep 2024 11:57:46 GMT",
+      "creationTime": "Tue, 17 Sep 2024 11:57:46 GMT",
+      "userId": "..."
+    },
+    ...
+  ]
+}
+```
+
+Then we generate a json file for survey questions with their choices and ids.
+
+```json
+{
+  "profile-q-0": {
+    "label": "What is your gender?",
+    "required": true,
+    "multiple": false,
+    "choices": ["Male", "Female"]
+  },
+  "profile-q-1": {
+    "label": "What is your age?",
+    "required": true,
+    "choices": [
+      "Younger than 18 years",
+      "18 to 24 years",
+      "25 to 34 years",
+      "35 to 44 years",
+      "45 or older"
+    ],
+    "multiple": false
+  },
+  ...
+}
+```
+
+Now that we have the results and the questions. we use `getQuestion` in `components/chart/utils.ts` file to get data for any question id then render it using `Chart` component.
+
 ## 🧐 Want to contribute ?
 
 If you want to contribute check out the [help wanted](https://github.com/geeksblabla/stateofdev.ma/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22+sort%3Aupdated-desc) issues for things that need fixing, or suggest some new features by opening new issues.
@@ -133,3 +230,7 @@ This project is inspired by :
 
 - [Stack Overflow Survey ](https://insights.stackoverflow.com/survey/2020)
 - [State of Front-end Survey](https://tsh.io/state-of-frontend/)
+
+```
+
+```
