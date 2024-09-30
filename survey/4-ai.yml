@@ -136,4 +136,32 @@ questions:
       - Human resources and talent management
       - Other
 
-      
+  - label: "Which open-source LLMs have you implemented in your projects?"
+    multiple: true
+    choices:
+      - Llama
+      - Mistral
+      - Gemma
+      - Falcon
+      - BLOOM
+      - Qwen
+      - XGen
+      - BERT
+      - GPT-NeoX / GPT-J
+      - Vicuna
+      - Phi
+      - Other open-source LLMs
+      - I don't use open-source LLMs
+
+  - label: "What's your primary reason for using open-source AI models?"
+    choices:
+      - Cost-effectiveness
+      - Customizability and fine-tuning capabilities
+      - Transparency and explainability
+      - Community support and resources
+      - Integration with existing systems
+      - Compliance with data privacy regulations
+      - Performance comparable to proprietary models
+      - Learning and educational purposes
+      - Other
+      - I don't use open-source models
