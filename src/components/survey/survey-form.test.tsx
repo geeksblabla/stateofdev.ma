@@ -19,7 +19,7 @@ const submitAnswersSpy = vi
   .spyOn(utils, "submitAnswers")
   .mockImplementation(() =>
     Promise.resolve({
-      data: { error: "mocked error" },
+      data: undefined,
       error: undefined
     })
   );
@@ -51,7 +51,14 @@ const mockQuestions: SurveyQuestionsYamlFile[] = [
       },
       {
         label: "Question 1.3",
-        choices: ["Never", "Sometimes", "Often", "Always", "Other stuff"],
+        choices: [
+          "Never",
+          "Sometimes",
+          "Often",
+          "Always",
+          "Other stuff",
+          "Other stuff 2"
+        ],
         multiple: false,
         required: false
       }
@@ -84,325 +91,368 @@ beforeEach(() => {
 });
 
 describe("SurveyForm", () => {
-  it("renders the first section of questions correctly", () => {
-    render(<SurveyForm questions={mockQuestions} />);
-    expect(screen.getByText(/Question 1.1/i)).toBeInTheDocument();
-    expect(screen.getByText(/Option 1/i)).toBeInTheDocument();
-    expect(screen.getByText(/Option 2/i)).toBeInTheDocument();
-    expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
-    expect(screen.getByTestId("profile-q-1")).toHaveClass("hidden");
-  });
-
-  it("should show error message when required question is not answered", async () => {
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
-
-    expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
-    await user.click(screen.getByTestId("next-button"));
-
-    await waitFor(() => {
-      expect(screen.getByTestId("error-message")).toBeInTheDocument();
+  describe("Rendering", () => {
+    it("renders the first section of questions correctly", () => {
+      render(<SurveyForm questions={mockQuestions} />);
+      expect(screen.getByText(/Question 1.1/i)).toBeInTheDocument();
+      expect(screen.getByText(/Option 1/i)).toBeInTheDocument();
+      expect(screen.getByText(/Option 2/i)).toBeInTheDocument();
+      expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
+      expect(screen.getByTestId("profile-q-1")).toHaveClass("hidden");
     });
   });
 
-  it("error message should disappear after 2000ms", async () => {
-    vi.useFakeTimers({ shouldAdvanceTime: true });
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
-
-    expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
-    await user.click(screen.getByTestId("next-button"));
-
-    await waitFor(() => {
-      expect(screen.getByTestId("error-message")).toBeInTheDocument();
-    });
-    vi.advanceTimersByTime(2000);
-    await waitFor(() => {
-      expect(screen.queryByTestId("error-message")).not.toBeInTheDocument();
-    });
-    vi.useRealTimers();
-  });
-
-  it("should navigate to the next question without error", async () => {
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
-    expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
-    expect(screen.getByTestId("profile-q-1")).toHaveClass("hidden");
-    await user.click(screen.getByTestId("profile-q-0-0")); // id for the first input of the first question
-    await user.click(screen.getByTestId("next-button"));
-    expect(screen.getByTestId("profile-q-1")).toHaveClass("block");
-    expect(screen.getByTestId("profile-q-0")).toHaveClass("hidden");
-  });
-
-  it("show skip button when the question is not required and skip button is working as expected", async () => {
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
-    await user.click(screen.getByTestId("profile-q-0-0"));
-    expect(screen.queryByTestId("skip-button")).not.toBeInTheDocument();
-    await user.click(screen.getByTestId("next-button"));
-    expect(screen.getByTestId("skip-button")).toBeInTheDocument();
-    await user.click(screen.getByTestId("skip-button"));
-    expect(screen.getByTestId("profile-q-1")).toHaveClass("hidden");
-    expect(screen.getByTestId("profile-q-2")).toHaveClass("block");
-  });
-  it("back button should appear starting from the second question and work as expected", async () => {
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
-    expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
-    await user.click(screen.getByTestId("profile-q-0-0"));
-    await user.click(screen.getByTestId("next-button"));
-    expect(screen.getByTestId("back-button")).toBeInTheDocument();
-    await user.click(screen.getByTestId("back-button"));
-    expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
-    expect(screen.getByTestId("profile-q-1")).toHaveClass("hidden");
-  });
-
-  it("In the last question, it should call submitAnswers with correct answers", async () => {
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
-    await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("profile-q-1-0"));
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("profile-q-2-2"));
-    await user.click(screen.getByTestId("next-button"));
-    expect(submitAnswersSpy).toHaveBeenCalledWith({
-      answers: {
-        "profile-q-0": 0,
-        "profile-q-1": [0], // this question accept multiple answers
-        "profile-q-2": 2
-      }
+  describe("Navigation", () => {
+    it("should navigate to the next question without error", async () => {
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
+      expect(screen.getByTestId("profile-q-1")).toHaveClass("hidden");
+      await user.click(screen.getByTestId("profile-q-0-0")); // id for the first input of the first question
+      await user.click(screen.getByTestId("next-button"));
+      expect(screen.getByTestId("profile-q-1")).toHaveClass("block");
+      expect(screen.getByTestId("profile-q-0")).toHaveClass("hidden");
     });
 
-    // check if we are in the education section
-    await waitFor(() => {
-      expect(screen.getByTestId("education-q-0")).toHaveClass("block");
-      expect(screen.getByTestId("education-q-1")).toHaveClass("hidden");
+    it("back button should appear starting from the second question and work as expected", async () => {
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
+      await user.click(screen.getByTestId("profile-q-0-0"));
+      await user.click(screen.getByTestId("next-button"));
+      expect(screen.getByTestId("back-button")).toBeInTheDocument();
+      await user.click(screen.getByTestId("back-button"));
+      expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
+      expect(screen.getByTestId("profile-q-1")).toHaveClass("hidden");
+    });
+
+    it("show skip button when the question is not required and skip button is working as expected", async () => {
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      await user.click(screen.getByTestId("profile-q-0-0"));
+      expect(screen.queryByTestId("skip-button")).not.toBeInTheDocument();
+      await user.click(screen.getByTestId("next-button"));
+      expect(screen.getByTestId("skip-button")).toBeInTheDocument();
+      await user.click(screen.getByTestId("skip-button"));
+      expect(screen.getByTestId("profile-q-1")).toHaveClass("hidden");
+      expect(screen.getByTestId("profile-q-2")).toHaveClass("block");
     });
   });
 
-  // test for other input
+  describe("Error Handling", () => {
+    it("should show error message when required question is not answered", async () => {
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
 
-  it("should show the text area when the user selects the 'other' option for a single choice question", async () => {
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
+      await user.click(screen.getByTestId("next-button"));
 
-    await user.click(screen.getByTestId("profile-q-0-0"));
-    await user.click(screen.getByTestId("next-button"));
-    // Select the 'other' option for the 2nd question
-    await user.click(screen.getByTestId("profile-q-1-3"));
-    // Check if the text area is displayed
-    await waitFor(() => {
-      expect(screen.getByTestId("profile-q-1-others")).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByTestId("error-message")).toBeInTheDocument();
+      });
+    });
+
+    it("error message should disappear after 2000ms", async () => {
+      vi.useFakeTimers({ shouldAdvanceTime: true });
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+
+      expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
+      await user.click(screen.getByTestId("next-button"));
+
+      await waitFor(() => {
+        expect(screen.getByTestId("error-message")).toBeInTheDocument();
+      });
+      vi.advanceTimersByTime(2000);
+      await waitFor(() => {
+        expect(screen.queryByTestId("error-message")).not.toBeInTheDocument();
+      });
+      vi.useRealTimers();
+    });
+
+    it("Show error message when submitAnswers fails", async () => {
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      // Mock submitAnswers to return an error
+      submitAnswersSpy.mockResolvedValue({
+        data: undefined,
+        error: {
+          type: "mocked error",
+          code: "NOT_FOUND",
+          status: 500,
+          name: "mocked error",
+          message: "mocked error"
+        }
+      });
+
+      await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-1-0"));
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-2-2"));
+      await user.click(screen.getByTestId("next-button"));
+
+      expect(screen.getByTestId("profile-q-2")).toHaveClass("block");
+      // Check if the error message contains the correct text
+      await waitFor(() => {
+        expect(screen.getByTestId("error-message")).toBeInTheDocument();
+        expect(screen.getByTestId("error-message")).toHaveTextContent(
+          ERRORS.submission
+        );
+      });
     });
   });
 
-  it("should show the text area when the user selects the 'other' option for a multiple choice question", async () => {
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
+  describe("Answer Submission", () => {
+    it("In the last question, it should call submitAnswers with correct answers", async () => {
+      // mock submitAnswers to return a successful response
+      submitAnswersSpy.mockResolvedValue({
+        data: undefined,
+        error: undefined
+      });
 
-    await user.click(screen.getByTestId("profile-q-0-0"));
-    await user.click(screen.getByTestId("next-button"));
-    // Select the 'other' option for the 2nd question
-    await user.click(screen.getByTestId("profile-q-1-3"));
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("profile-q-2-4"));
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-1-0"));
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-2-2"));
+      await user.click(screen.getByTestId("next-button"));
+      expect(submitAnswersSpy).toHaveBeenCalledWith({
+        answers: {
+          "profile-q-0": 0,
+          "profile-q-1": [0], // this question accept multiple answers
+          "profile-q-2": 2
+        }
+      });
 
-    await waitFor(() => {
-      expect(screen.getByTestId("profile-q-2-others")).toBeInTheDocument();
-    });
-    // click multiple choice again
-    user.click(screen.getByTestId("profile-q-2-4"));
-    await waitFor(() => {
-      expect(screen.getByTestId("profile-q-2-others")).toBeInTheDocument();
-    });
-  });
-
-  it("should include the text area input in the end results", async () => {
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
-    await user.click(screen.getByTestId("profile-q-0-0"));
-    await user.click(screen.getByTestId("next-button"));
-    // Select the 'other' option for the 2nd question
-    await user.click(screen.getByTestId("profile-q-1-3"));
-
-    // Enter text in the text area
-    await user.type(screen.getByTestId("profile-q-1-others"), "custom option");
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("profile-q-2-3"));
-    await user.click(screen.getByTestId("next-button"));
-
-    // Check if submitAnswers is called with the correct answers including the text area input
-    expect(submitAnswersSpy).toHaveBeenCalledWith({
-      answers: {
-        "profile-q-0": 0,
-        "profile-q-1": [3],
-        "profile-q-1-others": "custom option",
-        "profile-q-2": 3
-      }
-    });
-  });
-
-  it("should limit the text area input to 200 characters", async () => {
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
-    await user.click(screen.getByTestId("profile-q-0-0"));
-    await user.click(screen.getByTestId("next-button"));
-    // Select the 'other' option for the 2nd question
-    await user.click(screen.getByTestId("profile-q-1-3"));
-    // Enter text in the text area
-    await user.type(screen.getByTestId("profile-q-1-others"), longText);
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("profile-q-2-3"));
-    await user.click(screen.getByTestId("next-button"));
-
-    // Check if submitAnswers is called with the correct answers including the text area input
-    expect(submitAnswersSpy).toHaveBeenCalledWith({
-      answers: {
-        "profile-q-0": 0,
-        "profile-q-1": [3],
-        "profile-q-1-others": longText.slice(0, 200),
-        "profile-q-2": 3
-      }
-    });
-  });
-
-  it("Allow multiple answers for questions with multiple: true", async () => {
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
-    expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
-    await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("profile-q-1-0"));
-    await user.click(screen.getByTestId("profile-q-1-1"));
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("profile-q-2-2"));
-    await user.click(screen.getByTestId("next-button"));
-    expect(submitAnswersSpy).toHaveBeenCalledWith({
-      answers: {
-        "profile-q-0": 0,
-        "profile-q-1": [0, 1], // this question accept multiple answers
-        "profile-q-2": 2
-      }
-    });
-  });
-
-  it("Toggling selection of an option for questions should work as expected with multiple: true", async () => {
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
-    expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
-    await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("profile-q-1-0"));
-    await user.click(screen.getByTestId("profile-q-1-1")); // click the first option
-    await user.click(screen.getByTestId("profile-q-1-1")); // toggle the first option
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("profile-q-2-2"));
-    await user.click(screen.getByTestId("next-button"));
-    expect(submitAnswersSpy).toHaveBeenCalledWith({
-      answers: {
-        "profile-q-0": 0,
-        "profile-q-1": [0], // this question accept multiple answers
-        "profile-q-2": 2
-      }
-    });
-  });
-
-  it("only allow one answer for questions with multiple: false", async () => {
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
-    expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
-    await user.click(screen.getByTestId("profile-q-0-0"));
-    await user.click(screen.getByTestId("profile-q-0-1"));
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("profile-q-1-0"));
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("profile-q-2-2"));
-    await user.click(screen.getByTestId("next-button"));
-    expect(submitAnswersSpy).toHaveBeenCalledWith({
-      answers: {
-        "profile-q-0": 1, // last selected option
-        "profile-q-1": [0], // this question accept multiple answers
-        "profile-q-2": 2
-      }
-    });
-  });
-
-  it("on skip question, the selected answer should be null", async () => {
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
-    await user.click(screen.getByTestId("profile-q-0-0"));
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("profile-q-1-1"));
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("skip-button"));
-    expect(submitAnswersSpy).toHaveBeenCalledWith({
-      answers: {
-        "profile-q-0": 0,
-        "profile-q-1": [1],
-        "profile-q-2": null
-      }
-    });
-  });
-  it("on skip question with multiple: true, the selected answer should be empty array", async () => {
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
-    await user.click(screen.getByTestId("profile-q-0-0"));
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("skip-button"));
-    expect(submitAnswersSpy).toHaveBeenCalledWith({
-      answers: {
-        "profile-q-0": 0,
-        "profile-q-1": [],
-        "profile-q-2": null
-      }
-    });
-  });
-
-  it("Should redirect to thanks page when all questions are answered", async () => {
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
-    await user.click(screen.getByTestId("profile-q-0-0"));
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("profile-q-1-0"));
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("profile-q-2-2"));
-    await user.click(screen.getByTestId("next-button"));
-
-    expect(submitAnswersSpy).toHaveBeenCalledWith({
-      answers: {
-        "profile-q-0": 0,
-        "profile-q-1": [0], // this question accept multiple answers
-        "profile-q-2": 2
-      }
-    });
-    await waitFor(() => {
-      expect(screen.getByTestId("education-q-0")).toHaveClass("block");
-      expect(screen.getByTestId("education-q-1")).toHaveClass("hidden");
-    });
-    await user.click(screen.getByTestId("education-q-0-0"));
-    await user.click(screen.getByTestId("education-q-0-1"));
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("education-q-1-0"));
-    await user.click(screen.getByTestId("next-button"));
-    await waitFor(() => {
-      expect(goToThanksPageSpy).toHaveBeenCalled();
-    });
-  });
-
-  it("Show error message when submitAnswers fails", async () => {
-    const { user } = setup(<SurveyForm questions={mockQuestions} />);
-    // Mock submitAnswers to return an error
-    submitAnswersSpy.mockResolvedValue({
-      data: undefined,
-      error: {
-        type: "mocked error",
-        code: "NOT_FOUND",
-        status: 500,
-        name: "mocked error",
-        message: "mocked error"
-      }
+      // check if we are in the education section
+      await waitFor(() => {
+        expect(screen.getByTestId("education-q-0")).toHaveClass("block");
+        expect(screen.getByTestId("education-q-1")).toHaveClass("hidden");
+      });
     });
 
-    await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("profile-q-1-0"));
-    await user.click(screen.getByTestId("next-button"));
-    await user.click(screen.getByTestId("profile-q-2-2"));
-    await user.click(screen.getByTestId("next-button"));
+    it("should include the text area input in the end results", async () => {
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      await user.click(screen.getByTestId("profile-q-0-0"));
+      await user.click(screen.getByTestId("next-button"));
+      // Select the 'other' option for the 2nd question
+      await user.click(screen.getByTestId("profile-q-1-3"));
 
-    expect(screen.getByTestId("profile-q-2")).toHaveClass("block");
-    // Check if the error message contains the correct text
-    await waitFor(() => {
-      expect(screen.getByTestId("error-message")).toBeInTheDocument();
-      expect(screen.getByTestId("error-message")).toHaveTextContent(
-        ERRORS.submission
+      // Enter text in the text area
+      await user.type(
+        screen.getByTestId("profile-q-1-others"),
+        "custom option"
       );
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-2-3"));
+      await user.click(screen.getByTestId("next-button"));
+
+      // Check if submitAnswers is called with the correct answers including the text area input
+      expect(submitAnswersSpy).toHaveBeenCalledWith({
+        answers: {
+          "profile-q-0": 0,
+          "profile-q-1": [3],
+          "profile-q-1-others": "custom option",
+          "profile-q-2": 3
+        }
+      });
+    });
+
+    it("Should redirect to thanks page when all questions are answered", async () => {
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      await user.click(screen.getByTestId("profile-q-0-0"));
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-1-0"));
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-2-2"));
+      await user.click(screen.getByTestId("next-button"));
+
+      expect(submitAnswersSpy).toHaveBeenCalledWith({
+        answers: {
+          "profile-q-0": 0,
+          "profile-q-1": [0], // this question accept multiple answers
+          "profile-q-2": 2
+        }
+      });
+      await waitFor(() => {
+        expect(screen.getByTestId("education-q-0")).toHaveClass("block");
+        expect(screen.getByTestId("education-q-1")).toHaveClass("hidden");
+      });
+      await user.click(screen.getByTestId("education-q-0-0"));
+      await user.click(screen.getByTestId("education-q-0-1"));
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("education-q-1-0"));
+      await user.click(screen.getByTestId("next-button"));
+      await waitFor(() => {
+        expect(goToThanksPageSpy).toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe("Other Input Handling", () => {
+    it("should show the text area when the user selects the 'other' option for a single choice question", async () => {
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+
+      await user.click(screen.getByTestId("profile-q-0-0"));
+      await user.click(screen.getByTestId("next-button"));
+      // Select the 'other' option for the 2nd question
+      await user.click(screen.getByTestId("profile-q-1-3"));
+      // Check if the text area is displayed
+      await waitFor(() => {
+        expect(screen.getByTestId("profile-q-1-others")).toBeInTheDocument();
+      });
+    });
+
+    it("should show the text area when the user selects the 'other' option for a multiple choice question", async () => {
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+
+      await user.click(screen.getByTestId("profile-q-0-0"));
+      await user.click(screen.getByTestId("next-button"));
+      // Select the 'other' option for the 2nd question
+      await user.click(screen.getByTestId("profile-q-1-3"));
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-2-4"));
+
+      await waitFor(() => {
+        expect(screen.getByTestId("profile-q-2-others")).toBeInTheDocument();
+      });
+      // click multiple choice again
+      user.click(screen.getByTestId("profile-q-2-4"));
+      await waitFor(() => {
+        expect(screen.getByTestId("profile-q-2-others")).toBeInTheDocument();
+      });
+    });
+    it("should show the text area whit question with multiple other option,( other exist in two choices)", async () => {
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+
+      await user.click(screen.getByTestId("profile-q-0-0"));
+      await user.click(screen.getByTestId("next-button"));
+      // Select the 'other' option for the 2nd question
+      await user.click(screen.getByTestId("profile-q-1-3"));
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-2-4"));
+
+      await waitFor(() => {
+        expect(screen.getByTestId("profile-q-2-others")).toBeInTheDocument();
+      });
+
+      await user.click(screen.getByTestId("profile-q-2-5"));
+
+      await waitFor(() => {
+        expect(screen.getByTestId("profile-q-2-others")).toBeInTheDocument();
+      });
+    });
+
+    it("should limit the text area input to 200 characters", async () => {
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      await user.click(screen.getByTestId("profile-q-0-0"));
+      await user.click(screen.getByTestId("next-button"));
+      // Select the 'other' option for the 2nd question
+      await user.click(screen.getByTestId("profile-q-1-3"));
+      // Enter text in the text area
+      await user.type(screen.getByTestId("profile-q-1-others"), longText);
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-2-3"));
+      await user.click(screen.getByTestId("next-button"));
+
+      // Check if submitAnswers is called with the correct answers including the text area input
+      expect(submitAnswersSpy).toHaveBeenCalledWith({
+        answers: {
+          "profile-q-0": 0,
+          "profile-q-1": [3],
+          "profile-q-1-others": longText.slice(0, 200),
+          "profile-q-2": 3
+        }
+      });
+    });
+  });
+
+  describe("Multiple Choice Handling", () => {
+    it("Allow multiple answers for questions with multiple: true", async () => {
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
+      await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-1-0"));
+      await user.click(screen.getByTestId("profile-q-1-1"));
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-2-2"));
+      await user.click(screen.getByTestId("next-button"));
+      expect(submitAnswersSpy).toHaveBeenCalledWith({
+        answers: {
+          "profile-q-0": 0,
+          "profile-q-1": [0, 1], // this question accept multiple answers
+          "profile-q-2": 2
+        }
+      });
+    });
+
+    it("Toggling selection of an option for questions should work as expected with multiple: true", async () => {
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
+      await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-1-0"));
+      await user.click(screen.getByTestId("profile-q-1-1")); // click the first option
+      await user.click(screen.getByTestId("profile-q-1-1")); // toggle the first option
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-2-2"));
+      await user.click(screen.getByTestId("next-button"));
+      expect(submitAnswersSpy).toHaveBeenCalledWith({
+        answers: {
+          "profile-q-0": 0,
+          "profile-q-1": [0], // this question accept multiple answers
+          "profile-q-2": 2
+        }
+      });
+    });
+
+    it("only allow one answer for questions with multiple: false", async () => {
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
+      await user.click(screen.getByTestId("profile-q-0-0"));
+      await user.click(screen.getByTestId("profile-q-0-1"));
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-1-0"));
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-2-2"));
+      await user.click(screen.getByTestId("next-button"));
+      expect(submitAnswersSpy).toHaveBeenCalledWith({
+        answers: {
+          "profile-q-0": 1, // last selected option
+          "profile-q-1": [0], // this question accept multiple answers
+          "profile-q-2": 2
+        }
+      });
+    });
+  });
+
+  describe("Skipping Questions", () => {
+    it("on skip question, the selected answer should be null", async () => {
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      await user.click(screen.getByTestId("profile-q-0-0"));
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("profile-q-1-1"));
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("skip-button"));
+      expect(submitAnswersSpy).toHaveBeenCalledWith({
+        answers: {
+          "profile-q-0": 0,
+          "profile-q-1": [1],
+          "profile-q-2": null
+        }
+      });
+    });
+
+    it("on skip question with multiple: true, the selected answer should be empty array", async () => {
+      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      await user.click(screen.getByTestId("profile-q-0-0"));
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("next-button"));
+      await user.click(screen.getByTestId("skip-button"));
+      expect(submitAnswersSpy).toHaveBeenCalledWith({
+        answers: {
+          "profile-q-0": 0,
+          "profile-q-1": [],
+          "profile-q-2": null
+        }
+      });
     });
   });
 });
