@@ -101,7 +101,6 @@ const rules = [
     try {
       const userCredential = await signInAnonymously(auth);
       const token = await userCredential.user.getIdToken();
-      console.log(token);
 
       const { error } = await actions.initSession({
         idToken: token,
