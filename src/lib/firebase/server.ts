@@ -24,7 +24,7 @@ if (import.meta.env?.FIREBASE_PROJECT_ID) {
   serviceAccount = {
     type: "service_account",
     project_id: process.env.FIREBASE_PROJECT_ID,
-    private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
+    private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID?.replace(/\\n/g, "\n"), // not sure why, but the private key is not working correctly without this in github actions
     private_key: process.env.FIREBASE_PRIVATE_KEY,
     client_email: process.env.FIREBASE_CLIENT_EMAIL,
     client_id: process.env.FIREBASE_CLIENT_ID,

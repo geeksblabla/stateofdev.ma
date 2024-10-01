@@ -21,7 +21,6 @@ function writeToFile(filename: string, data: any) {
 const run = async () => {
   console.log("exporting results");
   const data = await exportResults();
-  console.log(data);
   writeToFile(getFileName(), data);
 };
 
