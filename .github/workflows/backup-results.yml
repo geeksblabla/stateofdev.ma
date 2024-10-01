@@ -31,7 +31,7 @@ jobs:
           FIREBASE_TOKEN_URI: ${{ secrets.FIREBASE_TOKEN_URI }}
           FIREBASE_AUTH_CERT_URL: ${{ secrets.FIREBASE_AUTH_CERT_URL }}
           FIREBASE_CLIENT_CERT_URL: ${{ secrets.FIREBASE_CLIENT_CERT_URL }}
-        run: pnpm run export-result:ci
+        run: pnpm run export-results:ci
 
       - name: Upload results
         uses: actions/upload-artifact@v4
