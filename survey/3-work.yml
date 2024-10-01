@@ -143,3 +143,22 @@ questions:
       - From the office
       - Full remote
       - Part-time remote/Hybrid
+
+  - label: "Which sectors are you currently working in?"
+    multiple: true
+    required: false
+    choices:
+      - E-banking and fintech
+      - Digital health and telemedicine
+      - E-commerce and retail
+      - Education and e-learning
+      - Content creation and marketing
+      - Cybersecurity
+      - Supply chain and logistics
+      - Smart cities and IoT
+      - Autonomous vehicles
+      - Manufacturing and Industry 4.0
+      - Environmental monitoring and sustainability
+      - Legal tech and compliance
+      - Human resources and talent management
+      - Other
