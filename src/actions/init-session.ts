@@ -1,10 +1,10 @@
 import { app } from "@/lib/firebase/server";
-import { defineAction } from "astro:actions";
+import { defineAction, ActionError } from "astro:actions";
 import { getAuth } from "firebase-admin/auth";
 import { z } from "astro:schema";
 import { initUserSubmission } from "@/lib/firebase/database";
 import { isCaptchaValid } from "@/lib/captcha";
-
+// Add this import
 export const initSession = defineAction({
   accept: "json",
   input: z.object({
@@ -15,23 +15,28 @@ export const initSession = defineAction({
     const auth = getAuth(app);
     /* Validate inputs */
     if (!captchaToken && import.meta.env.CAPTCHA_ENABLED === "true") {
-      return {
-        error: "Captcha token is required"
-      };
+      throw new ActionError({
+        code: "UNAUTHORIZED",
+        message: "Captcha token is required"
+      });
     }
     if (!idToken) {
-      return {
-        error: "No idToken provided"
-      };
+      throw new ActionError({
+        code: "UNAUTHORIZED",
+        message: "No idToken provided"
+      });
     }
 
     /* Validate captcha */
     if (captchaToken && import.meta.env.CAPTCHA_ENABLED === "true") {
+      console.log("checking captcha ");
+
       const isValid = await isCaptchaValid(captchaToken);
       if (!isValid) {
-        return {
-          error: "Invalid captcha"
-        };
+        throw new ActionError({
+          code: "UNAUTHORIZED",
+          message: "Invalid captcha"
+        });
       }
     }
 
@@ -40,17 +45,19 @@ export const initSession = defineAction({
       const decodedToken = await auth.verifyIdToken(idToken);
       const user = await auth.getUser(decodedToken.uid);
       if (!user) {
-        return {
-          error: "User not found"
-        };
+        throw new ActionError({
+          code: "UNAUTHORIZED",
+          message: "User not found"
+        });
       }
       await initUserSubmission(user);
       console.log("user session created");
     } catch (error) {
       console.error("Error verifying id token:", error);
-      return {
-        error: "Invalid id token"
-      };
+      throw new ActionError({
+        code: "UNAUTHORIZED",
+        message: "Invalid id token"
+      });
     }
 
     try {
@@ -69,9 +76,10 @@ export const initSession = defineAction({
       };
     } catch (error) {
       console.error("Error signing in:", error);
-      return {
-        error: "Error signing in"
-      };
+      throw new ActionError({
+        code: "UNAUTHORIZED",
+        message: "Error signing in"
+      });
     }
   }
 });
