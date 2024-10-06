@@ -29,7 +29,7 @@ questions:
       - English
       - Others
 
-  - label: Is English an obstacle to learning new technologies?
+  - label: Do you find English to be an obstacle to learning new technologies for you?
     required: true
     choices:
       - Yes
