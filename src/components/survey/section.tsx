@@ -56,6 +56,17 @@ export default React.memo(
     const isLastQuestion = section.questions.length === QIndex + 1;
     const isRequired = !!section.questions[QIndex].required;
 
+    useEffect(() => {
+      const _savedAnswars = JSON.parse(localStorage.getItem("answars") || "{}");
+      const keys = Object.keys(_savedAnswars);
+      const currentSectionLenght = keys.filter((key) =>
+        key.startsWith(section.label)
+      ).length;
+      const progress = keys.length - (currentSectionLenght - QIndex);
+
+      setProgress(progress);
+    }, []);
+
     const nextQuestion = async () => {
       localStorage.setItem("answars", JSON.stringify(getValues()));
       localStorage.setItem("savedQIndex", QIndex.toString());
