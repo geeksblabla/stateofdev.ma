@@ -14,6 +14,11 @@ export default defineConfig({
   trailingSlash: "never",
   output: "hybrid",
   adapter: netlify(),
+  redirects: {
+    "/before-start": "/",
+    "/survey": "/",
+    "/thanks": "/"
+  },
   vite: {
     plugins: [yaml()]
   }
