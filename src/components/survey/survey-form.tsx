@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import LoadingBar from "react-top-loading-bar";
 import { Steps } from "./steps";
 import Section from "./section";
@@ -9,8 +9,19 @@ type Props = {
 };
 
 export const SurveyForm = ({ questions }: Props) => {
-  const [selectedSectionIndex, setSelectedSectionIndex] = useState(0);
+  const savedSectionIndex = parseInt(
+    localStorage.getItem("savedSelectedSectionIndex") || "0"
+  );
+  const [selectedSectionIndex, setSelectedSectionIndex] =
+    useState(savedSectionIndex);
   const [progress, setPr] = useState(0);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "savedSelectedSectionIndex",
+      selectedSectionIndex.toString()
+    );
+  }, [selectedSectionIndex]);
 
   const section = useMemo(
     () => questions[selectedSectionIndex],
@@ -42,6 +53,7 @@ export const SurveyForm = ({ questions }: Props) => {
   const next = useCallback(() => {
     if (selectedSectionIndex + 1 < questions.length) {
       setSelectedSectionIndex((prv) => prv + 1);
+      localStorage.setItem("savedQIndex", "0");
     } else {
       goToThanksPage();
     }
@@ -57,6 +69,7 @@ export const SurveyForm = ({ questions }: Props) => {
           next={next}
           key={section.label}
           setProgress={setProgress}
+          questions={questions}
         />
       </main>
     </div>

@@ -7,6 +7,7 @@ type SectionProps = {
   section: SurveyQuestionsYamlFile;
   next: () => void;
   setProgress: (n: number) => void;
+  questions: SurveyQuestionsYamlFile[];
 };
 
 export const ERRORS = {
@@ -41,110 +42,132 @@ const normalizeAnswers = (
   return convertedAnswers;
 };
 
-export default React.memo(({ section, next, setProgress }: SectionProps) => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string>(ERRORS.none);
-  const { register, getValues } = useForm();
-  const [QIndex, setQIndex] = useState(0);
-  const isLastQuestion = section.questions.length === QIndex + 1;
-  const isRequired = !!section.questions[QIndex].required;
-
-  const nextQuestion = async () => {
-    setError(ERRORS.none);
-    const name = `${section.label}-q-${QIndex}`;
-    const value = getValues(name);
-    // value === null   default value for simple questions and false for multiple ones
-    if (isRequired && (value === null || value === false)) {
-      setError(ERRORS.required);
-      return;
-    }
-
-    if (isLastQuestion) {
-      await submitData();
-      setProgress(1);
-    } else {
-      setQIndex((QIndex) => QIndex + 1);
-      setProgress(1);
-    }
-    scrollToSection("#steps");
-  };
-  const backToPreviousQ = () => {
-    if (QIndex > 0) {
-      setQIndex((QIndex) => QIndex - 1);
-      setProgress(-1);
-    }
-  };
-
-  const submitData = useCallback(async () => {
-    const answers = normalizeAnswers(getValues());
-    setLoading(true);
-    const { error } = await submitAnswers({
-      answers
+export default React.memo(
+  ({ section, next, setProgress, questions }: SectionProps) => {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string>(ERRORS.none);
+    const savedAnswars =
+      localStorage.getItem("answars") || JSON.stringify(questions);
+    const { register, getValues } = useForm({
+      defaultValues: JSON.parse(savedAnswars)
     });
-    if (error) {
-      setError(ERRORS.submission);
-      setLoading(false);
-    } else {
-      next();
-      setLoading(false);
-    }
-  }, []);
+    const savedQIndex = parseInt(localStorage.getItem("savedQIndex") || "0");
+    const [QIndex, setQIndex] = useState(savedQIndex);
+    const isLastQuestion = section.questions.length === QIndex + 1;
+    const isRequired = !!section.questions[QIndex].required;
 
-  // Add useEffect to clear error after 3 seconds
-  useEffect(() => {
-    if (error) {
-      const timer = setTimeout(() => {
-        setError(ERRORS.none);
-      }, 2000);
+    useEffect(() => {
+      const _savedAnswars = JSON.parse(localStorage.getItem("answars") || "{}");
+      const keys = Object.keys(_savedAnswars);
+      const currentSectionLenght = keys.filter((key) =>
+        key.startsWith(section.label)
+      ).length;
+      const progress = keys.length - (currentSectionLenght - QIndex);
 
-      return () => clearTimeout(timer);
-    }
-  }, [error]);
+      setProgress(progress);
+    }, []);
 
-  return (
-    <div id={section.label} className="md:w-[700px] w-full px-4 md:px-0 ">
-      <div className="mb-10 md:min-h-[300px] min-h-screen transition-all duration-1000">
-        {section.questions.map((q, i) => (
-          <Question
-            selected={QIndex === i}
-            question={q}
-            index={i}
-            key={`question-${i}`}
-            register={register}
-            sectionId={section.label}
-            getValues={getValues}
-          />
-        ))}
-      </div>
-      <div className="flex flex-row justify-between mt-3 sticky bottom-0 bg-white py-4 border-t-2 border-gray-100 z-20 transition-all duration-1000">
-        <div>
-          {QIndex > 0 && <BackButton onClick={() => backToPreviousQ()} />}
+    const nextQuestion = async () => {
+      localStorage.setItem("answars", JSON.stringify(getValues()));
+      localStorage.setItem("savedQIndex", QIndex.toString());
+      setError(ERRORS.none);
+      const name = `${section.label}-q-${QIndex}`;
+      const value = getValues(name);
+      // value === null   default value for simple questions and false for multiple ones
+      if (isRequired && (value === null || value === false)) {
+        setError(ERRORS.required);
+        return;
+      }
+
+      if (isLastQuestion) {
+        await submitData();
+        setProgress(1);
+      } else {
+        setQIndex((QIndex) => QIndex + 1);
+        setProgress(1);
+      }
+      scrollToSection("#steps");
+    };
+    const backToPreviousQ = () => {
+      if (QIndex > 0) {
+        localStorage.setItem("answars", JSON.stringify(getValues()));
+        localStorage.setItem("savedQIndex", QIndex.toString());
+        setQIndex((QIndex) => QIndex - 1);
+        setProgress(-1);
+      }
+    };
+
+    const submitData = useCallback(async () => {
+      const answers = normalizeAnswers(getValues());
+      setLoading(true);
+      const { error } = await submitAnswers({
+        answers
+      });
+      if (error) {
+        setError(ERRORS.submission);
+        setLoading(false);
+      } else {
+        next();
+        setLoading(false);
+      }
+    }, []);
+
+    // Add useEffect to clear error after 3 seconds
+    useEffect(() => {
+      if (error) {
+        const timer = setTimeout(() => {
+          setError(ERRORS.none);
+        }, 2000);
+
+        return () => clearTimeout(timer);
+      }
+    }, [error]);
+
+    return (
+      <div id={section.label} className="md:w-[700px] w-full px-4 md:px-0 ">
+        <div className="mb-10 md:min-h-[300px] min-h-screen transition-all duration-1000">
+          {section.questions.map((q, i) => (
+            <Question
+              selected={QIndex === i}
+              question={q}
+              index={i}
+              key={`question-${i}`}
+              register={register}
+              sectionId={section.label}
+              getValues={getValues}
+            />
+          ))}
         </div>
-        <div className="relative">
-          {isRequired ? null : (
+        <div className="flex flex-row justify-between mt-3 sticky bottom-0 bg-white py-4 border-t-2 border-gray-100 z-20 transition-all duration-1000">
+          <div>
+            {QIndex > 0 && <BackButton onClick={() => backToPreviousQ()} />}
+          </div>
+          <div className="relative">
+            {isRequired ? null : (
+              <button
+                type="button"
+                className="focus:outline-4 rounded-xl bg-white px-6 md:px-8 py-3 font-medium text-emerald-600 underline border-emerald-600 transition mr-2"
+                onClick={() => nextQuestion()}
+                data-testid="skip-button"
+              >
+                Skip
+              </button>
+            )}
             <button
+              data-testid="next-button"
               type="button"
-              className="focus:outline-4 rounded-xl bg-white px-6 md:px-8 py-3 font-medium text-emerald-600 underline border-emerald-600 transition mr-2"
+              className="px-4 py-2 min-w-[120px] bg-emerald-500 text-white rounded transition hover:bg-emerald-600"
               onClick={() => nextQuestion()}
-              data-testid="skip-button"
             >
-              Skip
+              {loading ? "Loading..." : "Next"}
+              <ErrorMessage error={error} />
             </button>
-          )}
-          <button
-            data-testid="next-button"
-            type="button"
-            className="px-4 py-2 min-w-[120px] bg-emerald-500 text-white rounded transition hover:bg-emerald-600"
-            onClick={() => nextQuestion()}
-          >
-            {loading ? "Loading..." : "Next"}
-            <ErrorMessage error={error} />
-          </button>
+          </div>
         </div>
       </div>
-    </div>
-  );
-});
+    );
+  }
+);
 
 const ErrorMessage = ({ error }: { error: string }) => {
   if (!error) return null;
