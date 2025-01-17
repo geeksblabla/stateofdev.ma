@@ -8,8 +8,10 @@ import Questions_2022 from "@/results/2022/data/questions.json";
 
 import DATA_2023 from "@/results/2023/data/results.json";
 import Questions_2023 from "@/results/2023/data/questions.json";
+import DATA_2024 from "@/results/2024/data/results.json";
+import Questions_2024 from "@/results/2024/data/questions.json";
 
-export type Year = "2020" | "2021" | "2022" | "2023";
+export type Year = "2020" | "2021" | "2022" | "2023" | "2024";
 export type Question = globalThis.Question;
 export type QuestionMap = globalThis.QuestionMap;
 export type Results = globalThis.Results;
@@ -37,6 +39,10 @@ const surveyData: SurveyDataType = {
   "2023": {
     questions: Questions_2023 as unknown as QuestionMap,
     results: DATA_2023.results as unknown as Results["results"]
+  },
+  "2024": {
+    questions: Questions_2024 as unknown as QuestionMap,
+    results: DATA_2024.results as unknown as Results["results"]
   }
 };
 
