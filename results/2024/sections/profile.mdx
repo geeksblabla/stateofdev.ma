@@ -1,0 +1,105 @@
+---
+title: Profile
+position: 2
+---
+
+# Profile
+
+The objective of this first section is to get insights into the profile and the skills of the people working in Software Engineering in Morocco. The majority of the people that answered the survey are men. Also, the majority of the respondents are junior developers with less than 3 years of experience and most of them are living in Morocco with plans to work abroad in the next 2 years.
+
+## Gender
+
+As can be seen, the results are very similar to previous years, where the majority of the respondents are men.
+
+<Chart id="profile-q-0" pie title={false} />
+
+## Age
+
+The majority of respondents are aged 18-24, mainly fresh graduates, junior developers, and last-year students. The second largest group includes individuals aged 25-34, with around 70 respondents being 35 years old or older.
+
+<Chart id="profile-q-1" title={false} />
+
+## Location
+
+Half of the people who filled out the survey are located in Casablanca-Settat or Rabat-Salé-Kénitra. Only 10% of respondents live abroad in Europe, the US, or other countries.
+
+<Chart id="profile-q-2" title={false} />
+
+## Roles
+
+Almost half of all respondents qualify themselves full-stack developers.
+
+<Chart id="profile-q-3" title={false} />
+
+## Highest degree
+
+The results are very similar to last year's results, The majority of the respondents have an equivalent of a Master's degree. Followed by people who took 2/3-year training after their high school degree (BAC).
+
+<Chart id="profile-q-4" pie title={false} />
+
+## Years coding professionally
+
+Like previous years, more people have been coding for 1 to 2 years, followed by those with less than a year of coding experience.
+
+<Chart id="profile-q-5" title={false} />
+
+## Coding as a hobby
+
+Coding is a hobby for the majority of the developers who participate in the survey.
+
+<Chart id="profile-q-6" title={false} />
+
+## Plans to work abroad
+
+40% of the people who answered this question have plans to work outside Morocco in the next two years.
+
+<Tabs>
+  <TabItem title="2024">
+    <Chart
+      id="profile-q-7"
+      year={2024}
+      condition={(v) => v["profile-q-7"] !== 3}
+      title={false}
+    />
+  </TabItem>
+  <TabItem title="2023">
+    <Chart
+      id="profile-q-7"
+      year={2023}
+      condition={(v) => v["profile-q-7"] !== 3}
+      title={false}
+    />
+  </TabItem>
+  <TabItem title="2022">
+    <Chart
+      id="profile-q-7"
+      year={2022}
+      condition={(v) => v["profile-q-7"] !== 3}
+      title={false}
+    />
+  </TabItem>
+  <TabItem title="2021">
+    <Chart
+      id="profile-q-7"
+      condition={(v) => v["profile-q-7"] !== 3}
+      year={2021}
+      title={false}
+    />
+  </TabItem>
+</Tabs>
+
+## Plans to come back to Morocco
+
+Only 27% of people working abroad are not willing to come back to Morocco; other respondents either have plans or are still hesitating to return.
+
+<Chart
+  id="profile-q-8"
+  condition={(v) => v["profile-q-7"] === 3}
+  title={false}
+/>
+
+## Favorite drink
+
+Coffee remains the favorite drink of developers, followed by water.
+
+<Chart id="profile-q-9" title={false} />

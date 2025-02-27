@@ -28,7 +28,10 @@ const calculateChoicesCounts = (
 ): OptionsCounts => {
   const answers = data
     .map((r) => r[id])
-    .filter((v) => v !== undefined && v !== null); // in case some answers are missing
+    .filter(
+      (v) =>
+        v !== undefined && v !== null && (!Array.isArray(v) || v.length > 0)
+    ); // in case some answers are missing or empty arrays
   const counts = answers.reduce(
     (acc, curr) => {
       if (curr === undefined || curr === null) return acc;
