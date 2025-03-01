@@ -24,7 +24,6 @@ const headings = docs
   .map((doc) => doc.getHeadings())
   .flat()
   .filter((heading) => heading.depth <= 3);
-console.log(headings);
 const customComponents = {
   Chart,
   TabItem,

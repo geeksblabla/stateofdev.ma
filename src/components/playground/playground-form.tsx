@@ -15,7 +15,7 @@ export const chartTypes: { label: string; value: ChartType }[] = [
   { label: "Pie Chart", value: "pie" }
 ];
 
-const years = ["2020", "2021", "2022", "2023"];
+const years = ["2020", "2021", "2022", "2023", "2024"];
 
 type Filter = {
   question_id: string;

@@ -28,7 +28,10 @@ const calculateChoicesCounts = (
 ): OptionsCounts => {
   const answers = data
     .map((r) => r[id])
-    .filter((v) => v !== undefined && v !== null); // in case some answers are missing
+    .filter(
+      (v) =>
+        v !== undefined && v !== null && (!Array.isArray(v) || v.length > 0)
+    ); // in case some answers are missing or empty arrays
   const counts = answers.reduce(
     (acc, curr) => {
       if (curr === undefined || curr === null) return acc;
@@ -112,6 +115,7 @@ export type FinalResult = Question & {
   id: string;
   results: GroupedResult[];
   total: number;
+  otherOptions: string[];
 };
 
 export const getQuestion = ({
@@ -127,7 +131,7 @@ export const getQuestion = ({
   const resultsData = data.results;
   // Filter the data based on the condition
   const filteredResults = filterResultByCondition(resultsData, condition);
-
+  const otherOptions = getOtherOptions(filteredResults, id);
   const resultsWithChoicesCounts = calculateChoicesCounts(filteredResults, id);
 
   // this way we are handling we make sure we are returning all choices even if they are not in the filtered data
@@ -163,10 +167,17 @@ export const getQuestion = ({
     results: resultsWithGrouping,
     ...question,
     id,
-    isFiltered
+    isFiltered,
+    otherOptions
   } as FinalResult;
 };
 
 export const getPercent = (value: number, total: number) => {
   return ((value * 100) / total).toFixed(1);
+};
+
+export const getOtherOptions = (data: Results["results"], id: string) => {
+  const key = `${id}-others`;
+  const results = data.filter((r) => r[key]).map((r) => r[key]);
+  return results;
 };

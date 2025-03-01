@@ -11,13 +11,15 @@ export interface Props {
   condition?: QuestionCondition;
   groupBy?: string;
   pie?: boolean;
+  showEmptyOptions?: boolean;
 }
 const {
   id = "",
   year: yearProp,
   condition,
   groupBy,
-  pie = false
+  pie = false,
+  showEmptyOptions = true
 } = Astro.props;
 
 const { year: yearContext } = getContext(Astro);
@@ -27,7 +29,12 @@ const results = getQuestion({ id, year, condition, groupBy });
 
 {
   results ? (
-    <RChart results={results} pie={pie} year={year} />
+    <RChart
+      results={results}
+      pie={pie}
+      year={year}
+      showEmptyOptions={showEmptyOptions}
+    />
   ) : (
     <div class="text-sm text-red-500">
       {" "}
