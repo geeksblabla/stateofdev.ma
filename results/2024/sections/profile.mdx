@@ -1,0 +1,113 @@
+---
+title: Profile
+position: 2
+---
+
+# Profile
+
+The objective of this first section is to get insights into the profile and the skills of the people working in Software Engineering in Morocco and abroad. The majority of the people that answered the survey are men. Also, the majority of the respondents are junior developers with less than 3 years of experience and most of them are living in Morocco with plans to work abroad in the next 2 years.
+
+## Gender
+
+Although the presence of women in the IT sectors is slightly increasing each year, the field is still highly dominated by men.
+
+<Chart id="profile-q-0" pie title={false} />
+
+## Age
+
+The majority of respondents is aged between 18 and 34 years old, indicating a huge workforce of junior to mid-level individuals and thus perhaps a higher demand for entry level and intermediate level jobs.
+
+<Chart id="profile-q-1" title={false} />
+
+## Location
+
+Half the activity in the IT sector in Morocco is concentrated in the two big metropols: Casablanca-Settat in the first place and Rabat-Salé-Kenitra coming right after. Job opportunities are definitely more present there.
+Abroad presence is also to be taken into account, although in a smaller proportion of respondents.
+
+<Chart id="profile-q-2" title={false} />
+
+## Roles
+
+More than half of the respondents qualify themselves as developers in general: whether it is web (front-end and/or back-end), mobile, game or embeded development.
+After developers, the second place is held by data-related roles.
+Other technical positions, management and academical roles are much less represented.
+
+<Chart id="profile-q-3" title={false} />
+
+## Highest degree
+
+Most respondents have a degree of some form (from a BAC+2 to a BAC+8).
+There is however a significant portion of respondents which consider themselves self-taught.
+
+<Chart id="profile-q-4" pie title={false} />
+
+## Years coding professionally
+
+Similarly to previous years, most participants have less than 2 years of coding experience in a professional context.
+
+<Chart id="profile-q-5" title={false} />
+
+## Coding as a hobby
+
+Coding is a hobby for the majority of the developers who participate in the survey.
+
+<Chart id="profile-q-6" title={false} />
+
+## Plans to work abroad
+
+While slightly than half of participants are quite hesitant or not willing to work abroad, many of them have plans to move in the coming 1 to 2 years.
+
+<Tabs>
+  <TabItem title="2024">
+    <Chart
+      id="profile-q-7"
+      year={2024}
+      condition={(v) => v["profile-q-7"] !== 3}
+      title={false}
+      showEmptyOptions={false}
+    />
+  </TabItem>
+  <TabItem title="2023">
+    <Chart
+      id="profile-q-7"
+      year={2023}
+      condition={(v) => v["profile-q-7"] !== 3}
+      title={false}
+      showEmptyOptions={false}
+    />
+  </TabItem>
+  <TabItem title="2022">
+    <Chart
+      id="profile-q-7"
+      year={2022}
+      condition={(v) => v["profile-q-7"] !== 3}
+      title={false}
+      showEmptyOptions={false}
+    />
+  </TabItem>
+  <TabItem title="2021">
+    <Chart
+      id="profile-q-7"
+      condition={(v) => v["profile-q-7"] !== 3}
+      year={2021}
+      title={false}
+      showEmptyOptions={false}
+    />
+  </TabItem>
+</Tabs>
+
+## Plans to come back to Morocco
+
+Most of the moroccan workforce abroad is doubting or not at all considering coming back to Morocco.
+
+<Chart
+  id="profile-q-8"
+  condition={(v) => v["profile-q-7"] === 3}
+  title={false}
+/>
+
+## Favorite drink
+
+Coffee remains the favorite drink of developers, followed by water.
+
+<Chart id="profile-q-9" title={false} />
