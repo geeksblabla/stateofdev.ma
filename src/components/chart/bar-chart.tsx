@@ -17,6 +17,7 @@ const colors = [
 type BarChartProps = {
   results: FinalResult | null;
   sortByTotal?: boolean;
+  showEmptyOptions?: boolean;
 };
 
 type BarProps = {
@@ -139,16 +140,24 @@ const Bar = ({ result, index, total }: BarProps) => {
   );
 };
 
-export const BarChart = ({ results, sortByTotal = true }: BarChartProps) => {
+export const BarChart = ({
+  results,
+  sortByTotal = true,
+  showEmptyOptions = true
+}: BarChartProps) => {
   if (!results) return null;
 
   const displayResults = sortByTotal
     ? [...results.results].sort((a, b) => b.total - a.total)
     : results.results;
 
+  const filteredResults = showEmptyOptions
+    ? displayResults
+    : displayResults.filter((result) => result.total > 0);
+
   // Create a set of unique labels for the legend
   const legendLabels = new Set<string>();
-  displayResults.forEach((result) => {
+  filteredResults.forEach((result) => {
     if (result.grouped) {
       result.grouped.results.forEach((group) => legendLabels.add(group.label));
     }
@@ -156,7 +165,7 @@ export const BarChart = ({ results, sortByTotal = true }: BarChartProps) => {
 
   return (
     <div className="w-full max-w-5xl mx-auto">
-      {displayResults.map((result, index) => (
+      {filteredResults.map((result, index) => (
         <Bar
           key={result.choiceIndex}
           result={result}

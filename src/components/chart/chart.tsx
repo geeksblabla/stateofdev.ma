@@ -12,6 +12,7 @@ type ChartProps = {
   isPlayground?: boolean;
   pie?: boolean;
   year?: Year;
+  showEmptyOptions?: boolean;
 };
 
 export const Chart: React.FC<ChartProps> = ({
@@ -20,7 +21,8 @@ export const Chart: React.FC<ChartProps> = ({
   title = false,
   isPlayground = false,
   pie = false,
-  year
+  year,
+  showEmptyOptions = true
 }) => {
   if (!results) return null;
 
@@ -31,7 +33,11 @@ export const Chart: React.FC<ChartProps> = ({
       {title && (
         <p className="text-md py-4 font-semibold mb-4">{results.label}</p>
       )}
-      <ChartComponent results={results} sortByTotal={sortByTotal} />
+      <ChartComponent
+        results={results}
+        sortByTotal={sortByTotal}
+        showEmptyOptions={showEmptyOptions}
+      />
       {!isPlayground && <ChartActions results={results} year={year} />}
     </div>
   );
