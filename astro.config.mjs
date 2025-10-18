@@ -6,18 +6,28 @@ import mdx from "@astrojs/mdx";
 
 import react from "@astrojs/react";
 
-import netlify from "@astrojs/netlify";
+// import netlify from "@astrojs/netlify";
+
+import cloudflare from "@astrojs/cloudflare";
+
+const SURVEY_OPEN = false;
+
+const redirects = SURVEY_OPEN
+  ? {
+      "/before-start": "/",
+      "/survey": "/",
+      "/thanks": "/"
+    }
+  : {};
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), icon(), mdx(), react()],
   trailingSlash: "never",
-  output: "hybrid",
-  adapter: netlify(),
+  output: "server",
+  adapter: cloudflare(),
   redirects: {
-    "/before-start": "/",
-    "/survey": "/",
-    "/thanks": "/"
+    ...redirects
   },
   vite: {
     plugins: [yaml()]
