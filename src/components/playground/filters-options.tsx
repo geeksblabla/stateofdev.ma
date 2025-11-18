@@ -5,6 +5,39 @@ import type { PlaygroundFormData } from "./playground-form";
 import Select from "react-select";
 import type { QuestionMap } from "../chart/data";
 
+// Custom styles for React Select to match flat design
+const customSelectStyles = {
+  control: (base: any, state: any) => ({
+    ...base,
+    borderRadius: 0,
+    borderWidth: "2px",
+    borderColor: state.isFocused ? "#10b981" : "#d1d5db",
+    boxShadow: "none",
+    "&:hover": {
+      borderColor: "#10b981"
+    }
+  }),
+  menu: (base: any) => ({
+    ...base,
+    borderRadius: 0,
+    borderWidth: "2px",
+    borderColor: "#d1d5db"
+  }),
+  option: (base: any, state: any) => ({
+    ...base,
+    borderRadius: 0,
+    backgroundColor: state.isSelected
+      ? "#10b981"
+      : state.isFocused
+        ? "#d1fae5"
+        : "white",
+    color: state.isSelected ? "white" : "black",
+    "&:hover": {
+      backgroundColor: state.isSelected ? "#10b981" : "#d1fae5"
+    }
+  })
+};
+
 type FilterOptionsProps = {
   options: { label: string; value: string }[];
   questions: QuestionMap;
@@ -47,6 +80,7 @@ export const FilterOptions = React.memo(
                         options={options}
                         placeholder="Select a question"
                         className="w-full "
+                        styles={customSelectStyles}
                       />
                       <button
                         type="button"
@@ -91,7 +125,7 @@ export const FilterOptions = React.memo(
                                       );
                                   onChange({ ...value, values: newValues });
                                 }}
-                                className="focus:ring-emerald-500 h-4 w-4 text-emerald-600 border-gray-300 rounded"
+                                className="focus:ring-emerald-500 h-4 w-4 text-emerald-600 border-2 border-gray-300"
                               />
                               <span className="text-sm text-gray-700">
                                 {choice}
@@ -109,7 +143,7 @@ export const FilterOptions = React.memo(
           <button
             type="button"
             onClick={() => append({ question_id: "", values: [] })}
-            className="mt-4 px-4 py-2 bg-white text-green-600 border border-green-600 rounded-md hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 flex items-center justify-center"
+            className="mt-4 px-4 py-2 bg-white text-green-600 border-2 border-green-600 hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 flex items-center justify-center"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

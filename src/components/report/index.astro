@@ -38,7 +38,7 @@ const customComponents = {
   <Context year={year} test="test">
     <article class="flex-1 pt-8 w-full px-3">
       <div
-        class="prose lg:pr-16 max-w-none prose-img:rounded-xl
+        class="prose lg:pr-16 max-w-none prose-img:border prose-img:border-gray-300
             prose-headings:font-sans prose-headings:mt-8 prose-headings:mb-4
             prose-h1:text-2xl prose-h1:font-extrabold
             prose-h2:text-xl prose-h2:font-bold
@@ -51,15 +51,15 @@ const customComponents = {
           docs.map((doc, index) => {
             return (
               <div>
-                <div class="pb-12 md:pb-20">
+                <div class="pb-12 md:pb-16">
                   {<doc.Content components={customComponents} />}
                 </div>
                 {index < docs.length - 1 && (
                   <div class="flex items-center justify-center gap-2 pt-4 pb-12">
                     <div class="w-16 h-px bg-gray-400" />
-                    <div class="w-1.5 h-1.5 rounded-full bg-gray-400" />
-                    <div class="w-1.5 h-1.5 rounded-full bg-gray-400" />
-                    <div class="w-1.5 h-1.5 rounded-full bg-gray-400" />
+                    <div class="w-1.5 h-1.5 bg-gray-400" />
+                    <div class="w-1.5 h-1.5 bg-gray-400" />
+                    <div class="w-1.5 h-1.5 bg-gray-400" />
                     <div class="w-16 h-px bg-gray-400" />
                   </div>
                 )}
@@ -86,7 +86,7 @@ const customComponents = {
     <div class="flex justify-center">
       <a
         href="/playground"
-        class="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-colors"
+        class="bg-emerald-600 text-white px-6 py-3 border-2 border-emerald-700 hover:bg-emerald-700 transition-colors"
       >
         Launch Playground
       </a>

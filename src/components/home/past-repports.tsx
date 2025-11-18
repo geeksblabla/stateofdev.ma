@@ -76,9 +76,9 @@ export const ReportCard = ({
 }: ReportCardProps) => (
   <a
     href={link}
-    className="flex flex-col justify-between group relative bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+    className="flex flex-col justify-between group relative bg-white border-2 border-gray-200 transition-all duration-300 hover:border-emerald-700 hover:-translate-y-1"
   >
-    <div className="absolute top-4 -left-2 bg-emerald-700 text-white py-1 px-4 rounded-r-lg shadow-md">
+    <div className="absolute top-4 -left-2 bg-emerald-700 text-white py-1 px-4 border-2 border-emerald-800">
       <span className="font-bold">{title}</span>
     </div>
 
@@ -108,7 +108,7 @@ export const ReportCard = ({
         ))}
       </ul>
     </div>
-    <div className="bg-gray-50 px-6 py-4 flex justify-between items-center rounded-b-md">
+    <div className="bg-gray-50 px-6 py-4 flex justify-between items-center border-t border-gray-200">
       <span className="text-emerald-700 font-medium group-hover:underline inline-flex items-center">
         Read full report
         <svg
@@ -140,7 +140,7 @@ const DataPlaygroundSection = () => (
     </p>
     <a
       href="/playground"
-      className="inline-flex items-center px-6 py-3 bg-emerald-700 text-white font-semibold rounded-lg shadow-md hover:bg-emerald-600 transition-colors duration-300"
+      className="inline-flex items-center px-6 py-3 bg-emerald-700 text-white font-semibold border-2 border-emerald-800 hover:bg-emerald-600 transition-colors duration-300"
     >
       Launch Data Playground
       <svg

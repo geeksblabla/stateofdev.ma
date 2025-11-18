@@ -12,13 +12,13 @@ const Step = ({ label, selectedIndex, index, totalSections }: StepProps) => {
       {index + 1 > selectedIndex ? (
         <>
           <span
-            className={`md:h-8 md:w-8 h-6 w-6 items-center justify-center rounded-full bg-white ${color} shadow inline-flex`}
+            className={`md:h-8 md:w-8 h-6 w-6 items-center justify-center bg-white ${color} border-2 border-gray-400 inline-flex`}
           >
             {index + 1}
           </span>
         </>
       ) : (
-        <span className="md:h-8 md:w-8 h-6 w-6 items-center justify-center rounded-full bg-emerald-600 text-white shadow inline-flex">
+        <span className="md:h-8 md:w-8 h-6 w-6 items-center justify-center bg-emerald-600 text-white border-2 border-emerald-700 inline-flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="md:h-6 md:w-6 h-4 w-4"

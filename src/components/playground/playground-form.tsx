@@ -17,6 +17,39 @@ export const chartTypes: { label: string; value: ChartType }[] = [
 
 const years = ["2020", "2021", "2022", "2023", "2024"];
 
+// Custom styles for React Select to match flat design
+const customSelectStyles = {
+  control: (base: any, state: any) => ({
+    ...base,
+    borderRadius: 0,
+    borderWidth: "2px",
+    borderColor: state.isFocused ? "#10b981" : "#d1d5db",
+    boxShadow: "none",
+    "&:hover": {
+      borderColor: "#10b981"
+    }
+  }),
+  menu: (base: any) => ({
+    ...base,
+    borderRadius: 0,
+    borderWidth: "2px",
+    borderColor: "#d1d5db"
+  }),
+  option: (base: any, state: any) => ({
+    ...base,
+    borderRadius: 0,
+    backgroundColor: state.isSelected
+      ? "#10b981"
+      : state.isFocused
+        ? "#d1fae5"
+        : "white",
+    color: state.isSelected ? "white" : "black",
+    "&:hover": {
+      backgroundColor: state.isSelected ? "#10b981" : "#d1fae5"
+    }
+  })
+};
+
 type Filter = {
   question_id: string;
   values: string[];
@@ -98,7 +131,7 @@ export const PlaygroundForm = React.memo(
     }, [formData]);
 
     return (
-      <div className="border border-gray-200 shadow-sm p-4 rounded-md">
+      <div className="border-2 border-gray-200 p-4">
         <div className="space-y-6">
           {/* Year and Chart Type selection */}
           <div className="flex space-x-4">
@@ -116,7 +149,7 @@ export const PlaygroundForm = React.memo(
                   <select
                     id="year-select"
                     {...field}
-                    className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full p-2 border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                   >
                     {years.map((year) => (
                       <option key={year} value={year}>
@@ -141,7 +174,7 @@ export const PlaygroundForm = React.memo(
                   <select
                     id="chart-type-select"
                     {...field}
-                    className="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full p-2 border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                   >
                     {chartTypes.map((chartType) => (
                       <option key={chartType.value} value={chartType.value}>
@@ -175,6 +208,7 @@ export const PlaygroundForm = React.memo(
                   inputId="question-select"
                   options={questionOptions}
                   placeholder="Select a question"
+                  styles={customSelectStyles}
                 />
               )}
             />
@@ -209,6 +243,7 @@ export const PlaygroundForm = React.memo(
                   inputId="group-by-select"
                   options={questionOptions}
                   placeholder="Select a question to group by"
+                  styles={customSelectStyles}
                 />
               )}
             />

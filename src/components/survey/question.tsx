@@ -95,7 +95,7 @@ export const Question = ({
                 message: "Input must not exceed 200 characters"
               }
             })}
-            className="mt-4 w-full p-2 border border-gray-300 rounded-md ring-1 ring-emerald-600 focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
+            className="mt-4 w-full p-2 border-2 border-gray-300 focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
             placeholder="Please specify... use comma to separate each item (max 200 characters)"
             rows={3}
             maxLength={200}
@@ -129,7 +129,7 @@ const Choice = ({
   onChange
 }: ChoiceProps) => {
   return (
-    <div className="relative w-full overflow-hidden flex items-center bg-white  rounded-lg p-3 pl-14 mb-2 cursor-pointer">
+    <div className="relative w-full overflow-hidden flex items-center bg-white p-3 pl-14 mb-2 cursor-pointer">
       <input
         className="peer hidden"
         type={multiple ? "checkbox" : "radio"}
@@ -139,14 +139,10 @@ const Choice = ({
         data-testid={id}
       />
       <label
-        className="absolute inset-0 cursor-pointer rounded-lg peer-checked:border-emerald-600 peer-checked:bg-emerald-100 border-2 border-gray-400"
+        className="absolute inset-0 cursor-pointer peer-checked:border-emerald-600 peer-checked:bg-emerald-100 border-2 border-gray-400"
         htmlFor={id}
       ></label>
-      <div
-        className={`absolute pointer-events-none left-4 h-5 w-5 ${
-          multiple ? "rounded" : "rounded-full"
-        } border-2 border-gray-400 bg-gray-200 ring-emerald-600 ring-offset-2 peer-checked:border-transparent peer-checked:bg-emerald-600 peer-checked:ring-2`}
-      ></div>
+      <div className="absolute pointer-events-none left-4 h-5 w-5 border-2 border-gray-400 bg-gray-200 ring-emerald-600 ring-offset-2 peer-checked:border-transparent peer-checked:bg-emerald-600 peer-checked:ring-2"></div>
       <span className="pointer-events-none z-10 text-black transition-colors duration-200">
         {text}
       </span>

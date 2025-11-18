@@ -100,12 +100,12 @@ const { year } = Astro.props;
   </div>
   <div class="mx-4 md:mx-auto">
     <div
-      class="relative w-full max-w-[1000px] m-auto aspect-video aspect-w-16 aspect-h-9 rounded-lg mt-10 shadow-lg duration-300 hover:translate-y-3 bg-red-200"
+      class="relative w-full max-w-[1000px] m-auto aspect-video aspect-w-16 aspect-h-9 border-2 border-gray-300 mt-10 duration-300 hover:translate-y-3 bg-red-200"
     >
       <YouTube
         id={data[year].episode_url}
         posterQuality="max"
-        class="w-full max-w-[1000px] aspect-video aspect-w-16 aspect-h-9 rounded-lg"
+        class="w-full max-w-[1000px] aspect-video aspect-w-16 aspect-h-9"
       />
     </div>
   </div>
