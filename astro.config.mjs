@@ -6,9 +6,7 @@ import mdx from "@astrojs/mdx";
 
 import react from "@astrojs/react";
 
-// import netlify from "@astrojs/netlify";
-
-import cloudflare from "@astrojs/cloudflare";
+import netlify from "@astrojs/netlify";
 
 const SURVEY_OPEN = false;
 
@@ -25,7 +23,7 @@ export default defineConfig({
   integrations: [tailwind(), icon(), mdx(), react()],
   trailingSlash: "never",
   output: "server",
-  adapter: cloudflare(),
+  adapter: netlify(),
   redirects: {
     ...redirects
   },

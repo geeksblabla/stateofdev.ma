@@ -22,9 +22,9 @@
     "@astro-community/astro-embed-youtube": "^0.5.3",
     "@astro-utils/context": "^1.1.15",
     "@astrojs/check": "^0.9.4",
-    "@astrojs/cloudflare": "^12.6.10",
     "@astrojs/db": "^0.18.0",
     "@astrojs/mdx": "^4.3.7",
+    "@astrojs/netlify": "^5.5.3",
     "@astrojs/react": "^4.4.0",
     "@astrojs/tailwind": "^6.0.2",
     "@astrolib/seo": "1.0.0-beta.5",
@@ -73,8 +73,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "rimraf": "^6.0.1",
     "tsx": "^4.19.1",
-    "vitest": "^3.2.4",
-    "wrangler": "^4.43.0"
+    "vitest": "^3.2.4"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,astro}": [
