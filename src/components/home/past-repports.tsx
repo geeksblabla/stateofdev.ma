@@ -76,7 +76,7 @@ export const ReportCard = ({
 }: ReportCardProps) => (
   <a
     href={link}
-    className="flex flex-col justify-between group relative bg-card border-2 border transition-all duration-300 hover:border-primary hover:-translate-y-1"
+    className="flex flex-col justify-between group relative bg-card border-2 border-border transition-all duration-300 hover:border-primary hover:-translate-y-1"
   >
     <div className="absolute top-4 -left-2 bg-primary text-primary-foreground py-1 px-4 border-2 border-primary">
       <span className="font-bold">{title}</span>
@@ -108,7 +108,7 @@ export const ReportCard = ({
         ))}
       </ul>
     </div>
-    <div className="bg-muted px-6 py-4 flex justify-between items-center border-t border">
+    <div className="bg-muted px-6 py-4 flex justify-between items-center border-t border-border">
       <span className="text-primary font-medium group-hover:underline inline-flex items-center">
         Read full report
         <svg

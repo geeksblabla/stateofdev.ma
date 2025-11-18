@@ -105,7 +105,7 @@ type CardProps = {
 };
 
 const Card = ({ title, icon, children }: CardProps) => (
-  <div className="bg-card border-2 border p-6 transition-all hover:border-primary hover:-translate-y-1">
+  <div className="bg-card border-2 border-border p-6 transition-all hover:border-primary hover:-translate-y-1">
     <div className="flex items-center mb-4">
       <div className="text-primary mr-4">{icon}</div>
       <h3 className="text-lg font-sans font-medium text-card-foreground">

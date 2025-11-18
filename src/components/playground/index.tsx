@@ -59,7 +59,7 @@ export const SurveyPlayground: React.FC = () => {
               </div>
             </div>
           ) : (
-            <div className="h-full flex items-center justify-center text-muted-foreground bg-card border-2 border p-6">
+            <div className="h-full flex items-center justify-center text-muted-foreground bg-card border-2 border-border p-6">
               Select a question to generate a chart
             </div>
           )}

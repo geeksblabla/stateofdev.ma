@@ -30,7 +30,7 @@ const Tooltip = ({ result }: { result: FinalResult["results"][number] }) => {
   if (!result.grouped) return null;
 
   return (
-    <span className="absolute h-fit left-1/2 overflow-visible transform -translate-x-1/2 -translate-y-full -mt-[36px] bg-card border-2 border text-card-foreground text-xs p-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+    <span className="absolute h-fit left-1/2 overflow-visible transform -translate-x-1/2 -translate-y-full -mt-[36px] bg-card border-2 border-border text-card-foreground text-xs p-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
       <div className="text-muted-foreground">
         <p className="font-semibold py-1">
           {result.label} : {result.total}{" "}
@@ -95,7 +95,7 @@ const Bar = ({ result, index, total }: BarProps) => {
 
   return (
     <div className="mb-3 relative group">
-      <div className="text-foreground relative w-full bg-muted/50 h-7 border">
+      <div className="text-foreground relative w-full bg-muted/50 h-7 border-border">
         <div className="flex z-10 absolute px-2 h-full w-full items-center justify-between mb-1">
           <span className="text-sm font-medium whitespace-nowrap overflow-hidden text-ellipsis">
             {result.label}

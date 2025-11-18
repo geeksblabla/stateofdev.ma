@@ -116,7 +116,7 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
           />
         ))}
       </div>
-      <div className="flex flex-row justify-between mt-3 sticky bottom-0 bg-background py-4 border-t-2 border z-20 transition-all duration-1000">
+      <div className="flex flex-row justify-between mt-3 sticky bottom-0 bg-background py-4 border-t-2 border-border z-20 transition-all duration-1000">
         <div>
           {QIndex > 0 && <BackButton onClick={() => backToPreviousQ()} />}
         </div>
@@ -124,7 +124,7 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
           {isRequired ? null : (
             <button
               type="button"
-              className="focus:outline-4 bg-background px-6 md:px-8 py-3 font-medium text-primary underline border transition mr-2"
+              className="focus:outline-4 bg-background px-6 md:px-8 py-3 font-medium text-primary underline border-border transition mr-2"
               onClick={() => nextQuestion()}
               data-testid="skip-button"
             >

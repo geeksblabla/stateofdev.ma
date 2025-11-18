@@ -14,7 +14,7 @@ export const ChartActions = ({ results, year }: ShareButtonsProps) => {
   }).toString()}`;
   const shareTitle = `Check out this report: ${results.label}`;
   return (
-    <div className="flex justify-end items-center pt-2 mt-3 border-t">
+    <div className="flex justify-end items-center pt-2 mt-3 border-t border-border">
       <ShareButtons url={shareUrl} title={shareTitle} />
       <span className="ml-3 mr-2 h-4 w-px bg-border"></span>
       <PlaygroundButton results={results} year={year} />

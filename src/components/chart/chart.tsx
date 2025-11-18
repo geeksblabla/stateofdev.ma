@@ -29,7 +29,7 @@ export const Chart: React.FC<ChartProps> = ({
   const ChartComponent = pie ? PieChart : BarChart;
 
   return (
-    <div className="bg-muted/45 p-3 border relative font-mono">
+    <div className="bg-muted/45 p-3 border-border relative font-mono">
       {title && (
         <p className="text-md py-4 font-semibold mb-4">{results.label}</p>
       )}
@@ -55,7 +55,9 @@ export const Chart: React.FC<ChartProps> = ({
                     key={option}
                     className={index % 2 === 0 ? "bg-muted/30" : ""}
                   >
-                    <td className="py-1 px-2 border-b">{option}</td>
+                    <td className="py-1 px-2 border-b border-border">
+                      {option}
+                    </td>
                   </tr>
                 ))}
               </tbody>

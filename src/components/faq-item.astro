@@ -6,7 +6,7 @@ interface Props {
 const { checked, label }: Props = Astro.props;
 ---
 
-<div class="relative overflow-hidden border-2 border">
+<div class="relative overflow-hidden border-2 border-border">
   <input
     type="checkbox"
     class="peer absolute top-0 inset-x-0 w-full h-12 opacity-0 z-10 cursor-pointer"
@@ -37,7 +37,7 @@ const { checked, label }: Props = Astro.props;
   <div
     class="bg-card overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-fit"
   >
-    <div class="p-4 border-t border">
+    <div class="p-4 border-t border-border">
       <p class="text-card-foreground mb-3">
         <slot />
       </p>

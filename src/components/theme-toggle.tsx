@@ -31,7 +31,7 @@ export const ThemeToggle = () => {
   if (!mounted) {
     return (
       <button
-        className="p-2 border rounded transition-colors bg-card text-card-foreground"
+        className="p-2 border-border rounded transition-colors bg-card text-card-foreground"
         aria-label="Toggle theme"
       >
         <div className="w-5 h-5" />
@@ -42,7 +42,7 @@ export const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 border rounded transition-colors hover:bg-muted bg-card text-card-foreground"
+      className="p-2 border-border rounded transition-colors hover:bg-muted bg-card text-card-foreground"
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
       title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
     >

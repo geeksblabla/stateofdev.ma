@@ -133,7 +133,7 @@ export const PlaygroundForm = React.memo(
     }, [formData]);
 
     return (
-      <div className="border-2 border p-4">
+      <div className="border-2 border-border p-4">
         <div className="space-y-6">
           {/* Year and Chart Type selection */}
           <div className="flex space-x-4">
@@ -151,7 +151,7 @@ export const PlaygroundForm = React.memo(
                   <select
                     id="year-select"
                     {...field}
-                    className="w-full p-2 border-2 border-input focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
+                    className="w-full p-2 border-2 border-input bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
                   >
                     {years.map((year) => (
                       <option key={year} value={year}>
@@ -176,7 +176,7 @@ export const PlaygroundForm = React.memo(
                   <select
                     id="chart-type-select"
                     {...field}
-                    className="w-full p-2 border-2 border-input focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
+                    className="w-full p-2 border-2 border-input bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
                   >
                     {chartTypes.map((chartType) => (
                       <option key={chartType.value} value={chartType.value}>
