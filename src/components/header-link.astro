@@ -11,12 +11,12 @@ const { label, href, external = false, isActive = false } = Astro.props;
 
 <a
   href={href}
-  class={`block cursor-pointer items-center pt-2 border-b-2 border-dashed pb-0 transition-colors duration-200 ${
+  class={`font-mono inline-block cursor-pointer transition-all duration-200 px-2 py-1 rounded ${
     isActive
-      ? "text-emerald-800 border-emerald-800"
-      : "text-black hover:text-emerald-800 border-current"
+      ? "text-emerald-900 bg-emerald-100"
+      : "text-black hover:text-emerald-900 hover:bg-emerald-50"
   }`}
   target={external ? "_blank" : undefined}
 >
-  {label}
+  <span>[</span>{label}<span>]</span>
 </a>

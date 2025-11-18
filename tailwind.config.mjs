@@ -14,7 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        mono: ["IBM Plex Mono", "monospace"]
+        sans: ["Space Grotesk", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"]
       },
       keyframes: {
         growBar: {

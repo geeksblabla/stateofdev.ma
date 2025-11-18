@@ -46,7 +46,7 @@ const reports = [
 export const PastReports = () => (
   <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-20">
     <div className="container mx-auto px-4">
-      <h2 className="text-xl font-bold mb-8 text-center">
+      <h2 className="text-xl font-sans font-bold mb-8 text-center">
         Last year's reports
       </h2>
 
@@ -83,10 +83,10 @@ export const ReportCard = ({
     </div>
 
     <div className="p-6 pt-12">
-      <h3 className="text-base font-medium  py-4 text-gray-800">
+      <h3 className="text-base font-sans font-medium  py-4 text-gray-800">
         Total Submissions: {totalSubmissions.toLocaleString()}
       </h3>
-      <h3 className="text-base font-medium mb-2  text-gray-800">
+      <h3 className="text-base font-sans font-medium mb-2  text-gray-800">
         Key Takeaways:
       </h3>
       <ul className="space-y-3 mb-6">
@@ -131,7 +131,7 @@ export const ReportCard = ({
 
 const DataPlaygroundSection = () => (
   <div className="mt-16 text-center">
-    <h2 className="text-xl font-bold mb-8 text-center">
+    <h2 className="text-xl font-sans font-bold mb-8 text-center">
       Or explore the data yourself!
     </h2>
     <p className="text-gray-600 mb-6">

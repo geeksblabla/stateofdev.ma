@@ -19,12 +19,12 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header
-  class="z-[99] relative bg-transparent max-w-screen-xl w-full px-4 py-4 text-emerald-900 md:mx-auto"
+  class="z-[99] relative bg-transparent max-w-screen-xl w-full px-4 py-4 text-emerald-900 md:mx-auto border-b border-gray-200"
 >
   <div class="flex justify-between items-center">
     <a href="/" class="z-10" aria-label="state of dev logo">
       <div
-        class="flex cursor-pointer items-center whitespace-nowrap text-2xl font-black"
+        class="flex cursor-pointer items-center whitespace-nowrap text-2xl font-sans font-black"
       >
         <Fragment set:html={Logo} />
       </div>
