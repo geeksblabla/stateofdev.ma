@@ -71,9 +71,9 @@ const ChartIcon = () => (
 
 export const Why = () => (
   <div className="relative w-screen z-0">
-    <div className="mx-auto py-20 w-full max-w-screen-xl px-4 relative z-[99]">
+    <div className="mx-auto py-24 w-full max-w-screen-xl px-4 relative z-[99]">
       <div className="w-20 mb-10 mx-auto border-b-4 border-primary"></div>
-      <h2 className="text-xl font-sans font-bold mb-8 text-center">
+      <h2 className="text-2xl md:text-3xl font-sans font-bold mb-12 text-center">
         Why Join Our Awesome Survey?
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

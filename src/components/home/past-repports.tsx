@@ -54,9 +54,9 @@ const reports = [
 ];
 
 export const PastReports = () => (
-  <section className="bg-muted/50 py-20">
+  <section className="bg-muted py-24">
     <div className="container mx-auto px-4">
-      <h2 className="text-xl font-sans font-bold mb-8 text-center">
+      <h2 className="text-2xl md:text-3xl font-sans font-bold mb-12 text-center">
         Last year's reports
       </h2>
 
