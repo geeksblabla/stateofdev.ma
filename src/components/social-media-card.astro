@@ -21,10 +21,10 @@ const shareLinks = {
 };
 ---
 
-<div class="bg-white p-4 border-2 border-gray-300 flex flex-col">
+<div class="bg-card p-4 border-2 border flex flex-col">
   <div class="flex items-center mb-3">
     <svg
-      class="w-10 h-10 mr-3 text-gray-400"
+      class="w-10 h-10 mr-3 text-muted-foreground"
       fill="currentColor"
       viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg"
@@ -36,19 +36,21 @@ const shareLinks = {
     </svg>
     <div>
       <p class="font-bold">{post.user?.name ?? "Anonymous"}</p>
-      <p class="text-sm text-gray-500">{post.user?.handle ?? "Anonymous"}</p>
+      <p class="text-sm text-muted-foreground">
+        {post.user?.handle ?? "Anonymous"}
+      </p>
     </div>
   </div>
   <div class="flex flex-col flex-1">
     <p class={`mb-4 ${post.rtl ? "text-right" : ""}`}>{post.content}</p>
-    <a href="https://stateofdev.ma" class="text-emerald-500 hover:underline"
+    <a href="https://stateofdev.ma" class="text-primary hover:underline"
       >stateofdev.ma</a
     >
   </div>
   <div class="flex flex-row justify-end space-x-4 mt-4">
     <a
       href={shareLinks.twitter}
-      class="text-gray-400 hover:text-emerald-500"
+      class="text-muted-foreground hover:text-primary"
       title="Share on Twitter"
       aria-label="Share on Twitter"
     >
@@ -66,7 +68,7 @@ const shareLinks = {
     </a>
     <a
       href={shareLinks.linkedin}
-      class="text-gray-400 hover:text-emerald-500"
+      class="text-muted-foreground hover:text-primary"
       title="Share on LinkedIn"
       aria-label="Share on LinkedIn"
     >
@@ -84,7 +86,7 @@ const shareLinks = {
     </a>
     <a
       href={shareLinks.facebook}
-      class="text-gray-400 hover:text-emerald-500"
+      class="text-muted-foreground hover:text-primary"
       title="Share on Facebook"
       aria-label="Share on Facebook"
     >
@@ -123,7 +125,7 @@ const shareLinks = {
         ></path>
       </svg>
       <span
-        class="tooltip hidden absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs py-1 px-2 mb-2"
+        class="tooltip hidden absolute bottom-full left-1/2 transform -translate-x-1/2 bg-popover text-popover-foreground text-xs py-1 px-2 mb-2"
         >Copied!</span
       >
     </button>

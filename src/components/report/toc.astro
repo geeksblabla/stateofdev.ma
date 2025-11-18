@@ -19,14 +19,14 @@ const { items } = Astro.props;
     <div class="overflow-x-visible relative pl-[1.5px]">
       <ul
         id="toc-list"
-        class="px-6 py-6 z-20 border-l border-solid border-gray-300 hidden md:block"
+        class="px-6 py-6 z-20 border-l border-solid border hidden md:block"
       >
         {
           items.map((item) => (
             <li class={`text-sm ${item.depth > 1 ? "ml-4" : ""} relative`}>
               <a
                 href={`#${item.slug}`}
-                class={`underline-offset-4 ${item.depth > 1 ? "text-xs" : "text-sm"} inline-flex items-center hover:text-emerald-600 transition-colors duration-300 hover:underline py-1 `}
+                class={`underline-offset-4 ${item.depth > 1 ? "text-xs" : "text-sm"} inline-flex items-center hover:text-primary transition-colors duration-300 hover:underline py-1 `}
                 data-toc-item
               >
                 {item.text}
@@ -37,14 +37,14 @@ const { items } = Astro.props;
       </ul>
       <div
         id="active-indicator"
-        class="z-10 absolute left-[1px] w-full bg-emerald-500/10 transition-all duration-200 ease-in-out border-l-2 border-solid border-emerald-500 hidden md:block"
+        class="z-10 absolute left-[1px] w-full bg-primary/10 transition-all duration-200 ease-in-out border-l-2 border-solid border-primary hidden md:block"
       >
       </div>
     </div>
   </nav>
   <button
     id="toc-toggle"
-    class="fixed bottom-4 right-4 bg-gray-400 text-white p-3 border-2 border-gray-500 md:hidden z-50"
+    class="fixed bottom-4 right-4 bg-muted text-white p-3 border-2 border-muted md:hidden z-50"
     aria-label="Toggle Table of Contents"
   >
     <svg
@@ -79,14 +79,11 @@ const { items } = Astro.props;
     });
 
     tocItems.forEach((item) => {
-      item.classList.remove("text-emerald-600", "font-bold");
+      item.classList.remove("text-primary", "font-bold");
     });
 
     if (activeItem && activeIndicator) {
-      (activeItem as HTMLElement).classList.add(
-        "text-emerald-600",
-        "font-bold"
-      );
+      (activeItem as HTMLElement).classList.add("text-primary", "font-bold");
       const itemRect = (activeItem as HTMLElement).getBoundingClientRect();
       const navRect = (activeItem as HTMLElement)
         ?.closest("nav")
@@ -127,7 +124,7 @@ const { items } = Astro.props;
       tocList.classList.toggle("hidden");
       tocList.classList.toggle("fixed");
       tocList.classList.toggle("inset-0");
-      tocList.classList.toggle("bg-white");
+      tocList.classList.toggle("bg-card");
       tocList.classList.toggle("z-50");
       tocList.classList.toggle("overflow-y-auto");
 
@@ -150,7 +147,7 @@ const { items } = Astro.props;
       tocList.classList.remove(
         "fixed",
         "inset-0",
-        "bg-white",
+        "bg-card",
         "z-50",
         "overflow-y-auto"
       );

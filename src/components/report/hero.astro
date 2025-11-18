@@ -56,30 +56,30 @@ const { year } = Astro.props;
 
 <div class="relative py-12 sm:py-16 lg:pt-20 lg:pb-24">
   <div
-    class="absolute inset-x-0 top-0 lg:-top-14 bottom-0 lg:-bottom-14 overflow-hidden bg-emerald-50"
+    class="absolute inset-x-0 top-0 lg:-top-14 bottom-0 lg:-bottom-14 overflow-hidden bg-muted"
   >
-    <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white">
+    <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background">
     </div>
-    <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white">
+    <div
+      class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background"
+    >
     </div>
   </div>
-  <div
-    class="relative mx-auto hidden max-w-screen-lg md:block text-emerald-700"
-  >
+  <div class="relative mx-auto hidden max-w-screen-lg md:block text-primary">
     <img src={Crea4.src} class="absolute w-32 right-0 -scale-x-100 top-24" />
     <img src={Crea2.src} class="absolute w-32 h-32 top-24" />
   </div>
   <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-3xl text-center">
       <h1
-        class="mt-5 text-3xl font-sans font-extrabold leading-snug text-gray-900 sm:text-5xl sm:leading-snug lg:text-6xl lg:leading-snug"
+        class="mt-5 text-3xl font-sans font-extrabold leading-snug text-foreground sm:text-5xl sm:leading-snug lg:text-6xl lg:leading-snug"
       >
         State Of Dev In
         <span
           class="relative inline-flex justify-center whitespace-nowrap font-extrabold"
         >
           <svg
-            class="absolute -bottom-8 hidden w-2/3 text-emerald-600 sm:block"
+            class="absolute -bottom-8 hidden w-2/3 text-primary sm:block"
             viewBox="0 0 490 42"
             fill="none"
           >
@@ -93,14 +93,14 @@ const { year } = Astro.props;
           Morocco {data[year].year} 🇲🇦
         </span>
       </h1>
-      <p class="mx-auto mt-10 text-base leading-7 text-gray-600">
+      <p class="mx-auto mt-10 text-base leading-7 text-muted-foreground">
         <Fragment set:html={data[year].description} />
       </p>
     </div>
   </div>
   <div class="mx-4 md:mx-auto">
     <div
-      class="relative w-full max-w-[1000px] m-auto aspect-video aspect-w-16 aspect-h-9 border-2 border-gray-300 mt-10 duration-300 hover:translate-y-3 bg-red-200"
+      class="relative w-full max-w-[1000px] m-auto aspect-video aspect-w-16 aspect-h-9 border-2 border mt-10 duration-300 hover:translate-y-3"
     >
       <YouTube
         id={data[year].episode_url}

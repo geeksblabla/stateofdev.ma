@@ -72,7 +72,7 @@ const ChartIcon = () => (
 export const Why = () => (
   <div className="relative w-screen z-0">
     <div className="mx-auto py-20 w-full max-w-screen-xl px-4 relative z-[99]">
-      <div className="w-20 mb-10 mx-auto border-b-4 border-emerald-700"></div>
+      <div className="w-20 mb-10 mx-auto border-b-4 border-primary"></div>
       <h2 className="text-xl font-sans font-bold mb-8 text-center">
         Why Join Our Awesome Survey?
       </h2>
@@ -105,11 +105,13 @@ type CardProps = {
 };
 
 const Card = ({ title, icon, children }: CardProps) => (
-  <div className="bg-white border-2 border-gray-200 p-6 transition-all hover:border-emerald-700 hover:-translate-y-1">
+  <div className="bg-card border-2 border p-6 transition-all hover:border-primary hover:-translate-y-1">
     <div className="flex items-center mb-4">
-      <div className="text-emerald-700 mr-4">{icon}</div>
-      <h3 className="text-lg font-sans font-medium text-gray-800">{title}</h3>
+      <div className="text-primary mr-4">{icon}</div>
+      <h3 className="text-lg font-sans font-medium text-card-foreground">
+        {title}
+      </h3>
     </div>
-    <p className="text-gray-600">{children}</p>
+    <p className="text-muted-foreground">{children}</p>
   </div>
 );

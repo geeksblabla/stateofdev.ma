@@ -8,10 +8,10 @@ const { title = "title" } = Astro.props;
 
 <button
   slot="tab"
-  class="inline-flex whitespace-nowrap border-b-2 border-transparent py-2 px-3 text-sm font-medium text-gray-600 transition-all duration-200 ease-in-out hover:border-b-[#2cc068] hover:text-[#2cc068] aria-selected:border-b-[#2cc068] aria-selected:text-[#2cc068]"
+  class="inline-flex whitespace-nowrap border-b-2 border-transparent py-2 px-3 text-sm font-medium text-muted-foreground transition-all duration-200 ease-in-out hover:border-primary hover:text-primary aria-selected:border-primary aria-selected:text-primary"
 >
   {title}
 </button>
-<div slot="panel" class="border-t-2 border-gray-200 pt-6 -mt-[2px]">
+<div slot="panel" class="border-t-2 border pt-6 -mt-[2px]">
   <slot />
 </div>

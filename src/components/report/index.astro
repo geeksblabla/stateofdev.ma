@@ -38,14 +38,14 @@ const customComponents = {
   <Context year={year} test="test">
     <article class="flex-1 pt-8 w-full px-3">
       <div
-        class="prose lg:pr-16 max-w-none prose-img:border prose-img:border-gray-300
+        class="prose lg:pr-16 max-w-none prose-img:border prose-img:border
             prose-headings:font-sans prose-headings:mt-8 prose-headings:mb-4
             prose-h1:text-2xl prose-h1:font-extrabold
             prose-h2:text-xl prose-h2:font-bold
             prose-h3:text-lg prose-h3:font-semibold
-            prose-a:text-emerald-600 prose-a:no-underline prose-a:hover:underline prose-a:transition-all
+            prose-a:text-primary prose-a:no-underline prose-a:hover:underline prose-a:transition-all
             prose-p:leading-relaxed
-            prose-strong:font-bold prose-strong:text-gray-900"
+            prose-strong:font-bold prose-strong:text-foreground"
       >
         {
           docs.map((doc, index) => {
@@ -56,11 +56,11 @@ const customComponents = {
                 </div>
                 {index < docs.length - 1 && (
                   <div class="flex items-center justify-center gap-2 pt-4 pb-12">
-                    <div class="w-16 h-px bg-gray-400" />
-                    <div class="w-1.5 h-1.5 bg-gray-400" />
-                    <div class="w-1.5 h-1.5 bg-gray-400" />
-                    <div class="w-1.5 h-1.5 bg-gray-400" />
-                    <div class="w-16 h-px bg-gray-400" />
+                    <div class="w-16 h-px bg-border" />
+                    <div class="w-1.5 h-1.5 bg-border" />
+                    <div class="w-1.5 h-1.5 bg-border" />
+                    <div class="w-1.5 h-1.5 bg-border" />
+                    <div class="w-16 h-px bg-border" />
                   </div>
                 )}
               </div>
@@ -74,7 +74,7 @@ const customComponents = {
 </div>
 
 <!-- New section for playground demonstration -->
-<div class="bg-emerald-100/25 py-16 my-8">
+<div class="bg-muted/25 py-16 my-8">
   <div class="max-w-screen-xl mx-auto px-4">
     <h2 class="text-xl font-sans font-bold mb-8 text-center">
       Try The Interactive Playground
@@ -86,7 +86,7 @@ const customComponents = {
     <div class="flex justify-center">
       <a
         href="/playground"
-        class="bg-emerald-600 text-white px-6 py-3 border-2 border-emerald-700 hover:bg-emerald-700 transition-colors"
+        class="bg-primary text-primary-foreground px-6 py-3 border-2 border-primary hover:opacity-90 transition-colors"
       >
         Launch Playground
       </a>

@@ -14,9 +14,9 @@ export const ChartActions = ({ results, year }: ShareButtonsProps) => {
   }).toString()}`;
   const shareTitle = `Check out this report: ${results.label}`;
   return (
-    <div className="flex justify-end items-center pt-2 mt-3 border-t border-gray-200">
+    <div className="flex justify-end items-center pt-2 mt-3 border-t">
       <ShareButtons url={shareUrl} title={shareTitle} />
-      <span className="ml-3 mr-2 h-4 w-px bg-gray-400"></span>
+      <span className="ml-3 mr-2 h-4 w-px bg-border"></span>
       <PlaygroundButton results={results} year={year} />
     </div>
   );
@@ -38,7 +38,7 @@ const PlaygroundButton = ({
         },
         { skipEmptyString: true }
       )}`}
-      className="!text-gray-400  text-sm  hover:!text-gray-800 decoration-none transition-colors flex items-center pl-2 relative group"
+      className="!text-muted-foreground text-sm hover:!text-foreground decoration-none transition-colors flex items-center pl-2 relative group"
       aria-label="Open in playground"
     >
       <svg
@@ -56,7 +56,7 @@ const PlaygroundButton = ({
           strokeLinecap="round"
         />
       </svg>
-      <span className="absolute hidden md:block bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+      <span className="absolute hidden md:block bottom-full left-1/2 transform -translate-x-1/2 bg-popover text-popover-foreground text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
         Open in playground
       </span>
     </a>

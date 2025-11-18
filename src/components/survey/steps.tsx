@@ -6,19 +6,20 @@ type StepProps = {
 };
 
 const Step = ({ label, selectedIndex, index, totalSections }: StepProps) => {
-  const color = index > selectedIndex ? "text-gray-400" : "text-emerald-600";
+  const color =
+    index > selectedIndex ? "text-muted-foreground" : "text-primary";
   return (
     <>
       {index + 1 > selectedIndex ? (
         <>
           <span
-            className={`md:h-8 md:w-8 h-6 w-6 items-center justify-center bg-white ${color} border-2 border-gray-400 inline-flex`}
+            className={`md:h-8 md:w-8 h-6 w-6 items-center justify-center bg-card ${color} border-2 border-input inline-flex`}
           >
             {index + 1}
           </span>
         </>
       ) : (
-        <span className="md:h-8 md:w-8 h-6 w-6 items-center justify-center bg-emerald-600 text-white border-2 border-emerald-700 inline-flex">
+        <span className="md:h-8 md:w-8 h-6 w-6 items-center justify-center bg-primary text-primary-foreground border-2 border-primary inline-flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="md:h-6 md:w-6 h-4 w-4"
@@ -49,10 +50,10 @@ const Step = ({ label, selectedIndex, index, totalSections }: StepProps) => {
             <span
               className={`${
                 index === selectedIndex ? "inline" : "hidden md:inline"
-              }  h-0 md:w-10 w-8 border-t-2 border-dashed border-gray-400 md:inline`}
+              }  h-0 md:w-10 w-8 border-t-2 border-dashed border-input md:inline`}
             ></span>
           ) : (
-            <span className="hidden h-0.5 md:w-10 w-8 bg-emerald-600 md:inline"></span>
+            <span className="hidden h-0.5 md:w-10 w-8 bg-primary md:inline"></span>
           )}
         </>
       )}

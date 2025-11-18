@@ -29,7 +29,7 @@ export const Chart: React.FC<ChartProps> = ({
   const ChartComponent = pie ? PieChart : BarChart;
 
   return (
-    <div className="bg-gray-100/45 p-3 border border-gray-300 relative font-mono">
+    <div className="bg-muted/45 p-3 border relative font-mono">
       {title && (
         <p className="text-md py-4 font-semibold mb-4">{results.label}</p>
       )}
@@ -43,7 +43,7 @@ export const Chart: React.FC<ChartProps> = ({
         <details className="mt-4">
           <summary className="text-sm font-semibold">
             Others ({results?.otherOptions.length})
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-muted-foreground">
               submitted by participants
             </span>
           </summary>
@@ -53,11 +53,9 @@ export const Chart: React.FC<ChartProps> = ({
                 {results?.otherOptions.map((option, index) => (
                   <tr
                     key={option}
-                    className={index % 2 === 0 ? "bg-gray-50" : ""}
+                    className={index % 2 === 0 ? "bg-muted/30" : ""}
                   >
-                    <td className="py-1 px-2 border-b border-gray-200">
-                      {option}
-                    </td>
+                    <td className="py-1 px-2 border-b">{option}</td>
                   </tr>
                 ))}
               </tbody>

@@ -17,20 +17,24 @@ export const prerender = true;
 
 <BaseLayout>
   <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-    <div class="bg-white border-2 border-gray-200">
-      <h1 class="text-xl font-sans font-medium text-gray-900 my-6 text-center">
+    <div class="bg-card border-2 border">
+      <h1
+        class="text-xl font-sans font-medium text-foreground my-6 text-center"
+      >
         Before You Start
       </h1>
-      <p class="text-base text-gray-700 mb-8">Here's what you need to know:</p>
+      <p class="text-base text-foreground mb-8">
+        Here's what you need to know:
+      </p>
       <ul class="space-y-6 mb-10">
         {
           rules.map((rule, index) => (
             <li class="flex items-start">
-              <span class="flex h-6 w-6 shrink-0 items-center justify-center border-2 border-gray-400 bg-gray-100 text-sm font-medium text-gray-600 mr-4 mt-0.5">
+              <span class="flex h-6 w-6 shrink-0 items-center justify-center border-2 border-input bg-muted text-sm font-medium text-muted-foreground mr-4 mt-0.5">
                 {index + 1}
               </span>
               <span
-                class="text-gray-700"
+                class="text-foreground"
                 set:html={rule.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")}
               />
             </li>
@@ -40,14 +44,14 @@ export const prerender = true;
       <div id="captcha-container" class="mb-8 mx-auto w-fit"></div>
       <div
         id="error-alert"
-        class="hidden mb-6 p-4 bg-red-100 border-l-4 border-red-500 text-red-700"
+        class="hidden mb-6 p-4 bg-destructive/10 border-l-4 border-destructive text-destructive"
         role="alert"
       >
         <p id="error-message" class="font-medium"></p>
       </div>
       <button
         id="start-survey-btn"
-        class="w-full bg-green-700 hover:bg-green-700 text-white font-bold py-3 px-6 border-2 border-green-800 transition duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+        class="w-full bg-primary hover:opacity-90 text-primary-foreground font-bold py-3 px-6 border-2 border-primary transition duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-ring focus:ring-opacity-50"
       >
         Start
       </button>

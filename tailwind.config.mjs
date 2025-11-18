@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  darkMode: ["class"],
   theme: {
     fontSize: {
       xs: "clamp(0.7038rem, 0.8082rem + -0.1348vw, 0.7813rem)",
@@ -13,9 +14,84 @@ export default {
       "4xl": "clamp(2.7994rem, 1.9433rem + 4.2804vw, 5.2606rem)"
     },
     extend: {
+      colors: {
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        primary: {
+          DEFAULT: "var(--primary)",
+          foreground: "var(--primary-foreground)",
+        },
+        secondary: {
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--secondary-foreground)",
+        },
+        destructive: {
+          DEFAULT: "var(--destructive)",
+          foreground: "var(--destructive-foreground)",
+        },
+        muted: {
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)",
+        },
+        accent: {
+          DEFAULT: "var(--accent)",
+          foreground: "var(--accent-foreground)",
+        },
+        popover: {
+          DEFAULT: "var(--popover)",
+          foreground: "var(--popover-foreground)",
+        },
+        card: {
+          DEFAULT: "var(--card)",
+          foreground: "var(--card-foreground)",
+        },
+        sidebar: {
+          DEFAULT: "var(--sidebar)",
+          foreground: "var(--sidebar-foreground)",
+          primary: "var(--sidebar-primary)",
+          "primary-foreground": "var(--sidebar-primary-foreground)",
+          accent: "var(--sidebar-accent)",
+          "accent-foreground": "var(--sidebar-accent-foreground)",
+          border: "var(--sidebar-border)",
+          ring: "var(--sidebar-ring)",
+        },
+        chart: {
+          1: "var(--chart-1)",
+          2: "var(--chart-2)",
+          3: "var(--chart-3)",
+          4: "var(--chart-4)",
+          5: "var(--chart-5)",
+          6: "var(--chart-6)",
+          7: "var(--chart-7)",
+          8: "var(--chart-8)",
+          9: "var(--chart-9)",
+          10: "var(--chart-10)",
+        },
+      },
+      borderRadius: {
+        xl: "calc(var(--radius) + 4px)",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      borderWidth: {
+        DEFAULT: "var(--border-width)",
+        thick: "var(--border-width-thick)",
+        accent: "var(--border-width-accent)",
+      },
+      ringWidth: {
+        DEFAULT: "var(--focus-ring-width)",
+      },
+      ringOffsetWidth: {
+        DEFAULT: "var(--focus-ring-offset)",
+      },
       fontFamily: {
-        sans: ["Space Grotesk", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"]
+        sans: ["var(--font-sans)"],
+        serif: ["var(--font-serif)"],
+        mono: ["var(--font-mono)"],
       },
       keyframes: {
         growBar: {
@@ -38,13 +114,44 @@ export default {
       gridTemplateRows: {
         "auto-1fr": "auto 1fr"
       },
-      colors: {
-        theme: {
-          base: "#202020",
-          text: "#ECE9E2",
-          accent: "#DD2C00"
-        }
-      }
+      typography: {
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': 'var(--foreground)',
+            '--tw-prose-headings': 'var(--foreground)',
+            '--tw-prose-lead': 'var(--muted-foreground)',
+            '--tw-prose-links': 'var(--primary)',
+            '--tw-prose-bold': 'var(--foreground)',
+            '--tw-prose-counters': 'var(--muted-foreground)',
+            '--tw-prose-bullets': 'var(--muted-foreground)',
+            '--tw-prose-hr': 'var(--border)',
+            '--tw-prose-quotes': 'var(--foreground)',
+            '--tw-prose-quote-borders': 'var(--border)',
+            '--tw-prose-captions': 'var(--muted-foreground)',
+            '--tw-prose-code': 'var(--foreground)',
+            '--tw-prose-pre-code': 'var(--foreground)',
+            '--tw-prose-pre-bg': 'var(--muted)',
+            '--tw-prose-th-borders': 'var(--border)',
+            '--tw-prose-td-borders': 'var(--border)',
+            '--tw-prose-invert-body': 'var(--foreground)',
+            '--tw-prose-invert-headings': 'var(--foreground)',
+            '--tw-prose-invert-lead': 'var(--muted-foreground)',
+            '--tw-prose-invert-links': 'var(--primary)',
+            '--tw-prose-invert-bold': 'var(--foreground)',
+            '--tw-prose-invert-counters': 'var(--muted-foreground)',
+            '--tw-prose-invert-bullets': 'var(--muted-foreground)',
+            '--tw-prose-invert-hr': 'var(--border)',
+            '--tw-prose-invert-quotes': 'var(--foreground)',
+            '--tw-prose-invert-quote-borders': 'var(--border)',
+            '--tw-prose-invert-captions': 'var(--muted-foreground)',
+            '--tw-prose-invert-code': 'var(--foreground)',
+            '--tw-prose-invert-pre-code': 'var(--foreground)',
+            '--tw-prose-invert-pre-bg': 'var(--muted)',
+            '--tw-prose-invert-th-borders': 'var(--border)',
+            '--tw-prose-invert-td-borders': 'var(--border)',
+          },
+        },
+      },
     }
   },
   plugins: [require("@tailwindcss/typography")]

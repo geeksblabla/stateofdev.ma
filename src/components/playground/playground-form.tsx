@@ -23,29 +23,31 @@ const customSelectStyles = {
     ...base,
     borderRadius: 0,
     borderWidth: "2px",
-    borderColor: state.isFocused ? "#10b981" : "#d1d5db",
+    borderColor: state.isFocused ? "var(--primary)" : "var(--input)",
+    backgroundColor: "var(--card)",
     boxShadow: "none",
     "&:hover": {
-      borderColor: "#10b981"
+      borderColor: "var(--primary)"
     }
   }),
   menu: (base: any) => ({
     ...base,
     borderRadius: 0,
     borderWidth: "2px",
-    borderColor: "#d1d5db"
+    borderColor: "var(--border)",
+    backgroundColor: "var(--card)"
   }),
   option: (base: any, state: any) => ({
     ...base,
     borderRadius: 0,
     backgroundColor: state.isSelected
-      ? "#10b981"
+      ? "var(--primary)"
       : state.isFocused
-        ? "#d1fae5"
-        : "white",
-    color: state.isSelected ? "white" : "black",
+        ? "var(--muted)"
+        : "var(--card)",
+    color: state.isSelected ? "var(--primary-foreground)" : "var(--foreground)",
     "&:hover": {
-      backgroundColor: state.isSelected ? "#10b981" : "#d1fae5"
+      backgroundColor: state.isSelected ? "var(--primary)" : "var(--muted)"
     }
   })
 };
@@ -131,14 +133,14 @@ export const PlaygroundForm = React.memo(
     }, [formData]);
 
     return (
-      <div className="border-2 border-gray-200 p-4">
+      <div className="border-2 border p-4">
         <div className="space-y-6">
           {/* Year and Chart Type selection */}
           <div className="flex space-x-4">
             <div className="flex-1">
               <label
                 htmlFor="year-select"
-                className="block text-sm font-medium text-gray-700 mb-2"
+                className="block text-sm font-medium text-foreground mb-2"
               >
                 Year
               </label>
@@ -149,7 +151,7 @@ export const PlaygroundForm = React.memo(
                   <select
                     id="year-select"
                     {...field}
-                    className="w-full p-2 border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full p-2 border-2 border-input focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
                   >
                     {years.map((year) => (
                       <option key={year} value={year}>
@@ -163,7 +165,7 @@ export const PlaygroundForm = React.memo(
             <div className="flex-1">
               <label
                 htmlFor="chart-type-select"
-                className="block text-sm font-medium text-gray-700 mb-2"
+                className="block text-sm font-medium text-foreground mb-2"
               >
                 Chart Type
               </label>
@@ -174,7 +176,7 @@ export const PlaygroundForm = React.memo(
                   <select
                     id="chart-type-select"
                     {...field}
-                    className="w-full p-2 border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    className="w-full p-2 border-2 border-input focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
                   >
                     {chartTypes.map((chartType) => (
                       <option key={chartType.value} value={chartType.value}>
@@ -191,7 +193,7 @@ export const PlaygroundForm = React.memo(
           <div>
             <label
               htmlFor="question-select"
-              className="block text-sm font-medium text-gray-700 mb-2"
+              className="block text-sm font-medium text-foreground mb-2"
             >
               Question
             </label>
@@ -225,7 +227,7 @@ export const PlaygroundForm = React.memo(
           <div>
             <label
               htmlFor="group-by-select"
-              className="block text-sm font-medium text-gray-700 mb-2"
+              className="block text-sm font-medium text-foreground mb-2"
             >
               Group By
             </label>

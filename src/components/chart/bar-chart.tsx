@@ -1,17 +1,17 @@
 import { getPercent, type FinalResult } from "./utils";
 
-// Add this array of colors
+// Chart colors from theme
 const colors = [
-  "bg-red-500",
-  "bg-blue-500",
-  "bg-green-500",
-  "bg-yellow-500",
-  "bg-purple-500",
-  "bg-pink-500",
-  "bg-indigo-500",
-  "bg-teal-500",
-  "bg-orange-500",
-  "bg-gray-500"
+  "bg-chart-1",
+  "bg-chart-2",
+  "bg-chart-3",
+  "bg-chart-4",
+  "bg-chart-5",
+  "bg-chart-6",
+  "bg-chart-7",
+  "bg-chart-8",
+  "bg-chart-9",
+  "bg-chart-10"
 ];
 
 type BarChartProps = {
@@ -30,8 +30,8 @@ const Tooltip = ({ result }: { result: FinalResult["results"][number] }) => {
   if (!result.grouped) return null;
 
   return (
-    <span className="absolute h-fit left-1/2 overflow-visible transform -translate-x-1/2 -translate-y-full -mt-[36px] bg-white border-2 border-gray-300 text-black text-xs p-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-      <div className="text-gray-700">
+    <span className="absolute h-fit left-1/2 overflow-visible transform -translate-x-1/2 -translate-y-full -mt-[36px] bg-card border-2 border text-card-foreground text-xs p-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+      <div className="text-muted-foreground">
         <p className="font-semibold py-1">
           {result.label} : {result.total}{" "}
         </p>
@@ -41,7 +41,7 @@ const Tooltip = ({ result }: { result: FinalResult["results"][number] }) => {
               length: Math.ceil(result.grouped.results.length / 6)
             }).map((_, tableIndex) => (
               <table key={tableIndex} className="w-1/2 pr-2">
-                <tbody className="divide-y divide-gray-200">
+                <tbody className="divide-y divide-border">
                   {result?.grouped?.results
                     .slice(tableIndex * 6, (tableIndex + 1) * 6)
                     .map((group, index) => (
@@ -60,7 +60,7 @@ const Tooltip = ({ result }: { result: FinalResult["results"][number] }) => {
           </div>
         ) : (
           <table className="w-full">
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-border">
               {result.grouped.results.map((group, index) => (
                 <tr key={index}>
                   <td className="py-1">{group.label}</td>
@@ -81,8 +81,8 @@ const Tooltip = ({ result }: { result: FinalResult["results"][number] }) => {
       >
         <path
           d="M0,0 L5,5 L10,0"
-          fill="white"
-          className="stroke-gray-300"
+          fill="var(--card)"
+          className="stroke-border"
           strokeWidth="0.5"
         />
       </svg>
@@ -95,23 +95,23 @@ const Bar = ({ result, index, total }: BarProps) => {
 
   return (
     <div className="mb-3 relative group">
-      <div className=" text-black relative w-full bg-gray-200/50 h-7 border border-gray-300">
+      <div className="text-foreground relative w-full bg-muted/50 h-7 border">
         <div className="flex z-10 absolute px-2 h-full w-full items-center justify-between mb-1">
           <span className="text-sm font-medium whitespace-nowrap overflow-hidden text-ellipsis">
             {result.label}
           </span>
           <div className="flex flex-row min-w-fit">
-            <span className="text-sm text-gray-600  text-right">
+            <span className="text-sm text-muted-foreground text-right">
               {getPercent(result.total, total)}% -{" "}
             </span>
-            <span className="text-sm text-gray-600 min-w-[33px] text-right ">
+            <span className="text-sm text-muted-foreground min-w-[33px] text-right">
               {result.total}
             </span>
           </div>
         </div>
         {!result.grouped ? (
           <div
-            className="bg-green-500 opacity-60 h-full relative" // Add relative positioning
+            className="bg-primary opacity-60 h-full relative"
             style={{
               width: `${getPercent(result.total, total)}%`,
               animationDelay: `${index * 0.1}s`
@@ -174,10 +174,12 @@ export const BarChart = ({
         />
       ))}
       <div className="flex justify-between pb-1">
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-muted-foreground">
           {results.isFiltered && "NOTE: Filters applied"}
         </span>
-        <span className="text-sm text-gray-600">Total: {results.total}</span>
+        <span className="text-sm text-muted-foreground">
+          Total: {results.total}
+        </span>
       </div>
       {/*  legend for grouped questions */}
       {legendLabels.size > 0 && (

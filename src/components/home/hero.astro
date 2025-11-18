@@ -6,30 +6,30 @@ import { YouTube } from "@astro-community/astro-embed-youtube";
 
 <div class="relative py-12 sm:py-16 lg:pt-20 lg:pb-24">
   <div
-    class="absolute inset-x-0 top-0 lg:-top-14 bottom-0 lg:-bottom-14 overflow-hidden bg-emerald-50"
+    class="absolute inset-x-0 top-0 lg:-top-14 bottom-0 lg:-bottom-14 overflow-hidden bg-muted"
   >
-    <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white">
+    <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background">
     </div>
-    <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white">
+    <div
+      class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background"
+    >
     </div>
   </div>
-  <div
-    class="relative mx-auto hidden max-w-screen-lg md:block text-emerald-700"
-  >
+  <div class="relative mx-auto hidden max-w-screen-lg md:block text-primary">
     <img src={Crea4.src} class="absolute w-32 right-0 -scale-x-100 top-24" />
     <img src={Crea2.src} class="absolute w-32 h-32 top-24" />
   </div>
   <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-3xl text-center">
       <h1
-        class="mt-5 text-3xl font-sans font-extrabold leading-snug text-gray-900 sm:text-5xl sm:leading-snug lg:text-6xl lg:leading-snug"
+        class="mt-5 text-3xl font-sans font-extrabold leading-snug text-foreground sm:text-5xl sm:leading-snug lg:text-6xl lg:leading-snug"
       >
         State Of Dev In
         <span
           class="relative inline-flex justify-center whitespace-nowrap font-extrabold"
         >
           <svg
-            class="absolute -bottom-8 hidden w-2/3 text-emerald-600 sm:block"
+            class="absolute -bottom-8 hidden w-2/3 text-primary sm:block"
             viewBox="0 0 490 42"
             fill="none"
           >
@@ -45,7 +45,9 @@ import { YouTube } from "@astro-community/astro-embed-youtube";
           </span>
         </span>
       </h1>
-      <p class="mx-auto mt-10 text-base leading-7 text-gray-600 max-w-2xl">
+      <p
+        class="mx-auto mt-10 text-base leading-7 text-muted-foreground max-w-2xl"
+      >
         Participate and let us know what working in tech really looks like in
         Morocco 🇲🇦
       </p>
@@ -55,10 +57,10 @@ import { YouTube } from "@astro-community/astro-embed-youtube";
     >
       <a href="/before-start">
         <div
-          class="relative mb-3 inline-flex h-12 w-full items-center justify-center bg-emerald-700 px-6 font-medium tracking-wide text-white border-2 border-emerald-800 transition duration-200 md:mr-4 md:mb-0 md:w-auto focus:outline-none hover:bg-emerald-800"
+          class="relative mb-3 inline-flex h-12 w-full items-center justify-center bg-primary px-6 font-medium tracking-wide text-primary-foreground border-2 border-primary transition duration-200 md:mr-4 md:mb-0 md:w-auto focus:outline-none hover:opacity-90"
         >
           <div
-            class="absolute left-0 -bottom-10 inline-flex h-10 w-10 -rotate-12 -scale-x-100 text-emerald-700"
+            class="absolute left-0 -bottom-10 inline-flex h-10 w-10 -rotate-12 -scale-x-100 text-primary"
           >
             <svg
               viewBox="0 0 82 35"
@@ -83,7 +85,7 @@ import { YouTube } from "@astro-community/astro-embed-youtube";
       <a
         href="/2023"
         aria-label=""
-        class="underline-offset-2 items-center font-semibold text-emerald-600 underline transition-colors duration-200 hover:underline pt-8 md:pt-0 bg-transparent sm:inline-flex hidden"
+        class="underline-offset-2 items-center font-semibold text-primary underline transition-colors duration-200 hover:underline pt-8 md:pt-0 bg-transparent sm:inline-flex hidden"
       >
         Read last year report
       </a>
@@ -91,7 +93,7 @@ import { YouTube } from "@astro-community/astro-embed-youtube";
   </div>
   <div class="mx-4 md:mx-auto">
     <div
-      class="relative w-full max-w-[1000px] m-auto aspect-video aspect-w-16 aspect-h-9 border-2 border-gray-300 mt-10 duration-300 hover:translate-y-3"
+      class="relative w-full max-w-[1000px] m-auto aspect-video aspect-w-16 aspect-h-9 border-2 border mt-10 duration-300 hover:translate-y-3"
     >
       <YouTube
         id="https://www.youtube.com/embed/fpcfJmI1UYc"

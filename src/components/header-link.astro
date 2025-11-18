@@ -13,8 +13,8 @@ const { label, href, external = false, isActive = false } = Astro.props;
   href={href}
   class={`font-mono inline-block cursor-pointer transition-all duration-200 px-2 py-1 rounded ${
     isActive
-      ? "text-emerald-900 bg-emerald-100"
-      : "text-black hover:text-emerald-900 hover:bg-emerald-50"
+      ? "text-primary bg-primary/10"
+      : "text-foreground hover:text-primary hover:bg-primary/5"
   }`}
   target={external ? "_blank" : undefined}
 >

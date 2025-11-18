@@ -44,7 +44,7 @@ const reports = [
 ];
 
 export const PastReports = () => (
-  <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-20">
+  <section className="bg-muted/50 py-20">
     <div className="container mx-auto px-4">
       <h2 className="text-xl font-sans font-bold mb-8 text-center">
         Last year's reports
@@ -76,24 +76,24 @@ export const ReportCard = ({
 }: ReportCardProps) => (
   <a
     href={link}
-    className="flex flex-col justify-between group relative bg-white border-2 border-gray-200 transition-all duration-300 hover:border-emerald-700 hover:-translate-y-1"
+    className="flex flex-col justify-between group relative bg-card border-2 border transition-all duration-300 hover:border-primary hover:-translate-y-1"
   >
-    <div className="absolute top-4 -left-2 bg-emerald-700 text-white py-1 px-4 border-2 border-emerald-800">
+    <div className="absolute top-4 -left-2 bg-primary text-primary-foreground py-1 px-4 border-2 border-primary">
       <span className="font-bold">{title}</span>
     </div>
 
     <div className="p-6 pt-12">
-      <h3 className="text-base font-sans font-medium  py-4 text-gray-800">
+      <h3 className="text-base font-sans font-medium  py-4 text-card-foreground">
         Total Submissions: {totalSubmissions.toLocaleString()}
       </h3>
-      <h3 className="text-base font-sans font-medium mb-2  text-gray-800">
+      <h3 className="text-base font-sans font-medium mb-2  text-card-foreground">
         Key Takeaways:
       </h3>
       <ul className="space-y-3 mb-6">
         {takeaways.map((takeaway, index) => (
           <li key={index} className="flex items-start">
             <svg
-              className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0"
+              className="w-5 h-5 text-muted-foreground mr-2 mt-0.5 flex-shrink-0"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -103,13 +103,13 @@ export const ReportCard = ({
                 clipRule="evenodd"
               />
             </svg>
-            <span className="text-gray-600 text-sm">{takeaway}</span>
+            <span className="text-muted-foreground text-sm">{takeaway}</span>
           </li>
         ))}
       </ul>
     </div>
-    <div className="bg-gray-50 px-6 py-4 flex justify-between items-center border-t border-gray-200">
-      <span className="text-emerald-700 font-medium group-hover:underline inline-flex items-center">
+    <div className="bg-muted px-6 py-4 flex justify-between items-center border-t border">
+      <span className="text-primary font-medium group-hover:underline inline-flex items-center">
         Read full report
         <svg
           className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"
@@ -134,13 +134,13 @@ const DataPlaygroundSection = () => (
     <h2 className="text-xl font-sans font-bold mb-8 text-center">
       Or explore the data yourself!
     </h2>
-    <p className="text-gray-600 mb-6">
+    <p className="text-muted-foreground mb-6">
       Want to dive deeper into the survey results? Try our interactive data
       playground!
     </p>
     <a
       href="/playground"
-      className="inline-flex items-center px-6 py-3 bg-emerald-700 text-white font-semibold border-2 border-emerald-800 hover:bg-emerald-600 transition-colors duration-300"
+      className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground font-semibold border-2 border-primary hover:opacity-90 transition-colors duration-300"
     >
       Launch Data Playground
       <svg

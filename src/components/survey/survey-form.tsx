@@ -50,7 +50,7 @@ export const SurveyForm = ({ questions }: Props) => {
   return (
     <div className="min-h-screen pt-10">
       <Steps selectedIndex={selectedSectionIndex} sections={sectionsLabels} />
-      <LoadingBar color="#3dbe71" progress={progress} height={10} />
+      <LoadingBar color="var(--primary)" progress={progress} height={10} />
       <main className="flex flex-1 justify-center items-center">
         <Section
           section={section}

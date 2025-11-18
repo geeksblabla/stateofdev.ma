@@ -1,17 +1,17 @@
 import { getPercent, type FinalResult } from "./utils";
 
-// Reuse the colors array from bar-chart.tsx
+// Chart colors using CSS variables
 const colors = [
-  "#EF4444",
-  "#3B82F6",
-  "#10B981",
-  "#F59E0B",
-  "#8B5CF6",
-  "#EC4899",
-  "#6366F1",
-  "#14B8A6",
-  "#F97316",
-  "#6B7280"
+  "var(--chart-1)",
+  "var(--chart-2)",
+  "var(--chart-3)",
+  "var(--chart-4)",
+  "var(--chart-5)",
+  "var(--chart-6)",
+  "var(--chart-7)",
+  "var(--chart-8)",
+  "var(--chart-9)",
+  "var(--chart-10)"
 ];
 
 type PieChartProps = {

@@ -116,7 +116,7 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
           />
         ))}
       </div>
-      <div className="flex flex-row justify-between mt-3 sticky bottom-0 bg-white py-4 border-t-2 border-gray-100 z-20 transition-all duration-1000">
+      <div className="flex flex-row justify-between mt-3 sticky bottom-0 bg-background py-4 border-t-2 border z-20 transition-all duration-1000">
         <div>
           {QIndex > 0 && <BackButton onClick={() => backToPreviousQ()} />}
         </div>
@@ -124,7 +124,7 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
           {isRequired ? null : (
             <button
               type="button"
-              className="focus:outline-4 bg-white px-6 md:px-8 py-3 font-medium text-emerald-600 underline border border-emerald-600 transition mr-2"
+              className="focus:outline-4 bg-background px-6 md:px-8 py-3 font-medium text-primary underline border transition mr-2"
               onClick={() => nextQuestion()}
               data-testid="skip-button"
             >
@@ -134,7 +134,7 @@ export default React.memo(({ section, next, setProgress }: SectionProps) => {
           <button
             data-testid="next-button"
             type="button"
-            className="px-4 py-2 min-w-[120px] bg-emerald-500 text-white border-2 border-emerald-600 transition hover:bg-emerald-600"
+            className="px-4 py-2 min-w-[120px] bg-primary text-primary-foreground border-2 border-primary transition hover:opacity-90"
             onClick={() => nextQuestion()}
           >
             {loading ? "Loading..." : "Next"}
@@ -151,9 +151,9 @@ const ErrorMessage = ({ error }: { error: string }) => {
   return (
     <div
       data-testid="error-message"
-      className="absolute right-0 bottom-full mb-2 p-2 bg-red-100 border-2 border-red-400 max-h-[100px] w-[250px]"
+      className="absolute right-0 bottom-full mb-2 p-2 bg-destructive/10 border-2 border-destructive max-h-[100px] w-[250px]"
     >
-      <span className="text-red-600 text-sm font-medium">
+      <span className="text-destructive text-sm font-medium">
         <svg
           className="inline-block w-4 h-4 mr-1 align-text-bottom"
           fill="currentColor"
@@ -182,7 +182,7 @@ const BackButton = ({ onClick }: { onClick: () => void }) => (
   <div
     onClick={onClick}
     data-testid="back-button"
-    className="group flex w-full cursor-pointer items-center justify-center bg-transparent pr-6 py-2 text-gray-400 hover:text-gray-700 transition"
+    className="group flex w-full cursor-pointer items-center justify-center bg-transparent pr-6 py-2 text-muted-foreground hover:text-foreground transition"
   >
     <svg
       className="flex-0 ml-4 h-7 w-7 transition-all group-hover:-translate-x-1 rotate-180"
