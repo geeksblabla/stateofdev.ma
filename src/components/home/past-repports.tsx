@@ -1,5 +1,15 @@
 const reports = [
   {
+    title: "2024",
+    link: "/2024",
+    takeaways: [
+      "AI adoption continues to grow across development teams",
+      "TypeScript gaining significant momentum in the ecosystem",
+      "Developer experience and tooling remain top priorities"
+    ],
+    totalSubmissions: 2100
+  },
+  {
     title: "2023",
     link: "/2023",
     takeaways: [
@@ -50,9 +60,11 @@ export const PastReports = () => (
         Last year's reports
       </h2>
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         {reports.map((report, index) => (
-          <ReportCard {...report} key={`report-${index}`} />
+          <div className="w-full max-w-md">
+            <ReportCard {...report} key={`report-${index}`} />
+          </div>
         ))}
       </div>
 
@@ -76,7 +88,7 @@ export const ReportCard = ({
 }: ReportCardProps) => (
   <a
     href={link}
-    className="flex flex-col justify-between group relative bg-card border-2 border-border transition-all duration-300 hover:border-primary hover:-translate-y-1"
+    className="flex flex-col justify-between h-full group relative bg-card border-2 border-border transition-all duration-300 hover:border-primary hover:-translate-y-1"
   >
     <div className="absolute top-4 -left-2 bg-primary text-primary-foreground py-1 px-4 border-2 border-primary">
       <span className="font-bold">{title}</span>

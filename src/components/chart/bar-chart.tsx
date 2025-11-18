@@ -95,7 +95,7 @@ const Bar = ({ result, index, total }: BarProps) => {
 
   return (
     <div className="mb-3 relative group">
-      <div className="text-foreground relative w-full bg-muted/50 h-7 border-border">
+      <div className="text-foreground relative w-full bg-muted/50 h-7 border border-border">
         <div className="flex z-10 absolute px-2 h-full w-full items-center justify-between mb-1">
           <span className="text-sm font-medium whitespace-nowrap overflow-hidden text-ellipsis">
             {result.label}

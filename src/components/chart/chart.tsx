@@ -29,7 +29,7 @@ export const Chart: React.FC<ChartProps> = ({
   const ChartComponent = pie ? PieChart : BarChart;
 
   return (
-    <div className="bg-muted/45 p-3 border-border relative font-mono">
+    <div className="bg-muted/45 p-3 border-2 border-border relative font-mono">
       {title && (
         <p className="text-md py-4 font-semibold mb-4">{results.label}</p>
       )}
