@@ -60,9 +60,9 @@ export const PastReports = () => (
         Last year's reports
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+      <div className="flex flex-wrap justify-center gap-8">
         {reports.map((report, index) => (
-          <div className="w-full max-w-md">
+          <div className="w-full max-w-md md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]">
             <ReportCard {...report} key={`report-${index}`} />
           </div>
         ))}
