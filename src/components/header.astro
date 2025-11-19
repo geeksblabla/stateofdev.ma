@@ -3,6 +3,7 @@ import Logo from "../assets/logo.svg?raw";
 import Github from "../assets/github.svg?raw";
 import Chart from "../assets/Chart.svg?raw";
 import HeaderLink from "./header-link.astro";
+import { ThemeToggle } from "./theme-toggle";
 import { website } from "@/website";
 
 const navItems = [
@@ -19,12 +20,12 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header
-  class="z-[99] relative bg-transparent max-w-screen-xl w-full px-4 py-4 text-emerald-900 md:mx-auto"
+  class="z-[99] relative bg-transparent max-w-screen-xl w-full px-4 py-4 text-foreground md:mx-auto border-b border-border"
 >
   <div class="flex justify-between items-center">
     <a href="/" class="z-10" aria-label="state of dev logo">
       <div
-        class="flex cursor-pointer items-center whitespace-nowrap text-2xl font-black"
+        class="flex cursor-pointer items-center whitespace-nowrap text-2xl font-sans font-black"
       >
         <Fragment set:html={Logo} />
       </div>
@@ -68,7 +69,7 @@ const currentPath = Astro.url.pathname;
 
       <nav
         aria-label="Header Navigation"
-        class="fixed z-10 inset-0 bg-white bg-opacity-95 flex items-center justify-center transform transition-transform duration-300 ease-in-out translate-x-full peer-checked:translate-x-0"
+        class="fixed z-10 inset-0 bg-background bg-opacity-95 flex items-center justify-center transform transition-transform duration-300 ease-in-out translate-x-full peer-checked:translate-x-0"
       >
         <ul class="flex flex-col items-center space-y-6 text-lg">
           {
@@ -83,11 +84,17 @@ const currentPath = Astro.url.pathname;
               </li>
             ))
           }
+          <li>
+            <ThemeToggle client:load />
+          </li>
         </ul>
       </nav>
     </div>
 
-    <nav aria-label="Header Navigation" class="hidden md:block">
+    <nav
+      aria-label="Header Navigation"
+      class="hidden md:flex md:flex-row md:items-center md:space-x-6"
+    >
       <ul class="flex flex-row space-x-6">
         {
           navItems.map((item) => (
@@ -102,6 +109,7 @@ const currentPath = Astro.url.pathname;
           ))
         }
       </ul>
+      <ThemeToggle client:load />
     </nav>
   </div>
 </header>

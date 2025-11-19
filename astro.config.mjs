@@ -8,16 +8,24 @@ import react from "@astrojs/react";
 
 import netlify from "@astrojs/netlify";
 
+const SURVEY_OPEN = false;
+
+const redirects = SURVEY_OPEN
+  ? {
+      "/before-start": "/",
+      "/survey": "/",
+      "/thanks": "/"
+    }
+  : {};
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), icon(), mdx(), react()],
   trailingSlash: "never",
-  output: "hybrid",
+  output: "server",
   adapter: netlify(),
   redirects: {
-    "/before-start": "/",
-    "/survey": "/",
-    "/thanks": "/"
+    ...redirects
   },
   vite: {
     plugins: [yaml()]

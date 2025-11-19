@@ -1,5 +1,15 @@
 const reports = [
   {
+    title: "2024",
+    link: "/2024",
+    takeaways: [
+      "AI adoption continues to grow across development teams",
+      "TypeScript gaining significant momentum in the ecosystem",
+      "Developer experience and tooling remain top priorities"
+    ],
+    totalSubmissions: 2100
+  },
+  {
     title: "2023",
     link: "/2023",
     takeaways: [
@@ -44,15 +54,17 @@ const reports = [
 ];
 
 export const PastReports = () => (
-  <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-20">
+  <section className="bg-muted py-24">
     <div className="container mx-auto px-4">
-      <h2 className="text-xl font-bold mb-8 text-center">
+      <h2 className="text-2xl md:text-3xl font-sans font-bold mb-12 text-center">
         Last year's reports
       </h2>
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <div className="flex flex-wrap justify-center gap-8">
         {reports.map((report, index) => (
-          <ReportCard {...report} key={`report-${index}`} />
+          <div className="w-full max-w-md md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]">
+            <ReportCard {...report} key={`report-${index}`} />
+          </div>
         ))}
       </div>
 
@@ -76,24 +88,24 @@ export const ReportCard = ({
 }: ReportCardProps) => (
   <a
     href={link}
-    className="flex flex-col justify-between group relative bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+    className="flex flex-col justify-between h-full group relative bg-card border-2 border-border transition-all duration-300 hover:border-primary hover:-translate-y-1"
   >
-    <div className="absolute top-4 -left-2 bg-emerald-700 text-white py-1 px-4 rounded-r-lg shadow-md">
+    <div className="absolute top-4 -left-2 bg-primary text-primary-foreground py-1 px-4 border-2 border-primary">
       <span className="font-bold">{title}</span>
     </div>
 
     <div className="p-6 pt-12">
-      <h3 className="text-base font-medium  py-4 text-gray-800">
+      <h3 className="text-base font-sans font-medium  py-4 text-card-foreground">
         Total Submissions: {totalSubmissions.toLocaleString()}
       </h3>
-      <h3 className="text-base font-medium mb-2  text-gray-800">
+      <h3 className="text-base font-sans font-medium mb-2  text-card-foreground">
         Key Takeaways:
       </h3>
       <ul className="space-y-3 mb-6">
         {takeaways.map((takeaway, index) => (
           <li key={index} className="flex items-start">
             <svg
-              className="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0"
+              className="w-5 h-5 text-muted-foreground mr-2 mt-0.5 flex-shrink-0"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -103,13 +115,13 @@ export const ReportCard = ({
                 clipRule="evenodd"
               />
             </svg>
-            <span className="text-gray-600 text-sm">{takeaway}</span>
+            <span className="text-muted-foreground text-sm">{takeaway}</span>
           </li>
         ))}
       </ul>
     </div>
-    <div className="bg-gray-50 px-6 py-4 flex justify-between items-center rounded-b-md">
-      <span className="text-emerald-700 font-medium group-hover:underline inline-flex items-center">
+    <div className="bg-muted px-6 py-4 flex justify-between items-center border-t border-border">
+      <span className="text-primary font-medium inline-flex items-center">
         Read full report
         <svg
           className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"
@@ -131,16 +143,16 @@ export const ReportCard = ({
 
 const DataPlaygroundSection = () => (
   <div className="mt-16 text-center">
-    <h2 className="text-xl font-bold mb-8 text-center">
+    <h2 className="text-xl font-sans font-bold mb-8 text-center">
       Or explore the data yourself!
     </h2>
-    <p className="text-gray-600 mb-6">
+    <p className="text-muted-foreground mb-6">
       Want to dive deeper into the survey results? Try our interactive data
       playground!
     </p>
     <a
       href="/playground"
-      className="inline-flex items-center px-6 py-3 bg-emerald-700 text-white font-semibold rounded-lg shadow-md hover:bg-emerald-600 transition-colors duration-300"
+      className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground font-semibold border-2 border-primary hover:opacity-90 transition-colors duration-300"
     >
       Launch Data Playground
       <svg

@@ -1,4 +1,4 @@
-import { app } from "@/lib/firebase/server";
+import { getActiveApp } from "@/lib/firebase/server";
 import { defineAction, ActionError } from "astro:actions";
 import { getAuth } from "firebase-admin/auth";
 import { z } from "astro:schema";
@@ -12,7 +12,7 @@ export const initSession = defineAction({
     captchaToken: z.string().optional()
   }),
   handler: async ({ idToken, captchaToken }, { cookies }) => {
-    const auth = getAuth(app);
+    const auth = getAuth(getActiveApp());
     /* Validate inputs */
     if (!captchaToken && import.meta.env.CAPTCHA_ENABLED === "true") {
       throw new ActionError({

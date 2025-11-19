@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback } from "react";
-import LoadingBar from "react-top-loading-bar";
+// import LoadingBar from "react-top-loading-bar";
 import { Steps } from "./steps";
 import Section from "./section";
 import { goToThanksPage } from "./utils";
@@ -50,7 +50,7 @@ export const SurveyForm = ({ questions }: Props) => {
   return (
     <div className="min-h-screen pt-10">
       <Steps selectedIndex={selectedSectionIndex} sections={sectionsLabels} />
-      <LoadingBar color="#3dbe71" progress={progress} height={10} />
+      {/* <LoadingBar color="var(--primary)" progress={progress} height={10} /> */}
       <main className="flex flex-1 justify-center items-center">
         <Section
           section={section}

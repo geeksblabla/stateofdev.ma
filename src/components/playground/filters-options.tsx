@@ -5,6 +5,41 @@ import type { PlaygroundFormData } from "./playground-form";
 import Select from "react-select";
 import type { QuestionMap } from "../chart/data";
 
+// Custom styles for React Select to match flat design
+const customSelectStyles = {
+  control: (base: any, state: any) => ({
+    ...base,
+    borderRadius: 0,
+    borderWidth: "2px",
+    borderColor: state.isFocused ? "var(--primary)" : "var(--input)",
+    backgroundColor: "var(--card)",
+    boxShadow: "none",
+    "&:hover": {
+      borderColor: "var(--primary)"
+    }
+  }),
+  menu: (base: any) => ({
+    ...base,
+    borderRadius: 0,
+    borderWidth: "2px",
+    borderColor: "var(--border)",
+    backgroundColor: "var(--card)"
+  }),
+  option: (base: any, state: any) => ({
+    ...base,
+    borderRadius: 0,
+    backgroundColor: state.isSelected
+      ? "var(--primary)"
+      : state.isFocused
+        ? "var(--muted)"
+        : "var(--card)",
+    color: state.isSelected ? "var(--primary-foreground)" : "var(--foreground)",
+    "&:hover": {
+      backgroundColor: state.isSelected ? "var(--primary)" : "var(--muted)"
+    }
+  })
+};
+
 type FilterOptionsProps = {
   options: { label: string; value: string }[];
   questions: QuestionMap;
@@ -24,7 +59,7 @@ export const FilterOptions = React.memo(
 
     return (
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm font-medium text-foreground mb-2">
           Filters
         </label>
         <div className="space-y-4">
@@ -47,11 +82,12 @@ export const FilterOptions = React.memo(
                         options={options}
                         placeholder="Select a question"
                         className="w-full "
+                        styles={customSelectStyles}
                       />
                       <button
                         type="button"
                         onClick={() => remove(index)}
-                        className="p-1 text-red-600 hover:text-red-800 focus:outline-none"
+                        className="p-1 text-destructive hover:opacity-90 focus:outline-none"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -91,9 +127,9 @@ export const FilterOptions = React.memo(
                                       );
                                   onChange({ ...value, values: newValues });
                                 }}
-                                className="focus:ring-emerald-500 h-4 w-4 text-emerald-600 border-gray-300 rounded"
+                                className="focus:ring-ring h-4 w-4 text-primary border-2 border-input"
                               />
-                              <span className="text-sm text-gray-700">
+                              <span className="text-sm text-foreground">
                                 {choice}
                               </span>
                             </label>
@@ -109,7 +145,7 @@ export const FilterOptions = React.memo(
           <button
             type="button"
             onClick={() => append({ question_id: "", values: [] })}
-            className="mt-4 px-4 py-2 bg-white text-green-600 border border-green-600 rounded-md hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 flex items-center justify-center"
+            className="mt-4 px-4 py-2 bg-card text-primary border-2 border-primary hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring flex items-center justify-center"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

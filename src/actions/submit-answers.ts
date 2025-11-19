@@ -1,4 +1,4 @@
-import { app } from "@/lib/firebase/server";
+import { getActiveApp } from "@/lib/firebase/server";
 import { defineAction, ActionError } from "astro:actions";
 import { getAuth } from "firebase-admin/auth";
 import { z } from "astro:schema";
@@ -13,7 +13,7 @@ export const submitAnswers = defineAction({
     )
   }),
   handler: async ({ answers }, { cookies }) => {
-    const auth = getAuth(app);
+    const auth = getAuth(getActiveApp());
     /* Verify Session */
     const sessionCookie = cookies.get("__session")?.value;
     if (!sessionCookie) {

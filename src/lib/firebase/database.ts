@@ -1,10 +1,10 @@
 import { getFirestore } from "firebase-admin/firestore";
-import { app } from "./server";
+import { getActiveApp } from "./server";
 import type { UserRecord } from "firebase-admin/auth";
 
-const db = getFirestore(app);
+const db = () => getFirestore(getActiveApp());
 
-const getResults = () => db.collection("results");
+const getResults = () => db().collection("results");
 
 type Answers = {
   [key: string]: number | string | number[] | null;

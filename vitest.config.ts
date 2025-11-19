@@ -4,6 +4,7 @@ import react from "@vitejs/plugin-react";
 
 export default getViteConfig({
   plugins: [react()],
+  // @ts-ignore
   test: {
     exclude: ["node_modules"],
     coverage: {
