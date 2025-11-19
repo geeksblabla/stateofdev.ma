@@ -73,7 +73,7 @@ const { items } = Astro.props;
     const activeIndicator = document.getElementById("active-indicator");
 
     // Find items that are currently visible in the viewport
-    const activeItems = [];
+    const activeItems: Element[] = [];
     const viewportHeight = window.innerHeight;
 
     headings.forEach((heading) => {
