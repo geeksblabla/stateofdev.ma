@@ -33,7 +33,7 @@ const description =
           .matches
           ? "dark"
           : "light";
-        const theme = storedTheme || systemTheme;
+        const theme = storedTheme || "dark";
 
         if (theme === "dark") {
           document.documentElement.classList.add("dark");

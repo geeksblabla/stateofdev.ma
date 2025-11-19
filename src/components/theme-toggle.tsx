@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const ThemeToggle = () => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [mounted, setMounted] = useState(false);
 
   // Load theme from localStorage on mount
@@ -15,7 +15,7 @@ export const ThemeToggle = () => {
       .matches
       ? "dark"
       : "light";
-    const initialTheme = storedTheme || systemTheme;
+    const initialTheme = storedTheme || "dark";
     setTheme(initialTheme);
     document.documentElement.classList.toggle("dark", initialTheme === "dark");
   }, []);
