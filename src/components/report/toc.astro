@@ -17,6 +17,9 @@ const { items } = Astro.props;
     class="md:block lg:block pb-12 w-full md:w-[300px] max-h-screen overflow-y-auto overflow-x-visible md:sticky md:top-0"
   >
     <div class="overflow-x-visible relative pl-[1.5px]">
+      <h2 class="text-lg font-bold mb-4 px-6 text-foreground hidden md:block">
+        On this page
+      </h2>
       <ul
         id="toc-list"
         class="px-6 py-6 z-20 border-l border-solid border-border hidden md:block"
@@ -69,46 +72,69 @@ const { items } = Astro.props;
     const headings = Array.from(document.querySelectorAll("h1, h2"));
     const activeIndicator = document.getElementById("active-indicator");
 
-    let activeItem = null;
+    // Find items that are currently visible in the viewport
+    const activeItems = [];
+    const viewportHeight = window.innerHeight;
 
     headings.forEach((heading) => {
       const rect = heading.getBoundingClientRect();
-      if (rect.top <= 100) {
-        activeItem = document.querySelector(`[href="#${heading.id}"]`);
+      // Check if heading is visible in viewport (between top and bottom of screen)
+      if (rect.top >= -100 && rect.top <= viewportHeight - 100) {
+        const tocLink = document.querySelector(`[href="#${heading.id}"]`);
+        if (tocLink && !activeItems.includes(tocLink)) {
+          activeItems.push(tocLink);
+        }
       }
     });
 
+    // Update visual states for ALL items
     tocItems.forEach((item) => {
-      item.classList.remove("text-primary", "font-bold");
+      if (activeItems.includes(item)) {
+        item.classList.add("text-primary", "font-bold");
+      } else {
+        item.classList.remove("text-primary", "font-bold");
+      }
     });
 
-    if (activeItem && activeIndicator) {
-      (activeItem as HTMLElement).classList.add("text-primary", "font-bold");
-      const itemRect = (activeItem as HTMLElement).getBoundingClientRect();
-      const navRect = (activeItem as HTMLElement)
-        ?.closest("nav")
-        ?.getBoundingClientRect();
-      const navElement = (activeItem as HTMLElement)?.closest("nav");
+    // Update indicator bar to span from first to last active item
+    if (activeItems.length > 0 && activeIndicator) {
+      const navElement = activeItems[0]?.closest("nav");
+      const navRect = navElement?.getBoundingClientRect();
 
       if (navElement && navRect) {
         const navScrollTop = navElement.scrollTop;
-        activeIndicator.style.top = `${itemRect.top - navRect.top + navScrollTop}px`;
-        activeIndicator.style.height = `${itemRect.height}px`;
 
-        // Ensure the active item is visible in the nav with smooth scrolling
-        const itemTop = itemRect.top - navRect.top;
-        const itemBottom = itemTop + itemRect.height;
+        // Get position of first active item
+        const firstItemRect = activeItems[0].getBoundingClientRect();
+        const firstTop = firstItemRect.top - navRect.top + navScrollTop;
+
+        // Get position of last active item
+        const lastActiveItem = activeItems[activeItems.length - 1];
+        const lastItemRect = lastActiveItem.getBoundingClientRect();
+        const lastBottom =
+          lastItemRect.top - navRect.top + lastItemRect.height + navScrollTop;
+
+        // Set indicator to span the range
+        activeIndicator.style.top = `${firstTop}px`;
+        activeIndicator.style.height = `${lastBottom - firstTop}px`;
+
+        // Ensure the last active item is visible in the nav with smooth scrolling
+        const lastTop = lastItemRect.top - navRect.top;
+        const lastItemBottom = lastTop + lastItemRect.height;
         const navHeight = navElement.clientHeight;
         const DELTA_SCROLL = 400;
 
-        if (itemTop < 0) {
+        if (lastTop < 0) {
           navElement.scrollTo({
-            top: navElement.scrollTop + itemTop - DELTA_SCROLL,
+            top: navElement.scrollTop + lastTop - DELTA_SCROLL,
             behavior: "smooth"
           });
-        } else if (itemBottom > navHeight) {
+        } else if (lastItemBottom > navHeight) {
           navElement.scrollTo({
-            top: navElement.scrollTop + (itemBottom - navHeight) + DELTA_SCROLL,
+            top:
+              navElement.scrollTop +
+              (lastItemBottom - navHeight) +
+              DELTA_SCROLL,
             behavior: "smooth"
           });
         }
