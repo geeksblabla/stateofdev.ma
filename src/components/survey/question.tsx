@@ -95,7 +95,7 @@ export const Question = ({
                 message: "Input must not exceed 200 characters"
               }
             })}
-            className="mt-4 w-full p-2 border-2 border-input focus:ring-2 focus:ring-ring focus:border-ring"
+            className="mt-4 w-full p-2 bg-card text-foreground border-2 border-input focus:ring-2 focus:ring-ring focus:border-ring placeholder:text-muted-foreground transition-colors"
             placeholder="Please specify... use comma to separate each item (max 200 characters)"
             rows={3}
             maxLength={200}
