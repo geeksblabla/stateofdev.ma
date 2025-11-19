@@ -12,14 +12,11 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<div>
+<div class="mt-0 md:mt-20">
   <nav
     class="md:block lg:block pb-12 w-full md:w-[300px] max-h-screen overflow-y-auto overflow-x-visible md:sticky md:top-0"
   >
     <div class="overflow-x-visible relative pl-[1.5px]">
-      <h2 class="text-lg font-bold mb-4 px-6 text-foreground hidden md:block">
-        On this page
-      </h2>
       <ul
         id="toc-list"
         class="px-6 py-6 z-20 border-l border-solid border-border hidden md:block"
@@ -72,20 +69,54 @@ const { items } = Astro.props;
     const headings = Array.from(document.querySelectorAll("h1, h2"));
     const activeIndicator = document.getElementById("active-indicator");
 
-    // Find items that are currently visible in the viewport
-    const activeItems: Element[] = [];
-    const viewportHeight = window.innerHeight;
+    // Find the current active section based on scroll position
+    // A section is active if we've scrolled past its heading but haven't reached the next one
+    const scrollPosition = window.scrollY + 150; // Offset for better UX
+    let currentActiveHeading: Element | null = null;
 
-    headings.forEach((heading) => {
-      const rect = heading.getBoundingClientRect();
-      // Check if heading is visible in viewport (between top and bottom of screen)
-      if (rect.top >= -100 && rect.top <= viewportHeight - 100) {
-        const tocLink = document.querySelector(`[href="#${heading.id}"]`);
-        if (tocLink && !activeItems.includes(tocLink)) {
-          activeItems.push(tocLink);
-        }
+    // Find the last heading that we've scrolled past
+    for (let i = headings.length - 1; i >= 0; i--) {
+      const heading = headings[i];
+      const headingTop = heading.getBoundingClientRect().top + window.scrollY;
+
+      if (scrollPosition >= headingTop) {
+        currentActiveHeading = heading;
+        break;
       }
-    });
+    }
+
+    // If no heading is found (we're at the top), use the first heading
+    if (!currentActiveHeading && headings.length > 0) {
+      currentActiveHeading = headings[0];
+    }
+
+    // Find all TOC items that should be active
+    const activeItems: Element[] = [];
+    if (currentActiveHeading) {
+      const currentTocLink = document.querySelector(
+        `[href="#${currentActiveHeading.id}"]`
+      );
+      if (currentTocLink) {
+        activeItems.push(currentTocLink);
+
+        // Also include any visible sections in the viewport
+        headings.forEach((heading) => {
+          const rect = heading.getBoundingClientRect();
+          const viewportHeight = window.innerHeight;
+
+          if (
+            rect.top >= -100 &&
+            rect.top <= viewportHeight - 100 &&
+            heading !== currentActiveHeading
+          ) {
+            const tocLink = document.querySelector(`[href="#${heading.id}"]`);
+            if (tocLink && !activeItems.includes(tocLink)) {
+              activeItems.push(tocLink);
+            }
+          }
+        });
+      }
+    }
 
     // Update visual states for ALL items
     tocItems.forEach((item) => {
