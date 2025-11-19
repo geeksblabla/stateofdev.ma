@@ -177,7 +177,7 @@ export const BarChart = ({
         <span className="text-xs text-muted-foreground">
           {results.isFiltered && "NOTE: Filters applied"}
         </span>
-        <span className="text-sm text-muted-foreground">
+        <span className="text-sm text-muted-foreground font-bold">
           Total: {results.total}
         </span>
       </div>

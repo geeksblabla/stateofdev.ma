@@ -121,7 +121,7 @@ export const ReportCard = ({
       </ul>
     </div>
     <div className="bg-muted px-6 py-4 flex justify-between items-center border-t border-border">
-      <span className="text-primary font-medium group-hover:underline inline-flex items-center">
+      <span className="text-primary font-medium inline-flex items-center">
         Read full report
         <svg
           className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"
