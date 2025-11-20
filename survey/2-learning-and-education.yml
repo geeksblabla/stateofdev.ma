@@ -12,12 +12,26 @@ questions:
       - Coding schools (1337, YouCode, etc.)
       - Other
 
-  - label: Do you think school gives you enough knowledge to start your professional career?
-    required: false
+  - label: Which areas did your formal education fail to adequately prepare you for?
+    required: true
+    multiple: true
     choices:
-      - Not enough
-      - Enough to start
-      - Everything I needed
+      - Modern frameworks & libraries (React, Vue, Angular, etc.)
+      - DevOps & CI/CD (Docker, Kubernetes, Jenkins, etc.)
+      - Cloud platforms (AWS, Azure, GCP)
+      - Soft skills (communication, teamwork, presentation)
+      - Version control & collaboration (Git, GitHub workflows)
+      - Testing & quality assurance
+      - Security best practices
+      - Agile methodologies & project management
+      - System design & architecture
+      - Database design & optimization
+      - Real-world project experience
+      - Problem-solving & algorithms for interviews
+      - Code review & best practices
+      - API design & integration
+      - My education prepared me well across these areas
+      - Other
 
   - label: What languages can you read/write?
     required: true
