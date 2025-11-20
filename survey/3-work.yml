@@ -16,6 +16,7 @@ questions:
       - Other
 
   - label: How often do you work overtime or beyond the normal time expectation of your job?
+    required: false
     choices:
       - Never
       - "Rarely: 1-2 days per year or less "
@@ -26,6 +27,7 @@ questions:
       - "Daily"
 
   - label: How do you feel about your job?
+    required: false
     choices:
       - Very Unsatisfied
       - Slightly Unsatisfied
@@ -35,10 +37,13 @@ questions:
 
   - label: Do you work on side projects?
     required: true
+    multiple: true
     choices:
       - No
-      - Yes For profit
-      - Yes For learning
+      - Yes, for profit
+      - Yes, for learning
+      - Yes, for open source contribution
+      - Yes, for portfolio building
 
   - label: How long have you been unemployed after graduation?
     choices:
@@ -79,7 +84,8 @@ questions:
     choices:
       - "< 20 000"
       - "20 000 - 25 000"
-      - "30 500 - 40 000"
+      - "25 000 - 30 000"
+      - "30 000 - 40 000"
       - "40 000 - 50 000"
       - "50 000 - 60 000"
       - "60 000 - 80 000"
@@ -104,15 +110,20 @@ questions:
     required: true
     multiple: true
     choices:
-      - Languages, frameworks, and other technologies I’d be working on
+      - Languages, frameworks, and other technologies I'd be working on
       - Office environment or company culture
       - Flexible time or schedule
       - Opportunities for professional development
       - Remote work options
       - How widely used or impactful my work output would be
-      - The industry that I’d be working in
+      - The industry that I'd be working in
       - Company paid training and certifications
       - Salary
+      - Stock options/equity
+      - Benefits package (health insurance, pension, etc.)
+      - Work-life balance
+      - Company mission/values alignment
+      - Visa/relocation support
 
   - label: What type of company do you prefer?
     required: true
@@ -122,8 +133,10 @@ questions:
       - Company between 11 and 30 employees
       - Company between 31 and 100 employees
       - Company above 100 employees
+      - Other
 
   - label: What agile software development methodology do you use in your team, if any?
+    required: false
     choices:
       - Scrum
       - Kanban
@@ -131,7 +144,8 @@ questions:
       - Other
       - None
 
-  - label: As many companies are returning to their offices, what options does your employer provide?
+  - label: What remote work arrangement does your current employer offer?
+    required: false
     choices:
       - Back to office
       - Full remote
@@ -161,4 +175,12 @@ questions:
       - Environmental monitoring and sustainability
       - Legal tech and compliance
       - Human resources and talent management
+      - Gaming and entertainment
+      - Travel and hospitality tech
+      - Real estate/PropTech
+      - Energy and renewable tech
+      - Telecommunications
+      - Agriculture tech (AgTech)
+      - Blockchain/Web3
+      - Government/Public sector
       - Other
