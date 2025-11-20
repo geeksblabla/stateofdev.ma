@@ -27,6 +27,8 @@ questions:
       - Amazigh
       - French
       - English
+      - Spanish
+      - German
       - Others
 
   - label: Do you find English to be an obstacle to learning new technologies for you?
@@ -35,13 +37,18 @@ questions:
       - Yes
       - No
 
-  - label: Do you think we need more content in Darija?
+  - label: What type of Darija content would help you most?
     required: true
+    multiple: true
     choices:
-      - Spoken
-      - Written/Read
-      - Both
-      - No
+      - Tutorial videos
+      - Written documentation
+      - Interactive courses
+      - Podcasts/audio content
+      - Community discussions/forums
+      - Live coding sessions
+      - No need for Darija content
+      - Other
 
   - label: What are your preferred platforms for learning?
     required: true
@@ -58,4 +65,17 @@ questions:
       - Online Communities (StackOverflow/Reddit/Twitter)
       - AI Assistant (ChatGPT, etc)
       - Open source contributions
+      - Coding challenges (LeetCode, HackerRank, etc)
       - Other platforms
+
+  - label: What's your biggest challenge in learning new technologies?
+    required: true
+    choices:
+      - Lack of time
+      - Language barrier
+      - Cost of resources
+      - Lack of practical projects
+      - Information overload
+      - No mentorship/guidance
+      - Keeping up with rapid changes
+      - Other
