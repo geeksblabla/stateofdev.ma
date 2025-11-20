@@ -2,33 +2,94 @@ title: Community
 label: community
 position: 6
 questions:
-  - label: "How far are you involved in any local developer’s community?"
-    required: true
-    multiple: false
-    choices:
-      - No, I am not interested
-      - I know some, but not involved
-      - I am following some communities
-      - I am an active member
-      - I am an organizer
-
-  - label: "Did you ever participate in an open-source project?"
+  - label: "What prevents you from participating more in the Moroccan tech community?"
     required: true
     multiple: true
     choices:
-      - I don’t have an account on Github (or alternatives).
-      - Yes, only few PRs in various projects.
-      - I am maintaining my own project.
-      - I have a repo with more than +1k stars.
-      - I maintain an organization project with +1k stars.
+      - Lack of time due to work commitments
+      - Don't know where to find communities/events
+      - Events are too far from my location
+      - Language barriers (prefer Arabic/Darija content)
+      - Content level doesn't match my experience (too basic/too advanced)
+      - Lack of topics relevant to my work
+      - Financial constraints (event costs, travel)
+      - Don't feel qualified to contribute
+      - Not interested
+      - Other
 
-  - label: "Did you get the chance to write blog posts?"
+  - label: "What would make you more likely to attend tech events in Morocco?"
     required: true
+    multiple: true
     choices:
-      - No, I am not interested.
-      - Still thinking about it.
-      - Yes, less than 10 blog posts.
-      - Yes, more than 10 blog posts.
+      - More events in my city/region
+      - Better quality speakers/content
+      - More advanced/specialized topics
+      - More beginner-friendly content
+      - Workshops with hands-on practice
+      - Better networking opportunities
+      - Lower or no cost
+      - Better timing (weekends, evenings)
+      - Online/hybrid options
+      - Career/job opportunities at events
+      - Other
+
+  - label: "How has the Moroccan tech community helped your career?"
+    required: true
+    multiple: true
+    choices:
+      - Found my current job through community connections
+      - Learned skills that advanced my career
+      - Got mentorship from community members
+      - Built professional network
+      - Gained confidence through speaking/contributing
+      - Discovered new opportunities (jobs, projects, partnerships)
+      - It hasn't helped my career yet
+      - Not applicable
+
+  - label: "What do you most need from the Moroccan tech community right now?"
+    required: true
+    multiple: true
+    choices:
+      - Job opportunities and career guidance
+      - Mentorship from experienced developers
+      - Learning resources in Arabic/Darija
+      - Networking with other developers
+      - Access to advanced technical content
+      - Collaboration opportunities on projects
+      - Help breaking into tech industry
+      - Staying updated with industry trends
+      - Nothing specific
+      - Other
+
+  - label: "What type of community content would be most valuable to you?"
+    required: true
+    multiple: true
+    choices:
+      - Technical workshops (hands-on coding)
+      - Case studies from Moroccan companies
+      - Career development sessions (interviews, negotiations, CV)
+      - Open source contribution guides
+      - Architecture and system design discussions
+      - Soft skills (communication, leadership, teamwork)
+      - Freelancing and entrepreneurship guidance
+      - New technology explorations
+      - Panel discussions with industry leaders
+      - Other
+
+  - label: "What prevents you from contributing to open source?"
+    required: true
+    multiple: true
+    choices:
+      - Don't know how to get started
+      - Afraid my code isn't good enough
+      - Don't have time
+      - Don't understand how to find projects to contribute to
+      - Language barriers (most projects in English)
+      - Lack of mentorship/guidance
+      - Don't see the value/benefit
+      - I already contribute
+      - Not interested
+      - Other
 
   - label: "When it comes to IT, what is your primary social network?"
     required: true
@@ -37,41 +98,13 @@ questions:
       - Facebook
       - Instagram
       - WhatsApp
-      - Twitter
+      - X (Twitter)
       - Youtube
       - Telegram
       - Discord
       - Slack
-      - Gitter
       - Reddit
       - LinkedIn
+      - Bluesky
+      - Threads
       - None
-
-  - label: "How many IT events did you attend in person in the past 12 months?"
-    required: true
-    choices:
-      - "0"
-      - "1-3"
-      - "More than 3"
-
-  - label: "How many talks did you participate in the last 12 months?"
-    required: true
-    choices:
-      - "0"
-      - "1 - 3 talks"
-      - "More than 3"
-
-  - label: "Do you prefer?"
-    required: true
-    choices:
-      - Live/online events
-      - In-person events?
-      - Li ja bismillah
-
-  - label: "How do you evaluate the Moroccan Tech Community?"
-    required: true
-    choices:
-      - Bad
-      - Not Bad
-      - Good
-      - Excellent
