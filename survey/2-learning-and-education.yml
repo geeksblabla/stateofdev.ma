@@ -82,7 +82,7 @@ questions:
       - Coding challenges (LeetCode, HackerRank, etc)
       - Other platforms
 
-  - label: What's your biggest challenge in learning new technologies?
+  - label: What are the biggest challenges you find in learning new technologies? (pick 3)
     required: true
     choices:
       - Lack of time
