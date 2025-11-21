@@ -16,20 +16,12 @@ questions:
     required: true
     multiple: true
     choices:
-      - Modern frameworks & libraries (React, Vue, Angular, etc.)
-      - DevOps & CI/CD (Docker, Kubernetes, Jenkins, etc.)
-      - Cloud platforms (AWS, Azure, GCP)
-      - Soft skills (communication, teamwork, presentation)
-      - Version control & collaboration (Git, GitHub workflows)
-      - Testing & quality assurance
-      - Security best practices
-      - Agile methodologies & project management
-      - System design & architecture
-      - Database design & optimization
-      - Real-world project experience
+      - Modern tech stack (frameworks, DevOps, cloud platforms)
+      - Development practices (version control, testing, security, code review)
+      - Professional & soft skills (communication, teamwork, agile/project management)
+      - System & architecture design (system design, databases, APIs)
       - Problem-solving & algorithms for interviews
-      - Code review & best practices
-      - API design & integration
+      - Real-world project experience
       - My education prepared me well across these areas
       - Other
 
