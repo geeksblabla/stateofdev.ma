@@ -31,6 +31,12 @@ questions:
       - Perl
       - Haskell
       - Julia
+      - Elixir
+      - Zig
+      - Solidity
+      - Lua
+      - V
+      - F#
       - Other
 
   - label: "What are the programming languages you want to learn next?"
@@ -62,6 +68,12 @@ questions:
       - Perl
       - Haskell
       - Julia
+      - Elixir
+      - Zig
+      - Solidity
+      - Lua
+      - V
+      - F#
       - Other
 
   - label: "What are the programming languages you are using on a daily basis?"
@@ -69,8 +81,8 @@ questions:
     multiple: true
     choices:
       - JavaScript
-      - HTML/CSS  😉
-      - SQL5
+      - HTML/CSS 😉
+      - SQL
       - Python
       - Java
       - Bash/Shell/PowerShell
@@ -93,6 +105,12 @@ questions:
       - Perl
       - Haskell
       - Julia
+      - Elixir
+      - Zig
+      - Solidity
+      - Lua
+      - V
+      - F#
       - Other
 
   - label: "What are the front-end frameworks/libraries you are using on a daily basis?"
@@ -113,9 +131,14 @@ questions:
       - Alpine.js
       - Remix
       - Solid.js
-      - AstroJs
+      - Astro
       - Qwik
       - Htmx
+      - Nuxt.js
+      - SvelteKit
+      - Lit
+      - Fresh
+      - Stencil
       - Other
 
   - label: "What are the front-end frameworks/libraries you want to learn next?"
@@ -137,9 +160,14 @@ questions:
       - Alpine.js
       - Remix
       - Solid.js
-      - Astro Js
+      - Astro
       - Qwik
       - Htmx
+      - Nuxt.js
+      - SvelteKit
+      - Lit
+      - Fresh
+      - Stencil
       - Other
 
   - label: "What approach do you use for styling your web apps?"
@@ -151,6 +179,10 @@ questions:
       - CSS Preprocessor (Sass, Less ...)
       - CSS Modules
       - Tailwind CSS
+      - Shadcn UI
+      - UnoCSS
+      - Panda CSS
+      - Vanilla Extract
       - Other
 
   - label: "What are the backend frameworks you are using on a daily basis?"
@@ -174,6 +206,18 @@ questions:
       - Serverless framework
       - Serverless technology (Vercel,Netlify...)
       - Headless CMS (Strapi,KeystoneJS,Ghost ...)
+      - Fastify
+      - AdonisJs
+      - Hono
+      - Elysia
+      - tRPC
+      - Gin
+      - Fiber
+      - Echo
+      - Phoenix
+      - Ktor
+      - Actix
+      - Axum
       - Other
 
   - label: "What are the backend frameworks you want to learn next?"
@@ -197,6 +241,18 @@ questions:
       - Serverless framework
       - Serverless technology (Vercel,Netlify...)
       - Headless CMS (Strapi,KeystoneJS,Ghost ...)
+      - Fastify
+      - AdonisJs
+      - Hono
+      - Elysia
+      - tRPC
+      - Gin
+      - Fiber
+      - Echo
+      - Phoenix
+      - Ktor
+      - Actix
+      - Axum
       - Other
 
   - label: "What are the platforms and tools you are using on a daily basis?"
@@ -217,14 +273,27 @@ questions:
       - Configuration Management(Ansible, Puppet...)
       - Flutter
       - Terraform
-      - Cordova
-      - Xamarin
       - Apache Spark
       - Bun Js
       - Deno Js
       - No-code Platforms (e.g., Appgyver, Glide)
       - Low-code Platforms (e.g., PowerApps, Zoho Creator)
       - Website Builders (e.g., Webflow, Wix)
+      - Vite
+      - Android Studio
+      - Xcode
+      - Pytorch
+      - Langchain
+      - Turborepo
+      - Nx
+      - Prisma
+      - Drizzle
+      - GraphQL
+      - Apollo
+      - Tauri
+      - Electron
+      - Cloudflare Workers
+      - esbuild
       - Other
 
   - label: "What are the platforms and tools you want to learn next?"
@@ -245,14 +314,27 @@ questions:
       - Configuration Management(Ansible, Puppet...)
       - Flutter
       - Terraform
-      - Cordova
-      - Xamarin
       - Apache Spark
       - Bun Js
       - Deno Js
       - No-code Platforms (e.g., Appgyver, Glide)
       - Low-code Platforms (e.g., PowerApps, Zoho Creator)
       - Website Builders (e.g., Webflow, Wix)
+      - Vite
+      - Android Studio
+      - Xcode
+      - Pytorch
+      - Langchain
+      - Turborepo
+      - Nx
+      - Prisma
+      - Drizzle
+      - GraphQL
+      - Apollo
+      - Tauri
+      - Electron
+      - Cloudflare Workers
+      - esbuild
       - Other
 
   - label: "Your primary Operating System is:"
@@ -279,6 +361,11 @@ questions:
       - Atom
       - Notepad++
       - Cloud based IDE
+      - Zed
+      - Fleet
+      - Visual Studio
+      - Android Studio
+      - Xcode
       - Other
 
   - label: "How frequently do you learn a new programming language or framework?"
@@ -299,6 +386,10 @@ questions:
       - Do other work and come back later
       - Watch help/tutorial videos
       - Call a coworker or friend
+      - Read official documentation
+      - Ask in Discord/Slack communities
+      - Take a break/sleep on it
+      - Create minimal reproduction
 
   - label: "The production environment you or your team are using is:"
     multiple: true
@@ -320,6 +411,15 @@ questions:
       - DigitalOcean
       - Other Moroccan Cloud providers
       - Other cloud providers
+      - Cloudflare
+      - Vercel
+      - Netlify
+      - Fly.io
+      - Railway
+      - Render
+      - Hetzner
+      - OVH
+      - Linode (Akamai)
       - None
 
   - label: "The production database you or your team are using is:"
@@ -338,6 +438,15 @@ questions:
       - BigTable
       - SQLite/LibSQL
       - Vector DBs
+      - Supabase
+      - PlanetScale
+      - Turso
+      - Firestore
+      - CockroachDB
+      - ClickHouse
+      - Elasticsearch
+      - FaunaDB
+      - TimescaleDB
       - Other
 
   - label: "What type of tests do you write?"
@@ -349,4 +458,7 @@ questions:
       - End-to-end tests
       - Acceptance tests
       - I don't write tests for my code.
+      - Performance/Load testing
+      - Visual regression testing
+      - Security testing
       - Other
