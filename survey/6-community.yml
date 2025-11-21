@@ -11,10 +11,7 @@ questions:
       - Events are too far from my location
       - Language barriers (prefer Arabic/Darija content)
       - Content level doesn't match my experience (too basic/too advanced)
-      - Lack of topics relevant to my work
       - Financial constraints (event costs, travel)
-      - Don't feel qualified to contribute
-      - Not interested
       - Other
 
   - label: "What would make you more likely to attend tech events in Morocco?"
@@ -23,32 +20,27 @@ questions:
     choices:
       - More events in my city/region
       - Better quality speakers/content
-      - More advanced/specialized topics
-      - More beginner-friendly content
       - Workshops with hands-on practice
       - Better networking opportunities
       - Lower or no cost
       - Better timing (weekends, evenings)
-      - Online/hybrid options
-      - Career/job opportunities at events
       - Other
 
   - label: "How has the Moroccan tech community helped your career?"
     required: true
     multiple: true
     choices:
-      - Found my current job through community connections
       - Learned skills that advanced my career
       - Got mentorship from community members
       - Built professional network
       - Gained confidence through speaking/contributing
       - Discovered new opportunities (jobs, projects, partnerships)
       - It hasn't helped my career yet
-      - Not applicable
+      - Other
 
-  - label: "What do you most need from the Moroccan tech community right now?"
+  - label: "What do you MOST need from the Moroccan tech community right now?"
     required: true
-    multiple: true
+    multiple: false
     choices:
       - Job opportunities and career guidance
       - Mentorship from experienced developers
@@ -56,14 +48,11 @@ questions:
       - Networking with other developers
       - Access to advanced technical content
       - Collaboration opportunities on projects
-      - Help breaking into tech industry
-      - Staying updated with industry trends
-      - Nothing specific
       - Other
 
-  - label: "What type of community content would be most valuable to you?"
+  - label: "What type of community content would be MOST valuable to you?"
     required: true
-    multiple: true
+    multiple: false
     choices:
       - Technical workshops (hands-on coding)
       - Case studies from Moroccan companies
@@ -72,8 +61,6 @@ questions:
       - Architecture and system design discussions
       - Soft skills (communication, leadership, teamwork)
       - Freelancing and entrepreneurship guidance
-      - New technology explorations
-      - Panel discussions with industry leaders
       - Other
 
   - label: "What prevents you from contributing to open source?"
@@ -85,26 +72,17 @@ questions:
       - Don't have time
       - Don't understand how to find projects to contribute to
       - Language barriers (most projects in English)
-      - Lack of mentorship/guidance
-      - Don't see the value/benefit
       - I already contribute
-      - Not interested
       - Other
 
   - label: "When it comes to IT, what is your primary social network?"
     required: true
     multiple: false
     choices:
-      - Facebook
-      - Instagram
-      - WhatsApp
-      - X (Twitter)
-      - Youtube
-      - Telegram
-      - Discord
-      - Slack
-      - Reddit
       - LinkedIn
-      - Bluesky
-      - Threads
-      - None
+      - X (Twitter)
+      - Discord
+      - Reddit
+      - Instagram
+      - YouTube
+      - Other
