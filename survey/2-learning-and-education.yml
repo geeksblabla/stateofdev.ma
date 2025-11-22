@@ -12,12 +12,18 @@ questions:
       - Coding schools (1337, YouCode, etc.)
       - Other
 
-  - label: Do you think school gives you enough knowledge to start your professional career?
-    required: false
+  - label: Which areas did your formal education fail to adequately prepare you for?
+    required: true
+    multiple: true
     choices:
-      - Not enough
-      - Enough to start
-      - Everything I needed
+      - Modern tech stack (frameworks, DevOps, cloud platforms)
+      - Development practices (version control, testing, security, code review)
+      - Professional & soft skills (communication, teamwork, agile/project management)
+      - System & architecture design (system design, databases, APIs)
+      - Problem-solving & algorithms for interviews
+      - Real-world project experience
+      - My education prepared me well across these areas
+      - Other
 
   - label: What languages can you read/write?
     required: true
@@ -35,13 +41,18 @@ questions:
       - Yes
       - No
 
-  - label: Do you think we need more content in Darija?
+  - label: What type of Darija content would help you most?
     required: true
+    multiple: true
     choices:
-      - Spoken
-      - Written/Read
-      - Both
-      - No
+      - Tutorial videos
+      - Written documentation
+      - Interactive courses
+      - Podcasts/audio content
+      - Community discussions/forums
+      - Live coding sessions
+      - No need for Darija content
+      - Other
 
   - label: What are your preferred platforms for learning?
     required: true
@@ -58,4 +69,17 @@ questions:
       - Online Communities (StackOverflow/Reddit/Twitter)
       - AI Assistant (ChatGPT, etc)
       - Open source contributions
+      - Coding challenges (LeetCode, HackerRank, etc)
       - Other platforms
+
+  - label: What are the biggest challenges you find in learning new technologies? (pick 3)
+    required: true
+    choices:
+      - Lack of time
+      - Language barrier
+      - Cost of resources
+      - Lack of practical projects
+      - Information overload
+      - No mentorship/guidance
+      - Keeping up with rapid changes
+      - Other
