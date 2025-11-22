@@ -55,13 +55,36 @@ questions:
       - Meta AI (Llama)
       - GitHub Copilot
       - Cursor
-      - Super maven
+      - Supermaven
       - QuillBot
       - Notion AI
       - Midjourney
-      - Coby.ai
+      - Cody (Sourcegraph)
       - Grammarly
-      - NotebookLM
+      - NotebookLM (Google)
+      - Windsurf (Codeium)
+      - Tabnine
+      - Amazon Q Developer (CodeWhisperer)
+      - Replit AI (Ghostwriter)
+      - Pieces for Developers
+      - Warp AI
+      - v0 (Vercel)
+      - Claude Code (Anthropic CLI)
+      - Aider
+      - GitHub Copilot CLI
+      - Shell GPT (sgpt)
+      - Continue.dev
+      - Cline (Claude Dev)
+      - Jasper AI
+      - Copy.ai
+      - Perplexity AI
+      - You.com
+      - Stable Diffusion
+      - Leonardo.ai
+      - Adobe Firefly
+      - Microsoft Copilot (365)
+      - Otter.ai
+      - Gamma
       - Other
 
   - label: "Which AI frameworks and models do you use?"
@@ -80,11 +103,7 @@ questions:
       - TensorFlow
       - OpenAI (GPT)
       - Keras
-      - Microsoft Cognitive Toolkit
-      - Caffe
       - Mistral
-      - PyBrain
-      - IBM Watson
       - Scikit-Learn
       - Gemma
       - Falcon
@@ -94,4 +113,39 @@ questions:
       - GPT-NeoX / GPT-J
       - Vicuna
       - Phi
+      - LangGraph
+      - LlamaIndex (GPT Index)
+      - Semantic Kernel (Microsoft)
+      - AutoGen (Microsoft)
+      - CrewAI
+      - DSPy (Stanford)
+      - Instructor
+      - Guardrails AI
+      - Pinecone
+      - Weaviate
+      - Milvus
+      - Qdrant
+      - ChromaDB
+      - Faiss (Meta)
+      - Anthropic Claude API
+      - Groq
+      - Replicate
+      - Cohere
+      - Perplexity API
+      - n8n AI
+      - Flowise
+      - LangFlow
+      - Unsloth
+      - PEFT / LoRA (Hugging Face)
+      - MLflow
+      - Vercel AI SDK
+      - OpenAI SDK (Python/JS)
+      - Anthropic SDK (Python/JS)
+      - Qwen (Alibaba)
+      - DeepSeek
+      - Command R (Cohere)
+      - Mistral (Mistral AI)
+      - Grok (xAI)
+      - Stable Diffusion (Stability AI)
+      - Whisper (OpenAI)
       - Other
