@@ -104,7 +104,6 @@ questions:
       - OpenAI (GPT)
       - Keras
       - Mistral
-      - IBM Watson
       - Scikit-Learn
       - Gemma
       - Falcon
@@ -132,13 +131,10 @@ questions:
       - Groq
       - Replicate
       - Cohere
-      - AI21 Labs (Jamba)
       - Perplexity API
       - n8n AI
       - Flowise
       - LangFlow
-      - BabyAGI / AutoGPT
-      - Axolotl
       - Unsloth
       - PEFT / LoRA (Hugging Face)
       - MLflow
@@ -148,11 +144,8 @@ questions:
       - Qwen (Alibaba)
       - DeepSeek
       - Command R (Cohere)
-      - Mixtral (Mistral AI)
+      - Mistral (Mistral AI)
       - Grok (xAI)
       - Stable Diffusion (Stability AI)
       - Whisper (OpenAI)
-      - Sentence Transformers
-      - OpenAI Embeddings
-      - Cohere Embeddings
       - Other
