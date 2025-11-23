@@ -2,16 +2,6 @@ title: Learning & Education
 label: education
 position: 2
 questions:
-  - label: Where did you study coding?
-    required: true
-    choices:
-      - Self-taught (no diploma or other field's diploma).
-      - University / Public school
-      - Private school
-      - Vocational School (bootcamps, technical skills  ...)
-      - Coding schools (1337, YouCode, etc.)
-      - Other
-
   - label: Which areas did your formal education fail to adequately prepare you for?
     required: true
     multiple: true
@@ -34,12 +24,6 @@ questions:
       - French
       - English
       - Others
-
-  - label: Do you find English to be an obstacle to learning new technologies for you?
-    required: true
-    choices:
-      - Yes
-      - No
 
   - label: What type of Darija content would help you most?
     required: true
@@ -76,7 +60,7 @@ questions:
     required: true
     choices:
       - Lack of time
-      - Language barrier
+      - Language barriers (English/French proficiency)
       - Cost of resources
       - Lack of practical projects
       - Information overload

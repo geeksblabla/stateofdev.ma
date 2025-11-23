@@ -73,14 +73,17 @@ questions:
       - Cloud architect
       - Student (coding professionally)
 
-  - label: What is your highest diploma?
+  - label: What is/was your coding education background?
     required: true
     choices:
       - Self-taught (no formal CS education)
-      - Bac +2/+3, Bachelor's degree (B.A., B.S., B.Eng., etc.)
-      - Bac +5, Master's degree (M.A., M.S., M.Eng., MBA, etc.)
-      - Bac +8, Doctoral degree (Ph.D., Ed.D., etc.)
-      - Coding bootcamp/school (1337, YouCode, Solicode, etc.)
+      - University/Public school - Bac +2/+3 (Bachelor's)
+      - University/Public school - Bac +5 (Master's)
+      - University/Public school - Bac +8 (Doctoral)
+      - Private engineering/tech school
+      - Coding school (1337, YouCode, Solicode, etc.)
+      - Vocational/Technical training
+      - Other field's diploma (career transition)
       - Other
 
   - label: How many years have you been coding professionally?
