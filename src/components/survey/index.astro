@@ -5,7 +5,7 @@ import workQuestion from "@/survey/3-work.yml";
 import aiQuestion from "@/survey/4-ai.yml";
 import techQuestion from "@/survey/5-tech.yml";
 import communityQuestion from "@/survey/6-community.yml";
-import { SurveyForm } from "./survey-form";
+import { SurveyApp } from "./survey-app";
 import ExitPopup from "./exit-popup.astro";
 
 const questions = [
@@ -19,7 +19,7 @@ const questions = [
 ---
 
 <div id="survey-form" class="min-h-screen min-w-full">
-  <SurveyForm questions={questions} client:only="react" />
+  <SurveyApp questions={questions} client:only="react" />
 </div>
 
 <ExitPopup />

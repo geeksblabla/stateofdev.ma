@@ -1,63 +1,155 @@
-import { useState, useMemo, useCallback } from "react";
-// import LoadingBar from "react-top-loading-bar";
+import { useMemo } from "react";
 import { Steps } from "./steps";
-import Section from "./section";
-import { goToThanksPage } from "./utils";
+import { Question } from "./question";
+import { SurveyMachineContext } from "./survey-context";
+import { ErrorMessage, BackButton } from "./survey-controls";
 
-type Props = {
-  questions: SurveyQuestionsYamlFile[];
-};
+const QUESTION_CONTAINER_MIN_HEIGHT = "300px";
 
-export const SurveyForm = ({ questions }: Props) => {
-  const [selectedSectionIndex, setSelectedSectionIndex] = useState(0);
-  const [progress, setPr] = useState(0);
+export const SurveyForm = () => {
+  const actorRef = SurveyMachineContext.useActorRef();
 
-  const section = useMemo(
-    () => questions[selectedSectionIndex],
-    [questions, selectedSectionIndex]
+  // Select all needed state
+  const context = SurveyMachineContext.useSelector((state) => state.context);
+  const isSubmitting = SurveyMachineContext.useSelector((state) =>
+    state.matches("submitting")
   );
-  const totalQuestions = useMemo(
-    () =>
-      questions.reduce(
-        (previousValue: number, currentValue: SurveyQuestionsYamlFile) => {
-          return previousValue + currentValue.questions.length;
-        },
-        0
-      ),
-    [questions]
-  );
+
+  // Compute derived state
+  const currentSection = context.sections[context.currentSectionIdx];
+  const currentQuestion = currentSection?.questions[context.currentQuestionIdx];
 
   const sectionsLabels = useMemo(
-    () => questions.map((question) => question.label),
-    [questions]
-  );
-  const setProgress = useCallback(
-    (n: number) => {
-      const step = 100 / totalQuestions;
-      setPr((prv) => prv + step * n);
-    },
-    [progress, totalQuestions]
+    () => context.sections.map((q) => q.label),
+    [context.sections]
   );
 
-  const next = useCallback(() => {
-    if (selectedSectionIndex + 1 < questions.length) {
-      setSelectedSectionIndex((prv) => prv + 1);
-    } else {
-      goToThanksPage();
+  const isRequired = !!currentQuestion?.required;
+  const canGoBack =
+    context.currentSectionIdx > 0 || context.currentQuestionIdx > 0;
+
+  const questionId = `${currentSection.label}-q-${context.currentQuestionIdx}`;
+
+  const handleAnswerChange = (value: number | number[] | null | string) => {
+    actorRef.send({
+      type: "ANSWER_CHANGE",
+      questionId,
+      value
+    });
+  };
+
+  const handleOthersChange = (value: string) => {
+    actorRef.send({
+      type: "ANSWER_CHANGE",
+      questionId: `${questionId}-others`,
+      value
+    });
+  };
+
+  const handleNext = () => {
+    // If no answer selected for multiple choice, set to empty array
+    const currentAnswer = context.answers[questionId];
+    if (currentAnswer === undefined && currentQuestion.multiple) {
+      actorRef.send({
+        type: "ANSWER_CHANGE",
+        questionId,
+        value: []
+      });
     }
-  }, [questions, selectedSectionIndex]);
+    actorRef.send({ type: "NEXT" });
+  };
+
+  const handleSkip = () => {
+    // Set answer to null for single choice or [] for multiple choice when skipping
+    const value = currentQuestion.multiple ? [] : null;
+    actorRef.send({
+      type: "ANSWER_CHANGE",
+      questionId,
+      value
+    });
+    actorRef.send({ type: "SKIP" });
+  };
+
+  const handleBack = () => {
+    actorRef.send({ type: "BACK" });
+  };
+
+  const handleSectionClick = (sectionIdx: number) => {
+    actorRef.send({ type: "GO_TO_SECTION", sectionIdx });
+  };
+
+  if (!currentSection || !currentQuestion) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen pt-10">
-      <Steps selectedIndex={selectedSectionIndex} sections={sectionsLabels} />
-      {/* <LoadingBar color="var(--primary)" progress={progress} height={10} /> */}
+      <Steps
+        selectedIndex={context.currentSectionIdx}
+        sections={sectionsLabels}
+        onStepClick={handleSectionClick}
+      />
       <main className="flex flex-1 justify-center items-center">
-        <Section
-          section={section}
-          next={next}
-          key={section.label}
-          setProgress={setProgress}
-        />
+        <div
+          id={currentSection.label}
+          className="md:w-[700px] w-full px-4 md:px-0"
+        >
+          <div
+            className="mb-10 min-h-screen transition-all duration-1000"
+            style={{
+              minHeight: `min(${QUESTION_CONTAINER_MIN_HEIGHT}, 100vh)`
+            }}
+          >
+            <Question
+              selected={true}
+              question={currentQuestion}
+              index={context.currentQuestionIdx}
+              key={questionId}
+              sectionId={currentSection.label}
+              value={
+                context.answers[questionId] as
+                  | number
+                  | number[]
+                  | null
+                  | undefined
+              }
+              othersValue={
+                context.answers[`${questionId}-others`] as string | undefined
+              }
+              onAnswerChange={handleAnswerChange}
+              onOthersChange={handleOthersChange}
+            />
+          </div>
+
+          <div className="relative flex flex-row justify-between mt-3 sticky bottom-0 bg-background py-4 border-t-2 border-border z-20 transition-all duration-1000">
+            <ErrorMessage
+              error={context.error}
+              onClose={() => actorRef.send({ type: "CLEAR_ERROR" })}
+            />
+            <div>{canGoBack && <BackButton onClick={handleBack} />}</div>
+            <div className="relative">
+              {!isRequired && (
+                <button
+                  type="button"
+                  className="focus:outline-4 bg-background px-6 md:px-8 py-3 font-medium text-primary underline border-border transition mr-2"
+                  onClick={handleSkip}
+                  data-testid="skip-button"
+                >
+                  Skip
+                </button>
+              )}
+              <button
+                data-testid="next-button"
+                type="button"
+                className="px-4 py-2 min-w-[120px] bg-primary text-primary-foreground border-2 border-primary transition hover:opacity-90"
+                onClick={handleNext}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Loading..." : "Next"}
+              </button>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   );

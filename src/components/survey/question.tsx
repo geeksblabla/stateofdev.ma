@@ -1,54 +1,115 @@
-import { useCallback, useState, type SyntheticEvent } from "react";
-import type {
-  FieldValues,
-  UseFormGetValues,
-  UseFormRegister
-} from "react-hook-form";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  type ChangeEvent
+} from "react";
+import { Choice } from "./choice";
+
+const GRID_LAYOUT_THRESHOLD = 10;
+
+type AnswerValue = number | number[] | null;
 
 type QuestionProps = {
   question: SurveyQuestion;
   index: number;
-  register: UseFormRegister<FieldValues>;
-  getValues: UseFormGetValues<FieldValues>;
   sectionId: string;
   selected: boolean;
+  value: AnswerValue | undefined;
+  othersValue: string | undefined;
+  onAnswerChange: (value: AnswerValue) => void;
+  onOthersChange: (value: string) => void;
 };
 
 export const Question = ({
   question,
   index,
-  register,
   sectionId,
   selected,
-  getValues
+  value,
+  othersValue,
+  onAnswerChange,
+  onOthersChange
 }: QuestionProps) => {
   const { label, choices } = question;
-  const fitContent = choices.length > 10;
+  const fitContent = choices.length > GRID_LAYOUT_THRESHOLD;
   const [showOtherInput, setShowOtherInput] = useState(false);
 
-  // this is a simple solution to check if the user has selected "others" or "other" and based on that show the textarea
-  const handleChoiceChange = useCallback(
-    (_e: SyntheticEvent) => {
-      // this is mainly to handle the case where multiple choice have "others" or "other" as one of the choices
-      const othersIndices = choices
+  // Check if "other" options exist
+  const othersIndices = useMemo(
+    () =>
+      choices
         .map((c, i) => ({ text: c, index: i }))
         .filter(({ text }) => text.toLowerCase().includes("other"))
-        .map(({ index }) => index);
+        .map(({ index }) => index),
+    [choices]
+  );
 
-      if (othersIndices.length === 0) return;
+  // Update showOtherInput based on current value
+  const updateShowOtherInput = useCallback(
+    (currentValue: AnswerValue | undefined) => {
+      if (othersIndices.length === 0) {
+        setShowOtherInput(false);
+        return;
+      }
 
-      const values = getValues(`${sectionId}-q-${index}`) as string | string[];
-      const valuesArray = (Array.isArray(values) ? values : [values]).map((v) =>
-        parseInt(v)
-      );
+      const valuesArray = Array.isArray(currentValue)
+        ? currentValue
+        : currentValue !== null && currentValue !== undefined
+          ? [currentValue as number]
+          : [];
 
-      const hasOtherSelected = othersIndices.some((index) =>
-        valuesArray.includes(index)
+      const hasOtherSelected = othersIndices.some((idx) =>
+        valuesArray.includes(idx)
       );
       setShowOtherInput(hasOtherSelected);
     },
-    [setShowOtherInput, getValues, sectionId, index, choices]
+    [othersIndices]
   );
+
+  // Update showOtherInput when value changes
+  useEffect(() => {
+    updateShowOtherInput(value);
+  }, [value, updateShowOtherInput]);
+
+  const handleChoiceChange = useCallback(
+    (choiceIndex: number, checked: boolean) => {
+      if (question.multiple) {
+        // Multiple choice: toggle in array
+        const currentArray = Array.isArray(value) ? value : [];
+        const newValue = checked
+          ? [...currentArray, choiceIndex]
+          : currentArray.filter((v) => v !== choiceIndex);
+        onAnswerChange(newValue);
+        updateShowOtherInput(newValue);
+      } else {
+        // Single choice: set value
+        onAnswerChange(choiceIndex);
+        updateShowOtherInput(choiceIndex);
+      }
+    },
+    [question.multiple, value, onAnswerChange, updateShowOtherInput]
+  );
+
+  const handleOthersChange = useCallback(
+    (e: ChangeEvent<HTMLTextAreaElement>) => {
+      onOthersChange(e.target.value);
+    },
+    [onOthersChange]
+  );
+
+  const isChecked = useCallback(
+    (choiceIndex: number) => {
+      if (question.multiple) {
+        return Array.isArray(value) && value.includes(choiceIndex);
+      }
+      return value === choiceIndex;
+    },
+    [question.multiple, value]
+  );
+
+  const questionLabelId = `${sectionId}-q-${index}-label`;
 
   return (
     <div
@@ -60,7 +121,7 @@ export const Question = ({
       data-testid={`${sectionId}-q-${index}`}
     >
       <p className="mb-4 text-base font-medium">
-        <label className="block mb-2 ">
+        <label id={questionLabelId} className="block mb-2 ">
           {`${index + 1}. ${label}`} <br />
         </label>
 
@@ -72,80 +133,36 @@ export const Question = ({
         </span>
       </p>
       <div
+        role="group"
+        aria-labelledby={questionLabelId}
+        aria-required={question.required ?? true}
         className={fitContent ? "grid md:grid-cols-2 gap-4 grid-cols-1" : ""}
       >
         {choices.map((c, i) => (
           <Choice
+            key={`${sectionId}-q-${index}-${i}`}
             text={c}
             id={`${sectionId}-q-${index}-${i}`}
             name={`${sectionId}-q-${index}`}
             index={i}
-            register={register}
-            key={`${sectionId}-q-${index}-${i}`}
             required={question.required ?? true}
             multiple={question.multiple ?? false}
+            checked={isChecked(i)}
             onChange={handleChoiceChange}
           />
         ))}
         {showOtherInput && (
           <textarea
-            {...register(`${sectionId}-q-${index}-others`, {
-              maxLength: {
-                value: 200,
-                message: "Input must not exceed 200 characters"
-              }
-            })}
             className="mt-4 w-full p-2 bg-card text-foreground border-2 border-input focus:ring-2 focus:ring-ring focus:border-ring placeholder:text-muted-foreground transition-colors"
             placeholder="Please specify... use comma to separate each item (max 200 characters)"
             rows={3}
             maxLength={200}
+            value={othersValue || ""}
+            onChange={handleOthersChange}
             data-testid={`${sectionId}-q-${index}-others`}
           />
         )}
       </div>
-    </div>
-  );
-};
-
-type ChoiceProps = {
-  text: string;
-  id: string;
-  index: number;
-  name: string;
-  register: UseFormRegister<FieldValues>;
-  required: boolean;
-  multiple: boolean;
-  onChange: (e: SyntheticEvent) => void;
-};
-
-const Choice = ({
-  text,
-  id,
-  index,
-  name,
-  register,
-  required,
-  multiple,
-  onChange
-}: ChoiceProps) => {
-  return (
-    <div className="relative w-full overflow-hidden flex items-center bg-card p-3 pl-14 mb-2 cursor-pointer">
-      <input
-        className="peer hidden"
-        type={multiple ? "checkbox" : "radio"}
-        {...register(name, { required, onChange })}
-        id={id}
-        value={index}
-        data-testid={id}
-      />
-      <label
-        className="absolute inset-0 cursor-pointer peer-checked:border-primary peer-checked:bg-primary/10 border-2 border-input"
-        htmlFor={id}
-      ></label>
-      <div className="absolute pointer-events-none left-4 h-5 w-5 border-2 border-input bg-muted ring-ring ring-offset-2 peer-checked:border-transparent peer-checked:bg-primary peer-checked:ring-2"></div>
-      <span className="pointer-events-none z-10 text-foreground transition-colors duration-200">
-        {text}
-      </span>
     </div>
   );
 };

@@ -8,8 +8,7 @@ const rules = [
   "The survey is divided into **6 parts**: Profile, Learning & Education, AI, Work, Technology, and Community,(we submit your answers at the end of each part)",
   "All Questions are **required** unless you have a **skip button**",
   "For questions that accept others as an option, please add them in the **text field**",
-  "There are two types of questions: **Multiple Choice** (select one or more options) and **Single Select** (choose only one option)",
-  "**Do not refresh** the questions page before submitting your answers as it will reset your session answers"
+  "There are two types of questions: **Multiple Choice** (select one or more options) and **Single Select** (choose only one option)"
 ];
 
 export const prerender = true;
@@ -18,43 +17,49 @@ export const prerender = true;
 <BaseLayout>
   <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
     <div class="bg-card border-2 border-border">
-      <h1
-        class="text-xl font-sans font-medium text-foreground my-6 text-center"
-      >
-        Before You Start
-      </h1>
-      <p class="text-base text-foreground mb-8">
-        Here's what you need to know:
-      </p>
-      <ul class="space-y-6 mb-10">
-        {
-          rules.map((rule, index) => (
-            <li class="flex items-start">
-              <span class="flex h-6 w-6 shrink-0 items-center justify-center border-2 border-input bg-muted text-sm font-medium text-muted-foreground mr-4 mt-0.5">
-                {index + 1}
-              </span>
-              <span
-                class="text-foreground"
-                set:html={rule.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")}
-              />
-            </li>
-          ))
-        }
-      </ul>
-      <div id="captcha-container" class="mb-8 mx-auto w-fit"></div>
-      <div
-        id="error-alert"
-        class="hidden mb-6 p-4 bg-destructive/10 border-l-4 border-destructive text-destructive"
-        role="alert"
-      >
-        <p id="error-message" class="font-medium"></p>
+      <div class="p-6 sm:p-8">
+        <h1
+          class="text-xl font-sans font-medium text-foreground mb-6 text-center"
+        >
+          Before You Start
+        </h1>
+        <p class="text-base text-foreground mb-8">
+          Here's what you need to know:
+        </p>
+        <ul class="space-y-4 mb-8">
+          {
+            rules.map((rule, index) => (
+              <li class="flex items-start gap-3">
+                <span class="flex h-6 w-6 shrink-0 items-center justify-center border-2 border-input bg-muted text-sm font-medium text-muted-foreground mt-0.5">
+                  {index + 1}
+                </span>
+                <span
+                  class="text-foreground leading-relaxed"
+                  set:html={rule.replace(
+                    /\*\*(.*?)\*\*/g,
+                    "<strong>$1</strong>"
+                  )}
+                />
+              </li>
+            ))
+          }
+        </ul>
+
+        <div id="captcha-container" class="mb-6 mx-auto w-fit"></div>
+        <div
+          id="error-alert"
+          class="hidden mb-6 p-4 bg-destructive/10 border-l-4 border-destructive text-destructive"
+          role="alert"
+        >
+          <p id="error-message" class="font-medium"></p>
+        </div>
+        <button
+          id="start-survey-btn"
+          class="w-full bg-primary hover:opacity-90 text-primary-foreground font-bold py-3 px-6 border-2 border-primary transition duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-ring focus:ring-opacity-50"
+        >
+          Start
+        </button>
       </div>
-      <button
-        id="start-survey-btn"
-        class="w-full bg-primary hover:opacity-90 text-primary-foreground font-bold py-3 px-6 border-2 border-primary transition duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-ring focus:ring-opacity-50"
-      >
-        Start
-      </button>
     </div>
   </div>
 </BaseLayout>
@@ -86,7 +91,7 @@ export const prerender = true;
         console.log(`Challenge Success ${token}`);
         captchaToken = token;
       },
-      theme: "light"
+      theme: "auto"
     });
   };
 

@@ -2,31 +2,45 @@ import { render, screen, waitFor, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { SurveyForm } from "./survey-form";
+import { SurveyProvider } from "./survey-context";
 import * as utils from "./utils";
-import { ERRORS } from "./section";
+import { ERRORS } from "./survey-machine";
 
-function setup(jsx: React.ReactNode) {
+// Mock utils module to prevent jsdom navigation errors
+vi.mock("./utils", async () => {
+  const actual = await vi.importActual("./utils");
+  return {
+    ...actual,
+    goToThanksPage: vi.fn(),
+    submitAnswers: vi.fn(() =>
+      Promise.resolve({ data: undefined, error: undefined })
+    )
+  };
+});
+
+// Mock localStorage
+const localStorageMock = {
+  getItem: vi.fn(() => null),
+  setItem: vi.fn(),
+  removeItem: vi.fn(),
+  clear: vi.fn()
+};
+Object.defineProperty(window, "localStorage", { value: localStorageMock });
+
+function setup(questions: SurveyQuestionsYamlFile[]) {
   return {
     user: userEvent.setup(),
-    // Import `render` from the framework library of your choice.
-    // See https://testing-library.com/docs/dom-testing-library/install#wrappers
-    ...render(jsx)
+    ...render(
+      <SurveyProvider sections={questions}>
+        <SurveyForm />
+      </SurveyProvider>
+    )
   };
 }
 
-// Mock the submitAnswers function
-const submitAnswersSpy = vi
-  .spyOn(utils, "submitAnswers")
-  .mockImplementation(() =>
-    Promise.resolve({
-      data: undefined,
-      error: undefined
-    })
-  );
-
-const goToThanksPageSpy = vi
-  .spyOn(utils, "goToThanksPage")
-  .mockImplementation(() => {});
+// Get references to mocked functions
+const submitAnswersSpy = vi.mocked(utils.submitAnswers);
+const goToThanksPageSpy = vi.mocked(utils.goToThanksPage);
 
 const longText = Array(300).fill("a").join("");
 
@@ -93,54 +107,54 @@ beforeEach(() => {
 describe("SurveyForm", () => {
   describe("Rendering", () => {
     it("renders the first section of questions correctly", () => {
-      render(<SurveyForm questions={mockQuestions} />);
+      setup(mockQuestions);
       expect(screen.getByText(/Question 1.1/i)).toBeInTheDocument();
       expect(screen.getByText(/Option 1/i)).toBeInTheDocument();
       expect(screen.getByText(/Option 2/i)).toBeInTheDocument();
-      expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
-      expect(screen.getByTestId("profile-q-1")).toHaveClass("hidden");
+      expect(screen.getByTestId("profile-q-0")).toBeInTheDocument();
+      expect(screen.queryByTestId("profile-q-1")).not.toBeInTheDocument();
     });
   });
 
   describe("Navigation", () => {
     it("should navigate to the next question without error", async () => {
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
-      expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
-      expect(screen.getByTestId("profile-q-1")).toHaveClass("hidden");
+      const { user } = setup(mockQuestions);
+      expect(screen.getByTestId("profile-q-0")).toBeInTheDocument();
+      expect(screen.queryByTestId("profile-q-1")).not.toBeInTheDocument();
       await user.click(screen.getByTestId("profile-q-0-0")); // id for the first input of the first question
       await user.click(screen.getByTestId("next-button"));
-      expect(screen.getByTestId("profile-q-1")).toHaveClass("block");
-      expect(screen.getByTestId("profile-q-0")).toHaveClass("hidden");
+      expect(screen.getByTestId("profile-q-1")).toBeInTheDocument();
+      expect(screen.queryByTestId("profile-q-0")).not.toBeInTheDocument();
     });
 
     it("back button should appear starting from the second question and work as expected", async () => {
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
       expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
       await user.click(screen.getByTestId("profile-q-0-0"));
       await user.click(screen.getByTestId("next-button"));
       expect(screen.getByTestId("back-button")).toBeInTheDocument();
       await user.click(screen.getByTestId("back-button"));
-      expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
-      expect(screen.getByTestId("profile-q-1")).toHaveClass("hidden");
+      expect(screen.getByTestId("profile-q-0")).toBeInTheDocument();
+      expect(screen.queryByTestId("profile-q-1")).not.toBeInTheDocument();
     });
 
     it("show skip button when the question is not required and skip button is working as expected", async () => {
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
       await user.click(screen.getByTestId("profile-q-0-0"));
       expect(screen.queryByTestId("skip-button")).not.toBeInTheDocument();
       await user.click(screen.getByTestId("next-button"));
       expect(screen.getByTestId("skip-button")).toBeInTheDocument();
       await user.click(screen.getByTestId("skip-button"));
-      expect(screen.getByTestId("profile-q-1")).toHaveClass("hidden");
-      expect(screen.getByTestId("profile-q-2")).toHaveClass("block");
+      expect(screen.queryByTestId("profile-q-1")).not.toBeInTheDocument();
+      expect(screen.getByTestId("profile-q-2")).toBeInTheDocument();
     });
   });
 
   describe("Error Handling", () => {
     it("should show error message when required question is not answered", async () => {
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
 
-      expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
+      expect(screen.getByTestId("profile-q-0")).toBeInTheDocument();
       await user.click(screen.getByTestId("next-button"));
 
       await waitFor(() => {
@@ -148,17 +162,17 @@ describe("SurveyForm", () => {
       });
     });
 
-    it("error message should disappear after 2000ms", async () => {
+    it("error message should disappear after 3000ms", async () => {
       vi.useFakeTimers({ shouldAdvanceTime: true });
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
 
-      expect(screen.getByTestId("profile-q-0")).toHaveClass("block");
+      expect(screen.getByTestId("profile-q-0")).toBeInTheDocument();
       await user.click(screen.getByTestId("next-button"));
 
       await waitFor(() => {
         expect(screen.getByTestId("error-message")).toBeInTheDocument();
       });
-      vi.advanceTimersByTime(2000);
+      vi.advanceTimersByTime(3000);
       await waitFor(() => {
         expect(screen.queryByTestId("error-message")).not.toBeInTheDocument();
       });
@@ -166,7 +180,7 @@ describe("SurveyForm", () => {
     });
 
     it("Show error message when submitAnswers fails", async () => {
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
       // Mock submitAnswers to return an error
       submitAnswersSpy.mockResolvedValue({
         data: undefined,
@@ -186,7 +200,7 @@ describe("SurveyForm", () => {
       await user.click(screen.getByTestId("profile-q-2-2"));
       await user.click(screen.getByTestId("next-button"));
 
-      expect(screen.getByTestId("profile-q-2")).toHaveClass("block");
+      expect(screen.getByTestId("profile-q-2")).toBeInTheDocument();
       // Check if the error message contains the correct text
       await waitFor(() => {
         expect(screen.getByTestId("error-message")).toBeInTheDocument();
@@ -205,7 +219,7 @@ describe("SurveyForm", () => {
         error: undefined
       });
 
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
       await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
       await user.click(screen.getByTestId("next-button"));
       await user.click(screen.getByTestId("profile-q-1-0"));
@@ -222,13 +236,13 @@ describe("SurveyForm", () => {
 
       // check if we are in the education section
       await waitFor(() => {
-        expect(screen.getByTestId("education-q-0")).toHaveClass("block");
-        expect(screen.getByTestId("education-q-1")).toHaveClass("hidden");
+        expect(screen.getByTestId("education-q-0")).toBeInTheDocument();
+        expect(screen.queryByTestId("education-q-1")).not.toBeInTheDocument();
       });
     });
 
     it("should include the text area input in the end results", async () => {
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
       await user.click(screen.getByTestId("profile-q-0-0"));
       await user.click(screen.getByTestId("next-button"));
       // Select the 'other' option for the 2nd question
@@ -255,7 +269,7 @@ describe("SurveyForm", () => {
     });
 
     it("Should redirect to thanks page when all questions are answered", async () => {
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
       await user.click(screen.getByTestId("profile-q-0-0"));
       await user.click(screen.getByTestId("next-button"));
       await user.click(screen.getByTestId("profile-q-1-0"));
@@ -271,8 +285,8 @@ describe("SurveyForm", () => {
         }
       });
       await waitFor(() => {
-        expect(screen.getByTestId("education-q-0")).toHaveClass("block");
-        expect(screen.getByTestId("education-q-1")).toHaveClass("hidden");
+        expect(screen.getByTestId("education-q-0")).toBeInTheDocument();
+        expect(screen.queryByTestId("education-q-1")).not.toBeInTheDocument();
       });
       await user.click(screen.getByTestId("education-q-0-0"));
       await user.click(screen.getByTestId("education-q-0-1"));
@@ -287,7 +301,7 @@ describe("SurveyForm", () => {
 
   describe("Other Input Handling", () => {
     it("should show the text area when the user selects the 'other' option for a single choice question", async () => {
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
 
       await user.click(screen.getByTestId("profile-q-0-0"));
       await user.click(screen.getByTestId("next-button"));
@@ -300,7 +314,7 @@ describe("SurveyForm", () => {
     });
 
     it("should show the text area when the user selects the 'other' option for a multiple choice question", async () => {
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
 
       await user.click(screen.getByTestId("profile-q-0-0"));
       await user.click(screen.getByTestId("next-button"));
@@ -319,7 +333,7 @@ describe("SurveyForm", () => {
       });
     });
     it("should show the text area whit question with multiple other option,( other exist in two choices)", async () => {
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
 
       await user.click(screen.getByTestId("profile-q-0-0"));
       await user.click(screen.getByTestId("next-button"));
@@ -340,7 +354,7 @@ describe("SurveyForm", () => {
     });
 
     it("should limit the text area input to 200 characters", async () => {
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
       await user.click(screen.getByTestId("profile-q-0-0"));
       await user.click(screen.getByTestId("next-button"));
       // Select the 'other' option for the 2nd question
@@ -365,7 +379,7 @@ describe("SurveyForm", () => {
 
   describe("Multiple Choice Handling", () => {
     it("Allow multiple answers for questions with multiple: true", async () => {
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
       expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
       await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
       await user.click(screen.getByTestId("next-button"));
@@ -384,7 +398,7 @@ describe("SurveyForm", () => {
     });
 
     it("Toggling selection of an option for questions should work as expected with multiple: true", async () => {
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
       expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
       await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
       await user.click(screen.getByTestId("next-button"));
@@ -404,7 +418,7 @@ describe("SurveyForm", () => {
     });
 
     it("only allow one answer for questions with multiple: false", async () => {
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
       expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
       await user.click(screen.getByTestId("profile-q-0-0"));
       await user.click(screen.getByTestId("profile-q-0-1"));
@@ -425,7 +439,7 @@ describe("SurveyForm", () => {
 
   describe("Skipping Questions", () => {
     it("on skip question, the selected answer should be null", async () => {
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
       await user.click(screen.getByTestId("profile-q-0-0"));
       await user.click(screen.getByTestId("next-button"));
       await user.click(screen.getByTestId("profile-q-1-1"));
@@ -441,7 +455,7 @@ describe("SurveyForm", () => {
     });
 
     it("on skip question with multiple: true, the selected answer should be empty array", async () => {
-      const { user } = setup(<SurveyForm questions={mockQuestions} />);
+      const { user } = setup(mockQuestions);
       await user.click(screen.getByTestId("profile-q-0-0"));
       await user.click(screen.getByTestId("next-button"));
       await user.click(screen.getByTestId("next-button"));

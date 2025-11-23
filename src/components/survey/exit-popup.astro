@@ -10,20 +10,22 @@ import finImage from "@/assets/fin.jpeg";
   aria-labelledby="modalTitle"
   aria-modal="true"
 >
-  <div class="bg-white border-4 border-gray-400 max-w-md w-full text-center">
+  <div
+    class="bg-card border-4 border-border max-w-md w-full text-center relative"
+  >
     <span
       id="closeModal"
-      class="absolute top-2 right-2 text-gray-500 cursor-pointer"
+      class="absolute top-2 right-2 text-muted-foreground cursor-pointer hover:text-foreground transition-colors"
       aria-label="Close modal">&times;</span
     >
     <Image
       src={finImage}
       alt="Funny meme encouraging survey completion"
-      class="mx-auto border-b-2 border-gray-300"
+      class="mx-auto border-b-2 border-border"
     />
     <button
       id="stayButton"
-      class="bg-emerald-500 text-white font-bold px-4 py-4 w-full border-t-2 border-emerald-600 text-base"
+      class="bg-primary text-primary-foreground font-bold px-4 py-4 w-full border-t-2 border-primary hover:opacity-90 transition-opacity text-base"
     >
       😂 مغادي فين، انا نكمل
     </button>
@@ -35,32 +37,39 @@ import finImage from "@/assets/fin.jpeg";
   let popupShownCount = 0;
   const maxPopupShows = 2;
 
-  if (body) {
-    body.addEventListener("mouseleave", function (e: MouseEvent) {
-      if (popupShownCount < maxPopupShows) {
-        // Show the custom modal
-        const modal = document.getElementById("exitModal") as HTMLDivElement;
-        modal.classList.remove("hidden");
-        popupShownCount++;
+  const modal = document.getElementById("exitModal") as HTMLDivElement;
+  const closeModal = document.getElementById("closeModal") as HTMLSpanElement;
+  const stayButton = document.getElementById("stayButton") as HTMLButtonElement;
 
-        // Close the modal when the user clicks on the close button or stay button
-        const closeModal = document.getElementById(
-          "closeModal"
-        ) as HTMLSpanElement;
-        const stayButton = document.getElementById(
-          "stayButton"
-        ) as HTMLButtonElement;
-        closeModal.onclick = stayButton.onclick = function () {
-          modal.classList.add("hidden");
-        };
+  const closeModalHandler = () => {
+    modal.classList.add("hidden");
+  };
 
-        // Close the modal when the user clicks anywhere outside of the modal
-        window.onclick = function (event: MouseEvent) {
-          if (event.target == modal) {
-            modal.classList.add("hidden");
-          }
-        };
-      }
+  const outsideClickHandler = (event: MouseEvent) => {
+    if (event.target === modal) {
+      modal.classList.add("hidden");
+    }
+  };
+
+  const mouseLeaveHandler = () => {
+    if (popupShownCount < maxPopupShows) {
+      modal.classList.remove("hidden");
+      popupShownCount++;
+    }
+  };
+
+  if (body && modal && closeModal && stayButton) {
+    body.addEventListener("mouseleave", mouseLeaveHandler);
+    closeModal.addEventListener("click", closeModalHandler);
+    stayButton.addEventListener("click", closeModalHandler);
+    window.addEventListener("click", outsideClickHandler);
+
+    // Cleanup on page unload
+    window.addEventListener("beforeunload", () => {
+      body.removeEventListener("mouseleave", mouseLeaveHandler);
+      closeModal.removeEventListener("click", closeModalHandler);
+      stayButton.removeEventListener("click", closeModalHandler);
+      window.removeEventListener("click", outsideClickHandler);
     });
   }
 </script>
