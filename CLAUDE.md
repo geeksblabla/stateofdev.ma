@@ -6,6 +6,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 StateOfDev.ma is an annual survey website for software developers in Morocco, created by the GeeksBlaBla Morocco Community. Built with Astro (v4), React, and Firebase, it collects anonymous responses and displays interactive results using charts and visualizations.
 
+## Rules
+
+- In all interactions and commit messages, be extremely concise and sacrifice grammar for the sake of concision.
+
+- At the end of each plan, give me a list of unresolved questions to answer, if any. Make the questions extremely concise. Sacrifice grammar for the sake of concision.
+
+- DO NOT write tests unless explicitly requested
+
+- DO NOT run dev server - assume already running
+
+- Add code comments sparingly - focus on "why", not "what". Only add comments if the code is not self-explanatory.
+
+- Your primary method for interacting with GitHub should be the GitHub CLI.
+
 ## Development Commands
 
 ### Essential Commands
