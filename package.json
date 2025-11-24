@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
-    "check": "rimraf dist && astro check",
+    "build": "pnpm validate-survey && astro check && astro build",
+    "check": "rimraf dist && pnpm validate-survey && astro check",
     "preview": "astro preview",
     "astro": "astro",
     "test": "vitest",
@@ -14,6 +14,7 @@
     "test:ci": "vitest --coverage.enabled true",
     "lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\"",
     "lint:ci": "eslint \"src/**/*.{js,ts,jsx,tsx,astro}\"",
+    "validate-survey": "tsx ./scripts/validate-survey.ts",
     "prepare": "husky",
     "export-results": " tsx --env-file=.env.local ./scripts/export-results.ts",
     "export-results:ci": " tsx  ./scripts/export-results.ts"
@@ -52,7 +53,8 @@
     "tailwindcss": "^3.4.4",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.4.5",
-    "xstate": "^5.24.0"
+    "xstate": "^5.24.0",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@rollup/plugin-yaml": "^4.1.2",
