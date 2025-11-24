@@ -2,35 +2,65 @@
 
 import yaml from "js-yaml";
 import fs from "fs";
+import path from "path";
+import {
+  validateAllSurveyFiles,
+  formatValidationReport
+} from "../src/lib/validators/survey-validator";
+import type {
+  SurveyQuestion,
+  SurveyQuestionsYamlFile
+} from "../src/lib/validators/survey-schema";
+
+const SURVEY_DIR = "./survey";
 
 const generate = async () => {
-  const QS: Record<string, SurveyQuestion> = {};
-  // Get document, or throw exception on error
-  try {
-    const profile = (await yaml.load(
-      fs.readFileSync("./survey/1-profile.yml", "utf8")
-    )) as SurveyQuestionsYamlFile;
-    const learning = (await yaml.load(
-      fs.readFileSync("./survey/2-learning-and-education.yml", "utf8")
-    )) as SurveyQuestionsYamlFile;
-    const work = (await yaml.load(
-      fs.readFileSync("./survey/3-work.yml", "utf8")
-    )) as SurveyQuestionsYamlFile;
-    const ai = (await yaml.load(
-      fs.readFileSync("./survey/4-ai.yml", "utf8")
-    )) as SurveyQuestionsYamlFile;
-    const tech = (await yaml.load(
-      fs.readFileSync("./survey/5-tech.yml", "utf8")
-    )) as SurveyQuestionsYamlFile;
-    const community = (await yaml.load(
-      fs.readFileSync("./survey/6-community.yml", "utf8")
-    )) as SurveyQuestionsYamlFile;
-    const data = [profile, learning, work, tech, ai, community];
+  console.log("Starting survey questions generation...\n");
 
+  // Phase 1: Validate all survey files
+  console.log("Phase 1: Validating all survey YAML files...");
+  const validationReport = validateAllSurveyFiles(SURVEY_DIR);
+
+  // Print validation report
+  console.log(formatValidationReport(validationReport));
+
+  // Exit if validation failed
+  if (!validationReport.success) {
+    console.error(
+      "\n❌ Validation failed! Please fix the errors above before generating questions.json"
+    );
+    process.exit(1);
+  }
+
+  console.log("✓ All survey files validated successfully!\n");
+
+  // Phase 2: Generate questions.json
+  console.log("Phase 2: Generating questions.json...");
+
+  const QS: Record<string, SurveyQuestion> = {};
+
+  try {
+    // Read all YAML files from survey directory (sorted by filename)
+    const files = fs
+      .readdirSync(SURVEY_DIR)
+      .filter((file) => file.endsWith(".yml"))
+      .sort();
+
+    const data: SurveyQuestionsYamlFile[] = [];
+
+    // Load all files
+    for (const file of files) {
+      const filepath = path.join(SURVEY_DIR, file);
+      const content = fs.readFileSync(filepath, "utf8");
+      const parsed = yaml.load(content) as SurveyQuestionsYamlFile;
+      data.push(parsed);
+    }
+
+    // Generate question map
     data.forEach(({ label, questions }) => {
       questions.forEach((element, index: number) => {
         const id = `${label}-q-${index}`;
-        console.log(id);
+        console.log(`  Generated: ${id}`);
         QS[id] = {
           ...element,
           multiple: element.multiple ?? false, // default to false
@@ -41,9 +71,12 @@ const generate = async () => {
 
     writeToFile("./scripts/questions.json", QS);
 
-    console.log(QS);
+    console.log(
+      `\n✓ Successfully generated ${Object.keys(QS).length} questions`
+    );
   } catch (e) {
-    console.log(e);
+    console.error("\n❌ Error generating questions:", e);
+    process.exit(1);
   }
 };
 

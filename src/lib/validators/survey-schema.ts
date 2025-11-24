@@ -1,0 +1,175 @@
+import { z } from "zod";
+
+/**
+ * Zod schema for validating survey YAML files with strict validation rules
+ */
+
+// Validation constants
+const MIN_CHOICES = 2;
+const MIN_LABEL_LENGTH = 3;
+const MIN_TITLE_LENGTH = 2;
+
+/**
+ * Schema for individual survey question
+ */
+export const SurveyQuestionSchema = z.object({
+  label: z
+    .string()
+    .trim()
+    .min(MIN_LABEL_LENGTH, "Question label must be at least 3 characters")
+    .refine((val) => val.trim().length > 0, {
+      message: "Question label cannot be empty or whitespace only"
+    })
+    .refine(
+      (val) => {
+        // Check for valid question mark usage
+        const questionMarks = (val.match(/\?/g) || []).length;
+        return questionMarks <= 1;
+      },
+      { message: "Question label should contain at most one question mark" }
+    ),
+
+  required: z.boolean().optional().default(true),
+
+  multiple: z.boolean().optional().default(false),
+
+  choices: z
+    .array(
+      z
+        .string()
+        .trim()
+        .min(1, "Choice must not be empty")
+        .refine((val) => val.trim().length > 0, {
+          message: "Choice cannot be whitespace only"
+        })
+    )
+    .min(MIN_CHOICES, `Each question must have at least ${MIN_CHOICES} choices`)
+    .refine(
+      (choices) => {
+        // Check for duplicate choices (case-insensitive)
+        const lowerCaseChoices = choices.map((c) => c.toLowerCase().trim());
+        const uniqueChoices = new Set(lowerCaseChoices);
+        return uniqueChoices.size === lowerCaseChoices.length;
+      },
+      {
+        message: "Duplicate choices detected (case-insensitive comparison)"
+      }
+    )
+  // Note: Multiple "Other" variations are handled as warnings in cross-file validation
+});
+
+/**
+ * Schema for complete survey YAML file
+ */
+export const SurveyFileSchema = z
+  .object({
+    title: z
+      .string()
+      .trim()
+      .min(MIN_TITLE_LENGTH, "Section title must be at least 2 characters")
+      .refine((val) => val.trim().length > 0, {
+        message: "Section title cannot be empty or whitespace only"
+      }),
+
+    label: z
+      .string()
+      .trim()
+      .min(MIN_TITLE_LENGTH, "Section label must be at least 2 characters")
+      .regex(
+        /^[a-z0-9]+(-[a-z0-9]+)*$/,
+        "Section label must be in kebab-case format (lowercase, hyphens only)"
+      )
+      .refine((val) => val.trim().length > 0, {
+        message: "Section label cannot be empty or whitespace only"
+      }),
+
+    position: z
+      .number()
+      .int("Position must be an integer")
+      .positive("Position must be a positive number")
+      .min(1, "Position must start from 1"),
+
+    questions: z
+      .array(SurveyQuestionSchema)
+      .min(1, "Survey section must contain at least one question")
+      .refine(
+        (questions) => {
+          // Check for duplicate question labels within the section
+          const labels = questions.map((q) => q.label.toLowerCase().trim());
+          const uniqueLabels = new Set(labels);
+          return uniqueLabels.size === labels.length;
+        },
+        {
+          message: "Duplicate question labels detected within the section"
+        }
+      )
+  })
+  .refine(
+    (data) => {
+      // Validate that at least one question is required
+      const requiredCount = data.questions.filter(
+        (q) => q.required !== false
+      ).length;
+      return requiredCount > 0;
+    },
+    {
+      message:
+        "At least one question in the section must be required (or have required: true)"
+    }
+  );
+
+/**
+ * TypeScript types inferred from Zod schemas
+ * These replace the types in custom-yaml.d.ts
+ */
+export type SurveyQuestion = z.infer<typeof SurveyQuestionSchema>;
+export type SurveyQuestionsYamlFile = z.infer<typeof SurveyFileSchema>;
+
+/**
+ * Helper function to validate a survey file and return typed data
+ * @param data - Raw YAML data to validate
+ * @param filename - Optional filename for better error messages
+ * @returns Validated and typed survey data
+ * @throws ZodError with detailed validation errors
+ */
+export function validateSurveyFile(
+  data: unknown,
+  filename?: string
+): SurveyQuestionsYamlFile {
+  try {
+    return SurveyFileSchema.parse(data);
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      const fileContext = filename ? ` in file "${filename}"` : "";
+
+      // Zod v4 uses 'issues' instead of 'errors'
+      const issues = (error as any).issues || [];
+      const formattedErrors = issues
+        .map((err: any) => {
+          const path =
+            err.path && Array.isArray(err.path)
+              ? err.path.join(".")
+              : "unknown";
+          return `  - ${path}: ${err.message}`;
+        })
+        .join("\n");
+
+      throw new Error(
+        `Survey validation failed${fileContext}:\n${formattedErrors}`
+      );
+    }
+    // Re-throw non-Zod errors with better context
+    throw new Error(
+      `Unexpected error during validation${filename ? ` in file "${filename}"` : ""}: ${error instanceof Error ? error.message : String(error)}`
+    );
+  }
+}
+
+/**
+ * Helper function to safely validate without throwing
+ * @param data - Raw YAML data to validate
+ * @returns Success result with data or failure result with errors
+ */
+export function validateSurveyFileSafe(data: unknown) {
+  return SurveyFileSchema.safeParse(data);
+}
