@@ -11,8 +11,7 @@ import type {
   SurveyQuestion,
   SurveyQuestionsYamlFile
 } from "../src/lib/validators/survey-schema";
-
-const SURVEY_DIR = "./survey";
+import { SURVEY_DIR } from "../src/lib/validators/constants";
 
 const generate = async () => {
   console.log("Starting survey questions generation...\n");
@@ -21,10 +20,8 @@ const generate = async () => {
   console.log("Phase 1: Validating all survey YAML files...");
   const validationReport = validateAllSurveyFiles(SURVEY_DIR);
 
-  // Print validation report
   console.log(formatValidationReport(validationReport));
 
-  // Exit if validation failed
   if (!validationReport.success) {
     console.error(
       "\n❌ Validation failed! Please fix the errors above before generating questions.json"
@@ -40,7 +37,6 @@ const generate = async () => {
   const QS: Record<string, SurveyQuestion> = {};
 
   try {
-    // Read all YAML files from survey directory (sorted by filename)
     const files = fs
       .readdirSync(SURVEY_DIR)
       .filter((file) => file.endsWith(".yml"))
@@ -48,7 +44,6 @@ const generate = async () => {
 
     const data: SurveyQuestionsYamlFile[] = [];
 
-    // Load all files
     for (const file of files) {
       const filepath = path.join(SURVEY_DIR, file);
       const content = fs.readFileSync(filepath, "utf8");
@@ -56,7 +51,6 @@ const generate = async () => {
       data.push(parsed);
     }
 
-    // Generate question map
     data.forEach(({ label, questions }) => {
       questions.forEach((element, index: number) => {
         const id = `${label}-q-${index}`;

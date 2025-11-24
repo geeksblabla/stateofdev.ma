@@ -7,8 +7,7 @@ import {
   validateAllSurveyFiles,
   formatValidationReport
 } from "../src/lib/validators/survey-validator";
-
-const SURVEY_DIR = "./survey";
+import { SURVEY_DIR } from "../src/lib/validators/constants";
 
 async function main() {
   console.log("🔍 Validating survey YAML files...\n");

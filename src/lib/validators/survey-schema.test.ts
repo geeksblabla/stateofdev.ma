@@ -35,8 +35,8 @@ describe("SurveyQuestionSchema", () => {
     const result = SurveyQuestionSchema.safeParse(minimalQuestion);
     expect(result.success).toBe(true);
     if (result.success) {
-      expect(result.data.required).toBe(true); // default
-      expect(result.data.multiple).toBe(false); // default
+      expect(result.data.required).toBe(true);
+      expect(result.data.multiple).toBe(false);
     }
   });
 
@@ -585,5 +585,227 @@ describe("Real-world YAML structure validation", () => {
 
     const result = SurveyFileSchema.safeParse(typicalSection);
     expect(result.success).toBe(true);
+  });
+});
+
+describe("Edge case tests", () => {
+  describe("Unicode and special characters", () => {
+    test("accepts Unicode characters in labels", () => {
+      const question = {
+        label: "What programming languages do you use 🚀?",
+        choices: ["JavaScript", "Python", "Go"]
+      };
+
+      const result = SurveyQuestionSchema.safeParse(question);
+      expect(result.success).toBe(true);
+    });
+
+    test("accepts emoji in choice text", () => {
+      const question = {
+        label: "What is your favorite beverage?",
+        choices: ["Coffee ☕", "Tea 🍵", "Water 💧"]
+      };
+
+      const result = SurveyQuestionSchema.safeParse(question);
+      expect(result.success).toBe(true);
+    });
+
+    test("accepts special characters in choices", () => {
+      const question = {
+        label: "What framework do you prefer?",
+        choices: [
+          "React.js",
+          "Vue.js (v3+)",
+          "Angular (2+)",
+          "Svelte & SvelteKit"
+        ]
+      };
+
+      const result = SurveyQuestionSchema.safeParse(question);
+      expect(result.success).toBe(true);
+    });
+  });
+
+  describe("Length validation", () => {
+    test("rejects label exceeding max length", () => {
+      const veryLongLabel = "a".repeat(501);
+      const question = {
+        label: veryLongLabel,
+        choices: ["Yes", "No"]
+      };
+
+      const result = SurveyQuestionSchema.safeParse(question);
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        const issues = result.error.issues;
+        expect(issues.some((i) => i.message.includes("500 characters"))).toBe(
+          true
+        );
+      }
+    });
+
+    test("accepts label at max length", () => {
+      const maxLengthLabel = "a".repeat(499) + "?"; // 499 chars + 1 for "?" = 500
+      const question = {
+        label: maxLengthLabel,
+        choices: ["Yes", "No"]
+      };
+
+      const result = SurveyQuestionSchema.safeParse(question);
+      expect(result.success).toBe(true);
+    });
+
+    test("rejects choice exceeding max length", () => {
+      const veryLongChoice = "b".repeat(201);
+      const question = {
+        label: "Test question?",
+        choices: ["Valid choice", veryLongChoice]
+      };
+
+      const result = SurveyQuestionSchema.safeParse(question);
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        const issues = result.error.issues;
+        expect(issues.some((i) => i.message.includes("200 characters"))).toBe(
+          true
+        );
+      }
+    });
+
+    test("accepts choice at max length", () => {
+      const maxLengthChoice = "c".repeat(200);
+      const question = {
+        label: "Test question?",
+        choices: ["Short", maxLengthChoice]
+      };
+
+      const result = SurveyQuestionSchema.safeParse(question);
+      expect(result.success).toBe(true);
+    });
+  });
+
+  describe("Question mark placement", () => {
+    test("rejects question mark not at the end", () => {
+      const question = {
+        label: "What? is your age",
+        choices: ["18-24", "25-34", "35+"]
+      };
+
+      const result = SurveyQuestionSchema.safeParse(question);
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        const issues = result.error.issues;
+        expect(issues.some((i) => i.message.includes("at the end"))).toBe(true);
+      }
+    });
+
+    test("accepts question mark at the end", () => {
+      const question = {
+        label: "What is your age?",
+        choices: ["18-24", "25-34", "35+"]
+      };
+
+      const result = SurveyQuestionSchema.safeParse(question);
+      expect(result.success).toBe(true);
+    });
+
+    test("accepts label without question mark", () => {
+      const question = {
+        label: "Select your programming languages",
+        choices: ["JavaScript", "Python", "Go"]
+      };
+
+      const result = SurveyQuestionSchema.safeParse(question);
+      expect(result.success).toBe(true);
+    });
+  });
+
+  describe("Null and undefined handling", () => {
+    test("rejects null data", () => {
+      const result = SurveyFileSchema.safeParse(null);
+      expect(result.success).toBe(false);
+    });
+
+    test("rejects undefined data", () => {
+      const result = SurveyFileSchema.safeParse(undefined);
+      expect(result.success).toBe(false);
+    });
+
+    test("rejects question with null label", () => {
+      const question = {
+        label: null,
+        choices: ["Yes", "No"]
+      };
+
+      const result = SurveyQuestionSchema.safeParse(question);
+      expect(result.success).toBe(false);
+    });
+
+    test("rejects question with null choices", () => {
+      const question = {
+        label: "Test?",
+        choices: null
+      };
+
+      const result = SurveyQuestionSchema.safeParse(question);
+      expect(result.success).toBe(false);
+    });
+
+    test("rejects question with null choice in array", () => {
+      const question = {
+        label: "Test?",
+        choices: ["Valid", null, "Another"]
+      };
+
+      const result = SurveyQuestionSchema.safeParse(question);
+      expect(result.success).toBe(false);
+    });
+  });
+
+  describe("Complex real-world scenarios", () => {
+    test("validates question with long realistic label", () => {
+      const question = {
+        label:
+          "How often do you use AI-powered development tools like GitHub Copilot, ChatGPT, Claude, or similar assistants in your daily development workflow?",
+        choices: ["Daily", "Weekly", "Monthly", "Rarely", "Never"]
+      };
+
+      const result = SurveyQuestionSchema.safeParse(question);
+      expect(result.success).toBe(true);
+    });
+
+    test("validates choices with technical jargon", () => {
+      const question = {
+        label: "What backend frameworks do you use?",
+        choices: [
+          "Express.js/Fastify/Koa",
+          "Spring Boot/Micronaut",
+          "Django/Flask/FastAPI",
+          "Ruby on Rails",
+          ".NET Core/ASP.NET",
+          "Laravel/Symfony"
+        ]
+      };
+
+      const result = SurveyQuestionSchema.safeParse(question);
+      expect(result.success).toBe(true);
+    });
+
+    test("validates multilingual content", () => {
+      const file = {
+        title: "التعليم والتطوير",
+        label: "education",
+        position: 2,
+        questions: [
+          {
+            label: "What is your education level?",
+            choices: ["Bachelor's", "Master's", "PhD", "Self-taught"]
+          }
+        ]
+      };
+
+      const result = SurveyFileSchema.safeParse(file);
+      expect(result.success).toBe(true);
+    });
   });
 });

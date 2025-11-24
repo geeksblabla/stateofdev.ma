@@ -1,32 +1,37 @@
 import { z } from "zod";
+import { VALIDATION_THRESHOLDS } from "./constants";
 
-/**
- * Zod schema for validating survey YAML files with strict validation rules
- */
+// Re-export constants for backward compatibility
+const MIN_CHOICES = VALIDATION_THRESHOLDS.MIN_CHOICES;
+const MIN_LABEL_LENGTH = VALIDATION_THRESHOLDS.MIN_LABEL_LENGTH;
+const MIN_TITLE_LENGTH = VALIDATION_THRESHOLDS.MIN_TITLE_LENGTH;
+const MAX_LABEL_LENGTH = VALIDATION_THRESHOLDS.MAX_LABEL_LENGTH;
+const MAX_CHOICE_LENGTH = VALIDATION_THRESHOLDS.MAX_CHOICE_LENGTH;
 
-// Validation constants
-const MIN_CHOICES = 2;
-const MIN_LABEL_LENGTH = 3;
-const MIN_TITLE_LENGTH = 2;
-
-/**
- * Schema for individual survey question
- */
 export const SurveyQuestionSchema = z.object({
   label: z
     .string()
     .trim()
     .min(MIN_LABEL_LENGTH, "Question label must be at least 3 characters")
+    .max(
+      MAX_LABEL_LENGTH,
+      `Question label must not exceed ${MAX_LABEL_LENGTH} characters`
+    )
     .refine((val) => val.trim().length > 0, {
       message: "Question label cannot be empty or whitespace only"
     })
     .refine(
       (val) => {
-        // Check for valid question mark usage
+        // Check for valid question mark usage: at most one, must be at the end
         const questionMarks = (val.match(/\?/g) || []).length;
-        return questionMarks <= 1;
+        if (questionMarks === 0) return true;
+        if (questionMarks > 1) return false;
+        return val.trim().endsWith("?");
       },
-      { message: "Question label should contain at most one question mark" }
+      {
+        message:
+          "Question label should contain at most one question mark at the end"
+      }
     ),
 
   required: z.boolean().optional().default(true),
@@ -39,6 +44,10 @@ export const SurveyQuestionSchema = z.object({
         .string()
         .trim()
         .min(1, "Choice must not be empty")
+        .max(
+          MAX_CHOICE_LENGTH,
+          `Choice must not exceed ${MAX_CHOICE_LENGTH} characters`
+        )
         .refine((val) => val.trim().length > 0, {
           message: "Choice cannot be whitespace only"
         })
@@ -58,9 +67,6 @@ export const SurveyQuestionSchema = z.object({
   // Note: Multiple "Other" variations are handled as warnings in cross-file validation
 });
 
-/**
- * Schema for complete survey YAML file
- */
 export const SurveyFileSchema = z
   .object({
     title: z
@@ -142,25 +148,30 @@ export function validateSurveyFile(
     if (error instanceof z.ZodError) {
       const fileContext = filename ? ` in file "${filename}"` : "";
 
-      // Zod v4 uses 'issues' instead of 'errors'
-      const issues = (error as any).issues || [];
+      // Properly access Zod error issues
+      const issues = error.issues;
       const formattedErrors = issues
-        .map((err: any) => {
+        .map((err) => {
+          // Handle empty path array correctly
           const path =
-            err.path && Array.isArray(err.path)
+            err.path && Array.isArray(err.path) && err.path.length > 0
               ? err.path.join(".")
-              : "unknown";
+              : "root";
           return `  - ${path}: ${err.message}`;
         })
         .join("\n");
 
       throw new Error(
-        `Survey validation failed${fileContext}:\n${formattedErrors}`
+        `Survey validation failed${fileContext}:\n${formattedErrors}`,
+        { cause: error }
       );
     }
-    // Re-throw non-Zod errors with better context
+    // Re-throw non-Zod errors with preserved context
+    const message = `Unexpected error during validation${filename ? ` in file "${filename}"` : ""}`;
     throw new Error(
-      `Unexpected error during validation${filename ? ` in file "${filename}"` : ""}: ${error instanceof Error ? error.message : String(error)}`
+      message +
+        (error instanceof Error ? `: ${error.message}` : `: ${String(error)}`),
+      { cause: error instanceof Error ? error : undefined }
     );
   }
 }

@@ -5,28 +5,27 @@ import {
   validateSurveyFile,
   type SurveyQuestionsYamlFile
 } from "./survey-schema";
+import {
+  VALIDATION_THRESHOLDS,
+  ValidationSeverity,
+  type ValidationError
+} from "./constants";
 
-/**
- * Validation result for a single file
- */
 export interface FileValidationResult {
   filename: string;
   filepath: string;
   valid: boolean;
   data?: SurveyQuestionsYamlFile;
-  errors?: string[];
+  errors?: ValidationError[];
 }
 
-/**
- * Overall validation report
- */
 export interface ValidationReport {
   totalFiles: number;
   validFiles: number;
   invalidFiles: number;
   totalQuestions: number;
   fileResults: FileValidationResult[];
-  crossFileErrors: string[];
+  crossFileErrors: ValidationError[];
   success: boolean;
 }
 
@@ -56,14 +55,21 @@ export function validateAllSurveyFiles(surveyDir: string): ValidationReport {
 
     try {
       const content = fs.readFileSync(filepath, "utf8");
-      const data = yaml.load(content);
 
-      // Check if data was parsed successfully
-      if (!data || typeof data !== "object") {
-        throw new Error("Failed to parse YAML file or file is empty");
+      if (!content.trim()) {
+        throw new Error("File is empty");
       }
 
-      // Validate with Zod schema
+      const data = yaml.load(content);
+
+      if (!data) {
+        throw new Error("YAML parsing returned null or undefined");
+      }
+
+      if (typeof data !== "object") {
+        throw new Error("YAML file must contain an object");
+      }
+
       const validatedData = validateSurveyFile(data, file);
       result.valid = true;
       result.data = validatedData;
@@ -75,26 +81,33 @@ export function validateAllSurveyFiles(surveyDir: string): ValidationReport {
       const filenameWarnings = validateFilename(file, validatedData);
 
       // Check for multiple "Other" options in questions (warning only)
-      const otherWarnings: string[] = [];
+      const otherWarnings: ValidationError[] = [];
       validatedData.questions.forEach((question, index) => {
         const otherChoices = question.choices.filter((c) =>
-          /^other/i.test(c.trim())
+          /^other$/i.test(c.trim())
         );
         if (otherChoices.length > 1) {
-          otherWarnings.push(
-            `Question ${index + 1} has multiple "Other" variations: ${otherChoices.join(", ")}`
-          );
+          otherWarnings.push({
+            severity: ValidationSeverity.WARNING,
+            message: `Question ${index + 1} has multiple "Other" variations: ${otherChoices.join(", ")}`,
+            path: `questions[${index}].choices`
+          });
         }
       });
 
       const allWarnings = [...filenameWarnings, ...otherWarnings];
       if (allWarnings.length > 0) {
-        result.errors = allWarnings.map((w) => `Warning: ${w}`);
+        result.errors = allWarnings;
         // Don't mark as invalid for warnings
       }
     } catch (error) {
       result.valid = false;
-      result.errors = [error instanceof Error ? error.message : String(error)];
+      result.errors = [
+        {
+          severity: ValidationSeverity.ERROR,
+          message: error instanceof Error ? error.message : String(error)
+        }
+      ];
     }
 
     fileResults.push(result);
@@ -108,7 +121,7 @@ export function validateAllSurveyFiles(surveyDir: string): ValidationReport {
 
   // Only count actual errors, not warnings
   const actualCrossFileErrors = crossFileErrors.filter(
-    (e) => !e.startsWith("Warning")
+    (e) => e.severity === ValidationSeverity.ERROR
   );
 
   const report: ValidationReport = {
@@ -128,39 +141,44 @@ export function validateAllSurveyFiles(surveyDir: string): ValidationReport {
  * Validates that filename matches the expected pattern and content
  * @param filename - Name of the file
  * @param data - Parsed and validated file data
- * @returns Array of error messages (empty if valid)
+ * @returns Array of validation errors (empty if valid)
  */
 function validateFilename(
   filename: string,
   data: SurveyQuestionsYamlFile
-): string[] {
-  const errors: string[] = [];
+): ValidationError[] {
+  const errors: ValidationError[] = [];
 
-  // Expected pattern: {position}-{label}.yml
   const match = filename.match(/^(\d+)-([a-z0-9-]+)\.yml$/);
 
   if (!match) {
-    errors.push(
-      `Filename "${filename}" does not match expected pattern: {position}-{label}.yml`
-    );
+    errors.push({
+      severity: ValidationSeverity.WARNING,
+      message: `Filename "${filename}" does not match expected pattern: {position}-{label}.yml`,
+      path: "filename"
+    });
     return errors;
   }
 
   const [, positionStr, labelFromFilename] = match;
   const positionFromFilename = parseInt(positionStr, 10);
 
-  // Validate position matches
   if (positionFromFilename !== data.position) {
-    errors.push(
-      `Position mismatch: filename has "${positionFromFilename}" but content has "${data.position}"`
-    );
+    errors.push({
+      severity: ValidationSeverity.WARNING,
+      message: `Position mismatch: filename has "${positionFromFilename}" but content has "${data.position}"`,
+      path: "position",
+      value: { filename: positionFromFilename, content: data.position }
+    });
   }
 
-  // Validate label matches
   if (labelFromFilename !== data.label) {
-    errors.push(
-      `Label mismatch: filename has "${labelFromFilename}" but content has "${data.label}"`
-    );
+    errors.push({
+      severity: ValidationSeverity.WARNING,
+      message: `Label mismatch: filename has "${labelFromFilename}" but content has "${data.label}"`,
+      path: "label",
+      value: { filename: labelFromFilename, content: data.label }
+    });
   }
 
   return errors;
@@ -175,14 +193,19 @@ function validateFilename(
 function performCrossFileValidation(
   files: SurveyQuestionsYamlFile[],
   filenames: string[]
-): string[] {
-  const errors: string[] = [];
+): ValidationError[] {
+  const errors: ValidationError[] = [];
 
   // Check 1: Unique positions across all files
   const positions = files.map((f) => f.position);
   const duplicatePositions = findDuplicates(positions);
   if (duplicatePositions.length > 0) {
-    errors.push(`Duplicate positions found: ${duplicatePositions.join(", ")}`);
+    errors.push({
+      severity: ValidationSeverity.ERROR,
+      message: `Duplicate positions found: ${duplicatePositions.join(", ")}`,
+      path: "position",
+      value: duplicatePositions
+    });
   }
 
   // Check 2: Sequential positions (1, 2, 3, ...)
@@ -192,18 +215,24 @@ function performCrossFileValidation(
     (_, i) => i + 1
   );
   if (JSON.stringify(sortedPositions) !== JSON.stringify(expectedPositions)) {
-    errors.push(
-      `Positions are not sequential. Expected: ${expectedPositions.join(", ")}, Got: ${sortedPositions.join(", ")}`
-    );
+    errors.push({
+      severity: ValidationSeverity.ERROR,
+      message: `Positions are not sequential. Expected: ${expectedPositions.join(", ")}, Got: ${sortedPositions.join(", ")}`,
+      path: "position",
+      value: { expected: expectedPositions, actual: sortedPositions }
+    });
   }
 
   // Check 3: Unique labels across all files
   const labels = files.map((f) => f.label);
   const duplicateLabels = findDuplicates(labels);
   if (duplicateLabels.length > 0) {
-    errors.push(
-      `Duplicate section labels found: ${duplicateLabels.join(", ")}`
-    );
+    errors.push({
+      severity: ValidationSeverity.ERROR,
+      message: `Duplicate section labels found: ${duplicateLabels.join(", ")}`,
+      path: "label",
+      value: duplicateLabels
+    });
   }
 
   // Check 4: Unique question IDs across all files
@@ -214,6 +243,16 @@ function performCrossFileValidation(
   files.forEach((file, fileIndex) => {
     file.questions.forEach((_, qIndex) => {
       const questionId = `${file.label}-q-${qIndex}`;
+
+      if (!/^[a-z0-9-]+-q-\d+$/.test(questionId)) {
+        errors.push({
+          severity: ValidationSeverity.ERROR,
+          message: `Invalid question ID format: "${questionId}". Expected format: {section-label}-q-{index}`,
+          path: `${filenames[fileIndex]}.questions[${qIndex}]`,
+          value: questionId
+        });
+      }
+
       allQuestionIds.push(questionId);
       questionIdMap.set(questionId, filenames[fileIndex]);
     });
@@ -224,7 +263,12 @@ function performCrossFileValidation(
     const duplicateDetails = duplicateQuestionIds
       .map((id) => `${id} (in ${questionIdMap.get(id)})`)
       .join(", ");
-    errors.push(`Duplicate question IDs found: ${duplicateDetails}`);
+    errors.push({
+      severity: ValidationSeverity.ERROR,
+      message: `Duplicate question IDs found: ${duplicateDetails}`,
+      path: "questions",
+      value: duplicateQuestionIds
+    });
   }
 
   // Check 5: Validate reasonable question distribution
@@ -234,25 +278,38 @@ function performCrossFileValidation(
     ).length;
     const optionalCount = file.questions.length - requiredCount;
 
-    // Warn if section has too many optional questions (> 50%)
-    if (optionalCount > requiredCount && file.questions.length > 2) {
-      errors.push(
-        `Warning in "${filenames[index]}": Section has more optional questions (${optionalCount}) than required (${requiredCount})`
-      );
+    // Warn if section has too many optional questions (> threshold)
+    const optionalRatio = optionalCount / file.questions.length;
+    if (
+      optionalRatio > VALIDATION_THRESHOLDS.OPTIONAL_RATIO_WARNING &&
+      file.questions.length > VALIDATION_THRESHOLDS.MIN_QUESTIONS_WARNING
+    ) {
+      errors.push({
+        severity: ValidationSeverity.WARNING,
+        message: `Section has more optional questions (${optionalCount}) than required (${requiredCount})`,
+        path: `${filenames[index]}.questions`,
+        value: { required: requiredCount, optional: optionalCount }
+      });
     }
 
     // Warn if section has very few questions
-    if (file.questions.length < 2) {
-      errors.push(
-        `Warning in "${filenames[index]}": Section has only ${file.questions.length} question(s). Consider adding more questions or merging with another section.`
-      );
+    if (file.questions.length < VALIDATION_THRESHOLDS.MIN_QUESTIONS_WARNING) {
+      errors.push({
+        severity: ValidationSeverity.WARNING,
+        message: `Section has only ${file.questions.length} question(s). Consider adding more questions or merging with another section`,
+        path: `${filenames[index]}.questions`,
+        value: file.questions.length
+      });
     }
 
     // Warn if section has too many questions (potential UX issue)
-    if (file.questions.length > 20) {
-      errors.push(
-        `Warning in "${filenames[index]}": Section has ${file.questions.length} questions. Consider breaking into smaller sections for better UX.`
-      );
+    if (file.questions.length > VALIDATION_THRESHOLDS.MAX_QUESTIONS_WARNING) {
+      errors.push({
+        severity: ValidationSeverity.WARNING,
+        message: `Section has ${file.questions.length} questions. Consider breaking into smaller sections for better UX`,
+        path: `${filenames[index]}.questions`,
+        value: file.questions.length
+      });
     }
   });
 
@@ -262,17 +319,18 @@ function performCrossFileValidation(
   files.forEach((file, fileIndex) => {
     file.questions.forEach((question, qIndex) => {
       const choiceCount = question.choices.length;
-      // Track questions with similar choice counts
       if (!choiceCountMap.has(file.label)) {
         choiceCountMap.set(file.label, []);
       }
       choiceCountMap.get(file.label)!.push(choiceCount);
 
-      // Warn about questions with excessive choices (> 30)
-      if (choiceCount > 30) {
-        errors.push(
-          `Warning in "${filenames[fileIndex]}" question ${qIndex + 1}: Question has ${choiceCount} choices. Consider grouping or simplifying choices.`
-        );
+      if (choiceCount > VALIDATION_THRESHOLDS.MAX_CHOICES_WARNING) {
+        errors.push({
+          severity: ValidationSeverity.WARNING,
+          message: `Question ${qIndex + 1} has ${choiceCount} choices. Consider grouping or simplifying choices`,
+          path: `${filenames[fileIndex]}.questions[${qIndex}].choices`,
+          value: choiceCount
+        });
       }
     });
   });
@@ -280,11 +338,6 @@ function performCrossFileValidation(
   return errors;
 }
 
-/**
- * Finds duplicate values in an array
- * @param array - Array to check for duplicates
- * @returns Array of duplicate values
- */
 function findDuplicates<T>(array: T[]): T[] {
   const seen = new Set<T>();
   const duplicates = new Set<T>();
@@ -300,48 +353,84 @@ function findDuplicates<T>(array: T[]): T[] {
   return Array.from(duplicates);
 }
 
+const colors = {
+  reset: "\x1b[0m",
+  bright: "\x1b[1m",
+  red: "\x1b[31m",
+  green: "\x1b[32m",
+  yellow: "\x1b[33m",
+  blue: "\x1b[34m",
+  cyan: "\x1b[36m"
+};
+
 /**
- * Formats validation report as a human-readable string
+ * Formats validation report as a human-readable string with colors
  * @param report - Validation report to format
- * @returns Formatted string report
+ * @returns Formatted string report with ANSI colors
  */
 export function formatValidationReport(report: ValidationReport): string {
   const lines: string[] = [];
 
-  lines.push("=".repeat(60));
-  lines.push("Survey YAML Validation Report");
-  lines.push("=".repeat(60));
+  lines.push(`${colors.bright}${"=".repeat(60)}${colors.reset}`);
+  lines.push(
+    `${colors.bright}${colors.cyan}Survey YAML Validation Report${colors.reset}`
+  );
+  lines.push(`${colors.bright}${"=".repeat(60)}${colors.reset}`);
   lines.push("");
 
   // Summary
-  lines.push("Summary:");
-  lines.push(`  Total files: ${report.totalFiles}`);
-  lines.push(`  Valid files: ${report.validFiles}`);
-  lines.push(`  Invalid files: ${report.invalidFiles}`);
-  lines.push(`  Total questions: ${report.totalQuestions}`);
-  lines.push(`  Status: ${report.success ? "✓ PASSED" : "✗ FAILED"}`);
+  lines.push(`${colors.bright}Summary:${colors.reset}`);
+  lines.push(
+    `  Total files: ${colors.cyan}${report.totalFiles}${colors.reset}`
+  );
+  lines.push(
+    `  Valid files: ${colors.green}${report.validFiles}${colors.reset}`
+  );
+  lines.push(
+    `  Invalid files: ${colors.red}${report.invalidFiles}${colors.reset}`
+  );
+  lines.push(
+    `  Total questions: ${colors.cyan}${report.totalQuestions}${colors.reset}`
+  );
+  const statusColor = report.success ? colors.green : colors.red;
+  const statusText = report.success ? "✓ PASSED" : "✗ FAILED";
+  lines.push(`  Status: ${statusColor}${statusText}${colors.reset}`);
   lines.push("");
 
   // File-level results
   if (report.fileResults.length > 0) {
-    lines.push("File Validation Results:");
+    lines.push(`${colors.bright}File Validation Results:${colors.reset}`);
     lines.push("-".repeat(60));
 
     for (const result of report.fileResults) {
+      const statusColor = result.valid ? colors.green : colors.red;
       const status = result.valid ? "✓" : "✗";
-      lines.push(`${status} ${result.filename}`);
+      lines.push(
+        `${statusColor}${status}${colors.reset} ${colors.bright}${result.filename}${colors.reset}`
+      );
 
       if (result.data) {
         lines.push(
-          `    Position: ${result.data.position}, Label: ${result.data.label}`
+          `    Position: ${colors.cyan}${result.data.position}${colors.reset}, Label: ${colors.cyan}${result.data.label}${colors.reset}`
         );
-        lines.push(`    Questions: ${result.data.questions.length}`);
+        lines.push(
+          `    Questions: ${colors.cyan}${result.data.questions.length}${colors.reset}`
+        );
       }
 
       if (result.errors && result.errors.length > 0) {
-        lines.push("    Errors:");
+        lines.push("    Issues:");
         result.errors.forEach((error) => {
-          lines.push(`      - ${error}`);
+          const errorColor =
+            error.severity === ValidationSeverity.ERROR
+              ? colors.red
+              : colors.yellow;
+          const prefix =
+            error.severity === ValidationSeverity.ERROR ? "✗" : "⚠";
+          const pathInfo = error.path ? ` [${error.path}]` : "";
+          lines.push(
+            `      ${errorColor}${prefix}${colors.reset} ${error.message}${pathInfo}`
+          );
         });
       }
       lines.push("");
@@ -350,18 +439,24 @@ export function formatValidationReport(report: ValidationReport): string {
 
   // Cross-file validation errors
   if (report.crossFileErrors.length > 0) {
-    lines.push("Cross-File Validation Issues:");
+    lines.push(`${colors.bright}Cross-File Validation Issues:${colors.reset}`);
     lines.push("-".repeat(60));
     report.crossFileErrors.forEach((error) => {
-      // Distinguish between errors and warnings
-      const isWarning = error.startsWith("Warning");
-      const prefix = isWarning ? "⚠" : "✗";
-      lines.push(`${prefix} ${error}`);
+      // Distinguish between errors and warnings by severity
+      const errorColor =
+        error.severity === ValidationSeverity.ERROR
+          ? colors.red
+          : colors.yellow;
+      const prefix = error.severity === ValidationSeverity.ERROR ? "✗" : "⚠";
+      const pathInfo = error.path ? ` [${error.path}]` : "";
+      lines.push(
+        `${errorColor}${prefix}${colors.reset} ${error.message}${pathInfo}`
+      );
     });
     lines.push("");
   }
 
-  lines.push("=".repeat(60));
+  lines.push(`${colors.bright}${"=".repeat(60)}${colors.reset}`);
 
   return lines.join("\n");
 }
