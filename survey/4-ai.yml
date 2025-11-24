@@ -48,104 +48,87 @@ questions:
   - label: "Which AI tools and apps do you use?"
     multiple: true
     choices:
+      # Web/Desktop AI Assistants
       - ChatGPT
-      - Gemini (Google)
       - Claude (Anthropic)
-      - DALL-E (OpenAI)
-      - Meta AI (Llama)
-      - GitHub Copilot
+      - Gemini (Google)
+      - Perplexity AI
+      - Microsoft Copilot
+      # AI-Native Editors
       - Cursor
-      - Supermaven
-      - QuillBot
-      - Notion AI
-      - Midjourney
-      - Cody (Sourcegraph)
-      - Grammarly
-      - NotebookLM (Google)
       - Windsurf (Codeium)
-      - Tabnine
-      - Amazon Q Developer (CodeWhisperer)
-      - Replit AI (Ghostwriter)
-      - Pieces for Developers
-      - Warp AI
-      - v0 (Vercel)
+      - Zed
+      # CLI/Terminal Tools
       - Claude Code (Anthropic CLI)
       - Aider
       - GitHub Copilot CLI
-      - Shell GPT (sgpt)
+      - Warp AI
+      - OpenAI Codex CLI
+      - Gemini CLI (Google)
+      # IDE-Integrated Extensions
+      - GitHub Copilot
+      - Tabnine
       - Continue.dev
       - Cline (Claude Dev)
-      - Jasper AI
-      - Copy.ai
-      - Perplexity AI
-      - You.com
-      - Stable Diffusion
-      - Leonardo.ai
-      - Adobe Firefly
-      - Microsoft Copilot (365)
-      - Otter.ai
-      - Gamma
+      - Amazon Q Developer (CodeWhisperer)
+      # Full-Stack AI Builders / Vibe Coding
+      - v0 (Vercel)
+      - Bolt.new (StackBlitz)
+      - Lovable (formerly GPT Engineer)
+      - Replit AI
+      - GitHub Copilot Workspace
+      # Other
       - Other
 
   - label: "Which AI frameworks and models do you use?"
     multiple: true
     choices:
-      - LangChain
-      - Hugging Face
+      # LLM APIs & Cloud Providers
+      - OpenAI API (GPT)
+      - Anthropic Claude API
+      - Google Gemini API
       - AWS Bedrock
-      - Together.ai
-      - Weights & Biases
-      - Llama
-      - Haystack
-      - Humanloop
-      - Unstructured
-      - PyTorch
-      - TensorFlow
-      - OpenAI (GPT)
-      - Keras
+      - Groq
+      # Open Source LLMs
+      - Llama (Meta)
       - Mistral
-      - Scikit-Learn
-      - Gemma
-      - Falcon
-      - BLOOM
-      - XGen
-      - BERT
-      - GPT-NeoX / GPT-J
-      - Vicuna
-      - Phi
+      - Qwen (Alibaba)
+      - DeepSeek
+      - Phi (Microsoft)
+      # AI Orchestration Frameworks
+      - LangChain
+      - LlamaIndex
       - LangGraph
-      - LlamaIndex (GPT Index)
-      - Semantic Kernel (Microsoft)
-      - AutoGen (Microsoft)
       - CrewAI
-      - DSPy (Stanford)
-      - Instructor
-      - Guardrails AI
+      - AutoGen (Microsoft)
+      # Vector Databases
       - Pinecone
       - Weaviate
-      - Milvus
-      - Qdrant
       - ChromaDB
+      - Qdrant
       - Faiss (Meta)
-      - Anthropic Claude API
-      - Groq
-      - Replicate
-      - Cohere
-      - Perplexity API
-      - n8n AI
-      - Flowise
-      - LangFlow
-      - Unsloth
-      - PEFT / LoRA (Hugging Face)
-      - MLflow
+      # ML/Deep Learning Frameworks
+      - PyTorch
+      - TensorFlow
+      - Hugging Face Transformers
+      - Keras
+      - Scikit-Learn
+      # Developer Tools & SDKs
       - Vercel AI SDK
       - OpenAI SDK (Python/JS)
       - Anthropic SDK (Python/JS)
-      - Qwen (Alibaba)
-      - DeepSeek
-      - Command R (Cohere)
-      - Mistral (Mistral AI)
-      - Grok (xAI)
-      - Stable Diffusion (Stability AI)
-      - Whisper (OpenAI)
+      - Instructor
+      - Weights & Biases
+      # Fine-tuning & Training Tools
+      - PEFT / LoRA (Hugging Face)
+      - Unsloth
+      - MLflow
+      - Axolotl
+      - Unstructured
+      # Specialized Models
+      - Stable Diffusion (Images)
+      - Whisper (Audio)
+      - BERT (Embeddings)
+      - CLIP (Vision)
+      # Other
       - Other
