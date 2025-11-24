@@ -98,14 +98,15 @@ questions:
       - 11-16 years
       - 16+ years
 
-  - label: Is coding a hobby for you?
+  - label: Do you code outside of work or studies?
     required: true
+    multiple: true
     choices:
-      - Yes, I regularly code on personal projects
-      - Yes, I occasionally code for fun
-      - Yes, I contribute to open source
-      - No, I only code professionally
-      - No, I avoid coding outside work
+      - No
+      - Yes, occasionally for fun or learning
+      - Yes, for open source contributions
+      - Yes, for profit (freelance, products, services)
+      - Yes, for portfolio/career building
 
   - label: Do you have any plans to work outside Morocco?
     required: true

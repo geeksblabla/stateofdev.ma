@@ -35,16 +35,6 @@ questions:
       - Slightly satisfied
       - Very satisfied
 
-  - label: Do you work on side projects?
-    required: true
-    multiple: true
-    choices:
-      - No
-      - Yes, for profit
-      - Yes, for learning
-      - Yes, for open source contribution
-      - Yes, for portfolio building
-
   - label: How long have you been unemployed after graduation?
     choices:
       - None, I worked straight after my graduation 😎
