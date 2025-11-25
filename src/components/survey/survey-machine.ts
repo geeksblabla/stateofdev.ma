@@ -1,5 +1,15 @@
 import { setup, assign, fromPromise } from "xstate";
 import { submitAnswers, goToThanksPage } from "./utils";
+import {
+  getVisibleSectionIndices,
+  getNextVisibleQuestionIndex,
+  getPrevVisibleQuestionIndex,
+  getFirstVisibleQuestionIndex,
+  getLastVisibleQuestionIndex,
+  hasNextVisibleQuestion,
+  hasPrevVisibleQuestion
+} from "@/lib/conditions";
+import type { SurveyQuestionsYamlFile } from "@/lib/validators/survey-schema";
 
 const ERROR_TIMEOUT_MS = 3000;
 
@@ -9,6 +19,7 @@ export type SurveyContext = {
   currentQuestionIdx: number;
   answers: Record<string, number | number[] | null | string>;
   error: string | null;
+  visibleSectionIndices: number[];
 };
 
 export type SurveyEvents =
@@ -80,30 +91,66 @@ export const surveyMachine = setup({
 
       const questionId = `${section.label}-q-${context.currentQuestionIdx}`;
       const value = context.answers[questionId];
-      return value === null || value === undefined;
+      return (
+        value === null ||
+        value === undefined ||
+        (Array.isArray(value) && value.length === 0)
+      );
     },
     isLastQuestion: ({ context }) => {
       const section = context.sections[context.currentSectionIdx];
-      return context.currentQuestionIdx === section.questions.length - 1;
+      return !hasNextVisibleQuestion(
+        section.questions,
+        context.currentQuestionIdx,
+        context.answers
+      );
     },
     isNotLastQuestion: ({ context }) => {
       const section = context.sections[context.currentSectionIdx];
-      return context.currentQuestionIdx < section.questions.length - 1;
+      return hasNextVisibleQuestion(
+        section.questions,
+        context.currentQuestionIdx,
+        context.answers
+      );
     },
     isLastSection: ({ context }) => {
-      return context.currentSectionIdx === context.sections.length - 1;
+      return (
+        context.currentSectionIdx ===
+        context.visibleSectionIndices[context.visibleSectionIndices.length - 1]
+      );
     },
     isNotLastSection: ({ context }) => {
-      return context.currentSectionIdx < context.sections.length - 1;
+      return (
+        context.currentSectionIdx !==
+        context.visibleSectionIndices[context.visibleSectionIndices.length - 1]
+      );
     },
     canGoBackInSection: ({ context }) => {
-      return context.currentQuestionIdx > 0;
+      const section = context.sections[context.currentSectionIdx];
+      return hasPrevVisibleQuestion(
+        section.questions,
+        context.currentQuestionIdx,
+        context.answers
+      );
     },
     canGoBackToSection: ({ context }) => {
-      return context.currentQuestionIdx === 0 && context.currentSectionIdx > 0;
+      const section = context.sections[context.currentSectionIdx];
+      const hasPrevInSection = hasPrevVisibleQuestion(
+        section.questions,
+        context.currentQuestionIdx,
+        context.answers
+      );
+      const currentVisibleSectionIdx = context.visibleSectionIndices.indexOf(
+        context.currentSectionIdx
+      );
+      return !hasPrevInSection && currentVisibleSectionIdx > 0;
     }
   },
   actions: {
+    computeVisibleIndices: assign({
+      visibleSectionIndices: ({ context }) =>
+        getVisibleSectionIndices(context.sections, context.answers)
+    }),
     updateAnswer: assign({
       answers: ({ context, event }) => {
         if (event.type !== "ANSWER_CHANGE") return context.answers;
@@ -114,20 +161,73 @@ export const surveyMachine = setup({
       }
     }),
     incrementQuestion: assign({
-      currentQuestionIdx: ({ context }) => context.currentQuestionIdx + 1
+      currentQuestionIdx: ({ context }) => {
+        const section = context.sections[context.currentSectionIdx];
+        const next = getNextVisibleQuestionIndex(
+          section.questions,
+          context.currentQuestionIdx,
+          context.answers
+        );
+        return next ?? context.currentQuestionIdx;
+      }
     }),
     decrementQuestion: assign({
-      currentQuestionIdx: ({ context }) => context.currentQuestionIdx - 1
+      currentQuestionIdx: ({ context }) => {
+        const section = context.sections[context.currentSectionIdx];
+        const prev = getPrevVisibleQuestionIndex(
+          section.questions,
+          context.currentQuestionIdx,
+          context.answers
+        );
+        return prev ?? context.currentQuestionIdx;
+      }
     }),
     incrementSection: assign({
-      currentSectionIdx: ({ context }) => context.currentSectionIdx + 1,
-      currentQuestionIdx: 0
+      currentSectionIdx: ({ context }) => {
+        const currentIdx = context.visibleSectionIndices.indexOf(
+          context.currentSectionIdx
+        );
+        const nextVisibleIdx = context.visibleSectionIndices[currentIdx + 1];
+        return nextVisibleIdx ?? context.currentSectionIdx;
+      },
+      currentQuestionIdx: ({ context }) => {
+        const currentIdx = context.visibleSectionIndices.indexOf(
+          context.currentSectionIdx
+        );
+        const nextSectionIdx = context.visibleSectionIndices[currentIdx + 1];
+        if (nextSectionIdx !== undefined) {
+          const nextSection = context.sections[nextSectionIdx];
+          const firstVisible = getFirstVisibleQuestionIndex(
+            nextSection.questions,
+            context.answers
+          );
+          return firstVisible ?? 0;
+        }
+        return 0;
+      }
     }),
     goToLastQuestionInPreviousSection: assign({
-      currentSectionIdx: ({ context }) => context.currentSectionIdx - 1,
+      currentSectionIdx: ({ context }) => {
+        const currentIdx = context.visibleSectionIndices.indexOf(
+          context.currentSectionIdx
+        );
+        const prevVisibleIdx = context.visibleSectionIndices[currentIdx - 1];
+        return prevVisibleIdx ?? context.currentSectionIdx;
+      },
       currentQuestionIdx: ({ context }) => {
-        const prevSection = context.sections[context.currentSectionIdx - 1];
-        return prevSection.questions.length - 1;
+        const currentIdx = context.visibleSectionIndices.indexOf(
+          context.currentSectionIdx
+        );
+        const prevSectionIdx = context.visibleSectionIndices[currentIdx - 1];
+        if (prevSectionIdx !== undefined) {
+          const prevSection = context.sections[prevSectionIdx];
+          const lastVisible = getLastVisibleQuestionIndex(
+            prevSection.questions,
+            context.answers
+          );
+          return lastVisible ?? 0;
+        }
+        return 0;
       }
     }),
     setRequiredError: assign({
@@ -183,15 +283,22 @@ export const surveyMachine = setup({
 }).createMachine({
   id: "survey",
   initial: "answering",
-  context: ({ input }) => ({
-    sections: input.sections,
-    currentSectionIdx: input.persisted?.currentSectionIdx ?? 0,
-    currentQuestionIdx: input.persisted?.currentQuestionIdx ?? 0,
-    answers: input.persisted?.answers ?? {},
-    error: null
-  }),
+  context: ({ input }) => {
+    const sections = input.sections;
+    const answers = input.persisted?.answers ?? {};
+
+    return {
+      sections,
+      currentSectionIdx: input.persisted?.currentSectionIdx ?? 0,
+      currentQuestionIdx: input.persisted?.currentQuestionIdx ?? 0,
+      answers,
+      error: null,
+      visibleSectionIndices: getVisibleSectionIndices(sections, answers)
+    };
+  },
   states: {
     answering: {
+      entry: ["computeVisibleIndices"],
       after: {
         ERROR_TIMEOUT: {
           guard: ({ context }) => context.error !== null,
@@ -203,7 +310,7 @@ export const surveyMachine = setup({
           actions: ["clearError"]
         },
         ANSWER_CHANGE: {
-          actions: ["updateAnswer", "clearError"]
+          actions: ["updateAnswer", "computeVisibleIndices", "clearError"]
         },
         NEXT: [
           {

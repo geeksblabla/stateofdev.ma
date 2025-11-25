@@ -1,3 +1,6 @@
+import { SurveyMachineContext } from "./survey-context";
+import { hasPrevVisibleQuestion } from "@/lib/conditions";
+
 type ErrorMessageProps = {
   error: string | null;
   onClose: () => void;
@@ -79,3 +82,83 @@ export const BackButton = ({ onClick }: BackButtonProps) => (
     </span>
   </div>
 );
+
+export const SurveyActions = () => {
+  const actorRef = SurveyMachineContext.useActorRef();
+
+  const context = SurveyMachineContext.useSelector((state) => state.context);
+  const isSubmitting = SurveyMachineContext.useSelector((state) =>
+    state.matches("submitting")
+  );
+
+  const currentSection = context.sections[context.currentSectionIdx];
+  const currentQuestion = currentSection?.questions[context.currentQuestionIdx];
+
+  const isRequired = !!currentQuestion?.required;
+  const canGoBack =
+    context.visibleSectionIndices.indexOf(context.currentSectionIdx) > 0 ||
+    hasPrevVisibleQuestion(
+      currentSection.questions,
+      context.currentQuestionIdx,
+      context.answers
+    );
+
+  const questionId = `${currentSection.label}-q-${context.currentQuestionIdx}`;
+
+  const handleNext = () => {
+    const currentAnswer = context.answers[questionId];
+    if (currentAnswer === undefined && currentQuestion.multiple) {
+      actorRef.send({
+        type: "ANSWER_CHANGE",
+        questionId,
+        value: []
+      });
+    }
+    actorRef.send({ type: "NEXT" });
+  };
+
+  const handleSkip = () => {
+    const value = currentQuestion.multiple ? [] : null;
+    actorRef.send({
+      type: "ANSWER_CHANGE",
+      questionId,
+      value
+    });
+    actorRef.send({ type: "SKIP" });
+  };
+
+  const handleBack = () => {
+    actorRef.send({ type: "BACK" });
+  };
+
+  return (
+    <div className="relative flex flex-row justify-between mt-3 sticky bottom-0 bg-background py-4 border-t-2 border-border z-20 transition-all duration-1000">
+      <ErrorMessage
+        error={context.error}
+        onClose={() => actorRef.send({ type: "CLEAR_ERROR" })}
+      />
+      <div>{canGoBack && <BackButton onClick={handleBack} />}</div>
+      <div className="relative">
+        {!isRequired && (
+          <button
+            type="button"
+            className="focus:outline-4 bg-background px-6 md:px-8 py-3 font-medium text-primary underline border-border transition mr-2"
+            onClick={handleSkip}
+            data-testid="skip-button"
+          >
+            Skip
+          </button>
+        )}
+        <button
+          data-testid="next-button"
+          type="button"
+          className="px-4 py-2 min-w-[120px] bg-primary text-primary-foreground border-2 border-primary transition hover:opacity-90"
+          onClick={handleNext}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Loading..." : "Next"}
+        </button>
+      </div>
+    </div>
+  );
+};

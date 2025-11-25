@@ -6,6 +6,7 @@ import {
   type ChangeEvent
 } from "react";
 import { Choice } from "./choice";
+import type { SurveyQuestion } from "@/lib/validators/survey-schema";
 
 const GRID_LAYOUT_THRESHOLD = 10;
 

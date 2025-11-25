@@ -15,26 +15,26 @@ export const ShowIfConditionSchema = z
       .string()
       .regex(
         /^[a-z0-9-]+-q-\d+$/,
-        "Must be valid question ID format (e.g., 'profile-q-0')"
+        "Question ID must be in format: {section-label}-q-{index}"
       ),
     equals: z.number().int().nonnegative().optional(),
     notEquals: z.number().int().nonnegative().optional(),
-    in: z.array(z.number().int().nonnegative()).optional(),
-    notIn: z.array(z.number().int().nonnegative()).optional()
+    in: z.array(z.number().int().nonnegative()).min(1).optional(),
+    notIn: z.array(z.number().int().nonnegative()).min(1).optional()
   })
   .refine(
     (data) => {
       const operators = [
-        data.equals,
-        data.notEquals,
-        data.in,
-        data.notIn
-      ].filter((op) => op !== undefined);
+        data.equals !== undefined,
+        data.notEquals !== undefined,
+        data.in !== undefined,
+        data.notIn !== undefined
+      ].filter(Boolean);
       return operators.length === 1;
     },
     {
       message:
-        "Exactly one operator (equals, notEquals, in, notIn) must be specified"
+        "Exactly one operator must be specified: equals, notEquals, in, or notIn"
     }
   );
 
@@ -127,7 +127,9 @@ export const SurveyFileSchema = z
         {
           message: "Duplicate question labels detected within the section"
         }
-      )
+      ),
+
+    showIf: ShowIfConditionSchema.optional()
   })
   .refine(
     (data) => {

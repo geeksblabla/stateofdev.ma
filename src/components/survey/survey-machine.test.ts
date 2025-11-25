@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { createActor } from "xstate";
 import { surveyMachine, ERRORS } from "./survey-machine";
 import * as utils from "./utils";
+import type { SurveyQuestionsYamlFile } from "@/lib/validators/survey-schema";
 
 // Mock submitAnswers
 vi.mock("./utils", () => ({
@@ -113,7 +114,8 @@ describe("Survey State Machine", () => {
         currentSectionIdx: 0,
         currentQuestionIdx: 0,
         answers: {},
-        error: null
+        error: null,
+        visibleSectionIndices: [0, 1]
       });
     });
 
@@ -789,6 +791,366 @@ describe("Survey State Machine", () => {
 
       const snapshot = actor.getSnapshot();
       expect(snapshot.context.answers["profile-q-2"]).toBe(null);
+    });
+
+    it("should handle empty array for required multiple choice", () => {
+      const actor = createActor(surveyMachine, {
+        input: { sections: mockSections }
+      });
+      actor.start();
+
+      // Answer first question to move to second (multiple choice)
+      actor.send({
+        type: "ANSWER_CHANGE",
+        questionId: "profile-q-0",
+        value: 0
+      });
+      actor.send({ type: "NEXT" });
+
+      // Set empty array and try to go next (q-1 is not required, so move to q-2)
+      actor.send({
+        type: "ANSWER_CHANGE",
+        questionId: "profile-q-1",
+        value: []
+      });
+      actor.send({ type: "NEXT" });
+
+      // Should move forward since q-1 is not required
+      expect(actor.getSnapshot().context.currentQuestionIdx).toBe(2);
+    });
+
+    it("should normalize boolean answers to empty array", async () => {
+      const actor = createActor(surveyMachine, {
+        input: { sections: mockSections }
+      });
+      actor.start();
+
+      const submitSpy = vi.spyOn(utils, "submitAnswers").mockResolvedValue({
+        data: undefined,
+        error: undefined
+      });
+
+      // Answer with boolean (simulating skipped multiple choice)
+      actor.send({
+        type: "ANSWER_CHANGE",
+        questionId: "profile-q-0",
+        value: 0
+      });
+      actor.send({ type: "NEXT" });
+
+      actor.send({
+        type: "ANSWER_CHANGE",
+        questionId: "profile-q-1",
+        value: false as any
+      });
+      actor.send({ type: "NEXT" });
+      actor.send({ type: "NEXT" });
+
+      await vi.waitFor(() => {
+        return submitSpy.mock.calls.length > 0;
+      });
+
+      const call = submitSpy.mock.calls[0][0];
+      expect(call.answers["profile-q-1"]).toEqual([]);
+    });
+  });
+
+  describe("CLEAR_ERROR Event", () => {
+    it("should manually clear error with CLEAR_ERROR event", () => {
+      const actor = createActor(surveyMachine, {
+        input: { sections: mockSections }
+      });
+      actor.start();
+
+      // Trigger error
+      actor.send({ type: "NEXT" });
+      expect(actor.getSnapshot().context.error).toBe(ERRORS.required);
+
+      // Manually clear
+      actor.send({ type: "CLEAR_ERROR" });
+
+      const snapshot = actor.getSnapshot();
+      expect(snapshot.context.error).toBe(null);
+    });
+  });
+
+  describe("Conditional Visibility (showIf)", () => {
+    const conditionalSections: SurveyQuestionsYamlFile[] = [
+      {
+        title: "Basic Info",
+        label: "basic",
+        position: 1,
+        questions: [
+          {
+            label: "Are you employed?",
+            choices: ["Yes", "No"],
+            multiple: false,
+            required: true
+          },
+          {
+            label: "What is your job title?",
+            choices: ["Developer", "Designer", "Manager", "Other"],
+            multiple: false,
+            required: false,
+            showIf: { question: "basic-q-0", equals: 0 }
+          },
+          {
+            label: "Are you looking for work?",
+            choices: ["Yes", "No"],
+            multiple: false,
+            required: false,
+            showIf: { question: "basic-q-0", equals: 1 }
+          }
+        ]
+      },
+      {
+        title: "Employment Details",
+        label: "employment",
+        position: 2,
+        showIf: { question: "basic-q-0", equals: 0 },
+        questions: [
+          {
+            label: "Years of experience?",
+            choices: ["0-2", "3-5", "6+"],
+            multiple: false,
+            required: true
+          }
+        ]
+      }
+    ];
+
+    it("should skip hidden questions when navigating forward", () => {
+      const actor = createActor(surveyMachine, {
+        input: { sections: conditionalSections }
+      });
+      actor.start();
+
+      // Answer "No" to employment - should skip q-1 and show q-2
+      actor.send({
+        type: "ANSWER_CHANGE",
+        questionId: "basic-q-0",
+        value: 1
+      });
+      actor.send({ type: "NEXT" });
+
+      const snapshot = actor.getSnapshot();
+      expect(snapshot.context.currentQuestionIdx).toBe(2); // Skipped q-1
+    });
+
+    it("should skip hidden questions when navigating backward", () => {
+      const actor = createActor(surveyMachine, {
+        input: { sections: conditionalSections }
+      });
+      actor.start();
+
+      // Answer "No" to employment
+      actor.send({
+        type: "ANSWER_CHANGE",
+        questionId: "basic-q-0",
+        value: 1
+      });
+      actor.send({ type: "NEXT" });
+
+      // Now on q-2, go back should skip q-1
+      actor.send({ type: "BACK" });
+
+      const snapshot = actor.getSnapshot();
+      expect(snapshot.context.currentQuestionIdx).toBe(0); // Back to q-0
+    });
+
+    it("should update visibleSectionIndices when answer changes", () => {
+      const actor = createActor(surveyMachine, {
+        input: { sections: conditionalSections }
+      });
+      actor.start();
+
+      // Initially employment section should be hidden
+      expect(actor.getSnapshot().context.visibleSectionIndices).toEqual([0]);
+
+      // Answer "Yes" to employment - employment section becomes visible
+      actor.send({
+        type: "ANSWER_CHANGE",
+        questionId: "basic-q-0",
+        value: 0
+      });
+
+      const snapshot = actor.getSnapshot();
+      expect(snapshot.context.visibleSectionIndices).toEqual([0, 1]);
+    });
+
+    it("should auto-submit when all remaining questions are hidden", async () => {
+      const sectionsWithHiddenEnd: SurveyQuestionsYamlFile[] = [
+        {
+          title: "Survey",
+          label: "survey",
+          position: 1,
+          questions: [
+            {
+              label: "Do you code?",
+              choices: ["Yes", "No"],
+              multiple: false,
+              required: true
+            },
+            {
+              label: "What languages?",
+              choices: ["JS", "Python"],
+              multiple: true,
+              required: false,
+              showIf: { question: "survey-q-0", equals: 0 }
+            },
+            {
+              label: "Why not?",
+              choices: ["No interest", "No time"],
+              multiple: false,
+              required: false,
+              showIf: { question: "survey-q-0", equals: 1 }
+            }
+          ]
+        }
+      ];
+
+      const actor = createActor(surveyMachine, {
+        input: { sections: sectionsWithHiddenEnd }
+      });
+      actor.start();
+
+      vi.spyOn(utils, "submitAnswers").mockResolvedValue({
+        data: undefined,
+        error: undefined
+      });
+
+      // Answer "Yes" - this hides q-2, leaving q-1 as only remaining question
+      actor.send({
+        type: "ANSWER_CHANGE",
+        questionId: "survey-q-0",
+        value: 0
+      });
+      actor.send({ type: "NEXT" });
+
+      // Now on q-1. Answer it.
+      actor.send({
+        type: "ANSWER_CHANGE",
+        questionId: "survey-q-1",
+        value: [0]
+      });
+
+      // NEXT should trigger submit since q-2 is hidden (no more visible questions)
+      actor.send({ type: "NEXT" });
+
+      await vi.waitFor(() => {
+        const snapshot = actor.getSnapshot();
+        return snapshot.value === "submitting" || snapshot.value === "complete";
+      });
+
+      expect(utils.submitAnswers).toHaveBeenCalled();
+    });
+
+    it("should skip section if all questions are hidden", async () => {
+      const sectionsWithHiddenSection: SurveyQuestionsYamlFile[] = [
+        {
+          title: "Profile",
+          label: "profile",
+          position: 1,
+          questions: [
+            {
+              label: "Are you a developer?",
+              choices: ["Yes", "No"],
+              multiple: false,
+              required: true
+            }
+          ]
+        },
+        {
+          title: "Developer Questions",
+          label: "dev",
+          position: 2,
+          questions: [
+            {
+              label: "What's your role?",
+              choices: ["Frontend", "Backend"],
+              multiple: false,
+              required: false,
+              showIf: { question: "profile-q-0", equals: 0 }
+            },
+            {
+              label: "Years of experience?",
+              choices: ["0-2", "3+"],
+              multiple: false,
+              required: false,
+              showIf: { question: "profile-q-0", equals: 0 }
+            }
+          ]
+        },
+        {
+          title: "Final",
+          label: "final",
+          position: 3,
+          questions: [
+            {
+              label: "Any feedback?",
+              choices: ["Yes", "No"],
+              multiple: false,
+              required: false
+            }
+          ]
+        }
+      ];
+
+      const actor = createActor(surveyMachine, {
+        input: { sections: sectionsWithHiddenSection }
+      });
+      actor.start();
+
+      vi.spyOn(utils, "submitAnswers").mockResolvedValue({
+        data: undefined,
+        error: undefined
+      });
+
+      // Answer "No" - this hides all questions in dev section
+      actor.send({
+        type: "ANSWER_CHANGE",
+        questionId: "profile-q-0",
+        value: 1
+      });
+      actor.send({ type: "NEXT" });
+
+      // Should submit first section
+      await vi.waitFor(() => {
+        return actor.getSnapshot().value === "submitting";
+      });
+
+      await vi.runAllTimersAsync();
+
+      // Should skip dev section and go to final section
+      await vi.waitFor(() => {
+        const snapshot = actor.getSnapshot();
+        return (
+          snapshot.value === "answering" &&
+          snapshot.context.currentSectionIdx === 2
+        );
+      });
+
+      const snapshot = actor.getSnapshot();
+      expect(snapshot.context.currentSectionIdx).toBe(2); // Skipped section 1
+      expect(snapshot.context.currentQuestionIdx).toBe(0);
+    });
+
+    it("should handle section showIf condition hiding entire section", () => {
+      const actor = createActor(surveyMachine, {
+        input: { sections: conditionalSections }
+      });
+      actor.start();
+
+      // Answer "No" - employment section should be hidden
+      actor.send({
+        type: "ANSWER_CHANGE",
+        questionId: "basic-q-0",
+        value: 1
+      });
+
+      const snapshot = actor.getSnapshot();
+      expect(snapshot.context.visibleSectionIndices).toEqual([0]);
+      expect(snapshot.context.visibleSectionIndices).not.toContain(1);
     });
   });
 });

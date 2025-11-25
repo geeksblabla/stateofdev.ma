@@ -2,6 +2,7 @@ import { createActorContext } from "@xstate/react";
 import { useEffect, type ReactNode } from "react";
 import { surveyMachine, type SurveyContext } from "./survey-machine";
 import { createSurveyInspector } from "./survey-inspector";
+import type { SurveyQuestionsYamlFile } from "@/lib/validators/survey-schema";
 
 const STORAGE_KEY = "survey-state";
 const STORAGE_VERSION = 1;
@@ -78,7 +79,10 @@ export const SurveyProvider = ({ sections, children }: SurveyProviderProps) => {
           sections,
           persisted: persisted || undefined
         },
-        inspect: import.meta.env.DEV ? createSurveyInspector() : undefined
+        inspect:
+          import.meta.env.DEV && import.meta.env.MODE !== "test"
+            ? createSurveyInspector()
+            : undefined
       }}
     >
       <PersistenceHandler />

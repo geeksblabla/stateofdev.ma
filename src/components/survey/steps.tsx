@@ -1,3 +1,6 @@
+import { useMemo } from "react";
+import { SurveyMachineContext } from "./survey-context";
+
 type StepProps = {
   label: string;
   selectedIndex: number;
@@ -90,31 +93,49 @@ const Step = ({
   );
 };
 
-type StepsProps = {
-  selectedIndex: number;
-  sections: string[];
-  onStepClick?: (index: number) => void;
-};
+export const Steps = () => {
+  const actorRef = SurveyMachineContext.useActorRef();
+  const context = SurveyMachineContext.useSelector((state) => state.context);
+  const visibleSections = useMemo(
+    () =>
+      context.visibleSectionIndices.map((idx) => ({
+        label: context.sections[idx].label,
+        originalIdx: idx
+      })),
+    [context.sections, context.visibleSectionIndices]
+  );
 
-export const Steps = ({
-  selectedIndex = 0,
-  sections,
-  onStepClick
-}: StepsProps) => {
+  const sectionsLabels = useMemo(
+    () => visibleSections.map((s) => s.label),
+    [visibleSections]
+  );
+
+  const currentVisibleSectionIdx = useMemo(
+    () => context.visibleSectionIndices.indexOf(context.currentSectionIdx),
+    [context.visibleSectionIndices, context.currentSectionIdx]
+  );
+
+  const handleStepClick = (visibleIdx: number) => {
+    const originalIdx = visibleSections[visibleIdx]?.originalIdx;
+    if (originalIdx !== undefined) {
+      actorRef.send({ type: "GO_TO_SECTION", sectionIdx: originalIdx });
+    }
+  };
+
   return (
     <div
       id="steps"
       className="mx-auto mt-4 md:mb-20 mb-10 flex w-full flex-wrap items-center justify-center space-x-4 md:px-10  px-0 py-2 pt-6"
     >
-      {sections.map((section, index) => {
+      {sectionsLabels.map((section, index) => {
         return (
           <Step
             key={`section-${index}`}
             label={section}
             index={index}
-            selectedIndex={selectedIndex}
-            totalSections={sections.length}
-            onClick={onStepClick}
+            selectedIndex={currentVisibleSectionIdx}
+            totalSections={sectionsLabels.length}
+            onClick={handleStepClick}
           />
         );
       })}

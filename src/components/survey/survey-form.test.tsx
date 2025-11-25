@@ -5,6 +5,7 @@ import { SurveyForm } from "./survey-form";
 import { SurveyProvider } from "./survey-context";
 import * as utils from "./utils";
 import { ERRORS } from "./survey-machine";
+import type { SurveyQuestionsYamlFile } from "@/lib/validators/survey-schema";
 
 // Mock utils module to prevent jsdom navigation errors
 vi.mock("./utils", async () => {
