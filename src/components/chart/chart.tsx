@@ -1,11 +1,11 @@
+import type { Year } from "./data";
+import type { FinalResult } from "./utils";
 import React from "react";
 import { BarChart } from "./bar-chart";
-import { PieChart } from "./pie-chart";
-import { type FinalResult } from "./utils";
 import { ChartActions } from "./chart-actions";
-import type { Year } from "./data";
+import { PieChart } from "./pie-chart";
 
-type ChartProps = {
+interface ChartProps {
   results: FinalResult | null;
   sortByTotal?: boolean;
   title?: boolean;
@@ -13,7 +13,7 @@ type ChartProps = {
   pie?: boolean;
   year?: Year;
   showEmptyOptions?: boolean;
-};
+}
 
 export const Chart: React.FC<ChartProps> = ({
   results,
@@ -24,7 +24,8 @@ export const Chart: React.FC<ChartProps> = ({
   year,
   showEmptyOptions = true
 }) => {
-  if (!results) return null;
+  if (!results)
+    return null;
 
   const ChartComponent = pie ? PieChart : BarChart;
 
@@ -42,7 +43,9 @@ export const Chart: React.FC<ChartProps> = ({
         {results?.otherOptions.length > 0 && (
           <details className="mt-4">
             <summary className="text-sm font-semibold">
-              Others ({results?.otherOptions.length})
+              Others (
+              {results?.otherOptions.length}
+              )
               <span className="text-xs text-muted-foreground">
                 submitted by participants
               </span>

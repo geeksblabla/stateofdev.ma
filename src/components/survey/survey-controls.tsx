@@ -1,13 +1,14 @@
-import { SurveyMachineContext } from "./survey-context";
 import { hasPrevVisibleQuestion } from "@/lib/conditions";
+import { SurveyMachineContext } from "./survey-context";
 
-type ErrorMessageProps = {
+interface ErrorMessageProps {
   error: string | null;
   onClose: () => void;
-};
+}
 
-export const ErrorMessage = ({ error, onClose }: ErrorMessageProps) => {
-  if (!error) return null;
+export function ErrorMessage({ error, onClose }: ErrorMessageProps) {
+  if (!error)
+    return null;
   return (
     <div
       role="alert"
@@ -29,6 +30,7 @@ export const ErrorMessage = ({ error, onClose }: ErrorMessageProps) => {
         </svg>
         <span className="text-sm font-semibold flex-1">{error}</span>
         <button
+          type="button"
           onClick={onClose}
           className="absolute top-1/2 -translate-y-1/2 right-3 w-6 h-6 flex items-center justify-center hover:bg-destructive-foreground/20 rounded transition-colors"
           aria-label="Close error"
@@ -51,43 +53,45 @@ export const ErrorMessage = ({ error, onClose }: ErrorMessageProps) => {
       </div>
     </div>
   );
-};
+}
 
-type BackButtonProps = {
+interface BackButtonProps {
   onClick: () => void;
-};
+}
 
-export const BackButton = ({ onClick }: BackButtonProps) => (
-  <div
-    onClick={onClick}
-    data-testid="back-button"
-    className="group flex w-full cursor-pointer items-center justify-center bg-transparent pr-6 py-2 text-muted-foreground hover:text-foreground transition"
-  >
-    <svg
-      className="flex-0 ml-4 h-7 w-7 transition-all group-hover:-translate-x-1 rotate-180"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth="3"
+export function BackButton({ onClick }: BackButtonProps) {
+  return (
+    <div
+      onClick={onClick}
+      data-testid="back-button"
+      className="group flex w-full cursor-pointer items-center justify-center bg-transparent pr-6 py-2 text-muted-foreground hover:text-foreground transition"
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M14 5l7 7m0 0l-7 7m7-7H3"
-      />
-    </svg>
-    <span className="group flex w-full items-center justify-center rounded py-1 text-center font-medium">
-      Back
-    </span>
-  </div>
-);
+      <svg
+        className="flex-0 ml-4 h-7 w-7 transition-all group-hover:-translate-x-1 rotate-180"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth="3"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M14 5l7 7m0 0l-7 7m7-7H3"
+        />
+      </svg>
+      <span className="group flex w-full items-center justify-center rounded py-1 text-center font-medium">
+        Back
+      </span>
+    </div>
+  );
+}
 
-export const SurveyActions = () => {
+export function SurveyActions() {
   const actorRef = SurveyMachineContext.useActorRef();
 
-  const context = SurveyMachineContext.useSelector((state) => state.context);
-  const isSubmitting = SurveyMachineContext.useSelector((state) =>
+  const context = SurveyMachineContext.useSelector(state => state.context);
+  const isSubmitting = SurveyMachineContext.useSelector(state =>
     state.matches("submitting")
   );
 
@@ -95,19 +99,19 @@ export const SurveyActions = () => {
   const currentQuestion = currentSection?.questions[context.currentQuestionIdx];
 
   const isRequired = !!currentQuestion?.required;
-  const canGoBack =
-    context.visibleSectionIndices.indexOf(context.currentSectionIdx) > 0 ||
-    hasPrevVisibleQuestion(
-      currentSection.questions,
-      context.currentQuestionIdx,
-      context.answers
-    );
+  const canGoBack
+    = context.visibleSectionIndices.indexOf(context.currentSectionIdx) > 0
+      || hasPrevVisibleQuestion(
+        currentSection.questions,
+        context.currentQuestionIdx,
+        context.answers
+      );
 
   const questionId = `${currentSection.label}-q-${context.currentQuestionIdx}`;
 
   const handleNext = () => {
     const currentAnswer = context.answers[questionId];
-    if (currentAnswer === undefined && currentQuestion.multiple) {
+    if (currentAnswer == null && currentQuestion.multiple) {
       actorRef.send({
         type: "ANSWER_CHANGE",
         questionId,
@@ -161,4 +165,4 @@ export const SurveyActions = () => {
       </div>
     </div>
   );
-};
+}

@@ -54,14 +54,14 @@
 </style>
 
 <script is:inline>
-  (function initThemeToggle() {
-    document.querySelectorAll(".theme-toggle").forEach(function (button) {
-      button.addEventListener("click", function () {
-        var isDark = document.documentElement.classList.contains("dark");
-        var newTheme = isDark ? "light" : "dark";
-        document.documentElement.classList.toggle("dark", newTheme === "dark");
-        localStorage.setItem("theme", newTheme);
-      });
+(function initThemeToggle() {
+  document.querySelectorAll(".theme-toggle").forEach((button) => {
+    button.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.contains("dark");
+      const newTheme = isDark ? "light" : "dark";
+      document.documentElement.classList.toggle("dark", newTheme === "dark");
+      localStorage.setItem("theme", newTheme);
     });
-  })();
+  });
+})();
 </script>

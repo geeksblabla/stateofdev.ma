@@ -1,8 +1,8 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { createActor } from "xstate";
-import { surveyMachine, ERRORS } from "./survey-machine";
-import * as utils from "./utils";
 import type { SurveyQuestionsYamlFile } from "@/lib/validators/survey-schema";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { createActor } from "xstate";
+import { ERRORS, surveyMachine } from "./survey-machine";
+import * as utils from "./utils";
 
 // Mock submitAnswers
 vi.mock("./utils", () => ({
@@ -89,7 +89,7 @@ const mockSections: SurveyQuestionsYamlFile[] = [
   }
 ];
 
-describe("Survey State Machine", () => {
+describe("survey State Machine", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     localStorageMock.clear();
@@ -100,7 +100,7 @@ describe("Survey State Machine", () => {
     vi.useRealTimers();
   });
 
-  describe("Initial State & Context", () => {
+  describe("initial State & Context", () => {
     it("should start in answering state with initial context", () => {
       const actor = createActor(surveyMachine, {
         input: { sections: mockSections }
@@ -141,7 +141,7 @@ describe("Survey State Machine", () => {
     });
   });
 
-  describe("Answer Updates (ANSWER_CHANGE)", () => {
+  describe("answer Updates (ANSWER_CHANGE)", () => {
     it("should update context with single choice answer", () => {
       const actor = createActor(surveyMachine, {
         input: { sections: mockSections }
@@ -213,7 +213,7 @@ describe("Survey State Machine", () => {
     });
   });
 
-  describe("Forward Navigation (NEXT)", () => {
+  describe("forward Navigation (NEXT)", () => {
     it("should show error when required question is empty", () => {
       const actor = createActor(surveyMachine, {
         input: { sections: mockSections }
@@ -302,7 +302,7 @@ describe("Survey State Machine", () => {
     });
   });
 
-  describe("Skip Navigation (SKIP)", () => {
+  describe("skip Navigation (SKIP)", () => {
     it("should skip non-required question without validation", () => {
       const actor = createActor(surveyMachine, {
         input: { sections: mockSections }
@@ -358,7 +358,7 @@ describe("Survey State Machine", () => {
     });
   });
 
-  describe("Backward Navigation (BACK)", () => {
+  describe("backward Navigation (BACK)", () => {
     it("should decrement question within section", () => {
       const actor = createActor(surveyMachine, {
         input: { sections: mockSections }
@@ -430,7 +430,7 @@ describe("Survey State Machine", () => {
     });
   });
 
-  describe("Section Submission", () => {
+  describe("section Submission", () => {
     it("should transition to next section on successful submission", async () => {
       const actor = createActor(surveyMachine, {
         input: { sections: mockSections }
@@ -460,8 +460,8 @@ describe("Survey State Machine", () => {
         () => {
           const snapshot = actor.getSnapshot();
           return (
-            snapshot.context.currentSectionIdx === 1 &&
-            snapshot.value === "answering"
+            snapshot.context.currentSectionIdx === 1
+            && snapshot.value === "answering"
           );
         },
         { timeout: 1000 }
@@ -501,8 +501,8 @@ describe("Survey State Machine", () => {
       await vi.waitFor(() => {
         const snapshot = actor.getSnapshot();
         return (
-          snapshot.context.currentSectionIdx === 1 &&
-          snapshot.value === "answering"
+          snapshot.context.currentSectionIdx === 1
+          && snapshot.value === "answering"
         );
       });
 
@@ -565,8 +565,8 @@ describe("Survey State Machine", () => {
         () => {
           const snapshot = actor.getSnapshot();
           return (
-            snapshot.context.error === ERRORS.submission &&
-            snapshot.value === "answering"
+            snapshot.context.error === ERRORS.submission
+            && snapshot.value === "answering"
           );
         },
         { timeout: 1000 }
@@ -620,7 +620,7 @@ describe("Survey State Machine", () => {
           "profile-q-0": 1,
           "profile-q-1": [0, 3],
           "profile-q-1-others": "Custom language"
-        })
+        }) as Record<string, number | number[] | null | string>
       });
     });
 
@@ -661,7 +661,7 @@ describe("Survey State Machine", () => {
     });
   });
 
-  describe("Error Auto-Clear", () => {
+  describe("error Auto-Clear", () => {
     it("should auto-clear required error after 3000ms", async () => {
       const actor = createActor(surveyMachine, {
         input: { sections: mockSections }
@@ -718,7 +718,7 @@ describe("Survey State Machine", () => {
     });
   });
 
-  describe("Direct Navigation", () => {
+  describe("direct Navigation", () => {
     it("should jump to specific section with GO_TO_SECTION", () => {
       const actor = createActor(surveyMachine, {
         input: { sections: mockSections }
@@ -748,7 +748,7 @@ describe("Survey State Machine", () => {
     });
   });
 
-  describe("Edge Cases", () => {
+  describe("edge Cases", () => {
     it("should handle single question section", () => {
       const singleQuestionSections: SurveyQuestionsYamlFile[] = [
         {
@@ -841,7 +841,7 @@ describe("Survey State Machine", () => {
       actor.send({
         type: "ANSWER_CHANGE",
         questionId: "profile-q-1",
-        value: false as any
+        value: []
       });
       actor.send({ type: "NEXT" });
       actor.send({ type: "NEXT" });
@@ -855,7 +855,7 @@ describe("Survey State Machine", () => {
     });
   });
 
-  describe("CLEAR_ERROR Event", () => {
+  describe("cLEAR_ERROR Event", () => {
     it("should manually clear error with CLEAR_ERROR event", () => {
       const actor = createActor(surveyMachine, {
         input: { sections: mockSections }
@@ -874,7 +874,7 @@ describe("Survey State Machine", () => {
     });
   });
 
-  describe("Conditional Visibility (showIf)", () => {
+  describe("conditional Visibility (showIf)", () => {
     const conditionalSections: SurveyQuestionsYamlFile[] = [
       {
         title: "Basic Info",
@@ -1125,8 +1125,8 @@ describe("Survey State Machine", () => {
       await vi.waitFor(() => {
         const snapshot = actor.getSnapshot();
         return (
-          snapshot.value === "answering" &&
-          snapshot.context.currentSectionIdx === 2
+          snapshot.value === "answering"
+          && snapshot.context.currentSectionIdx === 2
         );
       });
 

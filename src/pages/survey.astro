@@ -1,9 +1,10 @@
 ---
-export const prerender = false;
-import BaseLayout from "@/components/layout.astro";
-import { getActiveApp } from "@/lib/firebase/server";
 import { getAuth } from "firebase-admin/auth";
+import BaseLayout from "@/components/layout.astro";
 import SurveyForm from "@/components/survey/index.astro";
+import { getActiveApp } from "@/lib/firebase/server";
+
+export const prerender = false;
 
 const auth = getAuth(getActiveApp());
 

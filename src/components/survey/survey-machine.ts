@@ -1,39 +1,39 @@
-import { setup, assign, fromPromise } from "xstate";
-import { submitAnswers, goToThanksPage } from "./utils";
+import type { SurveyQuestionsYamlFile } from "@/lib/validators/survey-schema";
+import { assign, fromPromise, setup } from "xstate";
 import {
-  getVisibleSectionIndices,
-  getNextVisibleQuestionIndex,
-  getPrevVisibleQuestionIndex,
   getFirstVisibleQuestionIndex,
   getLastVisibleQuestionIndex,
+  getNextVisibleQuestionIndex,
+  getPrevVisibleQuestionIndex,
+  getVisibleSectionIndices,
   hasNextVisibleQuestion,
   hasPrevVisibleQuestion
 } from "@/lib/conditions";
-import type { SurveyQuestionsYamlFile } from "@/lib/validators/survey-schema";
+import { goToThanksPage, submitAnswers } from "./utils";
 
 const ERROR_TIMEOUT_MS = 3000;
 
-export type SurveyContext = {
+export interface SurveyContext {
   sections: SurveyQuestionsYamlFile[];
   currentSectionIdx: number;
   currentQuestionIdx: number;
   answers: Record<string, number | number[] | null | string>;
   error: string | null;
   visibleSectionIndices: number[];
-};
+}
 
-export type SurveyEvents =
-  | { type: "NEXT" }
-  | { type: "BACK" }
-  | { type: "SKIP" }
-  | {
+export type SurveyEvents
+  = | { type: "NEXT" }
+    | { type: "BACK" }
+    | { type: "SKIP" }
+    | {
       type: "ANSWER_CHANGE";
       questionId: string;
       value: number | number[] | null | string;
     }
-  | { type: "GO_TO_SECTION"; sectionIdx: number }
-  | { type: "GO_TO_QUESTION"; sectionIdx: number; questionIdx: number }
-  | { type: "CLEAR_ERROR" };
+    | { type: "GO_TO_SECTION"; sectionIdx: number }
+    | { type: "GO_TO_QUESTION"; sectionIdx: number; questionIdx: number }
+    | { type: "CLEAR_ERROR" };
 
 export const ERRORS = {
   none: null,
@@ -42,37 +42,39 @@ export const ERRORS = {
 } as const;
 
 // Normalize answers for backend submission
-const normalizeAnswers = (
-  answers: Record<string, number | number[] | null | string | boolean>
-) => {
-  const convertedAnswers: Record<string, number | number[] | null | string> =
-    {};
+function normalizeAnswers(answers: Record<string, number | number[] | null | string | boolean>) {
+  const convertedAnswers: Record<string, number | number[] | null | string>
+    = {};
 
   for (const [key, value] of Object.entries(answers)) {
     if (key.endsWith("others")) {
-      convertedAnswers[key] =
-        typeof value === "string" ? value.slice(0, 200) : "";
-    } else if (value === null) {
+      convertedAnswers[key]
+        = typeof value === "string" ? value.slice(0, 200) : "";
+    }
+    else if (value === null) {
       convertedAnswers[key] = null;
-    } else if (Array.isArray(value)) {
+    }
+    else if (Array.isArray(value)) {
       convertedAnswers[key] = value;
-    } else if (typeof value === "boolean") {
+    }
+    else if (typeof value === "boolean") {
       // skipping a question with multiple choices will return boolean
       convertedAnswers[key] = [];
-    } else {
+    }
+    else {
       convertedAnswers[key] = value;
     }
   }
 
   return convertedAnswers;
-};
+}
 
 // Scroll to section on mobile
-const scrollToSection = (selector: string) => {
+function scrollToSection(selector: string) {
   if (document.body.clientWidth < 600) {
     document.querySelector(selector)?.scrollIntoView?.({ behavior: "smooth" });
   }
-};
+}
 
 export const surveyMachine = setup({
   types: {
@@ -87,15 +89,12 @@ export const surveyMachine = setup({
     isRequiredAndEmpty: ({ context }) => {
       const section = context.sections[context.currentSectionIdx];
       const question = section.questions[context.currentQuestionIdx];
-      if (!question.required) return false;
+      if (!question.required)
+        return false;
 
       const questionId = `${section.label}-q-${context.currentQuestionIdx}`;
       const value = context.answers[questionId];
-      return (
-        value === null ||
-        value === undefined ||
-        (Array.isArray(value) && value.length === 0)
-      );
+      return value == null || (Array.isArray(value) && !value.length);
     },
     isLastQuestion: ({ context }) => {
       const section = context.sections[context.currentSectionIdx];
@@ -115,14 +114,14 @@ export const surveyMachine = setup({
     },
     isLastSection: ({ context }) => {
       return (
-        context.currentSectionIdx ===
-        context.visibleSectionIndices[context.visibleSectionIndices.length - 1]
+        context.currentSectionIdx
+        === context.visibleSectionIndices[context.visibleSectionIndices.length - 1]
       );
     },
     isNotLastSection: ({ context }) => {
       return (
-        context.currentSectionIdx !==
-        context.visibleSectionIndices[context.visibleSectionIndices.length - 1]
+        context.currentSectionIdx
+        !== context.visibleSectionIndices[context.visibleSectionIndices.length - 1]
       );
     },
     canGoBackInSection: ({ context }) => {
@@ -153,7 +152,8 @@ export const surveyMachine = setup({
     }),
     updateAnswer: assign({
       answers: ({ context, event }) => {
-        if (event.type !== "ANSWER_CHANGE") return context.answers;
+        if (event.type !== "ANSWER_CHANGE")
+          return context.answers;
         return {
           ...context.answers,
           [event.questionId]: event.value
@@ -195,7 +195,7 @@ export const surveyMachine = setup({
           context.currentSectionIdx
         );
         const nextSectionIdx = context.visibleSectionIndices[currentIdx + 1];
-        if (nextSectionIdx !== undefined) {
+        if (nextSectionIdx != null) {
           const nextSection = context.sections[nextSectionIdx];
           const firstVisible = getFirstVisibleQuestionIndex(
             nextSection.questions,
@@ -219,7 +219,7 @@ export const surveyMachine = setup({
           context.currentSectionIdx
         );
         const prevSectionIdx = context.visibleSectionIndices[currentIdx - 1];
-        if (prevSectionIdx !== undefined) {
+        if (prevSectionIdx != null) {
           const prevSection = context.sections[prevSectionIdx];
           const lastVisible = getLastVisibleQuestionIndex(
             prevSection.questions,
@@ -245,18 +245,21 @@ export const surveyMachine = setup({
     goToThanksPage,
     goToSection: assign({
       currentSectionIdx: ({ event }) => {
-        if (event.type !== "GO_TO_SECTION") return 0;
+        if (event.type !== "GO_TO_SECTION")
+          return 0;
         return event.sectionIdx;
       },
       currentQuestionIdx: 0
     }),
     goToQuestion: assign({
       currentSectionIdx: ({ event }) => {
-        if (event.type !== "GO_TO_QUESTION") return 0;
+        if (event.type !== "GO_TO_QUESTION")
+          return 0;
         return event.sectionIdx;
       },
       currentQuestionIdx: ({ event }) => {
-        if (event.type !== "GO_TO_QUESTION") return 0;
+        if (event.type !== "GO_TO_QUESTION")
+          return 0;
         return event.questionIdx;
       }
     })
@@ -301,7 +304,7 @@ export const surveyMachine = setup({
       entry: ["computeVisibleIndices"],
       after: {
         ERROR_TIMEOUT: {
-          guard: ({ context }) => context.error !== null,
+          guard: ({ context }) => !!context.error,
           actions: ["clearError"]
         }
       },

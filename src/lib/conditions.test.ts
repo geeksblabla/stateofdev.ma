@@ -1,16 +1,16 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import type { Answers, QuestionList, SectionList } from "./conditions";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
+
   evaluateCondition,
-  getVisibleSectionIndices,
-  getNextVisibleQuestionIndex,
-  getPrevVisibleQuestionIndex,
   getFirstVisibleQuestionIndex,
   getLastVisibleQuestionIndex,
+  getNextVisibleQuestionIndex,
+  getPrevVisibleQuestionIndex,
+  getVisibleSectionIndices,
   hasNextVisibleQuestion,
-  hasPrevVisibleQuestion,
-  type Answers,
-  type QuestionList,
-  type SectionList
+  hasPrevVisibleQuestion
+
 } from "./conditions";
 
 describe("evaluateCondition", () => {

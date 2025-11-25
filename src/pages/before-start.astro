@@ -67,66 +67,68 @@ export const prerender = true;
 <script
   src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
   defer
-  is:inline></script>
+  is:inline
+></script>
 
 <script>
-  import { actions } from "astro:actions";
-  import { signInAnonymously } from "firebase/auth";
-  import { auth } from "@/lib/firebase/client";
+import { actions } from "astro:actions";
+import { signInAnonymously } from "firebase/auth";
+import { auth } from "@/lib/firebase/client";
 
-  const startButton = document.querySelector(
-    "#start-survey-btn"
-  ) as HTMLButtonElement;
-  const errorAlert = document.querySelector("#error-alert") as HTMLDivElement;
-  const errorMessage = document.querySelector(
-    "#error-message"
-  ) as HTMLParagraphElement;
-  let captchaToken = "";
-  // @ts-ignore
-  window.onloadTurnstileCallback = function () {
-    // @ts-ignore
-    window.turnstile.render("#captcha-container", {
-      sitekey: "0x4AAAAAAAkS5usDr1HhE7Gm",
-      callback: function (token: string) {
-        console.log(`Challenge Success ${token}`);
-        captchaToken = token;
-      },
-      theme: "auto"
-    });
-  };
-
-  const handleError = () => {
-    errorMessage.innerHTML = `Session initialization failed. Please try again or <a href="https://github.com/geeksblabla/stateofdev.ma/issues" target="_blank" class="underline font-semibold">report the issue</a>.`;
-    errorAlert.classList.remove("hidden");
-    startButton.innerHTML = "Start Survey";
-    startButton.disabled = false;
-    startButton.classList.remove("opacity-50", "cursor-not-allowed");
-  };
-
-  startButton.addEventListener("click", async () => {
-    startButton.disabled = true;
-    startButton.innerHTML = "Initializing Session...";
-    startButton.classList.add("opacity-50", "cursor-not-allowed");
-    errorAlert.classList.add("hidden");
-
-    try {
-      const userCredential = await signInAnonymously(auth);
-      const token = await userCredential.user.getIdToken();
-
-      const { error } = await actions.initSession({
-        idToken: token,
-        captchaToken: captchaToken
-      });
-      if (error) {
-        console.error("Error initializing session:", error);
-        handleError();
-        return;
-      }
-
-      // Redirect to the survey page or reload as needed
-      window.location.href = "/survey";
-    } catch (error) {
-      handleError();
-    }
+const startButton = document.querySelector(
+  "#start-survey-btn"
+) as HTMLButtonElement;
+const errorAlert = document.querySelector("#error-alert") as HTMLDivElement;
+const errorMessage = document.querySelector(
+  "#error-message"
+) as HTMLParagraphElement;
+let captchaToken = "";
+// @ts-expect-error - Turnstile callback is added to window dynamically
+window.onloadTurnstileCallback = function () {
+  // @ts-expect-error - Turnstile is added to window dynamically by Cloudflare script
+  window.turnstile.render("#captcha-container", {
+    sitekey: "0x4AAAAAAAkS5usDr1HhE7Gm",
+    callback(token: string) {
+      console.warn(`Challenge Success ${token}`);
+      captchaToken = token;
+    },
+    theme: "auto"
   });
+};
+
+function handleError() {
+  errorMessage.innerHTML = `Session initialization failed. Please try again or <a href="https://github.com/geeksblabla/stateofdev.ma/issues" target="_blank" class="underline font-semibold">report the issue</a>.`;
+  errorAlert.classList.remove("hidden");
+  startButton.innerHTML = "Start Survey";
+  startButton.disabled = false;
+  startButton.classList.remove("opacity-50", "cursor-not-allowed");
+}
+
+startButton.addEventListener("click", async () => {
+  startButton.disabled = true;
+  startButton.innerHTML = "Initializing Session...";
+  startButton.classList.add("opacity-50", "cursor-not-allowed");
+  errorAlert.classList.add("hidden");
+
+  try {
+    const userCredential = await signInAnonymously(auth);
+    const token = await userCredential.user.getIdToken();
+
+    const { error } = await actions.initSession({
+      idToken: token,
+      captchaToken
+    });
+    if (error) {
+      console.error("Error initializing session:", error);
+      handleError();
+      return;
+    }
+
+    // Redirect to the survey page or reload as needed
+    window.location.href = "/survey";
+  }
+  catch {
+    handleError();
+  }
+});
 </script>

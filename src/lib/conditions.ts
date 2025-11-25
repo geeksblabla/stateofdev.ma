@@ -19,7 +19,8 @@ export function evaluateCondition(
   answers: Answers
 ): boolean {
   // No condition means always show
-  if (!condition) return true;
+  if (!condition)
+    return true;
 
   const {
     question,
@@ -41,24 +42,24 @@ export function evaluateCondition(
   const answerValue = answers[question];
 
   // Handle unanswered questions - hide if condition depends on it
-  if (answerValue === null || answerValue === undefined) {
+  if (answerValue == null) {
     return false;
   }
 
   // Evaluate operators
-  if (equals !== undefined) {
+  if (equals != null) {
     return evaluateEquals(answerValue, equals);
   }
 
-  if (notEquals !== undefined) {
+  if (notEquals != null) {
     return evaluateNotEquals(answerValue, notEquals);
   }
 
-  if (inArray !== undefined) {
+  if (inArray) {
     return evaluateIn(answerValue, inArray);
   }
 
-  if (notInArray !== undefined) {
+  if (notInArray) {
     return evaluateNotIn(answerValue, notInArray);
   }
 
@@ -134,15 +135,16 @@ export function getVisibleSectionIndices(
   return sections
     .map((section, index) => {
       const sectionVisible = evaluateCondition(section.showIf, answers);
-      if (!sectionVisible) return { index, visible: false };
+      if (!sectionVisible)
+        return { index, visible: false };
 
       // Check if section has at least one visible question
       const questions = section.questions;
-      if (!questions || questions.length === 0) {
+      if (!questions?.length) {
         return { index, visible: false };
       }
 
-      const hasVisibleQuestion = questions.some((q) =>
+      const hasVisibleQuestion = questions.some(q =>
         evaluateCondition(q.showIf, answers)
       );
 
@@ -151,8 +153,8 @@ export function getVisibleSectionIndices(
         visible: hasVisibleQuestion
       };
     })
-    .filter((item) => item.visible)
-    .map((item) => item.index);
+    .filter(item => item.visible)
+    .map(item => item.index);
 }
 
 /**
@@ -233,7 +235,7 @@ export function hasNextVisibleQuestion(
   fromIdx: number,
   answers: Answers
 ): boolean {
-  return getNextVisibleQuestionIndex(questions, fromIdx, answers) !== undefined;
+  return getNextVisibleQuestionIndex(questions, fromIdx, answers) != null;
 }
 
 /**
@@ -248,5 +250,5 @@ export function hasPrevVisibleQuestion(
   fromIdx: number,
   answers: Answers
 ): boolean {
-  return getPrevVisibleQuestionIndex(questions, fromIdx, answers) !== undefined;
+  return getPrevVisibleQuestionIndex(questions, fromIdx, answers) != null;
 }

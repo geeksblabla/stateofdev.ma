@@ -1,15 +1,15 @@
-import { Steps } from "./steps";
 import { Question } from "./question";
+import { Steps } from "./steps";
 import { SurveyMachineContext } from "./survey-context";
 import { SurveyActions } from "./survey-controls";
 
 const QUESTION_CONTAINER_MIN_HEIGHT = "300px";
 
-export const SurveyForm = () => {
+export function SurveyForm() {
   const actorRef = SurveyMachineContext.useActorRef();
 
   // Select all needed state
-  const context = SurveyMachineContext.useSelector((state) => state.context);
+  const context = SurveyMachineContext.useSelector(state => state.context);
 
   // Compute derived state
   const currentSection = context.sections[context.currentSectionIdx];
@@ -59,10 +59,10 @@ export const SurveyForm = () => {
               sectionId={currentSection.label}
               value={
                 context.answers[questionId] as
-                  | number
-                  | number[]
-                  | null
-                  | undefined
+                | number
+                | number[]
+                | null
+                | undefined
               }
               othersValue={
                 context.answers[`${questionId}-others`] as string | undefined
@@ -77,4 +77,4 @@ export const SurveyForm = () => {
       </main>
     </div>
   );
-};
+}

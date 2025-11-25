@@ -47,7 +47,7 @@ export const SurveyQuestionSchema = z.object({
       MAX_LABEL_LENGTH,
       `Question label must not exceed ${MAX_LABEL_LENGTH} characters`
     )
-    .refine((val) => val.trim().length > 0, {
+    .refine(val => val.trim().length > 0, {
       message: "Question label cannot be empty or whitespace only"
     }),
 
@@ -65,7 +65,7 @@ export const SurveyQuestionSchema = z.object({
           MAX_CHOICE_LENGTH,
           `Choice must not exceed ${MAX_CHOICE_LENGTH} characters`
         )
-        .refine((val) => val.trim().length > 0, {
+        .refine(val => val.trim().length > 0, {
           message: "Choice cannot be whitespace only"
         })
     )
@@ -73,7 +73,7 @@ export const SurveyQuestionSchema = z.object({
     .refine(
       (choices) => {
         // Check for duplicate choices (case-insensitive)
-        const lowerCaseChoices = choices.map((c) => c.toLowerCase().trim());
+        const lowerCaseChoices = choices.map(c => c.toLowerCase().trim());
         const uniqueChoices = new Set(lowerCaseChoices);
         return uniqueChoices.size === lowerCaseChoices.length;
       },
@@ -92,7 +92,7 @@ export const SurveyFileSchema = z
       .string()
       .trim()
       .min(MIN_TITLE_LENGTH, "Section title must be at least 2 characters")
-      .refine((val) => val.trim().length > 0, {
+      .refine(val => val.trim().length > 0, {
         message: "Section title cannot be empty or whitespace only"
       }),
 
@@ -104,7 +104,7 @@ export const SurveyFileSchema = z
         /^[a-z0-9]+(-[a-z0-9]+)*$/,
         "Section label must be in kebab-case format (lowercase, hyphens only)"
       )
-      .refine((val) => val.trim().length > 0, {
+      .refine(val => val.trim().length > 0, {
         message: "Section label cannot be empty or whitespace only"
       }),
 
@@ -120,7 +120,7 @@ export const SurveyFileSchema = z
       .refine(
         (questions) => {
           // Check for duplicate question labels within the section
-          const labels = questions.map((q) => q.label.toLowerCase().trim());
+          const labels = questions.map(q => q.label.toLowerCase().trim());
           const uniqueLabels = new Set(labels);
           return uniqueLabels.size === labels.length;
         },
@@ -135,7 +135,7 @@ export const SurveyFileSchema = z
     (data) => {
       // Validate that at least one question is required
       const requiredCount = data.questions.filter(
-        (q) => q.required !== false
+        q => q.required !== false
       ).length;
       return requiredCount > 0;
     },
@@ -166,7 +166,8 @@ export function validateSurveyFile(
 ): SurveyQuestionsYamlFile {
   try {
     return SurveyFileSchema.parse(data);
-  } catch (error) {
+  }
+  catch (error) {
     if (error instanceof z.ZodError) {
       const fileContext = filename ? ` in file "${filename}"` : "";
 
@@ -175,8 +176,8 @@ export function validateSurveyFile(
       const formattedErrors = issues
         .map((err) => {
           // Handle empty path array correctly
-          const path =
-            err.path && Array.isArray(err.path) && err.path.length > 0
+          const path
+            = err.path && Array.isArray(err.path) && err.path.length > 0
               ? err.path.join(".")
               : "root";
           return `  - ${path}: ${err.message}`;
@@ -189,10 +190,10 @@ export function validateSurveyFile(
       );
     }
     // Re-throw non-Zod errors with preserved context
-    const message = `Unexpected error during validation${filename ? ` in file "${filename}"` : ""}`;
+    const message = `Unexpected error during validation${(filename != null) ? ` in file "${filename}"` : ""}`;
     throw new Error(
-      message +
-        (error instanceof Error ? `: ${error.message}` : `: ${String(error)}`),
+      message
+      + (error instanceof Error ? `: ${error.message}` : `: ${String(error)}`),
       { cause: error instanceof Error ? error : undefined }
     );
   }

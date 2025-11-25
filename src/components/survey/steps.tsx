@@ -1,23 +1,23 @@
 import { useMemo } from "react";
 import { SurveyMachineContext } from "./survey-context";
 
-type StepProps = {
+interface StepProps {
   label: string;
   selectedIndex: number;
   index: number;
   totalSections: number;
   onClick?: (index: number) => void;
-};
+}
 
-const Step = ({
+function Step({
   label,
   selectedIndex,
   index,
   totalSections,
   onClick
-}: StepProps) => {
-  const color =
-    index > selectedIndex ? "text-muted-foreground" : "text-primary";
+}: StepProps) {
+  const color
+    = index > selectedIndex ? "text-muted-foreground" : "text-primary";
   const isCompleted = index < selectedIndex;
   const isClickable = isCompleted && onClick;
 
@@ -46,30 +46,32 @@ const Step = ({
         role={isClickable ? "button" : undefined}
         aria-label={isClickable ? `Go to ${label} section` : undefined}
       >
-        {index + 1 > selectedIndex ? (
-          <span
-            className={`md:h-8 md:w-8 h-6 w-6 items-center justify-center bg-card ${color} border-2 border-input inline-flex`}
-          >
-            {index + 1}
-          </span>
-        ) : (
-          <span className="md:h-8 md:w-8 h-6 w-6 items-center justify-center bg-primary text-primary-foreground border-2 border-primary inline-flex">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="md:h-6 md:w-6 h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          </span>
-        )}
+        {index + 1 > selectedIndex
+          ? (
+              <span
+                className={`md:h-8 md:w-8 h-6 w-6 items-center justify-center bg-card ${color} border-2 border-input inline-flex`}
+              >
+                {index + 1}
+              </span>
+            )
+          : (
+              <span className="md:h-8 md:w-8 h-6 w-6 items-center justify-center bg-primary text-primary-foreground border-2 border-primary inline-flex">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="md:h-6 md:w-6 h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </span>
+            )}
 
         <span
           className={`${
@@ -79,26 +81,29 @@ const Step = ({
           {label}
         </span>
       </div>
-      {index < totalSections - 1 &&
-        (index + 1 > selectedIndex ? (
-          <span
-            className={`${
-              index === selectedIndex ? "inline" : "hidden md:inline"
-            }  h-0 md:w-10 w-8 border-t-2 border-dashed border-input md:inline`}
-          ></span>
-        ) : (
-          <span className="hidden h-0.5 md:w-10 w-8 bg-primary md:inline"></span>
-        ))}
+      {index < totalSections - 1
+        && (index + 1 > selectedIndex
+          ? (
+              <span
+                className={`${
+                  index === selectedIndex ? "inline" : "hidden md:inline"
+                }  h-0 md:w-10 w-8 border-t-2 border-dashed border-input md:inline`}
+              >
+              </span>
+            )
+          : (
+              <span className="hidden h-0.5 md:w-10 w-8 bg-primary md:inline"></span>
+            ))}
     </>
   );
-};
+}
 
-export const Steps = () => {
+export function Steps() {
   const actorRef = SurveyMachineContext.useActorRef();
-  const context = SurveyMachineContext.useSelector((state) => state.context);
+  const context = SurveyMachineContext.useSelector(state => state.context);
   const visibleSections = useMemo(
     () =>
-      context.visibleSectionIndices.map((idx) => ({
+      context.visibleSectionIndices.map(idx => ({
         label: context.sections[idx].label,
         originalIdx: idx
       })),
@@ -106,7 +111,7 @@ export const Steps = () => {
   );
 
   const sectionsLabels = useMemo(
-    () => visibleSections.map((s) => s.label),
+    () => visibleSections.map(s => s.label),
     [visibleSections]
   );
 
@@ -117,7 +122,7 @@ export const Steps = () => {
 
   const handleStepClick = (visibleIdx: number) => {
     const originalIdx = visibleSections[visibleIdx]?.originalIdx;
-    if (originalIdx !== undefined) {
+    if (originalIdx != null) {
       actorRef.send({ type: "GO_TO_SECTION", sectionIdx: originalIdx });
     }
   };
@@ -130,7 +135,7 @@ export const Steps = () => {
       {sectionsLabels.map((section, index) => {
         return (
           <Step
-            key={`section-${index}`}
+            key={section}
             label={section}
             index={index}
             selectedIndex={currentVisibleSectionIdx}
@@ -141,4 +146,4 @@ export const Steps = () => {
       })}
     </div>
   );
-};
+}

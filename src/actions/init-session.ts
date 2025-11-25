@@ -1,9 +1,9 @@
-import { getActiveApp } from "@/lib/firebase/server";
-import { defineAction, ActionError } from "astro:actions";
-import { getAuth } from "firebase-admin/auth";
+import { ActionError, defineAction } from "astro:actions";
 import { z } from "astro:schema";
-import { initUserSubmission } from "@/lib/firebase/database";
+import { getAuth } from "firebase-admin/auth";
 import { isCaptchaValid } from "@/lib/captcha";
+import { initUserSubmission } from "@/lib/firebase/database";
+import { getActiveApp } from "@/lib/firebase/server";
 // Add this import
 export const initSession = defineAction({
   accept: "json",
@@ -29,7 +29,7 @@ export const initSession = defineAction({
 
     /* Validate captcha */
     if (captchaToken && import.meta.env.CAPTCHA_ENABLED === "true") {
-      console.log("checking captcha ");
+      console.warn("checking captcha ");
 
       const isValid = await isCaptchaValid(captchaToken);
       if (!isValid) {
@@ -51,8 +51,9 @@ export const initSession = defineAction({
         });
       }
       await initUserSubmission(user);
-      console.log("user session created");
-    } catch (error) {
+      console.warn("user session created");
+    }
+    catch (error) {
       console.error("Error verifying id token:", error);
       throw new ActionError({
         code: "UNAUTHORIZED",
@@ -74,7 +75,8 @@ export const initSession = defineAction({
       return {
         success: true
       };
-    } catch (error) {
+    }
+    catch (error) {
       console.error("Error signing in:", error);
       throw new ActionError({
         code: "UNAUTHORIZED",

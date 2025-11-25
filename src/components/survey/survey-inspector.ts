@@ -1,6 +1,6 @@
 import type { InspectionEvent } from "xstate";
 
-export const createSurveyInspector = () => {
+export function createSurveyInspector() {
   return (inspectionEvent: InspectionEvent) => {
     const timestamp = new Date().toISOString().split("T")[1].split(".")[0];
 
@@ -10,7 +10,7 @@ export const createSurveyInspector = () => {
       if (event.type.startsWith("xstate.")) {
         return;
       }
-      console.log(`📨 [${timestamp}] Event:`, event);
+      console.warn(`📨 [${timestamp}] Event:`, event);
     }
 
     if (inspectionEvent.type === "@xstate.snapshot") {
@@ -21,20 +21,25 @@ export const createSurveyInspector = () => {
         return;
       }
 
+      // eslint-disable-next-line no-console
       console.group(`🔄 [${timestamp}] State Transition`);
-      console.log("Triggered by:", event);
-      console.log("State:", (snapshot as any).value);
-      console.log("Context:", (snapshot as any).context);
+      console.warn("Triggered by:", event);
+      // eslint-disable-next-line ts/no-unsafe-member-access
+      console.warn("State:", (snapshot as any).value);
+      // eslint-disable-next-line ts/no-unsafe-member-access
+      console.warn("Context:", (snapshot as any).context);
+      // eslint-disable-next-line no-console
       console.groupEnd();
     }
 
     if (inspectionEvent.type === "@xstate.actor") {
       const { actorRef } = inspectionEvent;
-      console.log(
+      console.warn(
         `🎭 [${timestamp}] Actor:`,
+        // eslint-disable-next-line ts/no-unsafe-member-access
         (actorRef as any).id,
         inspectionEvent
       );
     }
   };
-};
+}

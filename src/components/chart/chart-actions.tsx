@@ -1,14 +1,14 @@
 import type { Year } from "./data";
-import { ShareButtons } from "./share-buttons";
 import type { FinalResult } from "./utils";
 import queryString from "query-string";
+import { ShareButtons } from "./share-buttons";
 
-type ShareButtonsProps = {
+interface ShareButtonsProps {
   results: FinalResult;
   year?: Year;
-};
+}
 
-export const ChartActions = ({ results, year }: ShareButtonsProps) => {
+export function ChartActions({ results, year }: ShareButtonsProps) {
   const shareUrl = `/#${new URLSearchParams({
     question_id: results.id
   }).toString()}`;
@@ -19,21 +19,21 @@ export const ChartActions = ({ results, year }: ShareButtonsProps) => {
       <PlaygroundButton results={results} year={year} />
     </div>
   );
-};
+}
 
-const PlaygroundButton = ({
+function PlaygroundButton({
   results,
   year
 }: {
   results: FinalResult;
   year?: Year;
-}) => {
+}) {
   return (
     <a
       href={`/playground#${queryString.stringify(
         {
           question_id: results.id,
-          year: year ? year : ""
+          year: year || ""
         },
         { skipEmptyString: true }
       )}`}
@@ -60,4 +60,4 @@ const PlaygroundButton = ({
       </span>
     </a>
   );
-};
+}

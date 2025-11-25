@@ -5,6 +5,7 @@
 
 declare module "@/survey/*.yml" {
   import type { SurveyQuestionsYamlFile } from "@/lib/validators/survey-schema";
+
   const value: SurveyQuestionsYamlFile;
   export default value;
 }

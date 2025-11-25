@@ -1,19 +1,20 @@
 // this is a simple script to convert the questions from yaml to json so it can be used in the playground and chart component
+/* eslint-disable node/prefer-global/process */
 
-import yaml from "js-yaml";
-import fs from "fs";
-import path from "path";
-import {
-  validateAllSurveyFiles,
-  formatValidationReport
-} from "../src/lib/validators/survey-validator";
 import type {
   SurveyQuestion,
   SurveyQuestionsYamlFile
 } from "../src/lib/validators/survey-schema";
+import fs from "node:fs";
+import path from "node:path";
+import yaml from "js-yaml";
 import { SURVEY_DIR } from "../src/lib/validators/constants";
+import {
+  formatValidationReport,
+  validateAllSurveyFiles
+} from "../src/lib/validators/survey-validator";
 
-const generate = async () => {
+async function generate() {
   console.log("Starting survey questions generation...\n");
 
   // Phase 1: Validate all survey files
@@ -39,7 +40,7 @@ const generate = async () => {
   try {
     const files = fs
       .readdirSync(SURVEY_DIR)
-      .filter((file) => file.endsWith(".yml"))
+      .filter(file => file.endsWith(".yml"))
       .sort();
 
     const data: SurveyQuestionsYamlFile[] = [];
@@ -68,20 +69,25 @@ const generate = async () => {
     console.log(
       `\n✓ Successfully generated ${Object.keys(QS).length} questions`
     );
-  } catch (e) {
+  }
+  catch (e) {
     console.error("\n❌ Error generating questions:", e);
     process.exit(1);
   }
-};
+}
 
 function writeToFile(filename: string, data: Record<string, SurveyQuestion>) {
   fs.writeFile(filename, JSON.stringify(data), (err: any) => {
     if (err) {
       console.log(err);
-    } else {
-      console.log(`[SUCCESS] ${new Date()} JSON saved to ${filename}`);
+    }
+    else {
+      console.log(`[SUCCESS] ${new Date().toISOString()} JSON saved to ${filename}`);
     }
   });
 }
 
-generate();
+generate().catch((error) => {
+  console.error("Error generating questions:", error);
+  process.exit(1);
+});

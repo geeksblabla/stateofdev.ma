@@ -1,11 +1,11 @@
-import { render, screen, waitFor, cleanup } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import { SurveyForm } from "./survey-form";
-import { SurveyProvider } from "./survey-context";
-import * as utils from "./utils";
-import { ERRORS } from "./survey-machine";
 import type { SurveyQuestionsYamlFile } from "@/lib/validators/survey-schema";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { SurveyProvider } from "./survey-context";
+import { SurveyForm } from "./survey-form";
+import { ERRORS } from "./survey-machine";
+import * as utils from "./utils";
 
 // Mock utils module to prevent jsdom navigation errors
 vi.mock("./utils", async () => {
@@ -13,7 +13,7 @@ vi.mock("./utils", async () => {
   return {
     ...actual,
     goToThanksPage: vi.fn(),
-    submitAnswers: vi.fn(() =>
+    submitAnswers: vi.fn(async () =>
       Promise.resolve({ data: undefined, error: undefined })
     )
   };
@@ -43,7 +43,7 @@ function setup(questions: SurveyQuestionsYamlFile[]) {
 const submitAnswersSpy = vi.mocked(utils.submitAnswers);
 const goToThanksPageSpy = vi.mocked(utils.goToThanksPage);
 
-const longText = Array(300).fill("a").join("");
+const longText = Array.from({ length: 300 }).fill("a").join("");
 
 // Mock questions based on the SurveyQuestionsYamlFile type
 const mockQuestions: SurveyQuestionsYamlFile[] = [
@@ -105,8 +105,8 @@ beforeEach(() => {
   cleanup();
 });
 
-describe("SurveyForm", () => {
-  describe("Rendering", () => {
+describe("surveyForm", () => {
+  describe("rendering", () => {
     it("renders the first section of questions correctly", () => {
       setup(mockQuestions);
       expect(screen.getByText(/Question 1.1/i)).toBeInTheDocument();
@@ -117,7 +117,7 @@ describe("SurveyForm", () => {
     });
   });
 
-  describe("Navigation", () => {
+  describe("navigation", () => {
     it("should navigate to the next question without error", async () => {
       const { user } = setup(mockQuestions);
       expect(screen.getByTestId("profile-q-0")).toBeInTheDocument();
@@ -151,7 +151,7 @@ describe("SurveyForm", () => {
     });
   });
 
-  describe("Error Handling", () => {
+  describe("error Handling", () => {
     it("should show error message when required question is not answered", async () => {
       const { user } = setup(mockQuestions);
 
@@ -180,7 +180,7 @@ describe("SurveyForm", () => {
       vi.useRealTimers();
     });
 
-    it("Show error message when submitAnswers fails", async () => {
+    it("show error message when submitAnswers fails", async () => {
       const { user } = setup(mockQuestions);
       // Mock submitAnswers to return an error
       submitAnswersSpy.mockResolvedValue({
@@ -212,8 +212,8 @@ describe("SurveyForm", () => {
     });
   });
 
-  describe("Answer Submission", () => {
-    it("In the last question, it should call submitAnswers with correct answers", async () => {
+  describe("answer Submission", () => {
+    it("in the last question, it should call submitAnswers with correct answers", async () => {
       // mock submitAnswers to return a successful response
       submitAnswersSpy.mockResolvedValue({
         data: undefined,
@@ -269,7 +269,7 @@ describe("SurveyForm", () => {
       });
     });
 
-    it("Should redirect to thanks page when all questions are answered", async () => {
+    it("should redirect to thanks page when all questions are answered", async () => {
       const { user } = setup(mockQuestions);
       await user.click(screen.getByTestId("profile-q-0-0"));
       await user.click(screen.getByTestId("next-button"));
@@ -300,7 +300,7 @@ describe("SurveyForm", () => {
     });
   });
 
-  describe("Other Input Handling", () => {
+  describe("other Input Handling", () => {
     it("should show the text area when the user selects the 'other' option for a single choice question", async () => {
       const { user } = setup(mockQuestions);
 
@@ -328,7 +328,7 @@ describe("SurveyForm", () => {
         expect(screen.getByTestId("profile-q-2-others")).toBeInTheDocument();
       });
       // click multiple choice again
-      user.click(screen.getByTestId("profile-q-2-4"));
+      await user.click(screen.getByTestId("profile-q-2-4"));
       await waitFor(() => {
         expect(screen.getByTestId("profile-q-2-others")).toBeInTheDocument();
       });
@@ -378,8 +378,8 @@ describe("SurveyForm", () => {
     });
   });
 
-  describe("Multiple Choice Handling", () => {
-    it("Allow multiple answers for questions with multiple: true", async () => {
+  describe("multiple Choice Handling", () => {
+    it("allow multiple answers for questions with multiple: true", async () => {
       const { user } = setup(mockQuestions);
       expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
       await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
@@ -398,7 +398,7 @@ describe("SurveyForm", () => {
       });
     });
 
-    it("Toggling selection of an option for questions should work as expected with multiple: true", async () => {
+    it("toggling selection of an option for questions should work as expected with multiple: true", async () => {
       const { user } = setup(mockQuestions);
       expect(screen.queryByTestId("back-button")).not.toBeInTheDocument();
       await user.click(screen.getByTestId("profile-q-0-0")); // select the first option of the first question
@@ -438,7 +438,7 @@ describe("SurveyForm", () => {
     });
   });
 
-  describe("Skipping Questions", () => {
+  describe("skipping Questions", () => {
     it("on skip question, the selected answer should be null", async () => {
       const { user } = setup(mockQuestions);
       await user.click(screen.getByTestId("profile-q-0-0"));

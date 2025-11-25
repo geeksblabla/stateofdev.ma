@@ -16,7 +16,8 @@ import finImage from "@/assets/fin.jpeg";
     <span
       id="closeModal"
       class="absolute top-2 right-2 text-muted-foreground cursor-pointer hover:text-foreground transition-colors"
-      aria-label="Close modal">&times;</span
+      aria-label="Close modal"
+    >&times;</span
     >
     <Image
       src={finImage}
@@ -33,43 +34,43 @@ import finImage from "@/assets/fin.jpeg";
 </div>
 
 <script>
-  const body = document.body;
-  let popupShownCount = 0;
-  const maxPopupShows = 2;
+const body = document.body;
+let popupShownCount = 0;
+const maxPopupShows = 2;
 
-  const modal = document.getElementById("exitModal") as HTMLDivElement;
-  const closeModal = document.getElementById("closeModal") as HTMLSpanElement;
-  const stayButton = document.getElementById("stayButton") as HTMLButtonElement;
+const modal = document.getElementById("exitModal") as HTMLDivElement;
+const closeModal = document.getElementById("closeModal") as HTMLSpanElement;
+const stayButton = document.getElementById("stayButton") as HTMLButtonElement;
 
-  const closeModalHandler = () => {
+function closeModalHandler() {
+  modal.classList.add("hidden");
+}
+
+function outsideClickHandler(event: MouseEvent) {
+  if (event.target === modal) {
     modal.classList.add("hidden");
-  };
-
-  const outsideClickHandler = (event: MouseEvent) => {
-    if (event.target === modal) {
-      modal.classList.add("hidden");
-    }
-  };
-
-  const mouseLeaveHandler = () => {
-    if (popupShownCount < maxPopupShows) {
-      modal.classList.remove("hidden");
-      popupShownCount++;
-    }
-  };
-
-  if (body && modal && closeModal && stayButton) {
-    body.addEventListener("mouseleave", mouseLeaveHandler);
-    closeModal.addEventListener("click", closeModalHandler);
-    stayButton.addEventListener("click", closeModalHandler);
-    window.addEventListener("click", outsideClickHandler);
-
-    // Cleanup on page unload
-    window.addEventListener("beforeunload", () => {
-      body.removeEventListener("mouseleave", mouseLeaveHandler);
-      closeModal.removeEventListener("click", closeModalHandler);
-      stayButton.removeEventListener("click", closeModalHandler);
-      window.removeEventListener("click", outsideClickHandler);
-    });
   }
+}
+
+function mouseLeaveHandler() {
+  if (popupShownCount < maxPopupShows) {
+    modal.classList.remove("hidden");
+    popupShownCount++;
+  }
+}
+
+if (body && modal && closeModal && stayButton) {
+  body.addEventListener("mouseleave", mouseLeaveHandler);
+  closeModal.addEventListener("click", closeModalHandler);
+  stayButton.addEventListener("click", closeModalHandler);
+  window.addEventListener("click", outsideClickHandler);
+
+  // Cleanup on page unload
+  window.addEventListener("beforeunload", () => {
+    body.removeEventListener("mouseleave", mouseLeaveHandler);
+    closeModal.removeEventListener("click", closeModalHandler);
+    stayButton.removeEventListener("click", closeModalHandler);
+    window.removeEventListener("click", outsideClickHandler);
+  });
+}
 </script>

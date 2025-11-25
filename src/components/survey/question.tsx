@@ -1,18 +1,16 @@
+import type { ChangeEvent } from "react";
+import type { SurveyQuestion } from "@/lib/validators/survey-schema";
 import {
   useCallback,
-  useEffect,
-  useMemo,
-  useState,
-  type ChangeEvent
+  useMemo
 } from "react";
 import { Choice } from "./choice";
-import type { SurveyQuestion } from "@/lib/validators/survey-schema";
 
 const GRID_LAYOUT_THRESHOLD = 10;
 
 type AnswerValue = number | number[] | null;
 
-type QuestionProps = {
+interface QuestionProps {
   question: SurveyQuestion;
   index: number;
   sectionId: string;
@@ -21,9 +19,9 @@ type QuestionProps = {
   othersValue: string | undefined;
   onAnswerChange: (value: AnswerValue) => void;
   onOthersChange: (value: string) => void;
-};
+}
 
-export const Question = ({
+export function Question({
   question,
   index,
   sectionId,
@@ -32,10 +30,9 @@ export const Question = ({
   othersValue,
   onAnswerChange,
   onOthersChange
-}: QuestionProps) => {
+}: QuestionProps) {
   const { label, choices } = question;
   const fitContent = choices.length > GRID_LAYOUT_THRESHOLD;
-  const [showOtherInput, setShowOtherInput] = useState(false);
 
   // Check if "other" options exist
   const othersIndices = useMemo(
@@ -47,32 +44,20 @@ export const Question = ({
     [choices]
   );
 
-  // Update showOtherInput based on current value
-  const updateShowOtherInput = useCallback(
-    (currentValue: AnswerValue | undefined) => {
-      if (othersIndices.length === 0) {
-        setShowOtherInput(false);
-        return;
-      }
+  // Derive showOtherInput from value instead of using useEffect
+  const showOtherInput = useMemo(() => {
+    if (othersIndices.length === 0) {
+      return false;
+    }
 
-      const valuesArray = Array.isArray(currentValue)
-        ? currentValue
-        : currentValue !== null && currentValue !== undefined
-          ? [currentValue as number]
-          : [];
+    const valuesArray = Array.isArray(value)
+      ? value
+      : value !== null && value !== undefined
+        ? [value]
+        : [];
 
-      const hasOtherSelected = othersIndices.some((idx) =>
-        valuesArray.includes(idx)
-      );
-      setShowOtherInput(hasOtherSelected);
-    },
-    [othersIndices]
-  );
-
-  // Update showOtherInput when value changes
-  useEffect(() => {
-    updateShowOtherInput(value);
-  }, [value, updateShowOtherInput]);
+    return othersIndices.some(idx => valuesArray.includes(idx));
+  }, [value, othersIndices]);
 
   const handleChoiceChange = useCallback(
     (choiceIndex: number, checked: boolean) => {
@@ -81,16 +66,15 @@ export const Question = ({
         const currentArray = Array.isArray(value) ? value : [];
         const newValue = checked
           ? [...currentArray, choiceIndex]
-          : currentArray.filter((v) => v !== choiceIndex);
+          : currentArray.filter(v => v !== choiceIndex);
         onAnswerChange(newValue);
-        updateShowOtherInput(newValue);
-      } else {
+      }
+      else {
         // Single choice: set value
         onAnswerChange(choiceIndex);
-        updateShowOtherInput(choiceIndex);
       }
     },
-    [question.multiple, value, onAnswerChange, updateShowOtherInput]
+    [question.multiple, value, onAnswerChange]
   );
 
   const handleOthersChange = useCallback(
@@ -123,7 +107,9 @@ export const Question = ({
     >
       <p className="mb-4 text-base font-medium">
         <label id={questionLabelId} className="block mb-2 ">
-          {`${index + 1}. ${label}`} <br />
+          {`${index + 1}. ${label}`}
+          {" "}
+          <br />
         </label>
 
         <span className="font-normal text-sm pl-2.5">
@@ -141,7 +127,7 @@ export const Question = ({
       >
         {choices.map((c, i) => (
           <Choice
-            key={`${sectionId}-q-${index}-${i}`}
+            key={`${sectionId}-q-${index}-${c}`}
             text={c}
             id={`${sectionId}-q-${index}-${i}`}
             name={`${sectionId}-q-${index}`}
@@ -166,4 +152,4 @@ export const Question = ({
       </div>
     </div>
   );
-};
+}

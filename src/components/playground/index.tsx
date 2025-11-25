@@ -1,17 +1,21 @@
+import type { QuestionMap } from "../chart/data";
+import type { FinalResult, QuestionCondition } from "../chart/utils";
+import type { ChartType } from "./chart-types";
+import type { PlaygroundFormData } from "./playground-form";
 import React, { useState } from "react";
 import { Chart } from "../chart/chart";
-import {
-  getQuestion,
-  type FinalResult,
-  type QuestionCondition
-} from "../chart/utils";
-import { getSurveyData, type Year, type QuestionMap } from "../chart/data";
-import {
-  PlaygroundForm,
-  type ChartType,
-  type PlaygroundFormData
-} from "./playground-form";
+import { getSurveyData } from "../chart/data";
 import { ShareButtons } from "../chart/share-buttons";
+import {
+
+  getQuestion
+
+} from "../chart/utils";
+import {
+
+  PlaygroundForm
+
+} from "./playground-form";
 
 export const SurveyPlayground: React.FC = () => {
   const [result, setResult] = useState<FinalResult | null>(null);
@@ -19,12 +23,12 @@ export const SurveyPlayground: React.FC = () => {
   const [chartType, setChartType] = useState<ChartType>("bar");
 
   const handleFormChange = React.useCallback((formData: PlaygroundFormData) => {
-    const { questions } = getSurveyData(formData.year as Year);
+    const { questions } = getSurveyData(formData.year);
     setQuestions(questions);
     if (formData.question_id) {
       const condition: QuestionCondition = formData.filters
-        .filter((f) => f.question_id && f.values.length > 0)
-        .map((f) => ({ question_id: f.question_id, values: f.values }));
+        .filter(f => f.question_id && f.values.length > 0)
+        .map(f => ({ question_id: f.question_id, values: f.values }));
       const result = getQuestion({
         id: formData.question_id,
         year: formData.year,
@@ -33,7 +37,8 @@ export const SurveyPlayground: React.FC = () => {
       });
       setResult(result);
       setChartType(formData.chart_type as ChartType);
-    } else {
+    }
+    else {
       setResult(null);
     }
   }, []);
@@ -45,32 +50,34 @@ export const SurveyPlayground: React.FC = () => {
           <PlaygroundForm questions={questions} onChange={handleFormChange} />
         </div>
         <div className="w-full md:w-1/2 ">
-          {result ? (
-            <div className="sticky top-6">
-              <Chart
-                results={result}
-                sortByTotal={false}
-                title={true}
-                isPlayground={true}
-                pie={chartType === "pie"}
-              />
-              <div className="flex justify-end items-center pt-4 pr-2">
-                <ShareActions />
-              </div>
-            </div>
-          ) : (
-            <div className="h-full flex items-center justify-center text-muted-foreground bg-card border-2 border-border p-6">
-              Select a question to generate a chart
-            </div>
-          )}
+          {result
+            ? (
+                <div className="sticky top-6">
+                  <Chart
+                    results={result}
+                    sortByTotal={false}
+                    title={true}
+                    isPlayground={true}
+                    pie={chartType === "pie"}
+                  />
+                  <div className="flex justify-end items-center pt-4 pr-2">
+                    <ShareActions />
+                  </div>
+                </div>
+              )
+            : (
+                <div className="h-full flex items-center justify-center text-muted-foreground bg-card border-2 border-border p-6">
+                  Select a question to generate a chart
+                </div>
+              )}
         </div>
       </div>
     </div>
   );
 };
 
-const ShareActions = () => {
+function ShareActions() {
   const shareUrl = window.location.href;
   const shareTitle = `Check out this report`;
   return <ShareButtons url={shareUrl} title={shareTitle} />;
-};
+}

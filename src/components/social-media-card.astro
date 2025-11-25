@@ -10,7 +10,6 @@ interface Props {
   };
 }
 const { post }: Props = Astro.props;
-console.log(post);
 
 const contentEncoded = encodeURIComponent(post.content);
 
@@ -32,7 +31,8 @@ const shareLinks = {
       <path
         fill-rule="evenodd"
         d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-        clip-rule="evenodd"></path>
+        clip-rule="evenodd"
+      ></path>
     </svg>
     <div>
       <p class="font-bold">{post.user?.name ?? "Anonymous"}</p>
@@ -43,8 +43,10 @@ const shareLinks = {
   </div>
   <div class="flex flex-col flex-1">
     <p class={`mb-4 ${post.rtl ? "text-right" : ""}`}>{post.content}</p>
-    <a href="https://stateofdev.ma" class="text-primary hover:underline"
-      >stateofdev.ma</a
+    <a
+      href="https://stateofdev.ma"
+      class="text-primary hover:underline"
+    >stateofdev.ma</a
     >
   </div>
   <div class="flex flex-row justify-end space-x-4 mt-4">
@@ -121,12 +123,11 @@ const shareLinks = {
         aria-hidden="true"
       >
         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-        ></path>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
       </svg>
       <span
         class="tooltip hidden absolute bottom-full left-1/2 transform -translate-x-1/2 bg-popover text-popover-foreground text-xs py-1 px-2 mb-2"
-        >Copied!</span
+      >Copied!</span
       >
     </button>
   </div>

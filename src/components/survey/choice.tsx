@@ -1,6 +1,6 @@
-import { type ChangeEvent } from "react";
+import type { ChangeEvent } from "react";
 
-type ChoiceProps = {
+interface ChoiceProps {
   text: string;
   id: string;
   index: number;
@@ -9,9 +9,9 @@ type ChoiceProps = {
   multiple: boolean;
   checked: boolean;
   onChange: (index: number, checked: boolean) => void;
-};
+}
 
-export const Choice = ({
+export function Choice({
   text,
   id,
   index,
@@ -19,7 +19,7 @@ export const Choice = ({
   multiple,
   checked,
   onChange
-}: ChoiceProps) => {
+}: ChoiceProps) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(index, e.target.checked);
   };
@@ -44,12 +44,14 @@ export const Choice = ({
           hover:border-primary/50
           transition-all duration-200"
         htmlFor={id}
-      ></label>
+      >
+      </label>
       <div
         className="absolute pointer-events-none left-4 h-5 w-5 border-2 border-input bg-muted
         peer-checked:border-primary peer-checked:bg-primary peer-checked:shadow-md peer-checked:shadow-primary/50
         transition-all duration-200"
-      ></div>
+      >
+      </div>
       <span
         className="pointer-events-none z-10 text-foreground
         peer-checked:font-medium
@@ -59,4 +61,4 @@ export const Choice = ({
       </span>
     </div>
   );
-};
+}

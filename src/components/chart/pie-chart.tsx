@@ -1,4 +1,6 @@
-import { getPercent, type FinalResult } from "./utils";
+import type { FinalResult } from "./utils";
+import { useMemo } from "react";
+import { getPercent } from "./utils";
 
 // Chart colors using CSS variables
 const colors = [
@@ -14,11 +16,11 @@ const colors = [
   "var(--chart-10)"
 ];
 
-type PieChartProps = {
+interface PieChartProps {
   results: FinalResult | null;
   sortByTotal?: boolean;
-};
-const PieSlice = ({
+}
+function PieSlice({
   result,
   total,
   startAngle,
@@ -30,7 +32,7 @@ const PieSlice = ({
   startAngle: number;
   endAngle: number;
   color: string;
-}) => {
+}) {
   const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
   const x1 = 50 + 50 * Math.cos((Math.PI * startAngle) / 180);
   const y1 = 50 + 50 * Math.sin((Math.PI * startAngle) / 180);
@@ -41,7 +43,7 @@ const PieSlice = ({
   const textX = 50 + 35 * Math.cos((Math.PI * midAngle) / 180);
   const textY = 50 + 35 * Math.sin((Math.PI * midAngle) / 180);
 
-  const percentage = parseFloat(getPercent(result.total, total));
+  const percentage = Number.parseFloat(getPercent(result.total, total));
 
   return (
     <g className="group">
@@ -60,42 +62,58 @@ const PieSlice = ({
           fontSize="8px"
           className="font-medium"
         >
-          {percentage}%
+          {percentage}
+          %
         </text>
       )}
       <title>{`${result.label}: ${result.total} (${percentage}%)`}</title>
     </g>
   );
-};
+}
 
-export const PieChart = ({ results, sortByTotal = true }: PieChartProps) => {
-  if (!results) return null;
+export function PieChart({ results, sortByTotal = true }: PieChartProps) {
+  const displayResults = useMemo(() => {
+    if (!results)
+      return [];
+    return sortByTotal
+      ? [...results.results].sort((a, b) => b.total - a.total)
+      : results.results;
+  }, [results, sortByTotal]);
 
-  const displayResults = sortByTotal
-    ? [...results.results].sort((a, b) => b.total - a.total)
-    : results.results;
+  const slicesWithAngles = useMemo(() => {
+    if (!results)
+      return [];
+    return displayResults.reduce<Array<{ result: FinalResult["results"][number]; index: number; startAngle: number; endAngle: number }>>((acc, result, index) => {
+      const sliceAngle = (result.total / results.total) * 360;
+      const previousEndAngle = acc.length > 0 ? acc[acc.length - 1].endAngle : 0;
+      const startAngle = previousEndAngle;
+      const endAngle = previousEndAngle + sliceAngle;
+      acc.push({
+        result,
+        index,
+        startAngle,
+        endAngle
+      });
+      return acc;
+    }, []);
+  }, [displayResults, results]);
 
-  let startAngle = 0;
+  if (!results)
+    return null;
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-center">
       <svg viewBox="0 0 100 100" className="w-64 h-64">
-        {displayResults.map((result, index) => {
-          const sliceAngle = (result.total / results.total) * 360;
-          const endAngle = startAngle + sliceAngle;
-          const slice = (
-            <PieSlice
-              key={result.choiceIndex}
-              result={result}
-              total={results.total}
-              startAngle={startAngle}
-              endAngle={endAngle}
-              color={colors[index % colors.length]}
-            />
-          );
-          startAngle = endAngle;
-          return slice;
-        })}
+        {slicesWithAngles.map(({ result, index, startAngle, endAngle }) => (
+          <PieSlice
+            key={result.choiceIndex}
+            result={result}
+            total={results.total}
+            startAngle={startAngle}
+            endAngle={endAngle}
+            color={colors[index % colors.length]}
+          />
+        ))}
       </svg>
       <div className="mt-6 md:mt-0 md:ml-8">
         {displayResults.map((result, index) => (
@@ -103,14 +121,20 @@ export const PieChart = ({ results, sortByTotal = true }: PieChartProps) => {
             <div
               className="w-4 h-4 mr-2"
               style={{ backgroundColor: colors[index % colors.length] }}
-            ></div>
+            >
+            </div>
             <span className="text-sm">
-              {result.label}: {result.total} (
-              {getPercent(result.total, results.total)}%)
+              {result.label}
+              :
+              {result.total}
+              {" "}
+              (
+              {getPercent(result.total, results.total)}
+              %)
             </span>
           </div>
         ))}
       </div>
     </div>
   );
-};
+}

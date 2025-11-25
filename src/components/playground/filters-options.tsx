@@ -1,61 +1,67 @@
-import React from "react";
-import { Controller, useFieldArray, type Control } from "react-hook-form";
-
-import type { PlaygroundFormData } from "./playground-form";
-import Select from "react-select";
+import type { Control } from "react-hook-form";
+import type { StylesConfig } from "react-select";
 import type { QuestionMap } from "../chart/data";
 
+import type { PlaygroundFormData } from "./playground-form";
+import React from "react";
+import { Controller, useFieldArray } from "react-hook-form";
+import Select from "react-select";
+
+interface OptionType { label: string; value: string }
+
 // Custom styles for React Select to match flat design
-const customSelectStyles = {
-  control: (base: any, state: any) => ({
+const customSelectStyles: StylesConfig<OptionType> = {
+  control: (base, state) => ({
     ...base,
-    borderRadius: 0,
-    borderWidth: "2px",
-    borderColor: state.isFocused ? "var(--primary)" : "var(--input)",
-    backgroundColor: "var(--card)",
-    boxShadow: "none",
+    "borderRadius": 0,
+    "borderWidth": "2px",
+    "borderColor": state.isFocused ? "var(--primary)" : "var(--input)",
+    "backgroundColor": "var(--card)",
+    "boxShadow": "none",
     "&:hover": {
       borderColor: "var(--primary)"
     }
   }),
-  menu: (base: any) => ({
+  menu: base => ({
     ...base,
     borderRadius: 0,
     borderWidth: "2px",
     borderColor: "var(--border)",
     backgroundColor: "var(--card)"
   }),
-  option: (base: any, state: any) => ({
+  option: (base, state) => ({
     ...base,
-    borderRadius: 0,
-    backgroundColor: state.isSelected
+    "borderRadius": 0,
+    "backgroundColor": state.isSelected
       ? "var(--primary)"
       : state.isFocused
         ? "var(--muted)"
         : "var(--card)",
-    color: state.isSelected ? "var(--primary-foreground)" : "var(--foreground)",
+    "color": state.isSelected ? "var(--primary-foreground)" : "var(--foreground)",
     "&:hover": {
       backgroundColor: state.isSelected ? "var(--primary)" : "var(--muted)"
     }
   })
 };
 
-type FilterOptionsProps = {
+interface FilterOptionsProps {
   options: { label: string; value: string }[];
   questions: QuestionMap;
   control: Control<PlaygroundFormData>;
-};
+}
 
 export const FilterOptions = React.memo(
   ({ questions, options, control }: FilterOptionsProps) => {
-    // not sure why but we need this to make sure filters in the url works as expected
-    if (Object.keys(questions).length === 0) {
-      return null;
-    }
+    // Hooks must be called unconditionally - move before early return
     const { fields, append, remove } = useFieldArray({
       control,
       name: "filters"
     });
+
+    // not sure why but we need this to make sure filters in the url works as expected
+    if (Object.keys(questions).length === 0) {
+      return null;
+    }
 
     return (
       <div>
@@ -73,11 +79,12 @@ export const FilterOptions = React.memo(
                     <div className="flex items-center space-x-2">
                       <Select
                         value={options.find(
-                          (q) => q.value === value.question_id
+                          q => q.value === value.question_id
                         )}
-                        onChange={(val) =>
-                          onChange({ question_id: val?.value, values: [] })
-                        }
+                        onChange={(val) => {
+                          const questionId = val && "value" in val ? String(val.value) : "";
+                          onChange({ question_id: questionId, values: [] });
+                        }}
                         inputId="question-select"
                         options={options}
                         placeholder="Select a question"
@@ -110,7 +117,7 @@ export const FilterOptions = React.memo(
                         {questions[value.question_id].choices.map(
                           (choice, choiceIndex) => (
                             <label
-                              key={choiceIndex}
+                              key={`${value.question_id}-${choice}`}
                               className="flex items-center space-x-2"
                             >
                               <input

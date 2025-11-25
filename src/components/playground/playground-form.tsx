@@ -1,71 +1,68 @@
-import React, { useEffect } from "react";
-import { useForm, Controller } from "react-hook-form";
-import Select from "react-select";
-
-import { type Year, type QuestionMap } from "../chart/data";
-import { FilterOptions } from "./filters-options";
+import type { StylesConfig } from "react-select";
+import type { QuestionMap, Year } from "../chart/data";
 import queryString from "query-string";
+
+import React, { useEffect } from "react";
+import { Controller, useForm } from "react-hook-form";
+import Select from "react-select";
+import { chartTypes } from "./chart-types";
+import { FilterOptions } from "./filters-options";
 
 const isBrowser = typeof window !== "undefined";
 
-export type ChartType = "bar" | "pie";
-
-export const chartTypes: { label: string; value: ChartType }[] = [
-  { label: "Bar Chart", value: "bar" },
-  { label: "Pie Chart", value: "pie" }
-];
-
 const years = ["2020", "2021", "2022", "2023", "2024"];
 
+interface OptionType { label: string; value: string }
+
 // Custom styles for React Select to match flat design
-const customSelectStyles = {
-  control: (base: any, state: any) => ({
+const customSelectStyles: StylesConfig<OptionType> = {
+  control: (base, state) => ({
     ...base,
-    borderRadius: 0,
-    borderWidth: "2px",
-    borderColor: state.isFocused ? "var(--primary)" : "var(--input)",
-    backgroundColor: "var(--card)",
-    boxShadow: "none",
+    "borderRadius": 0,
+    "borderWidth": "2px",
+    "borderColor": state.isFocused ? "var(--primary)" : "var(--input)",
+    "backgroundColor": "var(--card)",
+    "boxShadow": "none",
     "&:hover": {
       borderColor: "var(--primary)"
     }
   }),
-  menu: (base: any) => ({
+  menu: base => ({
     ...base,
     borderRadius: 0,
     borderWidth: "2px",
     borderColor: "var(--border)",
     backgroundColor: "var(--card)"
   }),
-  option: (base: any, state: any) => ({
+  option: (base, state) => ({
     ...base,
-    borderRadius: 0,
-    backgroundColor: state.isSelected
+    "borderRadius": 0,
+    "backgroundColor": state.isSelected
       ? "var(--primary)"
       : state.isFocused
         ? "var(--muted)"
         : "var(--card)",
-    color: state.isSelected ? "var(--primary-foreground)" : "var(--foreground)",
+    "color": state.isSelected ? "var(--primary-foreground)" : "var(--foreground)",
     "&:hover": {
       backgroundColor: state.isSelected ? "var(--primary)" : "var(--muted)"
     }
   })
 };
 
-type Filter = {
+interface Filter {
   question_id: string;
   values: string[];
-};
+}
 
-export type PlaygroundFormData = {
+export interface PlaygroundFormData {
   year: Year;
   question_id: string;
   filters: Filter[];
   group_by: string;
   chart_type: string; // Add this line
-};
+}
 
-const getDefaultValues = (): PlaygroundFormData => {
+function getDefaultValues(): PlaygroundFormData {
   const {
     question_id = "profile-q-0",
     group_by = "",
@@ -83,18 +80,19 @@ const getDefaultValues = (): PlaygroundFormData => {
       };
   let filters: Filter[] = [];
   try {
-    filters = JSON.parse(c as unknown as string);
-  } catch (error) {
+    filters = JSON.parse(c as unknown as string) as Filter[];
+  }
+  catch {
     filters = [{ question_id: "", values: [] }];
   }
 
   return { question_id, filters, group_by, year, chart_type };
-};
+}
 
-type PlaygroundFormProps = {
+interface PlaygroundFormProps {
   questions: QuestionMap;
   onChange: (data: PlaygroundFormData) => void;
-};
+}
 
 export const PlaygroundForm = React.memo(
   ({ questions, onChange }: PlaygroundFormProps) => {
@@ -111,6 +109,7 @@ export const PlaygroundForm = React.memo(
       [questions]
     );
 
+    // eslint-disable-next-line react-hooks/incompatible-library
     const formData = watch();
     useEffect(() => {
       onChange(formData);
@@ -118,7 +117,7 @@ export const PlaygroundForm = React.memo(
 
     useEffect(() => {
       if (isBrowser) {
-        const filters = formData.filters.filter((f) => f.values.length > 0);
+        const filters = formData.filters.filter(f => f.values.length > 0);
         const search = {
           year: formData.year,
           question_id: formData.question_id,
@@ -153,7 +152,7 @@ export const PlaygroundForm = React.memo(
                     {...field}
                     className="w-full p-2 border-2 border-input bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
                   >
-                    {years.map((year) => (
+                    {years.map(year => (
                       <option key={year} value={year}>
                         {year}
                       </option>
@@ -178,7 +177,7 @@ export const PlaygroundForm = React.memo(
                     {...field}
                     className="w-full p-2 border-2 border-input bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
                   >
-                    {chartTypes.map((chartType) => (
+                    {chartTypes.map(chartType => (
                       <option key={chartType.value} value={chartType.value}>
                         {chartType.label}
                       </option>
@@ -204,9 +203,9 @@ export const PlaygroundForm = React.memo(
                 <Select
                   {...field}
                   value={questionOptions.find(
-                    (q) => q.value === formData.question_id
+                    q => q.value === formData.question_id
                   )}
-                  onChange={(val) => field.onChange(val?.value)}
+                  onChange={val => field.onChange((val as OptionType | null)?.value)}
                   inputId="question-select"
                   options={questionOptions}
                   placeholder="Select a question"
@@ -239,9 +238,9 @@ export const PlaygroundForm = React.memo(
                   isClearable
                   {...field}
                   value={questionOptions.find(
-                    (q) => q.value === formData.group_by
+                    q => q.value === formData.group_by
                   )}
-                  onChange={(val) => field.onChange(val?.value)}
+                  onChange={val => field.onChange((val as OptionType | null)?.value)}
                   inputId="group-by-select"
                   options={questionOptions}
                   placeholder="Select a question to group by"
