@@ -95,7 +95,36 @@ export function validateAllSurveyFiles(surveyDir: string): ValidationReport {
         }
       });
 
-      const allWarnings = [...filenameWarnings, ...otherWarnings];
+      // Check for question mark style issues (warning only)
+      const questionMarkWarnings: ValidationError[] = [];
+      validatedData.questions.forEach((question, index) => {
+        const questionMarks = (question.label.match(/\?/g) || []).length;
+
+        if (questionMarks > 1) {
+          questionMarkWarnings.push({
+            severity: ValidationSeverity.WARNING,
+            message: `Question ${index + 1} has multiple question marks`,
+            path: `questions[${index}].label`,
+            value: question.label
+          });
+        } else if (
+          questionMarks === 1 &&
+          !question.label.trim().endsWith("?")
+        ) {
+          questionMarkWarnings.push({
+            severity: ValidationSeverity.WARNING,
+            message: `Question ${index + 1} has question mark not at end`,
+            path: `questions[${index}].label`,
+            value: question.label
+          });
+        }
+      });
+
+      const allWarnings = [
+        ...filenameWarnings,
+        ...otherWarnings,
+        ...questionMarkWarnings
+      ];
       if (allWarnings.length > 0) {
         result.errors = allWarnings;
         // Don't mark as invalid for warnings

@@ -8,6 +8,36 @@ const MIN_TITLE_LENGTH = VALIDATION_THRESHOLDS.MIN_TITLE_LENGTH;
 const MAX_LABEL_LENGTH = VALIDATION_THRESHOLDS.MAX_LABEL_LENGTH;
 const MAX_CHOICE_LENGTH = VALIDATION_THRESHOLDS.MAX_CHOICE_LENGTH;
 
+// Schema for conditional visibility (showIf)
+export const ShowIfConditionSchema = z
+  .object({
+    question: z
+      .string()
+      .regex(
+        /^[a-z0-9-]+-q-\d+$/,
+        "Must be valid question ID format (e.g., 'profile-q-0')"
+      ),
+    equals: z.number().int().nonnegative().optional(),
+    notEquals: z.number().int().nonnegative().optional(),
+    in: z.array(z.number().int().nonnegative()).optional(),
+    notIn: z.array(z.number().int().nonnegative()).optional()
+  })
+  .refine(
+    (data) => {
+      const operators = [
+        data.equals,
+        data.notEquals,
+        data.in,
+        data.notIn
+      ].filter((op) => op !== undefined);
+      return operators.length === 1;
+    },
+    {
+      message:
+        "Exactly one operator (equals, notEquals, in, notIn) must be specified"
+    }
+  );
+
 export const SurveyQuestionSchema = z.object({
   label: z
     .string()
@@ -19,20 +49,7 @@ export const SurveyQuestionSchema = z.object({
     )
     .refine((val) => val.trim().length > 0, {
       message: "Question label cannot be empty or whitespace only"
-    })
-    .refine(
-      (val) => {
-        // Check for valid question mark usage: at most one, must be at the end
-        const questionMarks = (val.match(/\?/g) || []).length;
-        if (questionMarks === 0) return true;
-        if (questionMarks > 1) return false;
-        return val.trim().endsWith("?");
-      },
-      {
-        message:
-          "Question label should contain at most one question mark at the end"
-      }
-    ),
+    }),
 
   required: z.boolean().optional().default(true),
 
@@ -63,8 +80,10 @@ export const SurveyQuestionSchema = z.object({
       {
         message: "Duplicate choices detected (case-insensitive comparison)"
       }
-    )
+    ),
   // Note: Multiple "Other" variations are handled as warnings in cross-file validation
+
+  showIf: ShowIfConditionSchema.optional()
 });
 
 export const SurveyFileSchema = z
@@ -128,6 +147,7 @@ export const SurveyFileSchema = z
  * TypeScript types inferred from Zod schemas
  * These replace the types in custom-yaml.d.ts
  */
+export type ShowIfCondition = z.infer<typeof ShowIfConditionSchema>;
 export type SurveyQuestion = z.infer<typeof SurveyQuestionSchema>;
 export type SurveyQuestionsYamlFile = z.infer<typeof SurveyFileSchema>;
 

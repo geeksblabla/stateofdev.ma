@@ -155,14 +155,14 @@ describe("SurveyQuestionSchema", () => {
     expect(result.success).toBe(true);
   });
 
-  test("warns about too many question marks", () => {
-    const invalidQuestion = {
+  test("allows multiple question marks (warning at validator level)", () => {
+    const question = {
       label: "Test?? Really??",
       choices: ["Yes", "No"]
     };
 
-    const result = SurveyQuestionSchema.safeParse(invalidQuestion);
-    expect(result.success).toBe(false);
+    const result = SurveyQuestionSchema.safeParse(question);
+    expect(result.success).toBe(true);
   });
 });
 
@@ -685,18 +685,14 @@ describe("Edge case tests", () => {
   });
 
   describe("Question mark placement", () => {
-    test("rejects question mark not at the end", () => {
+    test("allows question mark not at the end (warning at validator level)", () => {
       const question = {
         label: "What? is your age",
         choices: ["18-24", "25-34", "35+"]
       };
 
       const result = SurveyQuestionSchema.safeParse(question);
-      expect(result.success).toBe(false);
-      if (!result.success) {
-        const issues = result.error.issues;
-        expect(issues.some((i) => i.message.includes("at the end"))).toBe(true);
-      }
+      expect(result.success).toBe(true);
     });
 
     test("accepts question mark at the end", () => {
