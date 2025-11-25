@@ -364,6 +364,87 @@ function performCrossFileValidation(
     });
   });
 
+  // Check 7: Validate showIf cross-references
+  // Build position map: questionId -> { sectionPosition, questionIndex }
+  const questionPositionMap = new Map<
+    string,
+    { sectionPosition: number; questionIndex: number }
+  >();
+
+  files.forEach((file) => {
+    file.questions.forEach((_, qIndex) => {
+      const questionId = `${file.label}-q-${qIndex}`;
+      questionPositionMap.set(questionId, {
+        sectionPosition: file.position,
+        questionIndex: qIndex
+      });
+    });
+  });
+
+  // Validate section-level showIf references
+  files.forEach((file, fileIndex) => {
+    if (file.showIf?.question) {
+      const refId = file.showIf.question;
+      const refPosition = questionPositionMap.get(refId);
+
+      if (!refPosition) {
+        errors.push({
+          severity: ValidationSeverity.ERROR,
+          message: `Section showIf references non-existent question "${refId}"`,
+          path: `${filenames[fileIndex]}.showIf.question`,
+          value: refId
+        });
+      } else if (refPosition.sectionPosition >= file.position) {
+        errors.push({
+          severity: ValidationSeverity.ERROR,
+          message: `Section showIf references question "${refId}" which is not in a previous section (references must point backward)`,
+          path: `${filenames[fileIndex]}.showIf.question`,
+          value: {
+            referenced: refId,
+            refSection: refPosition.sectionPosition,
+            currentSection: file.position
+          }
+        });
+      }
+    }
+
+    // Validate question-level showIf references
+    file.questions.forEach((question, qIndex) => {
+      if (question.showIf?.question) {
+        const refId = question.showIf.question;
+        const refPosition = questionPositionMap.get(refId);
+        const currentQuestionId = `${file.label}-q-${qIndex}`;
+
+        if (!refPosition) {
+          errors.push({
+            severity: ValidationSeverity.ERROR,
+            message: `Question showIf references non-existent question "${refId}"`,
+            path: `${filenames[fileIndex]}.questions[${qIndex}].showIf.question`,
+            value: refId
+          });
+        } else {
+          // Check if reference points backward (earlier section or earlier in same section)
+          const isEarlierSection = refPosition.sectionPosition < file.position;
+          const isSameSectionEarlierQuestion =
+            refPosition.sectionPosition === file.position &&
+            refPosition.questionIndex < qIndex;
+
+          if (!isEarlierSection && !isSameSectionEarlierQuestion) {
+            errors.push({
+              severity: ValidationSeverity.ERROR,
+              message: `Question showIf references "${refId}" which does not come before "${currentQuestionId}" (references must point backward)`,
+              path: `${filenames[fileIndex]}.questions[${qIndex}].showIf.question`,
+              value: {
+                referenced: refId,
+                current: currentQuestionId
+              }
+            });
+          }
+        }
+      }
+    });
+  });
+
   return errors;
 }
 

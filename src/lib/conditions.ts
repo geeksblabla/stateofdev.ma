@@ -3,7 +3,10 @@ import type { ShowIfCondition } from "./validators/survey-schema";
 export type AnswerValue = number | number[] | null | string;
 export type Answers = Record<string, AnswerValue>;
 export type QuestionList = Array<{ showIf?: ShowIfCondition }>;
-export type SectionList = Array<{ showIf?: ShowIfCondition }>;
+export type SectionList = Array<{
+  showIf?: ShowIfCondition;
+  questions?: QuestionList;
+}>;
 
 /**
  * Evaluates a showIf condition against current answers
@@ -134,7 +137,7 @@ export function getVisibleSectionIndices(
       if (!sectionVisible) return { index, visible: false };
 
       // Check if section has at least one visible question
-      const questions = (section as any).questions as QuestionList | undefined;
+      const questions = section.questions;
       if (!questions || questions.length === 0) {
         return { index, visible: false };
       }

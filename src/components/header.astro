@@ -3,7 +3,7 @@ import Logo from "../assets/logo.svg?raw";
 import Github from "../assets/github.svg?raw";
 import Chart from "../assets/Chart.svg?raw";
 import HeaderLink from "./header-link.astro";
-import { ThemeToggle } from "./theme-toggle";
+import ThemeToggle from "./theme-toggle.astro";
 import { website } from "@/website";
 
 const navItems = [
@@ -85,7 +85,7 @@ const currentPath = Astro.url.pathname;
             ))
           }
           <li>
-            <ThemeToggle client:load />
+            <ThemeToggle />
           </li>
         </ul>
       </nav>
@@ -109,7 +109,7 @@ const currentPath = Astro.url.pathname;
           ))
         }
       </ul>
-      <ThemeToggle client:load />
+      <ThemeToggle />
     </nav>
   </div>
 </header>
