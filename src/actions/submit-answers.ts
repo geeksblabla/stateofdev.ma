@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { ActionError, defineAction } from "astro:actions";
 import { z } from "astro:schema";
 import { getAuth } from "firebase-admin/auth";
@@ -35,7 +36,7 @@ export const submitAnswers = defineAction({
       }
       /* Save answers to database */
       await saveAnswers(user.uid, answers);
-      console.warn("answers saved");
+      console.log("answers saved");
     }
     catch (error) {
       console.error("Error token or saving answers:", error);

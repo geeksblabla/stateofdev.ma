@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 import { ActionError, defineAction } from "astro:actions";
 import { z } from "astro:schema";
 import { getAuth } from "firebase-admin/auth";
 import { isCaptchaValid } from "@/lib/captcha";
 import { initUserSubmission } from "@/lib/firebase/database";
 import { getActiveApp } from "@/lib/firebase/server";
-// Add this import
+
 export const initSession = defineAction({
   accept: "json",
   input: z.object({
@@ -29,7 +30,7 @@ export const initSession = defineAction({
 
     /* Validate captcha */
     if (captchaToken && import.meta.env.CAPTCHA_ENABLED === "true") {
-      console.warn("checking captcha ");
+      console.log("checking captcha ");
 
       const isValid = await isCaptchaValid(captchaToken);
       if (!isValid) {
@@ -51,7 +52,7 @@ export const initSession = defineAction({
         });
       }
       await initUserSubmission(user);
-      console.warn("user session created");
+      console.log("user session created");
     }
     catch (error) {
       console.error("Error verifying id token:", error);

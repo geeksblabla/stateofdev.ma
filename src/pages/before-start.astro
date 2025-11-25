@@ -71,6 +71,7 @@ export const prerender = true;
 ></script>
 
 <script>
+/* eslint-disable no-console */
 import { actions } from "astro:actions";
 import { signInAnonymously } from "firebase/auth";
 import { auth } from "@/lib/firebase/client";
@@ -89,7 +90,7 @@ window.onloadTurnstileCallback = function () {
   window.turnstile.render("#captcha-container", {
     sitekey: "0x4AAAAAAAkS5usDr1HhE7Gm",
     callback(token: string) {
-      console.warn(`Challenge Success ${token}`);
+      console.log(`Challenge Success ${token}`);
       captchaToken = token;
     },
     theme: "auto"
