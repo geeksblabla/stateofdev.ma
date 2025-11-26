@@ -1,8 +1,9 @@
-import { getActiveApp } from "@/lib/firebase/server";
-import { defineAction, ActionError } from "astro:actions";
-import { getAuth } from "firebase-admin/auth";
+/* eslint-disable no-console */
+import { ActionError, defineAction } from "astro:actions";
 import { z } from "astro:schema";
+import { getAuth } from "firebase-admin/auth";
 import { saveAnswers } from "@/lib/firebase/database";
+import { getActiveApp } from "@/lib/firebase/server";
 
 export const submitAnswers = defineAction({
   accept: "json",
@@ -36,7 +37,8 @@ export const submitAnswers = defineAction({
       /* Save answers to database */
       await saveAnswers(user.uid, answers);
       console.log("answers saved");
-    } catch (error) {
+    }
+    catch (error) {
       console.error("Error token or saving answers:", error);
       throw new ActionError({
         code: "INTERNAL_SERVER_ERROR",

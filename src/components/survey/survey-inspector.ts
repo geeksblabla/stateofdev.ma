@@ -1,6 +1,7 @@
+/* eslint-disable no-console */
 import type { InspectionEvent } from "xstate";
 
-export const createSurveyInspector = () => {
+export function createSurveyInspector() {
   return (inspectionEvent: InspectionEvent) => {
     const timestamp = new Date().toISOString().split("T")[1].split(".")[0];
 
@@ -23,7 +24,9 @@ export const createSurveyInspector = () => {
 
       console.group(`🔄 [${timestamp}] State Transition`);
       console.log("Triggered by:", event);
+      // eslint-disable-next-line ts/no-unsafe-member-access
       console.log("State:", (snapshot as any).value);
+      // eslint-disable-next-line ts/no-unsafe-member-access
       console.log("Context:", (snapshot as any).context);
       console.groupEnd();
     }
@@ -32,9 +35,10 @@ export const createSurveyInspector = () => {
       const { actorRef } = inspectionEvent;
       console.log(
         `🎭 [${timestamp}] Actor:`,
+        // eslint-disable-next-line ts/no-unsafe-member-access
         (actorRef as any).id,
         inspectionEvent
       );
     }
   };
-};
+}

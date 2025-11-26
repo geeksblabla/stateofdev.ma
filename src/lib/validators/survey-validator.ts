@@ -1,15 +1,17 @@
-import * as fs from "fs";
-import * as path from "path";
+import type { ValidationError } from "./constants";
+import type { SurveyQuestionsYamlFile } from "./survey-schema";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import * as yaml from "js-yaml";
 import {
-  validateSurveyFile,
-  type SurveyQuestionsYamlFile
-} from "./survey-schema";
-import {
   VALIDATION_THRESHOLDS,
-  ValidationSeverity,
-  type ValidationError
+
+  ValidationSeverity
 } from "./constants";
+import {
+
+  validateSurveyFile
+} from "./survey-schema";
 
 export interface FileValidationResult {
   filename: string;
@@ -37,7 +39,7 @@ export interface ValidationReport {
 export function validateAllSurveyFiles(surveyDir: string): ValidationReport {
   const files = fs
     .readdirSync(surveyDir)
-    .filter((file) => file.endsWith(".yml"))
+    .filter(file => file.endsWith(".yml"))
     .sort(); // Sort to ensure consistent ordering
 
   const fileResults: FileValidationResult[] = [];
@@ -62,12 +64,12 @@ export function validateAllSurveyFiles(surveyDir: string): ValidationReport {
 
       const data = yaml.load(content);
 
-      if (!data) {
+      if (data == null) {
         throw new Error("YAML parsing returned null or undefined");
       }
 
       if (typeof data !== "object") {
-        throw new Error("YAML file must contain an object");
+        throw new TypeError("YAML file must contain an object");
       }
 
       const validatedData = validateSurveyFile(data, file);
@@ -83,7 +85,7 @@ export function validateAllSurveyFiles(surveyDir: string): ValidationReport {
       // Check for multiple "Other" options in questions (warning only)
       const otherWarnings: ValidationError[] = [];
       validatedData.questions.forEach((question, index) => {
-        const otherChoices = question.choices.filter((c) =>
+        const otherChoices = question.choices.filter(c =>
           /^other$/i.test(c.trim())
         );
         if (otherChoices.length > 1) {
@@ -95,12 +97,43 @@ export function validateAllSurveyFiles(surveyDir: string): ValidationReport {
         }
       });
 
-      const allWarnings = [...filenameWarnings, ...otherWarnings];
+      // Check for question mark style issues (warning only)
+      const questionMarkWarnings: ValidationError[] = [];
+      validatedData.questions.forEach((question, index) => {
+        const questionMarks = (question.label.match(/\?/g) || []).length;
+
+        if (questionMarks > 1) {
+          questionMarkWarnings.push({
+            severity: ValidationSeverity.WARNING,
+            message: `Question ${index + 1} has multiple question marks`,
+            path: `questions[${index}].label`,
+            value: question.label
+          });
+        }
+        else if (
+          questionMarks === 1
+          && !question.label.trim().endsWith("?")
+        ) {
+          questionMarkWarnings.push({
+            severity: ValidationSeverity.WARNING,
+            message: `Question ${index + 1} has question mark not at end`,
+            path: `questions[${index}].label`,
+            value: question.label
+          });
+        }
+      });
+
+      const allWarnings = [
+        ...filenameWarnings,
+        ...otherWarnings,
+        ...questionMarkWarnings
+      ];
       if (allWarnings.length > 0) {
         result.errors = allWarnings;
         // Don't mark as invalid for warnings
       }
-    } catch (error) {
+    }
+    catch (error) {
       result.valid = false;
       result.errors = [
         {
@@ -117,11 +150,11 @@ export function validateAllSurveyFiles(surveyDir: string): ValidationReport {
   const crossFileErrors = performCrossFileValidation(validFiles, files);
 
   // Generate report
-  const validCount = fileResults.filter((r) => r.valid).length;
+  const validCount = fileResults.filter(r => r.valid).length;
 
   // Only count actual errors, not warnings
   const actualCrossFileErrors = crossFileErrors.filter(
-    (e) => e.severity === ValidationSeverity.ERROR
+    e => e.severity === ValidationSeverity.ERROR
   );
 
   const report: ValidationReport = {
@@ -161,7 +194,7 @@ function validateFilename(
   }
 
   const [, positionStr, labelFromFilename] = match;
-  const positionFromFilename = parseInt(positionStr, 10);
+  const positionFromFilename = Number.parseInt(positionStr, 10);
 
   if (positionFromFilename !== data.position) {
     errors.push({
@@ -197,7 +230,7 @@ function performCrossFileValidation(
   const errors: ValidationError[] = [];
 
   // Check 1: Unique positions across all files
-  const positions = files.map((f) => f.position);
+  const positions = files.map(f => f.position);
   const duplicatePositions = findDuplicates(positions);
   if (duplicatePositions.length > 0) {
     errors.push({
@@ -224,7 +257,7 @@ function performCrossFileValidation(
   }
 
   // Check 3: Unique labels across all files
-  const labels = files.map((f) => f.label);
+  const labels = files.map(f => f.label);
   const duplicateLabels = findDuplicates(labels);
   if (duplicateLabels.length > 0) {
     errors.push({
@@ -261,7 +294,7 @@ function performCrossFileValidation(
   const duplicateQuestionIds = findDuplicates(allQuestionIds);
   if (duplicateQuestionIds.length > 0) {
     const duplicateDetails = duplicateQuestionIds
-      .map((id) => `${id} (in ${questionIdMap.get(id)})`)
+      .map(id => `${id} (in ${questionIdMap.get(id)})`)
       .join(", ");
     errors.push({
       severity: ValidationSeverity.ERROR,
@@ -274,15 +307,15 @@ function performCrossFileValidation(
   // Check 5: Validate reasonable question distribution
   files.forEach((file, index) => {
     const requiredCount = file.questions.filter(
-      (q) => q.required !== false
+      q => q.required !== false
     ).length;
     const optionalCount = file.questions.length - requiredCount;
 
     // Warn if section has too many optional questions (> threshold)
     const optionalRatio = optionalCount / file.questions.length;
     if (
-      optionalRatio > VALIDATION_THRESHOLDS.OPTIONAL_RATIO_WARNING &&
-      file.questions.length > VALIDATION_THRESHOLDS.MIN_QUESTIONS_WARNING
+      optionalRatio > VALIDATION_THRESHOLDS.OPTIONAL_RATIO_WARNING
+      && file.questions.length > VALIDATION_THRESHOLDS.MIN_QUESTIONS_WARNING
     ) {
       errors.push({
         severity: ValidationSeverity.WARNING,
@@ -335,6 +368,89 @@ function performCrossFileValidation(
     });
   });
 
+  // Check 7: Validate showIf cross-references
+  // Build position map: questionId -> { sectionPosition, questionIndex }
+  const questionPositionMap = new Map<
+    string,
+    { sectionPosition: number; questionIndex: number }
+  >();
+
+  files.forEach((file) => {
+    file.questions.forEach((_, qIndex) => {
+      const questionId = `${file.label}-q-${qIndex}`;
+      questionPositionMap.set(questionId, {
+        sectionPosition: file.position,
+        questionIndex: qIndex
+      });
+    });
+  });
+
+  // Validate section-level showIf references
+  files.forEach((file, fileIndex) => {
+    if (file.showIf?.question) {
+      const refId = file.showIf.question;
+      const refPosition = questionPositionMap.get(refId);
+
+      if (!refPosition) {
+        errors.push({
+          severity: ValidationSeverity.ERROR,
+          message: `Section showIf references non-existent question "${refId}"`,
+          path: `${filenames[fileIndex]}.showIf.question`,
+          value: refId
+        });
+      }
+      else if (refPosition.sectionPosition >= file.position) {
+        errors.push({
+          severity: ValidationSeverity.ERROR,
+          message: `Section showIf references question "${refId}" which is not in a previous section (references must point backward)`,
+          path: `${filenames[fileIndex]}.showIf.question`,
+          value: {
+            referenced: refId,
+            refSection: refPosition.sectionPosition,
+            currentSection: file.position
+          }
+        });
+      }
+    }
+
+    // Validate question-level showIf references
+    file.questions.forEach((question, qIndex) => {
+      if (question.showIf?.question) {
+        const refId = question.showIf.question;
+        const refPosition = questionPositionMap.get(refId);
+        const currentQuestionId = `${file.label}-q-${qIndex}`;
+
+        if (!refPosition) {
+          errors.push({
+            severity: ValidationSeverity.ERROR,
+            message: `Question showIf references non-existent question "${refId}"`,
+            path: `${filenames[fileIndex]}.questions[${qIndex}].showIf.question`,
+            value: refId
+          });
+        }
+        else {
+          // Check if reference points backward (earlier section or earlier in same section)
+          const isEarlierSection = refPosition.sectionPosition < file.position;
+          const isSameSectionEarlierQuestion
+            = refPosition.sectionPosition === file.position
+              && refPosition.questionIndex < qIndex;
+
+          if (!isEarlierSection && !isSameSectionEarlierQuestion) {
+            errors.push({
+              severity: ValidationSeverity.ERROR,
+              message: `Question showIf references "${refId}" which does not come before "${currentQuestionId}" (references must point backward)`,
+              path: `${filenames[fileIndex]}.questions[${qIndex}].showIf.question`,
+              value: {
+                referenced: refId,
+                current: currentQuestionId
+              }
+            });
+          }
+        }
+      }
+    });
+  });
+
   return errors;
 }
 
@@ -345,7 +461,8 @@ function findDuplicates<T>(array: T[]): T[] {
   for (const item of array) {
     if (seen.has(item)) {
       duplicates.add(item);
-    } else {
+    }
+    else {
       seen.add(item);
     }
   }
@@ -354,13 +471,13 @@ function findDuplicates<T>(array: T[]): T[] {
 }
 
 const colors = {
-  reset: "\x1b[0m",
-  bright: "\x1b[1m",
-  red: "\x1b[31m",
-  green: "\x1b[32m",
-  yellow: "\x1b[33m",
-  blue: "\x1b[34m",
-  cyan: "\x1b[36m"
+  reset: "\x1B[0m",
+  bright: "\x1B[1m",
+  red: "\x1B[31m",
+  green: "\x1B[32m",
+  yellow: "\x1B[33m",
+  blue: "\x1B[34m",
+  cyan: "\x1B[36m"
 };
 
 /**
@@ -421,12 +538,12 @@ export function formatValidationReport(report: ValidationReport): string {
       if (result.errors && result.errors.length > 0) {
         lines.push("    Issues:");
         result.errors.forEach((error) => {
-          const errorColor =
-            error.severity === ValidationSeverity.ERROR
+          const errorColor
+            = error.severity === ValidationSeverity.ERROR
               ? colors.red
               : colors.yellow;
-          const prefix =
-            error.severity === ValidationSeverity.ERROR ? "✗" : "⚠";
+          const prefix
+            = error.severity === ValidationSeverity.ERROR ? "✗" : "⚠";
           const pathInfo = error.path ? ` [${error.path}]` : "";
           lines.push(
             `      ${errorColor}${prefix}${colors.reset} ${error.message}${pathInfo}`
@@ -443,8 +560,8 @@ export function formatValidationReport(report: ValidationReport): string {
     lines.push("-".repeat(60));
     report.crossFileErrors.forEach((error) => {
       // Distinguish between errors and warnings by severity
-      const errorColor =
-        error.severity === ValidationSeverity.ERROR
+      const errorColor
+        = error.severity === ValidationSeverity.ERROR
           ? colors.red
           : colors.yellow;
       const prefix = error.severity === ValidationSeverity.ERROR ? "✗" : "⚠";

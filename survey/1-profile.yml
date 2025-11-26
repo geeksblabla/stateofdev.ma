@@ -114,6 +114,9 @@ questions:
       - No
 
   - label: If you are working abroad, do you have any plans to come back to Morocco?
+    showIf:
+      question: profile-q-7
+      equals: 3
     choices:
       - Yes, within the next 12 months
       - Yes, within the next 24 months

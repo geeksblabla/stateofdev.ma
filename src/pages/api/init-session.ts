@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
-import { getActiveApp } from "@/lib/firebase/server";
 import { getAuth } from "firebase-admin/auth";
+import { getActiveApp } from "@/lib/firebase/server";
 // TODO: check if we really need this
 export const prerender = false;
 
@@ -13,11 +13,11 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
     return new Response("No token found", { status: 401 });
   }
 
-  console.log("idToken", idToken);
   /* Verify id token */
   try {
     await auth.verifyIdToken(idToken);
-  } catch (error) {
+  }
+  catch {
     return new Response("Invalid token", { status: 401 });
   }
 

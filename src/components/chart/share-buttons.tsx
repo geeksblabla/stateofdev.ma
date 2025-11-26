@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-type ShareButtonsProps = {
+interface ShareButtonsProps {
   url: string;
   title: string;
-};
+}
 
-export const ShareButtons = ({ url, title }: ShareButtonsProps) => {
+export function ShareButtons({ url, title }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
   const shareLinks = {
@@ -14,11 +14,10 @@ export const ShareButtons = ({ url, title }: ShareButtonsProps) => {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`
   };
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(url).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
+  const copyToClipboard = async () => {
+    await navigator.clipboard.writeText(url);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -86,7 +85,10 @@ export const ShareButtons = ({ url, title }: ShareButtonsProps) => {
           </span>
         </a>
         <button
-          onClick={copyToClipboard}
+          type="button"
+          onClick={() => {
+            void copyToClipboard();
+          }}
           className="!text-muted-foreground hover:!text-foreground transition-colors relative group"
           aria-label="Copy link"
         >
@@ -116,4 +118,4 @@ export const ShareButtons = ({ url, title }: ShareButtonsProps) => {
       </div>
     </div>
   );
-};
+}

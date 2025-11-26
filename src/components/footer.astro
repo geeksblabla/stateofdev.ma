@@ -1,6 +1,6 @@
 ---
-import Logo from "../assets/logo.svg?raw";
 import { website } from "@/website";
+import Logo from "../assets/logo.svg?raw";
 
 const communityLinks = [
   { label: "geeksblabla.community", href: "https://geeksblabla.community" },
@@ -46,7 +46,7 @@ const socialLinks = [
       </h3>
       <ul class="space-y-2 font-mono">
         {
-          communityLinks.map((link) => (
+          communityLinks.map(link => (
             <li>
               <a
                 class="inline-block cursor-pointer transition-all duration-200 px-2 py-1 rounded -ml-2 text-muted-foreground hover:text-primary hover:bg-primary/5"
@@ -70,7 +70,7 @@ const socialLinks = [
       </h3>
       <ul class="space-y-2 font-mono">
         {
-          socialLinks.map((link) => (
+          socialLinks.map(link => (
             <li>
               <a
                 class="inline-block cursor-pointer transition-all duration-200 px-2 py-1 rounded -ml-2 text-muted-foreground hover:text-primary hover:bg-primary/5"

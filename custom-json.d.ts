@@ -3,22 +3,22 @@
  * Mainly to prevent code editor from loading typing from json files which is can be very heavy
  */
 
-type Question = {
+interface Question {
   label: string;
   choices: string[];
   multiple: boolean | null;
   required: boolean | null;
-};
+}
 
-type QuestionMap = {
+interface QuestionMap {
   [key: string]: Question;
-};
+}
 
-type Results = {
+interface Results {
   results: {
     [key: string]: number | number[] | string | string[] | null | undefined;
   }[];
-};
+}
 
 // 2020
 declare module "@/results/2020/data/results.json" {

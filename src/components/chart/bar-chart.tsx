@@ -1,4 +1,5 @@
-import { getPercent, type FinalResult } from "./utils";
+import type { FinalResult } from "./utils";
+import { getPercent } from "./utils";
 
 // Chart colors from theme
 const colors = [
@@ -14,65 +15,78 @@ const colors = [
   "bg-chart-10"
 ];
 
-type BarChartProps = {
+interface BarChartProps {
   results: FinalResult | null;
   sortByTotal?: boolean;
   showEmptyOptions?: boolean;
-};
+}
 
-type BarProps = {
+interface BarProps {
   result: FinalResult["results"][number];
   index: number;
   total: number;
-};
+}
 
-const Tooltip = ({ result }: { result: FinalResult["results"][number] }) => {
-  if (!result.grouped) return null;
+function Tooltip({ result }: { result: FinalResult["results"][number] }) {
+  if (!result.grouped)
+    return null;
 
   return (
     <span className="absolute h-fit left-1/2 overflow-visible transform -translate-x-1/2 -translate-y-full -mt-[36px] bg-card border-2 border-border text-card-foreground text-xs p-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
       <div className="text-muted-foreground">
         <p className="font-semibold py-1">
-          {result.label} : {result.total}{" "}
+          {result.label}
+          {" "}
+          :
+          {result.total}
+          {" "}
         </p>
-        {result.grouped.results.length > 6 ? (
-          <div className="flex flex-wrap">
-            {Array.from({
-              length: Math.ceil(result.grouped.results.length / 6)
-            }).map((_, tableIndex) => (
-              <table key={tableIndex} className="w-1/2 pr-2">
+        {result.grouped.results.length > 6
+          ? (
+              <div className="flex flex-wrap">
+                {Array.from({
+                  length: Math.ceil(result.grouped.results.length / 6)
+                }).map((_, tableIndex) => {
+                  const tableGroups = result.grouped!.results.slice(tableIndex * 6, (tableIndex + 1) * 6);
+                  return (
+                    <table key={tableGroups[0]?.label || `table-${tableIndex}`} className="w-1/2 pr-2">
+                      <tbody className="divide-y divide-border">
+                        {tableGroups.map(group => (
+                          <tr key={group.label}>
+                            <td className="py-1">{group.label}</td>
+                            <td className="text-right font-semibold py-1">
+                              {group.total}
+                              {" "}
+                              (
+                              {((group.total / result.total) * 100).toFixed(1)}
+                              %)
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  );
+                })}
+              </div>
+            )
+          : (
+              <table className="w-full">
                 <tbody className="divide-y divide-border">
-                  {result?.grouped?.results
-                    .slice(tableIndex * 6, (tableIndex + 1) * 6)
-                    .map((group, index) => (
-                      <tr key={index}>
-                        <td className="py-1">{group.label}</td>
-                        <td className="text-right font-semibold py-1">
-                          {group.total} (
-                          {((group.total / result.total) * 100).toFixed(1)}
-                          %)
-                        </td>
-                      </tr>
-                    ))}
+                  {result.grouped.results.map(group => (
+                    <tr key={group.label}>
+                      <td className="py-1">{group.label}</td>
+                      <td className="text-right font-semibold py-1">
+                        {group.total}
+                        {" "}
+                        (
+                        {((group.total / result.total) * 100).toFixed(1)}
+                        %)
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
-            ))}
-          </div>
-        ) : (
-          <table className="w-full">
-            <tbody className="divide-y divide-border">
-              {result.grouped.results.map((group, index) => (
-                <tr key={index}>
-                  <td className="py-1">{group.label}</td>
-                  <td className="text-right font-semibold py-1">
-                    {group.total} (
-                    {((group.total / result.total) * 100).toFixed(1)}%)
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+            )}
       </div>
       <svg
         className="absolute left-1/2 transform -translate-x-1/2 top-full w-3 h-3 -mt-[3px] z-11"
@@ -88,9 +102,9 @@ const Tooltip = ({ result }: { result: FinalResult["results"][number] }) => {
       </svg>
     </span>
   );
-};
+}
 
-const Bar = ({ result, index, total }: BarProps) => {
+function Bar({ result, index, total }: BarProps) {
   const displayResults = result.grouped ? result.grouped.results : [result];
 
   return (
@@ -102,50 +116,55 @@ const Bar = ({ result, index, total }: BarProps) => {
           </span>
           <div className="flex flex-row min-w-fit">
             <span className="text-sm text-muted-foreground text-right">
-              {getPercent(result.total, total)}% -{" "}
+              {getPercent(result.total, total)}
+              % -
+              {" "}
             </span>
             <span className="text-sm text-muted-foreground min-w-[33px] text-right">
               {result.total}
             </span>
           </div>
         </div>
-        {!result.grouped ? (
-          <div
-            className="bg-primary opacity-60 h-full relative"
-            style={{
-              width: `${getPercent(result.total, total)}%`,
-              animationDelay: `${index * 0.1}s`
-            }}
-          />
-        ) : (
-          <div className="flex flex-row">
-            {displayResults.map((group, groupIndex) => (
+        {!result.grouped
+          ? (
               <div
-                key={group.choiceIndex}
-                className={`h-6 relative opacity-60 ${
-                  colors[groupIndex % colors.length]
-                }`}
+                className="bg-primary opacity-60 h-full relative"
                 style={{
-                  width: `${getPercent(group.total, total)}%`,
+                  width: `${getPercent(result.total, total)}%`,
                   animationDelay: `${index * 0.1}s`
                 }}
               />
-            ))}
-          </div>
-        )}
+            )
+          : (
+              <div className="flex flex-row">
+                {displayResults.map((group, groupIndex) => (
+                  <div
+                    key={group.choiceIndex}
+                    className={`h-6 relative opacity-60 ${
+                      colors[groupIndex % colors.length]
+                    }`}
+                    style={{
+                      width: `${getPercent(group.total, total)}%`,
+                      animationDelay: `${index * 0.1}s`
+                    }}
+                  />
+                ))}
+              </div>
+            )}
 
         <Tooltip result={result} />
       </div>
     </div>
   );
-};
+}
 
-export const BarChart = ({
+export function BarChart({
   results,
   sortByTotal = true,
   showEmptyOptions = true
-}: BarChartProps) => {
-  if (!results) return null;
+}: BarChartProps) {
+  if (!results)
+    return null;
 
   const displayResults = sortByTotal
     ? [...results.results].sort((a, b) => b.total - a.total)
@@ -153,13 +172,13 @@ export const BarChart = ({
 
   const filteredResults = showEmptyOptions
     ? displayResults
-    : displayResults.filter((result) => result.total > 0);
+    : displayResults.filter(result => result.total > 0);
 
   // Create a set of unique labels for the legend
   const legendLabels = new Set<string>();
   filteredResults.forEach((result) => {
     if (result.grouped) {
-      result.grouped.results.forEach((group) => legendLabels.add(group.label));
+      result.grouped.results.forEach(group => legendLabels.add(group.label));
     }
   });
 
@@ -178,7 +197,9 @@ export const BarChart = ({
           {results.isFiltered && "NOTE: Filters applied"}
         </span>
         <span className="text-sm text-muted-foreground font-bold">
-          Total: {results.total}
+          Total:
+          {" "}
+          {results.total}
         </span>
       </div>
       {/*  legend for grouped questions */}
@@ -190,7 +211,8 @@ export const BarChart = ({
                 className={`w-4 h-4 ${
                   colors[index % colors.length]
                 } mr-2 opacity-60`}
-              ></div>
+              >
+              </div>
               <span className="text-sm">{label}</span>
             </div>
           ))}
@@ -198,4 +220,4 @@ export const BarChart = ({
       )}
     </div>
   );
-};
+}

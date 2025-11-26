@@ -1,10 +1,10 @@
 ---
-import Logo from "../assets/logo.svg?raw";
-import Github from "../assets/github.svg?raw";
-import Chart from "../assets/Chart.svg?raw";
-import HeaderLink from "./header-link.astro";
-import { ThemeToggle } from "./theme-toggle";
 import { website } from "@/website";
+import Chart from "../assets/Chart.svg?raw";
+import Github from "../assets/github.svg?raw";
+import Logo from "../assets/logo.svg?raw";
+import HeaderLink from "./header-link.astro";
+import ThemeToggle from "./theme-toggle.astro";
 
 const navItems = [
   { year: 2020, href: "/2020" },
@@ -50,7 +50,8 @@ const currentPath = Astro.url.pathname;
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M4 6h16M4 12h16M4 18h16"></path>
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
         </svg>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +64,8 @@ const currentPath = Astro.url.pathname;
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M6 18L18 6M6 6l12 12"></path>
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
         </svg>
       </label>
 
@@ -73,7 +75,7 @@ const currentPath = Astro.url.pathname;
       >
         <ul class="flex flex-col items-center space-y-6 text-lg">
           {
-            navItems.map((item) => (
+            navItems.map(item => (
               <li>
                 <HeaderLink
                   label={item.year?.toString() || item.label || ""}
@@ -85,7 +87,7 @@ const currentPath = Astro.url.pathname;
             ))
           }
           <li>
-            <ThemeToggle client:load />
+            <ThemeToggle />
           </li>
         </ul>
       </nav>
@@ -97,7 +99,7 @@ const currentPath = Astro.url.pathname;
     >
       <ul class="flex flex-row space-x-6">
         {
-          navItems.map((item) => (
+          navItems.map(item => (
             <li>
               <HeaderLink
                 label={item.year?.toString() || item.label || ""}
@@ -109,7 +111,7 @@ const currentPath = Astro.url.pathname;
           ))
         }
       </ul>
-      <ThemeToggle client:load />
+      <ThemeToggle />
     </nav>
   </div>
 </header>

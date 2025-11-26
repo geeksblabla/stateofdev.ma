@@ -1,10 +1,12 @@
+import react from "@vitejs/plugin-react";
 /// <reference types="vitest" />
 import { getViteConfig } from "astro/config";
-import react from "@vitejs/plugin-react";
 
+// eslint-disable-next-line ts/no-unsafe-assignment, ts/no-unsafe-call
+const reactPlugin = react();
 export default getViteConfig({
-  plugins: [react()],
-  // @ts-ignore
+  plugins: [reactPlugin],
+  // @ts-expect-error - getViteConfig doesn't include test property in types but it's supported
   test: {
     exclude: ["node_modules"],
     coverage: {

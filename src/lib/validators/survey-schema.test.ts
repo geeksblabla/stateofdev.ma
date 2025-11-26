@@ -1,14 +1,14 @@
-import { describe, test, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+import { z } from "zod";
 import {
-  SurveyQuestionSchema,
   SurveyFileSchema,
+  SurveyQuestionSchema,
   validateSurveyFile,
   validateSurveyFileSafe
 } from "./survey-schema";
-import { z } from "zod";
 
-describe("SurveyQuestionSchema", () => {
-  test("validates a valid question", () => {
+describe("surveyQuestionSchema", () => {
+  it("validates a valid question", () => {
     const validQuestion = {
       label: "What is your age?",
       required: true,
@@ -26,7 +26,7 @@ describe("SurveyQuestionSchema", () => {
     }
   });
 
-  test("applies default values for optional fields", () => {
+  it("applies default values for optional fields", () => {
     const minimalQuestion = {
       label: "Test question?",
       choices: ["Yes", "No"]
@@ -40,7 +40,7 @@ describe("SurveyQuestionSchema", () => {
     }
   });
 
-  test("trims whitespace from label and choices", () => {
+  it("trims whitespace from label and choices", () => {
     const question = {
       label: "  Test question?  ",
       choices: ["  Choice 1  ", "  Choice 2  "]
@@ -55,7 +55,7 @@ describe("SurveyQuestionSchema", () => {
     }
   });
 
-  test("rejects question with less than minimum choices", () => {
+  it("rejects question with less than minimum choices", () => {
     const invalidQuestion = {
       label: "Test?",
       choices: ["Only one"]
@@ -64,12 +64,11 @@ describe("SurveyQuestionSchema", () => {
     const result = SurveyQuestionSchema.safeParse(invalidQuestion);
     expect(result.success).toBe(false);
     if (!result.success) {
-      const issues = (result.error as any).issues || [];
-      expect(issues[0].message).toContain("at least 2 choices");
+      expect(result.error.issues[0]?.message).toContain("at least 2 choices");
     }
   });
 
-  test("rejects question with empty label", () => {
+  it("rejects question with empty label", () => {
     const invalidQuestion = {
       label: "",
       choices: ["Yes", "No"]
@@ -79,7 +78,7 @@ describe("SurveyQuestionSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  test("rejects question with whitespace-only label", () => {
+  it("rejects question with whitespace-only label", () => {
     const invalidQuestion = {
       label: "   ",
       choices: ["Yes", "No"]
@@ -89,7 +88,7 @@ describe("SurveyQuestionSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  test("rejects question with short label", () => {
+  it("rejects question with short label", () => {
     const invalidQuestion = {
       label: "ab",
       choices: ["Yes", "No"]
@@ -99,7 +98,7 @@ describe("SurveyQuestionSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  test("rejects question with empty choice", () => {
+  it("rejects question with empty choice", () => {
     const invalidQuestion = {
       label: "Test?",
       choices: ["Valid", ""]
@@ -109,7 +108,7 @@ describe("SurveyQuestionSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  test("rejects question with whitespace-only choice", () => {
+  it("rejects question with whitespace-only choice", () => {
     const invalidQuestion = {
       label: "Test?",
       choices: ["Valid", "   "]
@@ -119,7 +118,7 @@ describe("SurveyQuestionSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  test("rejects question with duplicate choices (case-insensitive)", () => {
+  it("rejects question with duplicate choices (case-insensitive)", () => {
     const invalidQuestion = {
       label: "Test?",
       choices: ["Male", "Female", "male"]
@@ -128,12 +127,11 @@ describe("SurveyQuestionSchema", () => {
     const result = SurveyQuestionSchema.safeParse(invalidQuestion);
     expect(result.success).toBe(false);
     if (!result.success) {
-      const issues = (result.error as any).issues || [];
-      expect(issues[0].message).toContain("Duplicate choices");
+      expect(result.error.issues[0]?.message).toContain("Duplicate choices");
     }
   });
 
-  test("allows multiple 'Other' variations (handled as warnings elsewhere)", () => {
+  it("allows multiple 'Other' variations (handled as warnings elsewhere)", () => {
     const question = {
       label: "Test?",
       choices: ["Option 1", "Other", "Other option"]
@@ -145,7 +143,7 @@ describe("SurveyQuestionSchema", () => {
     expect(result.success).toBe(true);
   });
 
-  test("allows exactly one 'Other' option", () => {
+  it("allows exactly one 'Other' option", () => {
     const validQuestion = {
       label: "Test?",
       choices: ["Option 1", "Option 2", "Other"]
@@ -155,19 +153,19 @@ describe("SurveyQuestionSchema", () => {
     expect(result.success).toBe(true);
   });
 
-  test("warns about too many question marks", () => {
-    const invalidQuestion = {
+  it("allows multiple question marks (warning at validator level)", () => {
+    const question = {
       label: "Test?? Really??",
       choices: ["Yes", "No"]
     };
 
-    const result = SurveyQuestionSchema.safeParse(invalidQuestion);
-    expect(result.success).toBe(false);
+    const result = SurveyQuestionSchema.safeParse(question);
+    expect(result.success).toBe(true);
   });
 });
 
-describe("SurveyFileSchema", () => {
-  test("validates a complete valid survey file", () => {
+describe("surveyFileSchema", () => {
+  it("validates a complete valid survey file", () => {
     const validFile = {
       title: "Profile",
       label: "profile",
@@ -196,7 +194,7 @@ describe("SurveyFileSchema", () => {
     }
   });
 
-  test("rejects file with empty title", () => {
+  it("rejects file with empty title", () => {
     const invalidFile = {
       title: "",
       label: "profile",
@@ -213,7 +211,7 @@ describe("SurveyFileSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  test("rejects file with non-kebab-case label", () => {
+  it("rejects file with non-kebab-case label", () => {
     const invalidFile = {
       title: "Profile",
       label: "Profile Section",
@@ -229,12 +227,11 @@ describe("SurveyFileSchema", () => {
     const result = SurveyFileSchema.safeParse(invalidFile);
     expect(result.success).toBe(false);
     if (!result.success) {
-      const issues = (result.error as any).issues || [];
-      expect(issues[0].message).toContain("kebab-case");
+      expect(result.error.issues[0]?.message).toContain("kebab-case");
     }
   });
 
-  test("accepts valid kebab-case labels", () => {
+  it("accepts valid kebab-case labels", () => {
     const validLabels = [
       "profile",
       "work-experience",
@@ -261,7 +258,7 @@ describe("SurveyFileSchema", () => {
     });
   });
 
-  test("rejects invalid kebab-case labels", () => {
+  it("rejects invalid kebab-case labels", () => {
     const invalidLabels = [
       "Profile",
       "work_experience",
@@ -290,7 +287,7 @@ describe("SurveyFileSchema", () => {
     });
   });
 
-  test("rejects file with zero position", () => {
+  it("rejects file with zero position", () => {
     const invalidFile = {
       title: "Profile",
       label: "profile",
@@ -307,7 +304,7 @@ describe("SurveyFileSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  test("rejects file with negative position", () => {
+  it("rejects file with negative position", () => {
     const invalidFile = {
       title: "Profile",
       label: "profile",
@@ -324,7 +321,7 @@ describe("SurveyFileSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  test("rejects file with non-integer position", () => {
+  it("rejects file with non-integer position", () => {
     const invalidFile = {
       title: "Profile",
       label: "profile",
@@ -341,7 +338,7 @@ describe("SurveyFileSchema", () => {
     expect(result.success).toBe(false);
   });
 
-  test("rejects file with no questions", () => {
+  it("rejects file with no questions", () => {
     const invalidFile = {
       title: "Profile",
       label: "profile",
@@ -352,12 +349,11 @@ describe("SurveyFileSchema", () => {
     const result = SurveyFileSchema.safeParse(invalidFile);
     expect(result.success).toBe(false);
     if (!result.success) {
-      const issues = (result.error as any).issues || [];
-      expect(issues[0].message).toContain("at least one question");
+      expect(result.error.issues[0]?.message).toContain("at least one question");
     }
   });
 
-  test("rejects file with duplicate question labels", () => {
+  it("rejects file with duplicate question labels", () => {
     const invalidFile = {
       title: "Profile",
       label: "profile",
@@ -377,12 +373,11 @@ describe("SurveyFileSchema", () => {
     const result = SurveyFileSchema.safeParse(invalidFile);
     expect(result.success).toBe(false);
     if (!result.success) {
-      const issues = (result.error as any).issues || [];
-      expect(issues[0].message).toContain("Duplicate question labels");
+      expect(result.error.issues[0]?.message).toContain("Duplicate question labels");
     }
   });
 
-  test("rejects file with all optional questions", () => {
+  it("rejects file with all optional questions", () => {
     const invalidFile = {
       title: "Profile",
       label: "profile",
@@ -404,13 +399,12 @@ describe("SurveyFileSchema", () => {
     const result = SurveyFileSchema.safeParse(invalidFile);
     expect(result.success).toBe(false);
     if (!result.success) {
-      const issues = (result.error as any).issues || [];
-      expect(issues[0].message).toContain("At least one question");
-      expect(issues[0].message).toContain("required");
+      expect(result.error.issues[0]?.message).toContain("At least one question");
+      expect(result.error.issues[0]?.message).toContain("required");
     }
   });
 
-  test("accepts file with at least one required question", () => {
+  it("accepts file with at least one required question", () => {
     const validFile = {
       title: "Profile",
       label: "profile",
@@ -433,7 +427,7 @@ describe("SurveyFileSchema", () => {
     expect(result.success).toBe(true);
   });
 
-  test("accepts file where required is not explicitly set (defaults to true)", () => {
+  it("accepts file where required is not explicitly set (defaults to true)", () => {
     const validFile = {
       title: "Profile",
       label: "profile",
@@ -457,7 +451,7 @@ describe("SurveyFileSchema", () => {
 });
 
 describe("validateSurveyFile helper", () => {
-  test("validates and returns typed data", () => {
+  it("validates and returns typed data", () => {
     const validData = {
       title: "Profile",
       label: "profile",
@@ -476,7 +470,7 @@ describe("validateSurveyFile helper", () => {
     expect(result.questions).toHaveLength(1);
   });
 
-  test("throws error with filename context", () => {
+  it("throws error with filename context", () => {
     const invalidData = {
       title: "Profile",
       label: "invalid label",
@@ -494,7 +488,7 @@ describe("validateSurveyFile helper", () => {
     );
   });
 
-  test("throws error with validation details", () => {
+  it("throws error with validation details", () => {
     const invalidData = {
       title: "Profile",
       label: "invalid label",
@@ -507,7 +501,7 @@ describe("validateSurveyFile helper", () => {
 });
 
 describe("validateSurveyFileSafe helper", () => {
-  test("returns success result for valid data", () => {
+  it("returns success result for valid data", () => {
     const validData = {
       title: "Profile",
       label: "profile",
@@ -527,7 +521,7 @@ describe("validateSurveyFileSafe helper", () => {
     }
   });
 
-  test("returns error result for invalid data", () => {
+  it("returns error result for invalid data", () => {
     const invalidData = {
       title: "",
       label: "profile",
@@ -539,14 +533,13 @@ describe("validateSurveyFileSafe helper", () => {
     expect(result.success).toBe(false);
     if (!result.success) {
       expect(result.error).toBeInstanceOf(z.ZodError);
-      const issues = (result.error as any).issues || [];
-      expect(issues.length).toBeGreaterThan(0);
+      expect(result.error.issues.length).toBeGreaterThan(0);
     }
   });
 });
 
-describe("Real-world YAML structure validation", () => {
-  test("validates typical survey section structure", () => {
+describe("real-world YAML structure validation", () => {
+  it("validates typical survey section structure", () => {
     const typicalSection = {
       title: "AI",
       label: "ai",
@@ -588,9 +581,9 @@ describe("Real-world YAML structure validation", () => {
   });
 });
 
-describe("Edge case tests", () => {
-  describe("Unicode and special characters", () => {
-    test("accepts Unicode characters in labels", () => {
+describe("edge case tests", () => {
+  describe("unicode and special characters", () => {
+    it("accepts Unicode characters in labels", () => {
       const question = {
         label: "What programming languages do you use 🚀?",
         choices: ["JavaScript", "Python", "Go"]
@@ -600,7 +593,7 @@ describe("Edge case tests", () => {
       expect(result.success).toBe(true);
     });
 
-    test("accepts emoji in choice text", () => {
+    it("accepts emoji in choice text", () => {
       const question = {
         label: "What is your favorite beverage?",
         choices: ["Coffee ☕", "Tea 🍵", "Water 💧"]
@@ -610,7 +603,7 @@ describe("Edge case tests", () => {
       expect(result.success).toBe(true);
     });
 
-    test("accepts special characters in choices", () => {
+    it("accepts special characters in choices", () => {
       const question = {
         label: "What framework do you prefer?",
         choices: [
@@ -626,8 +619,8 @@ describe("Edge case tests", () => {
     });
   });
 
-  describe("Length validation", () => {
-    test("rejects label exceeding max length", () => {
+  describe("length validation", () => {
+    it("rejects label exceeding max length", () => {
       const veryLongLabel = "a".repeat(501);
       const question = {
         label: veryLongLabel,
@@ -638,14 +631,14 @@ describe("Edge case tests", () => {
       expect(result.success).toBe(false);
       if (!result.success) {
         const issues = result.error.issues;
-        expect(issues.some((i) => i.message.includes("500 characters"))).toBe(
+        expect(issues.some(i => i.message.includes("500 characters"))).toBe(
           true
         );
       }
     });
 
-    test("accepts label at max length", () => {
-      const maxLengthLabel = "a".repeat(499) + "?"; // 499 chars + 1 for "?" = 500
+    it("accepts label at max length", () => {
+      const maxLengthLabel = `${"a".repeat(499)}?`; // 499 chars + 1 for "?" = 500
       const question = {
         label: maxLengthLabel,
         choices: ["Yes", "No"]
@@ -655,7 +648,7 @@ describe("Edge case tests", () => {
       expect(result.success).toBe(true);
     });
 
-    test("rejects choice exceeding max length", () => {
+    it("rejects choice exceeding max length", () => {
       const veryLongChoice = "b".repeat(201);
       const question = {
         label: "Test question?",
@@ -666,13 +659,13 @@ describe("Edge case tests", () => {
       expect(result.success).toBe(false);
       if (!result.success) {
         const issues = result.error.issues;
-        expect(issues.some((i) => i.message.includes("200 characters"))).toBe(
+        expect(issues.some(i => i.message.includes("200 characters"))).toBe(
           true
         );
       }
     });
 
-    test("accepts choice at max length", () => {
+    it("accepts choice at max length", () => {
       const maxLengthChoice = "c".repeat(200);
       const question = {
         label: "Test question?",
@@ -684,22 +677,18 @@ describe("Edge case tests", () => {
     });
   });
 
-  describe("Question mark placement", () => {
-    test("rejects question mark not at the end", () => {
+  describe("question mark placement", () => {
+    it("allows question mark not at the end (warning at validator level)", () => {
       const question = {
         label: "What? is your age",
         choices: ["18-24", "25-34", "35+"]
       };
 
       const result = SurveyQuestionSchema.safeParse(question);
-      expect(result.success).toBe(false);
-      if (!result.success) {
-        const issues = result.error.issues;
-        expect(issues.some((i) => i.message.includes("at the end"))).toBe(true);
-      }
+      expect(result.success).toBe(true);
     });
 
-    test("accepts question mark at the end", () => {
+    it("accepts question mark at the end", () => {
       const question = {
         label: "What is your age?",
         choices: ["18-24", "25-34", "35+"]
@@ -709,7 +698,7 @@ describe("Edge case tests", () => {
       expect(result.success).toBe(true);
     });
 
-    test("accepts label without question mark", () => {
+    it("accepts label without question mark", () => {
       const question = {
         label: "Select your programming languages",
         choices: ["JavaScript", "Python", "Go"]
@@ -720,18 +709,18 @@ describe("Edge case tests", () => {
     });
   });
 
-  describe("Null and undefined handling", () => {
-    test("rejects null data", () => {
+  describe("null and undefined handling", () => {
+    it("rejects null data", () => {
       const result = SurveyFileSchema.safeParse(null);
       expect(result.success).toBe(false);
     });
 
-    test("rejects undefined data", () => {
+    it("rejects undefined data", () => {
       const result = SurveyFileSchema.safeParse(undefined);
       expect(result.success).toBe(false);
     });
 
-    test("rejects question with null label", () => {
+    it("rejects question with null label", () => {
       const question = {
         label: null,
         choices: ["Yes", "No"]
@@ -741,7 +730,7 @@ describe("Edge case tests", () => {
       expect(result.success).toBe(false);
     });
 
-    test("rejects question with null choices", () => {
+    it("rejects question with null choices", () => {
       const question = {
         label: "Test?",
         choices: null
@@ -751,7 +740,7 @@ describe("Edge case tests", () => {
       expect(result.success).toBe(false);
     });
 
-    test("rejects question with null choice in array", () => {
+    it("rejects question with null choice in array", () => {
       const question = {
         label: "Test?",
         choices: ["Valid", null, "Another"]
@@ -762,8 +751,8 @@ describe("Edge case tests", () => {
     });
   });
 
-  describe("Complex real-world scenarios", () => {
-    test("validates question with long realistic label", () => {
+  describe("complex real-world scenarios", () => {
+    it("validates question with long realistic label", () => {
       const question = {
         label:
           "How often do you use AI-powered development tools like GitHub Copilot, ChatGPT, Claude, or similar assistants in your daily development workflow?",
@@ -774,7 +763,7 @@ describe("Edge case tests", () => {
       expect(result.success).toBe(true);
     });
 
-    test("validates choices with technical jargon", () => {
+    it("validates choices with technical jargon", () => {
       const question = {
         label: "What backend frameworks do you use?",
         choices: [
@@ -791,7 +780,7 @@ describe("Edge case tests", () => {
       expect(result.success).toBe(true);
     });
 
-    test("validates multilingual content", () => {
+    it("validates multilingual content", () => {
       const file = {
         title: "التعليم والتطوير",
         label: "education",

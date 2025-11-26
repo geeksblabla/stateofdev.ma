@@ -1,9 +1,10 @@
 ---
-import { getQuestion, type QuestionCondition } from "./utils";
-
 import type { Year } from "./data";
+
+import type { QuestionCondition } from "./utils";
 import getContext from "@astro-utils/context";
 import { Chart as RChart } from "./chart";
+import { getQuestion } from "./utils";
 
 export interface Props {
   id: string;
@@ -28,14 +29,16 @@ const results = getQuestion({ id, year, condition, groupBy });
 ---
 
 {
-  results ? (
+  results
+? (
     <RChart
       results={results}
       pie={pie}
       year={year}
       showEmptyOptions={showEmptyOptions}
     />
-  ) : (
+  )
+: (
     <div class="text-sm text-red-500">
       {" "}
       No results for {id} in {year}

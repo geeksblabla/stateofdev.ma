@@ -1,13 +1,13 @@
 ---
+import { validateSurveyFile } from "@/lib/validators/survey-schema";
 import profileQuestionsRaw from "@/survey/1-profile.yml";
 import learningQuestionsRaw from "@/survey/2-learning-and-education.yml";
 import workQuestionRaw from "@/survey/3-work.yml";
 import aiQuestionRaw from "@/survey/4-ai.yml";
 import techQuestionRaw from "@/survey/5-tech.yml";
 import communityQuestionRaw from "@/survey/6-community.yml";
-import { SurveyApp } from "./survey-app";
 import ExitPopup from "./exit-popup.astro";
-import { validateSurveyFile } from "@/lib/validators/survey-schema";
+import { SurveyApp } from "./survey-app";
 
 // Validate each YAML file to ensure data integrity
 const profileQuestions = validateSurveyFile(

@@ -12,8 +12,8 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:ci": "vitest --coverage.enabled true",
-    "lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\"",
-    "lint:ci": "eslint \"src/**/*.{js,ts,jsx,tsx,astro}\"",
+    "lint": "eslint --fix \"**/*.{js,jsx,ts,tsx,astro}\"",
+    "lint:ci": "eslint \"**/*.{js,jsx,ts,tsx,astro}\"",
     "validate-survey": "tsx ./scripts/validate-survey.ts",
     "prepare": "husky",
     "export-results": " tsx --env-file=.env.local ./scripts/export-results.ts",
@@ -57,6 +57,8 @@
     "zod": "^4.1.13"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^6.2.0",
+    "@eslint-react/eslint-plugin": "^2.3.7",
     "@rollup/plugin-yaml": "^4.1.2",
     "@tailwindcss/typography": "^0.5.15",
     "@testing-library/jest-dom": "^6.5.0",
@@ -66,26 +68,22 @@
     "@vitejs/plugin-react": "^5.0.4",
     "@vitest/coverage-v8": "^3.2.4",
     "@vitest/ui": "^3.2.4",
-    "eslint": "^8.57.0",
-    "eslint-plugin-astro": "^0.34.0",
-    "eslint-plugin-jsx-a11y": "^6.10.0",
+    "eslint": "^9.18.0",
+    "eslint-plugin-astro": "^1.2.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
     "eslint-plugin-unicorn": "^55.0.0",
     "husky": "^9.1.6",
     "jsdom": "^25.0.0",
     "lint-staged": "^15.2.10",
-    "prettier": "^3.3.3",
-    "prettier-plugin-astro": "^0.14.1",
     "rimraf": "^6.0.1",
     "tsx": "^4.19.1",
     "vitest": "^3.2.4"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,astro}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{md,mdx}": [
-      "prettier --write"
+      "eslint --fix"
     ]
   }
 }

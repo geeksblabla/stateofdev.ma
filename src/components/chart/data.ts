@@ -1,15 +1,15 @@
-import DATA_2020 from "@/results/2020/data/results.json";
 import Questions_2020 from "@/results/2020/data/questions.json";
-import DATA_2021 from "@/results/2021/data/results.json";
+import DATA_2020 from "@/results/2020/data/results.json";
 import Questions_2021 from "@/results/2021/data/questions.json";
+import DATA_2021 from "@/results/2021/data/results.json";
 
-import DATA_2022 from "@/results/2022/data/results.json";
 import Questions_2022 from "@/results/2022/data/questions.json";
+import DATA_2022 from "@/results/2022/data/results.json";
 
-import DATA_2023 from "@/results/2023/data/results.json";
 import Questions_2023 from "@/results/2023/data/questions.json";
-import DATA_2024 from "@/results/2024/data/results.json";
+import DATA_2023 from "@/results/2023/data/results.json";
 import Questions_2024 from "@/results/2024/data/questions.json";
+import DATA_2024 from "@/results/2024/data/results.json";
 
 export type Year = "2020" | "2021" | "2022" | "2023" | "2024";
 export type Question = globalThis.Question;
@@ -24,28 +24,28 @@ export type SurveyDataType = {
 };
 
 const surveyData: SurveyDataType = {
-  "2020": {
+  2020: {
     questions: Questions_2020 as unknown as QuestionMap,
     results: DATA_2020.results as unknown as Results["results"]
   },
-  "2021": {
+  2021: {
     questions: Questions_2021 as unknown as QuestionMap,
     results: DATA_2021.results as unknown as Results["results"]
   },
-  "2022": {
+  2022: {
     questions: Questions_2022 as unknown as QuestionMap,
     results: DATA_2022.results as unknown as Results["results"]
   },
-  "2023": {
+  2023: {
     questions: Questions_2023 as unknown as QuestionMap,
     results: DATA_2023.results as unknown as Results["results"]
   },
-  "2024": {
+  2024: {
     questions: Questions_2024 as unknown as QuestionMap,
     results: DATA_2024.results as unknown as Results["results"]
   }
 };
 
-export const getSurveyData = (year: Year) => {
+export function getSurveyData(year: Year) {
   return surveyData[year];
-};
+}

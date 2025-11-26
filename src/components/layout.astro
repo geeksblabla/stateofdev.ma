@@ -1,9 +1,9 @@
 ---
-import Header from "./header.astro";
-import Footer from "./footer.astro";
 import { AstroSeo } from "@astrolib/seo";
-import "../globals.css";
 import GoogleAnalytics from "@/components/google-analytics.astro";
+import Footer from "./footer.astro";
+import Header from "./header.astro";
+import "../globals.css";
 
 interface Props {
   title?: string;
@@ -13,9 +13,9 @@ interface Props {
 
 const { title: titleProp, year, description: descriptionProp } = Astro.props;
 const title = titleProp || "State Of Dev In Morocco 🇲🇦";
-const description =
-  descriptionProp ||
-  "Participate and let us know what working in tech really looks like in Morocco 🇲🇦";
+const description
+  = descriptionProp
+    || "Participate and let us know what working in tech really looks like in Morocco 🇲🇦";
 ---
 
 <!doctype html>
@@ -27,75 +27,75 @@ const description =
 
     <!-- Theme Script - Must run before page renders to prevent FOUC -->
     <script is:inline>
-      (function () {
-        const storedTheme = localStorage.getItem("theme");
-        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-          .matches
-          ? "dark"
-          : "light";
-        const theme = storedTheme || "dark";
+(function () {
+  const storedTheme = localStorage.getItem("theme");
+  const theme = storedTheme || "dark";
 
-        if (theme === "dark") {
+  if (theme === "dark") {
+    document.documentElement.classList.add("dark");
+  }
+  else {
+    document.documentElement.classList.remove("dark");
+  }
+
+  // Listen for system theme changes
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", (e) => {
+      if (!localStorage.getItem("theme")) {
+        if (e.matches) {
           document.documentElement.classList.add("dark");
-        } else {
+        }
+        else {
           document.documentElement.classList.remove("dark");
         }
-
-        // Listen for system theme changes
-        window
-          .matchMedia("(prefers-color-scheme: dark)")
-          .addEventListener("change", (e) => {
-            if (!localStorage.getItem("theme")) {
-              if (e.matches) {
-                document.documentElement.classList.add("dark");
-              } else {
-                document.documentElement.classList.remove("dark");
-              }
-            }
-          });
-      })();
-    </script>
+      }
+    });
+})();
+</script>
 
     <!-- Add other meta tags, stylesheets, etc. -->
     <>
       {
-        year === undefined ? (
-          <AstroSeo
-            title={title}
-            description={description}
-            canonical="https://stateofdev.ma"
-            openGraph={{
-              url: "https://stateofdev.ma",
-              title: "State Of Dev In Morocco",
-              description:
-                "Participate and let  us know what working in tech really looks like in Morocco 🇲🇦",
-              images: [
-                {
-                  url: `https://www.stateofdev.ma/images/state-of-dev-cover.png`
-                }
-              ],
-              site_name: "StateOfDevMa"
-            }}
-          />
-        ) : (
-          <AstroSeo
-            title={`State Of Dev In Morocco  🇲🇦`}
-            description={`State Of Dev In Morocco  🇲🇦 | Moroccan developers jobs satisfaction, salaries, and community contribution, how they learn and level up, which tools they’re using, and what they want to learn next. `}
-            canonical="https://stateofdev.ma"
-            openGraph={{
-              url: `https://stateofdev.ma/${year}`,
-              title: `State Of Dev In Morocco ${year} 🇲🇦`,
-              description: `State Of Dev In Morocco ${year} 🇲🇦 | Moroccan developers jobs satisfaction, salaries, and community contribution, how they learn and level up, which tools they’re using, and what they want to learn next. `,
-              images: [
-                // TODO: refactor image as props
-                {
-                  url: `https://www.stateofdev.ma/images/cover-${year}.png`
-                }
-              ],
-              site_name: "StateOfDevMa"
-            }}
-          />
-        )
+        year === undefined
+          ? (
+              <AstroSeo
+                title={title}
+                description={description}
+                canonical="https://stateofdev.ma"
+                openGraph={{
+                  url: "https://stateofdev.ma",
+                  title: "State Of Dev In Morocco",
+                  description:
+                    "Participate and let  us know what working in tech really looks like in Morocco 🇲🇦",
+                  images: [
+                    {
+                      url: `https://www.stateofdev.ma/images/state-of-dev-cover.png`
+                    }
+                  ],
+                  site_name: "StateOfDevMa"
+                }}
+              />
+            )
+          : (
+              <AstroSeo
+                title="State Of Dev In Morocco  🇲🇦"
+                description={`State Of Dev In Morocco  🇲🇦 | Moroccan developers jobs satisfaction, salaries, and community contribution, how they learn and level up, which tools they're using, and what they want to learn next. `}
+                canonical="https://stateofdev.ma"
+                openGraph={{
+                  url: `https://stateofdev.ma/${year}`,
+                  title: `State Of Dev In Morocco ${year} 🇲🇦`,
+                  description: `State Of Dev In Morocco ${year} 🇲🇦 | Moroccan developers jobs satisfaction, salaries, and community contribution, how they learn and level up, which tools they're using, and what they want to learn next. `,
+                  images: [
+                    // TODO: refactor image as props
+                    {
+                      url: `https://www.stateofdev.ma/images/cover-${year}.png`
+                    }
+                  ],
+                  site_name: "StateOfDevMa"
+                }}
+              />
+            )
       }
     </>
     <!-- icons -->

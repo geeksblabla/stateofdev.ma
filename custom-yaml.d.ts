@@ -1,23 +1,11 @@
 /**
- * This file is used to define the types for the results.json and questions.json files
- * Mainly to prevent code editor from loading typing from json files which is can be very heavy
+ * Module declaration for YAML imports
+ * Types are now imported from @/lib/validators/survey-schema (Zod-inferred)
  */
 
-type SurveyQuestion = {
-  label: string;
-  choices: string[];
-  multiple: boolean | null;
-  required: boolean | null;
-};
-
-type SurveyQuestionsYamlFile = {
-  title: string;
-  label: string;
-  position: number;
-  questions: SurveyQuestion[];
-};
-
 declare module "@/survey/*.yml" {
+  import type { SurveyQuestionsYamlFile } from "@/lib/validators/survey-schema";
+
   const value: SurveyQuestionsYamlFile;
   export default value;
 }

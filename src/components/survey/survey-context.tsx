@@ -1,24 +1,28 @@
+import type { ReactNode } from "react";
+import type { SurveyContext } from "./survey-machine";
+import type { SurveyQuestionsYamlFile } from "@/lib/validators/survey-schema";
 import { createActorContext } from "@xstate/react";
-import { useEffect, type ReactNode } from "react";
-import { surveyMachine, type SurveyContext } from "./survey-machine";
+import { useEffect } from "react";
 import { createSurveyInspector } from "./survey-inspector";
+import { surveyMachine } from "./survey-machine";
 
 const STORAGE_KEY = "survey-state";
 const STORAGE_VERSION = 1;
 
-type PersistedState = {
+interface PersistedState {
   version: number;
   currentSectionIdx: number;
   currentQuestionIdx: number;
   answers: Record<string, number | number[] | null | string>;
-};
+}
 
-const loadPersistedState = (): Partial<SurveyContext> | null => {
+function loadPersistedState(): Partial<SurveyContext> | null {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (!stored) return null;
+    if (!stored)
+      return null;
 
-    const parsed: PersistedState = JSON.parse(stored);
+    const parsed = JSON.parse(stored) as PersistedState;
 
     // Version check - clear if outdated
     if (parsed.version !== STORAGE_VERSION) {
@@ -31,14 +35,15 @@ const loadPersistedState = (): Partial<SurveyContext> | null => {
       currentQuestionIdx: parsed.currentQuestionIdx,
       answers: parsed.answers
     };
-  } catch (error) {
+  }
+  catch (error) {
     console.error("Failed to load persisted survey state:", error);
     localStorage.removeItem(STORAGE_KEY);
     return null;
   }
-};
+}
 
-const persistState = (context: SurveyContext) => {
+function persistState(context: SurveyContext) {
   try {
     const toPersist: PersistedState = {
       version: STORAGE_VERSION,
@@ -47,28 +52,30 @@ const persistState = (context: SurveyContext) => {
       answers: context.answers
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(toPersist));
-  } catch (error) {
+  }
+  catch (error) {
     console.error("Failed to persist survey state:", error);
   }
-};
+}
 
-export const clearPersistedState = () => {
+function clearPersistedState() {
   try {
     localStorage.removeItem(STORAGE_KEY);
-  } catch (error) {
+  }
+  catch (error) {
     console.error("Failed to clear persisted survey state:", error);
   }
-};
+}
 
 // Create the actor context
 export const SurveyMachineContext = createActorContext(surveyMachine);
 
-type SurveyProviderProps = {
+interface SurveyProviderProps {
   sections: SurveyQuestionsYamlFile[];
   children: ReactNode;
-};
+}
 
-export const SurveyProvider = ({ sections, children }: SurveyProviderProps) => {
+export function SurveyProvider({ sections, children }: SurveyProviderProps) {
   const persisted = loadPersistedState();
 
   return (
@@ -78,27 +85,31 @@ export const SurveyProvider = ({ sections, children }: SurveyProviderProps) => {
           sections,
           persisted: persisted || undefined
         },
-        inspect: import.meta.env.DEV ? createSurveyInspector() : undefined
+        inspect:
+          import.meta.env.DEV && import.meta.env.MODE !== "test"
+            ? createSurveyInspector()
+            : undefined
       }}
     >
       <PersistenceHandler />
       {children}
     </SurveyMachineContext.Provider>
   );
-};
+}
 
 // Internal component to handle persistence side effects
-const PersistenceHandler = () => {
-  const context = SurveyMachineContext.useSelector((state) => state.context);
-  const value = SurveyMachineContext.useSelector((state) => state.value);
+function PersistenceHandler() {
+  const context = SurveyMachineContext.useSelector(state => state.context);
+  const value = SurveyMachineContext.useSelector(state => state.value);
 
   useEffect(() => {
     if (value === "complete") {
       clearPersistedState();
-    } else {
+    }
+    else {
       persistState(context);
     }
   }, [context, value]);
 
   return null;
-};
+}

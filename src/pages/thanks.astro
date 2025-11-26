@@ -1,12 +1,13 @@
 ---
-export const prerender = false;
-import SocialMediaCard from "@/components/social-media-card.astro";
 import { Image } from "astro:assets";
+import { getAuth } from "firebase-admin/auth";
 import tarbouch from "@/assets/tarbouch.png"; // Image is 1600x900
 
 import BaseLayout from "@/components/layout.astro";
+import SocialMediaCard from "@/components/social-media-card.astro";
 import { getActiveApp } from "@/lib/firebase/server";
-import { getAuth } from "firebase-admin/auth";
+
+export const prerender = false;
 
 const auth = getAuth(getActiveApp());
 
@@ -133,7 +134,7 @@ const posts: Post[] = [
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-          {posts.map((post) => <SocialMediaCard post={post} />)}
+          {posts.map(post => <SocialMediaCard post={post} />)}
         </div>
       </div>
     </div>
@@ -141,35 +142,35 @@ const posts: Post[] = [
 </BaseLayout>
 
 <script>
-  function copyContent(button: Element) {
-    const content = button.getAttribute("data-content");
-    if (!content) {
-      console.error("Content not found in dataset");
-      return;
-    }
-    navigator.clipboard
-      .writeText(content)
-      .then(() => {
-        const tooltip = button.querySelector(".tooltip");
-        if (tooltip) {
-          tooltip.classList.remove("hidden");
-          setTimeout(() => {
-            tooltip.classList.add("hidden");
-          }, 2000);
-        }
-      })
-      .catch((err) => {
-        console.error("Failed to copy: ", err);
-      });
+function copyContent(button: Element) {
+  const content = button.getAttribute("data-content");
+  if (!content) {
+    console.error("Content not found in dataset");
+    return;
   }
-
-  const copyButtons = document.querySelectorAll('[data-id="copyButton"]');
-
-  if (copyButtons) {
-    copyButtons.forEach((copyButton) => {
-      copyButton.addEventListener("click", function () {
-        copyContent(copyButton);
-      });
+  navigator.clipboard
+    .writeText(content)
+    .then(() => {
+      const tooltip = button.querySelector(".tooltip");
+      if (tooltip) {
+        tooltip.classList.remove("hidden");
+        setTimeout(() => {
+          tooltip.classList.add("hidden");
+        }, 2000);
+      }
+    })
+    .catch((err) => {
+      console.error("Failed to copy: ", err);
     });
-  }
+}
+
+const copyButtons = document.querySelectorAll("[data-id=\"copyButton\"]");
+
+if (copyButtons) {
+  copyButtons.forEach((copyButton) => {
+    copyButton.addEventListener("click", () => {
+      copyContent(copyButton);
+    });
+  });
+}
 </script>

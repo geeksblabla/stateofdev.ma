@@ -1,15 +1,15 @@
 ---
-export const prerender = true;
-
-import Context from "@astro-utils/context/Context.astro";
-import Tabs from "./tabs.astro";
-import TabItem from "./tab-item.astro";
-import Toc from "./toc.astro";
-import Hero from "./hero.astro";
-
 import type { Year } from "@/components/chart/data";
-
+import Context from "@astro-utils/context/Context.astro";
 import Chart from "@/components/chart/chart.astro";
+import Hero from "./hero.astro";
+import TabItem from "./tab-item.astro";
+
+import Tabs from "./tabs.astro";
+
+import Toc from "./toc.astro";
+
+export const prerender = true;
 
 export interface Props {
   year: Year;
@@ -17,13 +17,13 @@ export interface Props {
 const { year = "2023" } = Astro.props;
 const allDocs = await Astro.glob(`../../../results/**/*.mdx`);
 const docs = allDocs
-  .filter((file) => file.file.includes(`${year}/sections`))
+  .filter(file => file.file.includes(`${year}/sections`))
   .sort((a, b) => a.frontmatter.position - b.frontmatter.position);
 
 const headings = docs
-  .map((doc) => doc.getHeadings())
+  .map(doc => doc.getHeadings())
   .flat()
-  .filter((heading) => heading.depth <= 3);
+  .filter(heading => heading.depth <= 3);
 const customComponents = {
   Chart,
   TabItem,
@@ -52,7 +52,7 @@ const customComponents = {
             return (
               <div>
                 <div class="pb-12 md:pb-16">
-                  {<doc.Content components={customComponents} />}
+                  <doc.Content components={customComponents} />
                 </div>
                 {index < docs.length - 1 && (
                   <div class="flex items-center justify-center gap-2 pt-4 pb-12">

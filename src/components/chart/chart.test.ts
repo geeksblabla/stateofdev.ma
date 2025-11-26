@@ -1,4 +1,4 @@
-import { describe, test, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { getQuestion } from "./utils";
 
 const questions = {
@@ -49,7 +49,7 @@ const questions = {
 
 const results = [
   {
-    userId: "user-0",
+    "userId": "user-0",
     "profile-q-0": 0,
     "profile-q-1": [0],
     "profile-q-2": 1,
@@ -58,7 +58,7 @@ const results = [
     "profile-q-5": [0, 1, 2, 3]
   },
   {
-    userId: "user-1",
+    "userId": "user-1",
     "profile-q-0": 1,
     "profile-q-1": [0, 1],
     "profile-q-2": 1,
@@ -67,7 +67,7 @@ const results = [
     "profile-q-5": [2, 3, 4]
   },
   {
-    userId: "user-2",
+    "userId": "user-2",
     "profile-q-0": 0,
     "profile-q-1": [1, 2],
     "profile-q-2": 2,
@@ -76,7 +76,7 @@ const results = [
     "profile-q-5": [0, 1, 4, 5]
   },
   {
-    userId: "user-3",
+    "userId": "user-3",
     "profile-q-0": 1,
     "profile-q-1": [0],
     "profile-q-2": 0,
@@ -86,7 +86,7 @@ const results = [
   },
   {
     // no answer for q-2
-    userId: "user-4",
+    "userId": "user-4",
     "profile-q-0": 1,
     "profile-q-1": [0],
     "profile-q-3": [2],
@@ -101,12 +101,12 @@ const dataSource = {
 };
 
 describe("getQuestion Simple calculations", () => {
-  test("throws error for non-existent question id", () => {
+  it("throws error for non-existent question id", () => {
     const result = getQuestion({ id: "non-existent-id", dataSource });
     expect(result).toBeNull();
   });
 
-  test("handles empty results", () => {
+  it("handles empty results", () => {
     const emptyDataSource = { ...dataSource, results: [] };
     const result = getQuestion({
       id: "profile-q-0",
@@ -115,10 +115,10 @@ describe("getQuestion Simple calculations", () => {
     expect(result).not.toBeNull();
     expect(result?.total).toBe(0);
     expect(result?.results).toHaveLength(2);
-    expect(result?.results.every((r) => r.total === 0)).toBeTruthy();
+    expect(result?.results.every(r => r.total === 0)).toBeTruthy();
   });
 
-  test("returns correct data for a simple question", () => {
+  it("returns correct data for a simple question", () => {
     const result = getQuestion({ id: "profile-q-0", dataSource });
     expect(result?.label).toBe("question 0");
     expect(result?.total).toBe(5);
@@ -129,17 +129,17 @@ describe("getQuestion Simple calculations", () => {
     expect(result?.results[1].total).toBe(3);
   });
 
-  test("handles missing answers correctly", () => {
+  it("handles missing answers correctly", () => {
     const result = getQuestion({ id: "profile-q-2", dataSource });
     expect(result?.total).toBe(4); // user-4 didn't answer this question
   });
-  test("returns all choices even if not present in results", () => {
+  it("returns all choices even if not present in results", () => {
     const result = getQuestion({ id: "profile-q-4", dataSource });
     expect(result?.results).toHaveLength(5);
-    expect(result?.results.some((r) => r.total === 0)).toBeTruthy();
+    expect(result?.results.some(r => r.total === 0)).toBeTruthy();
   });
 
-  test("handles multiple choice questions correctly", () => {
+  it("handles multiple choice questions correctly", () => {
     const result = getQuestion({ id: "profile-q-1", dataSource });
     expect(result?.total).toBe(5);
     expect(result?.results).toHaveLength(
@@ -150,9 +150,10 @@ describe("getQuestion Simple calculations", () => {
     expect(result?.results[2].total).toBe(1);
   });
 
-  test("total should equal the total of all results if the question is not multiple", () => {
+  it("total should equal the total of all results if the question is not multiple", () => {
     const result = getQuestion({ id: "profile-q-0", dataSource });
-    if (!result) return;
+    if (!result)
+      return;
     const totalAllChoices = result.results.reduce(
       (acc, curr) => acc + curr.total,
       0
@@ -163,13 +164,17 @@ describe("getQuestion Simple calculations", () => {
 
 describe("getQuestion Filters", () => {
   // filters
-  test("applies simple condition filter correctly with non multiple choice question", () => {
+  it("applies simple condition filter correctly with non multiple choice question", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
-      condition: (v) => v["profile-q-4"] === 3
+      condition: (v) => {
+        const value = v["profile-q-4"];
+        return typeof value === "number" && value === 3;
+      }
     });
-    if (!result) return;
+    if (!result)
+      return;
     const totalAllChoices = result.results.reduce(
       (acc, curr) => acc + curr.total,
       0
@@ -179,16 +184,19 @@ describe("getQuestion Filters", () => {
     expect(result.results[1].total).toBe(2);
   });
 
-  test("applies simple condition filter correctly with multiple choice question", () => {
+  it("applies simple condition filter correctly with multiple choice question", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
-      condition: (v) => v["profile-q-5"].includes(3)
+      condition: (v) => {
+        const value = v["profile-q-5"];
+        return Array.isArray(value) && (value as number[]).includes(3);
+      }
     });
     expect(result?.total).toBe(4);
   });
 
-  test("handles array condition filter", () => {
+  it("handles array condition filter", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
@@ -196,7 +204,7 @@ describe("getQuestion Filters", () => {
     });
     expect(result?.total).toBe(2);
   });
-  test("handles multiple value array condition filter", () => {
+  it("handles multiple value array condition filter", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
@@ -205,7 +213,7 @@ describe("getQuestion Filters", () => {
     expect(result?.total).toBe(3);
   });
 
-  test("handles multiple value array condition filter", () => {
+  it("handles multiple value array condition filter with multiple questions", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
@@ -219,7 +227,7 @@ describe("getQuestion Filters", () => {
     expect(result?.results[1].total).toBe(2);
   });
 
-  test("handles complex array condition filter with multiple questions", () => {
+  it("handles complex array condition filter with multiple questions", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
@@ -233,17 +241,17 @@ describe("getQuestion Filters", () => {
     expect(result?.results[1].total).toBe(0);
   });
 
-  test("handles array condition filter with no matching values", () => {
+  it("handles array condition filter with no matching values", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
       condition: [{ question_id: "profile-q-4", values: ["999"] }]
     });
     expect(result?.total).toBe(0);
-    expect(result?.results.every((r) => r.total === 0)).toBeTruthy();
+    expect(result?.results.every(r => r.total === 0)).toBeTruthy();
   });
 
-  test("handles array condition filter with empty values array", () => {
+  it("handles array condition filter with empty values array", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
@@ -252,32 +260,36 @@ describe("getQuestion Filters", () => {
     expect(result?.total).toBe(5);
   });
 
-  test("handles function condition with complex logic", () => {
+  it("handles function condition with complex logic", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
-      condition: (v) =>
-        v["profile-q-4"] % 2 === 0 && v["profile-q-5"].includes(1)
+      condition: (v) => {
+        const value4 = v["profile-q-4"];
+        const value5 = v["profile-q-5"];
+        return typeof value4 === "number" && value4 % 2 === 0 && Array.isArray(value5) && (value5 as number[]).includes(1);
+      }
     });
     expect(result?.total).toBe(1);
     expect(result?.results[0].total).toBe(1);
     expect(result?.results[1].total).toBe(0);
   });
 
-  test("applies filter correctly to multiple choice questions", () => {
+  it("applies filter correctly to multiple choice questions", () => {
     const result = getQuestion({
       id: "profile-q-1",
       dataSource,
       condition: [{ question_id: "profile-q-0", values: ["1"] }]
     });
-    if (!result) return;
+    if (!result)
+      return;
     expect(result.total).toBe(3);
     expect(result.results[0].total).toBe(3);
     expect(result.results[1].total).toBe(1);
     expect(result.results[2].total).toBe(0);
   });
 
-  test("handles missing answers in filter conditions", () => {
+  it("handles missing answers in filter conditions", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
@@ -286,14 +298,17 @@ describe("getQuestion Filters", () => {
     expect(result?.total).toBe(4); // user-4 should be excluded due to missing answer
   });
 
-  test("sets isFiltered correctly", () => {
+  it("sets isFiltered correctly", () => {
     const resultNoFilter = getQuestion({ id: "profile-q-0", dataSource });
     expect(resultNoFilter?.isFiltered).toBe(false);
 
     const resultWithFunctionFilter = getQuestion({
       id: "profile-q-0",
       dataSource,
-      condition: (v) => v["profile-q-4"] === 3
+      condition: (v) => {
+        const value = v["profile-q-4"];
+        return typeof value === "number" && value === 3;
+      }
     });
     expect(resultWithFunctionFilter?.isFiltered).toBe(true);
 
@@ -314,25 +329,27 @@ describe("getQuestion Filters", () => {
 });
 
 describe("getQuestion Grouping", () => {
-  test("groups results correctly", () => {
+  it("groups results correctly", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
       groupBy: "profile-q-4"
     });
-    if (!result) return;
+    if (!result)
+      return;
     expect(result.results).toHaveLength(2);
     expect(result.results[0].grouped).not.toBeNull();
     expect(result.results[0].grouped?.results).toHaveLength(5);
   });
 
-  test("groups results correctly for single-choice questions", () => {
+  it("groups results correctly for single-choice questions", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
       groupBy: "profile-q-4"
     });
-    if (!result) return;
+    if (!result)
+      return;
     expect(result.results).toHaveLength(2);
     expect(result.results[0].grouped).not.toBeNull();
     expect(result.results[0].grouped?.results).toHaveLength(5);
@@ -341,13 +358,14 @@ describe("getQuestion Grouping", () => {
     expect(result.results[1].grouped?.total).toBe(3);
   });
 
-  test("groups results correctly for multiple-choice questions", () => {
+  it("groups results correctly for multiple-choice questions", () => {
     const result = getQuestion({
       id: "profile-q-1",
       dataSource,
       groupBy: "profile-q-0"
     });
-    if (!result) return;
+    if (!result)
+      return;
     expect(result.results).toHaveLength(3);
     expect(result.results[0].grouped).not.toBeNull();
     expect(result.results[0].grouped?.results).toHaveLength(2);
@@ -355,13 +373,14 @@ describe("getQuestion Grouping", () => {
     expect(result.results[2].grouped?.results).toHaveLength(2);
   });
 
-  test("handles grouping with missing answers", () => {
+  it("handles grouping with missing answers", () => {
     const result = getQuestion({
       id: "profile-q-2",
       dataSource,
       groupBy: "profile-q-0"
     });
-    if (!result) return;
+    if (!result)
+      return;
     expect(result.results).toHaveLength(3);
     expect(result.results[0].grouped?.results).toHaveLength(2);
     expect(result.results[1].grouped?.results).toHaveLength(2);
@@ -371,14 +390,18 @@ describe("getQuestion Grouping", () => {
     expect(result.results[2].grouped?.total).toBe(1);
   });
 
-  test("groups results correctly with a filter applied", () => {
+  it("groups results correctly with a filter applied", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
       groupBy: "profile-q-4",
-      condition: (v) => v["profile-q-5"].includes(3)
+      condition: (v) => {
+        const value = v["profile-q-5"];
+        return Array.isArray(value) && (value as number[]).includes(3);
+      }
     });
-    if (!result) return;
+    if (!result)
+      return;
     expect(result.results).toHaveLength(
       questions["profile-q-0"].choices.length
     );
@@ -393,25 +416,27 @@ describe("getQuestion Grouping", () => {
     expect(result.results[1].grouped?.total).toBe(result.results[1].total);
   });
 
-  test("handles grouping by a question with more choices than answers", () => {
+  it("handles grouping by a question with more choices than answers", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
       groupBy: "profile-q-5"
     });
-    if (!result) return;
+    if (!result)
+      return;
     expect(result.results).toHaveLength(2);
     expect(result.results[0].grouped?.results).toHaveLength(6);
     expect(result.results[1].grouped?.results).toHaveLength(6);
   });
 
-  test("nested grouping works correctly", () => {
+  it("nested grouping works correctly", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
       groupBy: "profile-q-1"
     });
-    if (!result) return;
+    if (!result)
+      return;
     expect(result.results).toHaveLength(2);
     expect(result.results[0].grouped?.results).toHaveLength(3);
     expect(result.results[1].grouped?.results).toHaveLength(3);
@@ -421,47 +446,50 @@ describe("getQuestion Grouping", () => {
     expect(nestedGroup).toBeNull();
   });
 
-  test("grouping preserves all choices even if not present in results", () => {
+  it("grouping preserves all choices even if not present in results", () => {
     const result = getQuestion({
       id: "profile-q-4",
       dataSource,
       groupBy: "profile-q-0"
     });
-    if (!result) return;
+    if (!result)
+      return;
     expect(result.results).toHaveLength(5);
     expect(
-      result.results.every((r) => r.grouped?.results.length === 2)
+      result.results.every(r => r.grouped?.results.length === 2)
     ).toBeTruthy();
-    expect(result.results.some((r) => r.total === 0)).toBeTruthy();
+    expect(result.results.some(r => r.total === 0)).toBeTruthy();
   });
 
-  test("grouping handles condition that filters out all results", () => {
+  it("grouping handles condition that filters out all results", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
       groupBy: "profile-q-4",
       condition: () => false
     });
-    if (!result) return;
+    if (!result)
+      return;
     expect(result.results).toHaveLength(2);
     expect(result.results[0].grouped?.total).toBe(0);
     expect(result.results[1].grouped?.total).toBe(0);
     expect(
-      result.results[0].grouped?.results.every((r) => r.total === 0)
+      result.results[0].grouped?.results.every(r => r.total === 0)
     ).toBeTruthy();
     expect(
-      result.results[1].grouped?.results.every((r) => r.total === 0)
+      result.results[1].grouped?.results.every(r => r.total === 0)
     ).toBeTruthy();
   });
 
-  test("grouping with array condition filter", () => {
+  it("grouping with array condition filter", () => {
     const result = getQuestion({
       id: "profile-q-0",
       dataSource,
       groupBy: "profile-q-4",
       condition: [{ question_id: "profile-q-5", values: ["3"] }]
     });
-    if (!result) return;
+    if (!result)
+      return;
     expect(result.results).toHaveLength(2);
     expect(result.total).toBe(4);
     expect(result.results[0].grouped?.total).toBe(result.results[0].total);
