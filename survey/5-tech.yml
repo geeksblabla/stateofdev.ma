@@ -368,14 +368,6 @@ questions:
       - Xcode
       - Other
 
-  - label: "How frequently do you learn a new programming language or framework?"
-    required: true
-    choices:
-      - Every few months
-      - Once a year
-      - Once every few years
-      - Once a decade
-
   - label: "What do you do when you get stuck on a problem?"
     required: true
     multiple: true

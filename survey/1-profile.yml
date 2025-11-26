@@ -73,14 +73,17 @@ questions:
       - Cloud architect
       - Student (coding professionally)
 
-  - label: What is your highest diploma?
+  - label: What is/was your coding education background?
     required: true
     choices:
       - Self-taught (no formal CS education)
-      - Bac +2/+3, Bachelor's degree (B.A., B.S., B.Eng., etc.)
-      - Bac +5, Master's degree (M.A., M.S., M.Eng., MBA, etc.)
-      - Bac +8, Doctoral degree (Ph.D., Ed.D., etc.)
-      - Coding bootcamp/school (1337, YouCode, Solicode, etc.)
+      - University/Public school - Bac +2/+3 (Bachelor's)
+      - University/Public school - Bac +5 (Master's)
+      - University/Public school - Bac +8 (Doctoral)
+      - Private engineering/tech school
+      - Coding school (1337, YouCode, Solicode, etc.)
+      - Vocational/Technical training
+      - Other field's diploma (career transition)
       - Other
 
   - label: How many years have you been coding professionally?
@@ -95,14 +98,15 @@ questions:
       - 11-16 years
       - 16+ years
 
-  - label: Is coding a hobby for you?
+  - label: Do you code outside of work or studies?
     required: true
+    multiple: true
     choices:
-      - Yes, I regularly code on personal projects
-      - Yes, I occasionally code for fun
-      - Yes, I contribute to open source
-      - No, I only code professionally
-      - No, I avoid coding outside work
+      - No
+      - Yes, occasionally for fun or learning
+      - Yes, for open source contributions
+      - Yes, for profit (freelance, products, services)
+      - Yes, for portfolio/career building
 
   - label: Do you have any plans to work outside Morocco?
     required: true
@@ -123,13 +127,3 @@ questions:
       - Yes, but not in the near future
       - Still hesitating
       - No, I plan to stay abroad
-
-  - label: What do you usually drink while coding?
-    required: true
-    choices:
-      - Tea
-      - Coffee
-      - Water
-      - Energy drinks
-      - None
-      - Other
