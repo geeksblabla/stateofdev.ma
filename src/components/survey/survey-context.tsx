@@ -86,7 +86,7 @@ export function SurveyProvider({ sections, children }: SurveyProviderProps) {
           persisted: persisted || undefined
         },
         inspect:
-          import.meta.env.DEV
+          import.meta.env.DEV && import.meta.env.MODE !== "test"
             ? createSurveyInspector()
             : undefined
       }}

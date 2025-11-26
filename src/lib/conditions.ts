@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import type { ShowIfCondition } from "./validators/survey-schema";
 
 export type AnswerValue = number | number[] | null | string;
@@ -33,7 +32,7 @@ export function evaluateCondition(
 
   // Validate question ID format
   if (!question || !/^[a-z0-9-]+-q-\d+$/.test(question)) {
-    console.log(
+    console.warn(
       `[Condition] Invalid question ID format: "${question}". Showing question by default.`
     );
     return true;
@@ -65,7 +64,7 @@ export function evaluateCondition(
   }
 
   // No valid operator found
-  console.log(
+  console.warn(
     `[Condition] No valid operator found in condition for question "${question}". Showing by default.`
   );
   return true;
@@ -76,7 +75,7 @@ export function evaluateCondition(
  */
 function evaluateEquals(answer: AnswerValue, expected: number): boolean {
   if (typeof answer !== "number") {
-    console.log(
+    console.warn(
       `[Condition] equals operator used on non-number answer. Expected number, got ${typeof answer}`
     );
     return false;
@@ -89,7 +88,7 @@ function evaluateEquals(answer: AnswerValue, expected: number): boolean {
  */
 function evaluateNotEquals(answer: AnswerValue, expected: number): boolean {
   if (typeof answer !== "number") {
-    console.log(
+    console.warn(
       `[Condition] notEquals operator used on non-number answer. Expected number, got ${typeof answer}`
     );
     return false;
@@ -102,7 +101,7 @@ function evaluateNotEquals(answer: AnswerValue, expected: number): boolean {
  */
 function evaluateIn(answer: AnswerValue, expected: number[]): boolean {
   if (typeof answer !== "number") {
-    console.log(
+    console.warn(
       `[Condition] in operator used on non-number answer. Expected number, got ${typeof answer}`
     );
     return false;
@@ -115,7 +114,7 @@ function evaluateIn(answer: AnswerValue, expected: number[]): boolean {
  */
 function evaluateNotIn(answer: AnswerValue, expected: number[]): boolean {
   if (typeof answer !== "number") {
-    console.log(
+    console.warn(
       `[Condition] notIn operator used on non-number answer. Expected number, got ${typeof answer}`
     );
     return false;
