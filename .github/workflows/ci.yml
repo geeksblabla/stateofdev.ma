@@ -1,4 +1,4 @@
-name: Test
+name: CI Check
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  test:
+  ci:
     runs-on: ubuntu-latest
 
     permissions:
@@ -21,10 +21,18 @@ jobs:
       - name: 📦 Setup Node + PNPM + install deps
         uses: ./.github/actions/setup-node-pnpm-install
 
-      - name: "Test"
+      - name: "Astro Check"
+        run: pnpm run astro check
+
+      - name: "Run ESLint"
+        run: pnpm run lint:ci
+
+      - name: "Run Tests"
         run: pnpm run test:ci
-      - name: "Report Coverage"
+
+      - name: "Generate Coverage Report"
         # Set if: always() to also generate the report if tests are failing
         # Only works if you set `reportOnFailure: true` in your vite config as specified above
         if: always()
         uses: davelosert/vitest-coverage-report-action@v2
+
