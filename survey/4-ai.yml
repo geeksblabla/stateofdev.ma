@@ -19,7 +19,7 @@ questions:
       - I am a 10x engineer now (+50%)
       - It decreased my productivity
 
-  - label: "Do you think AI will replace developers in the future?"
+  - label: Do you think AI will replace developers in the future?
     required: true
     choices:
       - Not very much ( less than 10% )
@@ -29,7 +29,7 @@ questions:
       - Completely  ( more than 80% )
       - Not sure
 
-  - label: "Are you planning to learn AI to build apps?"
+  - label: Are you planning to learn AI to build apps?
     required: true
     choices:
       - No, I am not interested
@@ -38,14 +38,15 @@ questions:
       - I can build complex apps and play with models.
       - I am already an expert
 
-  - label: "How much is your company investing in AI?"
+  - label: How much is your company investing in AI?
+    required: false
     choices:
       - We haven't started adopting AI
       - We're getting the basics in place
       - We have some ad-hoc use cases in production
       - We have several use cases in production
 
-  - label: "Which AI tools and apps do you use?"
+  - label: Which AI tools and apps do you use?
     multiple: true
     choices:
       # Web/Desktop AI Assistants
@@ -80,7 +81,7 @@ questions:
       # Other
       - Other
 
-  - label: "Which AI frameworks and models do you use?"
+  - label: Which AI frameworks and models do you use?
     multiple: true
     choices:
       # LLM APIs & Cloud Providers

@@ -2,7 +2,7 @@ title: Community
 label: community
 position: 6
 questions:
-  - label: "What prevents you from participating more in the Moroccan tech community?"
+  - label: What prevents you from participating more in the Moroccan tech community?
     required: true
     multiple: true
     choices:
@@ -14,7 +14,7 @@ questions:
       - Financial constraints (event costs, travel)
       - Other
 
-  - label: "What would make you more likely to attend tech events in Morocco?"
+  - label: What would make you more likely to attend tech events in Morocco?
     required: true
     multiple: true
     choices:
@@ -26,7 +26,7 @@ questions:
       - Better timing (weekends, evenings)
       - Other
 
-  - label: "How has the Moroccan tech community helped your career?"
+  - label: How has the Moroccan tech community helped your career?
     required: true
     multiple: true
     choices:
@@ -38,9 +38,9 @@ questions:
       - It hasn't helped my career yet
       - Other
 
-  - label: "What do you MOST need from the Moroccan tech community right now?"
+  - label: What do you MOST need from the Moroccan tech community right now (pick 3 max)?
     required: true
-    multiple: false
+    multiple: true
     choices:
       - Job opportunities and career guidance
       - Mentorship from experienced developers
@@ -50,9 +50,9 @@ questions:
       - Collaboration opportunities on projects
       - Other
 
-  - label: "What type of community content would be MOST valuable to you?"
+  - label: What type of community content would be MOST valuable to you (pick 3 max)?
     required: true
-    multiple: false
+    multiple: true
     choices:
       - Technical workshops (hands-on coding)
       - Case studies from Moroccan companies
@@ -63,7 +63,7 @@ questions:
       - Freelancing and entrepreneurship guidance
       - Other
 
-  - label: "What prevents you from contributing to open source?"
+  - label: What prevents you from contributing to open source?
     required: true
     multiple: true
     choices:

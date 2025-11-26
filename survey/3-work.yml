@@ -39,6 +39,7 @@ questions:
       - Very satisfied
 
   - label: How long have you been unemployed after graduation?
+    required: false
     choices:
       - None, I worked straight after my graduation 😎
       - Up to 3 months
@@ -47,6 +48,7 @@ questions:
       - More than 1 year
 
   - label: "If you are a full time employee in Morocco(CDI), Your NET salary range per month in MAD is:"
+    required: false
     showIf:
       question: profile-q-7
       notEquals: 3
@@ -66,6 +68,7 @@ questions:
       - "> 30 000"
 
   - label: "If you are working as a freelancer in Morocco, Your salary range per day in MAD(TJM) is:"
+    required: false
     showIf:
       question: profile-q-7
       notEquals: 3
@@ -80,6 +83,7 @@ questions:
       - "> 5 000"
 
   - label: "If you are working full-time contract outside Morocco, Your gross salary range per year in USD is:"
+    required: false
     showIf:
       question: profile-q-7
       equals: 3
@@ -98,6 +102,7 @@ questions:
       - "> 200 000"
 
   - label: "If you are working as a freelancer/contractor outside Morocco, Your daily gross wage in USD is:"
+    required: false
     showIf:
       question: profile-q-7
       equals: 3
