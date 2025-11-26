@@ -1,8 +1,11 @@
 title: Work
 label: work
 position: 3
+showIf:
+  question: profile-q-5
+  notEquals: 0
 questions:
-  - label: "What is your employment status?"
+  - label: What is your employment status?
     required: true
     multiple: false
     choices:
@@ -24,7 +27,7 @@ questions:
       - "Sometimes: 1-2 days per month but less than weekly"
       - "Often: 1-2 days per week or more"
       - "Very often: 3-5 days per week"
-      - "Daily"
+      - Daily
 
   - label: How do you feel about your job?
     required: false
@@ -44,56 +47,68 @@ questions:
       - More than 1 year
 
   - label: "If you are a full time employee in Morocco(CDI), Your NET salary range per month in MAD is:"
+    showIf:
+      question: profile-q-7
+      notEquals: 3
     choices:
-      - "< 4 000"
-      - "4 000 - 6 000"
-      - "6 000 - 8 000"
-      - "8 000 - 10 000"
-      - "10 000 - 12 000"
-      - "12 000 - 14 000"
-      - "14 000 - 16 000"
-      - "16 000 - 18 000"
-      - "18 000 - 20 000"
-      - "20 000 - 22 000"
-      - "22 000 - 25 000"
-      - "25 000 - 30 000"
+      - < 4 000
+      - 4 000 - 6 000
+      - 6 000 - 8 000
+      - 8 000 - 10 000
+      - 10 000 - 12 000
+      - 12 000 - 14 000
+      - 14 000 - 16 000
+      - 16 000 - 18 000
+      - 18 000 - 20 000
+      - 20 000 - 22 000
+      - 22 000 - 25 000
+      - 25 000 - 30 000
       - "> 30 000"
 
   - label: "If you are working as a freelancer in Morocco, Your salary range per day in MAD(TJM) is:"
+    showIf:
+      question: profile-q-7
+      notEquals: 3
     choices:
-      - "< 1 000"
-      - "1 000 - 1 500"
-      - "1 500 - 2 000"
-      - "2 000 - 2 500"
-      - "2 500 - 3 000"
-      - "3 000 - 4 000"
-      - "4 000 - 5 000"
+      - < 1 000
+      - 1 000 - 1 500
+      - 1 500 - 2 000
+      - 2 000 - 2 500
+      - 2 500 - 3 000
+      - 3 000 - 4 000
+      - 4 000 - 5 000
       - "> 5 000"
 
   - label: "If you are working full-time contract outside Morocco, Your gross salary range per year in USD is:"
+    showIf:
+      question: profile-q-7
+      equals: 3
     choices:
-      - "< 20 000"
-      - "20 000 - 25 000"
-      - "25 000 - 30 000"
-      - "30 000 - 40 000"
-      - "40 000 - 50 000"
-      - "50 000 - 60 000"
-      - "60 000 - 80 000"
-      - "80 000 - 100 000"
-      - "100 000 - 120 000"
-      - "120 000 - 150 000"
-      - "150 000 - 200 000"
+      - < 20 000
+      - 20 000 - 25 000
+      - 25 000 - 30 000
+      - 30 000 - 40 000
+      - 40 000 - 50 000
+      - 50 000 - 60 000
+      - 60 000 - 80 000
+      - 80 000 - 100 000
+      - 100 000 - 120 000
+      - 120 000 - 150 000
+      - 150 000 - 200 000
       - "> 200 000"
 
   - label: "If you are working as a freelancer/contractor outside Morocco, Your daily gross wage in USD is:"
+    showIf:
+      question: profile-q-7
+      equals: 3
     choices:
-      - "< 200"
-      - "200 - 500"
-      - "500 - 1 000"
-      - "1 000 - 2 000"
-      - "2 000 - 3 000"
-      - "3 000 - 5 000"
-      - "5 000 - 10 000"
+      - < 200
+      - 200 - 500
+      - 500 - 1 000
+      - 1 000 - 2 000
+      - 2 000 - 3 000
+      - 3 000 - 5 000
+      - 5 000 - 10 000
       - "> 10 000"
 
   - label: What characteristics would mostly influence your decision to choose one job offer over another?
@@ -148,7 +163,7 @@ questions:
       - Full remote
       - Part-time remote/Hybrid
 
-  - label: "Which sectors are you currently working in?"
+  - label: Which sectors are you currently working in?
     multiple: true
     required: false
     choices:
