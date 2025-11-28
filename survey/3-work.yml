@@ -194,3 +194,22 @@ questions:
       - Blockchain/Web3
       - Government/Public sector
       - Other
+
+  - label: What best describes your relationship with entrepreneurship?
+    required: false
+    showIf:
+      question: work-q-0
+      notEquals: 0
+    choices:
+      - Currently building a side project/startup while employed
+      - Planning to start a business within the next year
+      - Interested, but not ready yet (2-5 years)
+      - Interested, but lack a viable business idea
+      - Interested, but need more business/entrepreneurship knowledge
+      - Interested, but financial risk is too high
+      - Interested, but family/social pressure for stable job
+      - Interested, but legal/administrative barriers in Morocco
+      - Tried entrepreneurship before, didn't work out
+      - Not interested, prefer working for a company
+      - Not interested, prefer technical work over business
+      - Other
