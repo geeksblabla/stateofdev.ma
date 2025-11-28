@@ -2,7 +2,7 @@ title: Tech
 label: tech
 position: 5
 questions:
-  - label: "What are the programming languages you like the most?"
+  - label: What are the programming languages you like the most?
     required: true
     multiple: true
     choices:
@@ -39,7 +39,7 @@ questions:
       - F#
       - Other
 
-  - label: "What are the programming languages you want to learn next?"
+  - label: What are the programming languages you want to learn next?
     required: false
     multiple: true
     choices:
@@ -76,7 +76,7 @@ questions:
       - F#
       - Other
 
-  - label: "What are the programming languages you are using on a daily basis?"
+  - label: What are the programming languages you are using on a daily basis?
     required: true
     multiple: true
     choices:
@@ -113,35 +113,7 @@ questions:
       - F#
       - Other
 
-  - label: "What are the front-end frameworks/libraries you are using on a daily basis?"
-    multiple: true
-    choices:
-      - jQuery
-      - React.js
-      - Angular
-      - Vue.js
-      - Angular.js
-      - Gatsby
-      - Ember.js
-      - Backbone.js
-      - Preact
-      - Next.js
-      - Svelte
-      - Foundation
-      - Alpine.js
-      - Remix
-      - Solid.js
-      - Astro
-      - Qwik
-      - Htmx
-      - Nuxt.js
-      - SvelteKit
-      - Lit
-      - Fresh
-      - Stencil
-      - Other
-
-  - label: "What are the front-end frameworks/libraries you want to learn next?"
+  - label: What are the front-end frameworks/libraries you are using on a daily basis?
     required: false
     multiple: true
     choices:
@@ -170,7 +142,37 @@ questions:
       - Stencil
       - Other
 
-  - label: "What approach do you use for styling your web apps?"
+  - label: What are the front-end frameworks/libraries you want to learn next?
+    required: false
+    multiple: true
+    choices:
+      - jQuery
+      - React.js
+      - Angular
+      - Vue.js
+      - Angular.js
+      - Gatsby
+      - Ember.js
+      - Backbone.js
+      - Preact
+      - Next.js
+      - Svelte
+      - Foundation
+      - Alpine.js
+      - Remix
+      - Solid.js
+      - Astro
+      - Qwik
+      - Htmx
+      - Nuxt.js
+      - SvelteKit
+      - Lit
+      - Fresh
+      - Stencil
+      - Other
+
+  - label: What approach do you use for styling your web apps?
+    required: false
     multiple: true
     choices:
       - CSS
@@ -185,7 +187,8 @@ questions:
       - Vanilla Extract
       - Other
 
-  - label: "What are the backend frameworks you are using on a daily basis?"
+  - label: What are the backend frameworks you are using on a daily basis?
+    required: false
     multiple: true
     choices:
       - .NET
@@ -220,7 +223,8 @@ questions:
       - Axum
       - Other
 
-  - label: "What are the backend frameworks you want to learn next?"
+  - label: What are the backend frameworks you want to learn next?
+    required: false
     multiple: true
     choices:
       - .NET
@@ -255,7 +259,7 @@ questions:
       - Axum
       - Other
 
-  - label: "What are the platforms and tools you are using on a daily basis?"
+  - label: What are the platforms and tools you are using on a daily basis?
     required: true
     multiple: true
     choices:
@@ -296,7 +300,7 @@ questions:
       - esbuild
       - Other
 
-  - label: "What are the platforms and tools you want to learn next?"
+  - label: What are the platforms and tools you want to learn next?
     required: true
     multiple: true
     choices:
@@ -345,7 +349,7 @@ questions:
       - Linux-based
       - Windows + WSL2
 
-  - label: "What is you current IDE or code editor for daily work?"
+  - label: What is you current IDE or code editor for daily work?
     required: true
     multiple: true
     choices:
@@ -368,7 +372,7 @@ questions:
       - Xcode
       - Other
 
-  - label: "What do you do when you get stuck on a problem?"
+  - label: What do you do when you get stuck on a problem?
     required: true
     multiple: true
     choices:
@@ -392,7 +396,8 @@ questions:
       - Shared hosting
       - Managed PaaS (heroku, app platform, Salesforce, AWS Beanstalk ...)
 
-  - label: "What cloud platform are you using?"
+  - label: What cloud platforms you or your team are using?
+    required: false
     multiple: true
     choices:
       - GCP
@@ -415,6 +420,7 @@ questions:
       - None
 
   - label: "The production database you or your team are using is:"
+    required: false
     multiple: true
     choices:
       - Oracle Database
@@ -441,7 +447,7 @@ questions:
       - TimescaleDB
       - Other
 
-  - label: "What type of tests do you write?"
+  - label: What type of tests do you write?
     required: true
     multiple: true
     choices:

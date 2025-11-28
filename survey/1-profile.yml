@@ -21,21 +21,21 @@ questions:
   - label: Where are you currently located?
     required: true
     choices:
-      - "Rabat-Salé-Kénitra"
-      - "Casablanca-Settat"
-      - "Marrakech-Safi"
-      - "Tanger-Tétouan-Al Hoceïma"
+      - Rabat-Salé-Kénitra
+      - Casablanca-Settat
+      - Marrakech-Safi
+      - Tanger-Tétouan-Al Hoceïma
       - "L'Oriental"
-      - "Fès-Meknès"
-      - "Béni Mellal-Khénifra"
-      - "Drâa-Tafilalet"
-      - "Souss-Massa"
-      - "Guelmim-Oued Noun"
-      - "Laâyoune-Sakia El Hamra"
-      - "Dakhla-Oued Ed Dahab"
+      - Fès-Meknès
+      - Béni Mellal-Khénifra
+      - Drâa-Tafilalet
+      - Souss-Massa
+      - Guelmim-Oued Noun
+      - Laâyoune-Sakia El Hamra
+      - Dakhla-Oued Ed Dahab
       - Europe
       - "US & Canada"
-      - "Middle East"
+      - Middle East
       - Others
 
   - label: What is your occupation?
