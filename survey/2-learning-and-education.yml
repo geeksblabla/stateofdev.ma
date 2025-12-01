@@ -58,6 +58,7 @@ questions:
 
   - label: What are the biggest challenges you find in learning new technologies (pick 3)?
     required: true
+    multiple: true
     choices:
       - Lack of time
       - Language barriers (English/French proficiency)
