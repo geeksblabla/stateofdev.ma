@@ -1,16 +1,16 @@
-import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
+import netlify from "@astrojs/netlify";
+import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import yaml from "@rollup/plugin-yaml";
+
 import icon from "astro-icon";
-import mdx from "@astrojs/mdx";
 
-import react from "@astrojs/react";
+import { defineConfig } from "astro/config";
 
-import netlify from "@astrojs/netlify";
+const SURVEY_OPEN = true;
 
-const SURVEY_OPEN = false;
-
-const redirects = SURVEY_OPEN
+const redirects = !SURVEY_OPEN
   ? {
       "/before-start": "/",
       "/survey": "/",
