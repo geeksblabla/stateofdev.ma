@@ -51,7 +51,7 @@ export const SurveyQuestionSchema = z.object({
       message: "Question label cannot be empty or whitespace only"
     }),
 
-  required: z.boolean().optional().default(true),
+  required: z.boolean().optional().default(false),
 
   multiple: z.boolean().optional().default(false),
 

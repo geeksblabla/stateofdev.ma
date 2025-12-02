@@ -78,7 +78,7 @@ function Step({
             index === selectedIndex ? "inline " : "hidden md:inline "
           }   font-semibold ${color} capitalize ml-2`}
         >
-          {label}
+          {label.replaceAll("ai", "AI")}
         </span>
       </div>
       {index < totalSections - 1

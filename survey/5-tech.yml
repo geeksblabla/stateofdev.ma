@@ -297,7 +297,6 @@ questions:
       - Tauri
       - Electron
       - Cloudflare Workers
-      - esbuild
       - Other
 
   - label: What are the platforms and tools you want to learn next?
@@ -338,7 +337,6 @@ questions:
       - Tauri
       - Electron
       - Cloudflare Workers
-      - esbuild
       - Other
 
   - label: "Your primary Operating System is:"
