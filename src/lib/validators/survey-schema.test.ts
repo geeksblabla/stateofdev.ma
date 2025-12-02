@@ -35,7 +35,7 @@ describe("surveyQuestionSchema", () => {
     const result = SurveyQuestionSchema.safeParse(minimalQuestion);
     expect(result.success).toBe(true);
     if (result.success) {
-      expect(result.data.required).toBe(true);
+      expect(result.data.required).toBe(false);
       expect(result.data.multiple).toBe(false);
     }
   });
@@ -248,6 +248,7 @@ describe("surveyFileSchema", () => {
         questions: [
           {
             label: "Test?",
+            required: true,
             choices: ["Yes", "No"]
           }
         ]
@@ -427,7 +428,7 @@ describe("surveyFileSchema", () => {
     expect(result.success).toBe(true);
   });
 
-  it("accepts file where required is not explicitly set (defaults to true)", () => {
+  it("accepts file with explicit required:true and omitted required (defaults to false)", () => {
     const validFile = {
       title: "Profile",
       label: "profile",
@@ -435,11 +436,11 @@ describe("surveyFileSchema", () => {
       questions: [
         {
           label: "Question 1?",
+          required: true,
           choices: ["Yes", "No"]
         },
         {
           label: "Question 2?",
-          required: false,
           choices: ["Yes", "No"]
         }
       ]
@@ -447,6 +448,10 @@ describe("surveyFileSchema", () => {
 
     const result = SurveyFileSchema.safeParse(validFile);
     expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.questions[0].required).toBe(true);
+      expect(result.data.questions[1].required).toBe(false);
+    }
   });
 });
 
@@ -459,6 +464,7 @@ describe("validateSurveyFile helper", () => {
       questions: [
         {
           label: "Test question?",
+          required: true,
           choices: ["Yes", "No"]
         }
       ]
@@ -509,6 +515,7 @@ describe("validateSurveyFileSafe helper", () => {
       questions: [
         {
           label: "Test question?",
+          required: true,
           choices: ["Yes", "No"]
         }
       ]
@@ -788,6 +795,7 @@ describe("edge case tests", () => {
         questions: [
           {
             label: "What is your education level?",
+            required: true,
             choices: ["Bachelor's", "Master's", "PhD", "Self-taught"]
           }
         ]
