@@ -66,7 +66,7 @@ function getDefaultValues(): PlaygroundFormData {
   const {
     question_id = "profile-q-0",
     group_by = "",
-    year = "2023",
+    year = "2024",
     filters: c,
     chart_type = "bar" // Add this line
   } = isBrowser
@@ -74,7 +74,7 @@ function getDefaultValues(): PlaygroundFormData {
     : {
         question_id: "profile-q-0",
         group_by: "",
-        year: "2023",
+        year: "2024",
         filters: [{ question_id: "", values: [] }],
         chart_type: "bar" // Add this line
       };
