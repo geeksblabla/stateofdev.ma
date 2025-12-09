@@ -133,6 +133,20 @@ const posts: Post[] = [
           </p>
         </div>
 
+        <section class="mt-6 flex flex-col gap-3">
+          <h2 class="text-base font-semibold">Get a copy of your answers</h2>
+          <p class="text-sm text-muted-foreground">
+            You can view your survey responses and download a personal PDF
+            report.
+          </p>
+          <a
+            href="/my-responses"
+            class="inline-flex w-fit items-center justify-center rounded border border-border px-3 py-2 text-xs font-medium uppercase tracking-[0.16em] hover:bg-primary hover:text-primary-foreground transition-colors"
+          >
+            View &amp; download my report
+          </a>
+        </section>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
           {posts.map(post => <SocialMediaCard post={post} />)}
         </div>
@@ -142,35 +156,35 @@ const posts: Post[] = [
 </BaseLayout>
 
 <script>
-function copyContent(button: Element) {
-  const content = button.getAttribute("data-content");
-  if (!content) {
-    console.error("Content not found in dataset");
-    return;
+  function copyContent(button: Element) {
+    const content = button.getAttribute("data-content");
+    if (!content) {
+      console.error("Content not found in dataset");
+      return;
+    }
+    navigator.clipboard
+      .writeText(content)
+      .then(() => {
+        const tooltip = button.querySelector(".tooltip");
+        if (tooltip) {
+          tooltip.classList.remove("hidden");
+          setTimeout(() => {
+            tooltip.classList.add("hidden");
+          }, 2000);
+        }
+      })
+      .catch((err) => {
+        console.error("Failed to copy: ", err);
+      });
   }
-  navigator.clipboard
-    .writeText(content)
-    .then(() => {
-      const tooltip = button.querySelector(".tooltip");
-      if (tooltip) {
-        tooltip.classList.remove("hidden");
-        setTimeout(() => {
-          tooltip.classList.add("hidden");
-        }, 2000);
-      }
-    })
-    .catch((err) => {
-      console.error("Failed to copy: ", err);
-    });
-}
 
-const copyButtons = document.querySelectorAll("[data-id=\"copyButton\"]");
+  const copyButtons = document.querySelectorAll("[data-id=\"copyButton\"]");
 
-if (copyButtons) {
-  copyButtons.forEach((copyButton) => {
-    copyButton.addEventListener("click", () => {
-      copyContent(copyButton);
+  if (copyButtons) {
+    copyButtons.forEach((copyButton) => {
+      copyButton.addEventListener("click", () => {
+        copyContent(copyButton);
+      });
     });
-  });
-}
+  }
 </script>
