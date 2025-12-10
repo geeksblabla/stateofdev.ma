@@ -27,7 +27,7 @@ export interface UserReportPayload {
  * Strip characters that WinAnsi / built-in fonts can’t encode (emojis etc.)
  * to avoid runtime errors like “WinAnsi cannot encode ...”.
  */
-function sanitizeForPdf(text: string): string {
+export function sanitizeForPdf(text: string): string {
   if (!text)
     return "";
   return Array.from(text)
@@ -43,7 +43,7 @@ function sanitizeForPdf(text: string): string {
 /**
  * Wrap text into multiple lines that fit a given width.
  */
-function wrapText(
+export function wrapText(
   text: string,
   maxWidth: number,
   font: PDFFont,
