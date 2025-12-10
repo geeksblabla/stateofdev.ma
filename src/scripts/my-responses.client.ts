@@ -1,37 +1,30 @@
-import type { UserReportPayload } from "../lib/pdf/user-report";
-import { generateUserReportPdf } from "../lib/pdf/user-report";
+import type { UserReportPayload } from "@/lib/pdf/user-report";
+import {
+  generateUserReportPdf
 
-function getPayload(): UserReportPayload | null {
-  const dataEl = document.getElementById("my-responses-data");
-
-  if (!dataEl) {
-    console.warn("[my-responses] #my-responses-data not found");
-    return null;
-  }
-
-  const raw = dataEl.getAttribute("data-payload") || "{}";
-
-  try {
-    const parsed = JSON.parse(raw) as UserReportPayload;
-    return parsed;
-  }
-  catch (error) {
-    console.error("[my-responses] Failed to parse PDF payload", error);
-    return null;
-  }
-}
+} from "@/lib/pdf/user-report";
 
 function setupDownloadButton(): void {
   const button = document.getElementById("download-pdf");
+  const dataEl = document.getElementById("my-responses-data");
   const errorEl = document.getElementById("pdf-error");
 
-  if (!button) {
-    console.warn("[my-responses] #download-pdf not found");
+  if (!button || !dataEl) {
+    console.warn("[my-responses] Missing button or data element", {
+      button,
+      dataEl
+    });
     return;
   }
 
-  const payload = getPayload();
-  if (!payload) {
+  let payload: UserReportPayload | null = null;
+
+  try {
+    const raw = dataEl.getAttribute("data-payload") || "{}";
+    payload = JSON.parse(raw) as UserReportPayload;
+  }
+  catch (error) {
+    console.error("[my-responses] Failed to parse PDF payload", error);
     if (errorEl) {
       errorEl.classList.remove("hidden");
     }
@@ -39,6 +32,10 @@ function setupDownloadButton(): void {
   }
 
   button.addEventListener("click", () => {
+    if (!payload) {
+      return;
+    }
+
     if (errorEl) {
       errorEl.classList.add("hidden");
     }
@@ -52,6 +49,8 @@ function setupDownloadButton(): void {
   });
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  setupDownloadButton();
-});
+if (typeof window !== "undefined") {
+  window.addEventListener("DOMContentLoaded", () => {
+    setupDownloadButton();
+  });
+}
