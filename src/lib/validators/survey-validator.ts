@@ -481,6 +481,56 @@ const colors = {
 };
 
 /**
+ * Formats only ERROR-level validation issues in a concise format
+ * @param report - Validation report to format
+ * @returns Formatted string with only errors (no warnings)
+ */
+export function formatErrorsOnly(report: ValidationReport): string {
+  const lines: string[] = [];
+
+  // Collect all ERROR-level issues from file results
+  const fileErrors = report.fileResults.filter(
+    result => result.errors?.some(e => e.severity === ValidationSeverity.ERROR)
+  );
+
+  if (fileErrors.length > 0) {
+    lines.push(`${colors.red}✗ Validation errors found:${colors.reset}`);
+    lines.push("");
+
+    for (const result of fileErrors) {
+      const errors = result.errors?.filter(
+        e => e.severity === ValidationSeverity.ERROR
+      ) || [];
+
+      if (errors.length > 0) {
+        lines.push(`${colors.bright}File: ${result.filename}${colors.reset}`);
+        errors.forEach((error) => {
+          const pathInfo = error.path ? ` [${error.path}]` : "";
+          lines.push(`  ${colors.red}✗${colors.reset} ${error.message}${pathInfo}`);
+        });
+        lines.push("");
+      }
+    }
+  }
+
+  // Collect ERROR-level cross-file issues
+  const crossFileErrors = report.crossFileErrors.filter(
+    e => e.severity === ValidationSeverity.ERROR
+  );
+
+  if (crossFileErrors.length > 0) {
+    lines.push(`${colors.bright}Cross-file errors:${colors.reset}`);
+    crossFileErrors.forEach((error) => {
+      const pathInfo = error.path ? ` [${error.path}]` : "";
+      lines.push(`  ${colors.red}✗${colors.reset} ${error.message}${pathInfo}`);
+    });
+    lines.push("");
+  }
+
+  return lines.join("\n");
+}
+
+/**
  * Formats validation report as a human-readable string with colors
  * @param report - Validation report to format
  * @returns Formatted string report with ANSI colors

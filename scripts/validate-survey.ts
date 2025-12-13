@@ -6,19 +6,43 @@
 
 import { SURVEY_DIR } from "../src/lib/validators/constants";
 import {
+  formatErrorsOnly,
   formatValidationReport,
   validateAllSurveyFiles
 } from "../src/lib/validators/survey-validator";
 
 async function main() {
+  // Check for --verbose flag
+  const isVerbose = process.argv.includes("--verbose");
+
   console.log("🔍 Validating survey YAML files...\n");
 
   const validationReport = validateAllSurveyFiles(SURVEY_DIR);
 
-  console.log(formatValidationReport(validationReport));
+  if (isVerbose) {
+    // Verbose mode: show full report
+    console.log(formatValidationReport(validationReport));
+  }
+  else {
+    // Default mode: show only errors or success message
+    if (validationReport.success) {
+      // No errors, just show success
+      console.log("✓ All validations passed!");
+      process.exit(0);
+    }
+    else {
+      // Show only ERROR-level issues
+      const errorsOutput = formatErrorsOnly(validationReport);
+      if (errorsOutput) {
+        console.log(errorsOutput);
+      }
+    }
+  }
 
   if (validationReport.success) {
-    console.log("\n✓ All validations passed!");
+    if (isVerbose) {
+      console.log("\n✓ All validations passed!");
+    }
     process.exit(0);
   }
   else {
