@@ -17,6 +17,7 @@
     "validate-survey": "tsx ./scripts/validate-survey.ts",
     "prepare": "husky",
     "generate-questions": " tsx ./scripts/generate-questions.ts",
+    "generate-questions:ci": " tsx ./scripts/generate-questions.ts",
     "export-results": " tsx --env-file=.env.local ./scripts/export-results.ts",
     "export-results:ci": " tsx  ./scripts/export-results.ts"
   },

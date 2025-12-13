@@ -64,7 +64,13 @@ async function generate() {
       });
     });
 
-    writeToFile("./scripts/questions.json", QS);
+    // Get output directory from command line args (e.g., --output=results/2025/data)
+    const outputArg = process.argv.find(arg => arg.startsWith("--output="));
+    const outputPath = outputArg
+      ? path.join(outputArg.split("=")[1], "questions.json")
+      : "./scripts/questions.json";
+
+    writeToFile(outputPath, QS);
 
     console.log(
       `\n✓ Successfully generated ${Object.keys(QS).length} questions`
@@ -77,7 +83,7 @@ async function generate() {
 }
 
 function writeToFile(filename: string, data: Record<string, SurveyQuestion>) {
-  fs.writeFile(filename, JSON.stringify(data), (err: any) => {
+  fs.writeFile(filename, JSON.stringify(data, null, 2), (err: any) => {
     if (err) {
       console.log(err);
     }

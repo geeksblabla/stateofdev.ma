@@ -13,6 +13,7 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: write
+      pull-requests: write
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
@@ -20,8 +21,22 @@ jobs:
       - name: 📦 Setup Node + PNPM + install deps
         uses: ./.github/actions/setup-node-pnpm-install
 
-      - name: Export result to json file
-        env: # Or as an environment variable
+      - name: Get PR #150 branch name
+        id: get-branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BRANCH=$(gh pr view 150 --json headRefName --jq '.headRefName')
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+          echo "Target branch: $BRANCH"
+
+      - name: Checkout PR branch
+        run: |
+          git fetch origin ${{ steps.get-branch.outputs.branch }}
+          git checkout ${{ steps.get-branch.outputs.branch }}
+
+      - name: Export results to 2025 directory
+        env:
           FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
           FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
           FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }}
@@ -31,7 +46,32 @@ jobs:
           FIREBASE_TOKEN_URI: ${{ secrets.FIREBASE_TOKEN_URI }}
           FIREBASE_AUTH_CERT_URL: ${{ secrets.FIREBASE_AUTH_CERT_URL }}
           FIREBASE_CLIENT_CERT_URL: ${{ secrets.FIREBASE_CLIENT_CERT_URL }}
-        run: pnpm run export-results:ci
+        run: pnpm run export-results:ci -- --output=results/2025/data
+
+      - name: Create timestamped backup copy
+        run: |
+          TIMESTAMP=$(date +"%Y-%-m-%-d----%-HH-%-Mmin")
+          cp results/2025/data/results.json "scripts/${TIMESTAMP}.json"
+          echo "Created backup: scripts/${TIMESTAMP}.json"
+
+      - name: Generate questions.json for 2025
+        run: pnpm run generate-questions:ci -- --output=results/2025/data
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and push changes
+        run: |
+          git add results/2025/data/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update 2025 survey results - $(date +%Y-%m-%d)"
+            git push origin ${{ steps.get-branch.outputs.branch }}
+            echo "Changes committed and pushed successfully"
+          fi
 
       - name: Upload results
         uses: actions/upload-artifact@v4
