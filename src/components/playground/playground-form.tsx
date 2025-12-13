@@ -10,7 +10,7 @@ import { FilterOptions } from "./filters-options";
 
 const isBrowser = typeof window !== "undefined";
 
-const years = ["2020", "2021", "2022", "2023", "2024"];
+const years = ["2020", "2021", "2022", "2023", "2024", "2025"];
 
 interface OptionType { label: string; value: string }
 
@@ -66,7 +66,7 @@ function getDefaultValues(): PlaygroundFormData {
   const {
     question_id = "profile-q-0",
     group_by = "",
-    year = "2024",
+    year = "2025",
     filters: c,
     chart_type = "bar" // Add this line
   } = isBrowser
@@ -74,7 +74,7 @@ function getDefaultValues(): PlaygroundFormData {
     : {
         question_id: "profile-q-0",
         group_by: "",
-        year: "2024",
+        year: "2025",
         filters: [{ question_id: "", values: [] }],
         chart_type: "bar" // Add this line
       };

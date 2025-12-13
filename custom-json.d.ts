@@ -72,3 +72,14 @@ declare module "@/results/2024/data/questions.json" {
   const value: QuestionMap;
   export default value;
 }
+
+// 2025
+declare module "@/results/2025/data/results.json" {
+  const value: Results;
+  export default value;
+}
+
+declare module "@/results/2025/data/questions.json" {
+  const value: QuestionMap;
+  export default value;
+}
