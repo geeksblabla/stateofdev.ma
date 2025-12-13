@@ -15,8 +15,10 @@ export default antfu({
     "unicorn/filename-case": [
       "error",
       {
-        case: "kebabCase"
+        case: "kebabCase",
+        ignore: ["^SKILL\\.md$", "^CLAUDE\\.md$", "^docs/plans/.*\\.md$"]
       }
+
     ],
     "ts/strict-boolean-expressions": "off",
     "style/comma-dangle": ["error", "never"]
