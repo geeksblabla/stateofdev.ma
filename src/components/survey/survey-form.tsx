@@ -1,3 +1,4 @@
+import { useLanguage } from "@/lib/language-context";
 import { Question } from "./question";
 import { Steps } from "./steps";
 import { SurveyMachineContext } from "./survey-context";
@@ -6,6 +7,8 @@ import { SurveyActions } from "./survey-controls";
 const QUESTION_CONTAINER_MIN_HEIGHT = "300px";
 
 export function SurveyForm() {
+  const lang = useLanguage();
+
   const actorRef = SurveyMachineContext.useActorRef();
 
   // Select all needed state
@@ -43,6 +46,7 @@ export function SurveyForm() {
       <main className="flex flex-1 justify-center items-center">
         <div
           id={currentSection.label}
+          dir={lang === "ar" ? "rtl" : "ltr"}
           className="md:w-[700px] w-full px-4 md:px-0"
         >
           <div

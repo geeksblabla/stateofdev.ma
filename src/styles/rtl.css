@@ -1,0 +1,27 @@
+/* RTL-specific adjustments for Arabic survey */
+
+/* Flip flex direction for button groups in RTL */
+[dir="rtl"] .survey-actions {
+  flex-direction: row-reverse;
+}
+
+/* Ensure text aligns correctly */
+[dir="rtl"] {
+  text-align: right;
+}
+
+/* Fix choice alignment in RTL */
+[dir="rtl"] input[type="radio"],
+[dir="rtl"] input[type="checkbox"] {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+/* Back button arrow flip */
+[dir="rtl"] .group svg {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .group:hover svg {
+  transform: scaleX(-1) translateX(0.25rem);
+}

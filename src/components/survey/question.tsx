@@ -4,6 +4,9 @@ import {
   useCallback,
   useMemo
 } from "react";
+import { getTranslation } from "@/lib/get-translation";
+import { useLanguage } from "@/lib/language-context";
+import { translations } from "@/lib/translations";
 import { Choice } from "./choice";
 
 const GRID_LAYOUT_THRESHOLD = 10;
@@ -31,6 +34,9 @@ export function Question({
   onAnswerChange,
   onOthersChange
 }: QuestionProps) {
+  const lang = useLanguage();
+  const t = translations[lang].survey;
+
   const { label, choices } = question;
   const fitContent = choices.length > GRID_LAYOUT_THRESHOLD;
 
@@ -38,7 +44,10 @@ export function Question({
   const othersIndices = useMemo(
     () =>
       choices
-        .map((c, i) => ({ text: c, index: i }))
+        .map((c, i) => {
+          const text = typeof c === "string" ? c : c.en;
+          return { text, index: i };
+        })
         .filter(({ text }) => text.toLowerCase().includes("other"))
         .map(({ index }) => index),
     [choices]
@@ -107,16 +116,16 @@ export function Question({
     >
       <p className="mb-4 text-base font-medium">
         <label id={questionLabelId} className="block mb-2 ">
-          {`${index + 1}. ${label}`}
+          {`${index + 1}. ${getTranslation(label, lang)}`}
           {" "}
           <br />
         </label>
 
         <span className="font-normal text-sm pl-2.5">
-          {question.multiple ? "- You can choose multiple answers " : ""}
+          {question.multiple ? t.multipleChoice : ""}
         </span>
         <span className="font-normal text-sm pl-2.5">
-          {question.required ? "" : "- Click skip button if not applicable"}
+          {question.required ? "" : t.skipHint}
         </span>
       </p>
       <div
@@ -127,8 +136,8 @@ export function Question({
       >
         {choices.map((c, i) => (
           <Choice
-            key={`${sectionId}-q-${index}-${c}`}
-            text={c}
+            key={`${sectionId}-q-${index}-${i}`}
+            text={getTranslation(c, lang)}
             id={`${sectionId}-q-${index}-${i}`}
             name={`${sectionId}-q-${index}`}
             index={i}
@@ -141,7 +150,7 @@ export function Question({
         {showOtherInput && (
           <textarea
             className="mt-4 w-full p-2 bg-card text-foreground border-2 border-input focus:ring-2 focus:ring-ring focus:border-ring placeholder:text-muted-foreground transition-colors"
-            placeholder="Please specify... use comma to separate each item (max 200 characters)"
+            placeholder={t.otherPlaceholder}
             rows={3}
             maxLength={200}
             value={othersValue || ""}

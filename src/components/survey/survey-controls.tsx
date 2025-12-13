@@ -1,4 +1,6 @@
 import { hasPrevVisibleQuestion } from "@/lib/conditions";
+import { useLanguage } from "@/lib/language-context";
+import { translations } from "@/lib/translations";
 import { SurveyMachineContext } from "./survey-context";
 
 interface ErrorMessageProps {
@@ -60,6 +62,9 @@ interface BackButtonProps {
 }
 
 export function BackButton({ onClick }: BackButtonProps) {
+  const lang = useLanguage();
+  const t = translations[lang].survey;
+
   return (
     <div
       onClick={onClick}
@@ -81,13 +86,16 @@ export function BackButton({ onClick }: BackButtonProps) {
         />
       </svg>
       <span className="group flex w-full items-center justify-center rounded py-1 text-center font-medium">
-        Back
+        {t.back}
       </span>
     </div>
   );
 }
 
 export function SurveyActions() {
+  const lang = useLanguage();
+  const t = translations[lang].survey;
+
   const actorRef = SurveyMachineContext.useActorRef();
 
   const context = SurveyMachineContext.useSelector(state => state.context);
@@ -150,7 +158,7 @@ export function SurveyActions() {
             onClick={handleSkip}
             data-testid="skip-button"
           >
-            Skip
+            {t.skip}
           </button>
         )}
         <button
@@ -160,7 +168,7 @@ export function SurveyActions() {
           onClick={handleNext}
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Loading..." : "Next"}
+          {isSubmitting ? t.loading : t.next}
         </button>
       </div>
     </div>

@@ -806,3 +806,97 @@ describe("edge case tests", () => {
     });
   });
 });
+
+describe("surveyQuestionSchema with translations", () => {
+  it("validates plain string label (backward compatible)", () => {
+    const question = {
+      label: "What is your gender?",
+      choices: ["Male", "Female"]
+    };
+    expect(() => SurveyQuestionSchema.parse(question)).not.toThrow();
+  });
+
+  it("validates translation object label", () => {
+    const question = {
+      label: { en: "What is your gender?", ar: "ما هو جنسك؟" },
+      choices: ["Male", "Female"]
+    };
+    expect(() => SurveyQuestionSchema.parse(question)).not.toThrow();
+  });
+
+  it("validates translation object label without Arabic", () => {
+    const question = {
+      label: { en: "What is your gender?" },
+      choices: ["Male", "Female"]
+    };
+    expect(() => SurveyQuestionSchema.parse(question)).not.toThrow();
+  });
+
+  it("validates mixed format choices", () => {
+    const question = {
+      label: "Gender?",
+      choices: [
+        "Male", // Plain string
+        { en: "Female", ar: "أنثى" }, // Translated
+        { en: "Other" } // English only
+      ]
+    };
+    expect(() => SurveyQuestionSchema.parse(question)).not.toThrow();
+  });
+
+  it("detects duplicate choices in translated format", () => {
+    const question = {
+      label: "Test?",
+      choices: [
+        { en: "Option A", ar: "خيار أ" },
+        { en: "Option A", ar: "خيار ب" } // Duplicate English
+      ]
+    };
+    expect(() => SurveyQuestionSchema.parse(question)).toThrow("Duplicate choices");
+  });
+});
+
+describe("surveyFileSchema with translations", () => {
+  it("validates plain string title (backward compatible)", () => {
+    const section = {
+      title: "Profile",
+      label: "profile",
+      position: 1,
+      questions: [
+        { label: "Question?", choices: ["A", "B"], required: true }
+      ]
+    };
+    expect(() => SurveyFileSchema.parse(section)).not.toThrow();
+  });
+
+  it("validates translation object title", () => {
+    const section = {
+      title: { en: "Profile", ar: "الملف الشخصي" },
+      label: "profile",
+      position: 1,
+      questions: [
+        { label: "Question?", choices: ["A", "B"], required: true }
+      ]
+    };
+    expect(() => SurveyFileSchema.parse(section)).not.toThrow();
+  });
+
+  it("validates full translated survey section", () => {
+    const section = {
+      title: { en: "Profile", ar: "الملف الشخصي" },
+      label: "profile",
+      position: 1,
+      questions: [
+        {
+          label: { en: "What is your gender?", ar: "ما هو جنسك؟" },
+          required: true,
+          choices: [
+            { en: "Male", ar: "ذكر" },
+            { en: "Female", ar: "أنثى" }
+          ]
+        }
+      ]
+    };
+    expect(() => SurveyFileSchema.parse(section)).not.toThrow();
+  });
+});

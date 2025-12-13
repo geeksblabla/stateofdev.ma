@@ -1,17 +1,12 @@
 ---
+import { LanguagePicker } from "@/components/language-picker";
 import BaseLayout from "@/components/layout.astro";
+import { translations } from "@/lib/translations";
 
-const rules = [
-  "We care about privacy; that's why all your answers are **completely anonymous**. We only rely on anonymous sessions to avoid spam",
-  "**Please be honest**. Our goal is to understand the Moroccan IT market and share results with the community.",
-  "The Survey should take around **8 minutes** to complete",
-  "The survey is divided into **6 parts**: Profile, Learning & Education, AI, Work, Technology, and Community(we submit your answers at the end of each part)",
-  "All Questions are **required** unless you have a **skip button**",
-  "For questions that accept others as an option, please add them in the **text field**",
-  "There are two types of questions: **Multiple Choice** (select one or more options) and **Single Select** (choose only one option)"
-];
+const lang = (Astro.url.searchParams.get("lang") || "en") as "en" | "ar";
+const t = translations[lang].beforeStart;
 
-export const prerender = true;
+export const prerender = false;
 ---
 
 <BaseLayout>
@@ -21,14 +16,17 @@ export const prerender = true;
         <h1
           class="text-xl font-sans font-medium text-foreground mb-6 text-center"
         >
-          Before You Start
+          {t.title}
         </h1>
+
+        <LanguagePicker client:load />
+
         <p class="text-base text-foreground mb-8">
-          Here's what you need to know:
+          {t.intro}
         </p>
         <ul class="space-y-4 mb-8">
           {
-            rules.map((rule, index) => (
+            t.rules.map((rule, index) => (
               <li class="flex items-start gap-3">
                 <span class="flex h-6 w-6 shrink-0 items-center justify-center border-2 border-input bg-muted text-sm font-medium text-muted-foreground mt-0.5">
                   {index + 1}
@@ -57,7 +55,7 @@ export const prerender = true;
           id="start-survey-btn"
           class="w-full bg-primary hover:opacity-90 text-primary-foreground font-bold py-3 px-6 border-2 border-primary transition duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-ring focus:ring-opacity-50"
         >
-          Start
+          {t.start}
         </button>
       </div>
     </div>
@@ -75,6 +73,7 @@ export const prerender = true;
 import { actions } from "astro:actions";
 import { signInAnonymously } from "firebase/auth";
 import { auth } from "@/lib/firebase/client";
+import { translations } from "@/lib/translations";
 
 const startButton = document.querySelector(
   "#start-survey-btn"
@@ -97,17 +96,20 @@ window.onloadTurnstileCallback = function () {
   });
 };
 
+const lang = new URLSearchParams(window.location.search).get("lang") || "en";
+const t = translations[lang as "en" | "ar"].beforeStart;
+
 function handleError() {
   errorMessage.innerHTML = `Session initialization failed. Please try again or <a href="https://github.com/geeksblabla/stateofdev.ma/issues" target="_blank" class="underline font-semibold">report the issue</a>.`;
   errorAlert.classList.remove("hidden");
-  startButton.innerHTML = "Start Survey";
+  startButton.innerHTML = t.start;
   startButton.disabled = false;
   startButton.classList.remove("opacity-50", "cursor-not-allowed");
 }
 
 startButton.addEventListener("click", async () => {
   startButton.disabled = true;
-  startButton.innerHTML = "Initializing Session...";
+  startButton.innerHTML = t.initializing;
   startButton.classList.add("opacity-50", "cursor-not-allowed");
   errorAlert.classList.add("hidden");
 
@@ -125,8 +127,8 @@ startButton.addEventListener("click", async () => {
       return;
     }
 
-    // Redirect to the survey page or reload as needed
-    window.location.href = "/survey";
+    // Redirect to the survey page with lang param
+    window.location.href = `/survey?lang=${lang}`;
   }
   catch {
     handleError();

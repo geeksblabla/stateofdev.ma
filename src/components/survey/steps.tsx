@@ -1,4 +1,6 @@
 import { useMemo } from "react";
+import { getTranslation } from "@/lib/get-translation";
+import { useLanguage } from "@/lib/language-context";
 import { SurveyMachineContext } from "./survey-context";
 
 interface StepProps {
@@ -99,19 +101,20 @@ function Step({
 }
 
 export function Steps() {
+  const lang = useLanguage();
   const actorRef = SurveyMachineContext.useActorRef();
   const context = SurveyMachineContext.useSelector(state => state.context);
   const visibleSections = useMemo(
     () =>
       context.visibleSectionIndices.map(idx => ({
-        label: context.sections[idx].label,
+        title: getTranslation(context.sections[idx].title, lang),
         originalIdx: idx
       })),
-    [context.sections, context.visibleSectionIndices]
+    [context.sections, context.visibleSectionIndices, lang]
   );
 
   const sectionsLabels = useMemo(
-    () => visibleSections.map(s => s.label),
+    () => visibleSections.map(s => s.title),
     [visibleSections]
   );
 

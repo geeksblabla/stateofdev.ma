@@ -8,6 +8,17 @@ const MIN_TITLE_LENGTH = VALIDATION_THRESHOLDS.MIN_TITLE_LENGTH;
 const MAX_LABEL_LENGTH = VALIDATION_THRESHOLDS.MAX_LABEL_LENGTH;
 const MAX_CHOICE_LENGTH = VALIDATION_THRESHOLDS.MAX_CHOICE_LENGTH;
 
+// Translatable string: plain string OR object with en/ar
+export const translatableStringSchema = z.union([
+  z.string(),
+  z.object({
+    en: z.string(),
+    ar: z.string().optional()
+  })
+]);
+
+export type TranslatableString = z.infer<typeof translatableStringSchema>;
+
 // Schema for conditional visibility (showIf)
 export const ShowIfConditionSchema = z
   .object({
@@ -39,17 +50,34 @@ export const ShowIfConditionSchema = z
   );
 
 export const SurveyQuestionSchema = z.object({
-  label: z
-    .string()
-    .trim()
-    .min(MIN_LABEL_LENGTH, "Question label must be at least 3 characters")
-    .max(
-      MAX_LABEL_LENGTH,
-      `Question label must not exceed ${MAX_LABEL_LENGTH} characters`
-    )
-    .refine(val => val.trim().length > 0, {
-      message: "Question label cannot be empty or whitespace only"
-    }),
+  label: z.union([
+    // Plain string with validation
+    z.string()
+      .trim()
+      .min(MIN_LABEL_LENGTH, "Question label must be at least 3 characters")
+      .max(MAX_LABEL_LENGTH, `Question label must not exceed ${MAX_LABEL_LENGTH} characters`)
+      .refine(val => val.trim().length > 0, {
+        message: "Question label cannot be empty or whitespace only"
+      }),
+    // Translation object with validation
+    z.object({
+      en: z.string()
+        .trim()
+        .min(MIN_LABEL_LENGTH, "Question label must be at least 3 characters")
+        .max(MAX_LABEL_LENGTH, `Question label must not exceed ${MAX_LABEL_LENGTH} characters`)
+        .refine(val => val.trim().length > 0, {
+          message: "Question label cannot be empty or whitespace only"
+        }),
+      ar: z.string()
+        .trim()
+        .min(MIN_LABEL_LENGTH, "Arabic question label must be at least 3 characters")
+        .max(MAX_LABEL_LENGTH, `Arabic question label must not exceed ${MAX_LABEL_LENGTH} characters`)
+        .refine(val => val.trim().length > 0, {
+          message: "Arabic question label cannot be empty or whitespace only"
+        })
+        .optional()
+    })
+  ]),
 
   required: z.boolean().optional().default(false),
 
@@ -57,23 +85,43 @@ export const SurveyQuestionSchema = z.object({
 
   choices: z
     .array(
-      z
-        .string()
-        .trim()
-        .min(1, "Choice must not be empty")
-        .max(
-          MAX_CHOICE_LENGTH,
-          `Choice must not exceed ${MAX_CHOICE_LENGTH} characters`
-        )
-        .refine(val => val.trim().length > 0, {
-          message: "Choice cannot be whitespace only"
+      z.union([
+        // Plain string choice
+        z.string()
+          .trim()
+          .min(1, "Choice must not be empty")
+          .max(MAX_CHOICE_LENGTH, `Choice must not exceed ${MAX_CHOICE_LENGTH} characters`)
+          .refine(val => val.trim().length > 0, {
+            message: "Choice cannot be whitespace only"
+          }),
+        // Translation object choice
+        z.object({
+          en: z.string()
+            .trim()
+            .min(1, "Choice must not be empty")
+            .max(MAX_CHOICE_LENGTH, `Choice must not exceed ${MAX_CHOICE_LENGTH} characters`)
+            .refine(val => val.trim().length > 0, {
+              message: "Choice cannot be whitespace only"
+            }),
+          ar: z.string()
+            .trim()
+            .min(1, "Arabic choice must not be empty")
+            .max(MAX_CHOICE_LENGTH, `Arabic choice must not exceed ${MAX_CHOICE_LENGTH} characters`)
+            .refine(val => val.trim().length > 0, {
+              message: "Arabic choice cannot be whitespace only"
+            })
+            .optional()
         })
+      ])
     )
     .min(MIN_CHOICES, `Each question must have at least ${MIN_CHOICES} choices`)
     .refine(
       (choices) => {
-        // Check for duplicate choices (case-insensitive)
-        const lowerCaseChoices = choices.map(c => c.toLowerCase().trim());
+        // Check for duplicate choices (case-insensitive) - handle both string and object
+        const lowerCaseChoices = choices.map((c) => {
+          const text = typeof c === "string" ? c : c.en;
+          return text.toLowerCase().trim();
+        });
         const uniqueChoices = new Set(lowerCaseChoices);
         return uniqueChoices.size === lowerCaseChoices.length;
       },
@@ -88,13 +136,31 @@ export const SurveyQuestionSchema = z.object({
 
 export const SurveyFileSchema = z
   .object({
-    title: z
-      .string()
-      .trim()
-      .min(MIN_TITLE_LENGTH, "Section title must be at least 2 characters")
-      .refine(val => val.trim().length > 0, {
-        message: "Section title cannot be empty or whitespace only"
-      }),
+    title: z.union([
+      // Plain string title
+      z.string()
+        .trim()
+        .min(MIN_TITLE_LENGTH, "Section title must be at least 2 characters")
+        .refine(val => val.trim().length > 0, {
+          message: "Section title cannot be empty or whitespace only"
+        }),
+      // Translation object title
+      z.object({
+        en: z.string()
+          .trim()
+          .min(MIN_TITLE_LENGTH, "Section title must be at least 2 characters")
+          .refine(val => val.trim().length > 0, {
+            message: "Section title cannot be empty or whitespace only"
+          }),
+        ar: z.string()
+          .trim()
+          .min(MIN_TITLE_LENGTH, "Arabic section title must be at least 2 characters")
+          .refine(val => val.trim().length > 0, {
+            message: "Arabic section title cannot be empty or whitespace only"
+          })
+          .optional()
+      })
+    ]),
 
     label: z
       .string()
@@ -119,8 +185,11 @@ export const SurveyFileSchema = z
       .min(1, "Survey section must contain at least one question")
       .refine(
         (questions) => {
-          // Check for duplicate question labels within the section
-          const labels = questions.map(q => q.label.toLowerCase().trim());
+          // Check for duplicate question labels within the section - handle both string and object
+          const labels = questions.map((q) => {
+            const text = typeof q.label === "string" ? q.label : q.label.en;
+            return text.toLowerCase().trim();
+          });
           const uniqueLabels = new Set(labels);
           return uniqueLabels.size === labels.length;
         },
