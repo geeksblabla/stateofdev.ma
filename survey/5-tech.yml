@@ -347,7 +347,7 @@ questions:
       - Linux-based
       - Windows + WSL2
 
-  - label: What is you current IDE or code editor for daily work?
+  - label: What is your current IDE or code editor for daily work?
     required: true
     multiple: true
     choices:
@@ -386,6 +386,7 @@ questions:
       - Create minimal reproduction
 
   - label: "The production environment you or your team are using is:"
+    required: false
     multiple: true
     choices:
       - Public cloud (AWS/Azure/GCP/Oracle/IBM/etc.)
