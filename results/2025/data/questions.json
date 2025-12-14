@@ -1,0 +1,1220 @@
+{
+  "profile-q-0": {
+    "label": "What is your gender?",
+    "required": true,
+    "multiple": false,
+    "choices": [
+      "Male",
+      "Female"
+    ]
+  },
+  "profile-q-1": {
+    "label": "What is your age?",
+    "required": true,
+    "choices": [
+      "Younger than 18 years",
+      "18 to 24 years",
+      "25 to 34 years",
+      "35 to 44 years",
+      "45 or older"
+    ],
+    "multiple": false
+  },
+  "profile-q-2": {
+    "label": "Where are you currently located?",
+    "required": true,
+    "choices": [
+      "Rabat-Salé-Kénitra",
+      "Casablanca-Settat",
+      "Marrakech-Safi",
+      "Tanger-Tétouan-Al Hoceïma",
+      "L'Oriental",
+      "Fès-Meknès",
+      "Béni Mellal-Khénifra",
+      "Drâa-Tafilalet",
+      "Souss-Massa",
+      "Guelmim-Oued Noun",
+      "Laâyoune-Sakia El Hamra",
+      "Dakhla-Oued Ed Dahab",
+      "Europe",
+      "US & Canada",
+      "Middle East",
+      "Others"
+    ],
+    "multiple": false
+  },
+  "profile-q-3": {
+    "label": "What is your occupation?",
+    "required": true,
+    "choices": [
+      "Back-end developer",
+      "Full-stack developer",
+      "Front-end developer",
+      "Desktop applications developer",
+      "Mobile developer",
+      "Embedded applications/devices developer",
+      "QA/test Developer",
+      "Game/graphics Developer",
+      "DevOps specialist",
+      "Database administrator",
+      "Designer",
+      "System administrator",
+      "Data/business analyst",
+      "Data scientist or machine learning specialist",
+      "Data engineer",
+      "Academic researcher",
+      "Educator",
+      "Engineering manager",
+      "Product manager",
+      "Scientist",
+      "Site reliability engineer",
+      "Senior executive/VP",
+      "Marketing/sales professional",
+      "Network engineer",
+      "Security specialist",
+      "IT specialist",
+      "ERP Consultant",
+      "Blockchain developer",
+      "AI engineer",
+      "Cloud architect",
+      "Student (coding professionally)"
+    ],
+    "multiple": false
+  },
+  "profile-q-4": {
+    "label": "What is/was your coding education background?",
+    "required": true,
+    "choices": [
+      "Self-taught (no formal CS education)",
+      "University/Public school - Bac +2/+3 (Bachelor's)",
+      "University/Public school - Bac +5 (Master's)",
+      "University/Public school - Bac +8 (Doctoral)",
+      "Private engineering/tech school",
+      "Coding school (1337, YouCode, Solicode, etc.)",
+      "Vocational/Technical training",
+      "Other field's diploma (career transition)",
+      "Other"
+    ],
+    "multiple": false
+  },
+  "profile-q-5": {
+    "label": "How many years have you been coding professionally?",
+    "required": true,
+    "choices": [
+      "I don't have any professional coding experience",
+      "Less than a year",
+      "1-2 years",
+      "3-4 years",
+      "5-6 years",
+      "7-10 years",
+      "11-16 years",
+      "16+ years"
+    ],
+    "multiple": false
+  },
+  "profile-q-6": {
+    "label": "Do you code outside of work or studies?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "No",
+      "Yes, occasionally for fun or learning",
+      "Yes, for open source contributions",
+      "Yes, for profit (freelance, products, services)",
+      "Yes, for portfolio/career building"
+    ]
+  },
+  "profile-q-7": {
+    "label": "Do you have any plans to work outside Morocco?",
+    "required": true,
+    "choices": [
+      "Yes, in the next 12 months",
+      "Yes, in the next 24 months",
+      "Still hesitating",
+      "Currently working outside Morocco",
+      "No"
+    ],
+    "multiple": false
+  },
+  "profile-q-8": {
+    "label": "If you are working abroad, do you have any plans to come back to Morocco?",
+    "showIf": {
+      "question": "profile-q-7",
+      "equals": 3
+    },
+    "choices": [
+      "Yes, within the next 12 months",
+      "Yes, within the next 24 months",
+      "Yes, but not in the near future",
+      "Still hesitating",
+      "No, I plan to stay abroad"
+    ],
+    "multiple": false,
+    "required": true
+  },
+  "education-q-0": {
+    "label": "Which areas did your formal education fail to adequately prepare you for?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Modern tech stack (frameworks, DevOps, cloud platforms)",
+      "Development practices (version control, testing, security, code review)",
+      "Professional & soft skills (communication, teamwork, agile/project management)",
+      "System & architecture design (system design, databases, APIs)",
+      "Problem-solving & algorithms for interviews",
+      "Real-world project experience",
+      "My education prepared me well across these areas",
+      "Other"
+    ]
+  },
+  "education-q-1": {
+    "label": "What languages can you read/write?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Arabic",
+      "Amazigh",
+      "French",
+      "English",
+      "Others"
+    ]
+  },
+  "education-q-2": {
+    "label": "What type of Darija content would help you most?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Tutorial videos",
+      "Written documentation",
+      "Interactive courses",
+      "Podcasts/audio content",
+      "Community discussions/forums",
+      "Live coding sessions",
+      "No need for Darija content",
+      "Other"
+    ]
+  },
+  "education-q-3": {
+    "label": "What are your preferred platforms for learning?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "YouTube",
+      "Paid platforms",
+      "Books",
+      "Official documentation",
+      "Blog posts",
+      "Company resources",
+      "Conferences (virtual/in-person)",
+      "Podcasts",
+      "Online Communities (StackOverflow/Reddit/Twitter)",
+      "AI Assistant (ChatGPT, etc)",
+      "Open source contributions",
+      "Coding challenges (LeetCode, HackerRank, etc)",
+      "Other platforms"
+    ]
+  },
+  "education-q-4": {
+    "label": "What are the biggest challenges you find in learning new technologies (pick 3)?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Lack of time",
+      "Language barriers (English/French proficiency)",
+      "Cost of resources",
+      "Lack of practical projects",
+      "Information overload",
+      "No mentorship/guidance",
+      "Keeping up with rapid changes",
+      "Other"
+    ]
+  },
+  "work-q-0": {
+    "label": "What is your employment status?",
+    "required": true,
+    "multiple": false,
+    "choices": [
+      "Founder/entrepreneur",
+      "Full-time employee",
+      "Freelancer/self-employed",
+      "Part-time employee",
+      "Looking for work",
+      "Internship",
+      "Student",
+      "Other"
+    ]
+  },
+  "work-q-1": {
+    "label": "How often do you work overtime or beyond the normal time expectation of your job?",
+    "required": false,
+    "choices": [
+      "Never",
+      "Rarely: 1-2 days per year or less ",
+      "Occasionally: 1-2 days per quarter but less than monthly ",
+      "Sometimes: 1-2 days per month but less than weekly",
+      "Often: 1-2 days per week or more",
+      "Very often: 3-5 days per week",
+      "Daily"
+    ],
+    "multiple": false
+  },
+  "work-q-2": {
+    "label": "How do you feel about your job?",
+    "required": false,
+    "choices": [
+      "Very Unsatisfied",
+      "Slightly Unsatisfied",
+      "Neither satisfied nor Unsatisfied",
+      "Slightly satisfied",
+      "Very satisfied"
+    ],
+    "multiple": false
+  },
+  "work-q-3": {
+    "label": "How long have you been unemployed after graduation?",
+    "required": false,
+    "choices": [
+      "None, I worked straight after my graduation 😎",
+      "Up to 3 months",
+      "Up to 6 months",
+      "Up to 1 year",
+      "More than 1 year"
+    ],
+    "multiple": false
+  },
+  "work-q-4": {
+    "label": "If you are a full time employee in Morocco(CDI), Your NET salary range per month in MAD is:",
+    "required": false,
+    "showIf": {
+      "question": "profile-q-7",
+      "notEquals": 3
+    },
+    "choices": [
+      "< 4 000",
+      "4 000 - 6 000",
+      "6 000 - 8 000",
+      "8 000 - 10 000",
+      "10 000 - 12 000",
+      "12 000 - 14 000",
+      "14 000 - 16 000",
+      "16 000 - 18 000",
+      "18 000 - 20 000",
+      "20 000 - 22 000",
+      "22 000 - 25 000",
+      "25 000 - 30 000",
+      "> 30 000"
+    ],
+    "multiple": false
+  },
+  "work-q-5": {
+    "label": "If you are working as a freelancer in Morocco, Your salary range per day in MAD(TJM) is:",
+    "required": false,
+    "showIf": {
+      "question": "profile-q-7",
+      "notEquals": 3
+    },
+    "choices": [
+      "< 1 000",
+      "1 000 - 1 500",
+      "1 500 - 2 000",
+      "2 000 - 2 500",
+      "2 500 - 3 000",
+      "3 000 - 4 000",
+      "4 000 - 5 000",
+      "> 5 000"
+    ],
+    "multiple": false
+  },
+  "work-q-6": {
+    "label": "If you are working full-time contract outside Morocco, Your gross salary range per year in USD is:",
+    "required": false,
+    "showIf": {
+      "question": "profile-q-7",
+      "equals": 3
+    },
+    "choices": [
+      "< 20 000",
+      "20 000 - 25 000",
+      "25 000 - 30 000",
+      "30 000 - 40 000",
+      "40 000 - 50 000",
+      "50 000 - 60 000",
+      "60 000 - 80 000",
+      "80 000 - 100 000",
+      "100 000 - 120 000",
+      "120 000 - 150 000",
+      "150 000 - 200 000",
+      "> 200 000"
+    ],
+    "multiple": false
+  },
+  "work-q-7": {
+    "label": "If you are working as a freelancer/contractor outside Morocco, Your daily gross wage in USD is:",
+    "required": false,
+    "showIf": {
+      "question": "profile-q-7",
+      "equals": 3
+    },
+    "choices": [
+      "< 200",
+      "200 - 500",
+      "500 - 1 000",
+      "1 000 - 2 000",
+      "2 000 - 3 000",
+      "3 000 - 5 000",
+      "5 000 - 10 000",
+      "> 10 000"
+    ],
+    "multiple": false
+  },
+  "work-q-8": {
+    "label": "What characteristics would mostly influence your decision to choose one job offer over another?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Languages, frameworks, and other technologies I'd be working on",
+      "Office environment or company culture",
+      "Flexible time or schedule",
+      "Opportunities for professional development",
+      "Remote work options",
+      "How widely used or impactful my work output would be",
+      "The industry that I'd be working in",
+      "Company paid training and certifications",
+      "Salary",
+      "Stock options/equity",
+      "Benefits package (health insurance, pension, etc.)",
+      "Work-life balance",
+      "Company mission/values alignment",
+      "Visa/relocation support"
+    ]
+  },
+  "work-q-9": {
+    "label": "What type of company do you prefer?",
+    "required": true,
+    "choices": [
+      "Self-employed",
+      "Company under 10 employees",
+      "Company between 11 and 30 employees",
+      "Company between 31 and 100 employees",
+      "Company above 100 employees",
+      "Other"
+    ],
+    "multiple": false
+  },
+  "work-q-10": {
+    "label": "What agile software development methodology do you use in your team, if any?",
+    "required": false,
+    "choices": [
+      "Scrum",
+      "Kanban",
+      "XP",
+      "Other",
+      "None"
+    ],
+    "multiple": false
+  },
+  "work-q-11": {
+    "label": "What remote work arrangement does your current employer offer?",
+    "required": false,
+    "choices": [
+      "Back to office",
+      "Full remote",
+      "Hybrid"
+    ],
+    "multiple": false
+  },
+  "work-q-12": {
+    "label": "What is your preferred mode of work?",
+    "required": true,
+    "choices": [
+      "From the office",
+      "Full remote",
+      "Part-time remote/Hybrid"
+    ],
+    "multiple": false
+  },
+  "work-q-13": {
+    "label": "Which sectors are you currently working in?",
+    "multiple": true,
+    "required": false,
+    "choices": [
+      "E-banking and fintech",
+      "Digital health and telemedicine",
+      "E-commerce and retail",
+      "Education and e-learning",
+      "Content creation and marketing",
+      "Cybersecurity",
+      "Supply chain and logistics",
+      "Smart cities and IoT",
+      "Autonomous vehicles",
+      "Manufacturing and Industry 4.0",
+      "Environmental monitoring and sustainability",
+      "Legal tech and compliance",
+      "Human resources and talent management",
+      "Gaming and entertainment",
+      "Travel and hospitality tech",
+      "Real estate/PropTech",
+      "Energy and renewable tech",
+      "Telecommunications",
+      "Agriculture tech (AgTech)",
+      "Blockchain/Web3",
+      "Government/Public sector",
+      "Other"
+    ]
+  },
+  "work-q-14": {
+    "label": "What best describes your relationship with entrepreneurship?",
+    "required": false,
+    "showIf": {
+      "question": "work-q-0",
+      "notEquals": 0
+    },
+    "choices": [
+      "Currently building a side project/startup while employed",
+      "Planning to start a business within the next year",
+      "Interested, but not ready yet (2-5 years)",
+      "Interested, but lack a viable business idea",
+      "Interested, but need more business/entrepreneurship knowledge",
+      "Interested, but financial risk is too high",
+      "Interested, but family/social pressure for stable job",
+      "Interested, but legal/administrative barriers in Morocco",
+      "Tried entrepreneurship before, didn't work out",
+      "Not interested, prefer working for a company",
+      "Not interested, prefer technical work over business",
+      "Other"
+    ],
+    "multiple": false
+  },
+  "ai-q-0": {
+    "label": "How often do you use AI tools for Dev (Github Copilot, ChatGPT ...) ",
+    "required": true,
+    "choices": [
+      "Daily",
+      "Occasionally",
+      "Tried them but not interested",
+      "Never"
+    ],
+    "multiple": false
+  },
+  "ai-q-1": {
+    "label": "If you are using AI based coding assistants for Dev, How much improvement do you see in your productivity?",
+    "choices": [
+      "Did not improve my productivity",
+      "Somewhat improved my productivity (5% to 10%)",
+      "Helped me to become more productive (10% to 30%)",
+      "I am now very productive (30% to 50%)",
+      "I am a 10x engineer now (+50%)",
+      "It decreased my productivity"
+    ],
+    "multiple": false,
+    "required": true
+  },
+  "ai-q-2": {
+    "label": "Do you think AI will replace developers in the future?",
+    "required": true,
+    "choices": [
+      "Not very much ( less than 10% )",
+      "Somewhat ( 10% - 30% )",
+      "To some extent ( 30% - 50% )",
+      "The majority ( 50% - 80% )",
+      "Completely  ( more than 80% )",
+      "Not sure"
+    ],
+    "multiple": false
+  },
+  "ai-q-3": {
+    "label": "Are you planning to learn AI to build apps?",
+    "required": true,
+    "choices": [
+      "No, I am not interested",
+      "Already started learning the basics.",
+      "I can build simple apps with AI using third-party APIs.",
+      "I can build complex apps and play with models.",
+      "I am already an expert"
+    ],
+    "multiple": false
+  },
+  "ai-q-4": {
+    "label": "How much is your company investing in AI?",
+    "required": false,
+    "choices": [
+      "We haven't started adopting AI",
+      "We're getting the basics in place",
+      "We have some ad-hoc use cases in production",
+      "We have several use cases in production"
+    ],
+    "multiple": false
+  },
+  "ai-q-5": {
+    "label": "Which AI tools and apps do you use?",
+    "multiple": true,
+    "choices": [
+      "ChatGPT",
+      "Claude (Anthropic)",
+      "Gemini (Google)",
+      "Perplexity AI",
+      "Microsoft Copilot",
+      "Cursor",
+      "Windsurf (Codeium)",
+      "Zed",
+      "Claude Code (Anthropic CLI)",
+      "Aider",
+      "GitHub Copilot CLI",
+      "Warp AI",
+      "OpenAI Codex CLI",
+      "Gemini CLI (Google)",
+      "GitHub Copilot",
+      "Tabnine",
+      "Continue.dev",
+      "Cline (Claude Dev)",
+      "Amazon Q Developer (CodeWhisperer)",
+      "v0 (Vercel)",
+      "Bolt.new (StackBlitz)",
+      "Lovable (formerly GPT Engineer)",
+      "Replit AI",
+      "GitHub Copilot Workspace",
+      "Other"
+    ],
+    "required": true
+  },
+  "ai-q-6": {
+    "label": "Which AI frameworks and models do you use?",
+    "multiple": true,
+    "choices": [
+      "OpenAI API (GPT)",
+      "Anthropic Claude API",
+      "Google Gemini API",
+      "AWS Bedrock",
+      "Groq",
+      "Llama (Meta)",
+      "Mistral",
+      "Qwen (Alibaba)",
+      "DeepSeek",
+      "Phi (Microsoft)",
+      "LangChain",
+      "LlamaIndex",
+      "LangGraph",
+      "CrewAI",
+      "AutoGen (Microsoft)",
+      "Pinecone",
+      "Weaviate",
+      "ChromaDB",
+      "Qdrant",
+      "Faiss (Meta)",
+      "PyTorch",
+      "TensorFlow",
+      "Hugging Face Transformers",
+      "Keras",
+      "Scikit-Learn",
+      "Vercel AI SDK",
+      "OpenAI SDK (Python/JS)",
+      "Anthropic SDK (Python/JS)",
+      "Instructor",
+      "Weights & Biases",
+      "PEFT / LoRA (Hugging Face)",
+      "Unsloth",
+      "MLflow",
+      "Axolotl",
+      "Unstructured",
+      "Stable Diffusion (Images)",
+      "Whisper (Audio)",
+      "BERT (Embeddings)",
+      "CLIP (Vision)",
+      "Other"
+    ],
+    "required": true
+  },
+  "tech-q-0": {
+    "label": "What are the programming languages you like the most?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "JavaScript",
+      "HTML/CSS 😉",
+      "SQL",
+      "Python",
+      "Java",
+      "Bash/Shell/PowerShell",
+      "C#",
+      "PHP",
+      "TypeScript",
+      "C++",
+      "C",
+      "Go",
+      "Kotlin",
+      "Ruby",
+      "Assembly",
+      "VBA",
+      "Swift",
+      "R",
+      "Rust",
+      "Objective-C",
+      "Dart",
+      "Scala",
+      "Perl",
+      "Haskell",
+      "Julia",
+      "Elixir",
+      "Zig",
+      "Solidity",
+      "Lua",
+      "V",
+      "F#",
+      "Other"
+    ]
+  },
+  "tech-q-1": {
+    "label": "What are the programming languages you want to learn next?",
+    "required": false,
+    "multiple": true,
+    "choices": [
+      "JavaScript",
+      "HTML/CSS 😉",
+      "SQL",
+      "Python",
+      "Java",
+      "Bash/Shell/PowerShell",
+      "C#",
+      "PHP",
+      "TypeScript",
+      "C++",
+      "C",
+      "Go",
+      "Kotlin",
+      "Ruby",
+      "Assembly",
+      "VBA",
+      "Swift",
+      "R",
+      "Rust",
+      "Objective-C",
+      "Dart",
+      "Scala",
+      "Perl",
+      "Haskell",
+      "Julia",
+      "Elixir",
+      "Zig",
+      "Solidity",
+      "Lua",
+      "V",
+      "F#",
+      "Other"
+    ]
+  },
+  "tech-q-2": {
+    "label": "What are the programming languages you are using on a daily basis?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "JavaScript",
+      "HTML/CSS 😉",
+      "SQL",
+      "Python",
+      "Java",
+      "Bash/Shell/PowerShell",
+      "C#",
+      "PHP",
+      "TypeScript",
+      "C++",
+      "C",
+      "Go",
+      "Kotlin",
+      "Ruby",
+      "Assembly",
+      "VBA",
+      "Swift",
+      "R",
+      "Rust",
+      "Objective-C",
+      "Dart",
+      "Scala",
+      "Perl",
+      "Haskell",
+      "Julia",
+      "Elixir",
+      "Zig",
+      "Solidity",
+      "Lua",
+      "V",
+      "F#",
+      "Other"
+    ]
+  },
+  "tech-q-3": {
+    "label": "What are the front-end frameworks/libraries you are using on a daily basis?",
+    "required": false,
+    "multiple": true,
+    "choices": [
+      "jQuery",
+      "React.js",
+      "Angular",
+      "Vue.js",
+      "Angular.js",
+      "Gatsby",
+      "Ember.js",
+      "Backbone.js",
+      "Preact",
+      "Next.js",
+      "Svelte",
+      "Foundation",
+      "Alpine.js",
+      "Remix",
+      "Solid.js",
+      "Astro",
+      "Qwik",
+      "Htmx",
+      "Nuxt.js",
+      "SvelteKit",
+      "Lit",
+      "Fresh",
+      "Stencil",
+      "Other"
+    ]
+  },
+  "tech-q-4": {
+    "label": "What are the front-end frameworks/libraries you want to learn next?",
+    "required": false,
+    "multiple": true,
+    "choices": [
+      "jQuery",
+      "React.js",
+      "Angular",
+      "Vue.js",
+      "Angular.js",
+      "Gatsby",
+      "Ember.js",
+      "Backbone.js",
+      "Preact",
+      "Next.js",
+      "Svelte",
+      "Foundation",
+      "Alpine.js",
+      "Remix",
+      "Solid.js",
+      "Astro",
+      "Qwik",
+      "Htmx",
+      "Nuxt.js",
+      "SvelteKit",
+      "Lit",
+      "Fresh",
+      "Stencil",
+      "Other"
+    ]
+  },
+  "tech-q-5": {
+    "label": "What approach do you use for styling your web apps?",
+    "required": false,
+    "multiple": true,
+    "choices": [
+      "CSS",
+      "CSS Frameworks (Bootstrap, Material UI ...)",
+      "CSS in JS (Styled Components, Emotion ...)",
+      "CSS Preprocessor (Sass, Less ...)",
+      "CSS Modules",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "UnoCSS",
+      "Panda CSS",
+      "Vanilla Extract",
+      "Other"
+    ]
+  },
+  "tech-q-6": {
+    "label": "What are the backend frameworks you are using on a daily basis?",
+    "required": false,
+    "multiple": true,
+    "choices": [
+      ".NET",
+      "Spring Ecosystem",
+      "Micronaut",
+      "Quarkus",
+      "Jakarta EE / Java EE",
+      "Django",
+      "Flask",
+      "Laravel",
+      "Symfony",
+      "Ruby on Rails",
+      "Sinatra",
+      "FastAPI",
+      "Express.js",
+      "Nest.js",
+      "Sails.js",
+      "Serverless framework",
+      "Serverless technology (Vercel,Netlify...)",
+      "Headless CMS (Strapi,KeystoneJS,Ghost ...)",
+      "Fastify",
+      "AdonisJs",
+      "Hono",
+      "Elysia",
+      "tRPC",
+      "Gin",
+      "Fiber",
+      "Echo",
+      "Phoenix",
+      "Ktor",
+      "Actix",
+      "Axum",
+      "Other"
+    ]
+  },
+  "tech-q-7": {
+    "label": "What are the backend frameworks you want to learn next?",
+    "required": false,
+    "multiple": true,
+    "choices": [
+      ".NET",
+      "Spring Ecosystem",
+      "Micronaut",
+      "Quarkus",
+      "Jakarta EE / Java EE",
+      "Django",
+      "Flask",
+      "Laravel",
+      "Symfony",
+      "Ruby on Rails",
+      "Sinatra",
+      "FastAPI",
+      "Express.js",
+      "Nest.js",
+      "Sails.js",
+      "Serverless framework",
+      "Serverless technology (Vercel,Netlify...)",
+      "Headless CMS (Strapi,KeystoneJS,Ghost ...)",
+      "Fastify",
+      "AdonisJs",
+      "Hono",
+      "Elysia",
+      "tRPC",
+      "Gin",
+      "Fiber",
+      "Echo",
+      "Phoenix",
+      "Ktor",
+      "Actix",
+      "Axum",
+      "Other"
+    ]
+  },
+  "tech-q-8": {
+    "label": "What are the platforms and tools you are using on a daily basis?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Node.js",
+      ".NET",
+      "JVM",
+      "PHP",
+      "GraalVM",
+      "Pandas",
+      "TensorFlow",
+      "Docker",
+      "Kubernetes",
+      "React Native",
+      "Unity 3D",
+      "Configuration Management(Ansible, Puppet...)",
+      "Flutter",
+      "Terraform",
+      "Apache Spark",
+      "Bun Js",
+      "Deno Js",
+      "No-code Platforms (e.g., Appgyver, Glide)",
+      "Low-code Platforms (e.g., PowerApps, Zoho Creator)",
+      "Website Builders (e.g., Webflow, Wix)",
+      "Vite",
+      "Android Studio",
+      "Xcode",
+      "Pytorch",
+      "Langchain",
+      "Turborepo",
+      "Nx",
+      "Prisma",
+      "Drizzle",
+      "GraphQL",
+      "Apollo",
+      "Tauri",
+      "Electron",
+      "Cloudflare Workers",
+      "Other"
+    ]
+  },
+  "tech-q-9": {
+    "label": "What are the platforms and tools you want to learn next?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Node.js",
+      ".NET",
+      "JVM",
+      "PHP",
+      "GraalVM",
+      "Pandas",
+      "TensorFlow",
+      "Docker",
+      "Kubernetes",
+      "React Native",
+      "Unity 3D",
+      "Configuration Management(Ansible, Puppet...)",
+      "Flutter",
+      "Terraform",
+      "Apache Spark",
+      "Bun Js",
+      "Deno Js",
+      "No-code Platforms (e.g., Appgyver, Glide)",
+      "Low-code Platforms (e.g., PowerApps, Zoho Creator)",
+      "Website Builders (e.g., Webflow, Wix)",
+      "Vite",
+      "Android Studio",
+      "Xcode",
+      "Pytorch",
+      "Langchain",
+      "Turborepo",
+      "Nx",
+      "Prisma",
+      "Drizzle",
+      "GraphQL",
+      "Apollo",
+      "Tauri",
+      "Electron",
+      "Cloudflare Workers",
+      "Other"
+    ]
+  },
+  "tech-q-10": {
+    "label": "Your primary Operating System is:",
+    "required": true,
+    "choices": [
+      "Windows",
+      "MacOS",
+      "Linux-based",
+      "Windows + WSL2"
+    ],
+    "multiple": false
+  },
+  "tech-q-11": {
+    "label": "What is you current IDE or code editor for daily work?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Jetbrains (IntelliJ, PhpStorm, Resharper ...)",
+      "VS Code",
+      "Cursor",
+      "Eclipse",
+      "Netbeans",
+      "Vim",
+      "Nvim",
+      "Emacs",
+      "Sublime",
+      "Atom",
+      "Notepad++",
+      "Cloud based IDE",
+      "Zed",
+      "Fleet",
+      "Visual Studio",
+      "Android Studio",
+      "Xcode",
+      "Other"
+    ]
+  },
+  "tech-q-12": {
+    "label": "What do you do when you get stuck on a problem?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Google it",
+      "Ask AI assistants (ChatGPT, Cursor, etc.)",
+      "Dig in StackOverflow",
+      "Do other work and come back later",
+      "Watch help/tutorial videos",
+      "Call a coworker or friend",
+      "Read official documentation",
+      "Ask in Discord/Slack communities",
+      "Take a break/sleep on it",
+      "Create minimal reproduction"
+    ]
+  },
+  "tech-q-13": {
+    "label": "The production environment you or your team are using is:",
+    "multiple": true,
+    "choices": [
+      "Public cloud (AWS/Azure/GCP/Oracle/IBM/etc.)",
+      "On-premise",
+      "Hybrid Cloud",
+      "Shared hosting",
+      "Managed PaaS (heroku, app platform, Salesforce, AWS Beanstalk ...)"
+    ],
+    "required": true
+  },
+  "tech-q-14": {
+    "label": "What cloud platforms you or your team are using?",
+    "required": false,
+    "multiple": true,
+    "choices": [
+      "GCP",
+      "AWS",
+      "Azure",
+      "Oracle Cloud",
+      "IBM Cloud",
+      "DigitalOcean",
+      "Other Moroccan Cloud providers",
+      "Other cloud providers",
+      "Cloudflare",
+      "Vercel",
+      "Netlify",
+      "Fly.io",
+      "Railway",
+      "Render",
+      "Hetzner",
+      "OVH",
+      "Linode (Akamai)",
+      "None"
+    ]
+  },
+  "tech-q-15": {
+    "label": "The production database you or your team are using is:",
+    "required": false,
+    "multiple": true,
+    "choices": [
+      "Oracle Database",
+      "Mysql/MariaDB",
+      "PostgreSQL",
+      "SQL Server",
+      "CosmosDB",
+      "MongoDB",
+      "Redis",
+      "DynamoDB",
+      "Neo4j",
+      "Apache Cassandra",
+      "BigTable",
+      "SQLite/LibSQL",
+      "Vector DBs",
+      "Supabase",
+      "PlanetScale",
+      "Turso",
+      "Firestore",
+      "CockroachDB",
+      "ClickHouse",
+      "Elasticsearch",
+      "FaunaDB",
+      "TimescaleDB",
+      "Other"
+    ]
+  },
+  "tech-q-16": {
+    "label": "What type of tests do you write?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Unit tests",
+      "Integration tests",
+      "End-to-end tests",
+      "Acceptance tests",
+      "I don't write tests for my code.",
+      "Performance/Load testing",
+      "Visual regression testing",
+      "Security testing",
+      "Other"
+    ]
+  },
+  "community-q-0": {
+    "label": "What prevents you from participating more in the Moroccan tech community?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Lack of time due to work commitments",
+      "Don't know where to find communities/events",
+      "Events are too far from my location",
+      "Language barriers (prefer Arabic/Darija content)",
+      "Content level doesn't match my experience (too basic/too advanced)",
+      "Financial constraints (event costs, travel)",
+      "I'm already active on the community",
+      "Other"
+    ]
+  },
+  "community-q-1": {
+    "label": "What would make you more likely to attend tech events in Morocco?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "More events in my city/region",
+      "Better quality speakers/content",
+      "Workshops with hands-on practice",
+      "Better networking opportunities",
+      "Lower or no cost",
+      "Better timing (weekends, evenings)",
+      "Other"
+    ]
+  },
+  "community-q-2": {
+    "label": "How has the Moroccan tech community helped your career?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Learned skills that advanced my career",
+      "Got mentorship from community members",
+      "Built professional network",
+      "Gained confidence through speaking/contributing",
+      "Discovered new opportunities (jobs, projects, partnerships)",
+      "It hasn't helped my career yet",
+      "Other"
+    ]
+  },
+  "community-q-3": {
+    "label": "What do you MOST need from the Moroccan tech community right now (pick 3 max)?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Job opportunities and career guidance",
+      "Mentorship from experienced developers",
+      "Learning resources in Arabic/Darija",
+      "Networking with other developers",
+      "Access to advanced technical content",
+      "Collaboration opportunities on projects",
+      "Other"
+    ]
+  },
+  "community-q-4": {
+    "label": "What type of community content would be MOST valuable to you (pick 3 max)?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Technical workshops (hands-on coding)",
+      "Case studies from Moroccan companies",
+      "Career development sessions (interviews, negotiations, CV)",
+      "Open source contribution guides",
+      "Architecture and system design discussions",
+      "Soft skills (communication, leadership, teamwork)",
+      "Freelancing and entrepreneurship guidance",
+      "Other"
+    ]
+  },
+  "community-q-5": {
+    "label": "What prevents you from contributing to open source?",
+    "required": true,
+    "multiple": true,
+    "choices": [
+      "Don't know how to get started",
+      "Afraid my code isn't good enough",
+      "Don't have time",
+      "Don't understand how to find projects to contribute to",
+      "Language barriers (most projects in English)",
+      "I already contribute",
+      "Other"
+    ]
+  },
+  "community-q-6": {
+    "label": "When it comes to IT, what is your primary social network?",
+    "required": true,
+    "multiple": false,
+    "choices": [
+      "LinkedIn",
+      "X (Twitter)",
+      "Discord",
+      "Reddit",
+      "Instagram",
+      "YouTube",
+      "Other"
+    ]
+  }
+}
