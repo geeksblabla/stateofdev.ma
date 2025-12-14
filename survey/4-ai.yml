@@ -11,6 +11,7 @@ questions:
       - Never
 
   - label: "If you are using AI based coding assistants for Dev, How much improvement do you see in your productivity?"
+    required: false
     choices:
       - Did not improve my productivity
       - Somewhat improved my productivity (5% to 10%)
@@ -47,6 +48,7 @@ questions:
       - We have several use cases in production
 
   - label: Which AI tools and apps do you use?
+    required: false
     multiple: true
     choices:
       # Web/Desktop AI Assistants
@@ -82,6 +84,7 @@ questions:
       - Other
 
   - label: Which AI frameworks and models do you use?
+    required: false
     multiple: true
     choices:
       # LLM APIs & Cloud Providers
