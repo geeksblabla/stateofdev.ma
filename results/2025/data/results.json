@@ -30930,6 +30930,53 @@
       "userId": "Hw11sLWVpGdCszbgh2Rfxi195IK2"
     },
     {
+      "lastSignInTime": "Thu, 15 Jan 2026 12:43:33 GMT",
+      "creationTime": "Thu, 15 Jan 2026 12:43:33 GMT",
+      "profile-q-5": 2,
+      "profile-q-4": 2,
+      "profile-q-7": 3,
+      "profile-q-6": [
+        1
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 0,
+      "profile-q-2": 12,
+      "profile-q-8": 3,
+      "education-q-2": [
+        0,
+        3,
+        4
+      ],
+      "education-q-1": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "education-q-3": [
+        0,
+        2,
+        4,
+        7,
+        3
+      ],
+      "education-q-1-others": "German, Russian",
+      "education-q-0": [
+        4,
+        1
+      ],
+      "lastUpdated": "2026-01-15T12:47:01.851Z",
+      "education-q-4": [
+        0,
+        3,
+        4,
+        6
+      ],
+      "userId": "I0feWV8hBldlZSimAlpjn7ciujT2"
+    },
+    {
       "lastSignInTime": "Fri, 12 Dec 2025 02:40:35 GMT",
       "creationTime": "Fri, 12 Dec 2025 02:40:35 GMT",
       "profile-q-5": 6,
@@ -34864,6 +34911,58 @@
         6
       ],
       "userId": "KeCp0c9vg6egUC06fzdBzxNdA413"
+    },
+    {
+      "lastSignInTime": "Thu, 15 Jan 2026 21:49:31 GMT",
+      "creationTime": "Thu, 15 Jan 2026 21:49:31 GMT",
+      "profile-q-5": 1,
+      "profile-q-4": 5,
+      "profile-q-7": 0,
+      "profile-q-6": [
+        4
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 0,
+      "profile-q-2": 6,
+      "education-q-2": [
+        5,
+        4,
+        0,
+        1,
+        2,
+        3
+      ],
+      "education-q-1": [
+        2
+      ],
+      "education-q-4": [
+        6
+      ],
+      "education-q-3": [
+        11,
+        8
+      ],
+      "education-q-0": [
+        0
+      ],
+      "work-q-9": 2,
+      "work-q-8": [
+        4
+      ],
+      "work-q-12": 2,
+      "work-q-11": 2,
+      "work-q-14": null,
+      "work-q-13": [],
+      "work-q-10": 0,
+      "lastUpdated": "2026-01-15T21:53:32.543Z",
+      "work-q-1": null,
+      "work-q-0": 6,
+      "work-q-3": null,
+      "work-q-2": null,
+      "work-q-5": null,
+      "work-q-4": null,
+      "userId": "KggzDGaqXwcr7Z9iFVbMaqlrcB23"
     },
     {
       "lastSignInTime": "Sun, 07 Dec 2025 18:53:44 GMT",
