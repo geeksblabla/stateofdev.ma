@@ -65593,6 +65593,149 @@
       "userId": "cBQE7FXDnJeK01KEs6tTaH5WseB2"
     },
     {
+      "lastSignInTime": "Tue, 20 Jan 2026 17:56:55 GMT",
+      "creationTime": "Tue, 20 Jan 2026 17:56:55 GMT",
+      "profile-q-5": 4,
+      "profile-q-4": 2,
+      "profile-q-7": 1,
+      "profile-q-6": [
+        1,
+        4,
+        3,
+        2
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 1,
+      "profile-q-2": 1,
+      "education-q-2": [
+        3,
+        5
+      ],
+      "education-q-1": [
+        3,
+        2,
+        0
+      ],
+      "education-q-4": [
+        4,
+        0,
+        6,
+        5
+      ],
+      "education-q-3": [
+        0,
+        9,
+        11,
+        6
+      ],
+      "education-q-0": [
+        0,
+        1,
+        3,
+        5
+      ],
+      "work-q-9": 0,
+      "work-q-8": [
+        4,
+        8,
+        0
+      ],
+      "work-q-12": 1,
+      "work-q-11": 1,
+      "work-q-14": 0,
+      "work-q-13": [
+        6
+      ],
+      "work-q-10": 0,
+      "work-q-1": 1,
+      "work-q-0": 1,
+      "work-q-3": 0,
+      "work-q-2": 2,
+      "work-q-5": null,
+      "work-q-4": 6,
+      "ai-q-4": 1,
+      "ai-q-3": 3,
+      "ai-q-2": 2,
+      "ai-q-1": 3,
+      "ai-q-6": [
+        2,
+        0
+      ],
+      "ai-q-5": [
+        0,
+        2,
+        12,
+        13
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        0,
+        2,
+        3,
+        8,
+        10,
+        9,
+        14
+      ],
+      "tech-q-2": [
+        0,
+        4,
+        1
+      ],
+      "tech-q-1": [
+        11,
+        18
+      ],
+      "tech-q-16": [
+        0,
+        2
+      ],
+      "lastUpdated": "2026-01-20T21:55:15.296Z",
+      "tech-q-8": [
+        0,
+        2
+      ],
+      "tech-q-7": [
+        13
+      ],
+      "tech-q-10": 3,
+      "tech-q-9": [
+        15,
+        20
+      ],
+      "tech-q-11": [
+        1,
+        0
+      ],
+      "tech-q-4": [
+        9,
+        2
+      ],
+      "tech-q-12": [
+        1
+      ],
+      "tech-q-3": [
+        3
+      ],
+      "tech-q-13": [
+        1
+      ],
+      "tech-q-6": [
+        1
+      ],
+      "tech-q-14": [],
+      "tech-q-5": [
+        5,
+        0,
+        1
+      ],
+      "tech-q-15": [
+        1
+      ],
+      "userId": "cG9Td5NZZAgS6vp0pWBdsa8ypSO2"
+    },
+    {
       "lastSignInTime": "Sat, 06 Dec 2025 21:01:18 GMT",
       "creationTime": "Sat, 06 Dec 2025 21:01:18 GMT",
       "profile-q-5": 2,
@@ -92324,6 +92467,163 @@
         1
       ],
       "userId": "rUX08GN6CGcGjuTsXye2bXANmNm1"
+    },
+    {
+      "lastSignInTime": "Tue, 20 Jan 2026 21:13:21 GMT",
+      "creationTime": "Tue, 20 Jan 2026 21:13:21 GMT",
+      "profile-q-5": 3,
+      "profile-q-4": 1,
+      "profile-q-7": 2,
+      "profile-q-6": [
+        3
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 6,
+      "profile-q-2": 8,
+      "education-q-2": [
+        3,
+        0
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        6
+      ],
+      "education-q-3": [
+        0,
+        4,
+        8,
+        9,
+        3
+      ],
+      "education-q-0": [
+        6
+      ],
+      "work-q-9": 0,
+      "work-q-8": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "work-q-12": 1,
+      "work-q-11": 2,
+      "work-q-14": 0,
+      "work-q-13": [
+        2,
+        6
+      ],
+      "work-q-10": 0,
+      "work-q-1": 0,
+      "work-q-0": 1,
+      "work-q-3": 2,
+      "work-q-2": 3,
+      "work-q-4": 2,
+      "ai-q-4": 1,
+      "ai-q-3": 3,
+      "ai-q-2": 1,
+      "ai-q-1": 2,
+      "ai-q-6": [],
+      "ai-q-5": [
+        0,
+        5,
+        14
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        0,
+        7
+      ],
+      "tech-q-2": [
+        0,
+        7
+      ],
+      "tech-q-1": [],
+      "tech-q-16": [
+        1,
+        2,
+        3,
+        5,
+        6
+      ],
+      "tech-q-8": [
+        0,
+        3
+      ],
+      "tech-q-7": [],
+      "tech-q-10": 3,
+      "tech-q-9": [
+        14
+      ],
+      "tech-q-11": [
+        2,
+        1
+      ],
+      "tech-q-4": [],
+      "tech-q-12": [
+        0,
+        1
+      ],
+      "tech-q-3": [
+        1,
+        9
+      ],
+      "tech-q-13": [
+        4
+      ],
+      "tech-q-6": [
+        7
+      ],
+      "tech-q-14": [],
+      "tech-q-5": [
+        0,
+        1,
+        5
+      ],
+      "tech-q-15": [
+        1
+      ],
+      "lastUpdated": "2026-01-20T21:58:12.488Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        0
+      ],
+      "community-q-4": [
+        1,
+        2,
+        5,
+        6
+      ],
+      "community-q-3": [
+        1,
+        3,
+        5
+      ],
+      "community-q-2": [
+        0
+      ],
+      "community-q-1": [
+        1,
+        3,
+        4,
+        5
+      ],
+      "community-q-0": [
+        1,
+        4
+      ],
+      "userId": "rc0yHA7oiSTPQQuIVfA5Psv839s1"
     },
     {
       "lastSignInTime": "Sat, 13 Dec 2025 18:34:13 GMT",
