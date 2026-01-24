@@ -35230,6 +35230,74 @@
       "userId": "KUVseTKdVpRKqT84C2pkKii6ibA2"
     },
     {
+      "lastSignInTime": "Fri, 23 Jan 2026 19:21:46 GMT",
+      "creationTime": "Fri, 23 Jan 2026 19:21:46 GMT",
+      "profile-q-5": 1,
+      "profile-q-4": 2,
+      "profile-q-7": 2,
+      "profile-q-6": [
+        0
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 1,
+      "profile-q-2": 1,
+      "education-q-2": [
+        3
+      ],
+      "education-q-1": [
+        0,
+        3,
+        2,
+        1
+      ],
+      "education-q-4": [
+        2,
+        0
+      ],
+      "education-q-3": [
+        0,
+        9,
+        3
+      ],
+      "education-q-0": [
+        4,
+        3
+      ],
+      "work-q-9": 4,
+      "work-q-8": [
+        0,
+        2,
+        8
+      ],
+      "work-q-12": 2,
+      "work-q-11": 2,
+      "work-q-14": null,
+      "work-q-13": [
+        1
+      ],
+      "work-q-1": 2,
+      "work-q-0": 5,
+      "work-q-10": 0,
+      "work-q-2": 2,
+      "work-q-5": null,
+      "ai-q-4": 0,
+      "ai-q-3": 2,
+      "lastUpdated": "2026-01-23T19:31:55.774Z",
+      "ai-q-2": 0,
+      "ai-q-1": 2,
+      "ai-q-6": [
+        2
+      ],
+      "ai-q-5": [
+        2,
+        1,
+        0
+      ],
+      "ai-q-0": 0,
+      "userId": "KWy501wsnYhDeFeG1BugFmUW7R93"
+    },
+    {
       "lastSignInTime": "Wed, 03 Dec 2025 14:41:36 GMT",
       "creationTime": "Wed, 03 Dec 2025 14:41:36 GMT",
       "profile-q-5": 0,
@@ -72062,6 +72130,22 @@
         0
       ],
       "userId": "gjLjrb3W2fRZ0Hfi8q5joZeWfOH3"
+    },
+    {
+      "lastSignInTime": "Fri, 23 Jan 2026 06:59:29 GMT",
+      "creationTime": "Fri, 23 Jan 2026 06:59:29 GMT",
+      "profile-q-5": 2,
+      "lastUpdated": "2026-01-23T07:01:41.456Z",
+      "profile-q-4": 2,
+      "profile-q-7": 2,
+      "profile-q-6": [
+        4
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 30,
+      "profile-q-2": 0,
+      "userId": "gnAIL2eX04RtYvt1crdBB82S4Sf2"
     },
     {
       "lastSignInTime": "Wed, 17 Dec 2025 22:19:37 GMT",
