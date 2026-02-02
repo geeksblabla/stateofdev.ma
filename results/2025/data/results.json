@@ -54565,6 +54565,66 @@
       "userId": "VJtdbYKizfbnkSGvGbp8eKInH963"
     },
     {
+      "lastSignInTime": "Sun, 01 Feb 2026 14:02:49 GMT",
+      "creationTime": "Sun, 01 Feb 2026 14:02:49 GMT",
+      "profile-q-5": 0,
+      "profile-q-4": 4,
+      "profile-q-7": 4,
+      "profile-q-6": [
+        0
+      ],
+      "profile-q-1": 3,
+      "profile-q-0": 0,
+      "profile-q-3": 8,
+      "profile-q-2": 0,
+      "education-q-2": [
+        0,
+        1,
+        4
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        0,
+        2
+      ],
+      "education-q-3": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "education-q-0": [
+        0,
+        3,
+        1
+      ],
+      "ai-q-4": 0,
+      "ai-q-3": 1,
+      "lastUpdated": "2026-02-01T14:06:56.221Z",
+      "ai-q-2": 0,
+      "ai-q-1": 2,
+      "ai-q-6": [
+        0,
+        1
+      ],
+      "ai-q-5": [
+        0,
+        1
+      ],
+      "ai-q-0": 0,
+      "userId": "VNMuQp7YDXPoeEvB5krY988eXr42"
+    },
+    {
       "lastSignInTime": "Wed, 03 Dec 2025 17:55:25 GMT",
       "creationTime": "Wed, 03 Dec 2025 17:55:25 GMT",
       "profile-q-5": 2,
@@ -93701,6 +93761,52 @@
         1
       ],
       "userId": "rvOymrZPhdO8bhkpkfkK0915vj12"
+    },
+    {
+      "lastSignInTime": "Sun, 01 Feb 2026 15:18:18 GMT",
+      "creationTime": "Sun, 01 Feb 2026 15:18:18 GMT",
+      "profile-q-5": 0,
+      "profile-q-4": 4,
+      "profile-q-7": 3,
+      "profile-q-6": [
+        4
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 1,
+      "profile-q-2": 12,
+      "profile-q-8": 3,
+      "lastUpdated": "2026-02-01T15:24:45.325Z",
+      "education-q-2": [
+        5,
+        0,
+        2,
+        3,
+        4,
+        1
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        3,
+        4,
+        6
+      ],
+      "education-q-3": [
+        0,
+        7,
+        9,
+        3,
+        5
+      ],
+      "education-q-0": [
+        5,
+        4
+      ],
+      "userId": "rwUrihJBHwQiBsjGSq8zU6Tpxj73"
     },
     {
       "lastSignInTime": "Sun, 07 Dec 2025 11:46:43 GMT",
