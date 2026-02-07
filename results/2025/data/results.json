@@ -1715,6 +1715,140 @@
       "userId": "0QAKRNPmPdaIUjpTyWIVSlx62kz1"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 22:15:30 GMT",
+      "creationTime": "Fri, 06 Feb 2026 22:15:30 GMT",
+      "profile-q-5": 0,
+      "profile-q-4": 2,
+      "profile-q-7": 1,
+      "profile-q-6": [
+        4
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 13,
+      "profile-q-2": 6,
+      "education-q-2": [
+        6,
+        4
+      ],
+      "education-q-1": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "education-q-4": [
+        1,
+        5,
+        4
+      ],
+      "education-q-3": [
+        0,
+        4,
+        9
+      ],
+      "education-q-0": [
+        0,
+        2,
+        3,
+        5
+      ],
+      "ai-q-4": null,
+      "ai-q-3": 2,
+      "ai-q-2": 1,
+      "ai-q-1": 2,
+      "ai-q-5": [
+        0,
+        1
+      ],
+      "ai-q-0": 0,
+      "ai-q-6": [
+        24,
+        32
+      ],
+      "tech-q-0": [
+        2,
+        3
+      ],
+      "tech-q-2": [
+        3
+      ],
+      "tech-q-1": [
+        17,
+        5
+      ],
+      "tech-q-16": [
+        0
+      ],
+      "tech-q-8": [
+        5
+      ],
+      "tech-q-7": [
+        5,
+        6
+      ],
+      "tech-q-10": 0,
+      "tech-q-11": [
+        1
+      ],
+      "tech-q-9": [
+        6,
+        7,
+        8,
+        23,
+        24
+      ],
+      "tech-q-12": [
+        4,
+        1
+      ],
+      "tech-q-4": [],
+      "tech-q-13": [],
+      "tech-q-3": [],
+      "tech-q-14": [],
+      "tech-q-6": [],
+      "tech-q-15": [
+        1,
+        5
+      ],
+      "tech-q-5": [],
+      "lastUpdated": "2026-02-06T22:35:34.126Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        0,
+        3
+      ],
+      "community-q-4": [
+        0,
+        1,
+        3,
+        5,
+        6
+      ],
+      "community-q-3": [
+        0,
+        1,
+        3,
+        4,
+        5
+      ],
+      "community-q-2": [
+        2,
+        3,
+        4
+      ],
+      "community-q-1": [
+        5,
+        4,
+        3,
+        2
+      ],
+      "community-q-0": [
+        1
+      ],
+      "userId": "0QOBWizUjhgBsj8tj71oKstClg43"
+    },
+    {
       "lastSignInTime": "Sat, 06 Dec 2025 17:10:38 GMT",
       "creationTime": "Sat, 06 Dec 2025 17:10:38 GMT",
       "profile-q-5": 3,
@@ -3710,6 +3844,169 @@
         5
       ],
       "userId": "1iljvARgWuV8IHuo2XLBH28ojAy2"
+    },
+    {
+      "lastSignInTime": "Fri, 06 Feb 2026 15:23:54 GMT",
+      "creationTime": "Fri, 06 Feb 2026 15:23:54 GMT",
+      "profile-q-5": 2,
+      "profile-q-4": 2,
+      "profile-q-7": 2,
+      "profile-q-6": [
+        4,
+        1
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 0,
+      "profile-q-2": 1,
+      "education-q-2": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "education-q-1": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "education-q-4": [
+        0,
+        6
+      ],
+      "education-q-3": [
+        0,
+        3,
+        1,
+        9
+      ],
+      "education-q-0": [
+        1,
+        5
+      ],
+      "work-q-9": 2,
+      "work-q-8": [
+        3,
+        2,
+        5,
+        8
+      ],
+      "work-q-12": 2,
+      "work-q-11": 2,
+      "work-q-14": 2,
+      "work-q-13": [
+        2,
+        6,
+        11,
+        21
+      ],
+      "work-q-10": 0,
+      "work-q-1": 4,
+      "work-q-0": 1,
+      "work-q-3": 0,
+      "work-q-2": 3,
+      "work-q-5": null,
+      "work-q-4": 3,
+      "ai-q-4": 0,
+      "ai-q-3": 2,
+      "ai-q-2": 2,
+      "ai-q-1": 2,
+      "ai-q-6": [
+        1
+      ],
+      "ai-q-5": [
+        1,
+        8
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        4,
+        2,
+        3,
+        5
+      ],
+      "tech-q-2": [
+        4
+      ],
+      "tech-q-1": [
+        5,
+        11
+      ],
+      "tech-q-16": [
+        0,
+        1
+      ],
+      "tech-q-8": [
+        2,
+        7,
+        8
+      ],
+      "tech-q-7": [
+        5
+      ],
+      "tech-q-10": 2,
+      "tech-q-9": [
+        8,
+        7
+      ],
+      "tech-q-11": [
+        0,
+        1,
+        2,
+        15
+      ],
+      "tech-q-4": [],
+      "tech-q-12": [
+        1,
+        0,
+        2
+      ],
+      "tech-q-3": [],
+      "tech-q-13": [
+        2
+      ],
+      "tech-q-6": [
+        1
+      ],
+      "tech-q-14": [
+        15
+      ],
+      "tech-q-5": [],
+      "tech-q-15": [
+        5
+      ],
+      "lastUpdated": "2026-02-06T15:40:45.212Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        2,
+        0
+      ],
+      "community-q-4": [
+        1,
+        2,
+        4
+      ],
+      "community-q-3": [
+        0,
+        1,
+        3
+      ],
+      "community-q-2": [
+        0,
+        2
+      ],
+      "community-q-1": [
+        0,
+        1,
+        3,
+        5
+      ],
+      "community-q-0": [
+        0,
+        1
+      ],
+      "userId": "1ojiWoLk9yWqEqItRQXaq4fLwqC2"
     },
     {
       "lastSignInTime": "Sat, 06 Dec 2025 17:50:18 GMT",
@@ -9317,6 +9614,40 @@
       "userId": "4zuacHNAn6Y7ArWLdOso76Ek8qf2"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 17:41:54 GMT",
+      "creationTime": "Fri, 06 Feb 2026 17:41:54 GMT",
+      "profile-q-5": 2,
+      "profile-q-4": 1,
+      "profile-q-7": 4,
+      "profile-q-6": [
+        1
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 16,
+      "profile-q-2": 2,
+      "lastUpdated": "2026-02-06T17:46:18.156Z",
+      "education-q-2": [
+        0
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        0
+      ],
+      "education-q-3": [
+        0,
+        9
+      ],
+      "education-q-0": [
+        2
+      ],
+      "userId": "51A1jdk4EcVEMMWsV0AcMONs4H73"
+    },
+    {
       "lastSignInTime": "Thu, 11 Dec 2025 20:49:27 GMT",
       "creationTime": "Thu, 11 Dec 2025 20:49:27 GMT",
       "profile-q-5": 2,
@@ -11230,6 +11561,67 @@
       "userId": "6RdMssmqJ4a4qNduFBRNqBi8RGp2"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 16:42:01 GMT",
+      "creationTime": "Fri, 06 Feb 2026 16:42:01 GMT",
+      "profile-q-5": 3,
+      "profile-q-4": 2,
+      "profile-q-7": 4,
+      "profile-q-6": [
+        0
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 1,
+      "profile-q-2": 1,
+      "education-q-2": [
+        0,
+        4,
+        3
+      ],
+      "education-q-1": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "education-q-4": [
+        4,
+        0
+      ],
+      "education-q-3": [
+        0,
+        3,
+        8,
+        9
+      ],
+      "education-q-0": [
+        0,
+        1,
+        3
+      ],
+      "work-q-9": 3,
+      "lastUpdated": "2026-02-06T16:51:40.060Z",
+      "work-q-8": [
+        1,
+        4,
+        2,
+        8
+      ],
+      "work-q-12": 2,
+      "work-q-11": 1,
+      "work-q-13": [
+        1,
+        12
+      ],
+      "work-q-1": 1,
+      "work-q-0": 1,
+      "work-q-10": 0,
+      "work-q-3": 0,
+      "work-q-2": 3,
+      "work-q-4": 4,
+      "userId": "6V34EaNlZqV5xRvXEe36F5Y8qRI2"
+    },
+    {
       "lastSignInTime": "Wed, 10 Dec 2025 09:12:14 GMT",
       "creationTime": "Wed, 10 Dec 2025 09:12:14 GMT",
       "profile-q-5": 2,
@@ -12749,6 +13141,22 @@
         1
       ],
       "userId": "7S7ikemIMVS4NtiN7MqQ7a9rn6C2"
+    },
+    {
+      "lastSignInTime": "Fri, 06 Feb 2026 18:11:32 GMT",
+      "creationTime": "Fri, 06 Feb 2026 18:11:32 GMT",
+      "profile-q-5": 2,
+      "lastUpdated": "2026-02-06T18:12:35.861Z",
+      "profile-q-4": 4,
+      "profile-q-7": 1,
+      "profile-q-6": [
+        3
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 1,
+      "profile-q-2": 0,
+      "userId": "7WXZXmHMEXWEhc6VlbBvsWPeQBw2"
     },
     {
       "lastSignInTime": "Sun, 07 Dec 2025 09:57:31 GMT",
@@ -15157,6 +15565,44 @@
       "userId": "8cYTizD13UOq19zbylBPHYZgBFB2"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 22:20:29 GMT",
+      "creationTime": "Fri, 06 Feb 2026 22:20:29 GMT",
+      "profile-q-5": 1,
+      "profile-q-4": 7,
+      "profile-q-7": 0,
+      "profile-q-6": [
+        3
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 1,
+      "profile-q-3": 4,
+      "profile-q-2": 1,
+      "lastUpdated": "2026-02-06T22:23:06.841Z",
+      "education-q-2": [
+        5
+      ],
+      "education-q-1": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "education-q-4": [
+        4,
+        5
+      ],
+      "education-q-3": [
+        0,
+        6,
+        8,
+        11
+      ],
+      "education-q-0": [
+        1
+      ],
+      "userId": "8oo4a2wyckYwqzJtITAL6H6HoDx2"
+    },
+    {
       "lastSignInTime": "Sun, 28 Dec 2025 11:13:09 GMT",
       "creationTime": "Sun, 28 Dec 2025 11:13:09 GMT",
       "profile-q-5": 4,
@@ -16196,6 +16642,190 @@
       "userId": "9WSUBVcEp1Ogzd9wujGumhylWxi2"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 18:23:24 GMT",
+      "creationTime": "Fri, 06 Feb 2026 18:23:24 GMT",
+      "profile-q-5": 3,
+      "profile-q-4": 2,
+      "profile-q-7": 4,
+      "profile-q-6": [
+        1
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 1,
+      "profile-q-2": 0,
+      "education-q-2": [
+        5,
+        2
+      ],
+      "education-q-1": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "education-q-4": [
+        0,
+        3,
+        5
+      ],
+      "education-q-3": [
+        4,
+        8,
+        9,
+        11
+      ],
+      "education-q-0": [
+        1,
+        4,
+        5
+      ],
+      "work-q-9": 3,
+      "work-q-8": [
+        1,
+        3,
+        8,
+        10,
+        11
+      ],
+      "work-q-12": 2,
+      "work-q-11": 0,
+      "work-q-14": 6,
+      "work-q-13": [
+        4,
+        12
+      ],
+      "work-q-10": 4,
+      "work-q-1": 1,
+      "work-q-0": 5,
+      "work-q-3": null,
+      "work-q-2": 2,
+      "work-q-5": null,
+      "work-q-4": null,
+      "ai-q-4": 1,
+      "ai-q-3": 3,
+      "ai-q-2": 2,
+      "ai-q-1": 2,
+      "ai-q-6": [
+        5,
+        10,
+        11,
+        12,
+        24,
+        26
+      ],
+      "ai-q-5": [
+        0,
+        1,
+        21
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        3,
+        4,
+        0,
+        8
+      ],
+      "tech-q-2": [
+        0,
+        1,
+        4
+      ],
+      "tech-q-1": [
+        9,
+        12,
+        18
+      ],
+      "tech-q-16": [
+        0
+      ],
+      "tech-q-8": [
+        0,
+        2,
+        7,
+        8
+      ],
+      "tech-q-7": [
+        4,
+        13,
+        16
+      ],
+      "tech-q-10": 0,
+      "tech-q-9": [
+        11,
+        13,
+        18,
+        20
+      ],
+      "tech-q-11": [
+        0,
+        1,
+        3
+      ],
+      "tech-q-4": [
+        3,
+        13
+      ],
+      "tech-q-12": [
+        0,
+        1,
+        6,
+        8
+      ],
+      "tech-q-3": [
+        1,
+        9
+      ],
+      "tech-q-13": [
+        1
+      ],
+      "tech-q-6": [
+        1,
+        11,
+        12
+      ],
+      "tech-q-14": [],
+      "tech-q-5": [
+        0,
+        1,
+        2
+      ],
+      "tech-q-15": [
+        2,
+        5
+      ],
+      "lastUpdated": "2026-02-06T18:40:06.224Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        0,
+        1
+      ],
+      "community-q-4": [
+        1,
+        3,
+        4
+      ],
+      "community-q-3": [
+        0,
+        1,
+        4
+      ],
+      "community-q-2": [
+        2,
+        3
+      ],
+      "community-q-1": [
+        4,
+        5
+      ],
+      "community-q-0": [
+        2,
+        4,
+        0
+      ],
+      "userId": "9XIu2OFTwXWo8JoMy5IOFuLViqm2"
+    },
+    {
       "lastSignInTime": "Wed, 03 Dec 2025 13:33:24 GMT",
       "creationTime": "Wed, 03 Dec 2025 13:33:24 GMT",
       "profile-q-5": 1,
@@ -16980,6 +17610,134 @@
       "userId": "A4aNHMl0fQNiXMu1GEpQ1mTXhXf2"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 17:15:21 GMT",
+      "creationTime": "Fri, 06 Feb 2026 17:15:21 GMT",
+      "profile-q-5": 0,
+      "profile-q-4": 0,
+      "profile-q-7": 0,
+      "profile-q-6": [
+        1
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 10,
+      "profile-q-2": 0,
+      "education-q-2": [
+        3,
+        4
+      ],
+      "education-q-1": [
+        0,
+        3
+      ],
+      "education-q-4": [
+        0,
+        2,
+        5
+      ],
+      "education-q-3": [
+        1,
+        3,
+        4,
+        0,
+        9,
+        10
+      ],
+      "education-q-0": [
+        7
+      ],
+      "ai-q-4": null,
+      "ai-q-3": 0,
+      "ai-q-2": 2,
+      "ai-q-1": 2,
+      "ai-q-6": [
+        0,
+        2
+      ],
+      "ai-q-5": [
+        0,
+        2,
+        3
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        1,
+        8,
+        28
+      ],
+      "tech-q-2": [
+        1,
+        8
+      ],
+      "tech-q-1": [],
+      "tech-q-16": [
+        0
+      ],
+      "tech-q-8": [
+        0,
+        20
+      ],
+      "tech-q-7": [],
+      "tech-q-10": 2,
+      "tech-q-11": [
+        6
+      ],
+      "tech-q-9": [
+        33
+      ],
+      "tech-q-12": [
+        1,
+        6,
+        7
+      ],
+      "tech-q-4": [],
+      "tech-q-13": [],
+      "tech-q-3": [
+        10
+      ],
+      "tech-q-14": [
+        8
+      ],
+      "tech-q-6": [
+        17,
+        16,
+        15
+      ],
+      "tech-q-15": [],
+      "tech-q-5": [
+        0,
+        5,
+        6
+      ],
+      "lastUpdated": "2026-02-06T17:27:07.886Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        1,
+        2
+      ],
+      "community-q-4": [
+        6,
+        5
+      ],
+      "community-q-3": [
+        0,
+        3,
+        5
+      ],
+      "community-q-2": [
+        5
+      ],
+      "community-q-1": [
+        0,
+        1,
+        4
+      ],
+      "community-q-0": [
+        1
+      ],
+      "userId": "AWCUfWF6IVhAntNvfIbL9agQVFk1"
+    },
+    {
       "lastSignInTime": "Tue, 30 Dec 2025 05:42:34 GMT",
       "creationTime": "Tue, 30 Dec 2025 05:42:34 GMT",
       "profile-q-5": 2,
@@ -17661,6 +18419,180 @@
       "userId": "AhxRGjkOFwWkoIRbgrRZ1ZPaBNv1"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 18:44:58 GMT",
+      "creationTime": "Fri, 06 Feb 2026 18:44:58 GMT",
+      "profile-q-5": 3,
+      "profile-q-4": 1,
+      "profile-q-7": 4,
+      "profile-q-6": [
+        0
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 1,
+      "profile-q-2": 2,
+      "education-q-2": [
+        6
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        4,
+        5
+      ],
+      "education-q-3": [
+        3,
+        11,
+        1,
+        0,
+        4,
+        2,
+        8,
+        9
+      ],
+      "education-q-0": [
+        4,
+        5
+      ],
+      "work-q-9": 4,
+      "work-q-8": [
+        3,
+        2,
+        8,
+        11,
+        10
+      ],
+      "work-q-12": 2,
+      "work-q-11": 0,
+      "work-q-14": 3,
+      "work-q-13": [
+        3
+      ],
+      "work-q-10": 0,
+      "work-q-1": 1,
+      "work-q-0": 1,
+      "work-q-3": 2,
+      "work-q-2": 3,
+      "work-q-4": 4,
+      "ai-q-4": 0,
+      "ai-q-3": 0,
+      "ai-q-2": 2,
+      "ai-q-1": 2,
+      "ai-q-6": [
+        0,
+        1
+      ],
+      "ai-q-5": [
+        0,
+        1,
+        14
+      ],
+      "ai-q-0": 1,
+      "tech-q-0": [
+        0,
+        8,
+        10,
+        7
+      ],
+      "tech-q-2": [
+        7,
+        0
+      ],
+      "tech-q-1": [
+        26,
+        11
+      ],
+      "tech-q-16": [
+        0
+      ],
+      "tech-q-8": [
+        0,
+        3,
+        20,
+        7
+      ],
+      "tech-q-7": [
+        13,
+        20,
+        7
+      ],
+      "tech-q-10": 2,
+      "tech-q-9": [
+        5,
+        6,
+        8,
+        11,
+        13,
+        15,
+        24,
+        28
+      ],
+      "tech-q-11": [
+        1,
+        6,
+        0
+      ],
+      "tech-q-4": [
+        18
+      ],
+      "tech-q-12": [
+        0,
+        1,
+        4,
+        6
+      ],
+      "tech-q-3": [
+        1
+      ],
+      "tech-q-13": [
+        0
+      ],
+      "tech-q-6": [
+        7,
+        12
+      ],
+      "tech-q-14": [],
+      "tech-q-5": [
+        5
+      ],
+      "tech-q-15": [
+        1,
+        2,
+        5
+      ],
+      "lastUpdated": "2026-02-06T19:03:35.345Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        0,
+        1
+      ],
+      "community-q-4": [
+        0,
+        2,
+        6
+      ],
+      "community-q-3": [
+        1,
+        4,
+        5
+      ],
+      "community-q-2": [
+        1
+      ],
+      "community-q-1": [
+        0,
+        2,
+        5
+      ],
+      "community-q-0": [
+        2
+      ],
+      "userId": "AjHw4a7owjYry5U451rvm0jJe3z1"
+    },
+    {
       "lastSignInTime": "Sat, 06 Dec 2025 16:30:52 GMT",
       "creationTime": "Sat, 06 Dec 2025 16:30:52 GMT",
       "userId": "AjQtV4xqcbfbMGL79AFvfcUfnmm1"
@@ -17842,6 +18774,23 @@
         2
       ],
       "userId": "AjUghzp1mPeYoiYQgJo5cUDnwPb2"
+    },
+    {
+      "lastSignInTime": "Fri, 06 Feb 2026 14:49:38 GMT",
+      "creationTime": "Fri, 06 Feb 2026 14:49:38 GMT",
+      "profile-q-5": 3,
+      "lastUpdated": "2026-02-06T14:51:33.586Z",
+      "profile-q-4": 5,
+      "profile-q-7": 2,
+      "profile-q-6": [
+        1,
+        3
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 1,
+      "profile-q-3": 1,
+      "profile-q-2": 1,
+      "userId": "AkhCnfYZJ7WN31PwEJQdvV0t9E73"
     },
     {
       "lastSignInTime": "Wed, 03 Dec 2025 17:02:41 GMT",
@@ -19178,6 +20127,45 @@
       "userId": "BC8HpgVP4gTprXSskapq9dGp4Yy1"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 15:42:22 GMT",
+      "creationTime": "Fri, 06 Feb 2026 15:42:22 GMT",
+      "profile-q-5": 0,
+      "profile-q-4": 2,
+      "profile-q-7": 2,
+      "profile-q-6": [
+        0
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 1,
+      "profile-q-2": 1,
+      "lastUpdated": "2026-02-06T15:45:19.174Z",
+      "education-q-2": [
+        0,
+        2
+      ],
+      "education-q-1": [
+        2,
+        3,
+        0
+      ],
+      "education-q-4": [
+        0,
+        4,
+        5
+      ],
+      "education-q-3": [
+        0,
+        9
+      ],
+      "education-q-0": [
+        0,
+        1,
+        3
+      ],
+      "userId": "BFnf5RMxqWg0fzOA6C39vUrtvT72"
+    },
+    {
       "lastSignInTime": "Sat, 06 Dec 2025 11:52:44 GMT",
       "creationTime": "Sat, 06 Dec 2025 11:52:44 GMT",
       "profile-q-5": 1,
@@ -19399,6 +20387,161 @@
       "userId": "BGun1MlQDxUUdsp7tX4uv03K2Ky1"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 19:03:54 GMT",
+      "creationTime": "Fri, 06 Feb 2026 19:03:54 GMT",
+      "profile-q-5": 3,
+      "profile-q-4": 7,
+      "profile-q-7": 4,
+      "profile-q-6": [
+        3,
+        4
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 12,
+      "profile-q-2": 5,
+      "education-q-2": [
+        0,
+        3
+      ],
+      "education-q-1": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "education-q-4": [
+        4,
+        6,
+        7
+      ],
+      "education-q-4-others": "AI Trap",
+      "education-q-3": [
+        0,
+        3,
+        9,
+        4
+      ],
+      "education-q-0": [
+        7
+      ],
+      "work-q-9": 0,
+      "work-q-8": [
+        3,
+        5,
+        6,
+        4,
+        8,
+        12
+      ],
+      "work-q-12": 1,
+      "work-q-11": 2,
+      "work-q-14": 0,
+      "work-q-13": [
+        9
+      ],
+      "work-q-10": 4,
+      "work-q-1": 4,
+      "work-q-0": 1,
+      "work-q-3": 1,
+      "work-q-2": 2,
+      "work-q-5": null,
+      "work-q-4": 3,
+      "ai-q-4": 1,
+      "ai-q-3": 2,
+      "ai-q-2": 2,
+      "ai-q-1": 2,
+      "ai-q-6": [],
+      "ai-q-5": [
+        0,
+        1,
+        2
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        3,
+        0,
+        2,
+        9,
+        15,
+        1
+      ],
+      "tech-q-2": [
+        15,
+        3
+      ],
+      "tech-q-1": [
+        3,
+        0,
+        9,
+        6
+      ],
+      "tech-q-16": [
+        0
+      ],
+      "tech-q-8": [
+        34,
+        5,
+        18
+      ],
+      "tech-q-7": [
+        5,
+        11
+      ],
+      "tech-q-10": 0,
+      "tech-q-9": [
+        5,
+        18
+      ],
+      "tech-q-11": [
+        1
+      ],
+      "tech-q-4": [
+        1,
+        9
+      ],
+      "tech-q-12": [
+        0,
+        1,
+        3,
+        4,
+        6
+      ],
+      "tech-q-3": [],
+      "tech-q-13": [],
+      "tech-q-6": [],
+      "tech-q-14": [],
+      "tech-q-5": [],
+      "tech-q-15": [],
+      "lastUpdated": "2026-02-06T19:24:02.399Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        0
+      ],
+      "community-q-4": [
+        1,
+        6
+      ],
+      "community-q-3": [
+        3,
+        5
+      ],
+      "community-q-2": [
+        5
+      ],
+      "community-q-1": [
+        0,
+        1,
+        3,
+        5
+      ],
+      "community-q-0": [
+        4,
+        5
+      ],
+      "userId": "BJl62I8xfhVpRtITxFBGu4jCtvn2"
+    },
+    {
       "lastSignInTime": "Sun, 07 Dec 2025 21:20:56 GMT",
       "creationTime": "Sun, 07 Dec 2025 21:20:56 GMT",
       "profile-q-5": 3,
@@ -19437,6 +20580,176 @@
         3
       ],
       "userId": "BPwNlI0a3hRW0MrWRPhL65Ik39f2"
+    },
+    {
+      "lastSignInTime": "Fri, 06 Feb 2026 15:39:38 GMT",
+      "creationTime": "Fri, 06 Feb 2026 15:39:38 GMT",
+      "profile-q-5": 4,
+      "profile-q-4": 4,
+      "profile-q-7": 1,
+      "profile-q-6": [
+        4,
+        1
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 0,
+      "profile-q-2": 0,
+      "education-q-2": [
+        0,
+        3,
+        4,
+        5
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        0,
+        5
+      ],
+      "education-q-3": [
+        0,
+        1,
+        7
+      ],
+      "education-q-0": [
+        0,
+        1,
+        5
+      ],
+      "work-q-9": 3,
+      "work-q-8": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "work-q-12": 1,
+      "work-q-11": 2,
+      "work-q-14": 0,
+      "work-q-13": [
+        2
+      ],
+      "work-q-10": 0,
+      "work-q-1": 2,
+      "work-q-0": 1,
+      "work-q-3": 0,
+      "work-q-2": 3,
+      "work-q-4": 6,
+      "ai-q-4": 1,
+      "ai-q-3": 0,
+      "ai-q-2": 1,
+      "ai-q-1": 2,
+      "ai-q-6": [
+        0,
+        1,
+        2
+      ],
+      "ai-q-5": [
+        1,
+        0,
+        4,
+        2
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        4
+      ],
+      "tech-q-2": [
+        4
+      ],
+      "tech-q-1": [
+        11,
+        18
+      ],
+      "tech-q-16": [
+        0
+      ],
+      "tech-q-8": [
+        2,
+        4,
+        8,
+        7
+      ],
+      "tech-q-7": [
+        9
+      ],
+      "tech-q-10": 2,
+      "tech-q-9": [
+        6,
+        9
+      ],
+      "tech-q-11": [
+        0
+      ],
+      "tech-q-4": [],
+      "tech-q-12": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        8
+      ],
+      "tech-q-3": [],
+      "tech-q-13": [
+        0
+      ],
+      "tech-q-6": [
+        1
+      ],
+      "tech-q-14": [
+        2
+      ],
+      "tech-q-5": [
+        5
+      ],
+      "tech-q-15": [
+        3,
+        5
+      ],
+      "lastUpdated": "2026-02-06T15:54:56.495Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        0
+      ],
+      "community-q-4": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "community-q-3": [
+        2,
+        3,
+        5
+      ],
+      "community-q-2": [
+        5
+      ],
+      "community-q-1": [
+        0,
+        5
+      ],
+      "community-q-0": [
+        0
+      ],
+      "userId": "BSBCEgxgoNPrPpRvq6T8Mx38to12"
     },
     {
       "lastSignInTime": "Thu, 11 Dec 2025 21:15:29 GMT",
@@ -19723,6 +21036,132 @@
       ],
       "ai-q-0": 0,
       "userId": "BY7pXCi2ODM1P49XGEbd5iOkUjI3"
+    },
+    {
+      "lastSignInTime": "Fri, 06 Feb 2026 15:57:52 GMT",
+      "creationTime": "Fri, 06 Feb 2026 15:57:52 GMT",
+      "profile-q-5": 0,
+      "profile-q-4": 5,
+      "profile-q-7": 2,
+      "profile-q-6": [
+        1,
+        4
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 30,
+      "profile-q-2": 4,
+      "education-q-2": [
+        3,
+        1,
+        4,
+        5
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        0
+      ],
+      "education-q-3": [
+        3,
+        0,
+        9
+      ],
+      "education-q-0": [
+        0
+      ],
+      "ai-q-4": null,
+      "ai-q-3": 1,
+      "ai-q-2": 1,
+      "ai-q-1": 2,
+      "ai-q-6": [],
+      "ai-q-5": [
+        18,
+        0
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        0,
+        7,
+        4
+      ],
+      "tech-q-2": [
+        0,
+        5
+      ],
+      "tech-q-1": [
+        4,
+        13
+      ],
+      "tech-q-16": [
+        4
+      ],
+      "tech-q-8": [
+        3
+      ],
+      "tech-q-7": [
+        1
+      ],
+      "tech-q-10": 3,
+      "tech-q-11": [
+        1
+      ],
+      "tech-q-9": [
+        7,
+        9
+      ],
+      "tech-q-12": [
+        1
+      ],
+      "tech-q-4": [
+        1,
+        3,
+        2,
+        4,
+        9
+      ],
+      "tech-q-13": [],
+      "tech-q-3": [],
+      "tech-q-14": [],
+      "tech-q-6": [
+        7
+      ],
+      "tech-q-15": [
+        1
+      ],
+      "tech-q-5": [
+        1
+      ],
+      "lastUpdated": "2026-02-06T16:11:24.770Z",
+      "community-q-6": 5,
+      "community-q-5": [
+        0
+      ],
+      "community-q-4": [
+        0,
+        4,
+        6
+      ],
+      "community-q-3": [
+        2,
+        4
+      ],
+      "community-q-2": [
+        5
+      ],
+      "community-q-1": [
+        2,
+        3
+      ],
+      "community-q-0": [
+        4,
+        3,
+        1
+      ],
+      "userId": "BgK4WaBzFXZq5vrOuiOGZFVycSY2"
     },
     {
       "lastSignInTime": "Sat, 06 Dec 2025 23:08:42 GMT",
@@ -32089,6 +33528,211 @@
       "userId": "I0feWV8hBldlZSimAlpjn7ciujT2"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 15:33:50 GMT",
+      "creationTime": "Fri, 06 Feb 2026 15:33:50 GMT",
+      "userId": "I3MsJW1piLg41VDKlhEjp2mpBDJ3"
+    },
+    {
+      "lastSignInTime": "Fri, 06 Feb 2026 16:02:11 GMT",
+      "creationTime": "Fri, 06 Feb 2026 16:02:11 GMT",
+      "profile-q-5": 5,
+      "profile-q-4": 1,
+      "profile-q-7": 2,
+      "profile-q-6": [
+        4,
+        3,
+        1
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 1,
+      "profile-q-2": 4,
+      "education-q-2": [
+        3,
+        4,
+        5
+      ],
+      "education-q-1": [
+        2,
+        3,
+        0
+      ],
+      "education-q-4": [
+        4,
+        0
+      ],
+      "education-q-3": [
+        0,
+        7,
+        4,
+        8,
+        9,
+        11
+      ],
+      "education-q-0": [
+        3,
+        0
+      ],
+      "work-q-9": 0,
+      "work-q-8": [
+        0,
+        1,
+        11,
+        13,
+        8,
+        10,
+        6,
+        4,
+        2
+      ],
+      "work-q-12": 1,
+      "work-q-11": 0,
+      "work-q-14": 4,
+      "work-q-13": [
+        3
+      ],
+      "work-q-10": 0,
+      "work-q-1": 3,
+      "work-q-0": 2,
+      "work-q-3": 1,
+      "work-q-2": 2,
+      "work-q-5": null,
+      "work-q-4": 6,
+      "ai-q-4": 1,
+      "ai-q-3": 1,
+      "ai-q-2": 3,
+      "ai-q-1": 3,
+      "ai-q-6": [
+        0,
+        2
+      ],
+      "ai-q-5": [
+        5,
+        0,
+        2,
+        1
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        0,
+        7,
+        8
+      ],
+      "tech-q-2": [
+        0,
+        7
+      ],
+      "tech-q-1": [
+        3,
+        4
+      ],
+      "tech-q-16": [
+        0,
+        1,
+        2
+      ],
+      "tech-q-8": [
+        0,
+        3,
+        7,
+        20
+      ],
+      "tech-q-7": [
+        13,
+        1,
+        3,
+        8
+      ],
+      "tech-q-10": 1,
+      "tech-q-9": [
+        2,
+        4,
+        6,
+        8,
+        5,
+        1,
+        12
+      ],
+      "tech-q-11": [
+        1,
+        2
+      ],
+      "tech-q-4": [
+        9,
+        2
+      ],
+      "tech-q-12": [
+        0,
+        1
+      ],
+      "tech-q-3": [
+        1
+      ],
+      "tech-q-13": [
+        2,
+        3,
+        0
+      ],
+      "tech-q-6": [
+        12,
+        7
+      ],
+      "tech-q-14": [
+        0,
+        2,
+        1,
+        13
+      ],
+      "tech-q-5": [
+        5,
+        6,
+        4,
+        2,
+        3,
+        1,
+        0
+      ],
+      "tech-q-15": [
+        1,
+        11,
+        5,
+        2
+      ],
+      "lastUpdated": "2026-02-06T16:18:37.846Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        1,
+        3
+      ],
+      "community-q-4": [
+        1,
+        0,
+        3,
+        2,
+        5,
+        4,
+        6
+      ],
+      "community-q-3": [
+        0,
+        1
+      ],
+      "community-q-2": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "community-q-1": [
+        0
+      ],
+      "community-q-0": [
+        2
+      ],
+      "userId": "I8aLc4mNiWgrxHOYHGuKkUEp4JC2"
+    },
+    {
       "lastSignInTime": "Fri, 12 Dec 2025 02:40:35 GMT",
       "creationTime": "Fri, 12 Dec 2025 02:40:35 GMT",
       "profile-q-5": 6,
@@ -34391,6 +36035,158 @@
       "userId": "Jb6BJOhEOCTtiZpYUowPzIDTfyx1"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 23:25:25 GMT",
+      "creationTime": "Fri, 06 Feb 2026 23:25:25 GMT",
+      "profile-q-5": 0,
+      "profile-q-4": 4,
+      "profile-q-7": 4,
+      "profile-q-6": [
+        4
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 0,
+      "profile-q-2": 1,
+      "education-q-2": [
+        0,
+        1,
+        2,
+        3,
+        5
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        0
+      ],
+      "education-q-3": [
+        0,
+        2,
+        1,
+        3,
+        4,
+        8
+      ],
+      "education-q-0": [
+        6,
+        7
+      ],
+      "ai-q-4": null,
+      "ai-q-3": 0,
+      "ai-q-2": 1,
+      "ai-q-1": 2,
+      "ai-q-6": [
+        0,
+        2,
+        5,
+        6,
+        8,
+        10
+      ],
+      "ai-q-5": [
+        0
+      ],
+      "ai-q-0": 2,
+      "tech-q-0": [
+        4,
+        14,
+        8,
+        3
+      ],
+      "tech-q-2": [
+        4
+      ],
+      "tech-q-1": [
+        3,
+        11
+      ],
+      "tech-q-16": [
+        8
+      ],
+      "tech-q-8": [
+        7,
+        8
+      ],
+      "tech-q-7": [
+        6
+      ],
+      "tech-q-10": 0,
+      "tech-q-11": [
+        0,
+        1
+      ],
+      "tech-q-9": [
+        6,
+        13,
+        14,
+        23,
+        24
+      ],
+      "tech-q-12": [
+        0,
+        2,
+        3,
+        4,
+        6,
+        8
+      ],
+      "tech-q-4": [],
+      "tech-q-13": [],
+      "tech-q-3": [
+        2
+      ],
+      "tech-q-14": [
+        1
+      ],
+      "tech-q-6": [
+        1
+      ],
+      "tech-q-15": [],
+      "tech-q-5": [
+        5
+      ],
+      "lastUpdated": "2026-02-06T23:35:24.162Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        3,
+        1,
+        0
+      ],
+      "community-q-4": [
+        0,
+        1,
+        2
+      ],
+      "community-q-3": [
+        0,
+        3,
+        5
+      ],
+      "community-q-2": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "community-q-1": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "community-q-0": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "userId": "JmwmEqVuGLdmVQh1IMk2f6FOpOH3"
+    },
+    {
       "lastSignInTime": "Sat, 06 Dec 2025 18:17:45 GMT",
       "creationTime": "Sat, 06 Dec 2025 18:17:45 GMT",
       "profile-q-5": 1,
@@ -34754,6 +36550,111 @@
         0
       ],
       "userId": "JxIQSNbCO4VvGU6Uw1V9uqBXi0A3"
+    },
+    {
+      "lastSignInTime": "Fri, 06 Feb 2026 22:07:21 GMT",
+      "creationTime": "Fri, 06 Feb 2026 22:07:21 GMT",
+      "profile-q-5": 0,
+      "profile-q-4": 2,
+      "profile-q-7": 4,
+      "profile-q-6": [
+        2
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 8,
+      "profile-q-2": 0,
+      "education-q-2": [
+        6
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        4
+      ],
+      "education-q-3": [
+        0
+      ],
+      "education-q-0": [
+        4
+      ],
+      "ai-q-4": 0,
+      "ai-q-3": 2,
+      "ai-q-2": 4,
+      "ai-q-1": 1,
+      "ai-q-6": [
+        0
+      ],
+      "ai-q-5": [
+        0
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        4,
+        1,
+        5,
+        7
+      ],
+      "tech-q-2": [
+        4
+      ],
+      "tech-q-1": [
+        31
+      ],
+      "tech-q-1-others": "Go , .NET",
+      "tech-q-16": [
+        0
+      ],
+      "lastUpdated": "2026-02-06T22:14:21.901Z",
+      "tech-q-8": [
+        2
+      ],
+      "tech-q-7": [
+        1,
+        4,
+        5
+      ],
+      "tech-q-10": 0,
+      "tech-q-11": [
+        1,
+        0
+      ],
+      "tech-q-9": [
+        7,
+        8
+      ],
+      "tech-q-12": [
+        0,
+        9
+      ],
+      "tech-q-4": [
+        9
+      ],
+      "tech-q-13": [
+        0
+      ],
+      "tech-q-3": [
+        1
+      ],
+      "tech-q-14": [
+        5
+      ],
+      "tech-q-6": [
+        0,
+        4
+      ],
+      "tech-q-15": [
+        0,
+        2,
+        3
+      ],
+      "tech-q-5": [
+        0
+      ],
+      "userId": "K2KGhtX038WzuqxKK7UCtWySwGK2"
     },
     {
       "lastSignInTime": "Fri, 02 Jan 2026 21:46:32 GMT",
@@ -40053,6 +41954,160 @@
       "userId": "MIZA6BoiHpfhEYx52aeUeeaF5ph1"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 17:11:28 GMT",
+      "creationTime": "Fri, 06 Feb 2026 17:11:28 GMT",
+      "profile-q-5": 3,
+      "profile-q-4": 2,
+      "profile-q-7": 2,
+      "profile-q-6": [
+        4
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 1,
+      "profile-q-2": 1,
+      "education-q-2": [
+        3,
+        0
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        0,
+        5
+      ],
+      "education-q-3": [
+        4,
+        9
+      ],
+      "education-q-0": [
+        4
+      ],
+      "work-q-9": 4,
+      "work-q-8": [
+        0,
+        1,
+        8,
+        3,
+        2
+      ],
+      "work-q-12": 2,
+      "work-q-11": 0,
+      "work-q-14": 5,
+      "work-q-13": [
+        0,
+        20
+      ],
+      "work-q-10": 0,
+      "work-q-1": 5,
+      "work-q-0": 2,
+      "work-q-3": 0,
+      "work-q-2": 2,
+      "work-q-5": 3,
+      "work-q-4": null,
+      "ai-q-4": 0,
+      "ai-q-3": 0,
+      "ai-q-2": 2,
+      "ai-q-1": 2,
+      "ai-q-6": [],
+      "ai-q-5": [
+        1,
+        0,
+        2
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        4
+      ],
+      "tech-q-2": [
+        0,
+        1,
+        4
+      ],
+      "tech-q-1": [
+        8
+      ],
+      "tech-q-16": [
+        0,
+        4
+      ],
+      "tech-q-8": [
+        7,
+        2
+      ],
+      "tech-q-7": [
+        13
+      ],
+      "tech-q-10": 1,
+      "tech-q-9": [
+        0,
+        4,
+        8
+      ],
+      "tech-q-11": [
+        2,
+        0
+      ],
+      "tech-q-4": [
+        1,
+        9
+      ],
+      "tech-q-12": [
+        0,
+        1,
+        5
+      ],
+      "tech-q-3": [
+        2
+      ],
+      "tech-q-13": [],
+      "tech-q-6": [
+        1
+      ],
+      "tech-q-14": [
+        6
+      ],
+      "tech-q-5": [
+        5
+      ],
+      "tech-q-15": [
+        0,
+        2
+      ],
+      "lastUpdated": "2026-02-06T17:27:24.756Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        0,
+        1,
+        3
+      ],
+      "community-q-4": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "community-q-3": [
+        1,
+        2,
+        0
+      ],
+      "community-q-2": [
+        0
+      ],
+      "community-q-1": [
+        3,
+        4
+      ],
+      "community-q-0": [
+        0
+      ],
+      "userId": "MJ0e7KRJIrU4OusQrAGW9pCMyf22"
+    },
+    {
       "lastSignInTime": "Sun, 07 Dec 2025 16:32:35 GMT",
       "creationTime": "Sun, 07 Dec 2025 16:32:35 GMT",
       "profile-q-5": 1,
@@ -41096,6 +43151,74 @@
         3
       ],
       "userId": "N7vpEDvb2hXr99L09S2zAX2snIV2"
+    },
+    {
+      "lastSignInTime": "Fri, 06 Feb 2026 17:42:42 GMT",
+      "creationTime": "Fri, 06 Feb 2026 17:42:42 GMT",
+      "profile-q-5": 4,
+      "profile-q-4": 1,
+      "profile-q-7": 1,
+      "profile-q-6": [
+        1
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 24,
+      "profile-q-2": 0,
+      "education-q-2": [
+        6
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        0,
+        6
+      ],
+      "education-q-3": [
+        0
+      ],
+      "education-q-0": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "work-q-9": 5,
+      "work-q-8": [
+        1,
+        4,
+        2,
+        10,
+        11,
+        8,
+        7,
+        3
+      ],
+      "work-q-12": 2,
+      "work-q-11": 2,
+      "work-q-14": 11,
+      "work-q-13": [
+        5
+      ],
+      "work-q-10": 4,
+      "work-q-1": 3,
+      "work-q-0": 1,
+      "work-q-3": 0,
+      "work-q-2": 3,
+      "work-q-4": 5,
+      "ai-q-4": 2,
+      "ai-q-3": 1,
+      "lastUpdated": "2026-02-06T17:48:47.637Z",
+      "ai-q-2": 1,
+      "ai-q-6": [],
+      "ai-q-5": [],
+      "ai-q-0": 0,
+      "userId": "NCykWcCs6LNalEhU4dhMbTjGm4k1"
     },
     {
       "lastSignInTime": "Thu, 04 Dec 2025 00:30:52 GMT",
@@ -43507,6 +45630,178 @@
         5
       ],
       "userId": "OZAfpyBtofXSEqBgeXNZdGyEiDC2"
+    },
+    {
+      "lastSignInTime": "Sat, 07 Feb 2026 00:20:41 GMT",
+      "creationTime": "Sat, 07 Feb 2026 00:20:41 GMT",
+      "profile-q-5": 4,
+      "profile-q-4": 3,
+      "profile-q-7": 3,
+      "profile-q-6": [
+        1
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 13,
+      "profile-q-2": 12,
+      "profile-q-8": 3,
+      "education-q-2": [
+        6,
+        3
+      ],
+      "education-q-1": [
+        2,
+        0,
+        3
+      ],
+      "education-q-4": [
+        3,
+        6
+      ],
+      "education-q-3": [
+        0,
+        2,
+        6,
+        7
+      ],
+      "education-q-0": [
+        3
+      ],
+      "work-q-9": 4,
+      "work-q-8": [
+        4,
+        5,
+        8,
+        10,
+        11,
+        3
+      ],
+      "work-q-12": 2,
+      "work-q-11": 2,
+      "work-q-13": [
+        7,
+        9,
+        17
+      ],
+      "work-q-10": 0,
+      "work-q-1": 3,
+      "work-q-0": 1,
+      "work-q-3": 1,
+      "work-q-2": 2,
+      "work-q-7": null,
+      "work-q-6": 5,
+      "work-q-14": 2,
+      "ai-q-4": 2,
+      "ai-q-3": 3,
+      "ai-q-2": 0,
+      "ai-q-1": 2,
+      "ai-q-6": [
+        10,
+        24,
+        20,
+        32,
+        36,
+        22,
+        8,
+        0,
+        2
+      ],
+      "ai-q-5": [
+        1,
+        13,
+        14,
+        10,
+        2
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        3,
+        5,
+        10
+      ],
+      "tech-q-2": [
+        3
+      ],
+      "tech-q-1": [
+        18,
+        0
+      ],
+      "tech-q-16": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "tech-q-8": [
+        5,
+        7
+      ],
+      "tech-q-7": [
+        7
+      ],
+      "tech-q-10": 2,
+      "tech-q-9": [
+        8,
+        11,
+        15
+      ],
+      "tech-q-11": [
+        1
+      ],
+      "tech-q-4": [
+        17,
+        1
+      ],
+      "tech-q-12": [
+        0,
+        1,
+        5,
+        6
+      ],
+      "tech-q-3": [],
+      "tech-q-13": [
+        0,
+        2
+      ],
+      "tech-q-6": [
+        11
+      ],
+      "tech-q-14": [
+        2,
+        1
+      ],
+      "tech-q-5": [],
+      "tech-q-15": [
+        5
+      ],
+      "lastUpdated": "2026-02-07T00:39:39.740Z",
+      "community-q-6": 3,
+      "community-q-5": [
+        1,
+        2
+      ],
+      "community-q-4": [
+        4,
+        6,
+        1
+      ],
+      "community-q-3": [
+        3,
+        5,
+        4
+      ],
+      "community-q-2": [
+        5
+      ],
+      "community-q-1": [
+        3,
+        1
+      ],
+      "community-q-0": [
+        0,
+        1
+      ],
+      "userId": "Od3izwD3a4VaE8ltD8EoWY18Bgb2"
     },
     {
       "lastSignInTime": "Wed, 03 Dec 2025 16:03:55 GMT",
@@ -49645,6 +51940,151 @@
       "userId": "Slhow54mMSUDoLteSFoDq26h3JK2"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 19:35:46 GMT",
+      "creationTime": "Fri, 06 Feb 2026 19:35:46 GMT",
+      "profile-q-5": 2,
+      "profile-q-4": 2,
+      "profile-q-7": 0,
+      "profile-q-6": [
+        4,
+        2
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 5,
+      "profile-q-2": 0,
+      "education-q-2": [
+        3,
+        4,
+        5
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "education-q-4": [
+        4
+      ],
+      "education-q-3": [
+        0,
+        9,
+        8,
+        2,
+        3
+      ],
+      "education-q-1-others": "Spanish ",
+      "education-q-0": [
+        6
+      ],
+      "work-q-9": 4,
+      "work-q-8": [
+        1,
+        3,
+        4,
+        2,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        13
+      ],
+      "work-q-12": 2,
+      "work-q-11": null,
+      "work-q-14": null,
+      "work-q-13": [],
+      "work-q-10": null,
+      "work-q-1": null,
+      "work-q-0": 6,
+      "work-q-3": null,
+      "work-q-2": null,
+      "work-q-5": null,
+      "work-q-4": null,
+      "ai-q-4": null,
+      "ai-q-3": 2,
+      "ai-q-2": 0,
+      "ai-q-1": 3,
+      "ai-q-6": [
+        2
+      ],
+      "ai-q-5": [
+        1,
+        2
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        3,
+        10,
+        9,
+        14
+      ],
+      "tech-q-2": [
+        3,
+        10
+      ],
+      "tech-q-1": [
+        11
+      ],
+      "tech-q-16": [
+        4
+      ],
+      "tech-q-8": [
+        18
+      ],
+      "tech-q-7": [],
+      "tech-q-10": 3,
+      "tech-q-9": [
+        8,
+        11
+      ],
+      "tech-q-11": [
+        1,
+        5
+      ],
+      "tech-q-4": [],
+      "tech-q-12": [
+        0,
+        1,
+        6
+      ],
+      "tech-q-3": [],
+      "tech-q-13": [
+        0
+      ],
+      "tech-q-6": [],
+      "tech-q-14": [],
+      "tech-q-5": [],
+      "tech-q-15": [],
+      "lastUpdated": "2026-02-06T19:47:47.482Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        5
+      ],
+      "community-q-4": [
+        3,
+        1,
+        6
+      ],
+      "community-q-3": [
+        3,
+        4,
+        1
+      ],
+      "community-q-2": [
+        5
+      ],
+      "community-q-1": [
+        2
+      ],
+      "community-q-0": [
+        1
+      ],
+      "userId": "Sn2j4rHx9NXAzW7AfViGRkS8UY13"
+    },
+    {
       "lastSignInTime": "Fri, 05 Dec 2025 15:03:56 GMT",
       "creationTime": "Fri, 05 Dec 2025 15:03:56 GMT",
       "profile-q-5": 0,
@@ -53463,6 +55903,163 @@
       "userId": "UCjixraHoLTBbIpvrsdBE1QExO22"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 16:48:48 GMT",
+      "creationTime": "Fri, 06 Feb 2026 16:48:48 GMT",
+      "profile-q-5": 4,
+      "profile-q-4": 1,
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 0,
+      "profile-q-2": 2,
+      "profile-q-8": null,
+      "profile-q-7": 4,
+      "profile-q-6": [
+        3
+      ],
+      "education-q-2": [
+        6
+      ],
+      "education-q-3-others": "no preference",
+      "education-q-1": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "education-q-4": [
+        6,
+        4,
+        0
+      ],
+      "education-q-3": [
+        12
+      ],
+      "education-q-1-others": "turkish",
+      "education-q-0": [
+        4,
+        3
+      ],
+      "work-q-9": 4,
+      "work-q-8": [
+        0,
+        4,
+        8,
+        11
+      ],
+      "work-q-12": 1,
+      "work-q-11": 1,
+      "work-q-14": 11,
+      "work-q-13": [
+        21
+      ],
+      "work-q-10": 4,
+      "work-q-0-others": "both full time employee and freelancer",
+      "work-q-13-others": "AI",
+      "work-q-14-others": "already an entrepreneur",
+      "work-q-1": 1,
+      "work-q-0": 7,
+      "work-q-3": 1,
+      "work-q-2": 2,
+      "work-q-5": null,
+      "work-q-4": null,
+      "ai-q-4": 3,
+      "ai-q-3": 4,
+      "ai-q-2": 2,
+      "ai-q-1": 3,
+      "ai-q-6": [
+        0,
+        1,
+        2
+      ],
+      "ai-q-5": [
+        0,
+        1,
+        2
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        6,
+        1,
+        0,
+        8,
+        2,
+        3
+      ],
+      "tech-q-2": [
+        3
+      ],
+      "tech-q-1": [
+        31
+      ],
+      "tech-q-9-others": "none",
+      "tech-q-1-others": "None",
+      "tech-q-8-others": "vscode",
+      "tech-q-16": [
+        0,
+        1,
+        2,
+        3,
+        6
+      ],
+      "tech-q-8": [
+        34
+      ],
+      "tech-q-7": [],
+      "tech-q-10": 0,
+      "tech-q-9": [
+        34
+      ],
+      "tech-q-11": [
+        14,
+        1,
+        10
+      ],
+      "tech-q-4": [],
+      "tech-q-12": [
+        0
+      ],
+      "tech-q-3": [],
+      "tech-q-13": [
+        1
+      ],
+      "tech-q-6": [
+        11,
+        0
+      ],
+      "tech-q-14": [
+        2
+      ],
+      "tech-q-5": [],
+      "tech-q-15": [],
+      "lastUpdated": "2026-02-06T17:04:14.446Z",
+      "community-q-2-others": "no",
+      "community-q-1-others": "nothing",
+      "community-q-6": 0,
+      "community-q-5": [
+        2,
+        6
+      ],
+      "community-q-4": [
+        1,
+        6
+      ],
+      "community-q-5-others": "no time and money wise not worth it",
+      "community-q-3": [
+        3
+      ],
+      "community-q-2": [
+        6
+      ],
+      "community-q-1": [
+        6
+      ],
+      "community-q-0": [
+        0,
+        2
+      ],
+      "userId": "UIIGHhakJrcnBb0upaYSUVBNhL52"
+    },
+    {
       "lastSignInTime": "Sat, 06 Dec 2025 17:07:49 GMT",
       "creationTime": "Sat, 06 Dec 2025 17:07:49 GMT",
       "profile-q-5": 7,
@@ -57247,6 +59844,156 @@
         1
       ],
       "userId": "WQ7nj09TfqbsSSL4cgL8eRkRGFC2"
+    },
+    {
+      "lastSignInTime": "Fri, 06 Feb 2026 17:35:26 GMT",
+      "creationTime": "Fri, 06 Feb 2026 17:35:26 GMT",
+      "profile-q-5": 0,
+      "profile-q-4": 5,
+      "profile-q-7": 0,
+      "profile-q-6": [
+        4,
+        1
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 1,
+      "profile-q-2": 2,
+      "education-q-2": [
+        0,
+        3,
+        2,
+        4,
+        5,
+        1
+      ],
+      "education-q-1": [
+        0,
+        3
+      ],
+      "education-q-4": [
+        0,
+        5
+      ],
+      "education-q-0-others": "cyber security",
+      "education-q-3": [
+        0,
+        3,
+        8,
+        9,
+        4,
+        1,
+        2
+      ],
+      "education-q-0": [
+        0,
+        7
+      ],
+      "ai-q-4": 0,
+      "ai-q-3": 3,
+      "ai-q-2": 1,
+      "ai-q-1": 3,
+      "ai-q-6": [
+        0,
+        2
+      ],
+      "ai-q-5": [
+        0,
+        2,
+        13
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        4,
+        3,
+        0,
+        7,
+        12
+      ],
+      "tech-q-2": [
+        4
+      ],
+      "tech-q-1": [
+        20
+      ],
+      "tech-q-3-others": "Nuxt.js",
+      "tech-q-8": [
+        0,
+        2,
+        7
+      ],
+      "tech-q-7": [
+        9
+      ],
+      "tech-q-10": 0,
+      "tech-q-11": [
+        0,
+        1
+      ],
+      "tech-q-9": [
+        12
+      ],
+      "tech-q-12": [
+        0,
+        1,
+        6
+      ],
+      "tech-q-4": [],
+      "tech-q-13": [],
+      "tech-q-3": [
+        2,
+        3,
+        1,
+        23
+      ],
+      "tech-q-14": [],
+      "tech-q-6": [
+        1,
+        5
+      ],
+      "tech-q-15": [],
+      "tech-q-5": [
+        5,
+        6
+      ],
+      "tech-q-16": [
+        0,
+        7
+      ],
+      "lastUpdated": "2026-02-06T17:49:41.923Z",
+      "community-q-6": 5,
+      "community-q-5": [
+        0,
+        1
+      ],
+      "community-q-4": [
+        0,
+        2,
+        6
+      ],
+      "community-q-3": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "community-q-2": [
+        5
+      ],
+      "community-q-1": [
+        0,
+        1,
+        2,
+        3,
+        5
+      ],
+      "community-q-0": [
+        0,
+        1,
+        5,
+        4
+      ],
+      "userId": "WQggvkOzIHfirNLskC9q0xcjJLr1"
     },
     {
       "lastSignInTime": "Wed, 03 Dec 2025 18:26:19 GMT",
@@ -63790,6 +66537,48 @@
       "userId": "aT6tb7n459VbdLUGhHHU9twpIYw2"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 17:36:32 GMT",
+      "creationTime": "Fri, 06 Feb 2026 17:36:32 GMT",
+      "profile-q-5": 2,
+      "profile-q-4": 5,
+      "profile-q-7": 0,
+      "profile-q-6": [
+        4,
+        1
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 1,
+      "profile-q-2": 2,
+      "lastUpdated": "2026-02-06T17:41:31.269Z",
+      "education-q-2": [
+        0,
+        3,
+        4,
+        2
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        3,
+        4,
+        6
+      ],
+      "education-q-3": [
+        0,
+        2,
+        9,
+        1
+      ],
+      "education-q-0": [
+        4
+      ],
+      "userId": "aTo7JjI4SAhJaVFAs1q0prvW7KH3"
+    },
+    {
       "lastSignInTime": "Thu, 25 Dec 2025 20:57:05 GMT",
       "creationTime": "Thu, 25 Dec 2025 20:57:05 GMT",
       "profile-q-5": 2,
@@ -66457,6 +69246,11 @@
       "userId": "bwm1AxqIlpZOS5NFGSCrqx9QADS2"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 18:32:40 GMT",
+      "creationTime": "Fri, 06 Feb 2026 18:32:40 GMT",
+      "userId": "bz8lhh0L69TD9o4LNf8axNxs5Ot1"
+    },
+    {
       "lastSignInTime": "Sat, 06 Dec 2025 18:49:39 GMT",
       "creationTime": "Sat, 06 Dec 2025 18:49:39 GMT",
       "profile-q-5": 2,
@@ -67343,6 +70137,185 @@
         4
       ],
       "userId": "cK2Q0TY2fjZtt3AbQF8dolyVEXX2"
+    },
+    {
+      "lastSignInTime": "Fri, 06 Feb 2026 16:32:36 GMT",
+      "creationTime": "Fri, 06 Feb 2026 16:32:36 GMT",
+      "profile-q-5": 0,
+      "profile-q-4": 1,
+      "profile-q-7": 0,
+      "profile-q-6": [
+        4,
+        1
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 1,
+      "profile-q-2": 7,
+      "education-q-2": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "education-q-1": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "education-q-4": [
+        2,
+        5,
+        6
+      ],
+      "education-q-3": [
+        0,
+        4,
+        7,
+        9,
+        8
+      ],
+      "education-q-1-others": "German",
+      "education-q-0": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "ai-q-4": null,
+      "ai-q-3": 3,
+      "ai-q-2": 2,
+      "ai-q-1": 3,
+      "ai-q-6": [],
+      "ai-q-5": [
+        0,
+        1,
+        19,
+        20,
+        22,
+        21,
+        2,
+        14
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        0,
+        3,
+        1,
+        7,
+        2
+      ],
+      "tech-q-2": [
+        0,
+        1
+      ],
+      "tech-q-1": [
+        8,
+        3,
+        11,
+        7
+      ],
+      "tech-q-16": [
+        4
+      ],
+      "tech-q-8": [
+        0,
+        20
+      ],
+      "tech-q-7": [
+        6,
+        7,
+        11,
+        13
+      ],
+      "tech-q-10": 0,
+      "tech-q-11": [
+        1
+      ],
+      "tech-q-9": [
+        3,
+        7,
+        9,
+        8,
+        12,
+        23,
+        27,
+        29
+      ],
+      "tech-q-12": [
+        1,
+        3,
+        4,
+        5,
+        8
+      ],
+      "tech-q-4": [
+        4,
+        9
+      ],
+      "tech-q-13": [],
+      "tech-q-3": [
+        1
+      ],
+      "tech-q-14": [
+        8,
+        10
+      ],
+      "tech-q-6": [
+        12
+      ],
+      "tech-q-15": [
+        5,
+        1,
+        13
+      ],
+      "tech-q-5": [
+        0,
+        1,
+        5,
+        6
+      ],
+      "lastUpdated": "2026-02-06T18:28:26.300Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        0,
+        1,
+        3
+      ],
+      "community-q-4": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6
+      ],
+      "community-q-3": [
+        0,
+        1,
+        3,
+        4,
+        5
+      ],
+      "community-q-2": [
+        5
+      ],
+      "community-q-1": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "community-q-0": [
+        1,
+        2,
+        5
+      ],
+      "userId": "cOhLnN6FwYcPAWokYlP2JOhtx1E3"
     },
     {
       "lastSignInTime": "Sat, 06 Dec 2025 21:01:18 GMT",
@@ -69737,6 +72710,23 @@
       "lastSignInTime": "Wed, 17 Dec 2025 21:53:06 GMT",
       "creationTime": "Wed, 17 Dec 2025 21:53:06 GMT",
       "userId": "eFebcDNhAQeslsVgMfQ119UOCJk1"
+    },
+    {
+      "lastSignInTime": "Fri, 06 Feb 2026 15:20:50 GMT",
+      "creationTime": "Fri, 06 Feb 2026 15:20:50 GMT",
+      "profile-q-5": 2,
+      "lastUpdated": "2026-02-06T15:22:36.955Z",
+      "profile-q-4": 2,
+      "profile-q-7": 2,
+      "profile-q-6": [
+        1,
+        2
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 28,
+      "profile-q-2": 1,
+      "userId": "eIbcUhf6lQTdWkZcGzmy5ss0fm13"
     },
     {
       "lastSignInTime": "Wed, 03 Dec 2025 20:01:38 GMT",
@@ -77082,6 +80072,129 @@
       "userId": "iPXhY63PrfdTd3GhTlodPgNaeCk2"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 18:54:36 GMT",
+      "creationTime": "Fri, 06 Feb 2026 18:54:36 GMT",
+      "profile-q-5": 0,
+      "profile-q-4": 2,
+      "profile-q-7": 0,
+      "profile-q-6": [
+        1,
+        4
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 30,
+      "profile-q-2": 1,
+      "education-q-2": [
+        0,
+        4,
+        5
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        0,
+        4,
+        2
+      ],
+      "education-q-3": [
+        4,
+        9
+      ],
+      "education-q-0": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "ai-q-4": null,
+      "ai-q-3": 1,
+      "ai-q-2": 3,
+      "ai-q-1": null,
+      "ai-q-6": [],
+      "ai-q-5": [
+        0,
+        2,
+        1
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        2,
+        4,
+        10
+      ],
+      "tech-q-2": [
+        4,
+        2
+      ],
+      "tech-q-1": [
+        8
+      ],
+      "tech-q-16": [
+        4
+      ],
+      "tech-q-8": [
+        7,
+        2
+      ],
+      "tech-q-7": [
+        7
+      ],
+      "tech-q-10": 2,
+      "tech-q-11": [
+        0
+      ],
+      "tech-q-9": [
+        21
+      ],
+      "tech-q-12": [
+        0,
+        1
+      ],
+      "tech-q-4": [
+        2
+      ],
+      "tech-q-13": [],
+      "tech-q-3": [],
+      "tech-q-14": [],
+      "tech-q-6": [
+        1
+      ],
+      "tech-q-15": [],
+      "tech-q-5": [],
+      "lastUpdated": "2026-02-06T19:05:21.684Z",
+      "community-q-6": 1,
+      "community-q-5": [
+        1
+      ],
+      "community-q-4": [
+        4,
+        6,
+        0
+      ],
+      "community-q-3": [
+        0,
+        1,
+        4
+      ],
+      "community-q-2": [
+        5
+      ],
+      "community-q-1": [
+        5,
+        2
+      ],
+      "community-q-0": [
+        4
+      ],
+      "userId": "iVbYj7meEDTnHw0UHwyPfAFegXF2"
+    },
+    {
       "lastSignInTime": "Thu, 04 Dec 2025 14:50:52 GMT",
       "creationTime": "Thu, 04 Dec 2025 14:50:52 GMT",
       "profile-q-5": 2,
@@ -77268,9 +80381,181 @@
       "userId": "iW0GUpVkjLe6v5Rnadyhu1K5kgb2"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 18:08:21 GMT",
+      "creationTime": "Fri, 06 Feb 2026 18:08:21 GMT",
+      "profile-q-5": 3,
+      "profile-q-4": 1,
+      "profile-q-7": 4,
+      "profile-q-6": [
+        1
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 26,
+      "profile-q-2": 0,
+      "education-q-2": [
+        1,
+        3
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        0
+      ],
+      "education-q-3": [
+        0,
+        3,
+        4,
+        9
+      ],
+      "education-q-0": [
+        3,
+        0,
+        1,
+        2,
+        4,
+        5
+      ],
+      "work-q-9": 2,
+      "work-q-8": [
+        2,
+        3,
+        4,
+        8,
+        11,
+        12
+      ],
+      "work-q-12": 2,
+      "work-q-11": null,
+      "work-q-14": null,
+      "work-q-13": [],
+      "work-q-10": 4,
+      "work-q-1": 3,
+      "work-q-0": 5,
+      "work-q-3": 2,
+      "work-q-2": 2,
+      "work-q-5": 0,
+      "work-q-4": 1,
+      "ai-q-4": null,
+      "ai-q-3": 0,
+      "ai-q-2": 0,
+      "ai-q-1": 3,
+      "ai-q-6": [
+        0,
+        7,
+        8
+      ],
+      "ai-q-5": [
+        1,
+        10,
+        19,
+        14
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        10,
+        9
+      ],
+      "tech-q-2": [
+        0,
+        1,
+        3,
+        8
+      ],
+      "tech-q-1": [
+        18
+      ],
+      "tech-q-16": [
+        4
+      ],
+      "tech-q-8": [
+        0
+      ],
+      "tech-q-7": [
+        1,
+        4,
+        6,
+        5
+      ],
+      "tech-q-10": 2,
+      "tech-q-9": [
+        2,
+        7
+      ],
+      "tech-q-11": [
+        1
+      ],
+      "tech-q-4": [],
+      "tech-q-12": [
+        0,
+        1,
+        2,
+        6,
+        4,
+        3
+      ],
+      "tech-q-3": [
+        1,
+        3
+      ],
+      "tech-q-13": [],
+      "tech-q-6": [
+        12
+      ],
+      "tech-q-14": [],
+      "tech-q-5": [
+        5,
+        6,
+        0
+      ],
+      "tech-q-15": [
+        1,
+        2,
+        3
+      ],
+      "lastUpdated": "2026-02-06T18:26:40.832Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        2
+      ],
+      "community-q-4": [
+        1,
+        3,
+        6
+      ],
+      "community-q-3": [
+        5
+      ],
+      "community-q-2": [
+        5
+      ],
+      "community-q-1": [
+        5,
+        0,
+        3
+      ],
+      "community-q-0": [
+        1
+      ],
+      "userId": "ijLJQ8FEJhfgaDTo6wUp93Xrs5z2"
+    },
+    {
       "lastSignInTime": "Wed, 17 Dec 2025 20:50:21 GMT",
       "creationTime": "Wed, 17 Dec 2025 20:50:21 GMT",
       "userId": "ijfVdeagIvP3A4JSSrPKgKeWPX53"
+    },
+    {
+      "lastSignInTime": "Fri, 06 Feb 2026 18:04:37 GMT",
+      "creationTime": "Fri, 06 Feb 2026 18:04:37 GMT",
+      "userId": "ijz3g0wolvOzqdlrQTCiHNktedc2"
     },
     {
       "lastSignInTime": "Fri, 05 Dec 2025 10:25:49 GMT",
@@ -81091,6 +84376,186 @@
         5
       ],
       "userId": "kUKXklhNa1WxrZa6BVMRWmfEqrI3"
+    },
+    {
+      "lastSignInTime": "Fri, 06 Feb 2026 16:02:51 GMT",
+      "creationTime": "Fri, 06 Feb 2026 16:02:51 GMT",
+      "profile-q-5": 2,
+      "profile-q-4": 5,
+      "profile-q-7": 2,
+      "profile-q-6": [
+        1
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 0,
+      "profile-q-3": 1,
+      "profile-q-2": 7,
+      "education-q-2": [
+        0,
+        5
+      ],
+      "education-q-1": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "education-q-4": [
+        1,
+        5
+      ],
+      "education-q-3": [
+        1,
+        9,
+        11
+      ],
+      "education-q-0": [
+        2,
+        5,
+        4,
+        0
+      ],
+      "work-q-9": 2,
+      "work-q-8": [
+        0,
+        1,
+        2,
+        7,
+        8
+      ],
+      "work-q-12": 2,
+      "work-q-11": null,
+      "work-q-14": null,
+      "work-q-13": [],
+      "work-q-10": 0,
+      "work-q-1": 1,
+      "work-q-0": 6,
+      "work-q-3": null,
+      "work-q-2": 2,
+      "work-q-5": null,
+      "work-q-4": null,
+      "ai-q-4": null,
+      "ai-q-3": 2,
+      "ai-q-2": 1,
+      "ai-q-1": 1,
+      "ai-q-6": [],
+      "ai-q-5": [
+        0,
+        1,
+        2,
+        8,
+        10,
+        12,
+        14,
+        18,
+        19,
+        21,
+        20,
+        23
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        0,
+        1,
+        2,
+        3,
+        8
+      ],
+      "tech-q-2": [
+        0,
+        1,
+        8
+      ],
+      "tech-q-1": [
+        4,
+        3,
+        14
+      ],
+      "tech-q-16": [
+        0,
+        1,
+        2
+      ],
+      "tech-q-8": [
+        0
+      ],
+      "tech-q-7": [
+        5
+      ],
+      "tech-q-10": 1,
+      "tech-q-11-others": "Antigravity",
+      "tech-q-9": [
+        13,
+        15,
+        18,
+        17,
+        20,
+        32
+      ],
+      "tech-q-11": [
+        0,
+        1,
+        2,
+        14,
+        17
+      ],
+      "tech-q-4": [
+        4
+      ],
+      "tech-q-12": [
+        0,
+        1,
+        6
+      ],
+      "tech-q-3": [
+        1,
+        9,
+        10
+      ],
+      "tech-q-13": [],
+      "tech-q-6": [
+        7,
+        8,
+        12,
+        13,
+        18
+      ],
+      "tech-q-14": [],
+      "tech-q-5": [
+        1,
+        5,
+        6
+      ],
+      "tech-q-15": [],
+      "lastUpdated": "2026-02-06T16:26:21.755Z",
+      "community-q-6": 5,
+      "community-q-5": [
+        0,
+        1
+      ],
+      "community-q-4": [
+        0,
+        5,
+        2
+      ],
+      "community-q-3": [
+        0,
+        1,
+        3
+      ],
+      "community-q-2": [
+        5
+      ],
+      "community-q-1": [
+        1,
+        2,
+        3
+      ],
+      "community-q-0": [
+        3,
+        2
+      ],
+      "userId": "kV7CeCWi3GU68nSzgS8yv9xkShm1"
     },
     {
       "lastSignInTime": "Sat, 06 Dec 2025 19:38:52 GMT",
@@ -89085,6 +92550,127 @@
       "userId": "oldb9SckakSFO21y6XR6ZltnAeH3"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 22:10:38 GMT",
+      "creationTime": "Fri, 06 Feb 2026 22:10:38 GMT",
+      "profile-q-5": 0,
+      "profile-q-4": 2,
+      "profile-q-7": 1,
+      "profile-q-6": [
+        0
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 1,
+      "profile-q-3": 23,
+      "profile-q-2": 0,
+      "education-q-2": [
+        0,
+        3,
+        4,
+        5,
+        2
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        0,
+        3,
+        5,
+        4,
+        6
+      ],
+      "education-q-3": [
+        0,
+        4,
+        7
+      ],
+      "education-q-0": [
+        5
+      ],
+      "ai-q-4": 0,
+      "ai-q-3": 0,
+      "ai-q-2": 1,
+      "ai-q-1": 5,
+      "ai-q-6": [],
+      "ai-q-5": [
+        0
+      ],
+      "ai-q-0": 1,
+      "tech-q-0": [
+        3
+      ],
+      "tech-q-2": [
+        3
+      ],
+      "tech-q-1": [
+        4
+      ],
+      "tech-q-16": [
+        8
+      ],
+      "tech-q-8": [
+        34
+      ],
+      "tech-q-7": [],
+      "tech-q-10": 2,
+      "tech-q-11": [
+        14
+      ],
+      "tech-q-9": [
+        34
+      ],
+      "tech-q-12": [
+        0,
+        1
+      ],
+      "tech-q-4": [],
+      "tech-q-13": [
+        1
+      ],
+      "tech-q-3": [],
+      "tech-q-14": [
+        17
+      ],
+      "tech-q-6": [],
+      "tech-q-15": [],
+      "tech-q-5": [],
+      "lastUpdated": "2026-02-06T22:29:44.289Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        0,
+        2,
+        1,
+        3
+      ],
+      "community-q-4": [
+        5,
+        6,
+        2
+      ],
+      "community-q-3": [
+        0,
+        3,
+        4
+      ],
+      "community-q-2": [
+        4
+      ],
+      "community-q-1": [
+        0,
+        2,
+        3,
+        5
+      ],
+      "community-q-0": [
+        3,
+        1,
+        2
+      ],
+      "userId": "olvZv0vwSGNDN7rWxG3PKKZZsma2"
+    },
+    {
       "lastSignInTime": "Sat, 06 Dec 2025 11:44:32 GMT",
       "creationTime": "Sat, 06 Dec 2025 11:44:32 GMT",
       "profile-q-5": 4,
@@ -89231,6 +92817,178 @@
         1
       ],
       "userId": "omFDbpoaJ2bm203t0QCgEWp0szy1"
+    },
+    {
+      "lastSignInTime": "Fri, 06 Feb 2026 16:00:28 GMT",
+      "creationTime": "Fri, 06 Feb 2026 16:00:28 GMT",
+      "profile-q-5": 2,
+      "profile-q-4": 2,
+      "profile-q-7": 0,
+      "profile-q-6": [
+        1
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 1,
+      "profile-q-2": 1,
+      "education-q-2": [
+        3,
+        4
+      ],
+      "education-q-1": [
+        0,
+        3
+      ],
+      "education-q-4": [
+        0
+      ],
+      "education-q-3": [
+        0,
+        3,
+        9
+      ],
+      "education-q-0": [
+        0,
+        1,
+        5,
+        4,
+        3,
+        2
+      ],
+      "work-q-9": 4,
+      "work-q-8": [
+        0,
+        1,
+        8,
+        11,
+        13
+      ],
+      "work-q-12": 2,
+      "work-q-11": 2,
+      "work-q-14": 10,
+      "work-q-13": [
+        17,
+        11,
+        1
+      ],
+      "work-q-10": 0,
+      "work-q-1": 6,
+      "work-q-0": 1,
+      "work-q-3": 0,
+      "work-q-2": 1,
+      "work-q-5": null,
+      "work-q-4": 10,
+      "ai-q-4": 3,
+      "ai-q-3": 3,
+      "ai-q-2": 2,
+      "ai-q-1": 3,
+      "ai-q-6": [
+        3,
+        10,
+        12,
+        0,
+        19
+      ],
+      "ai-q-5": [
+        0,
+        1,
+        2,
+        5,
+        8,
+        14
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        8,
+        11
+      ],
+      "tech-q-2": [
+        8,
+        3
+      ],
+      "tech-q-1": [
+        4,
+        8,
+        11,
+        3,
+        9,
+        18
+      ],
+      "tech-q-16": [
+        0
+      ],
+      "tech-q-8": [
+        0,
+        7,
+        15,
+        24
+      ],
+      "tech-q-7": [
+        1,
+        23,
+        22
+      ],
+      "tech-q-10": 1,
+      "tech-q-9": [
+        2,
+        4,
+        15,
+        13,
+        23,
+        24
+      ],
+      "tech-q-11": [
+        1,
+        2
+      ],
+      "tech-q-4": [],
+      "tech-q-12": [
+        0,
+        1
+      ],
+      "tech-q-3": [
+        1,
+        9
+      ],
+      "tech-q-13": [
+        0
+      ],
+      "tech-q-6": [
+        11
+      ],
+      "tech-q-14": [
+        1,
+        0
+      ],
+      "tech-q-5": [
+        6,
+        5
+      ],
+      "tech-q-15": [
+        2,
+        12
+      ],
+      "lastUpdated": "2026-02-06T18:47:19.219Z",
+      "community-q-6": 1,
+      "community-q-5": [
+        2
+      ],
+      "community-q-4": [
+        4
+      ],
+      "community-q-3": [
+        1
+      ],
+      "community-q-2": [
+        0
+      ],
+      "community-q-1": [
+        1
+      ],
+      "community-q-0": [
+        0
+      ],
+      "userId": "oo3UxsEPCJOrAnNYOGoSYYxBkzH2"
     },
     {
       "lastSignInTime": "Sun, 04 Jan 2026 15:46:35 GMT",
@@ -95724,6 +99482,211 @@
       "userId": "rirwPrGTLcaAfOlQVf5h0NbYhxO2"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 16:31:39 GMT",
+      "creationTime": "Fri, 06 Feb 2026 16:31:39 GMT",
+      "profile-q-5": 6,
+      "profile-q-4": 2,
+      "profile-q-7": 3,
+      "profile-q-6": [
+        4,
+        3,
+        1
+      ],
+      "profile-q-1": 3,
+      "profile-q-0": 0,
+      "profile-q-3": 0,
+      "profile-q-2": 12,
+      "profile-q-8": 2,
+      "education-q-2": [
+        0,
+        3,
+        4
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        5,
+        6,
+        0
+      ],
+      "education-q-3": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        9
+      ],
+      "education-q-0": [
+        4,
+        5,
+        3
+      ],
+      "work-q-9": 0,
+      "work-q-8": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "work-q-12": 1,
+      "work-q-11": 2,
+      "work-q-14": 0,
+      "work-q-13": [
+        0,
+        2
+      ],
+      "work-q-10": 0,
+      "work-q-1": 1,
+      "work-q-0": 1,
+      "work-q-3": 0,
+      "work-q-2": 3,
+      "work-q-7": 2,
+      "work-q-6": 7,
+      "ai-q-4": 3,
+      "ai-q-3": 3,
+      "ai-q-2": 0,
+      "ai-q-1": 2,
+      "ai-q-6": [
+        1,
+        2,
+        5,
+        8,
+        10
+      ],
+      "ai-q-5": [
+        1,
+        2,
+        21,
+        16,
+        8
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        0,
+        1,
+        4,
+        2,
+        8,
+        5
+      ],
+      "tech-q-2": [
+        0,
+        4,
+        2,
+        1,
+        5
+      ],
+      "tech-q-1": [
+        3,
+        12
+      ],
+      "tech-q-16": [
+        0,
+        1,
+        3
+      ],
+      "tech-q-8": [
+        2,
+        7,
+        8,
+        11
+      ],
+      "tech-q-7": [
+        3,
+        2
+      ],
+      "tech-q-10": 1,
+      "tech-q-11-others": "Antigravity ",
+      "tech-q-9": [
+        13,
+        12
+      ],
+      "tech-q-11": [
+        0,
+        1,
+        17
+      ],
+      "tech-q-4": [],
+      "tech-q-12": [
+        0,
+        1
+      ],
+      "tech-q-3": [
+        2,
+        0,
+        1
+      ],
+      "tech-q-13": [
+        0,
+        2,
+        3
+      ],
+      "tech-q-6": [
+        1,
+        4,
+        12,
+        15
+      ],
+      "tech-q-14": [
+        1,
+        4,
+        10,
+        15
+      ],
+      "tech-q-5": [
+        1,
+        2,
+        5
+      ],
+      "tech-q-15": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        19
+      ],
+      "lastUpdated": "2026-02-06T17:56:38.469Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        1,
+        3
+      ],
+      "community-q-4": [
+        1,
+        4,
+        6
+      ],
+      "community-q-3": [
+        0,
+        1,
+        4,
+        5
+      ],
+      "community-q-2": [
+        0,
+        4
+      ],
+      "community-q-1": [
+        0,
+        5
+      ],
+      "community-q-0": [
+        2
+      ],
+      "userId": "rnDrF5a2EbPduAgFiNJ8Fla9q572"
+    },
+    {
       "lastSignInTime": "Sat, 13 Dec 2025 18:34:13 GMT",
       "creationTime": "Sat, 13 Dec 2025 18:34:13 GMT",
       "profile-q-5": 3,
@@ -98395,6 +102358,11 @@
       "userId": "stjYYig4UNaKAdxkvFbKq6AiTMf2"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 17:11:52 GMT",
+      "creationTime": "Fri, 06 Feb 2026 17:11:52 GMT",
+      "userId": "svkgjoj8U4Za6j07lJiENH09jpT2"
+    },
+    {
       "lastSignInTime": "Tue, 23 Dec 2025 13:35:06 GMT",
       "creationTime": "Tue, 23 Dec 2025 13:35:06 GMT",
       "profile-q-5": 2,
@@ -101035,6 +105003,192 @@
       "userId": "uPjkEfVbixdSAV1PeiZpv2zZ5oT2"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 17:40:10 GMT",
+      "creationTime": "Fri, 06 Feb 2026 17:40:10 GMT",
+      "profile-q-5": 1,
+      "profile-q-4": 2,
+      "profile-q-7": 1,
+      "profile-q-6": [
+        1,
+        2,
+        4
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 30,
+      "profile-q-2": 0,
+      "education-q-2": [
+        0,
+        3,
+        1,
+        4,
+        5
+      ],
+      "education-q-1": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "education-q-4": [
+        0,
+        3,
+        5
+      ],
+      "education-q-3": [
+        0,
+        1,
+        9
+      ],
+      "education-q-0": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "work-q-9": 3,
+      "work-q-8": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12
+      ],
+      "work-q-12": 2,
+      "work-q-11": 2,
+      "work-q-14": 3,
+      "work-q-13": [
+        2
+      ],
+      "work-q-10": null,
+      "work-q-1": 5,
+      "work-q-0": 5,
+      "work-q-3": null,
+      "work-q-2": 2,
+      "work-q-5": null,
+      "work-q-4": null,
+      "ai-q-4": 1,
+      "ai-q-3": 2,
+      "ai-q-2": 0,
+      "ai-q-1": 2,
+      "ai-q-6": [
+        1
+      ],
+      "ai-q-5": [
+        1,
+        0,
+        8
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        4,
+        5,
+        11
+      ],
+      "tech-q-2": [
+        5,
+        4
+      ],
+      "tech-q-1": [
+        11
+      ],
+      "tech-q-16": [
+        0
+      ],
+      "tech-q-8": [
+        7,
+        8,
+        11,
+        13
+      ],
+      "tech-q-7": [
+        5,
+        11,
+        0,
+        6
+      ],
+      "tech-q-10": 2,
+      "tech-q-9": [
+        9
+      ],
+      "tech-q-11": [
+        1,
+        0
+      ],
+      "tech-q-4": [
+        9
+      ],
+      "tech-q-12": [
+        1,
+        0,
+        4
+      ],
+      "tech-q-3": [
+        1
+      ],
+      "tech-q-13": [
+        0
+      ],
+      "tech-q-6": [
+        1,
+        4,
+        3
+      ],
+      "tech-q-14": [
+        2
+      ],
+      "tech-q-5": [
+        5
+      ],
+      "tech-q-15": [
+        2,
+        6,
+        19
+      ],
+      "lastUpdated": "2026-02-06T17:58:16.542Z",
+      "community-q-6": 1,
+      "community-q-5": [
+        1,
+        3
+      ],
+      "community-q-4": [
+        1,
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "community-q-3": [
+        1,
+        5,
+        0
+      ],
+      "community-q-2": [
+        6
+      ],
+      "community-q-1": [
+        0,
+        5
+      ],
+      "community-q-0": [
+        0,
+        5
+      ],
+      "userId": "uRLunsBp9mQch9MT6754LvEayRU2"
+    },
+    {
       "lastSignInTime": "Thu, 05 Feb 2026 01:22:38 GMT",
       "creationTime": "Thu, 05 Feb 2026 01:22:38 GMT",
       "userId": "uadDI1TvhWYhZctIvf78Hmla3gc2"
@@ -102893,6 +107047,183 @@
       "userId": "vka4vf9xdRSMcj6CXt7BjNeGgbn2"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 18:09:14 GMT",
+      "creationTime": "Fri, 06 Feb 2026 18:09:14 GMT",
+      "profile-q-5": 1,
+      "profile-q-4": 2,
+      "profile-q-7": 2,
+      "profile-q-6": [
+        1,
+        4
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 8,
+      "profile-q-2": 1,
+      "education-q-2": [
+        0,
+        2,
+        5,
+        4,
+        3
+      ],
+      "education-q-1": [
+        1,
+        0,
+        2,
+        3,
+        4
+      ],
+      "education-q-4": [
+        0,
+        4
+      ],
+      "education-q-3": [
+        1,
+        3,
+        5,
+        8,
+        9,
+        11,
+        0,
+        2,
+        4,
+        6
+      ],
+      "education-q-1-others": "Spanish",
+      "education-q-0": [
+        0
+      ],
+      "work-q-9": 4,
+      "work-q-8": [
+        1,
+        3,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "work-q-12": 0,
+      "work-q-11": 0,
+      "work-q-14": 1,
+      "work-q-13": [
+        20
+      ],
+      "work-q-10": 0,
+      "work-q-1": 2,
+      "work-q-0": 5,
+      "work-q-3": 0,
+      "work-q-2": 4,
+      "work-q-5": null,
+      "work-q-4": null,
+      "ai-q-4": 3,
+      "ai-q-3": 1,
+      "ai-q-2": 0,
+      "ai-q-1": 2,
+      "ai-q-6": [],
+      "ai-q-5": [
+        2
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        3,
+        5,
+        10,
+        11,
+        17,
+        4,
+        2,
+        8
+      ],
+      "tech-q-2": [
+        5,
+        3
+      ],
+      "tech-q-1": [
+        11,
+        8,
+        4
+      ],
+      "tech-q-16": [
+        0,
+        1,
+        2
+      ],
+      "tech-q-8": [
+        8,
+        7,
+        13
+      ],
+      "tech-q-7": [
+        5
+      ],
+      "tech-q-10": 2,
+      "tech-q-9": [
+        8,
+        11,
+        13,
+        24
+      ],
+      "tech-q-11": [
+        1,
+        15,
+        0
+      ],
+      "tech-q-4": [
+        2
+      ],
+      "tech-q-12": [
+        0,
+        1
+      ],
+      "tech-q-3": [],
+      "tech-q-13": [
+        0
+      ],
+      "tech-q-6": [
+        1,
+        6,
+        11
+      ],
+      "tech-q-14": [
+        3
+      ],
+      "tech-q-5": [
+        5
+      ],
+      "tech-q-15": [
+        0
+      ],
+      "lastUpdated": "2026-02-06T18:33:05.339Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        0,
+        1
+      ],
+      "community-q-4": [
+        0,
+        1,
+        2
+      ],
+      "community-q-3": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "community-q-2": [
+        0
+      ],
+      "community-q-1": [
+        0
+      ],
+      "community-q-0": [
+        0
+      ],
+      "userId": "vlkg8zOTZsWIf3p7nfMJ4kMjtCK2"
+    },
+    {
       "lastSignInTime": "Sat, 06 Dec 2025 17:18:49 GMT",
       "creationTime": "Sat, 06 Dec 2025 17:18:49 GMT",
       "profile-q-5": 4,
@@ -103059,6 +107390,134 @@
       "lastSignInTime": "Mon, 08 Dec 2025 09:45:14 GMT",
       "creationTime": "Mon, 08 Dec 2025 09:45:14 GMT",
       "userId": "vvkOSD0qTMW4g8Kz3rrdzAR8ijj1"
+    },
+    {
+      "lastSignInTime": "Fri, 06 Feb 2026 15:11:16 GMT",
+      "creationTime": "Fri, 06 Feb 2026 15:11:16 GMT",
+      "profile-q-5": 2,
+      "profile-q-4": 5,
+      "profile-q-7": 1,
+      "profile-q-6": [
+        1
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 30,
+      "profile-q-2": 6,
+      "education-q-2": [
+        0,
+        1,
+        5
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        6,
+        0
+      ],
+      "education-q-3": [
+        1,
+        3,
+        2,
+        6,
+        11
+      ],
+      "education-q-0": [
+        6
+      ],
+      "work-q-9": 3,
+      "work-q-8": [
+        0,
+        1,
+        3,
+        6,
+        12,
+        13
+      ],
+      "work-q-12": 2,
+      "work-q-11": null,
+      "work-q-14": 4,
+      "work-q-13": [],
+      "work-q-10": 1,
+      "work-q-1": 5,
+      "work-q-0": 6,
+      "work-q-3": null,
+      "work-q-2": 2,
+      "work-q-5": null,
+      "work-q-4": null,
+      "ai-q-4": null,
+      "ai-q-3": 2,
+      "ai-q-2": 1,
+      "ai-q-1": 2,
+      "ai-q-6": [],
+      "ai-q-5": [
+        0,
+        1
+      ],
+      "ai-q-0": 1,
+      "tech-q-0": [
+        4,
+        9,
+        5
+      ],
+      "tech-q-2": [
+        5,
+        9,
+        0
+      ],
+      "tech-q-1": [
+        8
+      ],
+      "tech-q-16": [
+        7
+      ],
+      "tech-q-8": [
+        0
+      ],
+      "tech-q-7": [],
+      "tech-q-10": 2,
+      "tech-q-9": [
+        4
+      ],
+      "tech-q-11": [
+        1
+      ],
+      "tech-q-4": [],
+      "tech-q-12": [
+        0,
+        1,
+        6
+      ],
+      "tech-q-3": [],
+      "tech-q-13": [],
+      "tech-q-6": [],
+      "tech-q-14": [],
+      "tech-q-5": [],
+      "tech-q-15": [],
+      "lastUpdated": "2026-02-06T15:25:04.886Z",
+      "community-q-6": 0,
+      "community-q-5": [
+        3
+      ],
+      "community-q-4": [
+        0
+      ],
+      "community-q-3": [
+        3
+      ],
+      "community-q-2": [
+        4
+      ],
+      "community-q-1": [
+        0
+      ],
+      "community-q-0": [
+        6
+      ],
+      "userId": "vvnM1xfZjQNkfu8Qw2Yy9RzkWlV2"
     },
     {
       "lastSignInTime": "Fri, 02 Jan 2026 22:53:47 GMT",
@@ -103249,6 +107708,154 @@
       "lastSignInTime": "Sat, 06 Dec 2025 21:39:18 GMT",
       "creationTime": "Sat, 06 Dec 2025 21:39:18 GMT",
       "userId": "wFc3mIybU5X3yeCWfxvkAVx0GHB3"
+    },
+    {
+      "lastSignInTime": "Sat, 07 Feb 2026 01:14:41 GMT",
+      "creationTime": "Sat, 07 Feb 2026 01:14:41 GMT",
+      "profile-q-5": 3,
+      "profile-q-4": 0,
+      "profile-q-7": 2,
+      "profile-q-6": [
+        1,
+        2
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 30,
+      "profile-q-2": 0,
+      "education-q-2": [
+        1,
+        2,
+        4
+      ],
+      "education-q-1": [
+        0,
+        3
+      ],
+      "education-q-4": [
+        5,
+        0,
+        1
+      ],
+      "education-q-3": [
+        0,
+        2,
+        3,
+        4,
+        8,
+        9,
+        10
+      ],
+      "education-q-0": [
+        2
+      ],
+      "work-q-9": 2,
+      "work-q-8": [
+        1,
+        2,
+        7,
+        8,
+        11,
+        4
+      ],
+      "work-q-12": 2,
+      "work-q-11": null,
+      "work-q-14": null,
+      "work-q-13": [],
+      "work-q-10": null,
+      "work-q-1": null,
+      "work-q-0": 6,
+      "work-q-3": null,
+      "work-q-2": null,
+      "work-q-5": null,
+      "work-q-4": null,
+      "ai-q-4": null,
+      "ai-q-3": 1,
+      "ai-q-2": 0,
+      "ai-q-1": null,
+      "ai-q-6": [],
+      "ai-q-5": [
+        2,
+        3
+      ],
+      "ai-q-0": 1,
+      "tech-q-0": [
+        1,
+        6,
+        10
+      ],
+      "tech-q-2": [
+        10,
+        20
+      ],
+      "tech-q-1": [
+        9,
+        18,
+        28
+      ],
+      "tech-q-16": [
+        2
+      ],
+      "tech-q-8": [
+        12,
+        21
+      ],
+      "tech-q-7": [],
+      "tech-q-10": 2,
+      "tech-q-9": [
+        7,
+        8
+      ],
+      "tech-q-11": [
+        1,
+        6
+      ],
+      "tech-q-4": [],
+      "tech-q-12": [
+        0,
+        1,
+        4,
+        6
+      ],
+      "tech-q-3": [],
+      "tech-q-13": [],
+      "tech-q-6": [],
+      "tech-q-14": [],
+      "tech-q-5": [],
+      "tech-q-15": [],
+      "lastUpdated": "2026-02-07T01:35:02.889Z",
+      "community-q-6": 1,
+      "community-q-5": [
+        1
+      ],
+      "community-q-4": [
+        2,
+        5,
+        3
+      ],
+      "community-q-3": [
+        0,
+        3,
+        5
+      ],
+      "community-q-2": [
+        5
+      ],
+      "community-q-1": [
+        0,
+        1,
+        3,
+        4,
+        5
+      ],
+      "community-q-0": [
+        4,
+        3,
+        2,
+        1,
+        5
+      ],
+      "userId": "wbB5ToKge8OuPGxwp8WBDtSC0422"
     },
     {
       "lastSignInTime": "Sat, 06 Dec 2025 17:43:25 GMT",
@@ -104812,6 +109419,135 @@
       "userId": "xLkz6qjSVBeLHrke7RzhJesQouy1"
     },
     {
+      "lastSignInTime": "Fri, 06 Feb 2026 16:47:23 GMT",
+      "creationTime": "Fri, 06 Feb 2026 16:47:23 GMT",
+      "profile-q-5": 3,
+      "profile-q-4": 2,
+      "profile-q-7": 1,
+      "profile-q-6": [
+        4
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 1,
+      "profile-q-3": 30,
+      "profile-q-2": 4,
+      "education-q-2": [
+        1,
+        2,
+        5
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        0
+      ],
+      "education-q-3": [
+        3,
+        9
+      ],
+      "education-q-0": [
+        5,
+        6
+      ],
+      "work-q-9": 0,
+      "work-q-8": [
+        3
+      ],
+      "work-q-12": 2,
+      "work-q-13": [],
+      "work-q-0": 6,
+      "work-q-10": 0,
+      "ai-q-3": 2,
+      "ai-q-2": 2,
+      "ai-q-1": 3,
+      "ai-q-6": [
+        0
+      ],
+      "ai-q-5": [
+        0,
+        2,
+        5,
+        14
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        0
+      ],
+      "tech-q-2": [
+        0
+      ],
+      "tech-q-1": [],
+      "tech-q-16": [
+        0
+      ],
+      "tech-q-8": [
+        0,
+        9,
+        12
+      ],
+      "tech-q-7": [
+        7
+      ],
+      "tech-q-10": 0,
+      "tech-q-11": [
+        2,
+        1
+      ],
+      "tech-q-9": [
+        20
+      ],
+      "tech-q-12": [
+        1
+      ],
+      "tech-q-4": [
+        3
+      ],
+      "tech-q-13": [],
+      "tech-q-3": [
+        1
+      ],
+      "tech-q-14": [],
+      "tech-q-6": [
+        4,
+        8,
+        0
+      ],
+      "tech-q-15": [],
+      "tech-q-5": [
+        2
+      ],
+      "lastUpdated": "2026-02-06T16:55:05.697Z",
+      "community-q-6": 1,
+      "community-q-5": [
+        5
+      ],
+      "community-q-4": [
+        0
+      ],
+      "community-q-3": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "community-q-2": [
+        0,
+        4
+      ],
+      "community-q-1": [
+        0
+      ],
+      "community-q-0": [
+        6
+      ],
+      "userId": "xLpt9SZSiuYMefpKNpPnu85p0Dq1"
+    },
+    {
       "lastSignInTime": "Sun, 07 Dec 2025 00:16:11 GMT",
       "creationTime": "Sun, 07 Dec 2025 00:16:11 GMT",
       "profile-q-5": 4,
@@ -105637,6 +110373,150 @@
         5
       ],
       "userId": "xqQT0q9MefYDHHjqsTBlSRoJPyQ2"
+    },
+    {
+      "lastSignInTime": "Fri, 06 Feb 2026 16:49:26 GMT",
+      "creationTime": "Fri, 06 Feb 2026 16:49:26 GMT",
+      "profile-q-5": 2,
+      "profile-q-4": 2,
+      "profile-q-7": 3,
+      "profile-q-6": [
+        1,
+        2,
+        4
+      ],
+      "profile-q-1": 3,
+      "profile-q-0": 0,
+      "profile-q-3": 0,
+      "profile-q-2": 12,
+      "profile-q-8": 2,
+      "education-q-2": [
+        0,
+        3,
+        4,
+        5
+      ],
+      "education-q-1": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "education-q-4": [
+        3,
+        0
+      ],
+      "education-q-3": [
+        0,
+        1,
+        2,
+        3,
+        8,
+        9,
+        11,
+        10
+      ],
+      "education-q-1-others": "German",
+      "education-q-0": [
+        0
+      ],
+      "work-q-9": 3,
+      "work-q-8": [
+        1,
+        2,
+        3,
+        4,
+        8,
+        9,
+        10
+      ],
+      "work-q-12": 2,
+      "work-q-11": 2,
+      "work-q-14": 2,
+      "work-q-13": [
+        7,
+        20,
+        0
+      ],
+      "work-q-10": 0,
+      "work-q-1": 4,
+      "work-q-0": 1,
+      "work-q-3": 0,
+      "work-q-2": 4,
+      "work-q-7": null,
+      "work-q-6": 5,
+      "ai-q-4": 1,
+      "ai-q-3": 1,
+      "ai-q-2": 0,
+      "ai-q-1": 2,
+      "ai-q-6": [],
+      "ai-q-5": [
+        0,
+        2,
+        3
+      ],
+      "ai-q-0": 0,
+      "tech-q-0": [
+        4,
+        2,
+        3,
+        5
+      ],
+      "tech-q-2": [
+        4,
+        2
+      ],
+      "tech-q-1": [
+        6,
+        8,
+        0,
+        12
+      ],
+      "tech-q-16": [
+        0
+      ],
+      "lastUpdated": "2026-02-06T17:39:07.017Z",
+      "tech-q-8": [
+        2,
+        7,
+        18
+      ],
+      "tech-q-7": [
+        0,
+        4,
+        13,
+        12
+      ],
+      "tech-q-10": 3,
+      "tech-q-9": [
+        0,
+        1,
+        8,
+        12
+      ],
+      "tech-q-11": [
+        3,
+        0,
+        10
+      ],
+      "tech-q-4": [],
+      "tech-q-12": [
+        1,
+        2,
+        5
+      ],
+      "tech-q-3": [
+        23
+      ],
+      "tech-q-13": [],
+      "tech-q-6": [
+        1
+      ],
+      "tech-q-14": [],
+      "tech-q-5": [],
+      "tech-q-15": [],
+      "userId": "xqcBZ2xmkdZzfFiHd5y181TJzvz1"
     },
     {
       "lastSignInTime": "Tue, 16 Dec 2025 21:57:43 GMT",
