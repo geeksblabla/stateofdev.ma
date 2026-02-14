@@ -47800,6 +47800,110 @@
       "userId": "NfbPLJsK1beyXBcmUpEfMAOt7g53"
     },
     {
+      "lastSignInTime": "Fri, 13 Feb 2026 10:17:34 GMT",
+      "creationTime": "Fri, 13 Feb 2026 10:17:34 GMT",
+      "profile-q-5": 0,
+      "profile-q-4": 1,
+      "profile-q-7": 2,
+      "profile-q-6": [
+        1
+      ],
+      "profile-q-1": 1,
+      "profile-q-0": 0,
+      "profile-q-3": 12,
+      "profile-q-2": 0,
+      "education-q-2": [
+        5,
+        4,
+        2,
+        3
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3
+      ],
+      "education-q-4": [
+        4,
+        5
+      ],
+      "education-q-3": [
+        0,
+        5
+      ],
+      "education-q-0": [
+        0
+      ],
+      "ai-q-4": 0,
+      "ai-q-3": 4,
+      "ai-q-2": 3,
+      "ai-q-1": 5,
+      "ai-q-6": [],
+      "ai-q-5": [
+        0,
+        2
+      ],
+      "ai-q-0": 3,
+      "tech-q-0": [
+        3,
+        10
+      ],
+      "tech-q-2": [
+        1
+      ],
+      "tech-q-1": [
+        4
+      ],
+      "tech-q-16": [
+        4
+      ],
+      "tech-q-8": [
+        0
+      ],
+      "tech-q-7": [],
+      "tech-q-10": 2,
+      "tech-q-11": [
+        0,
+        1
+      ],
+      "tech-q-9": [
+        0
+      ],
+      "tech-q-12": [
+        0
+      ],
+      "tech-q-4": [],
+      "tech-q-13": [],
+      "tech-q-3": [],
+      "tech-q-14": [],
+      "tech-q-6": [],
+      "tech-q-15": [],
+      "tech-q-5": [],
+      "lastUpdated": "2026-02-13T10:28:37.206Z",
+      "community-q-6": 5,
+      "community-q-5": [
+        0
+      ],
+      "community-q-4": [
+        0,
+        5
+      ],
+      "community-q-3": [
+        0
+      ],
+      "community-q-2": [
+        0
+      ],
+      "community-q-1": [
+        0,
+        5
+      ],
+      "community-q-0": [
+        1
+      ],
+      "userId": "NgXADDAFsFMJovBN0Mmw47EnPZu1"
+    },
+    {
       "lastSignInTime": "Wed, 03 Dec 2025 22:02:18 GMT",
       "creationTime": "Wed, 03 Dec 2025 22:02:18 GMT",
       "profile-q-5": 3,
@@ -94354,6 +94458,52 @@
       "lastSignInTime": "Sat, 06 Dec 2025 18:53:29 GMT",
       "creationTime": "Sat, 06 Dec 2025 18:53:29 GMT",
       "userId": "mqkjTgIUuzVjdqshJPbMArCStCB2"
+    },
+    {
+      "lastSignInTime": "Fri, 13 Feb 2026 10:29:23 GMT",
+      "creationTime": "Fri, 13 Feb 2026 10:29:23 GMT",
+      "profile-q-5": 2,
+      "profile-q-4": 2,
+      "profile-q-7": 3,
+      "profile-q-6": [
+        1
+      ],
+      "profile-q-1": 2,
+      "profile-q-0": 1,
+      "profile-q-3": 12,
+      "profile-q-2": 12,
+      "profile-q-8": 3,
+      "lastUpdated": "2026-02-13T10:41:30.537Z",
+      "education-q-2": [
+        0,
+        2,
+        5
+      ],
+      "education-q-1": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "education-q-4": [
+        0,
+        3,
+        5
+      ],
+      "education-q-3": [
+        5,
+        7,
+        0,
+        1
+      ],
+      "education-q-1-others": "Italian",
+      "education-q-0": [
+        1,
+        2,
+        5,
+        4
+      ],
+      "userId": "mr7pe4pC5sYdZWKypyElJXiXfpp1"
     },
     {
       "lastSignInTime": "Wed, 03 Dec 2025 13:42:04 GMT",
