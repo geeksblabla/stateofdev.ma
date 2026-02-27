@@ -6,16 +6,8 @@ import React, { useState } from "react";
 import { Chart } from "../chart/chart";
 import { getSurveyData } from "../chart/data";
 import { ShareButtons } from "../chart/share-buttons";
-import {
-
-  getQuestion
-
-} from "../chart/utils";
-import {
-
-  PlaygroundForm
-
-} from "./playground-form";
+import { getQuestion } from "../chart/utils";
+import { PlaygroundForm } from "./playground-form";
 
 export const SurveyPlayground: React.FC = () => {
   const [result, setResult] = useState<FinalResult | null>(null);
