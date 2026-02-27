@@ -19,7 +19,8 @@
     "generate-questions": " tsx ./scripts/generate-questions.ts",
     "generate-questions:ci": " tsx ./scripts/generate-questions.ts",
     "export-results": " tsx --env-file=.env.local ./scripts/export-results.ts",
-    "export-results:ci": " tsx  ./scripts/export-results.ts"
+    "export-results:ci": " tsx  ./scripts/export-results.ts",
+    "query-results": "tsx ./scripts/query-results.ts"
   },
   "dependencies": {
     "@astro-community/astro-embed-youtube": "^0.5.3",
