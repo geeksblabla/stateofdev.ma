@@ -1,5 +1,6 @@
+import { t, translations } from "@/constants/translations";
 import { hasPrevVisibleQuestion } from "@/lib/conditions";
-import { SurveyMachineContext } from "./survey-context";
+import { SurveyMachineContext, useLang } from "./survey-context";
 
 interface ErrorMessageProps {
   error: string | null;
@@ -60,6 +61,9 @@ interface BackButtonProps {
 }
 
 export function BackButton({ onClick }: BackButtonProps) {
+  const lang = useLang();
+  const isRTL = lang === "ar";
+
   return (
     <div
       onClick={onClick}
@@ -67,7 +71,7 @@ export function BackButton({ onClick }: BackButtonProps) {
       className="group flex w-full cursor-pointer items-center justify-center bg-transparent pr-6 py-2 text-muted-foreground hover:text-foreground transition"
     >
       <svg
-        className="flex-0 ml-4 h-7 w-7 transition-all group-hover:-translate-x-1 rotate-180"
+        className={`flex-0 h-7 w-7 transition-all ${isRTL ? "mr-4 group-hover:translate-x-1" : "ml-4 group-hover:-translate-x-1 rotate-180"}`}
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -81,13 +85,14 @@ export function BackButton({ onClick }: BackButtonProps) {
         />
       </svg>
       <span className="group flex w-full items-center justify-center rounded py-1 text-center font-medium">
-        Back
+        {t(translations.survey.previous, lang)}
       </span>
     </div>
   );
 }
 
 export function SurveyActions() {
+  const lang = useLang();
   const actorRef = SurveyMachineContext.useActorRef();
 
   const context = SurveyMachineContext.useSelector(state => state.context);
@@ -150,7 +155,7 @@ export function SurveyActions() {
             onClick={handleSkip}
             data-testid="skip-button"
           >
-            Skip
+            {t(translations.survey.skip, lang)}
           </button>
         )}
         <button
@@ -160,7 +165,7 @@ export function SurveyActions() {
           onClick={handleNext}
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Loading..." : "Next"}
+          {isSubmitting ? t(translations.survey.submitting, lang) : t(translations.survey.next, lang)}
         </button>
       </div>
     </div>

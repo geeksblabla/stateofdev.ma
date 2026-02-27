@@ -1,4 +1,5 @@
 import type { ChangeEvent } from "react";
+import { useLang } from "./survey-context";
 
 interface ChoiceProps {
   text: string;
@@ -20,12 +21,15 @@ export function Choice({
   checked,
   onChange
 }: ChoiceProps) {
+  const lang = useLang();
+  const isRTL = lang === "ar";
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(index, e.target.checked);
   };
 
   return (
-    <div className="relative w-full overflow-hidden flex items-center bg-card p-3 pl-14 mb-2 cursor-pointer transition-all duration-200 hover:translate-x-1">
+    <div className={`relative w-full overflow-hidden flex items-center bg-card p-3 mb-2 cursor-pointer transition-all duration-200 ${isRTL ? "pr-14 hover:-translate-x-1" : "pl-14 hover:translate-x-1"}`}>
       <input
         className="peer hidden"
         type={multiple ? "checkbox" : "radio"}
@@ -47,9 +51,9 @@ export function Choice({
       >
       </label>
       <div
-        className="absolute pointer-events-none left-4 h-5 w-5 border-2 border-input bg-muted
+        className={`absolute pointer-events-none h-5 w-5 border-2 border-input bg-muted
         peer-checked:border-primary peer-checked:bg-primary peer-checked:shadow-md peer-checked:shadow-primary/50
-        transition-all duration-200"
+        transition-all duration-200 ${isRTL ? "right-4" : "left-4"}`}
       >
       </div>
       <span

@@ -53,7 +53,7 @@ export function SurveyForm() {
           >
             <Question
               selected={true}
-              question={currentQuestion}
+              question={currentQuestion as { label: string; choices: string[] } & typeof currentQuestion}
               index={context.currentQuestionIdx}
               key={questionId}
               sectionId={currentSection.label}

@@ -4,14 +4,22 @@ import {
   useCallback,
   useMemo
 } from "react";
+import { t, translations } from "@/constants/translations";
 import { Choice } from "./choice";
+import { useLang } from "./survey-context";
 
 const GRID_LAYOUT_THRESHOLD = 10;
 
 type AnswerValue = number | number[] | null;
 
+// Type for translated questions (after translation, all text fields are strings)
+type TranslatedSurveyQuestion = SurveyQuestion & {
+  label: string;
+  choices: string[];
+};
+
 interface QuestionProps {
-  question: SurveyQuestion;
+  question: TranslatedSurveyQuestion;
   index: number;
   sectionId: string;
   selected: boolean;
@@ -31,17 +39,20 @@ export function Question({
   onAnswerChange,
   onOthersChange
 }: QuestionProps) {
+  const lang = useLang();
   const { label, choices } = question;
-  const fitContent = choices.length > GRID_LAYOUT_THRESHOLD;
+  // TypeScript: choices is guaranteed to be string[] from TranslatedSurveyQuestion
+  const stringChoices: string[] = choices;
+  const fitContent = stringChoices.length > GRID_LAYOUT_THRESHOLD;
 
   // Check if "other" options exist
   const othersIndices = useMemo(
     () =>
-      choices
+      stringChoices
         .map((c, i) => ({ text: c, index: i }))
         .filter(({ text }) => text.toLowerCase().includes("other"))
         .map(({ index }) => index),
-    [choices]
+    [stringChoices]
   );
 
   // Derive showOtherInput from value instead of using useEffect
@@ -113,10 +124,10 @@ export function Question({
         </label>
 
         <span className="font-normal text-sm pl-2.5">
-          {question.multiple ? "- You can choose multiple answers " : ""}
+          {question.multiple ? `- ${t(translations.survey.multipleAnswers, lang)}` : ""}
         </span>
         <span className="font-normal text-sm pl-2.5">
-          {question.required ? "" : "- Click skip button if not applicable"}
+          {question.required ? "" : `- ${t(translations.survey.skipIfNotApplicable, lang)}`}
         </span>
       </p>
       <div
@@ -125,7 +136,7 @@ export function Question({
         aria-required={question.required ?? true}
         className={fitContent ? "grid md:grid-cols-2 gap-4 grid-cols-1" : ""}
       >
-        {choices.map((c, i) => (
+        {stringChoices.map((c, i) => (
           <Choice
             key={`${sectionId}-q-${index}-${c}`}
             text={c}

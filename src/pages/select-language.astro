@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@/components/layout.astro";
+
+export const prerender = true;
+---
+
+<BaseLayout>
+  <div class="max-w-2xl mx-auto py-20 px-4">
+    <h1 class="text-xl font-semibold text-center mb-12 text-foreground">
+      Select Your Language <br /> اختر لغتك
+    </h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <a
+        href="/before-start?lang=en"
+        class="flex flex-col items-center justify-center p-12 bg-card border-2 border-border hover:border-primary transition-colors duration-200 rounded-lg hover:shadow-lg"
+      >
+        <!-- <span class="text-9xl mb-6">🇬🇧</span> -->
+        <span class="text-lg font-medium text-foreground">English</span>
+      </a>
+
+      <a
+        href="/before-start?lang=ar"
+        class="flex flex-col items-center justify-center p-12 bg-card border-2 border-border hover:border-primary transition-colors duration-200 rounded-lg hover:shadow-lg"
+      >
+        <!-- <span class="text-9xl mb-6">🇲🇦</span> -->
+        <span class="text-lg font-medium text-foreground">العربية</span>
+      </a>
+    </div>
+  </div>
+</BaseLayout>

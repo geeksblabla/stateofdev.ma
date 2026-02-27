@@ -1,4 +1,5 @@
 ---
+import type { Lang } from "@/constants/translations";
 import { validateSurveyFile } from "@/lib/validators/survey-schema";
 import profileQuestionsRaw from "@/survey/1-profile.yml";
 import learningQuestionsRaw from "@/survey/2-learning-and-education.yml";
@@ -8,6 +9,12 @@ import techQuestionRaw from "@/survey/5-tech.yml";
 import communityQuestionRaw from "@/survey/6-community.yml";
 import ExitPopup from "./exit-popup.astro";
 import { SurveyApp } from "./survey-app";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
 
 // Validate each YAML file to ensure data integrity
 const profileQuestions = validateSurveyFile(
@@ -37,7 +44,7 @@ const questions = [
 ---
 
 <div id="survey-form" class="min-h-screen min-w-full">
-  <SurveyApp questions={questions} client:only="react" />
+  <SurveyApp questions={questions} lang={lang} client:only="react" />
 </div>
 
 <ExitPopup />

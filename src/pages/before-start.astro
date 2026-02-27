@@ -1,30 +1,25 @@
 ---
 import BaseLayout from "@/components/layout.astro";
+import { t, translations } from "@/constants/translations";
+import { getCurrentLang } from "@/lib/utils/language";
 
-const rules = [
-  "We care about privacy; that's why all your answers are **completely anonymous**. We only rely on anonymous sessions to avoid spam",
-  "**Please be honest**. Our goal is to understand the Moroccan IT market and share results with the community.",
-  "The Survey should take around **8 minutes** to complete",
-  "The survey is divided into **6 parts**: Profile, Learning & Education, AI, Work, Technology, and Community(we submit your answers at the end of each part)",
-  "All Questions are **required** unless you have a **skip button**",
-  "For questions that accept others as an option, please add them in the **text field**",
-  "There are two types of questions: **Multiple Choice** (select one or more options) and **Single Select** (choose only one option)"
-];
+export const prerender = false;
 
-export const prerender = true;
+const lang = getCurrentLang(Astro.url);
+const rules = translations.beforeStart.rules.map(rule => t(rule, lang));
 ---
 
-<BaseLayout>
+<BaseLayout lang={lang}>
   <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
     <div class="bg-card border-2 border-border">
       <div class="p-6 sm:p-8">
         <h1
           class="text-xl font-sans font-medium text-foreground mb-6 text-center"
         >
-          Before You Start
+          {t(translations.beforeStart.title, lang)}
         </h1>
         <p class="text-base text-foreground mb-8">
-          Here's what you need to know:
+          {t(translations.beforeStart.subtitle, lang)}
         </p>
         <ul class="space-y-4 mb-8">
           {
@@ -57,7 +52,7 @@ export const prerender = true;
           id="start-survey-btn"
           class="w-full bg-primary hover:opacity-90 text-primary-foreground font-bold py-3 px-6 border-2 border-primary transition duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-ring focus:ring-opacity-50"
         >
-          Start
+          {t(translations.beforeStart.startButton, lang)}
         </button>
       </div>
     </div>
@@ -74,7 +69,12 @@ export const prerender = true;
 /* eslint-disable no-console */
 import { actions } from "astro:actions";
 import { signInAnonymously } from "firebase/auth";
+import { t, translations } from "@/constants/translations";
 import { auth } from "@/lib/firebase/client";
+
+// Get current language from URL
+const urlParams = new URLSearchParams(window.location.search);
+const lang = urlParams.get("lang") === "ar" ? "ar" : "en";
 
 const startButton = document.querySelector(
   "#start-survey-btn"
@@ -84,6 +84,7 @@ const errorMessage = document.querySelector(
   "#error-message"
 ) as HTMLParagraphElement;
 let captchaToken = "";
+
 // @ts-expect-error - Turnstile callback is added to window dynamically
 window.onloadTurnstileCallback = function () {
   // @ts-expect-error - Turnstile is added to window dynamically by Cloudflare script
@@ -98,16 +99,16 @@ window.onloadTurnstileCallback = function () {
 };
 
 function handleError() {
-  errorMessage.innerHTML = `Session initialization failed. Please try again or <a href="https://github.com/geeksblabla/stateofdev.ma/issues" target="_blank" class="underline font-semibold">report the issue</a>.`;
+  errorMessage.innerHTML = t(translations.beforeStart.errorMessage, lang);
   errorAlert.classList.remove("hidden");
-  startButton.innerHTML = "Start Survey";
+  startButton.innerHTML = t(translations.beforeStart.startButton, lang);
   startButton.disabled = false;
   startButton.classList.remove("opacity-50", "cursor-not-allowed");
 }
 
 startButton.addEventListener("click", async () => {
   startButton.disabled = true;
-  startButton.innerHTML = "Initializing Session...";
+  startButton.innerHTML = t(translations.beforeStart.initializingSession, lang);
   startButton.classList.add("opacity-50", "cursor-not-allowed");
   errorAlert.classList.add("hidden");
 
@@ -125,8 +126,8 @@ startButton.addEventListener("click", async () => {
       return;
     }
 
-    // Redirect to the survey page or reload as needed
-    window.location.href = "/survey";
+    // Preserve language parameter in redirect
+    window.location.href = `/survey?lang=${lang}`;
   }
   catch {
     handleError();

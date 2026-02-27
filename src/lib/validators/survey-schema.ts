@@ -6,7 +6,15 @@ const MIN_CHOICES = VALIDATION_THRESHOLDS.MIN_CHOICES;
 const MIN_LABEL_LENGTH = VALIDATION_THRESHOLDS.MIN_LABEL_LENGTH;
 const MIN_TITLE_LENGTH = VALIDATION_THRESHOLDS.MIN_TITLE_LENGTH;
 const MAX_LABEL_LENGTH = VALIDATION_THRESHOLDS.MAX_LABEL_LENGTH;
-const MAX_CHOICE_LENGTH = VALIDATION_THRESHOLDS.MAX_CHOICE_LENGTH;
+
+// Schema for bilingual text (string or {en, ar} object)
+const BilingualTextSchema = z.union([
+  z.string(),
+  z.object({
+    en: z.string(),
+    ar: z.string().optional()
+  })
+]);
 
 // Schema for conditional visibility (showIf)
 export const ShowIfConditionSchema = z
@@ -39,41 +47,29 @@ export const ShowIfConditionSchema = z
   );
 
 export const SurveyQuestionSchema = z.object({
-  label: z
-    .string()
-    .trim()
-    .min(MIN_LABEL_LENGTH, "Question label must be at least 3 characters")
-    .max(
-      MAX_LABEL_LENGTH,
-      `Question label must not exceed ${MAX_LABEL_LENGTH} characters`
-    )
-    .refine(val => val.trim().length > 0, {
-      message: "Question label cannot be empty or whitespace only"
-    }),
+  label: BilingualTextSchema.refine(
+    (val) => {
+      const textToCheck = typeof val === "string" ? val : val.en;
+      return textToCheck.trim().length >= MIN_LABEL_LENGTH && textToCheck.trim().length <= MAX_LABEL_LENGTH;
+    },
+    {
+      message: `Question label must be between ${MIN_LABEL_LENGTH} and ${MAX_LABEL_LENGTH} characters`
+    }
+  ),
 
   required: z.boolean().optional().default(false),
 
   multiple: z.boolean().optional().default(false),
 
   choices: z
-    .array(
-      z
-        .string()
-        .trim()
-        .min(1, "Choice must not be empty")
-        .max(
-          MAX_CHOICE_LENGTH,
-          `Choice must not exceed ${MAX_CHOICE_LENGTH} characters`
-        )
-        .refine(val => val.trim().length > 0, {
-          message: "Choice cannot be whitespace only"
-        })
-    )
+    .array(BilingualTextSchema)
     .min(MIN_CHOICES, `Each question must have at least ${MIN_CHOICES} choices`)
     .refine(
       (choices) => {
-        // Check for duplicate choices (case-insensitive)
-        const lowerCaseChoices = choices.map(c => c.toLowerCase().trim());
+        // Check for duplicate choices (case-insensitive) - only check English text
+        const lowerCaseChoices = choices.map(c =>
+          (typeof c === "string" ? c : c.en).toLowerCase().trim()
+        );
         const uniqueChoices = new Set(lowerCaseChoices);
         return uniqueChoices.size === lowerCaseChoices.length;
       },
@@ -88,13 +84,15 @@ export const SurveyQuestionSchema = z.object({
 
 export const SurveyFileSchema = z
   .object({
-    title: z
-      .string()
-      .trim()
-      .min(MIN_TITLE_LENGTH, "Section title must be at least 2 characters")
-      .refine(val => val.trim().length > 0, {
-        message: "Section title cannot be empty or whitespace only"
-      }),
+    title: BilingualTextSchema.refine(
+      (val) => {
+        const textToCheck = typeof val === "string" ? val : val.en;
+        return textToCheck.trim().length >= MIN_TITLE_LENGTH;
+      },
+      {
+        message: "Section title must be at least 2 characters"
+      }
+    ),
 
     label: z
       .string()
@@ -119,8 +117,10 @@ export const SurveyFileSchema = z
       .min(1, "Survey section must contain at least one question")
       .refine(
         (questions) => {
-          // Check for duplicate question labels within the section
-          const labels = questions.map(q => q.label.toLowerCase().trim());
+          // Check for duplicate question labels within the section - only check English text
+          const labels = questions.map(q =>
+            (typeof q.label === "string" ? q.label : q.label.en).toLowerCase().trim()
+          );
           const uniqueLabels = new Set(labels);
           return uniqueLabels.size === labels.length;
         },

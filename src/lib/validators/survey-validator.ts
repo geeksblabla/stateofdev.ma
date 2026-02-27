@@ -85,13 +85,15 @@ export function validateAllSurveyFiles(surveyDir: string): ValidationReport {
       // Check for multiple "Other" options in questions (warning only)
       const otherWarnings: ValidationError[] = [];
       validatedData.questions.forEach((question, index) => {
-        const otherChoices = question.choices.filter(c =>
-          /^other$/i.test(c.trim())
-        );
+        const otherChoices = question.choices.filter((c) => {
+          const text = typeof c === "string" ? c : c.en;
+          return /^other$/i.test(text.trim());
+        });
         if (otherChoices.length > 1) {
+          const otherTexts = otherChoices.map(c => typeof c === "string" ? c : c.en);
           otherWarnings.push({
             severity: ValidationSeverity.WARNING,
-            message: `Question ${index + 1} has multiple "Other" variations: ${otherChoices.join(", ")}`,
+            message: `Question ${index + 1} has multiple "Other" variations: ${otherTexts.join(", ")}`,
             path: `questions[${index}].choices`
           });
         }
@@ -100,7 +102,8 @@ export function validateAllSurveyFiles(surveyDir: string): ValidationReport {
       // Check for question mark style issues (warning only)
       const questionMarkWarnings: ValidationError[] = [];
       validatedData.questions.forEach((question, index) => {
-        const questionMarks = (question.label.match(/\?/g) || []).length;
+        const labelText = typeof question.label === "string" ? question.label : question.label.en;
+        const questionMarks = (labelText.match(/\?/g) || []).length;
 
         if (questionMarks > 1) {
           questionMarkWarnings.push({
@@ -112,7 +115,7 @@ export function validateAllSurveyFiles(surveyDir: string): ValidationReport {
         }
         else if (
           questionMarks === 1
-          && !question.label.trim().endsWith("?")
+          && !labelText.trim().endsWith("?")
         ) {
           questionMarkWarnings.push({
             severity: ValidationSeverity.WARNING,

@@ -32,7 +32,7 @@ function setup(questions: SurveyQuestionsYamlFile[]) {
   return {
     user: userEvent.setup(),
     ...render(
-      <SurveyProvider sections={questions}>
+      <SurveyProvider sections={questions} lang="en">
         <SurveyForm />
       </SurveyProvider>
     )

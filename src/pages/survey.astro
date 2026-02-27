@@ -3,6 +3,7 @@ import { getAuth } from "firebase-admin/auth";
 import BaseLayout from "@/components/layout.astro";
 import SurveyForm from "@/components/survey/index.astro";
 import { getActiveApp } from "@/lib/firebase/server";
+import { getCurrentLang } from "@/lib/utils/language";
 
 export const prerender = false;
 
@@ -22,8 +23,11 @@ const user = await auth.getUser(decodedCookie.uid);
 if (!user) {
   return Astro.redirect("/before-start");
 }
+
+// Extract language from URL
+const lang = getCurrentLang(Astro.url);
 ---
 
-<BaseLayout>
-  <SurveyForm />
+<BaseLayout lang={lang}>
+  <SurveyForm lang={lang} />
 </BaseLayout>

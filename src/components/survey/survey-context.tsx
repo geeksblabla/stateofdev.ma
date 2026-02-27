@@ -1,10 +1,20 @@
 import type { ReactNode } from "react";
 import type { SurveyContext } from "./survey-machine";
+import type { Lang } from "@/constants/translations";
 import type { SurveyQuestionsYamlFile } from "@/lib/validators/survey-schema";
 import { createActorContext } from "@xstate/react";
-import { useEffect } from "react";
+import { createContext, useContext, useEffect, useMemo } from "react";
+import { translateSurveyFile } from "@/lib/utils/translate-question";
 import { createSurveyInspector } from "./survey-inspector";
 import { surveyMachine } from "./survey-machine";
+
+// Create a context for the language
+const LangContext = createContext<Lang>("en");
+
+// Hook to access the language from any child component
+export function useLang(): Lang {
+  return useContext(LangContext);
+}
 
 const STORAGE_KEY = "survey-state";
 const STORAGE_VERSION = 1;
@@ -72,28 +82,37 @@ export const SurveyMachineContext = createActorContext(surveyMachine);
 
 interface SurveyProviderProps {
   sections: SurveyQuestionsYamlFile[];
+  lang: Lang;
   children: ReactNode;
 }
 
-export function SurveyProvider({ sections, children }: SurveyProviderProps) {
+export function SurveyProvider({ sections, lang, children }: SurveyProviderProps) {
   const persisted = loadPersistedState();
 
+  // Translate all sections to the selected language
+  const translatedSections = useMemo(
+    () => sections.map(section => translateSurveyFile(section, lang)),
+    [sections, lang]
+  );
+
   return (
-    <SurveyMachineContext.Provider
-      options={{
-        input: {
-          sections,
-          persisted: persisted || undefined
-        },
-        inspect:
-          import.meta.env.DEV && import.meta.env.MODE !== "test"
-            ? createSurveyInspector()
-            : undefined
-      }}
-    >
-      <PersistenceHandler />
-      {children}
-    </SurveyMachineContext.Provider>
+    <LangContext.Provider value={lang}>
+      <SurveyMachineContext.Provider
+        options={{
+          input: {
+            sections: translatedSections,
+            persisted: persisted || undefined
+          },
+          inspect:
+            import.meta.env.DEV && import.meta.env.MODE !== "test"
+              ? createSurveyInspector()
+              : undefined
+        }}
+      >
+        <PersistenceHandler />
+        {children}
+      </SurveyMachineContext.Provider>
+    </LangContext.Provider>
   );
 }
 

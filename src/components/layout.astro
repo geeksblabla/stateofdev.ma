@@ -9,9 +9,10 @@ interface Props {
   title?: string;
   year?: string;
   description?: string;
+  lang?: "en" | "ar";
 }
 
-const { title: titleProp, year, description: descriptionProp } = Astro.props;
+const { title: titleProp, year, description: descriptionProp, lang = "en" } = Astro.props;
 const title = titleProp || "State Of Dev In Morocco 🇲🇦";
 const description
   = descriptionProp
@@ -153,7 +154,7 @@ const description
 
   <body>
     <Header />
-    <main>
+    <main dir={lang === "ar" ? "rtl" : "ltr"}>
       <slot />
     </main>
     <Footer />
