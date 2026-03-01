@@ -1,0 +1,263 @@
+---
+import { getAuth } from "firebase-admin/auth";
+import { getFirestore } from "firebase-admin/firestore";
+import BaseLayout from "@/components/layout.astro";
+import { getActiveApp } from "@/lib/firebase/server";
+import { validateSurveyFile } from "@/lib/validators/survey-schema";
+import myResponsesScriptUrl from "@/scripts/my-responses.client?url";
+import profileQuestionsRaw from "@/survey/1-profile.yml";
+import learningQuestionsRaw from "@/survey/2-learning-and-education.yml";
+import workQuestionsRaw from "@/survey/3-work.yml";
+import aiQuestionsRaw from "@/survey/4-ai.yml";
+import techQuestionsRaw from "@/survey/5-tech.yml";
+import communityQuestionsRaw from "@/survey/6-community.yml";
+
+export const prerender = false;
+
+// ---------------------------------------------------------------------------
+// 1. Authenticate user based on the existing anonymous session cookie
+// ---------------------------------------------------------------------------
+
+const app = getActiveApp();
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+if (!Astro.cookies.has("__session")) {
+  return Astro.redirect("/before-start");
+}
+
+const sessionCookie = Astro.cookies.get("__session")?.value;
+if (!sessionCookie) {
+  return Astro.redirect("/before-start");
+}
+
+const decoded = await auth.verifySessionCookie(sessionCookie);
+const user = await auth.getUser(decoded.uid);
+if (!user) {
+  return Astro.redirect("/before-start");
+}
+
+const userId = user.uid;
+
+// ---------------------------------------------------------------------------
+// 2. Load this user's answers from Firestore
+// ---------------------------------------------------------------------------
+
+const RESULTS_COLLECTION = "results";
+
+const docRef = db.collection(RESULTS_COLLECTION).doc(userId);
+const snapshot = await docRef.get();
+
+if (!snapshot.exists) {
+  return Astro.redirect("/survey");
+}
+
+const rawData = snapshot.data() as Record<string, unknown>;
+
+const METADATA_KEYS = new Set([
+  "creationTime",
+  "lastSignInTime",
+  "lastUpdated",
+  "userId"
+]);
+
+const answers = Object.fromEntries(
+  Object.entries(rawData).filter(([key]) => !METADATA_KEYS.has(key))
+) as Record<string, number | number[] | string | null>;
+
+// ---------------------------------------------------------------------------
+// 3. Load survey definition from YAML
+// ---------------------------------------------------------------------------
+
+const sectionsRaw = [
+  validateSurveyFile(profileQuestionsRaw, "1-profile.yml"),
+  validateSurveyFile(learningQuestionsRaw, "2-learning-and-education.yml"),
+  validateSurveyFile(workQuestionsRaw, "3-work.yml"),
+  validateSurveyFile(aiQuestionsRaw, "4-ai.yml"),
+  validateSurveyFile(techQuestionsRaw, "5-tech.yml"),
+  validateSurveyFile(communityQuestionsRaw, "6-community.yml")
+];
+
+// ---------------------------------------------------------------------------
+// 4. Helpers: map stored indices -> human-readable labels
+// ---------------------------------------------------------------------------
+
+interface QuestionDefinition {
+  label: string;
+  choices?: string[];
+  multiple?: boolean;
+}
+
+function normalizeIndices(value: unknown): number[] {
+  if (Array.isArray(value)) {
+    return value
+      .map(x => (typeof x === "number" ? x : Number(x)))
+      .filter(x => Number.isFinite(x));
+  }
+
+  if (typeof value === "number") {
+    return [value];
+  }
+
+  return [];
+}
+
+function formatAnswer(
+  questionKey: string,
+  question: QuestionDefinition
+): string {
+  const value = answers[questionKey];
+
+  if (value === null || typeof value === "undefined") {
+    return "Not answered";
+  }
+
+  const { choices, multiple } = question;
+
+  if (!choices || !Array.isArray(choices)) {
+    return String(value);
+  }
+
+  if (multiple) {
+    const indices = normalizeIndices(value);
+    const labels = indices
+      .map(i => choices[i])
+      .filter((x): x is string => Boolean(x));
+
+    const otherKey = `${questionKey}-other`;
+    const otherValue = answers[otherKey];
+
+    if (typeof otherValue === "string" && otherValue.trim()) {
+      labels.push(`Other: ${otherValue.trim()}`);
+    }
+
+    return labels.length ? labels.join(", ") : "Not answered";
+  }
+
+  const indices = normalizeIndices(value);
+  const idx = indices[0];
+
+  if (typeof idx === "number" && typeof choices[idx] === "string") {
+    let base = choices[idx];
+
+    const otherKey = `${questionKey}-other`;
+    const otherValue = answers[otherKey];
+
+    if (typeof otherValue === "string" && otherValue.trim()) {
+      base += ` – Other: ${otherValue.trim()}`;
+    }
+
+    return base;
+  }
+
+  return String(value);
+}
+
+// ---------------------------------------------------------------------------
+// 5. Build a view model used by both UI and PDF generator
+// ---------------------------------------------------------------------------
+
+export interface ViewQuestionItem {
+  id: string;
+  label: string;
+  answer: string;
+}
+
+export interface ViewSection {
+  id: string;
+  name: string;
+  description?: string;
+  items: ViewQuestionItem[];
+}
+
+const viewSections: ViewSection[] = sectionsRaw.map((section: any) => ({
+  id: section.label,
+  name: section.name,
+  description: section.description,
+  items: section.questions.map((q: QuestionDefinition, index: number) => {
+    const questionId = `${section.label}-q-${index}`;
+
+    return {
+      id: questionId,
+      label: q.label,
+      answer: formatAnswer(questionId, q)
+    };
+  })
+}));
+
+const submittedAt
+  = (rawData.lastUpdated as string | undefined)
+    ?? (rawData.creationTime as string | undefined)
+    ?? null;
+---
+
+<BaseLayout title="My survey report - StateOfDev.ma">
+  <main
+    class="mx-auto flex w-full max-w-4xl flex-col gap-8 px-4 pb-16 pt-8 sm:px-6 lg:px-8"
+  >
+    <!-- Screen heading + action -->
+    <section>
+      <h1 class="text-2xl font-semibold tracking-tight">Your survey report</h1>
+      <p class="mt-2 text-sm text-muted-foreground">
+        This page shows the answers you submitted to the State of Dev in Morocco
+        survey. You can download a PDF copy for your own records.
+      </p>
+
+      <div class="mt-4 flex flex-wrap items-center gap-3">
+        <button
+          id="download-pdf"
+          type="button"
+          class="inline-flex items-center justify-center rounded border border-border px-3 py-2 text-xs font-medium uppercase tracking-[0.16em] hover:bg-primary hover:text-primary-foreground transition-colors"
+        >
+          Download my report (PDF)
+        </button>
+
+        <p id="pdf-error" class="hidden text-xs text-destructive">
+          Something went wrong while generating the PDF. Please retry or check
+          the console.
+        </p>
+      </div>
+    </section>
+
+    <!-- On-screen summary of answers -->
+    <section class="space-y-8">
+      {
+        viewSections.map(section => (
+          <div class="rounded border border-border/40 bg-card/40 px-4 py-4">
+            <h2 class="text-lg font-semibold">{section.name}</h2>
+            {section.description && (
+              <p class="mt-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                {section.description}
+              </p>
+            )}
+
+            <dl class="mt-4 space-y-4">
+              {section.items.map((item: ViewQuestionItem) => (
+                <div class="border-t border-border/30 pt-3 first:border-t-0 first:pt-0">
+                  <dt class="text-sm font-medium">{item.label}</dt>
+                  <dd class="mt-1 text-sm text-muted-foreground">
+                    {item.answer}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ))
+      }
+    </section>
+
+    <!-- JSON payload for the client-side PDF generator -->
+    <div
+      id="my-responses-data"
+      data-payload={JSON.stringify({
+        userId,
+        submittedAt,
+        sections: viewSections
+      })}
+    >
+    </div>
+
+    <!-- Client-side PDF generation (external module script) -->
+    <script type="module" src={myResponsesScriptUrl}></script>
+  </main>
+</BaseLayout>
