@@ -1,0 +1,103 @@
+---
+title: Profile
+position: 2
+---
+
+# Profile
+
+The objective of this first section is to get insights into the profile and the skills of the people working in Software Engineering in Morocco and abroad. The vast majority of respondents (88%) are men. Most are young developers aged 18 to 34 (93%), primarily based in Casablanca-Settat and Rabat-Salé-Kénitra, with a growing share working or planning to work abroad.
+
+## Gender
+
+Although the presence of women in the IT sector is slowly increasing, the field remains highly dominated by men — 88.2% male and 11.8% female among the 1,007 respondents who answered this question.
+
+<Chart id="profile-q-0" pie title={false} />
+
+## Age
+
+Over 93% of respondents are aged between 18 and 34 years old, indicating a predominantly junior to mid-level talent pool with a strong demand for entry-level and intermediate positions.
+
+<Chart id="profile-q-1" title={false} />
+
+## Location
+
+Casablanca-Settat leads with 37.1% of respondents, followed by Rabat-Salé-Kénitra at 17.5%. Europe-based respondents account for 8.4%, reflecting a notable diaspora presence.
+
+<Chart id="profile-q-2" title={false} />
+
+## Roles
+
+Full-stack development dominates at 40.1%, making it by far the most common role. Students coding professionally represent 14.3%, and back-end developers come in third at 10.1%. AI engineering emerges as a distinct category at 3.2%.
+
+<Chart id="profile-q-3" title={false} />
+
+## Highest degree
+
+Nearly half of respondents (47.9%) hold a Bac+5 (Master's equivalent). Coding schools such as 1337, YouCode, and Solicode represent 16.6% of education backgrounds, reflecting their growing footprint in the ecosystem.
+
+<Chart id="profile-q-4" pie title={false} />
+
+## Years coding professionally
+
+The majority of participants have limited professional coding experience: 15% have none, 19.1% have less than a year, and 26.7% have 1–2 years. Together, these three groups make up over 60% of respondents.
+
+<Chart id="profile-q-5" title={false} />
+
+## Coding as a hobby
+
+87.2% of respondents code outside of work or studies. The most common motivations are fun or learning (59%), portfolio/career building (36.5%), and freelance or product work (27%).
+
+<Chart id="profile-q-6" title={false} />
+
+## Plans to work abroad
+
+Close to 40% of respondents plan to work outside Morocco within the next 24 months (13.9% within 12 months, 24.6% within 24 months). 30.8% are still hesitating, and only 19.6% have no plans at all.
+
+<Tabs>
+  <TabItem title="2025">
+    <Chart
+      id="profile-q-7"
+      year={2025}
+      condition={(v) => v["profile-q-7"] !== 3}
+      title={false}
+      showEmptyOptions={false}
+    />
+  </TabItem>
+  <TabItem title="2024">
+    <Chart
+      id="profile-q-7"
+      year={2024}
+      condition={(v) => v["profile-q-7"] !== 3}
+      title={false}
+      showEmptyOptions={false}
+    />
+  </TabItem>
+  <TabItem title="2023">
+    <Chart
+      id="profile-q-7"
+      year={2023}
+      condition={(v) => v["profile-q-7"] !== 3}
+      title={false}
+      showEmptyOptions={false}
+    />
+  </TabItem>
+  <TabItem title="2022">
+    <Chart
+      id="profile-q-7"
+      year={2022}
+      condition={(v) => v["profile-q-7"] !== 3}
+      title={false}
+      showEmptyOptions={false}
+    />
+  </TabItem>
+</Tabs>
+
+## Plans to come back to Morocco
+
+Among the 112 respondents currently working outside Morocco, most are not planning a return soon: 26.2% plan to stay abroad, 40.2% would return but not in the near future, and 22.4% are still hesitating.
+
+<Chart
+  id="profile-q-8"
+  condition={(v) => v["profile-q-7"] === 3}
+  title={false}
+/>

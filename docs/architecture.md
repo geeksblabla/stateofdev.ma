@@ -66,3 +66,4 @@ Utility scripts.
 
 - `export-results.ts` - Fetch all Firestore responses and generate results.json
 - `generate-questions.ts` - Parse YAML files and create questions.json
+- `query-results.ts` - CLI to query and filter survey results (see [docs/query-results.md](./query-results.md))

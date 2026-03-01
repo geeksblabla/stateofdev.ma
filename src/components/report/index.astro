@@ -3,6 +3,7 @@ import type { Year } from "@/components/chart/data";
 import Context from "@astro-utils/context/Context.astro";
 import Chart from "@/components/chart/chart.astro";
 import Hero from "./hero.astro";
+import New from "./new-badge.astro";
 import TabItem from "./tab-item.astro";
 
 import Tabs from "./tabs.astro";
@@ -26,6 +27,7 @@ const headings = docs
   .filter(heading => heading.depth <= 3);
 const customComponents = {
   Chart,
+  New,
   TabItem,
   Tabs
 };
