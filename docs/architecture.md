@@ -23,7 +23,6 @@ Astro server actions (API endpoints).
 
 - `init-session.ts` - Initialize anonymous Firebase session with CAPTCHA validation
 - `submit-answers.ts` - Validate session and save answers to Firestore
-- `remove-session.ts` - Clean up session data
 - `index.ts` - Exports all actions as `server` object
 
 ### `/src/lib/firebase/`
@@ -59,7 +58,6 @@ Astro pages (hybrid rendering).
 - `thanks.astro` - Post-survey thank you page with social sharing
 - `{year}.astro` - Results pages for each survey year
 - `playground.astro` - Interactive data exploration with filters
-- `/api/` - API endpoints
 
 ### `/scripts/`
 Utility scripts.

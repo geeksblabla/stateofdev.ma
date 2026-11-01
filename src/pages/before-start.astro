@@ -84,10 +84,8 @@ const errorMessage = document.querySelector(
   "#error-message"
 ) as HTMLParagraphElement;
 let captchaToken = "";
-// @ts-expect-error - Turnstile callback is added to window dynamically
 window.onloadTurnstileCallback = function () {
-  // @ts-expect-error - Turnstile is added to window dynamically by Cloudflare script
-  window.turnstile.render("#captcha-container", {
+  window.turnstile?.render("#captcha-container", {
     sitekey: "0x4AAAAAAAkS5usDr1HhE7Gm",
     callback(token: string) {
       console.log(`Challenge Success ${token}`);
@@ -103,6 +101,9 @@ function handleError() {
   startButton.innerHTML = "Start Survey";
   startButton.disabled = false;
   startButton.classList.remove("opacity-50", "cursor-not-allowed");
+  // Turnstile tokens are single-use; get a fresh one for the retry
+  captchaToken = "";
+  window.turnstile?.reset();
 }
 
 startButton.addEventListener("click", async () => {

@@ -51,7 +51,7 @@ StateOfDev.ma is an annual survey website for developers in Morocco by GeeksBlaB
 
 - `/survey/` - YAML question definitions (format: `{position}-{section-name}.yml`)
 - `/results/{year}/` - Exported results + metadata (results.json, questions.json)
-- `/src/actions/` - Astro server actions (init-session, submit-answers, remove-session)
+- `/src/actions/` - Astro server actions (init-session, submit-answers)
 - `/src/lib/firebase/` - Firebase client/server/database operations
 - `/src/components/survey/` - Survey form components
 - `/src/components/chart/` - Results visualization
