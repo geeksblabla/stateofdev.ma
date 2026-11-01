@@ -5,6 +5,7 @@ import { getAuth } from "firebase-admin/auth";
 import { isCaptchaValid } from "@/lib/captcha";
 import { initUserSubmission } from "@/lib/firebase/database";
 import { getActiveApp } from "@/lib/firebase/server";
+import { SESSION_COOKIE } from "@/lib/firebase/session";
 
 export const initSession = defineAction({
   accept: "json",
@@ -45,12 +46,6 @@ export const initSession = defineAction({
     try {
       const decodedToken = await auth.verifyIdToken(idToken);
       const user = await auth.getUser(decodedToken.uid);
-      if (!user) {
-        throw new ActionError({
-          code: "UNAUTHORIZED",
-          message: "User not found"
-        });
-      }
       await initUserSubmission(user);
       console.log("user session created");
     }
@@ -70,7 +65,7 @@ export const initSession = defineAction({
       });
 
       // set session cookie
-      cookies.set("__session", sessionCookie, {
+      cookies.set(SESSION_COOKIE, sessionCookie, {
         path: "/"
       });
       return {

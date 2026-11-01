@@ -32,6 +32,7 @@ Firebase integration.
 - `server.ts` - Firebase Admin SDK initialization (supports both `import.meta.env` and `process.env`)
 - `client.ts` - Client-side Firebase SDK initialization
 - `database.ts` - Firestore operations (save/export results)
+- `session.ts` - Verify `__session` cookie and return its uid
 
 ### `/src/components/survey/`
 Survey form components.

@@ -1,25 +1,11 @@
 ---
-import { getAuth } from "firebase-admin/auth";
 import BaseLayout from "@/components/layout.astro";
 import SurveyForm from "@/components/survey/index.astro";
-import { getActiveApp } from "@/lib/firebase/server";
+import { getSessionUid } from "@/lib/firebase/session";
 
 export const prerender = false;
 
-const auth = getAuth(getActiveApp());
-
-/* Check current session */
-if (!Astro.cookies.has("__session")) {
-  return Astro.redirect("/before-start");
-}
-const sessionCookie = Astro.cookies.get("__session")?.value;
-if (!sessionCookie) {
-  return Astro.redirect("/before-start");
-}
-const decodedCookie = await auth.verifySessionCookie(sessionCookie);
-const user = await auth.getUser(decodedCookie.uid);
-
-if (!user) {
+if (!(await getSessionUid(Astro.cookies))) {
   return Astro.redirect("/before-start");
 }
 ---
