@@ -8,20 +8,27 @@ interface CaptchaResponse {
   "hostname"?: string;
 }
 
-export async function isCaptchaValid(token: string): Promise<boolean> {
+// Fail closed: captcha is required unless explicitly disabled
+export async function passesCaptcha(token?: string): Promise<boolean> {
+  if (import.meta.env.CAPTCHA_ENABLED === "false")
+    return true;
+  if (!token)
+    return false;
   try {
     const response = await fetch(CLOUDFLARE_CAPTCHA_URL, {
       method: "POST",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        secret: String(import.meta.env.PUBLIC_TURNSTILE_SECRET_KEY ?? ""),
+        secret: import.meta.env.TURNSTILE_SECRET_KEY ?? "",
         response: token
       })
     });
 
     const data = await response.json() as CaptchaResponse;
+    if (!data.success)
+      console.error("Captcha rejected:", data["error-codes"]);
     return data.success ?? false;
   }
   catch (error) {

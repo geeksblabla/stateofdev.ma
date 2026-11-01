@@ -2,7 +2,7 @@
 import { ActionError, defineAction } from "astro:actions";
 import { z } from "astro:schema";
 import { getAuth } from "firebase-admin/auth";
-import { isCaptchaValid } from "@/lib/captcha";
+import { passesCaptcha } from "@/lib/captcha";
 import { initUserSubmission } from "@/lib/firebase/database";
 import { getActiveApp } from "@/lib/firebase/server";
 
@@ -14,13 +14,6 @@ export const initSession = defineAction({
   }),
   handler: async ({ idToken, captchaToken }, { cookies }) => {
     const auth = getAuth(getActiveApp());
-    /* Validate inputs */
-    if (!captchaToken && import.meta.env.CAPTCHA_ENABLED === "true") {
-      throw new ActionError({
-        code: "UNAUTHORIZED",
-        message: "Captcha token is required"
-      });
-    }
     if (!idToken) {
       throw new ActionError({
         code: "UNAUTHORIZED",
@@ -28,20 +21,13 @@ export const initSession = defineAction({
       });
     }
 
-    /* Validate captcha */
-    if (captchaToken && import.meta.env.CAPTCHA_ENABLED === "true") {
-      console.log("checking captcha ");
-
-      const isValid = await isCaptchaValid(captchaToken);
-      if (!isValid) {
-        throw new ActionError({
-          code: "UNAUTHORIZED",
-          message: "Invalid captcha"
-        });
-      }
+    if (!(await passesCaptcha(captchaToken))) {
+      throw new ActionError({
+        code: "UNAUTHORIZED",
+        message: "Invalid captcha"
+      });
     }
 
-    /* Verify id token and save user to database */
     try {
       const decodedToken = await auth.verifyIdToken(idToken);
       const user = await auth.getUser(decodedToken.uid);

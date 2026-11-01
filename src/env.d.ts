@@ -22,11 +22,19 @@ interface ImportMetaEnv {
   readonly PUBLIC_FIREBASE_APP_ID: string;
 
   // captcha
-  readonly RECAPTCHA_ENABLED: boolean;
-  readonly RECAPTCHA_SITE_KEY: string;
-  readonly RECAPTCHA_SECRET_KEY: string;
+  readonly CAPTCHA_ENABLED: string;
+  readonly TURNSTILE_SECRET_KEY: string;
 }
 
 interface ImportMeta {
   readonly env: ImportMetaEnv;
+}
+
+// Set by the Cloudflare Turnstile script loaded in before-start.astro
+interface Window {
+  onloadTurnstileCallback?: () => void;
+  turnstile?: {
+    render: (container: string, options: Record<string, unknown>) => void;
+    reset: () => void;
+  };
 }

@@ -56,10 +56,9 @@ FIREBASE_TOKEN_URI=
 FIREBASE_AUTH_CERT_URL=
 FIREBASE_CLIENT_CERT_URL=
 
-# captcha keys (optional) make sure to set it to false in dev mode
+# captcha: required in prod; set CAPTCHA_ENABLED=false for local dev
 CAPTCHA_ENABLED=false
-CAPTCHA_SITE_KEY=
-CAPTCHA_SECRET_KEY=
+TURNSTILE_SECRET_KEY=
 
 ```
 
@@ -85,8 +84,8 @@ The survey form submission process is designed to be secure, anonymous, and user
    - A CAPTCHA is displayed to prevent spam submissions(using Cloudflare Turnstile).
    - When the user clicks "Start":
      - An anonymous Firebase authentication session is created.
-     - The session token and CAPTCHA token are sent to the server (actions/initialize-session.ts).
-     - The server (actions/initialize-session.ts) validates the Firebase session and the CAPTCHA, initializes the session, and sets a session cookie.
+     - The session token and CAPTCHA token are sent to the server (actions/init-session.ts).
+     - The server (actions/init-session.ts) validates the Firebase session and the CAPTCHA, initializes the session, and sets a session cookie.
      - Upon successful initialization, the user is redirected to the `/survey` page.
 
 2. **Survey Page**
