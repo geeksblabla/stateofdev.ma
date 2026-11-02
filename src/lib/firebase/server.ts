@@ -1,5 +1,6 @@
 import type { ServiceAccount } from "firebase-admin";
 import { cert, getApps, initializeApp } from "firebase-admin/app";
+import { getAuth } from "firebase-admin/auth";
 
 const activeApps = getApps();
 let serviceAccount = {};
@@ -48,3 +49,4 @@ function initApp() {
 
 export const app = activeApps.length === 0 ? initApp() : activeApps[0];
 export const getActiveApp = () => app;
+export const auth = getAuth(app);

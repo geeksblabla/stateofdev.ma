@@ -1,11 +1,10 @@
 /* eslint-disable no-console */
 import { ActionError, defineAction } from "astro:actions";
 import { z } from "astro:schema";
-import { getAuth } from "firebase-admin/auth";
 import { isCaptchaValid } from "@/lib/captcha";
 import { initUserSubmission } from "@/lib/firebase/database";
-import { getActiveApp } from "@/lib/firebase/server";
-import { SESSION_COOKIE } from "@/lib/firebase/session";
+import { auth } from "@/lib/firebase/server";
+import { setSessionCookie } from "@/lib/firebase/session";
 
 export const initSession = defineAction({
   accept: "json",
@@ -14,7 +13,6 @@ export const initSession = defineAction({
     captchaToken: z.string().optional()
   }),
   handler: async ({ idToken, captchaToken }, { cookies }) => {
-    const auth = getAuth(getActiveApp());
     /* Validate inputs */
     if (!captchaToken && import.meta.env.CAPTCHA_ENABLED === "true") {
       throw new ActionError({
@@ -58,25 +56,16 @@ export const initSession = defineAction({
     }
 
     try {
-      // Create and set session cookie
-      const fiveDays = 60 * 60 * 24 * 5 * 1000;
-      const sessionCookie = await auth.createSessionCookie(idToken, {
-        expiresIn: fiveDays
-      });
-
-      // set session cookie
-      cookies.set(SESSION_COOKIE, sessionCookie, {
-        path: "/"
-      });
+      await setSessionCookie(cookies, idToken);
       return {
         success: true
       };
     }
     catch (error) {
-      console.error("Error signing in:", error);
+      console.error("Error creating session cookie:", error);
       throw new ActionError({
-        code: "UNAUTHORIZED",
-        message: "Error signing in"
+        code: "INTERNAL_SERVER_ERROR",
+        message: "Error creating session"
       });
     }
   }

@@ -23,7 +23,6 @@ Astro server actions (API endpoints).
 
 - `init-session.ts` - Initialize anonymous Firebase session with CAPTCHA validation
 - `submit-answers.ts` - Validate session and save answers to Firestore
-- `remove-session.ts` - Clean up session data
 - `index.ts` - Exports all actions as `server` object
 
 ### `/src/lib/firebase/`
@@ -32,7 +31,7 @@ Firebase integration.
 - `server.ts` - Firebase Admin SDK initialization (supports both `import.meta.env` and `process.env`)
 - `client.ts` - Client-side Firebase SDK initialization
 - `database.ts` - Firestore operations (save/export results)
-- `session.ts` - Verify `__session` cookie and return its uid
+- `session.ts` - Set and verify the `__session` cookie
 
 ### `/src/components/survey/`
 Survey form components.
@@ -57,10 +56,9 @@ Astro pages (hybrid rendering).
 - `home.astro` - Landing page
 - `before-start.astro` - Pre-survey CAPTCHA and session initialization
 - `survey.astro` - Survey form (protected by session check)
-- `thanks.astro` - Post-survey thank you page with social sharing
+- `thanks.astro` - Post-survey thank you page with social sharing (protected by session check)
 - `{year}.astro` - Results pages for each survey year
 - `playground.astro` - Interactive data exploration with filters
-- `/api/` - API endpoints
 
 ### `/scripts/`
 Utility scripts.
