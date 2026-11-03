@@ -47,9 +47,9 @@ export function Choice({
       >
       </label>
       <div
-        className="absolute pointer-events-none left-4 h-5 w-5 border-2 border-input bg-muted
+        className={`absolute pointer-events-none left-4 h-5 w-5 border-2 border-input bg-muted ${multiple ? "" : "rounded-full"}
         peer-checked:border-primary peer-checked:bg-primary peer-checked:shadow-md peer-checked:shadow-primary/50
-        transition-all duration-200"
+        transition-all duration-200`}
       >
       </div>
       <span
