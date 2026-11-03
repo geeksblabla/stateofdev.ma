@@ -18,12 +18,40 @@ questions:
       - Student
       - Other
 
+  # routing question: salary + employer questions below depend on it (keep choice order)
+  - label: Which best describes your current work setup?
+    required: true
+    choices:
+      - Employee of a company in Morocco (incl. Moroccan offices of foreign groups)
+      - Employee working remotely for a foreign company, living in Morocco
+      - Employee living and working abroad
+      - Freelancer with mostly Moroccan clients
+      - Freelancer with mostly foreign clients
+      - Founder / running my own company
+      - Not working right now (student, looking for work, other)
+
+  - label: What type of contract do you have?
+    required: false
+    showIf:
+      question: work-q-1
+      in: [0, 1]
+    choices:
+      - CDI
+      - CDD
+      - ANAPEC / insertion contract
+      - Through an intermediary (portage, EOR, staffing agency)
+      - No formal contract
+      - Other
+
   - label: How often do you work overtime or beyond the normal time expectation of your job?
     required: false
+    showIf:
+      question: work-q-1
+      notEquals: 6
     choices:
       - Never
-      - "Rarely: 1-2 days per year or less "
-      - "Occasionally: 1-2 days per quarter but less than monthly "
+      - "Rarely: 1-2 days per year or less"
+      - "Occasionally: 1-2 days per quarter but less than monthly"
       - "Sometimes: 1-2 days per month but less than weekly"
       - "Often: 1-2 days per week or more"
       - "Very often: 3-5 days per week"
@@ -31,6 +59,9 @@ questions:
 
   - label: How do you feel about your job?
     required: false
+    showIf:
+      question: work-q-1
+      notEquals: 6
     choices:
       - Very Unsatisfied
       - Slightly Unsatisfied
@@ -46,12 +77,13 @@ questions:
       - Up to 6 months
       - Up to 1 year
       - More than 1 year
+      - I haven't graduated yet
 
-  - label: "If you are a full time employee in Morocco(CDI), Your NET salary range per month in MAD is:"
+  - label: "Your NET monthly salary in MAD (or MAD equivalent if paid in another currency) is:"
     required: false
     showIf:
-      question: profile-q-7
-      notEquals: 3
+      question: work-q-1
+      in: [0, 1]
     choices:
       - < 4 000
       - 4 000 - 6 000
@@ -65,28 +97,15 @@ questions:
       - 20 000 - 22 000
       - 22 000 - 25 000
       - 25 000 - 30 000
-      - "> 30 000"
+      - 30 000 - 40 000
+      - 40 000 - 60 000
+      - "> 60 000"
 
-  - label: "If you are working as a freelancer in Morocco, Your salary range per day in MAD(TJM) is:"
+  - label: "Your gross salary range per year in USD is:"
     required: false
     showIf:
-      question: profile-q-7
-      notEquals: 3
-    choices:
-      - < 1 000
-      - 1 000 - 1 500
-      - 1 500 - 2 000
-      - 2 000 - 2 500
-      - 2 500 - 3 000
-      - 3 000 - 4 000
-      - 4 000 - 5 000
-      - "> 5 000"
-
-  - label: "If you are working full-time contract outside Morocco, Your gross salary range per year in USD is:"
-    required: false
-    showIf:
-      question: profile-q-7
-      equals: 3
+      question: work-q-1
+      equals: 2
     choices:
       - < 20 000
       - 20 000 - 25 000
@@ -101,20 +120,22 @@ questions:
       - 150 000 - 200 000
       - "> 200 000"
 
-  - label: "If you are working as a freelancer/contractor outside Morocco, Your daily gross wage in USD is:"
+  - label: "Your daily rate (TJM) in MAD (or MAD equivalent) is:"
     required: false
     showIf:
-      question: profile-q-7
-      equals: 3
+      question: work-q-1
+      in: [3, 4]
     choices:
-      - < 200
-      - 200 - 500
+      - < 500
       - 500 - 1 000
-      - 1 000 - 2 000
-      - 2 000 - 3 000
-      - 3 000 - 5 000
-      - 5 000 - 10 000
-      - "> 10 000"
+      - 1 000 - 1 500
+      - 1 500 - 2 000
+      - 2 000 - 2 500
+      - 2 500 - 3 000
+      - 3 000 - 4 000
+      - 4 000 - 5 000
+      - 5 000 - 7 500
+      - "> 7 500"
 
   - label: What characteristics would mostly influence your decision to choose one job offer over another?
     required: true
@@ -123,11 +144,10 @@ questions:
       - Languages, frameworks, and other technologies I'd be working on
       - Office environment or company culture
       - Flexible time or schedule
-      - Opportunities for professional development
+      - Opportunities for professional development (training, certifications)
       - Remote work options
       - How widely used or impactful my work output would be
       - The industry that I'd be working in
-      - Company paid training and certifications
       - Salary
       - Stock options/equity
       - Benefits package (health insurance, pension, etc.)
@@ -145,17 +165,38 @@ questions:
       - Company above 100 employees
       - Other
 
+  - label: What type of company do you currently work for?
+    required: false
+    showIf:
+      question: work-q-1
+      in: [0, 1, 2]
+    choices:
+      - IT services / consulting (ESN, SSII)
+      - Offshore / nearshore delivery center
+      - Startup
+      - Software product / SaaS company
+      - Bank, insurance or large corporate
+      - Public sector / government
+      - Other
+
   - label: What agile software development methodology do you use in your team, if any?
     required: false
+    showIf:
+      question: work-q-1
+      notEquals: 6
     choices:
       - Scrum
       - Kanban
       - XP
+      - SAFe
       - Other
       - None
 
   - label: What remote work arrangement does your current employer offer?
     required: false
+    showIf:
+      question: work-q-1
+      in: [0, 1, 2]
     choices:
       - Back to office
       - Full remote
@@ -171,17 +212,26 @@ questions:
   - label: Which sectors are you currently working in?
     multiple: true
     required: false
+    showIf:
+      question: work-q-1
+      notEquals: 6
     choices:
+      - IT services and consulting
+      - Software / SaaS
+      - Traditional banking and insurance
       - E-banking and fintech
       - Digital health and telemedicine
       - E-commerce and retail
       - Education and e-learning
       - Content creation and marketing
+      - Media
       - Cybersecurity
       - Supply chain and logistics
       - Smart cities and IoT
       - Autonomous vehicles
+      - Automotive and aerospace
       - Manufacturing and Industry 4.0
+      - Outsourcing / offshoring (BPO)
       - Environmental monitoring and sustainability
       - Legal tech and compliance
       - Human resources and talent management

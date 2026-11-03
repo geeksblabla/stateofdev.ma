@@ -4,6 +4,9 @@ position: 2
 questions:
   - label: Which areas did your formal education fail to adequately prepare you for?
     required: true
+    showIf:
+      question: profile-q-4
+      notEquals: 0
     multiple: true
     choices:
       - Modern tech stack (frameworks, DevOps, cloud platforms)
@@ -57,6 +60,7 @@ questions:
       - Other platforms
 
   - label: What are the biggest challenges you find in learning new technologies (pick 3)?
+    maxChoices: 3
     required: true
     multiple: true
     choices:

@@ -40,6 +40,7 @@ questions:
       - Other
 
   - label: What do you MOST need from the Moroccan tech community right now (pick 3 max)?
+    maxChoices: 3
     required: true
     multiple: true
     choices:
@@ -52,6 +53,7 @@ questions:
       - Other
 
   - label: What type of community content would be MOST valuable to you (pick 3 max)?
+    maxChoices: 3
     required: true
     multiple: true
     choices:
@@ -86,4 +88,6 @@ questions:
       - Reddit
       - Instagram
       - YouTube
+      - TikTok
+      - Facebook
       - Other
