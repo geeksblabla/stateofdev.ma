@@ -64,6 +64,8 @@ export function Question({
       if (question.multiple) {
         // Multiple choice: toggle in array
         const currentArray = Array.isArray(value) ? value : [];
+        if (checked && question.maxChoices && currentArray.length >= question.maxChoices)
+          return;
         const newValue = checked
           ? [...currentArray, choiceIndex]
           : currentArray.filter(v => v !== choiceIndex);
@@ -74,7 +76,7 @@ export function Question({
         onAnswerChange(choiceIndex);
       }
     },
-    [question.multiple, value, onAnswerChange]
+    [question.multiple, question.maxChoices, value, onAnswerChange]
   );
 
   const handleOthersChange = useCallback(
@@ -113,7 +115,11 @@ export function Question({
         </label>
 
         <span className="font-normal text-sm pl-2.5">
-          {question.multiple ? "- You can choose multiple answers " : ""}
+          {question.multiple
+            ? question.maxChoices
+              ? `- You can choose up to ${question.maxChoices} answers `
+              : "- You can choose multiple answers "
+            : ""}
         </span>
         <span className="font-normal text-sm pl-2.5">
           {question.required ? "" : "- Click skip button if not applicable"}

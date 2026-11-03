@@ -11,16 +11,19 @@ questions:
       - Never
 
   - label: "If you are using AI based coding assistants for Dev, How much improvement do you see in your productivity?"
+    showIf:
+      question: ai-q-0
+      in: [0, 1]
     choices:
+      - It decreased my productivity
       - Did not improve my productivity
       - Somewhat improved my productivity (5% to 10%)
       - Helped me to become more productive (10% to 30%)
       - I am now very productive (30% to 50%)
       - I am a 10x engineer now (+50%)
-      - It decreased my productivity
 
-  - label: Do you think AI will replace developers in the future?
-    required: true
+  - label: What share of developer jobs do you think AI will replace in the next 5 years?
+    required: false
     choices:
       - Not very much ( less than 10% )
       - Somewhat ( 10% - 30% )
@@ -30,7 +33,7 @@ questions:
       - Not sure
 
   - label: Are you planning to learn AI to build apps?
-    required: true
+    required: false
     choices:
       - No, I am not interested
       - Already started learning the basics.
@@ -40,11 +43,50 @@ questions:
 
   - label: How much is your company investing in AI?
     required: false
+    showIf:
+      question: work-q-1
+      in: [0, 1, 2]
     choices:
       - We haven't started adopting AI
       - We're getting the basics in place
       - We have some ad-hoc use cases in production
       - We have several use cases in production
+
+  - label: How do you use AI when coding?
+    required: false
+    multiple: true
+    showIf:
+      question: ai-q-0
+      in: [0, 1]
+    choices:
+      - Autocomplete / inline suggestions
+      - Chat (ask questions, explain or generate snippets)
+      - Agents that edit and run code for me (Claude Code, Codex, Cursor agent...)
+      - AI code review on pull requests
+      - Generating tests or documentation
+      - Prototyping full apps from prompts (vibe coding)
+      - Other
+
+  - label: What is your company's policy on AI coding tools?
+    required: false
+    showIf:
+      question: work-q-1
+      in: [0, 1, 2]
+    choices:
+      - Encouraged, tools provided by the company
+      - Allowed, but I use/pay for my own tools
+      - Restricted to approved tools only
+      - Banned
+      - No policy / I don't know
+
+  - label: Do you think AI made it harder for junior developers to get hired in Morocco?
+    required: false
+    choices:
+      - Yes, much harder
+      - Somewhat harder
+      - No real change
+      - It made it easier
+      - Not sure
 
   - label: Which AI tools and apps do you use?
     multiple: true
@@ -55,29 +97,33 @@ questions:
       - Gemini (Google)
       - Perplexity AI
       - Microsoft Copilot
+      - Mistral Le Chat
+      - DeepSeek
+      - Grok
       # AI-Native Editors
       - Cursor
-      - Windsurf (Codeium)
+      - Windsurf
       - Zed
-      # CLI/Terminal Tools
+      - Kiro
+      - Google Antigravity
+      # CLI/Terminal & agents
       - Claude Code (Anthropic CLI)
-      - Aider
-      - GitHub Copilot CLI
-      - Warp AI
-      - OpenAI Codex CLI
+      - OpenAI Codex
       - Gemini CLI (Google)
+      - GitHub Copilot CLI
+      - OpenCode
+      - Warp AI
+      - Devin
       # IDE-Integrated Extensions
       - GitHub Copilot
-      - Tabnine
-      - Continue.dev
-      - Cline (Claude Dev)
-      - Amazon Q Developer (CodeWhisperer)
+      - JetBrains AI / Junie
+      - Cline
+      - Amazon Q Developer
       # Full-Stack AI Builders / Vibe Coding
       - v0 (Vercel)
       - Bolt.new (StackBlitz)
-      - Lovable (formerly GPT Engineer)
+      - Lovable
       - Replit AI
-      - GitHub Copilot Workspace
       # Other
       - Other
 
@@ -90,46 +136,37 @@ questions:
       - Google Gemini API
       - AWS Bedrock
       - Groq
-      # Open Source LLMs
+      # Open Source / local LLMs
       - Llama (Meta)
       - Mistral
       - Qwen (Alibaba)
       - DeepSeek
-      - Phi (Microsoft)
-      # AI Orchestration Frameworks
+      - Ollama / LM Studio (local models)
+      # Agents & Orchestration
+      - MCP (Model Context Protocol)
       - LangChain
-      - LlamaIndex
       - LangGraph
+      - LlamaIndex
       - CrewAI
-      - AutoGen (Microsoft)
-      # Vector Databases
-      - Pinecone
-      - Weaviate
-      - ChromaDB
-      - Qdrant
-      - Faiss (Meta)
+      - OpenAI Agents SDK
+      - Google ADK
+      - Pydantic AI
+      - Mastra
+      - Vercel AI SDK
       # ML/Deep Learning Frameworks
       - PyTorch
       - TensorFlow
       - Hugging Face Transformers
       - Keras
       - Scikit-Learn
-      # Developer Tools & SDKs
-      - Vercel AI SDK
-      - OpenAI SDK (Python/JS)
-      - Anthropic SDK (Python/JS)
-      - Instructor
-      - Weights & Biases
-      # Fine-tuning & Training Tools
+      # Fine-tuning & MLOps
       - PEFT / LoRA (Hugging Face)
       - Unsloth
       - MLflow
-      - Axolotl
-      - Unstructured
+      - Weights & Biases
       # Specialized Models
       - Stable Diffusion (Images)
       - Whisper (Audio)
       - BERT (Embeddings)
-      - CLIP (Vision)
       # Other
       - Other

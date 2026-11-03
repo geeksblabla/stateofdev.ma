@@ -55,6 +55,8 @@ export const SurveyQuestionSchema = z.object({
 
   multiple: z.boolean().optional().default(false),
 
+  maxChoices: z.number().int().positive().optional(),
+
   choices: z
     .array(
       z

@@ -36,7 +36,7 @@ questions:
       - Europe
       - "US & Canada"
       - Middle East
-      - Others
+      - Other (Africa, Asia, Oceania...)
 
   - label: What is your occupation?
     required: true
@@ -71,7 +71,8 @@ questions:
       - Blockchain developer
       - AI engineer
       - Cloud architect
-      - Student (coding professionally)
+      - Student
+      - Other
 
   - label: What is/was your coding education background?
     required: true
@@ -95,7 +96,7 @@ questions:
       - 3-4 years
       - 5-6 years
       - 7-10 years
-      - 11-16 years
+      - 11-15 years
       - 16+ years
 
   - label: Do you code outside of work or studies?
